@@ -1,16 +1,5 @@
 # Experiment Discovery
 
-<!--
----
-title: Experiment Discovery
-version: 2.0.0
-last_updated: 2026-01-20
-applies_to: [swift-primitives, swift-institute, swift-standards, swift-foundations]
-normative: true
-llm_optimized: true
----
--->
-
 @Metadata {
     @TitleHeading("Swift Institute")
 }
