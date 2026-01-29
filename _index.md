@@ -29,6 +29,7 @@ Ecosystem-wide experiments for Swift Institute.
 | ownership-overloading-limitation | Ownership modifiers cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | value-generic-nested-type-bug | Nested types with value generics must be in body, not extension | 2026-01-20 | Swift 6.2 | CONFIRMED |
 | nested-generic-performance | Performance overhead from nested generic types | 2026-01-20 | Swift 6.2 | CONFIRMED |
+| suite-discovery-generic-extension | @Suite/@Test not discovered in extensions of generic type specializations | 2026-01-28 | Swift 6.2.3 | CONFIRMED |
 
 ### API Design Patterns
 
