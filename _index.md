@@ -24,6 +24,7 @@ Ecosystem-wide experiments for Swift Institute.
 | conditional-copyable-type | Conditional Copyable doesn't help | 2026-01-22 | Swift 6.2 | CONFIRMED FAILS |
 | tagged-family-constraint | Swift cannot constrain to generic tag families | 2026-01-21 | Swift 6.2 | REFUTED |
 | phantom-type-noncopyable-constraint | Phantom types require ~Copyable constraint | 2026-01-21 | Swift 6.2 | CONFIRMED |
+| noncopyable-associatedtype-domain | `associatedtype Domain: ~Copyable` not supported in Swift 6.2 | 2026-02-04 | Swift 6.2.3 | REFUTED |
 | phantom-type-conformance-limitation | Cannot have multiple conformances with different constraints | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | protocol-coroutine-accessor-limitation | Protocol extensions fail with _read/_modify + ~Copyable | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | ownership-overloading-limitation | Ownership modifiers cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
