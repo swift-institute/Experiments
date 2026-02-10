@@ -53,6 +53,7 @@ Ecosystem-wide experiments for Swift Institute.
 |-----------|---------|------|-----------|--------|
 | storage-variant-patterns | Storage variant patterns (Inline/Bounded/Unbounded/Small) | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | index-bit-design | Index bit design investigation | - | - | - |
+| associatedtype-output-collision | Renaming associatedtype Output resolves Parser/Rendering collision | 2026-02-10 | Swift 6.2 | CONFIRMED |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
