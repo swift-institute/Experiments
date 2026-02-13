@@ -25,6 +25,10 @@ Ecosystem-wide experiments for Swift Institute.
 | tagged-family-constraint | Swift cannot constrain to generic tag families | 2026-01-21 | Swift 6.2 | REFUTED |
 | phantom-type-noncopyable-constraint | Phantom types require ~Copyable constraint | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | noncopyable-associatedtype-domain | `associatedtype Domain: ~Copyable` not supported in Swift 6.2 | 2026-02-04 | Swift 6.2.3 | REFUTED |
+| input-slice-module-split-poisoning | Validate module-split fix for Input.Slice TestCollection ~Copyable constraint poisoning | 2026-02-13 | — | PLANNED |
+| protocol-inside-generic-namespace | Protocol nesting in generic enums: blocked. Non-generic namespace + element-agnostic protocol + [IMPL-026] Property.View delegation: works | 2026-02-12 | Swift 6.2.3 | CONFIRMED |
+| protocol-typealias-hoisting | Hoist ONLY protocol outside generic namespace, typealias back as *.Protocol. Tags stay as real nested enums. All per-type methods use Storage<Never>.Tag as canonical witness. Full [IMPL-026] delegation works | 2026-02-12 | Swift 6.2.3 | CONFIRMED |
+| protocol-default-accessor | Protocol default Property.View accessors. Static requirements (Variant 6b) are best: `var drain` + `static func drain(...)` don't collide, single protocol, no marker needed. Instance requirements with same name cause infinite recursion. associatedtype Element blocks ~Copyable | 2026-02-12 | Swift 6.2.3 | CONFIRMED |
 | phantom-type-conformance-limitation | Cannot have multiple conformances with different constraints | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | protocol-coroutine-accessor-limitation | Protocol extensions fail with _read/_modify + ~Copyable | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | ownership-overloading-limitation | Ownership modifiers cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
