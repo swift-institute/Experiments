@@ -1,0 +1,11 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'Consumer' complete! (0.08s)
+V1 (Tagged<Kernel,String>.span chain): CONFIRMED — count = 3, first = 65
+V2 (Tagged<Kernel,Path>.span chain): CONFIRMED — count = 4, first = 47
+V3 (Tagged<Kernel,String>.view chain): CONFIRMED — length = 4, first = 72
+V4 (Tagged<Kernel,String>.directSpan): CONFIRMED — count = 3, first = 88
+V5 (Tagged<Kernel,Path>.isAbsolute): CONFIRMED — isAbsolute = true
+V6 (type distinctness): CONFIRMED — string count = 3, path count = 4
+
+All variants complete.

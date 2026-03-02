@@ -1,0 +1,9 @@
+Building for production...
+[0/6] Write sources
+[3/6] Write swift-version--58304C5D6DBC2206.txt
+[5/7] Compiling TaggedLib Tagged.swift
+[6/8] Compiling StringLib Memory.Contiguous.swift
+[7/9] Compiling Consumer main.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking Consumer
+Build complete! (0.89s)

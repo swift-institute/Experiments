@@ -1,0 +1,12 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module StringLib
+[4/7] Compiling StringLib StringLib.swift
+[5/9] Emitting module Consumer
+[6/9] Compiling Consumer main.swift
+[6/9] Write Objects.LinkFileList
+[7/9] Linking Consumer
+[8/9] Applying Consumer
+Build complete! (0.88s)

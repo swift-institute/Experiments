@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'Consumer' complete! (0.21s)
+V1 (_read → Span): REFUTED — does not compile
+V2 (stored → Span): CONFIRMED — count = 3, first = 65
+V3 (_read → View): REFUTED — does not compile
+V4 (stored → View → Span): CONFIRMED — length = 4, first = 47
+V5 (_read → .span chain): REFUTED — does not compile
+
+All variants complete.

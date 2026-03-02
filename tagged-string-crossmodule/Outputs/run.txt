@@ -1,0 +1,16 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'Consumer' complete! (0.09s)
+V1: count = 5
+V2: first byte = 87 ('W')
+V3: span.count = 3, first = 65
+V4: FALSIFIED — bare String shadows Swift.String, must qualify
+V5: String<GenericTag> resolves, count = 3
+V6: isAbsolutePath = true
+V7: retag PathTag → GenericTag, count = 4
+V8: map StringStorage → Int, mapped = 3
+V9: Sendable inherited cross-module
+V10: KernelPath typealias, isAbsolutePath = true
+V11: coexist WITH Swift.String qualification, both count = 5
+
+All variants complete.

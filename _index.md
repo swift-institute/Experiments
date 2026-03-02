@@ -35,6 +35,9 @@ Ecosystem-wide experiments for Swift Institute.
 | protocol-typealias-hoisting | Hoist ONLY protocol outside generic namespace, typealias back as *.Protocol. Tags stay as real nested enums. All per-type methods use Storage<Never>.Tag as canonical witness. Full [IMPL-026] delegation works | 2026-02-12 | Swift 6.2.3 | CONFIRMED |
 | protocol-default-accessor | Protocol default Property.View accessors. Static requirements (Variant 6b) are best: `var drain` + `static func drain(...)` don't collide, single protocol, no marker needed. Instance requirements with same name cause infinite recursion. associatedtype Element blocks ~Copyable | 2026-02-12 | Swift 6.2.3 | CONFIRMED |
 | typealias-without-reexport | Stop @_exported re-export of String_Primitives; use typealias only. Finding: MemberImportVisibility blocks ALL member access through typealias when defining module not imported. Importing it re-introduces shadowing. Option A insufficient alone. | 2026-02-27 | Swift 6.2 | PARTIALLY REFUTED |
+| tagged-string-crossmodule | Cross-module Tagged\<Tag, StringStorage\> (Option D'): 3 modules (TaggedLib/StringLib/Consumer). 9/11 confirmed, 2 falsified. Critical finding 1: @usableFromInline internal does NOT enable cross-module source access — must use package access. Critical finding 2: @_lifetime propagation through package _storage works cross-module for ~Escapable views. Critical finding 3: generic arity (String\<Tag\> vs String) does NOT prevent shadowing — Swift.String qualification still required. | 2026-02-27 | Swift 6.2.3 | 9/11 CONFIRMED |
+| tagged-escapable-accessor | Cross-PACKAGE Tagged accessor for @_lifetime: 5 variants testing _read coroutine vs stored property rawValue for Span and ~Escapable View across separate SwiftPM packages. V1/V3/V5 REFUTED: _read coroutine universally blocks _overrideLifetime across package boundaries. V2/V4 CONFIRMED: public stored property rawValue propagates @_lifetime correctly. Production Tagged MUST change _storage + _read/_modify to public stored property rawValue. | 2026-02-27 | Swift 6.2.3 | 3 REFUTED / 2 CONFIRMED |
+| tagged-two-level-lifetime | Two-level @_lifetime chain through Tagged\<Domain, ConcreteType\>: 6 variants testing chained Span (V1/V2), ~Escapable View (V3), direct Span (V4), domain-specific forwarding (V5), type distinctness (V6). Validates D' architecture: concrete types (String, Path) as RawValue, domain (Kernel) as Tag. Kind × Domain = two orthogonal axes. ALL 6 CONFIRMED (debug + release). Prerequisite: stored property rawValue from tagged-escapable-accessor. | 2026-02-27 | Swift 6.2.3 | ALL CONFIRMED |
 | phantom-type-conformance-limitation | Cannot have multiple conformances with different constraints | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | protocol-coroutine-accessor-limitation | Protocol extensions fail with _read/_modify + ~Copyable | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | ownership-overloading-limitation | Ownership modifiers cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
@@ -75,6 +78,16 @@ Ecosystem-wide experiments for Swift Institute.
 | stream-isolation-preservation | Determine theoretical max isolation preservation for async sequence pipelines. 13 test variants. Finding: concrete operator types preserve isolation (sync+async closures), @unchecked Sendable doesn't break it, late erasure preserves it. Type-erased sync map() breaks; async map() preserves. | 2026-02-25 | Swift 6.2 | PARTIALLY CONFIRMED |
 | callback-isolated-prototype | Validate nonsending callback prototype: 5 approaches (A–E), 14 tests, 6 discoveries. Approach C (isolated parameter) and D (explicit nonsending) preserve map/flatMap isolation. Issue #83812 CONFIRMED: stored closure-in-closure loses isolation; method wrapper workaround. Non-Sendable Value works. Replacement feasibility confirmed (T11). | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 
+### ~Escapable & Ownership
+
+| Directory | Purpose | Date | Toolchain | Status |
+|-----------|---------|------|-----------|--------|
+| nonsending-blocker-validation-negative | ~Escapable edge case validation: closure storage, Sendable, async/await, Gap A/B identification | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| resumption-nonescapable-noncopyable | Validate Resumption as ~Copyable + ~Escapable: 7 variants (struct, Optional, consuming, drain, let-bind, closure param, optional binding). All PASS in isolation. **Production deployment REVERTED** — cache/pool need `[Resumption]` (heap-backed, requires Escapable). | 2026-03-02 | Swift 6.2.4 | CONFIRMED (pattern works; deployment reverted) |
+| conditional-escapable-container | Conditional Escapable containers: Box (PASS), heap-backed FixedArray (BLOCKED), Ring (BLOCKED), nested Box (PASS), Pair (PASS). Heap-backed containers blocked by UnsafeMutablePointer requiring Escapable. | 2026-03-02 | Swift 6.2.4 | PARTIAL |
+| nonescapable-gap-revalidation-624 | Gap A/B re-validation on Swift 6.2.4. Gap A still blocked, Gap B (stored) still blocked, Gap B+ (immediately-invoked) NEW PASS. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
+| pointer-nonescapable-storage | Exhaustive storage mechanism test: 17 variants (9 PASS, 11 BLOCKED). Enum-based variable-occupancy (V14/V15 PASS). @_rawLayout declaration (V16 PASS), @_rawLayout element access (V17/V17b BLOCKED). Layout-vs-access gap confirmed. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
+
 ### Architecture Patterns
 
 | Directory | Purpose | Date | Toolchain | Status |
@@ -82,6 +95,7 @@ Ecosystem-wide experiments for Swift Institute.
 | storage-variant-patterns | Storage variant patterns (Inline/Bounded/Unbounded/Small) | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | index-bit-design | Index bit design investigation | - | - | - |
 | associatedtype-output-collision | Renaming associatedtype Output resolves Parser/Rendering collision | 2026-02-10 | Swift 6.2 | CONFIRMED |
+| implicit-graph-diff-benchmark | 0-1 BFS on implicit edit graph vs Myers O(ND) for sequence diff. BFS 10-110x slower with O(N*M) space vs O(D²). Graph-primitives cannot subsume specialized Myers. | 2026-02-27 | Swift 6.2.3 | REFUTED |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
