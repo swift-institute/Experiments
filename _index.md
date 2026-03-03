@@ -88,6 +88,13 @@ Ecosystem-wide experiments for Swift Institute.
 | nonescapable-gap-revalidation-624 | Gap A/B re-validation on Swift 6.2.4. Gap A still blocked, Gap B (stored) still blocked, Gap B+ (immediately-invoked) NEW PASS. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 | pointer-nonescapable-storage | Exhaustive storage mechanism test: 17 variants (9 PASS, 11 BLOCKED). Enum-based variable-occupancy (V14/V15 PASS). @_rawLayout declaration (V16 PASS), @_rawLayout element access (V17/V17b BLOCKED). Layout-vs-access gap confirmed. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 
+### Test Framework Integration
+
+| Directory | Purpose | Date | Toolchain | Status |
+|-----------|---------|------|-----------|--------|
+| atexit-swiftsyntax-rewrite | SwiftSyntax parsing, SyntaxRewriter, and atomic file write inside atexit handler. 4 variants: file I/O (V1), parse (V2), rewrite "hello"→"goodbye" (V3), LIFO ordering (V4). Validates Option R1 from expectation-failure-bridge research. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
+| atexit-testing-runner-lifecycle | atexit fires after Swift Testing runner (V1, marker file verified), #if canImport(Testing) resolves to Apple's Testing (V2), Testing.Issue.record reports failures (V3), drain() idempotency (V4), nil-collector guard (V5). Validates Options A + R1 from expectation-failure-bridge research. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
+
 ### Architecture Patterns
 
 | Directory | Purpose | Date | Toolchain | Status |
