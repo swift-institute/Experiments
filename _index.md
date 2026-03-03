@@ -66,6 +66,7 @@ Ecosystem-wide experiments for Swift Institute.
 |-----------|---------|------|-----------|--------|
 | witness-noncopyable-value-feasibility | ~Copyable witness value feasibility: `associatedtype Value: ~Copyable`, Shared+UnsafeRawPointer storage, closure-scoped borrowing, Mutex.withLock, constrained get + universal withValue coexistence, typed throws. Design constraint: protocol default `testValue { liveValue }` requires `where Value: Copyable`. | 2026-02-24 | Swift 6.2.3 | CONFIRMED |
 | witness-noncopyable-default-forwarding | Root cause analysis of protocol property forwarding constraint for ~Copyable. Protocol witness table dispatches properties through `_read` coroutines (borrow); functions through direct return (owned). 15 variants isolate exact boundary. Solutions A–D evaluated; Solution A (constrain to Copyable) recommended. Not a compiler bug — semantic consequence of property dispatch model. | 2026-02-24 | Swift 6.2.3 | CONFIRMED |
+| protocol-diamond-noncopyable-refinement | Protocol diamond with shared `~Copyable & Sendable` associated type: `WitnessKey: DependencyKey, WitnessKeyTest`. 8 variants: diamond compiles, `= Self` default propagates, default chain `testValue → previewValue → liveValue` resolves correctly, `~Copyable` conformers work, IS-A resolution through `K: DependencyKey` subscript works. Validates Option D of `dependency-witness-store-coherence.md`. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
 
 ### Concurrency & Isolation
 
