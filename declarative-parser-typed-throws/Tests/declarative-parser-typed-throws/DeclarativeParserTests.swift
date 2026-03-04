@@ -9,7 +9,14 @@
 // Toolchain: Swift 6.2 (Xcode 26.0)
 // Platform: macOS 26 (arm64)
 //
-// Result: (pending)
+// Result: PARTIAL — see individual variant results below
+//
+// Key findings:
+// 1. Parser.Take.Sequence { } composes parsers correctly after @_disfavoredOverload fix (V2-V6)
+// 2. var body pattern INCOMPATIBLE with typed throws (V8 — documented, does not compile)
+// 3. Builder-inside-imperative works but error mapping degrades to string matching (V9)
+// 4. @_disfavoredOverload on general buildPartialBlock was needed to fix ambiguity (infrastructure fix)
+//
 // Date: 2026-03-04
 
 import Testing
@@ -143,7 +150,7 @@ struct MediaType: Sendable, Equatable {
 
 // MARK: - Variant 1: Imperative Composition (Baseline)
 // Hypothesis: Works, produces clean domain error enum.
-// Result: (pending)
+// Result: CONFIRMED — clean domain errors, 30 lines
 
 struct ImperativeParser<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
 where Input: Sendable, Input.Element == UInt8 {
@@ -204,7 +211,7 @@ func imperativeParser() throws {
 // MARK: - Variant 2: Two-parser builder — Void + Value (Skip.First)
 // Hypothesis: OWS (Void/Never) + Token (Input/Error) composes via builder,
 //             Void is skipped, output = Input.
-// Result: (pending)
+// Result: CONFIRMED — Void auto-skipped, output = Input
 
 @Test("V2: Two-parser builder — Void + Value → Skip.First")
 func twoParserVoidPlusValue() throws {
@@ -219,7 +226,7 @@ func twoParserVoidPlusValue() throws {
 
 // MARK: - Variant 3: Two-parser builder — Value + Value (Take.Two)
 // Hypothesis: Token + Token → Take.Two, output = (Input, Input).
-// Result: (pending)
+// Result: CONFIRMED — Take.Two produces (Input, Input) tuple
 
 @Test("V3: Two-parser builder — Value + Value → Take.Two")
 func twoParserValuePlusValue() throws {
@@ -250,7 +257,7 @@ func twoParserValuePlusValue() throws {
 // MARK: - Variant 4: Three-parser builder — Void + Value + Void
 // Hypothesis: OWS + Token + Slash composes, both Voids are skipped,
 //             output = Input (just the Token).
-// Result: (pending)
+// Result: CONFIRMED — both Voids skipped, output = Input
 
 @Test("V4: Three-parser builder — Void + Value + Void")
 func threeParserComposition() throws {
@@ -266,7 +273,7 @@ func threeParserComposition() throws {
 
 // MARK: - Variant 5: Four-parser builder — Void + Value + Void + Value
 // Hypothesis: OWS + Token + Slash + Token composes, output = (Input, Input).
-// Result: (pending)
+// Result: CONFIRMED — after @_disfavoredOverload fix, output = (Input, Input)
 
 @Test("V5: Four-parser builder — media-type skeleton")
 func fourParserComposition() throws {
@@ -285,7 +292,7 @@ func fourParserComposition() throws {
 // MARK: - Variant 6: Five-parser builder — + ParameterList
 // Hypothesis: Adding a fifth parser (Never failure, non-Void output) may
 //             trigger buildPartialBlock ambiguity with tuple flattening.
-// Result: (pending)
+// Result: CONFIRMED — 5 parsers compose, output = (Input, Input, [(name, value)])
 
 @Test("V6: Five-parser builder — full media-type")
 func fiveParserComposition() throws {
@@ -307,7 +314,7 @@ func fiveParserComposition() throws {
 
 // MARK: - Variant 7: Error type inspection
 // Hypothesis: The composed Failure type is a nested Either tree.
-// Result: (pending)
+// Result: CONFIRMED — error is structural Either tree, not domain enum
 
 @Test("V7: Error type from builder is an Either tree, not a domain enum")
 func errorTypeIsEitherTree() throws {
@@ -389,7 +396,7 @@ func errorTypeIsEitherTree() throws {
 // MARK: - Variant 9: Builder-inside-imperative with domain error mapping
 // Hypothesis: Using the builder internally within an imperative `func parse`
 //             works, but error mapping degrades to string matching.
-// Result: (pending)
+// Result: CONFIRMED — works but error mapping is stringly-typed
 
 struct HybridParser<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
 where Input: Sendable, Input.Element == UInt8 {
@@ -464,7 +471,7 @@ func hybridParserErrorMapping() throws {
 
 // MARK: - Variant 10: Imperative vs Hybrid parity
 // Hypothesis: Both produce identical results for all inputs.
-// Result: (pending)
+// Result: CONFIRMED — identical output for all test inputs
 
 @Test("V10: Imperative and hybrid produce same results")
 func imperativeHybridParity() throws {
