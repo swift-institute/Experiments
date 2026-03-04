@@ -60,6 +60,7 @@ Ecosystem-wide experiments for Swift Institute.
 | nested-typed-multiparameter-pattern | Nested Typed<A>.Typed<B> for multi-parameter generics | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | api-totality-design | Totality (zero crashes) API design philosophy | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | declarative-parser-typed-throws | Parser.Take.Sequence builder composition with typed throws: Void-skipping, tuple flattening, `var body` pattern, error type assessment. 10 variants. `var body` incompatible with typed throws (V8 REFUTED). `@_disfavoredOverload` fix for buildPartialBlock ambiguity. | 2026-03-04 | Swift 6.2 | PARTIAL |
+| canonical-witness-capability | Protocol canonical + witness alternatives: Parseable/Serializable/Codable protocols with single canonical, witness properties for alternatives, generic constrainability, Codable shadowing stdlib, separate failure types, parameterized factory. 10 variants all CONFIRMED. Validates Option C from canonical-witness-capability-attachment research. | 2026-03-04 | Swift 6.2.4 | CONFIRMED |
 
 ### Witness Infrastructure
 

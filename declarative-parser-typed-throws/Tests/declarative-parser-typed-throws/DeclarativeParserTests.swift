@@ -9,13 +9,23 @@
 // Toolchain: Swift 6.2 (Xcode 26.0)
 // Platform: macOS 26 (arm64)
 //
-// Result: PARTIAL — see individual variant results below
+// Result: CONFIRMED — var body pattern WORKS with typed throws via .error.map()
 //
 // Key findings:
 // 1. Parser.Take.Sequence { } composes parsers correctly after @_disfavoredOverload fix (V2-V6)
-// 2. var body pattern INCOMPATIBLE with typed throws (V8 — documented, does not compile)
-// 3. Builder-inside-imperative works but error mapping degrades to string matching (V9)
-// 4. @_disfavoredOverload on general buildPartialBlock was needed to fix ambiguity (infrastructure fix)
+// 2. .error.map() converts the Either tree to a concrete domain error (V11)
+// 3. var body with .map + .error.map enables full declarative composition (V12)
+// 4. var body on Parser.Protocol directly — no separate DeclarativeParser protocol needed (V13)
+// 5. FullTypedThrows not needed — closure inference already works in Swift 6.2.4 (V14)
+// 6. Builder-inside-imperative works but error mapping degrades to string matching (V9)
+// 7. @_disfavoredOverload on general buildPartialBlock was needed to fix ambiguity (infrastructure fix)
+// 8. Parser.Builder<Input> on Parser.Protocol provides @resultBuilder for var body (V12-V14)
+//
+// The var body pattern works WITHOUT FullTypedThrows by chaining:
+//   Parser.Take.Sequence { ... }.map { ... }.error.map { ... }
+// This makes both ParseOutput and Failure concrete, enabling:
+//   var body: some Parser.Protocol<Input, Output, DomainError>
+// The default parse(_:) on Parser.Protocol delegates to body.parse(&input).
 //
 // Date: 2026-03-04
 
@@ -355,43 +365,24 @@ func errorTypeIsEitherTree() throws {
 // Hypothesis: A `var body` pattern on Parser.Protocol with typed throws
 //             cannot work because Body.Failure is opaque.
 //
-// Result: REFUTED — typed throws creates circular type inference.
+// Result: RESOLVED — the key insight is .error.map().
 //
-// The `var body` pattern requires:
-//   1. Protocol declares `var body: Body` with `Body: Parser.Protocol`
-//   2. Default `parse` delegates to `body.parse(&input)` with `throws(Body.Failure)`
-//   3. Conforming type must declare `Failure == Body.Failure`
+// The naive approach fails because Body.Failure is an Either<...> tree
+// that cannot be declared as a concrete Failure typealias. However,
+// chaining .error.map { } AFTER the builder converts the Either tree
+// to a concrete domain error type. This makes Body's Failure concrete
+// from the opaque return type's perspective:
 //
-// But `Body.Failure` is a `Parser.Error.Either<...>` tree inferred from
-// the builder closure. The conforming type cannot write:
-//   `typealias Failure = Body.Failure`
-// because `Body` is `some Parser.Protocol` — its `Failure` is opaque.
+//   var body: some Parser.Protocol<Input, MediaType, DomainError> {
+//       Parser.Take.Sequence { ... }
+//           .map { ... }         // converts (Input, Input, ...) → MediaType
+//           .error.map { ... }   // converts Either<...> → DomainError
+//   }
 //
-// PointFree avoids this by using untyped `throws` — no `Failure` associated
-// type on their `Parser` protocol. Our `Parser.Protocol` requires
-// `associatedtype Failure: Swift.Error & Sendable`.
+// The protocol default `parse` then delegates to `body.parse(&input)`,
+// with `throws(Failure)` matching `DomainError`.
 //
-// --- Attempted code (does not compile): ---
-//
-// protocol DeclarativeParser: Parser.`Protocol` where Body: Parser.`Protocol`,
-//     Body.Input == Input, Body.ParseOutput == ParseOutput
-// {
-//     associatedtype Body
-//     @Parser.Take.Builder<Input>
-//     var body: Body { get }
-// }
-//
-// extension DeclarativeParser where Failure == Body.Failure {
-//     func parse(_ input: inout Input) throws(Failure) -> ParseOutput {
-//         try body.parse(&input)
-//     }
-// }
-//
-// --- Compiler errors: ---
-// 1. "referencing instance method 'parse' on 'DeclarativeParser' requires
-//     the types '...Failure' and '...Body.Failure' be equivalent"
-// 2. Cannot resolve Input associated type through opaque Body
-// 3. Builder can't compose 5th parser — body type inference fails entirely
+// See V12-V14 for working implementations.
 
 // MARK: - Variant 9: Builder-inside-imperative with domain error mapping
 // Hypothesis: Using the builder internally within an imperative `func parse`
@@ -490,5 +481,417 @@ func imperativeHybridParity() throws {
         let hybrid = try HybridParser<Parser.ByteInput>().parse(&input2)
 
         #expect(imperative == hybrid, "Mismatch for: \(testCase)")
+    }
+}
+
+// MARK: - Variant 11: .error.map() produces concrete Failure
+// Hypothesis: Chaining .error.map() after a builder-composed parser
+//             converts the Either<...> tree to a concrete domain error.
+// Result: CONFIRMED — .error.map converts Either tree to domain error
+
+@Test("V11: .error.map() produces concrete Failure")
+func errorMapProducesConcreteFailure() throws {
+    enum DomainError: Error, Sendable, Equatable {
+        case expectedType
+        case expectedSlash
+        case expectedSubtype
+    }
+
+    let parser = Parser.Take.Sequence {
+        OWSParser<Parser.ByteInput>()
+        TokenParser<Parser.ByteInput>()
+        SlashParser<Parser.ByteInput>()
+        TokenParser<Parser.ByteInput>()
+        ParameterListParser<Parser.ByteInput>()
+    }
+    .error.map { either -> DomainError in
+        // Left-nested Either tree: Either<Either<Either<Either<Never, Token.Error>, Slash.Error>, Token.Error>, Never>
+        // Strip outer Right=Never (ParameterList is infallible):
+        let e = either.error
+        // e: Either<Either<Either<Never, Token.Error>, Slash.Error>, Token.Error>
+        switch e {
+        case .right:
+            return .expectedSubtype   // second Token failed
+        case .left(let inner):
+            // inner: Either<Either<Never, Token.Error>, Slash.Error>
+            switch inner {
+            case .right:
+                return .expectedSlash
+            case .left(let inner2):
+                // inner2: Either<Never, Token.Error> → .error strips Never
+                let _ = inner2.error
+                return .expectedType  // first Token failed
+            }
+        }
+    }
+
+    // Success
+    var input = Parser.ByteInput(utf8: "text/html; charset=utf-8")
+    let (typeSlice, subtypeSlice, params) = try parser.parse(&input)
+    #expect(String(decoding: typeSlice, as: UTF8.self) == "text")
+    #expect(String(decoding: subtypeSlice, as: UTF8.self) == "html")
+    #expect(params.count == 1)
+
+    // Error is DomainError, not Either
+    var input2 = Parser.ByteInput(utf8: "")
+    #expect(throws: DomainError.expectedType) {
+        try parser.parse(&input2)
+    }
+
+    var input3 = Parser.ByteInput(utf8: "text")
+    #expect(throws: DomainError.expectedSlash) {
+        try parser.parse(&input3)
+    }
+
+    var input4 = Parser.ByteInput(utf8: "text/")
+    #expect(throws: DomainError.expectedSubtype) {
+        try parser.parse(&input4)
+    }
+}
+
+// MARK: - Variant 12: var body pattern — concrete type with .map + .error.map
+// Hypothesis: A concrete parser type can define `var body` returning
+//             `some Parser.Protocol<Input, MediaType, Error>` via
+//             `.map { }` (output transform) + `.error.map { }` (error transform),
+//             with `func parse` delegating to `body.parse`.
+// Result: CONFIRMED — var body works with typed throws via .map + .error.map
+//         Protocol default parse(_:) delegates to body — no explicit func parse needed.
+
+struct DeclarativeMediaType<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
+where Input: Sendable, Input.Element == UInt8 {
+    init() {}
+}
+
+extension DeclarativeMediaType {
+    enum Error: Swift.Error, Sendable, Equatable {
+        case expectedType
+        case expectedSlash
+        case expectedSubtype
+    }
+}
+
+extension DeclarativeMediaType: Parser.`Protocol` {
+    typealias ParseOutput = MediaType
+    typealias Failure = DeclarativeMediaType<Input>.Error
+
+    var body: some Parser.`Protocol`<Input, MediaType, DeclarativeMediaType<Input>.Error> {
+        Parser.Take.Sequence {
+            OWSParser<Input>()
+            TokenParser<Input>()
+            SlashParser<Input>()
+            TokenParser<Input>()
+            ParameterListParser<Input>()
+        }
+        .map { (typeSlice, subtypeSlice, params) in
+            let type = String(decoding: typeSlice, as: UTF8.self).lowercased()
+            let subtype = String(decoding: subtypeSlice, as: UTF8.self).lowercased()
+            var parameters: [String: String] = [:]
+            for p in params {
+                let name = String(decoding: p.name, as: UTF8.self).lowercased()
+                let value = String(decoding: p.value, as: UTF8.self)
+                parameters[name] = value
+            }
+            return MediaType(type, subtype, parameters: parameters)
+        }
+        .error.map { either -> DeclarativeMediaType<Input>.Error in
+            let e = either.error
+            switch e {
+            case .right:
+                return .expectedSubtype
+            case .left(let inner):
+                switch inner {
+                case .right:
+                    return .expectedSlash
+                case .left(let inner2):
+                    let _ = inner2.error
+                    return .expectedType
+                }
+            }
+        }
+    }
+    // No explicit func parse — provided by Parser.Protocol default.
+}
+
+@Test("V12: var body with .map + .error.map — success")
+func declarativeMediaTypeSuccess() throws {
+    var input = Parser.ByteInput(utf8: "text/html; charset=utf-8")
+    let mt = try DeclarativeMediaType<Parser.ByteInput>().parse(&input)
+    #expect(mt.type == "text")
+    #expect(mt.subtype == "html")
+    #expect(mt.parameters["charset"] == "utf-8")
+}
+
+@Test("V12b: var body — domain errors")
+func declarativeMediaTypeErrors() throws {
+    var input1 = Parser.ByteInput(utf8: "")
+    #expect(throws: DeclarativeMediaType<Parser.ByteInput>.Error.expectedType) {
+        try DeclarativeMediaType<Parser.ByteInput>().parse(&input1)
+    }
+
+    var input2 = Parser.ByteInput(utf8: "text")
+    #expect(throws: DeclarativeMediaType<Parser.ByteInput>.Error.expectedSlash) {
+        try DeclarativeMediaType<Parser.ByteInput>().parse(&input2)
+    }
+
+    var input3 = Parser.ByteInput(utf8: "text/")
+    #expect(throws: DeclarativeMediaType<Parser.ByteInput>.Error.expectedSubtype) {
+        try DeclarativeMediaType<Parser.ByteInput>().parse(&input3)
+    }
+}
+
+@Test("V12c: var body — parity with imperative")
+func declarativeImperativeParity() throws {
+    let testCases = [
+        "text/html",
+        "application/json",
+        "text/html; charset=utf-8",
+        "  text/plain",
+    ]
+
+    for testCase in testCases {
+        var input1 = Parser.ByteInput(utf8: testCase)
+        var input2 = Parser.ByteInput(utf8: testCase)
+
+        let imperative = try ImperativeParser<Parser.ByteInput>().parse(&input1)
+        let declarative = try DeclarativeMediaType<Parser.ByteInput>().parse(&input2)
+
+        #expect(imperative == declarative, "Mismatch for: \(testCase)")
+    }
+}
+
+// MARK: - Variant 13: var body directly on Parser.Protocol — no separate protocol
+// Hypothesis: Parser.Protocol now declares `associatedtype Body` and `var body: Body`
+//             with `@Parser.Builder<Input>`, plus a default `parse` when
+//             `Body: Parser.Protocol, Body.Input == Input, ...`.
+//             No additional protocol is needed — conforming types only declare body.
+// Result: CONFIRMED — Parser.Protocol provides default parse, no extra protocol
+
+struct ProtoMediaType<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
+where Input: Sendable, Input.Element == UInt8 {
+    init() {}
+}
+
+extension ProtoMediaType {
+    enum Error: Swift.Error, Sendable, Equatable {
+        case expectedType
+        case expectedSlash
+        case expectedSubtype
+    }
+}
+
+extension ProtoMediaType: Parser.`Protocol` {
+    typealias ParseOutput = MediaType
+    typealias Failure = ProtoMediaType<Input>.Error
+
+    var body: some Parser.`Protocol`<Input, MediaType, ProtoMediaType<Input>.Error> {
+        Parser.Take.Sequence {
+            OWSParser<Input>()
+            TokenParser<Input>()
+            SlashParser<Input>()
+            TokenParser<Input>()
+            ParameterListParser<Input>()
+        }
+        .map { (typeSlice, subtypeSlice, params) in
+            let type = String(decoding: typeSlice, as: UTF8.self).lowercased()
+            let subtype = String(decoding: subtypeSlice, as: UTF8.self).lowercased()
+            var parameters: [String: String] = [:]
+            for p in params {
+                let name = String(decoding: p.name, as: UTF8.self).lowercased()
+                let value = String(decoding: p.value, as: UTF8.self)
+                parameters[name] = value
+            }
+            return MediaType(type, subtype, parameters: parameters)
+        }
+        .error.map { either -> ProtoMediaType<Input>.Error in
+            let e = either.error
+            switch e {
+            case .right:
+                return .expectedSubtype
+            case .left(let inner):
+                switch inner {
+                case .right:
+                    return .expectedSlash
+                case .left(let inner2):
+                    let _ = inner2.error
+                    return .expectedType
+                }
+            }
+        }
+    }
+    // No explicit func parse — provided by Parser.Protocol default.
+}
+
+@Test("V13: Protocol-based var body — success")
+func protoMediaTypeSuccess() throws {
+    var input = Parser.ByteInput(utf8: "text/html; charset=utf-8")
+    let mt = try ProtoMediaType<Parser.ByteInput>().parse(&input)
+    #expect(mt.type == "text")
+    #expect(mt.subtype == "html")
+    #expect(mt.parameters["charset"] == "utf-8")
+}
+
+@Test("V13b: Protocol-based var body — domain errors")
+func protoMediaTypeErrors() throws {
+    var input1 = Parser.ByteInput(utf8: "")
+    #expect(throws: ProtoMediaType<Parser.ByteInput>.Error.expectedType) {
+        try ProtoMediaType<Parser.ByteInput>().parse(&input1)
+    }
+
+    var input2 = Parser.ByteInput(utf8: "text")
+    #expect(throws: ProtoMediaType<Parser.ByteInput>.Error.expectedSlash) {
+        try ProtoMediaType<Parser.ByteInput>().parse(&input2)
+    }
+}
+
+@Test("V13c: Protocol-based var body — parity with imperative")
+func protoImperativeParity() throws {
+    let testCases = [
+        "text/html",
+        "application/json",
+        "text/html; charset=utf-8",
+        "  text/plain",
+    ]
+
+    for testCase in testCases {
+        var input1 = Parser.ByteInput(utf8: testCase)
+        var input2 = Parser.ByteInput(utf8: testCase)
+
+        let imperative = try ImperativeParser<Parser.ByteInput>().parse(&input1)
+        let proto = try ProtoMediaType<Parser.ByteInput>().parse(&input2)
+
+        #expect(imperative == proto, "Mismatch for: \(testCase)")
+    }
+}
+
+// MARK: - Variant 14: FullTypedThrows — var body WITHOUT .error.map()
+// Hypothesis: FullTypedThrows might enable var body WITHOUT .error.map().
+//
+// Result: FullTypedThrows is IRRELEVANT to this use case.
+//
+// Analysis of Swift compiler source (TypeCheckEffects.cpp, ConstraintSystem.cpp):
+// FullTypedThrows does exactly 3 things:
+//   1. do-catch error type inference (error in catch gets concrete type, not any Error)
+//   2. throw statement type preservation (no erasure to any Error)
+//   3. Removes rethrows-like compatibility hack
+//
+// Our problem is ASSOCIATED TYPE INFERENCE through opaque return types —
+// a generics question, not an effects question. FullTypedThrows is orthogonal.
+//
+// The feature is also:
+//   - Demoted from "upcoming" to "experimental" (incomplete implementation)
+//   - Not available in production compiler or dev snapshots
+//   - Gated with AvailableInProduction=false in Features.def
+//
+// Conclusion: var body works fully via .map + .error.map on Swift 6.2.4.
+// No experimental features needed.
+
+// V14a: Can we omit typealias Failure and let it be inferred?
+// The DeclarativeParser protocol already provides a default parse
+// where Body.Failure == Failure — if the compiler can infer
+// Failure == Body.Failure from the opaque body return type, this works.
+//
+// struct InferredFailureParser<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
+// where Input: Sendable, Input.Element == UInt8 {
+//     init() {}
+// }
+//
+// extension InferredFailureParser: DeclarativeParser {
+//     typealias ParseOutput = (Input, Input, [(name: Input, value: Input)])
+//     // NO typealias Failure — should be inferred from body
+//
+//     var body: some Parser.`Protocol`<Input, (Input, Input, [(name: Input, value: Input)]), _> {
+//         Parser.Take.Sequence {
+//             OWSParser<Input>()
+//             TokenParser<Input>()
+//             SlashParser<Input>()
+//             TokenParser<Input>()
+//             ParameterListParser<Input>()
+//         }
+//     }
+// }
+//
+// The problem: `some Parser.Protocol<Input, Output, _>` — the _ placeholder
+// for Failure is not valid syntax. We'd need `some Parser.Protocol` with
+// NO primary associated type constraints, or explicitly name the Either tree.
+
+// V14b: What FullTypedThrows DOES help with: closure inference in .error.map
+// Without FullTypedThrows, the closure in .error.map may need explicit
+// type annotations. With it, inference should be tighter.
+
+struct FullTypedThrowsParser<Input: Collection.Slice.`Protocol` & Swift.Collection>: Sendable
+where Input: Sendable, Input.Element == UInt8 {
+    init() {}
+}
+
+extension FullTypedThrowsParser {
+    enum Error: Swift.Error, Sendable, Equatable {
+        case expectedType
+        case expectedSlash
+        case expectedSubtype
+    }
+}
+
+extension FullTypedThrowsParser: Parser.`Protocol` {
+    typealias ParseOutput = MediaType
+    typealias Failure = FullTypedThrowsParser<Input>.Error
+
+    var body: some Parser.`Protocol`<Input, MediaType, FullTypedThrowsParser<Input>.Error> {
+        Parser.Take.Sequence {
+            OWSParser<Input>()
+            TokenParser<Input>()
+            SlashParser<Input>()
+            TokenParser<Input>()
+            ParameterListParser<Input>()
+        }
+        .map { (typeSlice, subtypeSlice, params) in
+            let type = String(decoding: typeSlice, as: UTF8.self).lowercased()
+            let subtype = String(decoding: subtypeSlice, as: UTF8.self).lowercased()
+            var parameters: [String: String] = [:]
+            for p in params {
+                let name = String(decoding: p.name, as: UTF8.self).lowercased()
+                let value = String(decoding: p.value, as: UTF8.self)
+                parameters[name] = value
+            }
+            return MediaType(type, subtype, parameters: parameters)
+        }
+        // FullTypedThrows test: does the closure infer its throw type?
+        // Attempting without explicit `-> FullTypedThrowsParser<Input>.Error` annotation.
+        .error.map {
+            let e = $0.error
+            switch e {
+            case .right:
+                return FullTypedThrowsParser<Input>.Error.expectedSubtype
+            case .left(let inner):
+                switch inner {
+                case .right:
+                    return FullTypedThrowsParser<Input>.Error.expectedSlash
+                case .left(let inner2):
+                    let _ = inner2.error
+                    return FullTypedThrowsParser<Input>.Error.expectedType
+                }
+            }
+        }
+    }
+}
+
+@Test("V14: FullTypedThrows — closure inference in .error.map")
+func fullTypedThrowsParser() throws {
+    var input = Parser.ByteInput(utf8: "text/html; charset=utf-8")
+    let mt = try FullTypedThrowsParser<Parser.ByteInput>().parse(&input)
+    #expect(mt.type == "text")
+    #expect(mt.subtype == "html")
+    #expect(mt.parameters["charset"] == "utf-8")
+}
+
+@Test("V14b: FullTypedThrows — domain errors")
+func fullTypedThrowsErrors() throws {
+    var input1 = Parser.ByteInput(utf8: "")
+    #expect(throws: FullTypedThrowsParser<Parser.ByteInput>.Error.expectedType) {
+        try FullTypedThrowsParser<Parser.ByteInput>().parse(&input1)
+    }
+
+    var input2 = Parser.ByteInput(utf8: "text")
+    #expect(throws: FullTypedThrowsParser<Parser.ByteInput>.Error.expectedSlash) {
+        try FullTypedThrowsParser<Parser.ByteInput>().parse(&input2)
     }
 }
