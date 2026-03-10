@@ -4,6 +4,56 @@
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 
-// STUB - Code needs to be recreated
+// Hypothesis: Swift cannot constrain to "any tag in a family."
+// Test: Can we use protocols to group tag types into families?
 
-print("tagged-family-constraint: STUB")
+struct View<Tag, Base> {
+    let base: UnsafeMutablePointer<Base>
+    init(_ base: UnsafeMutablePointer<Base>) {
+        self.base = base
+    }
+}
+
+// Define a "family" protocol
+protocol BufferOperation {}
+
+struct Container {
+    enum ReadOps: BufferOperation {}
+    enum WriteOps: BufferOperation {}
+    enum UnrelatedOps {}  // Not in family
+
+    var value: Int = 0
+}
+
+// Constrain to the family — this WORKS
+extension View where Tag: BufferOperation, Base == Container {
+    func containerValue() -> Int {
+        base.pointee.value
+    }
+}
+
+// Test: both family members get the method
+var c = Container(value: 99)
+
+let rv = withUnsafeMutablePointer(to: &c) { ptr in
+    View<Container.ReadOps, Container>(ptr).containerValue()
+}
+
+let wv = withUnsafeMutablePointer(to: &c) { ptr in
+    View<Container.WriteOps, Container>(ptr).containerValue()
+}
+
+print("Read: \(rv)")
+print("Write: \(wv)")
+assert(rv == 99)
+assert(wv == 99)
+
+// UnrelatedOps does NOT get containerValue() — not in family
+// let uv = withUnsafeMutablePointer(to: &c) { ptr in
+//     View<Container.UnrelatedOps, Container>(ptr).containerValue()
+// }
+// ^ Error: referencing instance method 'containerValue()' requires that
+//   'Container.UnrelatedOps' conform to 'BufferOperation'
+
+print("tagged-family-constraint: REFUTED")
+print("(Protocol-based tag families DO work as constraints)")
