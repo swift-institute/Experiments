@@ -3,5 +3,11 @@ import PackageDescription
 let package = Package(
     name: "noncopyable-inline-deinit",
     platforms: [.macOS(.v26)],
-    targets: [.executableTarget(name: "noncopyable-inline-deinit")]
+    targets: [
+        .target(name: "Lib"),
+        .executableTarget(
+            name: "noncopyable-inline-deinit",
+            dependencies: ["Lib"]
+        )
+    ]
 )
