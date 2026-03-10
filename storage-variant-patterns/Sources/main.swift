@@ -1,17 +1,21 @@
 // MARK: - Storage Variant Patterns
-// Purpose: Storage variant patterns (Inline/Bounded/Unbounded/Small)
+// Purpose: Storage variant patterns (Static/Bounded/Dynamic/Small)
 // Status: CONFIRMED
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 
 // Four storage strategies used across swift-primitives:
-// 1. Inline   — fixed capacity, stored in the struct (InlineArray)
-// 2. Bounded  — fixed capacity, heap allocated (ManagedBuffer)
-// 3. Unbounded — dynamic capacity, heap allocated (growable)
-// 4. Small    — inline + heap spill (starts inline, grows to heap)
+// 1. Static<let capacity>  — fixed capacity, inline storage (InlineArray / @_rawLayout)
+// 2. Bounded               — fixed capacity, heap allocated (ManagedBuffer)
+// 3. (base type)           — dynamic capacity, heap allocated (growable)
+// 4. Small<let inlineCapacity> — inline + heap spill (starts inline, grows to heap)
+//
+// Production naming: The inline variant is named "Static" at the collection level
+// (e.g., Stack.Static, Queue.Static), backed by Buffer.Linear.Inline / Buffer.Ring.Inline
+// at the storage level. The growable variant uses the base type name (Stack, Queue, Array).
 
-// Variant 1: Inline storage using InlineArray
-struct InlineStack<let capacity: Int>: ~Copyable {
+// Variant 1: Static storage using InlineArray
+struct StaticStack<let capacity: Int>: ~Copyable {
     var _storage: InlineArray<capacity, Int>
     var count: Int
 
@@ -59,8 +63,10 @@ final class BoundedStorage: @unchecked Sendable {
     deinit { buffer.deallocate() }
 }
 
-// Variant 3: Unbounded (heap, growable)
-struct UnboundedStack {
+// Variant 3: Dynamic (heap, growable)
+// Note: In production, the growable variant uses the base type name directly
+// (e.g., Stack, Queue, Array) — not a "Dynamic" or "Unbounded" prefix.
+struct DynamicStack {
     var storage: [Int] = []
 
     mutating func push(_ value: Int) {
@@ -110,20 +116,20 @@ struct SmallStack<let inlineCapacity: Int>: ~Copyable {
 }
 
 // Test all variants
-var inline = InlineStack<8>()
-inline.push(1); inline.push(2); inline.push(3)
-assert(inline.pop() == 3)
-print("Inline: count=\(inline.count)")
+var staticStack = StaticStack<8>()
+staticStack.push(1); staticStack.push(2); staticStack.push(3)
+assert(staticStack.pop() == 3)
+print("Static: count=\(staticStack.count)")
 
 let bounded = BoundedStorage(capacity: 16)
 bounded.push(10); bounded.push(20)
 assert(bounded.pop() == 20)
 print("Bounded: count=\(bounded.count)")
 
-var unbounded = UnboundedStack()
-unbounded.push(100); unbounded.push(200); unbounded.push(300)
-assert(unbounded.pop() == 300)
-print("Unbounded: count=\(unbounded.count)")
+var dynamic = DynamicStack()
+dynamic.push(100); dynamic.push(200); dynamic.push(300)
+assert(dynamic.pop() == 300)
+print("Dynamic: count=\(dynamic.count)")
 
 var small = SmallStack<4>()
 for i in 0..<6 { small.push(i) }  // Spills at 5th element

@@ -4,6 +4,10 @@
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
 
+// Production note: In swift-property-primitives, this pattern is implemented as
+// Property<Tag, Base>.View which is ~Copyable, ~Escapable with @_lifetime(borrow base).
+// This experiment uses a simplified Copyable, Escapable version for clarity.
+
 // The Property.View pattern provides namespaced accessors
 // through a pointer-holding view struct.
 
@@ -21,18 +25,20 @@ struct Counter {
 
     var math: View<MathOps, Counter> {
         mutating _read {
-            yield View(&self)
+            // Production uses: yield unsafe @_lifetime(borrow self) View(&self)
+            yield unsafe View(&self)
         }
     }
 }
 
 extension View where Tag == Counter.MathOps, Base == Counter {
     func add(_ n: Int) -> Int {
-        base.pointee.value + n
+        // Production uses: unsafe base.pointee.value
+        unsafe base.pointee.value + n
     }
 
     func doubled() -> Int {
-        base.pointee.value * 2
+        unsafe base.pointee.value * 2
     }
 }
 

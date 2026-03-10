@@ -6,6 +6,18 @@
 
 // Hypothesis: Swift cannot constrain to "any tag in a family."
 // Test: Can we use protocols to group tag types into families?
+//
+// Note: While protocol-based tag families compile (hence REFUTED),
+// production swift-primitives uses concrete `Tag ==` constraints exclusively.
+//
+// Reason: Each tag selects a specific API surface. Grouping tags into families
+// via protocols would expose operations across domains — a .set view should
+// not accidentally inherit .clear methods. One tag = one API surface.
+//
+// Production DOES use protocol constraints on Base (not Tag):
+//   extension Property.View.Typed where Tag == Bit.Vector.Pop,
+//                                       Base: Bit.Vector.Protocol & ~Copyable
+// This shares implementations across types conforming to a protocol.
 
 struct View<Tag, Base> {
     let base: UnsafeMutablePointer<Base>
@@ -36,11 +48,11 @@ extension View where Tag: BufferOperation, Base == Container {
 var c = Container(value: 99)
 
 let rv = withUnsafeMutablePointer(to: &c) { ptr in
-    View<Container.ReadOps, Container>(ptr).containerValue()
+    View<Container.ReadOps, Container>(unsafe ptr).containerValue()
 }
 
 let wv = withUnsafeMutablePointer(to: &c) { ptr in
-    View<Container.WriteOps, Container>(ptr).containerValue()
+    View<Container.WriteOps, Container>(unsafe ptr).containerValue()
 }
 
 print("Read: \(rv)")
@@ -50,7 +62,7 @@ assert(wv == 99)
 
 // UnrelatedOps does NOT get containerValue() — not in family
 // let uv = withUnsafeMutablePointer(to: &c) { ptr in
-//     View<Container.UnrelatedOps, Container>(ptr).containerValue()
+//     View<Container.UnrelatedOps, Container>(unsafe ptr).containerValue()
 // }
 // ^ Error: referencing instance method 'containerValue()' requires that
 //   'Container.UnrelatedOps' conform to 'BufferOperation'

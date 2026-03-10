@@ -3,9 +3,15 @@
 // Status: CONFIRMED
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+//
+// Production note: In swift-primitives, phantom-typed indices use
+// Tagged<Tag: ~Copyable, RawValue: ~Copyable>: ~Copyable with conditional
+// Copyable where RawValue: Copyable. Index<T> is a typealias for Tagged<T, Ordinal>.
 
 // Phantom type parameters must suppress Copyable to work
 // with ~Copyable phantom arguments.
+
+// MARK: Variant 1 — Unconditional Copyable (simplified experiment)
 
 // CORRECT: Phantom parameter suppresses Copyable
 struct TypedIndex<Phantom: ~Copyable>: Copyable {
@@ -44,5 +50,31 @@ assert(i == 7)
 let copy = resourceIdx
 print("Copied index: \(copy.rawValue)")
 assert(copy.rawValue == 42)
+
+// MARK: Variant 2 — Conditional Copyable (mirrors production Tagged)
+
+struct ConditionalIndex<Phantom: ~Copyable, RawValue: ~Copyable>: ~Copyable {
+    let rawValue: RawValue
+    init(_ rawValue: consuming RawValue) { self.rawValue = rawValue }
+}
+
+extension ConditionalIndex: Copyable where Phantom: ~Copyable, RawValue: Copyable {}
+
+// With Copyable raw value — ConditionalIndex is Copyable
+let ci1 = ConditionalIndex<Resource, Int>(99)
+let ci1Copy = ci1  // Works: Int is Copyable, so ConditionalIndex is Copyable
+print("ConditionalIndex (Copyable raw): \(ci1.rawValue), copy: \(ci1Copy.rawValue)")
+assert(ci1.rawValue == 99)
+assert(ci1Copy.rawValue == 99)
+
+// With ~Copyable raw value — ConditionalIndex is ~Copyable
+struct UniqueHandle: ~Copyable {
+    let fd: Int
+}
+
+let ci2 = ConditionalIndex<Item, UniqueHandle>(UniqueHandle(fd: 3))
+// let ci2Copy = ci2  // Compile error: UniqueHandle is ~Copyable, so ConditionalIndex is ~Copyable
+print("ConditionalIndex (~Copyable raw): fd=\(ci2.rawValue.fd)")
+assert(ci2.rawValue.fd == 3)
 
 print("phantom-type-noncopyable-constraint: CONFIRMED")

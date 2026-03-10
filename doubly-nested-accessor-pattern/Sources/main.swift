@@ -1,10 +1,17 @@
 // MARK: - Doubly Nested Accessor Pattern
-// Purpose: Doubly nested accessor patterns (.a.b.property)
-// Status: CONFIRMED
+// Purpose: Two-level view nesting (.a.b.operation()) as a language capability
+// Status: CONFIRMED (compiles)
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
-
-// Two levels of view nesting: container.outer.inner.operation()
+//
+// Note: Production swift-primitives uses single-level view access
+// (container.domain.operation()), not two-level nesting. This experiment
+// validates the language supports deeper nesting if needed in the future.
+//
+// Production examples (single-level):
+//   table.bucket.for(hash: hashValue)
+//   table.remove.at(bucket: b)
+//   value.compare.to(other)
 
 struct View<Tag, Base> {
     let base: UnsafeMutablePointer<Base>
@@ -20,7 +27,7 @@ struct Database {
     var records: [String] = ["alice", "bob", "charlie"]
 
     var query: View<QueryOps, Database> {
-        mutating _read { yield View(&self) }
+        mutating _read { yield unsafe View(&self) }
     }
 }
 
@@ -31,17 +38,17 @@ extension View where Tag == Database.QueryOps, Base == Database {
     }
 
     func all() -> [String] {
-        base.pointee.records
+        unsafe base.pointee.records
     }
 }
 
 extension View where Tag == Database.FilterOps, Base == Database {
     func startingWith(_ prefix: String) -> [String] {
-        base.pointee.records.filter { $0.hasPrefix(prefix) }
+        unsafe base.pointee.records.filter { $0.hasPrefix(prefix) }
     }
 
     func count() -> Int {
-        base.pointee.records.count
+        unsafe base.pointee.records.count
     }
 }
 

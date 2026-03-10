@@ -1,59 +1,69 @@
 // MARK: - Wrapper Type Approach
-// Purpose: Wrapper types avoid direct conformance
-// Status: WORKAROUND FOUND
-// Date: 2026-01-22
+// Purpose: Strategies to avoid Sequence conformance poisoning
+// Status: SUPERSEDED
+// Date: 2026-01-22 (original), 2026-03-10 (updated)
 // Toolchain: Swift 6.2
-
-// Problem: Adding Sequence conformance to Container<Element: ~Copyable>
-// poisons it for ~Copyable use. Adding Comparable to a type may conflict
-// with its design.
 //
-// Workaround: Wrap in a newtype that adds the conformance.
+// Original approach: Wrapper types to avoid direct Sequence conformance.
+// Production solution: Custom Sequence.Protocol + module separation.
+//
+// Production architecture (swift-primitives):
+//   Module A (Core): Container<Element: ~Copyable> + custom Sequence.Protocol
+//   Module B (non-Core): Swift.Sequence conformance (only when Element: Copyable)
+//   This avoids constraint poisoning without wrapper types.
+//
+// The wrapper approach below is valid Swift but is NOT what production uses.
+
+// --- The problem ---
+// Adding Swift.Sequence directly to a ~Copyable container poisons it:
+// all extensions implicitly gain `where Element: Copyable`.
 
 struct Container<Element: ~Copyable>: ~Copyable {
-    var storage: [Int]  // simplified
-    var count: Int { storage.count }
+    var _count: Int = 0
+    var count: Int { _count }
+    mutating func add() { _count += 1 }
+}
 
-    init(_ elements: Int...) {
-        storage = elements
+// --- Approach 1: Wrapper type (originally proposed) ---
+// Creates a Copyable wrapper that copies data out for iteration.
+// DRAWBACK: Requires data copy, doesn't work in-place.
+
+struct SequenceWrapper {
+    let count: Int
+}
+
+extension SequenceWrapper: Sequence {
+    func makeIterator() -> IndexingIterator<Range<Int>> {
+        (0..<count).makeIterator()
     }
 }
 
-// Cannot add Sequence to Container without poisoning ~Copyable.
-// Instead, create a wrapper:
+// --- Approach 2: Custom protocol (production solution) ---
+// Production defines Sequence.Protocol in swift-sequence-primitives
+// which supports ~Copyable containers natively. Container conforms
+// in the Core module. Swift.Sequence conformance is added in a
+// separate integration module (only when Element: Copyable).
+//
+// This avoids:
+//   - Data copying (no wrapper needed)
+//   - Constraint poisoning (module boundary isolates it)
+//   - API surface pollution (consumers import only what they need)
 
-struct SequenceView<Element> {
-    let elements: [Int]  // Copies data out for iteration
-
-    init(_ container: borrowing Container<Element>) {
-        self.elements = container.storage
-    }
-}
-
-extension SequenceView: Sequence {
-    func makeIterator() -> Array<Int>.Iterator {
-        elements.makeIterator()
-    }
-}
-
-// Container provides the wrapper via a method
-extension Container where Element: Copyable {
-    func asSequence() -> SequenceView<Element> {
-        SequenceView(self)
-    }
-}
-
-// Usage with Copyable — can iterate via wrapper
-let intContainer = Container<Int>(1, 2, 3, 4, 5)
-for item in intContainer.asSequence() {
-    print("Item: \(item)")
-}
-
-// Usage with ~Copyable — core operations still work
 struct Resource: ~Copyable { var id: Int }
-let resContainer = Container<Resource>(10, 20, 30)
-print("Resource count: \(resContainer.count)")
-assert(resContainer.count == 3)
-// resContainer.asSequence() — not available (Element is ~Copyable)
 
-print("wrapper-type-approach: WORKAROUND FOUND")
+var intContainer = Container<Int>()
+intContainer.add(); intContainer.add()
+print("Int count: \(intContainer.count)")
+assert(intContainer.count == 2)
+
+var resContainer = Container<Resource>()
+resContainer.add()
+print("Resource count: \(resContainer.count)")
+assert(resContainer.count == 1)
+
+// Wrapper approach works but is not what production uses
+let wrapper = SequenceWrapper(count: intContainer.count)
+for i in wrapper { print("Wrapper item: \(i)") }
+
+print("wrapper-type-approach: SUPERSEDED")
+print("Production uses custom Sequence.Protocol + module separation")

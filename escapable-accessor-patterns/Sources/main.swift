@@ -19,13 +19,17 @@ struct Container {
             self.ptr = ptr
         }
 
-        var current: Int { ptr.pointee }
+        var current: Int { unsafe ptr.pointee }
     }
 
+    // The @_lifetime(&self) is required on the mutating _read accessor because
+    // Container is BitwiseCopyable and the compiler cannot infer the lifetime
+    // dependence. Production uses @_lifetime(borrow base) on init (which this
+    // experiment also has above) and @_lifetime(&self) on the mutating accessor.
     var view: Accessor {
         @_lifetime(&self)
         mutating _read {
-            yield Accessor(ptr: &value)
+            yield unsafe Accessor(ptr: &value)
         }
     }
 }

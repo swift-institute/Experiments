@@ -1,12 +1,13 @@
-// MARK: - Nested Generic Performance
-// Purpose: Performance overhead from nested generic types
-// Status: CONFIRMED
+// MARK: - Nested Generic Layout Equivalence
+// Purpose: Zero-overhead verification for nested generic types
+// Status: CONFIRMED (layout equivalence)
 // Date: 2026-01-20
 // Toolchain: Swift 6.2
-
-// Hypothesis: Nested generics (Outer<A>.Inner<B>) have zero runtime
-// overhead compared to flat generics (FlatType<A, B>).
-// The nesting is purely a compile-time namespace mechanism.
+//
+// Note: Nested generics are purely a compile-time namespace mechanism.
+//       This experiment confirms identical memory layout. Runtime performance
+//       equivalence is validated by the lazy-pipeline-release-mode experiment
+//       which shows nested type chains are fully optimized away in -O mode.
 
 // Flat approach
 struct FlatPair<A, B> {
@@ -22,7 +23,7 @@ struct Outer<A> {
     }
 }
 
-// Both should have identical memory layout and performance
+// Both should have identical memory layout
 
 let flat = FlatPair(first: 42, second: 3.14)
 let nested = Outer<Int>.Inner<Double>(first: 42, second: 3.14)
@@ -40,20 +41,8 @@ assert(MemoryLayout<FlatPair<Int, Double>>.stride == MemoryLayout<Outer<Int>.Inn
 // Alignment check
 assert(MemoryLayout<FlatPair<Int, Double>>.alignment == MemoryLayout<Outer<Int>.Inner<Double>>.alignment)
 
-// Quick performance comparison
-let iterations = 1_000_000
-var flatSum = 0
-for i in 0..<iterations {
-    let p = FlatPair(first: i, second: i)
-    flatSum += p.first + p.second
-}
+// The MemoryLayout equivalence proves nesting is zero-overhead at the type level.
+// For runtime verification, build with -c release and check assembly output,
+// or see: swift-institute/Experiments/lazy-pipeline-release-mode/
 
-var nestedSum = 0
-for i in 0..<iterations {
-    let p = Outer<Int>.Inner<Int>(first: i, second: i)
-    nestedSum += p.first + p.second
-}
-
-assert(flatSum == nestedSum)
-print("Both produce same result: \(flatSum == nestedSum)")
-print("nested-generic-performance: CONFIRMED")
+print("nested-generic-performance: CONFIRMED (layout equivalence)")

@@ -1,8 +1,16 @@
 // MARK: - BitwiseCopyable Lifetime Inference
 // Purpose: BitwiseCopyable blocks _read accessor lifetime inference
-// Status: CONFIRMED
+// Status: CONFIRMED (risk identified)
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+//
+// Note: The code below runs correctly because the issue is timing-dependent
+// and may not manifest in debug builds. The risk is real in optimized builds
+// where the compiler more aggressively ends coroutine lifetimes.
+//
+// Production solution: Property.View is ~Copyable, ~Escapable with
+// @_lifetime(borrow base). The ~Escapable constraint prevents the compiler
+// from copying the view out of the coroutine scope.
 
 // When a view struct is BitwiseCopyable (e.g., it only contains a raw pointer),
 // the compiler may bypass the _read coroutine and eagerly load the value,
@@ -22,19 +30,19 @@ struct Counter {
     // This _read accessor yields a View that borrows self
     var ops: View<Ops, Counter> {
         mutating _read {
-            yield View(&self)
+            yield unsafe View(&self)
         }
     }
 }
 
 extension View where Tag == Counter.Ops, Base == Counter {
     func current() -> Int {
-        base.pointee.value
+        unsafe base.pointee.value
     }
 
     // Mutating through the pointer
     func increment() {
-        base.pointee.value += 1
+        unsafe base.pointee.value += 1
     }
 }
 
@@ -47,9 +55,6 @@ extension View where Tag == Counter.Ops, Base == Counter {
 // 2. Compiler sees View is trivially copyable
 // 3. Compiler may end the coroutine early (before the method call)
 // 4. The pointer may dangle
-
-// Workaround: ensure the View is NOT BitwiseCopyable
-// (adding a class reference field, or using _read + _modify pairs)
 
 var counter = Counter(value: 10)
 let v = counter.ops.current()

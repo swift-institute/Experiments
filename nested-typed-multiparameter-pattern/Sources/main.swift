@@ -4,6 +4,11 @@
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 
+// Production note: In swift-property-primitives, Property.View, Property.View.Typed<Element>,
+// and Property.View.Typed<Element>.Valued<N> are all ~Copyable, ~Escapable with
+// @_lifetime(borrow base) annotations. This experiment uses a simplified version without
+// ~Escapable for clarity (adding it would require the Lifetimes feature flag).
+
 // Pattern: Layered generic nesting for multi-parameter binding.
 // View → View.Typed<Element> → View.Typed<Element>.Valued<N>
 
@@ -28,14 +33,17 @@ struct Buffer<Element: ~Copyable>: ~Copyable {
     }
 }
 
-// Extension using the full nested chain
+// KEY FINDING: All constraints (Tag ==, Base ==, Element: ~Copyable) MUST be at the
+// extension level, not the method level. The compiler adds implicit Base: Copyable
+// when Base isn't concretely constrained at extension level.
 extension View.Typed.Valued
 where Tag == Buffer<Element>.ReadOps,
       Base == Buffer<Element>.Static<n>,
       Element: ~Copyable
 {
     func elementCount() -> Int {
-        base.pointee.count
+        // Production uses: unsafe base.pointee.count
+        unsafe base.pointee.count
     }
 }
 
@@ -45,7 +53,8 @@ extension Buffer.Static where Element: ~Copyable {
 
     var read: ReadView {
         mutating _read {
-            yield ReadView(base: &self)
+            // Production uses: yield unsafe @_lifetime(borrow self) ReadView(base: &self)
+            yield unsafe ReadView(base: &self)
         }
     }
 }

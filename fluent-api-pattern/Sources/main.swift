@@ -4,6 +4,10 @@
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
 
+// Production note: In swift-property-primitives, this pattern is implemented as
+// Property<Tag, Base>.View which is ~Copyable, ~Escapable with @_lifetime(borrow base).
+// This experiment uses a simplified Copyable, Escapable version for clarity.
+
 // Property.View enables fluent namespaced API: container.domain.operation()
 
 struct View<Tag, Base> {
@@ -20,31 +24,33 @@ struct Collection {
     var elements: [Int] = [3, 1, 4, 1, 5]
 
     var search: View<SearchOps, Collection> {
-        mutating _read { yield View(&self) }
+        // Production uses: yield unsafe @_lifetime(borrow self) View(&self)
+        mutating _read { yield unsafe View(&self) }
     }
 
     var sort: View<SortOps, Collection> {
-        mutating _read { yield View(&self) }
+        // Production uses: yield unsafe @_lifetime(borrow self) View(&self)
+        mutating _read { yield unsafe View(&self) }
     }
 }
 
 extension View where Tag == Collection.SearchOps, Base == Collection {
     func contains(_ value: Int) -> Bool {
-        base.pointee.elements.contains(value)
+        unsafe base.pointee.elements.contains(value)
     }
 
     func index(of value: Int) -> Int? {
-        base.pointee.elements.firstIndex(of: value)
+        unsafe base.pointee.elements.firstIndex(of: value)
     }
 }
 
 extension View where Tag == Collection.SortOps, Base == Collection {
     func ascending() -> [Int] {
-        base.pointee.elements.sorted()
+        unsafe base.pointee.elements.sorted()
     }
 
     func descending() -> [Int] {
-        base.pointee.elements.sorted(by: >)
+        unsafe base.pointee.elements.sorted(by: >)
     }
 }
 

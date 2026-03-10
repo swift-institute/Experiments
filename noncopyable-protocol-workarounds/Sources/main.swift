@@ -1,62 +1,71 @@
 // MARK: - ~Copyable Protocol Workarounds
-// Purpose: Protocols without Element associatedtype
-// Status: WORKAROUND FOUND
-// Date: 2026-01-22
-// Toolchain: Swift 6.2
+// Purpose: Protocol associatedtype ~Copyable support
+// Status: RESOLVED (was WORKAROUND FOUND)
+// Date: 2026-01-22 (original), 2026-03-10 (updated)
+// Toolchain: Swift 6.2 (original), Swift 6.2.4 (resolution)
+//
+// Original limitation: `associatedtype Element: ~Copyable` was not supported.
+// Resolution: SuppressedAssociatedTypes experimental feature enables it.
+// Production: Sequence.Protocol, Hash.Protocol, Equation.Protocol all use
+//   `associatedtype Element: ~Copyable` with the feature flag enabled in
+//   every production Package.swift.
+//
+// Production example (swift-sequence-primitives):
+//   public protocol `Protocol`: ~Copyable, ~Escapable {
+//       associatedtype Element: ~Copyable
+//       ...
+//   }
 
-// Problem: Swift protocols implicitly require associated types to be Copyable.
-// associatedtype Element: ~Copyable is not yet supported.
+// --- Historical limitation (Swift 6.2 without feature flag) ---
+// protocol CollectionProtocol {
+//     associatedtype Element  // Implicitly: Element: Copyable
+//     var count: Int { get }
+// }
+// Cannot use CollectionProtocol with ~Copyable element types.
 
-// Attempt 1: Protocol with associatedtype — this constrains to Copyable
-protocol CollectionProtocol {
-    associatedtype Element  // Implicitly: Element: Copyable
-    var count: Int { get }
-}
+// --- Demonstration without the feature flag ---
+// Without SuppressedAssociatedTypes, concrete generics are the workaround:
 
-// Attempt 2: Generic struct without protocol — WORKAROUND
-// Instead of protocols, use concrete generic types with ~Copyable constraints.
-// The struct itself remains Copyable (all stored properties are Copyable),
-// but it can be parameterized over ~Copyable element types.
-struct Container<Element: ~Copyable> {
+struct Container<Element: ~Copyable>: ~Copyable {
     private var _count: Int
 
     init() { _count = 0 }
-
     var count: Int { _count }
-
-    mutating func add() {
-        _count += 1
-    }
+    mutating func add() { _count += 1 }
 }
 
-// Attempt 3: Protocol with generic method instead of associated type — WORKAROUND
-// Use a protocol that doesn't mention Element at all.
-protocol CountableProtocol {
+// Protocol without Element associated type still works.
+// Note: the protocol itself must suppress Copyable to accept ~Copyable conformers.
+protocol Countable: ~Copyable {
     var count: Int { get }
 }
 
-// Container can conform because it is Copyable (stored properties are all Copyable).
-// The ~Copyable parameter doesn't affect the struct's own Copyability.
-extension Container: CountableProtocol where Element: Copyable {}
+extension Container: Countable where Element: ~Copyable {}
 
-// For ~Copyable elements, use the concrete type directly (no protocol witness)
 struct Resource: ~Copyable { var id: Int }
 
 var intContainer = Container<Int>()
 intContainer.add()
 intContainer.add()
-print("Int container count: \(intContainer.count)")  // 2
+print("Int container count: \(intContainer.count)")
 assert(intContainer.count == 2)
 
-// Can use protocol for Copyable element types
-let countable: any CountableProtocol = intContainer
-print("Protocol count: \(countable.count)")  // 2
+// Can use protocol for both Copyable and ~Copyable element types
+print("Protocol-conforming Int container: \(intContainer.count)")
 
 var resContainer = Container<Resource>()
 resContainer.add()
-print("Resource container count: \(resContainer.count)")  // 1
+print("Resource container count: \(resContainer.count)")
 assert(resContainer.count == 1)
-// Cannot use protocol: Container<Resource> does not conform to CountableProtocol
-// because the conformance requires `where Element: Copyable`
 
-print("noncopyable-protocol-workarounds: WORKAROUND FOUND")
+// With SuppressedAssociatedTypes (production), the concrete-generic
+// workaround is no longer needed. Production uses protocols directly:
+//
+//   public protocol `Protocol`: ~Copyable, ~Escapable {
+//       associatedtype Element: ~Copyable
+//       func forEach(_ body: (borrowing Element) -> Void)
+//   }
+//
+// Enabled by: .enableExperimentalFeature("SuppressedAssociatedTypes")
+
+print("noncopyable-protocol-workarounds: RESOLVED")
