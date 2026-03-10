@@ -1,10 +1,40 @@
 // MARK: - ~Copyable Sequence Module Emission Bug
-// Purpose: Module emission failure with ~Copyable + Sequence
-// Status: BUG FILED #86669
-// Date: 2026-01-20
-// Toolchain: Swift 6.2
+// Purpose: Module emission failure with ~Copyable + Sequence conformance
+// Status: BUG FILED #86669 (2026-01-20, Swift 6.2)
+// Revalidation: STILL PRESENT in Swift 6.2.4 — Sequence inherits Copyable requirement (2026-03-10)
 
-// STUB - Code needs to be recreated
-// This experiment reproduced Swift issue #86669
+// Minimal reproduction: generic type with ~Copyable that conditionally conforms to Sequence
+// The -emit-module step crashes or produces invalid output
 
-print("noncopyable-sequence-emit-module-bug: STUB")
+struct Collection<Element: ~Copyable>: ~Copyable {
+    var elements: UnsafeMutablePointer<Element>
+    var count: Int
+
+    init() {
+        elements = .allocate(capacity: 0)
+        count = 0
+    }
+
+    deinit { elements.deallocate() }
+}
+
+extension Collection: @retroactive Sequence where Element: Copyable {
+    struct Iterator: IteratorProtocol {
+        var index: Int
+        let count: Int
+        let base: UnsafeMutablePointer<Element>
+        mutating func next() -> Element? {
+            guard index < count else { return nil }
+            defer { index += 1 }
+            return base[index]
+        }
+    }
+    func makeIterator() -> Iterator {
+        Iterator(index: 0, count: count, base: elements)
+    }
+}
+
+// If this compiles and runs, the bug may be fixed
+let c = Collection<Int>()
+print("Collection created with count: \(c.count)")
+print("Module emission test: BUILD SUCCEEDED")

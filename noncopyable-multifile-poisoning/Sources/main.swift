@@ -1,9 +1,19 @@
 // MARK: - ~Copyable Multifile Poisoning
-// Purpose: File organization doesn't prevent poisoning
-// Status: CONFIRMED
-// Date: 2026-01-22
-// Toolchain: Swift 6.2
+// Purpose: File organization within the same module does NOT prevent poisoning
+// Status: CONFIRMED (2026-01-22, Swift 6.2)
+// Revalidation: STILL PRESENT in Swift 6.2.4 — Sequence inherits Copyable requirement (2026-03-10)
+//
+// Structure:
+//   Base.swift         — Slab<Element: ~Copyable> with UnsafeMutablePointer storage
+//   Conformance.swift  — conditional Sequence conformance (where Element: Copyable)
+//   main.swift         — instantiation with non-Copyable element
+//
+// Expected: Compiler errors on Slab's stored properties despite file separation
 
-// STUB - Code needs to be recreated
+struct Token: ~Copyable {
+    var id: Int
+}
 
-print("noncopyable-multifile-poisoning: STUB")
+// This should compile but fails due to poisoning from Conformance.swift
+var slab = Slab<Token>(capacity: 16)
+print("Slab created: capacity = \(slab.capacity)")

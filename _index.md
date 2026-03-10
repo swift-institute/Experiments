@@ -9,19 +9,19 @@ Ecosystem-wide experiments for Swift Institute.
 | Directory | Purpose | Date | Toolchain | Status |
 |-----------|---------|------|-----------|--------|
 | bitwisecopyable-lifetime-inference | BitwiseCopyable blocks _read accessor lifetime inference | 2026-01-21 | Swift 6.2 | CONFIRMED |
-| noncopyable-inline-deinit | ~Copyable inline storage deinit bug | 2026-01-20 | Swift 6.2 | BUG REPRODUCED |
-| noncopyable-pointer-propagation | Test if constraint poisoning occurs | 2026-01-22 | Swift 6.2 | BUG REPRODUCED |
-| noncopyable-pointer-propagation-multifile | Multi-file variant of above | 2026-01-22 | Swift 6.2 | BUG REPRODUCED |
-| noncopyable-storage-poisoning | Isolated constraint poisoning test | 2026-01-22 | Swift 6.2 | BUG REPRODUCED |
-| noncopyable-multifile-poisoning | File organization doesn't prevent poisoning | 2026-01-22 | Swift 6.2 | CONFIRMED |
-| noncopyable-sequence-protocol-test | Same-file conformance still poisons | 2026-01-22 | Swift 6.2 | CONFIRMED |
+| noncopyable-inline-deinit | ~Copyable inline storage deinit bug | 2026-01-20 | Swift 6.2 | FIXED 6.2.4 |
+| noncopyable-pointer-propagation | Sequence conformance poisons ~Copyable stored properties | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-pointer-propagation-multifile | Multi-file variant of above | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-storage-poisoning | Isolated constraint poisoning test | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-multifile-poisoning | File organization doesn't prevent poisoning | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-sequence-protocol-test | Same-file conformance still poisons | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
 | noncopyable-protocol-workarounds | Protocols without Element associatedtype | 2026-01-22 | Swift 6.2 | WORKAROUND FOUND |
-| noncopyable-cross-module-propagation | ~Copyable constraint propagation across modules | 2026-01-20 | Swift 6.0 | INVESTIGATION |
-| noncopyable-sequence-emit-module-bug | Module emission failure with ~Copyable + Sequence | 2026-01-20 | Swift 6.2 | BUG FILED #86669 |
-| noncopyable-accessor-incompatibility | Accessor pattern incompatible with ~Copyable containers | 2026-01-20 | Swift 6.2 | CONFIRMED |
+| noncopyable-cross-module-propagation | ~Copyable constraint propagation across modules | 2026-01-20 | Swift 6.0 | FIXED 6.2.4 |
+| noncopyable-sequence-emit-module-bug | Module emission failure with ~Copyable + Sequence | 2026-01-20 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-accessor-incompatibility | _read/_modify accessors with ~Copyable containers | 2026-01-20 | Swift 6.2 | FIXED 6.2.4 |
 | separate-module-conformance | Module boundaries prevent poisoning | 2026-01-22 | Swift 6.2 | SOLUTION FOUND |
 | wrapper-type-approach | Wrapper types avoid direct conformance | 2026-01-22 | Swift 6.2 | WORKAROUND FOUND |
-| conditional-copyable-type | Conditional Copyable doesn't help | 2026-01-22 | Swift 6.2 | CONFIRMED FAILS |
+| conditional-copyable-type | Conditional Copyable + deinit conflict | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
 | tagged-family-constraint | Swift cannot constrain to generic tag families | 2026-01-21 | Swift 6.2 | REFUTED |
 | phantom-type-noncopyable-constraint | Phantom types require ~Copyable constraint | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | noncopyable-associatedtype-domain | `associatedtype Domain: ~Copyable` not supported in Swift 6.2 | 2026-02-04 | Swift 6.2.3 | REFUTED |
@@ -39,14 +39,14 @@ Ecosystem-wide experiments for Swift Institute.
 | tagged-escapable-accessor | Cross-PACKAGE Tagged accessor for @_lifetime: 5 variants testing _read coroutine vs stored property rawValue for Span and ~Escapable View across separate SwiftPM packages. V1/V3/V5 REFUTED: _read coroutine universally blocks _overrideLifetime across package boundaries. V2/V4 CONFIRMED: public stored property rawValue propagates @_lifetime correctly. Production Tagged MUST change _storage + _read/_modify to public stored property rawValue. | 2026-02-27 | Swift 6.2.3 | 3 REFUTED / 2 CONFIRMED |
 | tagged-two-level-lifetime | Two-level @_lifetime chain through Tagged\<Domain, ConcreteType\>: 6 variants testing chained Span (V1/V2), ~Escapable View (V3), direct Span (V4), domain-specific forwarding (V5), type distinctness (V6). Validates D' architecture: concrete types (String, Path) as RawValue, domain (Kernel) as Tag. Kind × Domain = two orthogonal axes. ALL 6 CONFIRMED (debug + release). Prerequisite: stored property rawValue from tagged-escapable-accessor. | 2026-02-27 | Swift 6.2.3 | ALL CONFIRMED |
 | phantom-type-conformance-limitation | Cannot have multiple conformances with different constraints | 2026-01-21 | Swift 6.2 | CONFIRMED |
-| protocol-coroutine-accessor-limitation | Protocol extensions fail with _read/_modify + ~Copyable | 2026-01-21 | Swift 6.2 | CONFIRMED |
+| protocol-coroutine-accessor-limitation | Protocol extensions fail with _read/_modify + ~Copyable | 2026-01-21 | Swift 6.2 | STILL PRESENT 6.2.4 |
 | ownership-overloading-limitation | Ownership modifiers cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
-| value-generic-nested-type-bug | Nested types with value generics must be in body, not extension | 2026-01-20 | Swift 6.2 | CONFIRMED |
+| value-generic-nested-type-bug | Nested types with value generics in extensions | 2026-01-20 | Swift 6.2 | FIXED 6.2.4 |
 | nested-generic-performance | Performance overhead from nested generic types | 2026-01-20 | Swift 6.2 | CONFIRMED |
 | suite-discovery-generic-extension | @Suite/@Test not discovered in extensions of generic type specializations | 2026-01-28 | Swift 6.2.3 | CONFIRMED |
 | set-protocol-noncopyable-conformance | `where Element: ~Copyable` in conformance clause breaks witness matching. Closures consume captured ~Copyable values — no borrowing closure capture. `hashValue` computed property not found on `T: HashProto & ~Copyable`. 12 variants. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 | suppressed-associatedtype-domain | Re-test `associatedtype Domain: ~Copyable` WITH SuppressedAssociatedTypes feature flag. Tagged wrapper, cross-type operators, cross-domain rejection, full Phase 2, ~Copyable tag as Domain witness. 6 variants all confirmed. Phase 2 Domain unification unblocked. | 2026-02-13 | Swift 6.2.3 | CONFIRMED |
-| throws-overloading-limitation | Throws modifier cannot be used for overloading | 2026-01-22 | Swift 6.2 | CONFIRMED |
+| throws-overloading-limitation | Throws modifier cannot be used for overloading | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
 
 ### API Design Patterns
 

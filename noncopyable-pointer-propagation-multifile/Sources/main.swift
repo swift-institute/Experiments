@@ -1,11 +1,19 @@
 // MARK: - ~Copyable Constraint Poisoning (Multi-file)
-// Purpose: Multi-file variant of constraint poisoning test
-// Status: BUG REPRODUCED
-// Date: 2026-01-22
-// Toolchain: Swift 6.2
+// Purpose: Test whether file-level separation prevents constraint poisoning
+// Status: BUG REPRODUCED (2026-01-22, Swift 6.2)
+// Revalidation: STILL PRESENT in Swift 6.2.4 — file separation doesn't prevent Sequence Copyable requirement (2026-03-10)
+//
+// Structure:
+//   Container.swift           — base type with ~Copyable element
+//   Container+Sequence.swift  — conditional Sequence conformance
+//   main.swift                — test with non-Copyable element
+//
+// Expected: Poisoning persists despite file separation (module-level resolution)
 
-// STUB - Code needs to be recreated
-// Variant of noncopyable-pointer-propagation testing whether
-// file organization prevents constraint poisoning. It does not.
+struct Resource: ~Copyable {
+    var value: Int
+}
 
-print("noncopyable-pointer-propagation-multifile: STUB")
+// This should compile but may fail due to poisoning from Container+Sequence.swift
+var c = Container<Resource>(capacity: 4)
+print("Container created: count = \(c.count)")
