@@ -4,12 +4,15 @@
 //          called when a ~Copyable container wraps a ~Copyable buffer wraps an element,
 //          all across PACKAGE boundaries with generic Element: ~Copyable and value generics.
 //
-// Status: NOT REPRODUCED (2026-03-10, Swift 6.2.4)
-//   All 11 variants pass. The simplified reproduction does NOT use @_rawLayout
-//   storage or the Property.View deinitialize pattern, so the bug doesn't manifest.
-//   The production bug requires the exact Buffer.Ring.Inline → Storage.Inline chain
-//   with @_rawLayout and per-slot bitvector tracking.
-//   Workaround in production: remove.all() through mutable pointer in deinit body.
+// Status: CONFIRMED IN PRODUCTION (2026-03-10, Swift 6.2.4)
+//   All 11 simplified variants pass — the bug does NOT manifest without @_rawLayout
+//   storage and the real Storage.Inline deinitialize chain.
+//   However, canary tests in buffer-primitives CONFIRM the bug at the real level:
+//   tracker.deinitOrder is [] for all 4 inline buffer types (Ring, Linear, Arena, Slab).
+//   The compiler fails to destroy ~Copyable structs with cross-package value-generic
+//   stored properties when those properties use @_rawLayout.
+//   Workaround applied to 21 types across 9 packages:
+//     _deinitWorkaround: AnyObject? + manual remove.all()/removeAll() in deinit body.
 //
 // Production chain (3 separate packages):
 //   Queue.Static<capacity>              (queue-primitives)  — outer container

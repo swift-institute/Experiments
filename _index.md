@@ -47,7 +47,7 @@ Ecosystem-wide experiments for Swift Institute.
 | set-protocol-noncopyable-conformance | `where Element: ~Copyable` in conformance clause breaks witness matching. Closures consume captured ~Copyable values — no borrowing closure capture. `hashValue` computed property not found on `T: HashProto & ~Copyable`. 12 variants. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 | suppressed-associatedtype-domain | Re-test `associatedtype Domain: ~Copyable` WITH SuppressedAssociatedTypes feature flag. Tagged wrapper, cross-type operators, cross-domain rejection, full Phase 2, ~Copyable tag as Domain witness. 6 variants all confirmed. Phase 2 Domain unification unblocked. | 2026-02-13 | Swift 6.2.3 | CONFIRMED |
 | throws-overloading-limitation | Throws modifier cannot be used for overloading | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
-| noncopyable-nested-deinit-chain | 3-package nested ~Copyable deinit chain (Queue.Static variant of #86652). 11 variants all pass — simplified reproduction doesn't use @_rawLayout / Property.View deinitialize pattern. Production workaround: remove.all() through mutable pointer in deinit. | 2026-03-10 | Swift 6.2.4 | NOT REPRODUCED |
+| noncopyable-nested-deinit-chain | 3-package nested ~Copyable deinit chain (Queue.Static variant of #86652). Simplified reproduction (11 variants) doesn't trigger the bug. But canary tests in buffer-primitives CONFIRM the bug at the real @_rawLayout / Storage.Inline level: `tracker.deinitOrder` is `[]` for all 4 inline buffer types (Ring, Linear, Arena, Slab). Workaround applied to 21 types across 9 packages: `_deinitWorkaround: AnyObject?` + manual `remove.all()`/`removeAll()` in deinit. | 2026-03-10 | Swift 6.2.4 | CONFIRMED (production only) |
 
 ### API Design Patterns
 
@@ -111,6 +111,7 @@ Ecosystem-wide experiments for Swift Institute.
 | atexit-swiftsyntax-rewrite | SwiftSyntax parsing, SyntaxRewriter, and atomic file write inside atexit handler. 4 variants: file I/O (V1), parse (V2), rewrite "hello"→"goodbye" (V3), LIFO ordering (V4). Validates Option R1 from expectation-failure-bridge research. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
 | atexit-testing-runner-lifecycle | atexit fires after Swift Testing runner (V1, marker file verified), #if canImport(Testing) resolves to Apple's Testing (V2), Testing.Issue.record reports failures (V3), drain() idempotency (V4), nil-collector guard (V5). Validates Options A + R1 from expectation-failure-bridge research. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
 | noncopyable-expect-throws | Isolate whether closures capturing ~Copyable vars for mutating throwing calls release borrow correctly after throw. Phase 1: minimal ~Copyable + #expect(throws:) works fine. Cross-module phases testing incremental complexity factors. | 2026-02-10 | Swift 6.2.3 | INVESTIGATION |
+| dependency-scope-writeback | Verify Dependency.Scope mutability from within scoped operation. Direct value mutation impossible (struct copy). Reference type (class) injected via Dependency.Scope IS visible after mutation — works across await, nested scopes. Full benchmark pattern (scope provider injects Box, measure {} writes, provider reads back) confirmed. 6 variants all pass. | 2026-03-10 | Swift 6.2 | CONFIRMED |
 
 ### Architecture Patterns
 
