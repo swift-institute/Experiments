@@ -47,6 +47,7 @@ Ecosystem-wide experiments for Swift Institute.
 | set-protocol-noncopyable-conformance | `where Element: ~Copyable` in conformance clause breaks witness matching. Closures consume captured ~Copyable values — no borrowing closure capture. `hashValue` computed property not found on `T: HashProto & ~Copyable`. 12 variants. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 | suppressed-associatedtype-domain | Re-test `associatedtype Domain: ~Copyable` WITH SuppressedAssociatedTypes feature flag. Tagged wrapper, cross-type operators, cross-domain rejection, full Phase 2, ~Copyable tag as Domain witness. 6 variants all confirmed. Phase 2 Domain unification unblocked. | 2026-02-13 | Swift 6.2.3 | CONFIRMED |
 | throws-overloading-limitation | Throws modifier cannot be used for overloading | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.2.4 |
+| noncopyable-nested-deinit-chain | 3-package nested ~Copyable deinit chain (Queue.Static variant of #86652). 11 variants all pass — simplified reproduction doesn't use @_rawLayout / Property.View deinitialize pattern. Production workaround: remove.all() through mutable pointer in deinit. | 2026-03-10 | Swift 6.2.4 | NOT REPRODUCED |
 
 ### API Design Patterns
 
