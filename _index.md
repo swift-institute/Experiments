@@ -124,6 +124,7 @@ Ecosystem-wide experiments for Swift Institute.
 | rendering-context-protocol-vs-witness | Protocol vs witness vs action vs existential dispatch for Rendering.Context. V2 Witness ≈ V1 Protocol (0.99–1.04x release). Action 1.20–1.36x. AnyView 1.03–1.07x. Decision: hybrid (protocol + Action enum). | 2026-03-14 | Swift 6.2.4 | CONFIRMED |
 | async-rendering-transport | ~Copyable async context for transport-layer HTML streaming. Tests nonsending closures, inout/borrowing across await, actor sinks, AsyncRenderable protocol, @Sendable Task.detached, suspension squashing. 7/8 CONFIRMED, ~Escapable DEFERRED. Two-mode design: nonsending for inline, @Sendable for concurrent streaming. | 2026-03-15 | Swift 6.2 | CONFIRMED |
 | markdown-rendering-performance-profiling | Capture-based vs pure action markdown rendering. Per-element: Paragraph 17.6x, InlineCode 7.0x, ListItem 36.4x. Full pipeline: 3 pure elements → 9% improvement. Children replay amplification dominates — incremental conversion yields diminishing returns. All-or-nothing conversion recommended. | 2026-03-15 | Swift 6.2 | CONFIRMED |
+| zero-copy-event-pipeline-validation | Memory.Pool event pipeline (Phase 1 + Phase 2) zero-copy design validation: pool sizing under poll batch loads, contention with concurrent producers/consumers, backpressure when exhausted. | 2026-03-15 | Swift 6.2 | PENDING |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
