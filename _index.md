@@ -121,6 +121,9 @@ Ecosystem-wide experiments for Swift Institute.
 | associatedtype-output-collision | Renaming associatedtype Output resolves Parser/Rendering collision | 2026-02-10 | Swift 6.2 | CONFIRMED |
 | github-url-spm-resolution | GitHub URL patterns, SPM package name uniqueness, redirect behavior for org migration. Basic resolution, multi-package resolution, repo rename redirect validation. | 2026-02-23 | Swift 6.2.3 | CONFIRMED |
 | implicit-graph-diff-benchmark | 0-1 BFS on implicit edit graph vs Myers O(ND) for sequence diff. BFS 10-110x slower with O(N*M) space vs O(D²). Graph-primitives cannot subsume specialized Myers. | 2026-02-27 | Swift 6.2.3 | REFUTED |
+| rendering-context-protocol-vs-witness | Protocol vs witness vs action vs existential dispatch for Rendering.Context. V2 Witness ≈ V1 Protocol (0.99–1.04x release). Action 1.20–1.36x. AnyView 1.03–1.07x. Decision: hybrid (protocol + Action enum). | 2026-03-14 | Swift 6.2.4 | CONFIRMED |
+| async-rendering-transport | ~Copyable async context for transport-layer HTML streaming. Tests nonsending closures, inout/borrowing across await, actor sinks, AsyncRenderable protocol, @Sendable Task.detached, suspension squashing. 7/8 CONFIRMED, ~Escapable DEFERRED. Two-mode design: nonsending for inline, @Sendable for concurrent streaming. | 2026-03-15 | Swift 6.2 | CONFIRMED |
+| markdown-rendering-performance-profiling | Capture-based vs pure action markdown rendering. Per-element: Paragraph 17.6x, InlineCode 7.0x, ListItem 36.4x. Full pipeline: 3 pure elements → 9% improvement. Children replay amplification dominates — incremental conversion yields diminishing returns. All-or-nothing conversion recommended. | 2026-03-15 | Swift 6.2 | CONFIRMED |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
