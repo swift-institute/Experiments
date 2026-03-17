@@ -133,6 +133,7 @@ Ecosystem-wide experiments for Swift Institute.
 | rendering-context-algebra-composition | ~Copyable witness struct algebra composition for Rendering.Context: consuming transformers, nested Action enum, push/pop state management. Validates witness architecture composability. | 2026-03-14 | Swift 6.2 | CONFIRMED |
 | rendering-witness-migration-blockers | Rendering.Context witness migration blocker validation: Property.View delegation, ownership forwarding, consuming transformer patterns across package boundaries. | 2026-03-14 | Swift 6.2 | CONFIRMED |
 | nested-package-source-ownership | Nested package source ownership: validates that parent and nested Package.swift can share Sources/ directory without conflicts. | 2026-03-13 | Swift 6.2 | CONFIRMED |
+| iterative-tuple-rendering-trampoline | Validate trampoline approach for iterative _Tuple rendering to avoid stack overflow from deeply nested types. | 2026-03-16 | Swift 6.2.4 | PLANNED |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
