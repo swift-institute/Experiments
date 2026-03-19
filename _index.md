@@ -83,6 +83,7 @@ Ecosystem-wide experiments for Swift Institute.
 | witness-noncopyable-default-forwarding | Root cause analysis of protocol property forwarding constraint for ~Copyable. Protocol witness table dispatches properties through `_read` coroutines (borrow); functions through direct return (owned). 15 variants isolate exact boundary. Solutions A–D evaluated; Solution A (constrain to Copyable) recommended. Not a compiler bug — semantic consequence of property dispatch model. | 2026-02-24 | Swift 6.2.3 | CONFIRMED |
 | protocol-diamond-noncopyable-refinement | Protocol diamond with shared `~Copyable & Sendable` associated type: `WitnessKey: DependencyKey, WitnessKeyTest`. 8 variants: diamond compiles, `= Self` default propagates, default chain `testValue → previewValue → liveValue` resolves correctly, `~Copyable` conformers work, IS-A resolution through `K: DependencyKey` subscript works. Validates Option D of `dependency-witness-store-coherence.md`. | 2026-03-03 | Swift 6.2.4 | CONFIRMED |
 | witness-macro-noncopyable-feasibility | @Witness macro ~Copyable support via Projection pattern: Action enum stores Copyable projections via WitnessProjectable. Borrowing/consuming forwarding through closure wrappers. Typed throws requires explicit closure annotations. WitnessProjectable unifies Copyable/~Copyable. inout parameters forward cleanly. 12 variants (V1a REFUTED, rest CONFIRMED). | 2026-03-04 | Swift 6.2.4 | CONFIRMED |
+| dual-defunctionalize-composition | @Dual + @Defunctionalize composition on same struct: 5 variants testing categorical dual, defunctionalized call algebra, combined generation, PointFree model. Variant 5 (PointFree model) cleanest. All variants compile. | 2026-03-16 | Swift 6.2.4 | CONFIRMED |
 
 ### Concurrency & Isolation
 
@@ -134,6 +135,7 @@ Ecosystem-wide experiments for Swift Institute.
 | rendering-witness-migration-blockers | Rendering.Context witness migration blocker validation: Property.View delegation, ownership forwarding, consuming transformer patterns across package boundaries. | 2026-03-14 | Swift 6.2 | CONFIRMED |
 | nested-package-source-ownership | Nested package source ownership: validates that parent and nested Package.swift can share Sources/ directory without conflicts. | 2026-03-13 | Swift 6.2 | CONFIRMED |
 | iterative-tuple-rendering-trampoline | Validate trampoline approach for iterative _Tuple rendering to avoid stack overflow from deeply nested types. | 2026-03-16 | Swift 6.2.4 | PLANNED |
+| for-loop-result-builder | For-loop buildArray stack overflow reproduction: find nesting depth threshold where rendering crashes for deeply nested _Tuple view types via for-loop iteration. Multi-package (RenderingPrimitives + HTMLRenderable). | 2026-03-17 | Swift 6.2.4 | PENDING |
 
 ## Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)
 
