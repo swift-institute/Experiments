@@ -1,11 +1,28 @@
 // MARK: - ContiguousProtocol with ~Escapable + @lifetime on property
-// Purpose: Validate that Swift 6.3 @lifetime on protocol property
-//          enables the generalized ContiguousProtocol pattern.
+// Purpose: Validate that @lifetime on protocol property requirement
+//          enables the generalized ContiguousProtocol pattern where
+//          both owned types AND ~Escapable views can conform.
 //
-// Toolchain: Swift 6.3-dev
+// Toolchain: Apple Swift 6.2.4, 6.3-dev (Feb 6), 6.4-dev (Mar 16)
 // Platform: macOS 26 (arm64)
 //
-// Result: PENDING
+// Result: MIXED
+//   @lifetime on protocol PROPERTY — BLOCKED (all 3 toolchains)
+//     "@lifetime attribute cannot be applied to this declaration"
+//   @_lifetime on protocol METHOD — CONFIRMED (6.2.4+)
+//     borrowing func span() with @_lifetime(borrow self) works
+//   Workaround: ~Copyable-only protocol (no ~Escapable) with var span { get }
+//     Owned types conform; views pass .span directly. CONFIRMED.
+//
+// Findings:
+//   - @lifetime/@_lifetime on protocol properties is NOT implemented
+//   - stdlib _BorrowingSequence uses @lifetime on METHOD, never property
+//   - Protocol _read accessor also blocked ("expected get or set")
+//   - borrowing get without annotation: "cannot infer lifetime"
+//   - Existing Memory.Contiguous.Protocol (~Copyable only) is the
+//     correct pattern for Swift 6.2 — views cannot conform but
+//     provide .span directly
+//
 // Date: 2026-03-19
 
 

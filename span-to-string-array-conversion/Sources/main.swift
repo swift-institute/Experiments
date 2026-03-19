@@ -7,7 +7,16 @@
 // Toolchain: Apple Swift 6.2.4
 // Platform: macOS 26 (arm64)
 //
-// Result: PENDING
+// Result: CONFIRMED (6 of 8 variants pass, 2 REFUTED — Span not Collection/Sequence)
+//   V1 CONFIRMED: span.withUnsafeBufferPointer { String(decoding:as:) }
+//   V2 REFUTED: String(decoding: span, as: UTF8.self) — Span not Collection
+//   V3 CONFIRMED: UTF8Span(validating:) → String(copying:)  ← BEST PATH
+//   V6 CONFIRMED: Manual byte-by-byte
+//   V7 CONFIRMED: String(unsafeUninitializedCapacity:)
+//   V8 CONFIRMED: span.withUnsafeBufferPointer { Array($0) }
+//   V9 REFUTED: Array(span) — Span not Sequence
+//   V10 CONFIRMED: Manual index-based Array
+//   V11 CONFIRMED: Array(unsafeUninitializedCapacity:)
 // Date: 2026-03-19
 
 // Helper: create a Span from a known buffer
