@@ -6,15 +6,9 @@ let package = Package(
     products: [
         .library(name: "Storage", targets: ["Storage"])
     ],
-    dependencies: [
-        .package(path: "../ElementPackage")
-    ],
     targets: [
         .target(
             name: "Storage",
-            dependencies: [
-                .product(name: "Element", package: "ElementPackage")
-            ],
             swiftSettings: [
                 .enableExperimentalFeature("RawLayout"),
             ]

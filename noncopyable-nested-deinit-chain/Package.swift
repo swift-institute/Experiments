@@ -6,7 +6,6 @@ let package = Package(
     dependencies: [
         .package(path: "LocalPackages/ElementPackage"),
         .package(path: "LocalPackages/StoragePackage"),
-        .package(path: "LocalPackages/BufferPackage"),
     ],
     targets: [
         .executableTarget(
@@ -14,7 +13,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Element", package: "ElementPackage"),
                 .product(name: "Storage", package: "StoragePackage"),
-                .product(name: "Buffer", package: "BufferPackage"),
             ]
         )
     ]
