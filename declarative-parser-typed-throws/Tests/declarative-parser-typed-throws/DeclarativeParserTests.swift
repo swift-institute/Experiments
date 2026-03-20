@@ -3,7 +3,7 @@
 //          and assess the ergonomics of the resulting error types.
 //
 // Hypothesis: Parser.Take.Sequence { } composes parsers correctly, but the
-//             resulting Parser.Error.Either<...> tree is ergonomically hostile
+//             resulting Either<...> tree is ergonomically hostile
 //             for domain error enums compared to imperative do/catch.
 //
 // Toolchain: Swift 6.2 (Xcode 26.0)
