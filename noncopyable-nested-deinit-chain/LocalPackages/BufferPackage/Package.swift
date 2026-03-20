@@ -7,13 +7,15 @@ let package = Package(
         .library(name: "Buffer", targets: ["Buffer"])
     ],
     dependencies: [
-        .package(path: "../ElementPackage")
+        .package(path: "../ElementPackage"),
+        .package(path: "../StoragePackage"),
     ],
     targets: [
         .target(
             name: "Buffer",
             dependencies: [
-                .product(name: "Element", package: "ElementPackage")
+                .product(name: "Element", package: "ElementPackage"),
+                .product(name: "Storage", package: "StoragePackage"),
             ]
         )
     ]
