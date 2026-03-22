@@ -40,7 +40,7 @@ final class ImmediateClock: Clock, @unchecked Sendable {
 func testDirect() async {
     let clock = ImmediateClock()
     MainActor.assertIsolated("before direct sleep")
-    try? await clock.sleep(until: clock.now.advanced(by: .seconds(1)))
+    try? await clock.sleep(for: .seconds(1))
     MainActor.assertIsolated("after direct sleep")
     print("Test 1 (direct): PASSED")
 }
@@ -51,7 +51,7 @@ func testDirect() async {
 @MainActor
 func testGeneric<C: Clock>(clock: C) async where C.Duration == Duration {
     MainActor.assertIsolated("before generic sleep")
-    try? await clock.sleep(until: clock.now.advanced(by: .seconds(1)), tolerance: nil)
+    try? await clock.sleep(for: .seconds(1))
     MainActor.assertIsolated("after generic sleep")
     print("Test 2 (generic): PASSED")
 }
@@ -62,7 +62,7 @@ func testGeneric<C: Clock>(clock: C) async where C.Duration == Duration {
 @MainActor
 func testSomeClock(clock: some Clock<Duration>) async {
     MainActor.assertIsolated("before some-clock sleep")
-    try? await clock.sleep(until: clock.now.advanced(by: .seconds(1)), tolerance: nil)
+    try? await clock.sleep(for: .seconds(1))
     MainActor.assertIsolated("after some-clock sleep")
     print("Test 3 (some Clock): PASSED")
 }

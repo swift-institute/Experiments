@@ -45,7 +45,7 @@ func testB5() async {
     let clock = ImmediateNonsendingClock()
 
     MainActor.assertIsolated("Should be on MainActor before sleep")
-    try? await clock.sleep(until: clock.now.advanced(by: .seconds(1)), tolerance: nil)
+    try? await clock.sleep(for: .seconds(1))
     MainActor.assertIsolated("Should be on MainActor after immediate sleep — no thread hop")
 
     print("B5-nonsending-clock: passed")
