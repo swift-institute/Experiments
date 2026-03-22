@@ -90,10 +90,11 @@ Ecosystem-wide experiments for Swift Institute.
 
 | Directory | Purpose | Date | Toolchain | Status |
 |-----------|---------|------|-----------|--------|
-| nonsending-blocker-validation | Validate nonisolated(nonsending) on async closures, continuation and cancellation handler isolation | 2026-02-25 | Swift 6.2 | CONFIRMED |
-| nonsending-blocker-validation-negative | Compiler rejects nonsending on sync function types | 2026-02-25 | Swift 6.2 | CONFIRMED |
+| nonsending-closure-type-constraints | Where can nonisolated(nonsending) be applied? Async closures in structs (B1a) and actors (B1b): yes. Sync function types (B1d): no — compiler rejects. Key discovery: nonsending ONLY applies to async function types. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| stdlib-concurrency-isolation | Do stdlib concurrency primitives propagate caller isolation? withCheckedContinuation (B2): yes, via #isolation. withTaskCancellationHandler (B3): yes, nonisolated(nonsending) overload. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| nonsending-clock-feasibility | Can a NonsendingClock protocol refining Clock be defined? Yes — ImmediateClock with nonisolated(nonsending) sleep preserves MainActor with zero thread hop (B5). Foundation for deterministic temporal testing. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | nonsending-sendable-iterator | Test nonisolated(nonsending) @Sendable stored closure isolation. Finding: @Sendable wins — isolation broken on stored closures. nonisolated(nonsending) without @Sendable preserves. | 2026-02-25 | Swift 6.2 | CONFIRMED |
-| nonsending-generic-dispatch | Generic dispatch with NonisolatedNonsendingByDefault | 2026-02-25 | Swift 6.2 | — |
+| nonsending-generic-dispatch | Generic dispatch with NonisolatedNonsendingByDefault. nonisolated(nonsending) on concrete Clock.sleep survives protocol witness dispatch (<C: Clock>) and opaque type dispatch (some Clock). No separate NonsendingClock protocol needed. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | stream-isolation-preservation | Determine theoretical max isolation preservation for async sequence pipelines. 13 test variants. Finding: concrete operator types preserve isolation (sync+async closures), @unchecked Sendable doesn't break it, late erasure preserves it. Type-erased sync map() breaks; async map() preserves. | 2026-02-25 | Swift 6.2 | PARTIALLY CONFIRMED |
 | callback-isolated-prototype | Validate nonsending callback prototype: 5 approaches (A–E), 14 tests, 6 discoveries. Approach C (isolated parameter) and D (explicit nonsending) preserve map/flatMap isolation. Issue #83812 CONFIRMED: stored closure-in-closure loses isolation; method wrapper workaround. Non-Sendable Value works. Replacement feasibility confirmed (T11). | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | sync-overload-resolution | Sync-closure overload of map/filter on AsyncSequence wins over stdlib's async-closure overload. Chaining produces concrete Isolated.Filter\<Isolated.Map\<...\>\>. Explicitly async closures still resolve to stdlib. Isolation preserved through concrete pipeline. | 2026-02-25 | Swift 6.2 | PARTIALLY CONFIRMED |
@@ -102,7 +103,7 @@ Ecosystem-wide experiments for Swift Institute.
 
 | Directory | Purpose | Date | Toolchain | Status |
 |-----------|---------|------|-----------|--------|
-| nonsending-blocker-validation-negative | ~Escapable edge case validation: closure storage, Sendable, async/await, Gap A/B identification | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| nonescapable-closure-storage | Can ~Escapable types store closures? Immortal lifetime: yes (V2). Scoped consuming: yes (V3). Borrow-lifetime closure capture: prevented (V4). @_lifetime on Escapable closure: rejected (V8). ~Escapable + Sendable: orthogonal (B4b). Across await: works (V6). To Task: works (V7). | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | resumption-nonescapable-noncopyable | Validate Resumption as ~Copyable + ~Escapable: 7 variants (struct, Optional, consuming, drain, let-bind, closure param, optional binding). All PASS in isolation. **Production deployment REVERTED** — cache/pool need `[Resumption]` (heap-backed, requires Escapable). | 2026-03-02 | Swift 6.2.4 | CONFIRMED (pattern works; deployment reverted) |
 | conditional-escapable-container | Conditional Escapable containers: Box (PASS), heap-backed FixedArray (BLOCKED), Ring (BLOCKED), nested Box (PASS), Pair (PASS). Heap-backed containers blocked by UnsafeMutablePointer requiring Escapable. | 2026-03-02 | Swift 6.2.4 | PARTIAL |
 | nonescapable-gap-revalidation-624 | Gap A/B re-validation on Swift 6.2.4. Gap A still blocked, Gap B (stored) still blocked, Gap B+ (immediately-invoked) NEW PASS. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |

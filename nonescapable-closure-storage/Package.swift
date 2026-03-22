@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "nonsending-blocker-validation",
+    name: "nonescapable-closure-storage",
     platforms: [.macOS(.v26)],
     targets: [
         .executableTarget(
-            name: "nonsending-blocker-validation",
+            name: "nonescapable-closure-storage",
             swiftSettings: [
                 .enableExperimentalFeature("Lifetimes"),
             ]

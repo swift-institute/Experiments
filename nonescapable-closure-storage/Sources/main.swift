@@ -1,8 +1,21 @@
-// MARK: - Nonsending Blocker Validation — ~Escapable Edge Cases
-// Purpose: Find the precise boundary of ~Escapable + closure support.
+// MARK: - ~Escapable Closure Storage
+// Purpose: Determine whether ~Escapable types can store closures, and find
+//          the precise boundaries of ~Escapable + closure support.
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
 // Platform: macOS 26.0 (arm64)
+//
+// Results Summary:
+//   V1  — CONFIRMED: ~Escapable with @_lifetime(immortal) works (baseline)
+//   V2  — CONFIRMED: ~Escapable CAN store @escaping @Sendable closures (immortal lifetime)
+//   V3  — CONFIRMED: Scoped consuming resumption pattern works
+//   V4  — CONFIRMED: Borrow-lifetime ~Escapable CANNOT be captured in closures
+//   V5  — (commented) Borrow-lifetime ~Escapable prevented from escaping via closure
+//   V6  — CONFIRMED: Immortal ~Escapable survives across await
+//   V7  — CONFIRMED: ~Escapable + Sendable can be passed to Task
+//   V8  — (commented) @_lifetime CANNOT depend on Escapable closure params
+//   B4a — NOT A BLOCKER: ~Escapable CAN store closures (with immortal lifetime)
+//   B4b — CONFIRMED: ~Escapable + Sendable work together (orthogonal)
 //
 // Date: 2026-02-25
 
@@ -20,7 +33,7 @@ struct NEImmortal: ~Escapable {
 // ============================================================================
 // MARK: - V2: ~Escapable storing @escaping closure (with immortal lifetime)
 // Question: Can ~Escapable type store an @escaping closure?
-// Result: <PENDING>
+// Result: CONFIRMED
 // ============================================================================
 
 struct NEWithClosure: ~Escapable {
@@ -40,7 +53,7 @@ func testV2() {
 // ============================================================================
 // MARK: - V3: ~Escapable as Resumption pattern (scoped, consuming)
 // Mirrors Async.Waiter.Resumption: store closure, consume exactly once.
-// Result: <PENDING>
+// Result: CONFIRMED
 // ============================================================================
 
 struct ScopedResumption: ~Escapable {
@@ -64,7 +77,7 @@ func testV3() {
 // ============================================================================
 // MARK: - V4: ~Escapable with borrow lifetime — closure capture
 // Question: Can a lifetime-dependent ~Escapable be captured in a closure?
-// Result: <PENDING>
+// Result: CONFIRMED — compiler prevents capture (lifetime-dependent escapes scope)
 // ============================================================================
 
 struct NEBorrowed: ~Escapable {
@@ -93,7 +106,7 @@ func testV4() {
 // MARK: - V5: ~Escapable value ESCAPING via closure (should it be prevented?)
 // Question: Does the compiler prevent a borrow-lifetime ~Escapable from
 //           escaping beyond its scope via an escaping closure?
-// Result: <PENDING>
+// Result: CONFIRMED — compiler prevents (see commented code)
 // ============================================================================
 
 // Uncomment to test — expected: compiler error preventing escape
@@ -109,7 +122,7 @@ func testV4() {
 
 // ============================================================================
 // MARK: - V6: ~Escapable survives across await (immortal)
-// Result: <PENDING>
+// Result: CONFIRMED
 // ============================================================================
 
 func testV6() async {
@@ -120,7 +133,7 @@ func testV6() async {
 
 // ============================================================================
 // MARK: - V7: ~Escapable + Sendable passed to Task
-// Result: <PENDING>
+// Result: CONFIRMED
 // ============================================================================
 
 struct NESendable: ~Escapable, Sendable {
@@ -142,7 +155,7 @@ func testV7() async {
 // This is the precise blocker: you cannot tie a ~Escapable type's lifetime
 // to a closure parameter, because closures are Escapable.
 // Uncomment to see the exact error.
-// Result: <PENDING>
+// Result: CONFIRMED — error: invalid lifetime dependence on Escapable value
 // ============================================================================
 
 // struct NELifetimeClosure: ~Escapable {
@@ -154,15 +167,59 @@ func testV7() async {
 // }
 
 // ============================================================================
+// MARK: - B4b: ~Escapable + Sendable (orthogonal features)
+// Hypothesis: ~Escapable types CAN conform to Sendable.
+// Result: CONFIRMED — Output: B4b-sendable-nonescapable: 42
+// ============================================================================
+
+struct SendableNonEscapable: ~Escapable, Sendable {
+    let value: Int
+
+    @_lifetime(immortal)
+    init(value: Int) {
+        self.value = value
+    }
+}
+
+func testB4b() {
+    let sne = SendableNonEscapable(value: 42)
+    print("B4b-sendable-nonescapable: \(sne.value)")  // Expected: 42
+}
+
+// ============================================================================
 // MARK: - Runner
 // ============================================================================
 
-print("=== ~Escapable Edge Cases ===")
+print("=== ~Escapable Closure Storage ===")
 print()
+
+print("--- V1: Baseline (immortal) ---")
+let ne = NEImmortal(value: 42)
+print("V1: \(ne.value)")
+print()
+
+print("--- V2: Stored closure (immortal) ---")
 testV2()
+print()
+
+print("--- V3: Scoped consuming resumption ---")
 testV3()
+print()
+
+print("--- V4: Borrow-lifetime closure capture (prevented) ---")
 testV4()
+print()
+
+print("--- V6: Immortal across await ---")
 await testV6()
+print()
+
+print("--- V7: ~Escapable + Sendable to Task ---")
 await testV7()
 print()
-print("=== All edge case tests complete ===")
+
+print("--- B4b: ~Escapable + Sendable ---")
+testB4b()
+print()
+
+print("=== All tests complete ===")
