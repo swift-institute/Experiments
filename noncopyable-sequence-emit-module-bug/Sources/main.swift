@@ -2,6 +2,7 @@
 // Purpose: Module emission failure with ~Copyable + Sequence conformance
 // Status: BUG FILED #86669 (2026-01-20, Swift 6.2)
 // Revalidation: STILL PRESENT in Swift 6.2.4 — Sequence inherits Copyable requirement (2026-03-10)
+// Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
 
 // Minimal reproduction: generic type with ~Copyable that conditionally conforms to Sequence
 // The -emit-module step crashes or produces invalid output

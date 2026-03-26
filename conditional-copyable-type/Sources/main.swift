@@ -2,6 +2,7 @@
 // Purpose: Conditional Copyable conformance doesn't prevent constraint poisoning
 // Status: CONFIRMED FAILS (2026-01-22, Swift 6.2)
 // Revalidation: STILL PRESENT in Swift 6.2.4 — deinit conflicts with conditional Copyable conformance (2026-03-10)
+// Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
 
 // Attempt: Make Container conditionally Copyable, hoping the compiler
 // can separate the Copyable and ~Copyable paths

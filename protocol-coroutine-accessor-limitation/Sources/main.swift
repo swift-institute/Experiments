@@ -2,6 +2,7 @@
 // Purpose: Protocol extensions fail with _read/_modify accessors + ~Copyable
 // Status: CONFIRMED (2026-01-21, Swift 6.2)
 // Revalidation: STILL PRESENT in Swift 6.2.4 — cannot infer Element through protocol with ~Copyable (2026-03-10)
+// Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
 
 protocol ContainerProtocol<Element>: ~Copyable {
     associatedtype Element: ~Copyable
