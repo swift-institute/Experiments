@@ -158,3 +158,6 @@ test("V5 success") { try V5(name: "e", shouldFail: false) }
 test("V5 failure") { try V5(name: "e", shouldFail: true) }
 
 testV6()
+testV7()
+testV7Bisect()
+testV7Fix()
