@@ -6,6 +6,7 @@
 // Toolchain: Apple Swift 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
 // Platform: macOS 26.0 (arm64)
 //
+// Result: CONFIRMED — @Witness macro supports ~Copyable witnesses via WitnessProjectable projection pattern; 12 of 13 variants pass
 // Results:
 //   V1a: REFUTED   — Copyable enum cannot hold ~Copyable associated values
 //   V1b: CONFIRMED — ~Copyable enum CAN hold ~Copyable associated values

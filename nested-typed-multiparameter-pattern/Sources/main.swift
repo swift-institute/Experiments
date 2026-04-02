@@ -1,6 +1,7 @@
 // MARK: - Nested Typed Multiparameter Pattern
 // Purpose: Nested Typed<A>.Typed<B> for multi-parameter generics
 // Status: CONFIRMED
+// Result: CONFIRMED — layered generic nesting View.Typed<Element>.Valued<N> works with ~Copyable and value generics
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 

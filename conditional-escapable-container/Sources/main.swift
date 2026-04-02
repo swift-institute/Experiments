@@ -1,6 +1,8 @@
 // Experiment: Conditional Escapable Container
 // Tests whether containers can conditionally conform to Escapable based on Element.
 //
+// Result: CONFIRMED — single-element Box works; multi-element containers blocked by UnsafePointer Escapable requirement and Optional lifetime checker
+//
 // Pattern under test (from Sequence.Map):
 //   extension T: Copyable where Element: Copyable & ~Escapable {}
 //   extension T: Escapable where Element: Escapable & ~Copyable {}

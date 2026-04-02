@@ -2,6 +2,7 @@
 // Purpose: Nested types with value generics must be in body, not extension
 // Status: CONFIRMED (2026-01-20, Swift 6.2)
 // Revalidation: FIXED in Swift 6.2.4 — nested types in extensions work with value generics (2026-03-10)
+// Result: BUG REPRODUCED — nested types in extensions of value-generic types broken in Swift 6.2, fixed in 6.2.4
 
 // MARK: - Variant 1: Nested type in body (should work)
 struct Outer1<let N: Int> {

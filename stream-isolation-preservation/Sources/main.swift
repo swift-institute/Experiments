@@ -16,7 +16,7 @@
 // PLATFORM: macOS 26
 // DATE: 2026-02-25
 //
-// RESULT: PARTIALLY CONFIRMED — concrete types are the path forward.
+// Result: PARTIALLY CONFIRMED — concrete operator types preserve isolation; stdlib types and type-erased sync closures do not
 //
 // FINDINGS:
 //   A. REFUTED — stdlib concrete types (AsyncMapSequence etc.) break isolation

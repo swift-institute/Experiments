@@ -1,6 +1,7 @@
 // MARK: - Wrapper Type Approach
 // Purpose: Strategies to avoid Sequence conformance poisoning
 // Status: SUPERSEDED
+// Result: SUPERSEDED — wrapper approach works but production uses custom Sequence.Protocol + module separation instead
 // Date: 2026-01-22 (original), 2026-03-10 (updated)
 // Toolchain: Swift 6.2
 //

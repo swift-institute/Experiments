@@ -1,6 +1,7 @@
 // MARK: - Stdlib Comparison Conformance
 // Purpose: Dual-track architecture for stdlib Comparable integration
 // Status: COMPLETE
+// Result: CONFIRMED — dual-track (custom ~Copyable protocol + stdlib Comparable bridge) works; operators derived correctly
 // Date: 2026-01-22
 // Toolchain: Swift 6.0
 

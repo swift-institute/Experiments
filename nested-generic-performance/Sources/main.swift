@@ -1,6 +1,7 @@
 // MARK: - Nested Generic Layout Equivalence
 // Purpose: Zero-overhead verification for nested generic types
 // Status: CONFIRMED (layout equivalence)
+// Result: CONFIRMED — nested generics have identical memory layout to flat generics (size, stride, alignment)
 // Date: 2026-01-20
 // Toolchain: Swift 6.2
 //

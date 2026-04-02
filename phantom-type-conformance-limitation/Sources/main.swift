@@ -1,6 +1,7 @@
 // MARK: - Phantom Type Conformance Limitation
 // Purpose: Cannot have multiple conditional conformances to same protocol
 // Status: CONFIRMED
+// Result: CONFIRMED — cannot have two conditional conformances to the same protocol with different constraints; single conformance must cover all phantom types
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 //

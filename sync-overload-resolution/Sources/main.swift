@@ -18,7 +18,7 @@
 // PLATFORM: macOS 26
 // DATE: 2026-02-25
 //
-// RESULT: PARTIALLY CONFIRMED
+// Result: PARTIALLY CONFIRMED — sync overload wins resolution but isolation lost at sync-to-async closure storage boundary
 //
 // FINDINGS:
 //   1. CONFIRMED — `source.map { $0 * 2 }` resolves to Isolated.Map, not

@@ -1,5 +1,7 @@
 // nonsending-sendable-iterator experiment — REVISED
 //
+// Result: CONFIRMED — nonsending methods preserve isolation; nonsending @Sendable stored closures do NOT (the @Sendable makes the closure concurrent)
+//
 // FINDING: `nonisolated(nonsending) @Sendable` on stored closures does NOT
 // preserve invoker isolation. The @Sendable makes the closure concurrent.
 //

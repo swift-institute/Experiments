@@ -13,6 +13,10 @@
 //
 // Toolchain: Apple Swift version 6.2.3
 // Date: 2026-01-22
+// Result: Property.View with pointer-based mutating func (Variant 7) is optimal for
+//         .forEach.consuming syntax. Zero heap allocation, full ~Copyable support.
+//         Adopted in Collection.ForEach+Property.View.swift (index-based iteration,
+//         mutating consuming method via Collection.Clearable).
 //
 // ============================================================================
 // FINDINGS SUMMARY

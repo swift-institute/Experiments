@@ -1,6 +1,7 @@
 // MARK: - Tagged Family Constraint
 // Purpose: Swift cannot constrain to generic tag families
 // Status: REFUTED
+// Result: REFUTED — protocol-based tag families DO work as constraints; production uses concrete Tag == constraints instead for API isolation
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 

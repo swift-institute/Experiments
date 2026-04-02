@@ -1,6 +1,7 @@
 // MARK: - Separate Module Conformance
 // Purpose: Module boundaries prevent poisoning
 // Status: SOLUTION FOUND
+// Result: CONFIRMED — module separation isolates Sequence conformance poisoning; ~Copyable consumers import core module only
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
 

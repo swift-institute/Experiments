@@ -7,6 +7,8 @@
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
 // Platform: macOS 26.0 (arm64)
 //
+// Result: CONFIRMED — Approach C with callAsFunction(isolation:) preserves isolation through map/flatMap; stored nonsending closures lose isolation (#83812)
+//
 // === KEY DISCOVERIES ===
 //
 // D1 (compile): Non-Sendable struct with nonisolated async PROPERTY getter

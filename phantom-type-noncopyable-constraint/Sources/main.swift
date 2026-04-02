@@ -1,6 +1,7 @@
 // MARK: - Phantom Type ~Copyable Constraint
 // Purpose: Phantom types require ~Copyable constraint
 // Status: CONFIRMED
+// Result: CONFIRMED — phantom type parameters must suppress Copyable to accept ~Copyable arguments; conditional Copyable on RawValue works
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 //

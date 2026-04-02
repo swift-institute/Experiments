@@ -1,6 +1,7 @@
 // MARK: - Storage Variant Patterns
 // Purpose: Storage variant patterns (Static/Bounded/Dynamic/Small)
 // Status: CONFIRMED
+// Result: CONFIRMED — four storage strategies (Static/Bounded/Dynamic/Small) all compile and work for ~Copyable containers
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
 

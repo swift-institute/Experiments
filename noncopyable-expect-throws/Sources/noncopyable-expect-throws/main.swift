@@ -7,7 +7,7 @@
 // Toolchain: TBD
 // Platform: macOS (arm64)
 //
-// Result: TBD
+// Result: CONFIRMED — direct do/catch and closure capture of ~Copyable vars release borrows correctly after throw; hang is specific to #expect(throws:) macro expansion
 // Date: 2026-02-10
 
 // MARK: - Minimal ~Copyable type
