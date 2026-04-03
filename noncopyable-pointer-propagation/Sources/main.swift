@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Constraint Poisoning Test
 // Purpose: Adding Sequence conformance where Element: Copyable poisons stored UnsafeMutablePointer<Element>
 // Status: BUG REPRODUCED (2026-01-22, Swift 6.2)

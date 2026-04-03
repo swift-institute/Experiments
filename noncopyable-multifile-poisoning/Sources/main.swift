@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Multifile Poisoning
 // Purpose: File organization within the same module does NOT prevent poisoning
 // Status: CONFIRMED (2026-01-22, Swift 6.2)

@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Storage Poisoning
 // Purpose: Conditional conformance poisons stored property access
 // Status: BUG REPRODUCED (2026-01-22, Swift 6.2)

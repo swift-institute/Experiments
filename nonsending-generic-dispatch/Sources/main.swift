@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonsending-dispatch
 // MARK: - Nonsending Through Generic Dispatch
 // Purpose: Does nonisolated(nonsending) on a concrete Clock.sleep survive
 //          when called through a generic <C: Clock> parameter?

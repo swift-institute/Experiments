@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-access-patterns
 // MARK: - Consuming Iteration for Ordered Sets
 // Purpose: Verify consuming iteration APIs are feasible for Set.Ordered
 //

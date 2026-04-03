@@ -2,6 +2,15 @@
 
 Ecosystem-wide experiments for Swift Institute.
 
+## Consolidated Packages
+
+| Directory | Theme | Absorbed | Date | Status |
+|-----------|-------|----------|------|--------|
+| noncopyable-constraint-behavior | Constraint poisoning from Sequence conformance, cross-module propagation | 8 experiments | 2026-04-02 | CONSOLIDATED |
+| noncopyable-access-patterns | Consuming, borrowing, iteration, Optional unwrap for ~Copyable | 7 experiments (2 institute + 5 primitives) | 2026-04-02 | CONSOLIDATED |
+| nonescapable-patterns | ~Escapable accessor, storage, protocol, lazy sequence, pointer patterns | 7 experiments | 2026-04-02 | CONSOLIDATED |
+| nonsending-dispatch | nonisolated(nonsending) behavior across dispatch contexts | 4 experiments | 2026-04-02 | CONSOLIDATED |
+
 ## Experiments
 
 ### Swift Language Issues
@@ -10,14 +19,14 @@ Ecosystem-wide experiments for Swift Institute.
 |-----------|---------|------|-----------|--------|
 | bitwisecopyable-lifetime-inference | BitwiseCopyable blocks _read accessor lifetime inference | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | noncopyable-inline-deinit | ~Copyable inline storage deinit bug | 2026-01-20 | Swift 6.2 | FIXED 6.2.4 |
-| noncopyable-pointer-propagation | Sequence conformance poisons ~Copyable stored properties | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.3 |
-| noncopyable-pointer-propagation-multifile | Multi-file variant of above | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.3 |
-| noncopyable-storage-poisoning | Isolated constraint poisoning test | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.3 |
-| noncopyable-multifile-poisoning | File organization doesn't prevent poisoning | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.3 |
-| noncopyable-sequence-protocol-test | Same-file conformance still poisons | 2026-01-22 | Swift 6.2 | STILL PRESENT 6.3 |
-| noncopyable-protocol-workarounds | Protocols without Element associatedtype | 2026-01-22 | Swift 6.2 | WORKAROUND FOUND |
-| noncopyable-cross-module-propagation | ~Copyable constraint propagation across modules | 2026-01-20 | Swift 6.0 | FIXED 6.2.4 |
-| noncopyable-sequence-emit-module-bug | Module emission failure with ~Copyable + Sequence | 2026-01-20 | Swift 6.2 | STILL PRESENT 6.3 |
+| noncopyable-pointer-propagation | Sequence conformance poisons ~Copyable stored properties | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-pointer-propagation-multifile | Multi-file variant of above | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-storage-poisoning | Isolated constraint poisoning test | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-multifile-poisoning | File organization doesn't prevent poisoning | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-sequence-protocol-test | Same-file conformance still poisons | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-protocol-workarounds | Protocols without Element associatedtype | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-cross-module-propagation | ~Copyable constraint propagation across modules | 2026-01-20 | Swift 6.0 | SUPERSEDED → noncopyable-constraint-behavior |
+| noncopyable-sequence-emit-module-bug | Module emission failure with ~Copyable + Sequence | 2026-01-20 | Swift 6.2 | SUPERSEDED → noncopyable-constraint-behavior |
 | noncopyable-accessor-incompatibility | _read/_modify accessors with ~Copyable containers | 2026-01-20 | Swift 6.2 | FIXED 6.2.4 |
 | separate-module-conformance | Module boundaries prevent poisoning | 2026-01-22 | Swift 6.2 | SOLUTION FOUND |
 | wrapper-type-approach | Wrapper types avoid direct conformance | 2026-01-22 | Swift 6.2 | WORKAROUND FOUND |
@@ -58,25 +67,25 @@ Ecosystem-wide experiments for Swift Institute.
 
 | Directory | Purpose | Date | Toolchain | Status |
 |-----------|---------|------|-----------|--------|
-| escapable-accessor-patterns | ~Escapable accessor patterns for pointer-holding types | 2026-01-21 | Swift 6.2 | CONFIRMED |
+| escapable-accessor-patterns | ~Escapable accessor patterns for pointer-holding types | 2026-01-21 | Swift 6.2 | SUPERSEDED → nonescapable-patterns |
 | property-view-pattern | Property.View pattern for protocol extensions | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | fluent-api-pattern | Fluent API patterns with Property.View | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | protocol-primitive-naming | Semantic naming for protocol primitives | 2026-01-21 | Swift 6.0 | ANALYSIS |
 | stdlib-comparison-conformance | Dual-track architecture for stdlib Comparable integration | 2026-01-22 | Swift 6.0 | COMPLETE |
-| consuming-iteration-pattern | Optimal consuming iteration with Property.View | 2026-01-22 | Swift 6.2 | CONFIRMED |
+| consuming-iteration-pattern | Optimal consuming iteration with Property.View | 2026-01-22 | Swift 6.2 | SUPERSEDED → noncopyable-access-patterns |
 | doubly-nested-accessor-pattern | Doubly nested accessor patterns (.a.b.property) | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | generic-method-where-clause | Generic where clause on method (not extension) | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | nested-typed-multiparameter-pattern | Nested Typed<A>.Typed<B> for multi-parameter generics | 2026-01-21 | Swift 6.2 | CONFIRMED |
 | api-totality-design | Totality (zero crashes) API design philosophy | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | declarative-parser-typed-throws | Parser.Take.Sequence builder composition with typed throws: Void-skipping, tuple flattening, `var body` pattern, error type assessment. 10 variants. `var body` incompatible with typed throws (V8 REFUTED). `@_disfavoredOverload` fix for buildPartialBlock ambiguity. | 2026-03-04 | Swift 6.2 | PARTIAL |
 | canonical-witness-capability | Protocol canonical + witness alternatives: Parseable/Serializable/Codable protocols with single canonical, witness properties for alternatives, generic constrainability, Codable shadowing stdlib, separate failure types, parameterized factory. 10 variants all CONFIRMED. Validates Option C from canonical-witness-capability-attachment research. | 2026-03-04 | Swift 6.2.4 | CONFIRMED |
-| foreach-consuming-accessor | .forEach.consuming accessor pattern: Property.View with callAsFunction (borrowing), .borrowing, .consuming() paths. Consuming via _read + defer + state class works. Pattern works with ~Copyable containers. Pointer-based consuming (Variant 7) optimal. | 2026-01-22 | Swift 6.2.3 | CONFIRMED |
+| foreach-consuming-accessor | .forEach.consuming accessor pattern: Property.View with callAsFunction (borrowing), .borrowing, .consuming() paths. Consuming via _read + defer + state class works. Pattern works with ~Copyable containers. Pointer-based consuming (Variant 7) optimal. | 2026-01-22 | Swift 6.2.3 | SUPERSEDED → noncopyable-access-patterns |
 | hash-table-context-passing-lookup | Context-passing overload on hash-table lookup avoids closure capture for ~Copyable elements. `position(forHash:context:equals:)` with `borrowing Context: ~Copyable`. Probe iterator closure-free path. Implicit `where Element: Copyable` on extensions of ~Copyable generic types. 8 findings. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
 | index-totality | Systematic totality (zero crashes) exploration for Index_Primitives. Eliminate all preconditions, typed throws for runtime validation, type system compile-time guarantees. Index_Primitives ~95% total; only ExpressibleByIntegerLiteral non-total. | 2026-01-22 | Swift 6.2 | CONFIRMED |
 | parameter-pack-concrete-extension | Can concrete extensions of parameter-pack types unwrap the pack for positional tuple access and labeled accessors? Blocked by "same-type requirements between packs and concrete types are not yet supported" (swiftlang test/Generics/variadic_generic_types.swift:128). Pack not unwrapped in extension bodies; no generic pack-shape extensions; no pack Codable. Free functions and external dynamicMemberLookup work. 9 variants (6 CONFIRMED, 3 REFUTED). Motivating example: Geometry.Insets as Product typealias. | 2026-03-20 | Swift 6.2.4 | REFUTED |
 | lazy-pipeline-release-mode | Compiler optimization of lazy pipelines vs eager/hand-rolled. Release mode: lazy matches hand-rolled within 2%, eager 7x slower. Compiler fully eliminates lazy intermediate type overhead in -O. 4 variants all confirmed. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | lazy-sequence-operator-unification | One type conditionally conforms to both sync sequence protocol and AsyncSequence. Chained operators (map->filter) work for both sync and async. ~Copyable containers work with lazy operators. Async isolation preservation through shared type. 7 variants all confirmed. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
-| contiguous-protocol-escapable | @lifetime on protocol PROPERTY blocked (all toolchains). @_lifetime on protocol METHOD works (6.2.4+). ~Copyable-only protocol with var span { get } is the correct pattern for Swift 6.2. | 2026-03-19 | Swift 6.2.4 / 6.3 / 6.4-dev | MIXED |
+| contiguous-protocol-escapable | @lifetime on protocol PROPERTY blocked (all toolchains). @_lifetime on protocol METHOD works (6.2.4+). ~Copyable-only protocol with var span { get } is the correct pattern for Swift 6.2. | 2026-03-19 | Swift 6.2.4 / 6.3 / 6.4-dev | SUPERSEDED → nonescapable-patterns |
 | contiguous-protocol-roundtrip | Protocol with `init(_ span:) throws(Error)` where Error is associatedtype, Never makes init non-throwing via throws covariance. 10 variants all confirmed. | 2026-03-19 | Swift 6.2.4 | CONFIRMED |
 | literal-vs-throwing-init-disambiguation | `try` does NOT disambiguate between ExpressibleByStringLiteral and throwing init(_ string:). Swift unconditionally selects literal conformance. Only labeled inits disambiguate. | 2026-03-19 | Swift 6.2 | CONFIRMED |
 | span-to-string-array-conversion | Span-to-String and Span-to-Array conversion paths. UTF8Span(validating:) then String(copying:) is best path. Span is not Collection/Sequence. 6 of 8 pass. | 2026-03-19 | Swift 6.2.4 | CONFIRMED |
@@ -99,29 +108,30 @@ Ecosystem-wide experiments for Swift Institute.
 |-----------|---------|------|-----------|--------|
 | nonsending-closure-type-constraints | Where can nonisolated(nonsending) be applied? Async closures in structs (B1a) and actors (B1b): yes. Sync function types (B1d): no — compiler rejects. Key discovery: nonsending ONLY applies to async function types. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | stdlib-concurrency-isolation | Do stdlib concurrency primitives propagate caller isolation? withCheckedContinuation (B2): yes, via #isolation. withTaskCancellationHandler (B3): yes, nonisolated(nonsending) overload. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
-| nonsending-clock-feasibility | Can a NonsendingClock protocol refining Clock be defined? Yes — ImmediateClock with nonisolated(nonsending) sleep preserves MainActor with zero thread hop (B5). Foundation for deterministic temporal testing. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
-| nonsending-sendable-iterator | Test nonisolated(nonsending) @Sendable stored closure isolation. Finding: @Sendable wins — isolation broken on stored closures. nonisolated(nonsending) without @Sendable preserves. | 2026-02-25 | Swift 6.2 | CONFIRMED |
-| nonsending-generic-dispatch | Generic dispatch with NonisolatedNonsendingByDefault. nonisolated(nonsending) on concrete Clock.sleep survives protocol witness dispatch (<C: Clock>) and opaque type dispatch (some Clock). No separate NonsendingClock protocol needed. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| nonsending-clock-feasibility | Can a NonsendingClock protocol refining Clock be defined? Yes — ImmediateClock with nonisolated(nonsending) sleep preserves MainActor with zero thread hop (B5). Foundation for deterministic temporal testing. | 2026-02-25 | Swift 6.2.3 | SUPERSEDED → nonsending-dispatch |
+| nonsending-sendable-iterator | Test nonisolated(nonsending) @Sendable stored closure isolation. Finding: @Sendable wins — isolation broken on stored closures. nonisolated(nonsending) without @Sendable preserves. | 2026-02-25 | Swift 6.2 | SUPERSEDED → nonsending-dispatch |
+| nonsending-generic-dispatch | Generic dispatch with NonisolatedNonsendingByDefault. nonisolated(nonsending) on concrete Clock.sleep survives protocol witness dispatch (<C: Clock>) and opaque type dispatch (some Clock). No separate NonsendingClock protocol needed. | 2026-02-25 | Swift 6.2.3 | SUPERSEDED → nonsending-dispatch |
 | stream-isolation-preservation | Determine theoretical max isolation preservation for async sequence pipelines. 13 test variants. Finding: concrete operator types preserve isolation (sync+async closures), @unchecked Sendable doesn't break it, late erasure preserves it. Type-erased sync map() breaks; async map() preserves. | 2026-02-25 | Swift 6.2 | PARTIALLY CONFIRMED |
 | callback-isolated-prototype | Validate nonsending callback prototype: 5 approaches (A–E), 14 tests, 6 discoveries. Approach C (isolated parameter) and D (explicit nonsending) preserve map/flatMap isolation. Issue #83812 CONFIRMED: stored closure-in-closure loses isolation; method wrapper workaround. Non-Sendable Value works. Replacement feasibility confirmed (T11). | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
 | sync-overload-resolution | Sync-closure overload of map/filter on AsyncSequence wins over stdlib's async-closure overload. Chaining produces concrete Isolated.Filter\<Isolated.Map\<...\>\>. Explicitly async closures still resolve to stdlib. Isolation preserved through concrete pipeline. | 2026-02-25 | Swift 6.2 | PARTIALLY CONFIRMED |
-| nonsending-method-annotation | nonisolated(nonsending) on callAsFunction() method propagates isolation identically to deprecated isolation: parameter. Map/flatMap/chained/flatMap/Non-Sendable all preserve MainActor. 7 tests. | 2026-03-22 | Swift 6.2 | CONFIRMED |
+| nonsending-method-annotation | nonisolated(nonsending) on callAsFunction() method propagates isolation identically to deprecated isolation: parameter. Map/flatMap/chained/flatMap/Non-Sendable all preserve MainActor. 7 tests. | 2026-03-22 | Swift 6.2 | SUPERSEDED → nonsending-dispatch |
 | se0461-concurrent-body-sensitivity | SE-0461 @concurrent inference for @Sendable async closures is body-sensitive: only triggers when closure body contains await. Sync closure promoted sync->async without @concurrent inference. | 2026-04-01 | Swift 6.2 | CONFIRMED |
 | sending-mutex-noncopyable-region | Returning non-Sendable ~Copyable action types from Mutex.withLock. Wrapper methods do NOT get special compiler region disconnection. Slot pattern with direct Mutex.withLock is the solution. 23 variants (5 CONFIRMED, 18 REFUTED). | 2026-04-01 | Swift 6.3 | CONFIRMED |
+| noncopyable-operation-closure-pipeline | A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure → box → Operation → Lane → Job → execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 — requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work. | 2026-04-03 | Swift 6.3 | CONFIRMED |
 | detach-exit-signal | Detached pthread exit signaling via Swift Concurrency primitives. 6 variants: basic exit signal (V1), last-action resume (V2), 10 independent signals (V3), ~Copyable ~Escapable scope with consuming close() async (V4a), deinit fallback (V4b), 50 concurrent non-blocking awaits in 106ms (V5). Validates zero-blocking shutdown for swift-io lifecycle. | 2026-04-01 | Swift 6.3 | CONFIRMED |
 
 ### ~Escapable & Ownership
 
 | Directory | Purpose | Date | Toolchain | Status |
 |-----------|---------|------|-----------|--------|
-| nonescapable-closure-storage | Can ~Escapable types store closures? Immortal lifetime: yes (V2). Scoped consuming: yes (V3). Borrow-lifetime closure capture: prevented (V4). @_lifetime on Escapable closure: rejected (V8). ~Escapable + Sendable: orthogonal (B4b). Across await: works (V6). To Task: works (V7). | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| nonescapable-closure-storage | Can ~Escapable types store closures? Immortal lifetime: yes (V2). Scoped consuming: yes (V3). Borrow-lifetime closure capture: prevented (V4). @_lifetime on Escapable closure: rejected (V8). ~Escapable + Sendable: orthogonal (B4b). Across await: works (V6). To Task: works (V7). | 2026-02-25 | Swift 6.2.3 | SUPERSEDED → nonescapable-patterns |
 | resumption-nonescapable-noncopyable | Validate Resumption as ~Copyable + ~Escapable: 7 variants (struct, Optional, consuming, drain, let-bind, closure param, optional binding). All PASS in isolation. **Production deployment REVERTED** — cache/pool need `[Resumption]` (heap-backed, requires Escapable). | 2026-03-02 | Swift 6.2.4 | CONFIRMED (pattern works; deployment reverted) |
 | conditional-escapable-container | Conditional Escapable containers: Box (PASS), heap-backed FixedArray (BLOCKED), Ring (BLOCKED), nested Box (PASS), Pair (PASS). Heap-backed containers blocked by UnsafeMutablePointer requiring Escapable. | 2026-03-02 | Swift 6.2.4 | PARTIAL |
-| nonescapable-gap-revalidation-624 | Gap A/B re-validation on Swift 6.2.4. Gap A still blocked, Gap B (stored) still blocked, Gap B+ (immediately-invoked) NEW PASS. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
-| pointer-nonescapable-storage | Exhaustive storage mechanism test: 17 variants (9 PASS, 11 BLOCKED). Enum-based variable-occupancy (V14/V15 PASS). @_rawLayout declaration (V16 PASS), @_rawLayout element access (V17/V17b BLOCKED). Layout-vs-access gap confirmed. | 2026-03-02 | Swift 6.2.4 | CONFIRMED |
-| escapable-lazy-sequence-borrowing | ~Escapable lazy operator types with borrowing/consuming patterns. Both sequence AND iterator protocols suppress ~Escapable. @_lifetime(self: immortal) on mutating func next(). 9 variants all confirmed. | 2026-02-25 | Swift 6.2.3 | CONFIRMED |
+| nonescapable-gap-revalidation-624 | Gap A/B re-validation on Swift 6.2.4. Gap A still blocked, Gap B (stored) still blocked, Gap B+ (immediately-invoked) NEW PASS. | 2026-03-02 | Swift 6.2.4 | SUPERSEDED → nonescapable-patterns |
+| pointer-nonescapable-storage | Exhaustive storage mechanism test: 17 variants (9 PASS, 11 BLOCKED). Enum-based variable-occupancy (V14/V15 PASS). @_rawLayout declaration (V16 PASS), @_rawLayout element access (V17/V17b BLOCKED). Layout-vs-access gap confirmed. | 2026-03-02 | Swift 6.2.4 | SUPERSEDED → nonescapable-patterns |
+| escapable-lazy-sequence-borrowing | ~Escapable lazy operator types with borrowing/consuming patterns. Both sequence AND iterator protocols suppress ~Escapable. @_lifetime(self: immortal) on mutating func next(). 9 variants all confirmed. | 2026-02-25 | Swift 6.2.3 | SUPERSEDED → nonescapable-patterns |
 | pointer-primitives-feasibility | swift-pointer-primitives ~Copyable and ~Escapable support. Builtin.load requires BOTH Copyable AND Escapable. UnsafeMutablePointer works with ~Copyable (different mechanism). C interop: local ~Escapable works, generic ~Escapable blocked. | 2026-01-24 | Swift 6.2.3 | PARTIALLY VIABLE |
-| escapable-protocol-cross-module | Cross-module ~Escapable protocol conformance: Path.View from module A conforms to Path.Protocol in consuming module B. @_lifetime requirements, Span returns, owned ~Copyable returns all work cross-module. 6 variants confirmed. | 2026-04-01 | Swift 6.3 | CONFIRMED |
+| escapable-protocol-cross-module | Cross-module ~Escapable protocol conformance: Path.View from module A conforms to Path.Protocol in consuming module B. @_lifetime requirements, Span returns, owned ~Copyable returns all work cross-module. 6 variants confirmed. | 2026-04-01 | Swift 6.3 | SUPERSEDED → nonescapable-patterns |
 | escapable-protocol-navigation | ~Copyable, ~Escapable type conforming to protocol with @_lifetime Span returns and owned ~Copyable returns. Validates path decomposition architecture. 7 variants confirmed. | 2026-04-01 | Swift 6.3 | CONFIRMED |
 
 ### Test Framework Integration

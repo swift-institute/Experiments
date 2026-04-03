@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - ~Escapable Closure Storage
 // Purpose: Determine whether ~Escapable types can store closures, and find
 //          the precise boundaries of ~Escapable + closure support.

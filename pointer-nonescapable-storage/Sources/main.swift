@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - Pointer ~Escapable Storage Experiment
 // Purpose: Exhaustively test ALL paths for storing ~Escapable elements in containers.
 //          The Swift stdlib declares UnsafeMutablePointer<Pointee: ~Copyable> — Pointee

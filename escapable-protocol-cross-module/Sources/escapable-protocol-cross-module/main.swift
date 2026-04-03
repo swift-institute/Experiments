@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - Cross-Module ~Escapable Protocol Conformance
 // Purpose: Verify that Path.`Protocol` defined in module A can be conformed to
 //          by Path.View (also from module A) in module B. This is the exact

@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - Escapable Lazy Sequence Borrowing
 // Purpose: Validate ~Escapable lazy operator types with borrowing/consuming patterns
 //   V1: Can a ~Escapable struct use @_lifetime(borrow)?

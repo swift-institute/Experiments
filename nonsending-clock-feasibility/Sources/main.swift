@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonsending-dispatch
 // MARK: - NonsendingClock Feasibility
 // Purpose: Validate that a NonsendingClock protocol refining Clock can be
 //          defined, and that an ImmediateClock preserves caller isolation

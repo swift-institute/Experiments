@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Cross-Module Propagation
 // Purpose: Test ~Copyable constraint propagation across module boundaries
 // Status: INVESTIGATION (2026-01-20, Swift 6.0)

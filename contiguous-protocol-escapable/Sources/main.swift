@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - ContiguousProtocol with ~Escapable + @lifetime on property
 // Purpose: Validate that @lifetime on protocol property requirement
 //          enables the generalized ContiguousProtocol pattern where

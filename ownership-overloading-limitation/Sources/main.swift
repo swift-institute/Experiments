@@ -42,6 +42,26 @@
 //   - The static method pattern (IMPL-023) is the canonical workaround.
 //
 // ============================================================================
+// ## Swift 6.3 Update (2026-04-02)
+// ============================================================================
+//
+// Swift 6.3 partially lifts the ownership overloading limitation.
+// See REVALIDATION-6.3.md for full details.
+//
+//   [Q1] borrowing vs consuming same name?   STILL AMBIGUOUS — declarations now
+//        compile, but calls are ambiguous (no syntax to disambiguate at call site).
+//        Requires distinct method names. Static delegation [IMPL-023] remains the
+//        canonical workaround.
+//
+//   [Q2] borrowing vs inout same name?       NOW WORKS — the & sigil on the inout
+//        argument disambiguates at the call site.
+//
+//   [Q3] consuming vs inout same name?       NOW WORKS — the & sigil on the inout
+//        argument disambiguates at the call site.
+//
+//   Q4-Q10: No change from Swift 6.2 findings.
+//
+// ============================================================================
 
 // ============================================================================
 // MARK: - Q1–Q5: Ownership overloading (all fail)

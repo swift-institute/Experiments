@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Sequence Protocol Test
 // Purpose: Verify that same-file Sequence conformance poisons ~Copyable usage
 // Status: CONFIRMED (2026-01-22, Swift 6.2)

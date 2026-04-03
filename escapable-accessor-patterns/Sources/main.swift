@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // MARK: - ~Escapable Accessor Patterns
 // Purpose: ~Escapable accessor patterns for pointer-holding types
 // Status: CONFIRMED

@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Protocol Workarounds
 // Purpose: Protocol associatedtype ~Copyable support
 // Status: RESOLVED (was WORKAROUND FOUND)

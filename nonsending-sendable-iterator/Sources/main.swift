@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonsending-dispatch
 // nonsending-sendable-iterator experiment — REVISED
 //
 // Result: CONFIRMED — nonsending methods preserve isolation; nonsending @Sendable stored closures do NOT (the @Sendable makes the closure concurrent)

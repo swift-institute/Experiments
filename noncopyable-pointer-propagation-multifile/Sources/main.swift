@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Constraint Poisoning (Multi-file)
 // Purpose: Test whether file-level separation prevents constraint poisoning
 // Status: BUG REPRODUCED (2026-01-22, Swift 6.2)

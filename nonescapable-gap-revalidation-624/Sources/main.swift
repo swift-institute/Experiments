@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonescapable-patterns
 // nonescapable-gap-revalidation-624
 //
 // Re-testing Gap A and Gap B on Swift 6.2.4.

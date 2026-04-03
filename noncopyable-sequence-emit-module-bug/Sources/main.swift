@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-constraint-behavior
 // MARK: - ~Copyable Sequence Module Emission Bug
 // Purpose: Module emission failure with ~Copyable + Sequence conformance
 // Status: BUG FILED #86669 (2026-01-20, Swift 6.2)

@@ -1,3 +1,4 @@
+// SUPERSEDED: See nonsending-dispatch
 // MARK: - Nonsending Method Annotation Validation
 // Purpose: Validate that nonisolated(nonsending) on callAsFunction() method
 //          propagates isolation identically to the deprecated isolation: parameter.

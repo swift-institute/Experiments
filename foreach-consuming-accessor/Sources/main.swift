@@ -1,3 +1,4 @@
+// SUPERSEDED: See noncopyable-access-patterns
 // MARK: - ForEach Consuming Accessor Pattern
 // Purpose: Test if .forEach.consuming can consume the original container
 //
