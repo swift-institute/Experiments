@@ -13,6 +13,12 @@ Ecosystem-wide experiments for Swift Institute.
 
 ## Experiments
 
+### Name Resolution and Imports
+
+| Directory | Purpose | Date | Toolchain | Status |
+|-----------|---------|------|-----------|--------|
+| exported-import-name-shadowing | @_exported import gives custom Array precedence over Swift.Array in all contexts | 2026-04-04 | Swift 6.3 | CONFIRMED |
+
 ### Swift Language Issues
 
 | Directory | Purpose | Date | Toolchain | Status |
@@ -119,6 +125,7 @@ Ecosystem-wide experiments for Swift Institute.
 | sending-mutex-noncopyable-region | Returning non-Sendable ~Copyable action types from Mutex.withLock. Wrapper methods do NOT get special compiler region disconnection. Slot pattern with direct Mutex.withLock is the solution. 23 variants (5 CONFIRMED, 18 REFUTED). | 2026-04-01 | Swift 6.3 | CONFIRMED |
 | noncopyable-operation-closure-pipeline | A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure → box → Operation → Lane → Job → execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 — requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work. | 2026-04-03 | Swift 6.3 | CONFIRMED |
 | detach-exit-signal | Detached pthread exit signaling via Swift Concurrency primitives. 6 variants: basic exit signal (V1), last-action resume (V2), 10 independent signals (V3), ~Copyable ~Escapable scope with consuming close() async (V4a), deinit fallback (V4b), 50 concurrent non-blocking awaits in 106ms (V5). Validates zero-blocking shutdown for swift-io lifecycle. | 2026-04-01 | Swift 6.3 | CONFIRMED |
+| executor-serial-mode-task-preference | Serial-mode executor with withTaskExecutorPreference: serial mode works (V2), dual use actor pinning + preference on same executor (V3), async let inherits serial-mode preference (V4), no deadlock on same-executor actor calls (V5). Unblocks swift-io executor-first Phase 2: single `.serial` executor for both actor pinning and task preference. | 2026-04-06 | Swift 6.3 | CONFIRMED |
 
 ### ~Escapable & Ownership
 
