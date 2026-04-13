@@ -11,6 +11,7 @@ let package = Package(
                 .strictMemorySafety(),
                 .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
                 .enableUpcomingFeature("InferIsolatedConformances"),
+                .unsafeFlags(["-parse-as-library"]),
             ]
         )
     ]

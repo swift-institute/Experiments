@@ -303,6 +303,10 @@ struct Main {
         await testV5()
 
         print()
+        print("=== Isolated Parameter Tests ===")
+        await runIsolatedTests()
+
+        print()
         print("=== DONE ===")
     }
 }
