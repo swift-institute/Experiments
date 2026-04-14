@@ -124,6 +124,6 @@ struct BaselineTests {
         let base = Path("/Users")
         let rel = Path("coen/Documents")
         let full = base / rel
-        #expect(full.string == "/Users/coen/Documents")
+        #expect(full.string == "/Users/testuser/Documents")
     }
 }

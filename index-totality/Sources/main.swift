@@ -10,7 +10,7 @@
 //   5. Preserve O(1) performance for all operations
 //
 // Toolchain: swift-6.2-RELEASE
-// Result: CONFIRMED - Index_Primitives is ~95% total; only ExpressibleByIntegerLiteral non-total
+// Result: CONFIRMED — Index_Primitives is ~95% total. Only ExpressibleByIntegerLiteral unavoidably non-total (Swift protocol constraint). No changes needed to Index core; add documentation and array-level patterns instead.
 // Date: 2026-01-22
 
 import Index_Primitives

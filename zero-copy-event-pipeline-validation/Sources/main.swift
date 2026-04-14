@@ -1,3 +1,6 @@
+// DEFERRED: Awaiting zero-copy-event-pipeline.md design completion (Phase 1+2).
+// Resumption trigger: Research document reaches DECISION with finalized pool design.
+//
 // zero-copy-event-pipeline-validation
 //
 // Purpose:   Validate Memory.Pool event pipeline (Phase 1 + Phase 2) design

@@ -105,7 +105,7 @@ The current operator configuration (`Path / Component` primary, `Path / Path` wi
 | Option | Effect | Recommended? |
 |--------|--------|-------------|
 | **Option 1**: Remove `Path / Path` | Eliminates one overload. Would require `path.appending(otherPath)` for Path-to-Path joining. Only 2 call sites use it (1 test, 1 doc example). | **Not necessary** — the overload causes no measurable harm |
-| **Option 2**: Remove `Path: ExpressibleByStringLiteral` | Reduces literal ambiguity to zero (only `Component` matches). Would break `let path: Path = "/Users/coen"` — used widely. | **Not recommended** — high breakage, no demonstrated benefit |
+| **Option 2**: Remove `Path: ExpressibleByStringLiteral` | Reduces literal ambiguity to zero (only `Component` matches). Would break `let path: Path = "/home"` — used widely. | **Not recommended** — high breakage, no demonstrated benefit |
 | **Option 3**: Type-annotate results | No measurable effect — the solver already infers the result type. | **No effect** — not useful as a mitigation |
 
 ### If the issue resurfaces

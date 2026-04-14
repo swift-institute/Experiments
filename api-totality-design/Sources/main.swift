@@ -6,7 +6,7 @@
 //              This file explores what Array.Inline, Array.Bounded, etc. should do.
 //
 // Toolchain: swift-6.2-RELEASE
-// Result: CONFIRMED - Six totality patterns demonstrated for array subscripts
+// Result: CONFIRMED — Array totality requires hybrid approach: keep preconditioned for stdlib compat, add Bounded<N> (no precondition when full), add element(at:) throws(AccessError) for total alternative.
 // Date: 2026-01-22
 
 import Index_Primitives

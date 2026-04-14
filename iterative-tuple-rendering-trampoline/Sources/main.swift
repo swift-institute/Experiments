@@ -1,7 +1,10 @@
+// DEFERRED: Awaiting iterative-tuple-rendering.md research completion.
+// Resumption trigger: Research document reaches DECISION status.
+//
 // Experiment: iterative-tuple-rendering-trampoline
 // Date: 2026-03-16
 // Toolchain: Swift 6.2.4
-// Status: PLANNED
+// Status: DEFERRED
 // Purpose: Validate trampoline approach for iterative _Tuple rendering
 //          to avoid stack overflow from deeply nested types.
 // Research: swift-pdf-html-rendering/Research/iterative-tuple-rendering.md

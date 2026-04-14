@@ -29,6 +29,9 @@ swiftc -emit-sil -O -enable-experimental-feature Lifetimes \
 
 ## Result: CONFIRMED
 
+Swift 6.3: FIXED — workaround no longer required
+Status: SUPERSEDED (2026-04-14) — bug fixed in Swift 6.3, workaround removed from production code
+
 **Before pass 32** (PredictableDeadAllocationElimination):
 ```sil
 %5  = alloc_stack $UnsafeMutablePointer<Container>

@@ -196,7 +196,7 @@ enum V5_Route: Sendable {
     // + extraction, Case, Prisms
 }
 
-// On a statute Arguments: user applies @Dual
+// On a struct with uniform Bool? properties: user applies @Dual
 // Gets: Dual enum with homogeneous subscript (Bool? access by case)
 struct V5_Arguments: Sendable {
     var `condition one`: Bool? = nil

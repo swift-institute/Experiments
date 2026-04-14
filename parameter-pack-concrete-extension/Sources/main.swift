@@ -16,6 +16,8 @@
 //         static type system doesn't narrow. Free functions and external
 //         dynamicMemberLookup work as partial workarounds.
 //
+// Swift 6.3: UNCHANGED — limitation persists per memory file pack-concrete-same-type.md
+//
 // Date: 2026-03-20
 
 // ============================================================================

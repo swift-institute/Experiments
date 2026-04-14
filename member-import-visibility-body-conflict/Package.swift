@@ -8,6 +8,10 @@ let package = Package(
     targets: [
         .target(name: "CustomProtocol"),
 
+        // Peer module declaring its own `View` protocol with an `associatedtype Body`.
+        // Used by V8 to attempt `Rendering::View` / `SwiftUI::View` disambiguation.
+        .target(name: "Rendering"),
+
         // V1: public import SwiftUI in SAME FILE as stored `body` property
         // MemberImportVisibility ON
         // Expected: CONFLICT — compiler sees body and tries to satisfy SwiftUI.View.body
@@ -53,6 +57,29 @@ let package = Package(
         .target(
             name: "V6_Content_AssocType",
             swiftSettings: [.enableUpcomingFeature("MemberImportVisibility")]
+        ),
+
+        // V7: @retroactive on the NSViewRepresentable conformance
+        // Expected: REFUTED — @retroactive rejected; conforming type's module owns it
+        .target(
+            name: "V7_Retroactive"
+        ),
+
+        // V8: SE-0491 module selectors (`Rendering::View`, `SwiftUI::View`)
+        // Expected: REFUTED — diagnostic says same-named associated types are merged,
+        //           not shadowed; module selectors forbidden on dependent member types
+        .target(
+            name: "V8_ModuleSelectors",
+            dependencies: ["Rendering"],
+            swiftSettings: [.enableExperimentalFeature("ModuleSelector")]
+        ),
+
+        // V9: wrapper-property escape hatch — HTML.Document has no SwiftUI.View
+        //     conformance; a `.swiftUIView` property returns a wrapper that does
+        // Expected: CONFIRMED — compiles cleanly; ceremonial `.swiftUIView` suffix
+        //           required at every #Preview call site
+        .target(
+            name: "V9_Wrapper_Escape_Hatch"
         ),
     ]
 )
