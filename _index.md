@@ -68,6 +68,8 @@ Ecosystem-wide experiments for Swift Institute.
 | copypropagation-noncopyable-switch-consume | SILGen produces `load [take]` for trivial field in ~Copyable generic enum tuple payload, mismatching `switch_enum forwarding: @none`. Signal 6 in release, passes in debug. | 2026-03-31 | Swift 6.3 | CONFIRMED |
 | noncopyable-equatable-stdlib | Swift.Equatable does NOT support ~Copyable on Swift 6.3 (SE-0499 landed on main only, not release/6.3). | 2026-03-30 | Swift 6.3 | CONFIRMED |
 | noncopyable-throwing-init | ~Copyable throwing init patterns: throw before init, self = try factory(), throw after full init, Optional ~Copyable, locals first. All 5 variants compile. | 2026-03-30 | Swift 6.2 | CONFIRMED |
+| async-let-typed-throws | Verify whether `async let` / `withThrowingTaskGroup` preserve typed throws or erase to any Error. Both erase. Result wrapper workaround. 5 variants. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| backtick-protocol-type-member | Backtick-escaped type named `` `Protocol` `` (a Swift keyword) used as nested type, property type, and in expression position. Type annotation works; expression position does NOT. | 2026-04-12 | Swift 6.3 | PARTIAL |
 
 ### API Design Patterns
 
@@ -97,6 +99,7 @@ Ecosystem-wide experiments for Swift Institute.
 | span-to-string-array-conversion | Span-to-String and Span-to-Array conversion paths. UTF8Span(validating:) then String(copying:) is best path. Span is not Collection/Sequence. 6 of 8 pass. | 2026-03-19 | Swift 6.2.4 | CONFIRMED |
 | span-utf8-property | String.init(_ span: Span\<UInt8\>) throws(UTF8.ValidationError) via UTF8Span(validating:) then String(copying:). All 8 variants pass. | 2026-03-19 | Swift 6.2.4 | CONFIRMED |
 | path-operator-overload-resolution | Path `/` operator overload resolution with ExpressibleByStringLiteral. No exponential type-checker timeout even at 15-chain depth. All configurations under 2ms. | 2026-03-19 | Swift 6.2.4 | CONFIRMED |
+| callasfunction-noncopyable-consuming-sending | `callAsFunction` + ~Copyable + consuming sending + ~Escapable: full IO.Stream pattern compiles and runs. E1/E1b/E2/E2b/E3/E3b/E3c all confirmed. | 2026-04-06 | Swift 6.3 | CONFIRMED |
 
 ### Witness Infrastructure
 
@@ -126,6 +129,12 @@ Ecosystem-wide experiments for Swift Institute.
 | noncopyable-operation-closure-pipeline | A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure → box → Operation → Lane → Job → execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 — requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work. | 2026-04-03 | Swift 6.3 | CONFIRMED |
 | detach-exit-signal | Detached pthread exit signaling via Swift Concurrency primitives. 6 variants: basic exit signal (V1), last-action resume (V2), 10 independent signals (V3), ~Copyable ~Escapable scope with consuming close() async (V4a), deinit fallback (V4b), 50 concurrent non-blocking awaits in 106ms (V5). Validates zero-blocking shutdown for swift-io lifecycle. | 2026-04-01 | Swift 6.3 | CONFIRMED |
 | executor-serial-mode-task-preference | Serial-mode executor with withTaskExecutorPreference: serial mode works (V2), dual use actor pinning + preference on same executor (V3), async let inherits serial-mode preference (V4), no deadlock on same-executor actor calls (V5). Unblocks swift-io executor-first Phase 2: single `.serial` executor for both actor pinning and task preference. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| async-closure-noncopyable-escaping | ~Copyable values can be BORROWED in closures but never CONSUMED. Language constraint (not a bug) across sync/async, escaping/non-escaping. Workarounds catalogued. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| sending-vs-sendable-structured-concurrency | `sending` cannot replace `Sendable` for ~Copyable types in addTask/async let because of the borrowing/consuming closure constraint. Transfer-wrapper pattern (V9) is the only path. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| actor-run-noncopyable-return | Does `Actor.run` support ~Copyable returns? Overloads with R: ~Copyable + sending + isolated Self + typed throws compile; full IO.Event.Selector.register pattern works. 6 hypotheses. | 2026-04-13 | Swift 6.3 | CONFIRMED |
+| actor-run-sending-closure | Can `sending` on the closure parameter replace `@Sendable`, enabling capture of non-Sendable and borrowing ~Copyable values? Full pattern validated. 8 hypotheses. | 2026-04-13 | Swift 6.3 | CONFIRMED |
+| actor-run-closure-alternatives | `isolated Actor` parameter alternative to Actor.run for borrowing ~Copyable across actor boundary without closures. 6 hypotheses, eliminates 2-hop Selector.register. | 2026-04-13 | Swift 6.3 | CONFIRMED |
+| shared-executor-actor-communication | Two actors sharing a SerialExecutor: cross-actor call cost, hop elision on same executor, Actor.run atomicity, async variant trade-offs. 5 hypotheses. | 2026-04-13 | Swift 6.3 | CONFIRMED |
 
 ### ~Escapable & Ownership
 
@@ -140,6 +149,9 @@ Ecosystem-wide experiments for Swift Institute.
 | pointer-primitives-feasibility | swift-pointer-primitives ~Copyable and ~Escapable support. Builtin.load requires BOTH Copyable AND Escapable. UnsafeMutablePointer works with ~Copyable (different mechanism). C interop: local ~Escapable works, generic ~Escapable blocked. | 2026-01-24 | Swift 6.2.3 | PARTIALLY VIABLE |
 | escapable-protocol-cross-module | Cross-module ~Escapable protocol conformance: Path.View from module A conforms to Path.Protocol in consuming module B. @_lifetime requirements, Span returns, owned ~Copyable returns all work cross-module. 6 variants confirmed. | 2026-04-01 | Swift 6.3 | SUPERSEDED → nonescapable-patterns |
 | escapable-protocol-navigation | ~Copyable, ~Escapable type conforming to protocol with @_lifetime Span returns and owned ~Copyable returns. Validates path decomposition architecture. 7 variants confirmed. | 2026-04-01 | Swift 6.3 | CONFIRMED |
+| span-async-parameter | ~Escapable types (Span, MutableSpan) as async function parameters: caller memory is valid across suspension. Design validates a zero-copy async I/O API. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| mutablespan-async-read | `inout MutableSpan<UInt8>` as async read destination. The ideal read API `read(into: inout MutableSpan<UInt8>) async throws -> Int?` is achievable. Array + `_modify` sources both work. | 2026-04-06 | Swift 6.3 | CONFIRMED |
+| escapable-slot-inlinable-sqe | ~Escapable Slot + `@inlinable` mutating entry methods: the io_uring SQE pointer-elimination architecture. ~Copyable ~Escapable slot types with `nonmutating _modify` support @inlinable mutating methods. V1/V2/V4–V6 confirmed; V3 refuted. | 2026-04-14 | Swift 6.3 | CONFIRMED |
 
 ### Test Framework Integration
 
