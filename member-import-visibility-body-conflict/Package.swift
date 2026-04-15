@@ -81,5 +81,16 @@ let package = Package(
         .target(
             name: "V9_Wrapper_Escape_Hatch"
         ),
+
+        // V10: Render namespace + `associatedtype Rendered` — the specific
+        //      rename the blog post recommends (distinct from V6, which
+        //      uses `Content`, a name SwiftUI already occupies).
+        // Expected: CONFIRMED — `Rendered` simple identifier does not
+        //           unify with SwiftUI.View.Body; NSViewRepresentable
+        //           conformance compiles on the same HTML.Document shape
+        //           that fails in V1–V5.
+        .target(
+            name: "V10_Rendered_Namespace"
+        ),
     ]
 )
