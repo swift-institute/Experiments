@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "unsafe-forin-release-crash",
-    platforms: [.macOS(.v15)],
+    platforms: [.macOS(.v26)],
     targets: [
         .target(
             name: "UnsafeLib",

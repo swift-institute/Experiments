@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "path-operator-overload-resolution",
+    platforms: [.macOS(.v26)],
     targets: [
         .target(
             name: "PathOverloadExperiment",
