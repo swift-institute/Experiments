@@ -15,6 +15,7 @@
 // Workaround: Use index-based loops instead of for-in.
 //
 // Swift version: 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — FIXED (release build with StrictMemorySafety completes; documented Signal 6 no longer reproduces)
 // Platform: macOS 15 / arm64
 
 // ── CRASHING PATTERN ──────────────────────────────────────────────────

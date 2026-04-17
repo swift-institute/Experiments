@@ -4,6 +4,7 @@
 //             SnapshotStrategy extensions defined in Rendering Test Support
 //
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED - consumer with trait gets .rendered strategy; output matches

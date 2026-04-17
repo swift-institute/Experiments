@@ -3,6 +3,7 @@
 // Hypothesis: The "dynamic libraries for unknown os" crash is triggered by macro deps
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5)
+// Revalidated: Swift 6.3.1 (2026-04-17) — FIXED
 // Platform: visionOS 26.4 simulator SDK
 //
 // Result: TBD

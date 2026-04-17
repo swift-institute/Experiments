@@ -3,6 +3,7 @@
 // Hypothesis: swift-tools-version 5.9 implicitly supports visionOS (inherited from iOS)
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: visionOS 26.4 SDK via --triple arm64-apple-xros26.0
 //
 // Result: CONFIRMED builds, but hypothesis misleading - both 5.9 AND 6.2 build.

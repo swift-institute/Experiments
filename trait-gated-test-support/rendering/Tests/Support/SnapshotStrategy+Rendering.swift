@@ -5,6 +5,7 @@
 //             and the .rendered strategy is available to consumers
 //
 // Result: CONFIRMED - #if SNAPSHOT_TESTING activates when trait enabled; strategy compiles
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Date: 2026-03-14
 
 #if SNAPSHOT_TESTING
