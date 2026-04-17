@@ -3,6 +3,7 @@
 //
 // Methodology: Incremental construction [EXP-004a]
 // Toolchain: Apple Swift version 6.2.3 (swiftlang-6.2.3.3.21)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 // Platform: macOS 26.0 (arm64)
 // Result: PARTIALLY CONFIRMED — swift-pointer-primitives viable for ~Copyable types using UnsafeMutablePointer (not Builtin.load). NOT viable for ~Escapable (fundamental language constraint). Recommend: package supports ~Copyable pointer wrappers; span-backed views use protocols directly.
 //

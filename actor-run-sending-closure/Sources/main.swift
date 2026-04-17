@@ -14,6 +14,7 @@
 //   H8: The full IO.Event.Selector.register pattern works
 //
 // Toolchain: Swift 6.3 (Xcode 16)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 // Platform: macOS 26 (arm64)
 //
 // Results:

@@ -4,6 +4,7 @@
 // Result: SUPERSEDED — wrapper approach works but production uses custom Sequence.Protocol + module separation instead
 // Date: 2026-01-22 (original), 2026-03-10 (updated)
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Original approach: Wrapper types to avoid direct Sequence conformance.
 // Production solution: Custom Sequence.Protocol + module separation.

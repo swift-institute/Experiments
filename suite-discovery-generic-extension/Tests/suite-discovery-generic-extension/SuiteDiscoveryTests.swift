@@ -5,6 +5,7 @@
 //             `extension GenericType<ConcreteArg> { @Suite struct S {} }`
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — concrete generic specializations compile but are not

@@ -2,6 +2,7 @@
 // Purpose: Validate 4 claims that would block the witness migration if they fail.
 //
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Hypotheses:

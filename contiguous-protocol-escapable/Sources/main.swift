@@ -5,6 +5,7 @@
 //          both owned types AND ~Escapable views can conform.
 //
 // Toolchain: Apple Swift 6.2.4, 6.3-dev (Feb 6), 6.4-dev (Mar 16)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: MIXED

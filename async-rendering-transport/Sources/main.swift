@@ -20,6 +20,7 @@
 //     scopes values to closure bodies, minimize Sendable usage
 //
 // Toolchain: Apple Swift version 6.2 (swiftlang-6.2.0.10.950 clang-1700.3.10.950)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED (V1-V7), DEFERRED (V8 ~Escapable)

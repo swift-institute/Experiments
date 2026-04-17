@@ -8,6 +8,7 @@
 //             resolves to Swift.String in downstream modules.
 //
 // Toolchain: Swift 6.2 (Xcode 26 beta)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: PARTIALLY REFUTED — see variants below
