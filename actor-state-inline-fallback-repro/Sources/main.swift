@@ -7,6 +7,11 @@
 // cooperative thread that did not participate in the join — the actor's
 // state field can be read as the OLD value because no acquire-release chain
 // connects the executor thread's writes to the inline-execution thread.
+//
+// Toolchain: Swift 6.3 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES (0 stale reads across 1000 iters per scenario; the inline-fallback / cross-thread theories were ruled out as red herrings — see memory `copytoborrow-actor-state-barrier.md`)
+// Platform: macOS 26 (arm64)
+// Result: NOT REPRODUCED — actor state always observed as `.shuttingDown` after the writer thread completes; the real miscompile lives elsewhere (CopyToBorrowOptimization on Mutex<Token?> field — see `copytoborrow-actor-state-mutex-miscompile/`).
 
 #if canImport(Darwin)
 import Darwin

@@ -1,5 +1,10 @@
 // V4: With @resultBuilder on the custom protocol's body requirement
 // Tests: Does adding a result builder attribute affect witness resolution?
+//
+// Toolchain: Swift 6.3 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT (adding @resultBuilder does not affect associated-type unification; MyDoc<Body> still fails to conform to SwiftUI.View)
+// Platform: macOS 26 (arm64)
+// Result: REFUTED — @resultBuilder operates on call-site syntax, not on protocol witness resolution; the underlying associated-type collision remains.
 
 #if canImport(SwiftUI) && os(macOS)
 public import SwiftUI

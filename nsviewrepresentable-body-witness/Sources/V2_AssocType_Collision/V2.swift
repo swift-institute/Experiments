@@ -1,6 +1,11 @@
 // V2: Both protocols have associatedtype Body, stored property satisfies CustomView.body
 // Generic parameter NOT named Body but stored property IS named body
 // Tests: Can the compiler disambiguate two `Body` associated types?
+//
+// Toolchain: Swift 6.3 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT (compiler still cannot disambiguate two `Body` associated types when one comes from a directly-imported SwiftUI; conformance to View fails)
+// Platform: macOS 26 (arm64)
+// Result: REFUTED — naming the stored property `body` does not let the compiler resolve which protocol's associated type it satisfies; the unifier collapses both `Body`s into one.
 
 #if canImport(SwiftUI) && os(macOS)
 public import SwiftUI

@@ -11,6 +11,11 @@
 //   D — Cross-module ~Escapable chaining
 //   E — Call-site ergonomics (let-binding, direct pass, sequential use)
 //   F — Scale pattern (multiple operations on same ~Escapable value)
+//
+// Toolchain: Swift 6.3 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES (Consumer + Foundations + Primitives all build clean on 6.3.1; documented property-based migration patterns from with*-closures continue to compile.)
+// Platform: macOS 26 (arm64)
+// Result: CONFIRMED — all six gap categories validated as buildable; ~Escapable property accessors usable through the modular Primitives → Foundations → Consumer chain.
 // ============================================================
 
 import Primitives

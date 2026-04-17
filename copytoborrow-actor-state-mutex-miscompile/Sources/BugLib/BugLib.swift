@@ -1,3 +1,19 @@
+// MARK: - CopyToBorrowOptimization Miscompile on Actor Mutex<Token?> State
+// Purpose: Standalone 87-line repro of a release-mode miscompile where
+//          WMO + CopyToBorrowOptimization removes an accidental retain
+//          barrier on actor state held in a Mutex<Token?> field. Reading
+//          the optional via `take()` after `await scope.close()` returns
+//          a stale Token in some iterations (~50/100 typical).
+//
+// Toolchain: Swift 6.3 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT (BUG observed in
+//          ~50/100 iterations on 6.3.1; final "PASS" line is the script's
+//          end-marker, not a verdict — the BUG print lines confirm the
+//          miscompile. See memory `swift-6.3-fix-status.md`).
+// Platform: macOS 26 (arm64)
+// Workaround: -sil-disable-pass=copy-to-borrow-optimization OR remove
+//          Mutex<Token?> from IO.Event.Selector.Scope (commit 6dad19ba).
+
 import Synchronization
 
 public final class Loop: SerialExecutor, @unchecked Sendable {
