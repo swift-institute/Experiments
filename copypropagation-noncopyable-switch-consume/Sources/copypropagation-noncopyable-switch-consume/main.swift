@@ -9,6 +9,9 @@
 // Result: CONFIRMED — signal 6, "Found ownership error?!"
 // Debug: swift build — passes
 // Date: 2026-03-31
+// Revalidated: Swift 6.3.1 (swiftlang-6.3.1.1.2) 2026-04-17 — STILL CRASHES
+//              (MoveOnlyChecker pass #214). The upstream fix for #85743 was
+//              NOT included in 6.3.1's cherry-pick set.
 //
 // Required ingredients (removing any one makes it pass):
 // 1. Generic ~Copyable enum with tuple payload containing a trivial field

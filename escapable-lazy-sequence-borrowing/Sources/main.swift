@@ -10,8 +10,17 @@
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
 // Platform: macOS 26.0 (arm64)
+// Revalidated 2026-04-17: Swift 6.3.1 (swiftlang-6.3.1.1.2) and Swift 6.4-dev
+//                        (snapshot-2026-03-16-a) BOTH REJECT V7–V9 with
+//                        "invalid lifetime dependence on an Escapable
+//                        {target,result}". The rule tightened between 6.2.3
+//                        and 6.3.0: @_lifetime requires a ~Escapable target/
+//                        result; it cannot appear on Iter.next() or on
+//                        makeIterator() returning an Escapable Iter.
+//                        The original V1–V9 CONFIRMED results below reflect
+//                        6.2.3 behavior only.
 //
-// Result: ALL CONFIRMED (9/9 variants)
+// Result (6.2.3): ALL CONFIRMED (9/9 variants)
 //   V1: CONFIRMED — ~Escapable struct with @_lifetime(borrow) compiles and works
 //   V2: CONFIRMED — protocol with ~Copyable & ~Escapable suppression, Copyable types conform
 //   V3: CONFIRMED — ~Escapable consuming lazy map iterates via EscSequence conformance
