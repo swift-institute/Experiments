@@ -3,6 +3,7 @@
 // Status: CONFIRMED (compiles)
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Result: CONFIRMED — two-level view nesting (query.filter.startingWith) compiles and runs; production uses single-level
 //
 // Note: Production swift-primitives uses single-level view access

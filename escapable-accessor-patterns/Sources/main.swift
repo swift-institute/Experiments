@@ -4,6 +4,7 @@
 // Status: CONFIRMED
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Result: CONFIRMED — ~Escapable view with @_lifetime(borrow) prevents pointer from outliving container scope
 
 // View types that hold pointers should ideally be ~Escapable

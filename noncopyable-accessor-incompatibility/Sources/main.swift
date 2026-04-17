@@ -2,6 +2,7 @@
 // Purpose: Accessor patterns incompatible with ~Copyable containers
 // Status: CONFIRMED (2026-01-20, Swift 6.2)
 // Revalidation: FIXED in Swift 6.2.4 — _read/_modify work with ~Copyable (2026-03-10)
+// Revalidation: Swift 6.3.1 (2026-04-17) — STILL WORKS
 // Result: CONFIRMED — _read/_modify accessors with ~Copyable containers originally broken, fixed in Swift 6.2.4
 
 struct Container<Element: ~Copyable>: ~Copyable {

@@ -4,6 +4,7 @@
 // Status: CONFIRMED
 // Date: 2026-04-01
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Rule: [IMPL-073]
 
 // Claim: Under SE-0461, the @concurrent default for @Sendable async closures

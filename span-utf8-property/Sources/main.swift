@@ -3,6 +3,7 @@
 //          with typed throws works as the canonical Span → String path.
 //
 // Toolchain: Apple Swift 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — all 8 variants pass

@@ -8,6 +8,7 @@
 //   a bug specific to withTaskGroup or async.
 //
 // Toolchain: Xcode 26.0 beta / Swift 6.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — language constraint, not a bug. ~Copyable values can

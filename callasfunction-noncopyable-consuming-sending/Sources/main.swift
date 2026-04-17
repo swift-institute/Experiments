@@ -6,6 +6,7 @@
 //   E3: nonisolated(nonsending) composes with consuming sending on same closure param
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: ALL CONFIRMED — E1, E1b, E2, E2b, E3, E3b, E3c pass.

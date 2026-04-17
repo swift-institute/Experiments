@@ -2,6 +2,7 @@
 // Tests whether containers can conditionally conform to Escapable based on Element.
 //
 // Result: CONFIRMED — single-element Box works; multi-element containers blocked by UnsafePointer Escapable requirement and Optional lifetime checker
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Pattern under test (from Sequence.Map):
 //   extension T: Copyable where Element: Copyable & ~Escapable {}

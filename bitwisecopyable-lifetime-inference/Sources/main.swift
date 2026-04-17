@@ -3,6 +3,7 @@
 // Status: CONFIRMED (risk identified)
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Result: CONFIRMED — BitwiseCopyable views allow compiler to bypass _read coroutine scope; ~Escapable with @_lifetime(borrow) is the production fix
 //
 // Note: The code below runs correctly because the issue is timing-dependent

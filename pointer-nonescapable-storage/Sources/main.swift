@@ -10,6 +10,7 @@
 //             single-element inline storage (enum, struct fields).
 //
 // Toolchain: Swift 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — Enum-based variable-occupancy storage (V14, V15) provides

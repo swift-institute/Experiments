@@ -17,6 +17,7 @@
 // DATE: 2026-02-25
 //
 // Result: PARTIALLY CONFIRMED — concrete operator types preserve isolation; stdlib types and type-erased sync closures do not
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // FINDINGS:
 //   A. REFUTED — stdlib concrete types (AsyncMapSequence etc.) break isolation

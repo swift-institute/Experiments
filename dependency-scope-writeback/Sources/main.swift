@@ -7,6 +7,7 @@
 //             with Test.Benchmark.measure {}.
 //
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — all 6 variants pass. Reference type (class) injected

@@ -6,6 +6,7 @@
 //          map/flatMap still propagate isolation through method dispatch?
 //
 // Status: ALL PASSED (T1-T7)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //   T1: Basic callAsFunction isolation
 //   T2: map isolation
 //   T3: Chained map isolation (3 levels)

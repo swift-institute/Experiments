@@ -16,6 +16,7 @@
 //   If not, we need unsafe pointers as a bridge.
 //
 // Toolchain: Apple Swift version 6.3 (swiftlang-6.3.0.1.100 clang-1700.3.10.100)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — Span<UInt8> compiles AND runs as async function

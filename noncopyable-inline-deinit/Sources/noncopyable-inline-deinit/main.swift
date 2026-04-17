@@ -2,6 +2,7 @@
 // Purpose: Verify deinit fires correctly for ~Copyable structs with CROSS-MODULE elements
 // Status: BUG REPRODUCED (2026-01-20, Swift 6.2)
 // Revalidation: FIXED in Swift 6.2.4 — deinits fire correctly (2026-03-10)
+// Revalidation: Swift 6.3.1 (2026-04-17) — STILL WORKS
 // Result: BUG REPRODUCED — cross-module ~Copyable inline deinit was broken in Swift 6.2, fixed in 6.2.4
 //
 // This experiment mirrors production: Tracked element is defined in a separate Lib module,

@@ -4,6 +4,7 @@
 // Result: REFUTED — protocol-based tag families DO work as constraints; production uses concrete Tag == constraints instead for API isolation
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Hypothesis: Swift cannot constrain to "any tag in a family."
 // Test: Can we use protocols to group tag types into families?

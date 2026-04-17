@@ -9,6 +9,7 @@
 //             batch sizes without exhaustion, maintains correctness under
 //             contention, and degrades gracefully when exhausted.
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform:  macOS v26
 // Result:    PENDING
 // Date:      2026-03-15

@@ -5,6 +5,7 @@
 //             to #expect(throws:) macro expansion in Swift Testing.
 //
 // Toolchain: TBD
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS (arm64)
 //
 // Result: CONFIRMED — direct do/catch and closure capture of ~Copyable vars release borrows correctly after throw; hang is specific to #expect(throws:) macro expansion

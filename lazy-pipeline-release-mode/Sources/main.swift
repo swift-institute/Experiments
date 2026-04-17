@@ -6,6 +6,7 @@
 //   V4: Release mode timing comparison (lazy vs eager vs hand-rolled)
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: ALL CONFIRMED (4/4 variants)

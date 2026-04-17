@@ -2,6 +2,7 @@
 // nonsending-sendable-iterator experiment — REVISED
 //
 // Result: CONFIRMED — nonsending methods preserve isolation; nonsending @Sendable stored closures do NOT (the @Sendable makes the closure concurrent)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // FINDING: `nonisolated(nonsending) @Sendable` on stored closures does NOT
 // preserve invoker isolation. The @Sendable makes the closure concurrent.

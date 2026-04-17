@@ -4,6 +4,7 @@
 // Result: CONFIRMED — Property.View pattern provides namespaced accessors through pointer-holding view struct with tag-constrained extensions
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Production note: In swift-property-primitives, this pattern is implemented as
 // Property<Tag, Base>.View which is ~Copyable, ~Escapable with @_lifetime(borrow base).

@@ -4,6 +4,7 @@
 //   throws `any Error` regardless of the child expression's typed throw.
 //
 // Toolchain: Swift 6.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — async let and withThrowingTaskGroup both erase to any Error (Swift 6.3)

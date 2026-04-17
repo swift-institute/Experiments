@@ -6,6 +6,7 @@
 //          map/flatMap still propagate isolation through method dispatch?
 //
 // Toolchain: Apple Swift 6.2 (Xcode 26)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Tests:

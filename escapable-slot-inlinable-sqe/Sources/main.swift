@@ -8,6 +8,7 @@
 //             with Lifetimes + LifetimeDependence + InternalImportsByDefault.
 //
 // Toolchain: swift-6.3-RELEASE
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS (arm64)
 //
 // Result: ALL CONFIRMED (V1-V2, V4-V6) / V3 REFUTED (return-based ~Escapable)

@@ -1,6 +1,7 @@
 // MARK: - Resumption ~Copyable + ~Escapable Experiment
 // Purpose: Validate that Async.Waiter.Resumption can become ~Copyable + ~Escapable
 // Toolchain: Apple Swift 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 // Date: 2026-03-02
 //

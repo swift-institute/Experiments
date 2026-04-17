@@ -16,6 +16,7 @@
 //   H6: Shared-executor actors are mutually exclusive (serialized)
 //
 // Toolchain: Swift 6.3 (Xcode 16)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Results:

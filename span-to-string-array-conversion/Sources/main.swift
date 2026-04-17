@@ -5,6 +5,7 @@
 // Hypothesis: Swift 6.2 may provide direct conversion paths that avoid closures.
 //
 // Toolchain: Apple Swift 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED (6 of 8 variants pass, 2 REFUTED — Span not Collection/Sequence)
