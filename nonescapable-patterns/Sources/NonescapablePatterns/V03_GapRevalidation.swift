@@ -4,6 +4,7 @@
 // These gaps were tested on Swift 6.2.3 (Feb 25, 2026) and FAILED.
 // Purpose: determine if 6.2.4 has fixed them.
 // Result: BUG REPRODUCED — Gap A (@_lifetime on Escapable closure) and Gap B (~Escapable in non-escaping closure) still blocked in 6.2.4; @_lifetime(immortal) workaround confirmed
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Origin: nonescapable-gap-revalidation-624
 

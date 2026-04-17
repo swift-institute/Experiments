@@ -1,6 +1,7 @@
 // MARK: - ~Copyable Sequence Protocol Test
 // Purpose: Verify that same-file Sequence conformance poisons ~Copyable usage
 // Status: CONFIRMED (2026-01-22, Swift 6.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Revalidation: STILL PRESENT in Swift 6.2.4 — same-file conformance still fails (2026-03-10)
 // Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
 // Origin: noncopyable-sequence-protocol-test

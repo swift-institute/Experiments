@@ -4,6 +4,7 @@
 // Result: CONFIRMED — SuppressedAssociatedTypes feature flag enables associatedtype Element: ~Copyable directly
 // Date: 2026-01-22 (original), 2026-03-10 (updated)
 // Toolchain: Swift 6.2 (original), Swift 6.2.4 (resolution)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Origin: noncopyable-protocol-workarounds
 //
 // Original limitation: `associatedtype Element: ~Copyable` was not supported.

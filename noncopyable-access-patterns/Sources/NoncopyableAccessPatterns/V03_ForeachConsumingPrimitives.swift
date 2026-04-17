@@ -12,6 +12,7 @@
 // [CLAIM-005] Pattern works with ~Copyable containers
 //
 // Toolchain: Apple Swift version 6.2.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Date: 2026-01-22
 //
 // ============================================================================

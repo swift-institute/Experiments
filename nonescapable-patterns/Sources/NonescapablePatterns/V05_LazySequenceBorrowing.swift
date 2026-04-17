@@ -8,6 +8,7 @@
 //   V6: Can a @_lifetime(borrow self) extension method return a ~Escapable adapter?
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: V1-V6 CONFIRMED; V7-V9 BLOCKED (toolchain regression)

@@ -11,6 +11,7 @@
 //            and `Body` are different simple identifiers and cannot
 //            merge.
 // Toolchain: Swift 6.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Date:      2026-04-15
 // Result:    CONFIRMED — MyDoc<Body, Head> conforms to both Render.View
 //            (via associatedtype Rendered = Body) and NSViewRepresentable

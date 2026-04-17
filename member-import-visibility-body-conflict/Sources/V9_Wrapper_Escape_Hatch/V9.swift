@@ -6,6 +6,7 @@
 //            call site that wants SwiftUI interop grows a ceremonial
 //            `.swiftUIView` suffix.
 // Toolchain: Swift 6.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Date:      2026-04-13
 // Result:    CONFIRMED — this variant compiles cleanly. The collision is
 //            avoided because `HTML.Document` itself never conforms to

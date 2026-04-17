@@ -1,6 +1,7 @@
 // MARK: - ~Copyable Constraint Poisoning Test
 // Purpose: Adding Sequence conformance where Element: Copyable poisons stored UnsafeMutablePointer<Element>
 // Status: BUG REPRODUCED (2026-01-22, Swift 6.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Revalidation: STILL PRESENT in Swift 6.2.4 — Sequence inherits Copyable requirement (2026-03-10)
 // Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
 // Origin: noncopyable-pointer-propagation

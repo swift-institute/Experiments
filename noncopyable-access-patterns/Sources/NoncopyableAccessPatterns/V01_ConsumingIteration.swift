@@ -13,6 +13,7 @@
 // [CLAIM-005] consumingCount() can return both count and iterator via tuple
 //
 // Toolchain: Apple Swift version 6.2.3 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: arm64-apple-macosx26.0
 // Date: 2026-01-22
 //

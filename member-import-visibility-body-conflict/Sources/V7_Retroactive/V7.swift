@@ -5,6 +5,7 @@
 //            both the conforming type (`HTML.Document`) and the conformance
 //            itself live in the same (this) module.
 // Toolchain: Swift 6.3
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 // Date:      2026-04-13
 // Result:    REFUTED — `@retroactive` is rejected by the compiler because the
 //            conforming type's module owns it; the attribute only applies when

@@ -6,6 +6,7 @@
 //            still fails at conformance checking with the same unification
 //            error V1–V5 produce.
 // Toolchain: Swift 6.3 (experimental feature `ModuleSelector` enabled)
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 // Date:      2026-04-13
 // Result:    REFUTED — `Rendering::View, SwiftUI::View` is accepted
 //            syntactically, but the conformance checker still hits the
