@@ -17,6 +17,7 @@
 //             accept types from both protocol paths.
 //
 // Toolchain: Apple Swift 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — all 8 variants pass (build + runtime assertions)

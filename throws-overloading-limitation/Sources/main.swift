@@ -3,6 +3,7 @@
 // Status: CONFIRMED -> SE-PITCH (2026-01-22, Swift 6.2)
 // Revalidation: STILL PRESENT in Swift 6.2.4 — ambiguous use of 'parse' (2026-03-10)
 // Revalidated: Swift 6.3 (2026-03-26) — STILL PRESENT
+// Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT
 
 enum ParseError: Error { case invalid }
 

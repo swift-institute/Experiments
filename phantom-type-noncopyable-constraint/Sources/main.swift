@@ -4,6 +4,7 @@
 // Result: CONFIRMED — phantom type parameters must suppress Copyable to accept ~Copyable arguments; conditional Copyable on RawValue works
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Production note: In swift-primitives, phantom-typed indices use
 // Tagged<Tag: ~Copyable, RawValue: ~Copyable>: ~Copyable with conditional

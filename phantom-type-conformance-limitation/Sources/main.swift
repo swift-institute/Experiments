@@ -4,6 +4,7 @@
 // Result: CONFIRMED — cannot have two conditional conformances to the same protocol with different constraints; single conformance must cover all phantom types
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Production reference: Tagged.swift uses `where Tag: ~Copyable` on
 // both Equatable and Comparable, proving they work with ~Copyable phantoms.

@@ -2,6 +2,7 @@
 // MARK: - ~Copyable Cross-Module Propagation
 // Purpose: Test ~Copyable constraint propagation across module boundaries
 // Status: INVESTIGATION (2026-01-20, Swift 6.0)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Revalidation: FIXED in Swift 6.2.4 — cross-module ~Copyable works (2026-03-10)
 // Result: CONFIRMED — cross-module ~Copyable constraint propagation works in Swift 6.2.4
 

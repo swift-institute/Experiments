@@ -5,6 +5,7 @@
 //             ~Copyable types, not to functions or concrete types.
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.2 (arm64)
 // Features: SuppressedAssociatedTypes, SuppressedAssociatedTypesWithDefaults
 //

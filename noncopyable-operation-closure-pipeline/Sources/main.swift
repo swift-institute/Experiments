@@ -11,6 +11,7 @@
 // Prior art: sending-mutex-noncopyable-region (same Experiments/ directory)
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: PRIMARY PATH CONFIRMED (with nonisolated(unsafe) on pointer fields)

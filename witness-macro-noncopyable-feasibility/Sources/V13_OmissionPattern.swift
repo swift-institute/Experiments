@@ -4,6 +4,7 @@
 //             Zero user burden.
 //
 // Result: (pending)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 import Synchronization
 

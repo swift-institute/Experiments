@@ -8,6 +8,7 @@
 //          This experiment tests whether the same flag unblocks Domain.
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21) / Xcode 26 beta
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 // Feature flag: SuppressedAssociatedTypes
 //

@@ -4,6 +4,7 @@
 //             so ~Copyable types cannot conform to Swift.Equatable on 6.3
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — Swift.Equatable does NOT support ~Copyable on Swift 6.3
