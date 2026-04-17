@@ -4,6 +4,7 @@
 // Result: CONFIRMED — module separation isolates Sequence conformance poisoning; ~Copyable consumers import core module only
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Problem: Sequence conformance adds implicit `where Element: Copyable`
 // to all extensions of a type. This "poisons" the type for ~Copyable use.

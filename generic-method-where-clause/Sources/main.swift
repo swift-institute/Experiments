@@ -3,6 +3,7 @@
 // Status: CONFIRMED
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Result: CONFIRMED — method-level where clauses gate Copyable-only operations; ~Copyable elements see only unconstrained methods
 //
 // Production pattern: Sequence iterator types use method-level where clauses

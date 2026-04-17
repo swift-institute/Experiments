@@ -5,6 +5,7 @@
 // Status: CONFIRMED
 // Date: 2026-01-22 (original), 2026-04-01 (expanded)
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Rules: [IMPL-023], [IMPL-025], [IMPL-067]
 // Result: Ownership modifiers (borrowing/consuming/inout) are NOT an overload axis in
 //         Swift 6.2. Constraint-based overloading (Copyable vs ~Copyable) works for

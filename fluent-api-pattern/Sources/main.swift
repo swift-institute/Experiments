@@ -3,6 +3,7 @@
 // Status: CONFIRMED
 // Date: 2026-01-22
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Result: CONFIRMED — container.domain.operation() fluent pattern compiles and runs via _read accessor + tagged View
 
 // Production note: In swift-property-primitives, this pattern is implemented as

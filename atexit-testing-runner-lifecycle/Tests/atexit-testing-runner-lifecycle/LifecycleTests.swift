@@ -5,6 +5,7 @@
 //          Testing.Issue.record reports failures from bridged code.
 //
 // Toolchain: Apple Swift 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — all 5 variants behave as expected. atexit fires after

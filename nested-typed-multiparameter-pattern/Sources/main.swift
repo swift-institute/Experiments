@@ -4,6 +4,7 @@
 // Result: CONFIRMED — layered generic nesting View.Typed<Element>.Valued<N> works with ~Copyable and value generics
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Production note: In swift-property-primitives, Property.View, Property.View.Typed<Element>,
 // and Property.View.Typed<Element>.Valued<N> are all ~Copyable, ~Escapable with

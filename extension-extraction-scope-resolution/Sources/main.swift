@@ -4,6 +4,7 @@
 // Status: CONFIRMED
 // Date: 2026-04-01
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Rule: [IMPL-082]
 
 // Claim: When extracting methods from `extension Outer { struct Inner { method() } }`

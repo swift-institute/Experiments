@@ -4,6 +4,7 @@
 // Experiment: iterative-tuple-rendering-trampoline
 // Date: 2026-03-16
 // Toolchain: Swift 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Status: DEFERRED
 // Purpose: Validate trampoline approach for iterative _Tuple rendering
 //          to avoid stack overflow from deeply nested types.

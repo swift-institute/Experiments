@@ -13,6 +13,7 @@
 //       proving cooperative pool threads are free during await
 //
 // Toolchain: Apple Swift 6.3 (swiftlang-6.3.0.123.5)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: ALL CONFIRMED (6/6, debug + release)

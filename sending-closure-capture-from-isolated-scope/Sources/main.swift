@@ -19,6 +19,7 @@
 //   C) The pattern works with a specific incantation we have not tried
 //
 // Toolchain: Swift 6.3 release
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 // Result: REFUTED — the "fundamental region-checker limitation" framing
 //   was wrong. Variants V1/V2/V4/V5 fail; V3 compiles. The discriminator

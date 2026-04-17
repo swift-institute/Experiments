@@ -4,6 +4,7 @@
 // Result: CONFIRMED — four storage strategies (Static/Bounded/Dynamic/Small) all compile and work for ~Copyable containers
 // Date: 2026-01-21
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Four storage strategies used across swift-primitives:
 // 1. Static<let capacity>  — fixed capacity, inline storage (InlineArray / @_rawLayout)

@@ -4,6 +4,7 @@
 // Result: CONFIRMED — dual-track (custom ~Copyable protocol + stdlib Comparable bridge) works; operators derived correctly
 // Date: 2026-01-22
 // Toolchain: Swift 6.0
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Problem: stdlib's Comparable requires Copyable.
 // ~Copyable types cannot conform to Comparable.

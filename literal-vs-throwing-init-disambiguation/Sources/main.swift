@@ -5,6 +5,7 @@
 //             may select the literal conformance instead — even under `try`
 //
 // Toolchain: swift-6.2-RELEASE
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — `try` does NOT disambiguate. Swift unconditionally selects

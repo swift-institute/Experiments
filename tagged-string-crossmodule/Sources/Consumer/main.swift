@@ -18,6 +18,7 @@
 //       while Swift.String has arity 0. Bare `String` resolves to Swift.String.
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: Darwin 25.2.0 arm64
 //
 // Result: 9/11 CONFIRMED, 2/11 FALSIFIED (V4, V11 shadowing)

@@ -19,6 +19,7 @@
 // DATE: 2026-02-25
 //
 // Result: PARTIALLY CONFIRMED — sync overload wins resolution but isolation lost at sync-to-async closure storage boundary
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // FINDINGS:
 //   1. CONFIRMED — `source.map { $0 * 2 }` resolves to Isolated.Map, not

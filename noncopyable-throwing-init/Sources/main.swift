@@ -4,6 +4,7 @@
 // Hypothesis: `self = try factory()` should work since self is untouched before assignment
 //
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — all 5 variants compile and run correctly.

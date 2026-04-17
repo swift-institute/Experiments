@@ -4,6 +4,7 @@
 // Hypothesis: There is a nesting depth N where rendering crashes.
 //
 // Toolchain: Apple Swift 6.2.4 (swiftlang-6.2.4.1.4)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Result: (pending)

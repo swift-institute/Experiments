@@ -4,6 +4,7 @@
 // Result: CONFIRMED — Noun.Protocol naming (Hash.Protocol, Comparison.Protocol) works with enum-namespace pattern; production uses this for domain protocols
 // Date: 2026-01-21
 // Toolchain: Swift 6.0
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 
 // Analysis: How should protocol primitives be named?
 //

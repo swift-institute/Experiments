@@ -4,6 +4,7 @@
 // Result: CONFIRMED — nested generics have identical memory layout to flat generics (size, stride, alignment)
 // Date: 2026-01-20
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 //
 // Note: Nested generics are purely a compile-time namespace mechanism.
 //       This experiment confirms identical memory layout. Runtime performance

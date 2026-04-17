@@ -38,6 +38,7 @@
 //       deterministic, not a coin flip.
 //
 // Toolchain: Swift 6.3 (Xcode 26 beta) — must run with `-c release`
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform:  macOS 26 (arm64)
 // Date:      2026-04-07
 

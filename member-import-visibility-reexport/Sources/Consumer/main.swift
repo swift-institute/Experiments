@@ -7,6 +7,7 @@
 //             the consumer does NOT need a separate `import Upstream`
 //
 // Toolchain: Apple Swift 6.2.4 (swiftlang-6.2.4.1.4)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS (arm64)
 //
 // Result: CONFIRMED — all 4 variants compile and run with MemberImportVisibility enabled.

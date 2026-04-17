@@ -4,6 +4,7 @@
 // Hypothesis: `Outer.`Protocol`` resolves to the nested struct, not the .Protocol metatype.
 //
 // Toolchain: swift:6.3 (Docker)
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: Linux (aarch64)
 //
 // Result: PARTIAL — type annotation works, expression position does NOT

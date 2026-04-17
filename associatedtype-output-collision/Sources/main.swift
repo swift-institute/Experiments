@@ -5,6 +5,7 @@
 //             String to conform to both protocols simultaneously.
 //
 // Toolchain: Swift 6.2
+// Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — domain-prefixed names eliminate collision; both
