@@ -1,0 +1,5 @@
+.build/
+.swiftpm/
+Output/
+Package.resolved
+Output-run.txt
