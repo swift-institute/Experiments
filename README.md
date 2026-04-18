@@ -22,9 +22,13 @@ swift build
 
 Requires Swift 6.3 or newer.
 
+## Browse
+
+The canonical browsable view of this corpus is the [Experiments dashboard](https://swift-institute.org/dashboard/#experiments) on swift-institute.org — filterable by status, category, and toolchain, with full-text search across directories and purposes.
+
 ## Index
 
-[`_index.md`](_index.md) lists every experiment with its topic and result.
+[`_index.json`](_index.json) is the authoritative manifest — one entry per experiment with purpose, date, toolchain, status, category, and cross-references.
 
 ## License
 
