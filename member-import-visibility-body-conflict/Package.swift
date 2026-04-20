@@ -105,5 +105,21 @@ let package = Package(
             name: "V11_Implements",
             swiftSettings: [.enableExperimentalFeature("SuppressedAssociatedTypes")]
         ),
+
+        // V12: The production two-stamp pattern — faithful HTML.Document shape.
+        //      Mirrors the real swift-html-rendering HTML.Document + SwiftUI
+        //      bridge, including the full refinement chain (Document →
+        //      DocumentProtocol → HTML.View → Rendering.View) and an ambient
+        //      `HTML.Body` type in the enclosing scope (like WHATWG_HTML.Body).
+        //      Shows why a single @_implements stamp is insufficient here
+        //      (single-stamp version included as a commented-out repro) and
+        //      how two stamps — one per protocol — resolve the unification.
+        // Expected: CONFIRMED — two-stamp version compiles in debug and
+        //           release; single-stamp version (commented) reproduces the
+        //           "multiple matching types named 'Body'" error.
+        .target(
+            name: "V12_ImplementsBridge",
+            swiftSettings: [.enableExperimentalFeature("SuppressedAssociatedTypes")]
+        ),
     ]
 )
