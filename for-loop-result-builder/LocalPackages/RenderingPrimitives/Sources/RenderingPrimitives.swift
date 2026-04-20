@@ -16,20 +16,20 @@ extension Rendering {
 
 extension Rendering {
     public protocol View {
-        associatedtype RenderBody: Rendering.View
-        @Rendering.Builder var body: RenderBody { get }
+        associatedtype Body: Rendering.View
+        @Rendering.Builder var body: Body { get }
         static func _render(_ view: Self, context: inout Rendering.Context)
     }
 }
 
 extension Rendering.View {
     public static func _render(_ view: Self, context: inout Rendering.Context) {
-        RenderBody._render(view.body, context: &context)
+        Body._render(view.body, context: &context)
     }
 }
 
 extension Never: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {}
 }
@@ -79,7 +79,7 @@ extension Rendering {
 }
 
 extension Rendering._Tuple: Rendering.View where repeat each Content: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         func render<V: Rendering.View>(_ v: V, _ ctx: inout Rendering.Context) {
@@ -100,7 +100,7 @@ extension Rendering {
 
 extension Rendering.Conditional: Rendering.View
 where First: Rendering.View, Second: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         switch view {
@@ -113,7 +113,7 @@ where First: Rendering.View, Second: Rendering.View {
 // MARK: - Array + Rendering.View
 
 extension Array: Rendering.View where Element: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         for element in view {
@@ -125,7 +125,7 @@ extension Array: Rendering.View where Element: Rendering.View {
 // MARK: - Optional + Rendering.View
 
 extension Optional: Rendering.View where Wrapped: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         if let view {
@@ -144,7 +144,7 @@ extension Rendering {
 }
 
 extension Rendering.ForEach: Rendering.View where Content: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         for element in view.content {

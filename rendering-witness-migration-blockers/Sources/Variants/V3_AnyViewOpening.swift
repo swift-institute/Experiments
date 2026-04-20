@@ -29,7 +29,7 @@ public struct AnyRenderingView: Rendering.View {
         }
     }
 
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing AnyRenderingView, context: inout Rendering.Context) {

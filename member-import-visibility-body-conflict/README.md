@@ -1,15 +1,15 @@
 # member-import-visibility-body-conflict
 
-**Status**: CONFIRMED (root cause identified; rename fix verified)
-**Date**: 2026-03-13 (initial); 2026-04-15 (V10 added)
-**Toolchain**: Swift 6.3 (originally Swift 6.2.4)
-**Receipt for**: [Blog/Draft/associated-type-trap-final.md](../../Blog/Draft/associated-type-trap-final.md) — "The associated type trap"
+**Status**: CONFIRMED (root cause identified; `@_implements` preferred fix verified)
+**Date**: 2026-03-13 (initial); 2026-04-15 (V10 added); 2026-04-20 (V11 added)
+**Toolchain**: Swift 6.3.1 (originally Swift 6.2.4)
+**Receipt for**: [Blog/Draft/associated-type-trap-final.md](../../Blog/Draft/associated-type-trap-final.md) — "The associated type trap, and the escape hatch I missed"
 
 ## Investigation
 
 Why does `extension HTML.Document: NSViewRepresentable` fail to compile when `HTML.Document` already conforms to a custom `View` protocol with `associatedtype Body`?
 
-This package contains ten variants exploring the failure mode. V1–V5 rule out import-level explanations. V6 establishes the rename mechanism with a different identifier. V7–V9 explore alternative escape hatches. V10 verifies the specific rename the blog post recommends.
+This package contains eleven variants exploring the failure modes and fixes. V1–V5 rule out import-level explanations. V7 rejects `@retroactive`. V8 rejects SE-0491 module selectors. V6, V9, V10, V11 each demonstrate a working escape hatch with different trade-offs. The blog recommends **V11** (`@_implements`) as the preferred fix.
 
 ## Variants
 
@@ -23,10 +23,11 @@ This package contains ten variants exploring the failure mode. V1–V5 rule out 
 | `V6_Content_AssocType` | Renaming the associated type from `Body` to `Content` resolves the collision | CONFIRMED — compiles | Compiles |
 | `V7_Retroactive` | `@retroactive` annotation permits the conformance | REFUTED — `@retroactive` only valid for cross-module conformances | **Fails to compile** (different error) |
 | `V8_ModuleSelectors` | SE-0491 `Rendering::View` / `SwiftUI::View` selectors disambiguate | REFUTED — diagnostic confirms same-named associated types are *merged*, not shadowed | **Fails to compile** |
-| `V9_Wrapper_Escape_Hatch` | A `.swiftUIView` property on a wrapper type sidesteps direct conformance | CONFIRMED — compiles, but ergonomically rejected | Compiles |
-| `V10_Rendered_Namespace` | The blog's specific recommendation: `Render` namespace + `associatedtype Rendered` (constraint `Render.Body`) | CONFIRMED — compiles | Compiles |
+| `V9_Wrapper_Escape_Hatch` | A `.swiftUIView` property on a wrapper type sidesteps direct conformance | CONFIRMED — compiles, but taxes every call site | Compiles |
+| `V10_Rendered_Namespace` | Rename the associated type to `Rendered` inside a `Render` namespace | CONFIRMED — compiles; but rename is paid ecosystem-wide | Compiles |
+| `V11_Implements` | **`@_implements(Protocol, Name)`** on the conforming type — keep idiomatic `Body` on both protocols; stamp the bridge type to split them | **CONFIRMED** — compiles in debug, release, and WMO; witness dispatch independently resolves each protocol's `Body` | Compiles (**preferred fix**) |
 
-> **DO NOT COPY V1–V5, V7, V8.** These variants exist to *reproduce* failure modes. Copying their code into a real codebase reintroduces the bug. The working patterns are V6, V9, and V10; the blog recommends V10's shape.
+> **DO NOT COPY V1–V5, V7, V8.** These variants exist to *reproduce* failure modes. Copying their code into a real codebase reintroduces the bug. The working patterns are V6, V9, V10, and V11. The blog recommends V11.
 
 ## Building individual variants
 
@@ -35,6 +36,7 @@ This package contains ten variants exploring the failure mode. V1–V5 rule out 
 swift build --target V6_Content_AssocType
 swift build --target V9_Wrapper_Escape_Hatch
 swift build --target V10_Rendered_Namespace
+swift build --target V11_Implements
 
 # Variants expected to fail (intentionally — they reproduce the bug):
 swift build --target V1_SameFile     # Will emit the unification error
@@ -47,6 +49,6 @@ A whole-package `swift build` will surface every variant's diagnostic; expect th
 
 Swift's associated-type anchor unifier matches simple identifiers at the protocol declaration site. When `HTML.Document` conforms to two protocols that each declare `associatedtype Body`, the requirements are merged into a single binding — and the constraints from the two protocols (`Body: Custom.View` vs `Body == Never`) are irreconcilable. Module selectors, import attributes, and `@retroactive` cannot disambiguate because they target name lookup, not anchor unification.
 
-The fix is structural: pick an associated-type name that no upstream protocol uses. V10 uses `Rendered` inside a `Render` namespace.
+The real fix is structural but minimal: `@_implements(Protocol, Name)` lets a conforming type satisfy a named requirement via a differently-named declaration. The baseline feature `AssociatedTypeImplements` in `Features.def` makes this always-on (though underscored). V11 demonstrates this on the exact `~Copyable` + `SuppressedAssociatedTypes` shape the real `Rendering.View` uses, with release-mode verification of witness-table dispatch.
 
-See the blog post for the full investigation, the compiler-source citations, and the design rationale for the `Rendered` name.
+See the blog post for the full investigation, the compiler-source citations, and the design rationale for preferring `@_implements` over ecosystem-wide renames.

@@ -82,15 +82,28 @@ let package = Package(
             name: "V9_Wrapper_Escape_Hatch"
         ),
 
-        // V10: Render namespace + `associatedtype Rendered` — the specific
-        //      rename the blog post recommends (distinct from V6, which
-        //      uses `Content`, a name SwiftUI already occupies).
+        // V10: Render namespace + `associatedtype Rendered` — one rename
+        //      option explored before the blog settled on @_implements.
         // Expected: CONFIRMED — `Rendered` simple identifier does not
         //           unify with SwiftUI.View.Body; NSViewRepresentable
         //           conformance compiles on the same HTML.Document shape
         //           that fails in V1–V5.
         .target(
             name: "V10_Rendered_Namespace"
+        ),
+
+        // V11: `@_implements(Protocol, Name)` — the blog's preferred fix.
+        //      Keep the idiomatic `associatedtype Body` on the custom
+        //      protocol; stamp a differently-named typealias on the
+        //      conforming bridge type to split the two `Body` requirements.
+        //      Uses ~Copyable + SuppressedAssociatedTypes to match the
+        //      exact Rendering.View shape.
+        // Expected: CONFIRMED — compiles in debug, release, and WMO.
+        //           Witness-table dispatch resolves CustomView.Body and
+        //           SwiftUI.View.Body to different concrete types.
+        .target(
+            name: "V11_Implements",
+            swiftSettings: [.enableExperimentalFeature("SuppressedAssociatedTypes")]
         ),
     ]
 )

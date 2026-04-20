@@ -7,8 +7,8 @@ public enum HTML {}
 // MARK: - HTML.View protocol
 
 extension HTML {
-    public protocol View: Rendering.View where RenderBody: HTML.View {
-        @HTML.Builder var body: RenderBody { get }
+    public protocol View: Rendering.View where Body: HTML.View {
+        @HTML.Builder var body: Body { get }
     }
 }
 
@@ -30,7 +30,7 @@ extension Never: HTML.View {}
 public struct Text: HTML.View {
     public let value: String
     public init(value: String) { self.value = value }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit(view.value)
@@ -42,7 +42,7 @@ public struct Div<Content: HTML.View>: HTML.View {
     public init(@HTML.Builder content: () -> Content) {
         self.content = content()
     }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<div>")
@@ -56,7 +56,7 @@ public struct Span<Content: HTML.View>: HTML.View {
     public init(@HTML.Builder content: () -> Content) {
         self.content = content()
     }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<span>")
@@ -70,7 +70,7 @@ public struct Span<Content: HTML.View>: HTML.View {
 public struct Table<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<table>")
@@ -82,7 +82,7 @@ public struct Table<Content: HTML.View>: HTML.View {
 public struct TableBody<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<tbody>")
@@ -94,7 +94,7 @@ public struct TableBody<Content: HTML.View>: HTML.View {
 public struct TableRow<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<tr>")
@@ -106,7 +106,7 @@ public struct TableRow<Content: HTML.View>: HTML.View {
 public struct TableDataCell<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<td>")
@@ -118,7 +118,7 @@ public struct TableDataCell<Content: HTML.View>: HTML.View {
 public struct Section<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<section>")
@@ -130,7 +130,7 @@ public struct Section<Content: HTML.View>: HTML.View {
 public struct H3<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<h3>")
@@ -142,7 +142,7 @@ public struct H3<Content: HTML.View>: HTML.View {
 public struct Paragraph<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<p>")
@@ -154,7 +154,7 @@ public struct Paragraph<Content: HTML.View>: HTML.View {
 public struct Strong<Content: HTML.View>: HTML.View {
     public let content: Content
     public init(@HTML.Builder content: () -> Content) { self.content = content() }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<strong>")
@@ -171,7 +171,7 @@ public struct CSSModified<Content: HTML.View>: HTML.View {
         self.content = content
         self.style = style
     }
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
     public static func _render(_ view: Self, context: inout Rendering.Context) {
         context.emit("<div style=\"\(view.style)\">")

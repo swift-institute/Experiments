@@ -6,7 +6,7 @@
 //
 // Hypothesis: static func _render(_ view: borrowing Self, context: inout Rendering.Context)
 //             works as a protocol requirement. The default implementation
-//             RenderBody._render(view.body, context: &context) compiles and
+//             Body._render(view.body, context: &context) compiles and
 //             dispatches correctly for composite views, leaf views, and
 //             existential (AnyView) views.
 //
@@ -20,8 +20,8 @@
 
 extension Rendering {
     public protocol View: ~Copyable {
-        associatedtype RenderBody: View & ~Copyable
-        @Rendering.Builder var body: RenderBody { get }
+        associatedtype Body: View & ~Copyable
+        @Rendering.Builder var body: Body { get }
 
         static func _render(_ view: borrowing Self, context: inout Rendering.Context)
     }
@@ -46,16 +46,16 @@ extension Rendering {
 
 // MARK: - Default _render (composite views delegate to body)
 
-extension Rendering.View where RenderBody: Rendering.View {
+extension Rendering.View where Body: Rendering.View {
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
-        RenderBody._render(view.body, context: &context)
+        Body._render(view.body, context: &context)
     }
 }
 
 // MARK: - Never conformance (leaf sentinel)
 
 extension Never: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Never, context: inout Rendering.Context) {}
@@ -74,7 +74,7 @@ extension Rendering {
 }
 
 extension Rendering._Tuple: Rendering.View where repeat each Content: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
@@ -88,7 +88,7 @@ extension Rendering._Tuple: Rendering.View where repeat each Content: Rendering.
 // MARK: - Optional conformance
 
 extension Optional: Rendering.View where Wrapped: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
@@ -104,7 +104,7 @@ extension Optional: Rendering.View where Wrapped: Rendering.View {
 // MARK: - Array conformance
 
 extension Array: Rendering.View where Element: Rendering.View {
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
@@ -120,7 +120,7 @@ public struct TextLeaf: Rendering.View {
     public let content: String
     public init(_ content: String) { self.content = content }
 
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
@@ -136,7 +136,7 @@ public struct Paragraph<Content: Rendering.View>: Rendering.View {
         self.content = content()
     }
 
-    public typealias RenderBody = Never
+    public typealias Body = Never
     public var body: Never { fatalError() }
 
     public static func _render(_ view: borrowing Self, context: inout Rendering.Context) {
