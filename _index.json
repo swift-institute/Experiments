@@ -58,6 +58,18 @@
   ],
   "experiments": [
     {
+      "directory": "sendnonsendable-iife-borrowing-init-crash",
+      "category": "Swift Language Issues",
+      "purpose": "Swift 6.3.1 SendNonSendable SIL pass aborts with signal 6 when a function body wraps the construction of a cross-module `~Copyable, ~Escapable` View (via a `@_lifetime(borrow base) init(_ base: borrowing Base)`) inside an IIFE. Minimal reducer: 10 lines across two modules. Workaround: bind the view at the outer scope — the IIFE is the load-bearing trigger.",
+      "date": "2026-04-21",
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
+      "status": "CONFIRMED",
+      "statusDetail": "STILL CRASHES as of Swift 6.3.1. Crash: swift::Partition::merge in SendNonSendable::run(). Minimum ingredients: Target: ~Copyable, View<Base>: ~Copyable+~Escapable with @_lifetime(borrow base) borrowing init, cross-module, IIFE, function-body (not top-level), Lifetimes feature flag.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
       "directory": "docc-tutorial-host-necessity",
       "category": "Architecture Patterns",
       "purpose": "Does a DocC .tutorial need a separate SwiftPM host target for its @Code source files? REFUTED — H2 confirmed: catalog-resident .docc/Resources/*.swift is sufficient. H3 also confirmed: DocC renders step source as text, does not compile it (invalid Swift in a step file still builds the doc archive).",
