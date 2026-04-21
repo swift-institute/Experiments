@@ -1,0 +1,9 @@
+@Tutorials(name: "Demo") {
+    @Intro(title: "Tutorials for Demo") {
+        Learn the Demo module step by step.
+    }
+
+    @Chapter(name: "Getting Started") {
+        @TutorialReference(tutorial: "doc:GettingStarted")
+    }
+}

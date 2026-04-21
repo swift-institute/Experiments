@@ -58,6 +58,18 @@
   ],
   "experiments": [
     {
+      "directory": "docc-tutorial-host-necessity",
+      "category": "Architecture Patterns",
+      "purpose": "Does a DocC .tutorial need a separate SwiftPM host target for its @Code source files? REFUTED — H2 confirmed: catalog-resident .docc/Resources/*.swift is sufficient. H3 also confirmed: DocC renders step source as text, does not compile it (invalid Swift in a step file still builds the doc archive).",
+      "date": "2026-04-21",
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
+      "status": "CONFIRMED",
+      "statusDetail": "H2 + H3 confirmed. Corollary: @Tutorial files require a @Tutorials TOC file in the same catalog — without it docbuild warns and omits the tutorial.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
       "directory": "exported-import-name-shadowing",
       "category": "Name Resolution and Imports",
       "purpose": "@_exported import gives custom Array precedence over Swift.Array in all contexts",

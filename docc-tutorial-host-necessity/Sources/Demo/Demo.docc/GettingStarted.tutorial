@@ -1,0 +1,33 @@
+@Tutorial(time: 5) {
+    @Intro(title: "Getting Started with Demo") {
+        A minimal tutorial to test whether catalog-resident Swift sources (inside
+        `.docc/Resources/`) are sufficient for `@Code` directives, or whether a
+        separate host target in Package.swift is required.
+    }
+
+    @Section(title: "Use the Demo module") {
+        @ContentAndMedia {
+            Import Demo and call `Demo.hello()`.
+        }
+
+        @Steps {
+            @Step {
+                Start with an empty file.
+
+                @Code(name: "main.swift", file: "step-01-empty.swift")
+            }
+
+            @Step {
+                Import Demo and add a print call.
+
+                @Code(name: "main.swift", file: "step-02-with-api.swift")
+            }
+
+            @Step {
+                Test that DocC does NOT compile the step code (invalid Swift embedded).
+
+                @Code(name: "main.swift", file: "step-03-invalid.swift")
+            }
+        }
+    }
+}
