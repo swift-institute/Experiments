@@ -598,6 +598,21 @@
       "crossRefs": []
     },
     {
+      "directory": "silgen-sendable-typed-throws-closure-cast",
+      "category": "Swift Language Issues",
+      "purpose": "SILGen signal-5 crash (createInputFunctionArgument / LoweredParamGenerator::claimNext) when a typed-throws `@Sendable` closure literal is passed — via an inline `as @Sendable (In) throws(E) -> Out` conversion — into a generic `<V: Sendable>` parameter. Crash is at closure prolog emission lowering the Int parameter under the inline as-conversion. Surfaced during the MOD-017 batch follow-up for swift-machine-primitives. Workaround: introduce a concrete-typed overload of the callee so the closure flows through a non-generic function-typed parameter rather than a generic Sendable substitution with an inline cast.",
+      "date": "2026-04-21",
+      "toolchain": "Swift 6.3.1",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [
+        "silgen-thunk-noncopyable-sending-capture",
+        "Research/silgen-bug-prone-primitive-compositions.md"
+      ]
+    },
+    {
       "directory": "noncopyable-equatable-stdlib",
       "category": "Swift Language Issues",
       "purpose": "Swift.Equatable does NOT support ~Copyable on Swift 6.3 (SE-0499 landed on main only, not release/6.3).",
