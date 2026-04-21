@@ -16,7 +16,7 @@ import Testing
 
 // MARK: - Pure Action Defaults
 
-private typealias Action = Render_Primitives.Rendering.Action
+private typealias Action = Render_Primitives.Render.Action
 private typealias MR = Markdown_HTML_Rendering.Markdown.Rendering
 
 /// Pure action paragraph: replaces capture { Paragraph { Replay } .css.lineHeight.padding.margin }
