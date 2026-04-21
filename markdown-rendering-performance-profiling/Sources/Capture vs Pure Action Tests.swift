@@ -11,12 +11,12 @@
 
 @_spi(DynamicHTML) import HTML_Renderable
 import Markdown_HTML_Rendering
-import Rendering_Primitives
+import Render_Primitives
 import Testing
 
 // MARK: - Pure Action Defaults
 
-private typealias Action = Rendering_Primitives.Rendering.Action
+private typealias Action = Render_Primitives.Rendering.Action
 private typealias MR = Markdown_HTML_Rendering.Markdown.Rendering
 
 /// Pure action paragraph: replaces capture { Paragraph { Replay } .css.lineHeight.padding.margin }
@@ -127,7 +127,7 @@ struct `Capture vs Pure Action` {
     @Test(.timed(iterations: 20, warmup: 2))
     func `full pipeline - all capture - 100 sections`() {
         let state = Ownership.Mutable(HTML.Context())
-        var context = Rendering.Context.html(state: state)
+        var context = Render.Context.html(state: state)
         let view = Markdown_HTML_Rendering.Markdown(rendering: captureRendering) { bookChapter }
         Markdown_HTML_Rendering.Markdown._render(view, context: &context)
     }
@@ -135,7 +135,7 @@ struct `Capture vs Pure Action` {
     @Test(.timed(iterations: 20, warmup: 2))
     func `full pipeline - 3 pure + 15 capture - 100 sections`() {
         let state = Ownership.Mutable(HTML.Context())
-        var context = Rendering.Context.html(state: state)
+        var context = Render.Context.html(state: state)
         let view = Markdown_HTML_Rendering.Markdown(rendering: pureRendering) { bookChapter }
         Markdown_HTML_Rendering.Markdown._render(view, context: &context)
     }
@@ -145,7 +145,7 @@ struct `Capture vs Pure Action` {
     @Test(.timed(iterations: 5, warmup: 1))
     func `full pipeline - all capture - 500 sections`() {
         let state = Ownership.Mutable(HTML.Context())
-        var context = Rendering.Context.html(state: state)
+        var context = Render.Context.html(state: state)
         let view = Markdown_HTML_Rendering.Markdown(rendering: captureRendering) { largeBook }
         Markdown_HTML_Rendering.Markdown._render(view, context: &context)
     }
@@ -153,7 +153,7 @@ struct `Capture vs Pure Action` {
     @Test(.timed(iterations: 5, warmup: 1))
     func `full pipeline - 3 pure + 15 capture - 500 sections`() {
         let state = Ownership.Mutable(HTML.Context())
-        var context = Rendering.Context.html(state: state)
+        var context = Render.Context.html(state: state)
         let view = Markdown_HTML_Rendering.Markdown(rendering: pureRendering) { largeBook }
         Markdown_HTML_Rendering.Markdown._render(view, context: &context)
     }
