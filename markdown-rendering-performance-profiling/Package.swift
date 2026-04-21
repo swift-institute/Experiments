@@ -6,14 +6,14 @@ let package = Package(
     name: "markdown-rendering-performance-profiling",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-foundations/swift-markdown-html-rendering"),
+        .package(path: "../../../swift-foundations/swift-markdown-html-render"),
         .package(path: "../../../swift-foundations/swift-testing"),
     ],
     targets: [
         .testTarget(
             name: "markdown-rendering-performance-profiling",
             dependencies: [
-                .product(name: "Markdown HTML Rendering", package: "swift-markdown-html-rendering"),
+                .product(name: "Markdown HTML Rendering", package: "swift-markdown-html-render"),
                 .product(name: "Testing", package: "swift-testing"),
             ]
         ),
