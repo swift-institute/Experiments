@@ -7,12 +7,17 @@
 //
 // Hypothesis: Minimum ingredients — each one, if removed, makes the crash
 //   disappear:
-//     1. `Base: ~Copyable` on the target type
-//     2. `View<Base>: ~Copyable, ~Escapable` with `@_lifetime(borrow base)
-//        init(_ base: borrowing Base)` declared as `public`
-//     3. The View type declared in a DIFFERENT module from the caller
-//        (single-module reducers compile cleanly)
+//     1. `Target: ~Copyable` — making Target Copyable eliminates the crash
+//     2. `View<Base: ~Copyable>: ~Copyable, ~Escapable` with
+//        `@_lifetime(borrow base) init(_ base: borrowing Base)` declared as
+//        `public`. Making View non-generic with a concrete `borrowing Target`
+//        parameter eliminates the crash. ~Escapable is required — the
+//        compiler rejects @_lifetime on Escapable results
+//     3. BOTH Target and View must be declared in a module separate from
+//        the caller. Moving either type to the caller's module eliminates
+//        the crash
 //     4. The call site wrapped in a non-top-level function body
+//        (top-level code compiles cleanly)
 //     5. The View construction wrapped in an immediately-invoked closure
 //        (IIFE): `_ = { _ = View(target) }()`
 //     6. The `Lifetimes` experimental feature flag (required for
@@ -53,7 +58,17 @@
 //   - Stored properties on Target or View — both types are empty
 //   - Generic nesting (Property<Tag, Base>.View) — reducer is flat
 //   - Async context on the enclosing function
-//   - Value read back through the View
+//   - Value read back through the View — IIFE body reduced to
+//     `_ = View(target)`, no property access needed
+//   - Public `init()` on Target is only needed to construct it; the
+//     struct body can be empty
+//
+// Required-pair notes (ingredients that can't be varied independently):
+//   - `~Escapable` + `@_lifetime`: the compiler rejects `@_lifetime` on
+//     an Escapable result ("invalid lifetime dependence on an Escapable
+//     result"), and it rejects a `~Escapable` init without `@_lifetime`
+//     ("an initializer cannot return a ~Escapable result"). They come
+//     as a pair.
 //
 // REPRODUCTION:
 //   $ cd Experiments/sendnonsendable-iife-borrowing-init-crash
