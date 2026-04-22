@@ -58,6 +58,18 @@
   ],
   "experiments": [
     {
+      "directory": "namespaced-accessors-walkthrough",
+      "category": "API Design Patterns",
+      "purpose": "Companion package to the blog post 'Designing namespaced accessors in Swift' (BLOG-IDEA-061). Five variants walk from a single bespoke proxy struct on a Copyable Stack to a pointer-backed Wrapper.View on a ~Copyable Ring, each variant demonstrating one step in the discovery of the Property<Tag, Base> shape provided by swift-property-primitives.",
+      "date": "2026-04-22",
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
+      "status": "CONFIRMED",
+      "statusDetail": "All five variants build and run on Swift 6.3.1. V1_BespokeProxy demonstrates the five-step _modify dance on a single Copyable proxy. V2_FiveProxies shows the structural duplication across five proxies on the same Stack. V3_Wrapper factors the tag into a generic parameter (method-case extensions only; property-case motivates Property.Typed, out of scope for the walkthrough). V4_NoncopyableFails compiles with the failing accessor commented out; uncommenting reproduces the error that ~Copyable 'self' cannot be partially consumed and reinitialized (the five-step dance requires Copyable storage). V5_View demonstrates Wrapper.View backed by UnsafeMutablePointer yielded from mutating _read / _modify coroutines on the ~Copyable Ring — both accessor forms are required for full call-site mutation semantics. Gotcha surfaced during construction: `extension Wrapper { struct View: ~Copyable, ~Escapable { ... } }` implicitly adds `where Base: Copyable`; the View must be declared inside `extension Wrapper where Base: ~Copyable { ... }` to be usable on ~Copyable bases.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
       "directory": "sendnonsendable-iife-borrowing-init-crash",
       "category": "Swift Language Issues",
       "purpose": "Swift 6.3.1 SendNonSendable SIL pass aborts with signal 6 when a function body wraps the construction of a cross-module `~Copyable, ~Escapable` View (via a `@_lifetime(borrow base) init(_ base: borrowing Base)`) inside an IIFE. Minimal reducer: 10 lines across two modules. Workaround: bind the view at the outer scope — the IIFE is the load-bearing trigger.",
