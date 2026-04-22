@@ -58,6 +58,18 @@
   ],
   "experiments": [
     {
+      "directory": "unapplied-init-literal-inference-footgun",
+      "category": "Swift Language Issues",
+      "purpose": "Domain-free minimal reproducer for the overload-resolution footgun where `(0..<5).map(Target.init)` silently routes through `ExpressibleByIntegerLiteral + Strideable` on an intermediate type to select an unlabeled cross-domain init. Four variants confirm (1) the footgun fires in pure-algebra form, (2) `@_disfavoredOverload` provides no protection, (3) removing `Strideable` breaks the chain, (4) explicit cross-domain invocation produces the same (correct) scaling semantics.",
+      "date": "2026-04-22",
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
+      "status": "CONFIRMED",
+      "statusDetail": "The hazard reproduces with plain structs (no Tagged, no phantom types). Ingredients: (a) intermediate type conforms to ExpressibleByIntegerLiteral, (b) intermediate type conforms to Strideable, (c) target's ONLY single-arg init is unlabeled cross-domain init(_: Intermediate), (d) `.map(Target.init)` call site with a literal Range. Caveat surfaced during construction: labeled inits ARE visible to `.map(Type.init)` function references (labels are part of the init name, not the function-value type), so the footgun requires NO direct (ContextType) -> Target path to exist alongside the cross-domain one.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
       "directory": "namespaced-accessors-walkthrough",
       "category": "API Design Patterns",
       "purpose": "Companion package to the blog post 'Designing namespaced accessors in Swift' (BLOG-IDEA-061). Five variants walk from a single bespoke proxy struct on a Copyable Stack to a pointer-backed Wrapper.View on a ~Copyable Ring, each variant demonstrating one step in the discovery of the Property<Tag, Base> shape provided by swift-property-primitives.",
