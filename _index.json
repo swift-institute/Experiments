@@ -1705,6 +1705,35 @@
       "crossRefs": [
         "Research/docc-search-capabilities-and-merged-site-strategy.md"
       ]
+    },
+    {
+      "directory": "static-stored-property-in-generic-type",
+      "category": "Swift Language Issues",
+      "purpose": "Validate whether Swift 6.3.1 allows `static let` / `static var` stored properties in generic types. swift-ownership-primitives has two workarounds (Ownership.Slot.__OwnershipSlotState and Ownership.Transfer._Box.__OwnershipTransferBoxState) that hoist state-machine constants to module scope. STILL PRESENT — V1 (static let in generic class) produces `error: static stored properties not supported in generic types`. Keep the hoisted enums.",
+      "date": "2026-04-23",
+      "toolchain": "Apple Swift 6.3.1 (swiftlang-6.3.1.1.2)",
+      "status": "STILL PRESENT",
+      "statusDetail": null,
+      "statusRaw": "STILL PRESENT",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-primitives/swift-ownership-primitives/Sources/Ownership Slot Primitives/Ownership.Slot.swift",
+        "swift-primitives/swift-ownership-primitives/Sources/Ownership Transfer Primitives/Ownership.Transfer._Box.swift"
+      ]
+    },
+    {
+      "directory": "unsafe-bitcast-generic-thin-function-pointer",
+      "category": "Swift Language Issues",
+      "purpose": "Validate whether Swift 6.3.1 supports `@convention(thin)` function pointers whose closure body captures a generic parameter (for type-erased destroy functions in Ownership.Transfer.Box.Header). STILL PRESENT — V1 fails at compile-time with `error: INTERNAL ERROR: feature not implemented: nontrivial thin function reference`. V2 (closure-based baseline, current workaround) runs cleanly. Keep the heap-allocating closure per [DOC-045] WORKAROUND note.",
+      "date": "2026-04-23",
+      "toolchain": "Apple Swift 6.3.1 (swiftlang-6.3.1.1.2)",
+      "status": "STILL PRESENT",
+      "statusDetail": null,
+      "statusRaw": "STILL PRESENT",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-primitives/swift-ownership-primitives/Sources/Ownership Transfer Box Primitives/Ownership.Transfer.Box.swift"
+      ]
     }
   ],
   "narrativeSections": [
