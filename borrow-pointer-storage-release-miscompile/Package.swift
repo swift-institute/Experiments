@@ -7,13 +7,25 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "borrow-pointer-storage-release-miscompile",
+            dependencies: ["V10FieldOfSelfLib"],
             path: "Sources",
+            exclude: ["V10FieldOfSelfLib"],
             swiftSettings: [
                 .enableExperimentalFeature("LifetimeDependence"),
                 .enableExperimentalFeature("Lifetimes"),
                 .enableExperimentalFeature("SuppressedAssociatedTypes"),
                 .enableExperimentalFeature("AddressableTypes"),
             ]
-        )
+        ),
+        .target(
+            name: "V10FieldOfSelfLib",
+            path: "Sources/V10FieldOfSelfLib",
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
+                .enableExperimentalFeature("SuppressedAssociatedTypes"),
+                .enableExperimentalFeature("AddressableTypes"),
+            ]
+        ),
     ]
 )

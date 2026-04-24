@@ -79,11 +79,43 @@
 //         and calling the init from a SEPARATE MODULE works. The
 //         cross-module function-call boundary preserves the
 //         `@in_guaranteed` indirect ABI that inlining at `-O`
-//         inlines-away. This reproducer is single-file, so the
-//         cross-module route is not exercised here — any consumer
-//         that needs the borrowing-init pattern must arrange the
-//         non-@inlinable cross-module call themselves.
+//         inlines-away. Verified empirically via swift-property-primitives
+//         tests `borrowing init with let binding` + `borrowing init
+//         supports multiple reads` in release mode, which exercise
+//         `Ownership.Borrow.init(borrowing: ~Copyable Value)` cross-module
+//         and return stable values.
+//
+// UPDATE 2026-04-24 (V10 + V11):
+//
+//         Investigation extended to test the field-of-self shape —
+//         `withUnsafePointer(to: self._storage)` inside an @inlinable
+//         method on a `~Copyable` type, with the pointer returned past
+//         the closure boundary. This mirrors
+//         `Memory.Inline.pointer(at:)` in swift-memory-primitives, which
+//         has ~20 cross-module consumer sites in swift-buffer-primitives
+//         and swift-async-primitives. V10 and V11 targets added via a
+//         separate library target (`V10FieldOfSelfLib`) to exercise the
+//         cross-module path that the single-file V1-V9 cannot.
+//
+//         V10 (field-of-self, @inlinable, cross-module): CRASH (SIGTRAP).
+//         V11 (field-of-self, NON-@inlinable, cross-module): FAIL —
+//         two calls return DIFFERENT stack addresses 8 bytes apart, and
+//         both dereferences return garbage (observed: 1073741824,
+//         8600530656 vs expected 42, 42 on macOS 26 arm64).
+//
+//         CRITICAL IMPLICATION: the non-@inlinable workaround that
+//         rescues the borrowing-parameter shape does NOT rescue the
+//         field-of-self shape. The function-call boundary does not
+//         prevent the compiler from creating per-call borrow-locals for
+//         `self._storage` (~Copyable) and taking `Builtin.addressOfBorrow`
+//         of the local. Memory.Inline.pointer(at:) is therefore
+//         empirically broken in release mode cross-module — existing
+//         tests pass by stale-bits luck, not correctness. See audit
+//         finding #12 in
+//         `swift-institute/Audits/borrow-pointer-storage-release-miscompile.md`.
 // Date: 2026-04-24
+
+import V10FieldOfSelfLib
 
 // MARK: - Shared test value
 
@@ -109,6 +141,54 @@ func check(_ name: String, _ got: (Int, Int), expected: (Int, Int)) {
     let verdict = pass ? "PASS" : "FAIL"
     if !pass { failures += 1 }
     print("\(name): reads=(\(g0), \(g1)) expected=(\(e0), \(e1)) verdict=\(verdict)")
+}
+
+// MARK: - V10: Field-of-self + @inlinable + cross-module
+//
+// Hypothesis: The V1 bug is specific to `withUnsafePointer(to: borrowing_param)`.
+//             If the target is a stored field of `self` (the Memory.Inline shape
+//             in swift-memory-primitives), the @in_guaranteed ABI of self is
+//             preserved at the cross-module boundary because self's layout
+//             is compile-time-fixed. Field-of-self may be STRUCTURALLY SAFE
+//             where borrowing-param is NOT.
+//
+// Test: library target `V10FieldOfSelfLib` exposes `FieldContainer` — a
+//       ~Copyable struct with a stored ~Copyable `Cell` field and an
+//       @inlinable `pointer()` method that does
+//       `withUnsafePointer(to: _storage)` and returns the result.
+//       main.swift (this file) is a separate module and calls `.pointer()`
+//       from let-bound container scope with multi-read — the shape existing
+//       test suites in swift-buffer-primitives / swift-async-primitives do
+//       not exercise.
+//
+// V10 runs FIRST because downstream variants (V9, V6) crash and prevent
+// later code from executing. Outcome informs whether Memory.Inline.pointer(at:)
+// — the ~20 cross-module call sites in swift-buffer-primitives / swift-async-
+// primitives — needs the same non-@inlinable treatment or is structurally safe.
+//
+// Expected if safe: (42, 42). Expected if bug extends: (0, 0) or trap.
+
+print("--- starting V11 ---")
+do {
+    // V11: same shape as V10 but non-@inlinable on the library side.
+    // Empirically FAILS — two calls return different stack addresses
+    // (per-call borrow-local spill slots) and both dereferences return
+    // garbage. Non-@inlinable does NOT rescue the field-of-self shape.
+    let container = FieldContainer(42)
+    let ptr1 = unsafe container.pointerNonInlinable()
+    let a = unsafe ptr1.pointee
+    let ptr2 = unsafe container.pointerNonInlinable()
+    let b = unsafe ptr2.pointee
+    print("  V11: ptr1 == ptr2: \(ptr1 == ptr2)")
+    check("V11 (field-of-self, non-@inlinable, cross-module)", (a, b), expected: (42, 42))
+}
+
+print("--- starting V10 ---")
+do {
+    let container = FieldContainer(42)
+    let a = unsafe container.pointer().pointee
+    let b = unsafe container.pointer().pointee
+    check("V10 (field-of-self, @inlinable, cross-module)", (a, b), expected: (42, 42))
 }
 
 // MARK: - V5: Heap-owning class storage (fix hypothesis for Copyable Value)
@@ -532,4 +612,4 @@ do {
 
 print("")
 print("===== Summary =====")
-print("failures: \(failures)/5 variants")
+print("failures: \(failures)/10 variants")
