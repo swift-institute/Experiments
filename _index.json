@@ -76,7 +76,7 @@
       "date": "2026-04-22",
       "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
       "status": "CONFIRMED",
-      "statusDetail": "All five variants build and run on Swift 6.3.1. V1_BespokeProxy demonstrates the five-step _modify dance on a single Copyable proxy. V2_FiveProxies shows the structural duplication across five proxies on the same Stack. V3_Wrapper factors the tag into a generic parameter (method-case extensions only; property-case motivates Property.Typed, out of scope for the walkthrough). V4_NoncopyableFails compiles with the failing accessor commented out; uncommenting reproduces the error that ~Copyable 'self' cannot be partially consumed and reinitialized (the five-step dance requires Copyable storage). V5_View demonstrates Wrapper.View backed by UnsafeMutablePointer yielded from mutating _read / _modify coroutines on the ~Copyable Ring — both accessor forms are required for full call-site mutation semantics. Gotcha surfaced during construction: `extension Wrapper { struct View: ~Copyable, ~Escapable { ... } }` implicitly adds `where Base: Copyable`; the View must be declared inside `extension Wrapper where Base: ~Copyable { ... }` to be usable on ~Copyable bases.",
+      "statusDetail": "All five variants build and run on Swift 6.3.1. V1_BespokeProxy demonstrates the five-step _modify dance on a single Copyable proxy. V2_FiveProxies shows the structural duplication across five proxies on the same Stack. V3_Wrapper factors the tag into a generic parameter (method-case extensions only; property-case motivates Property.Typed, out of scope for the walkthrough). V4_NoncopyableFails compiles with the failing accessor commented out; uncommenting reproduces the error that ~Copyable 'self' cannot be partially consumed and reinitialized (the five-step dance requires Copyable storage). V5_View demonstrates Wrapper.View backed by UnsafeMutablePointer yielded from mutating _read / _modify coroutines on the ~Copyable Ring \u2014 both accessor forms are required for full call-site mutation semantics. Gotcha surfaced during construction: `extension Wrapper { struct View: ~Copyable, ~Escapable { ... } }` implicitly adds `where Base: Copyable`; the View must be declared inside `extension Wrapper where Base: ~Copyable { ... }` to be usable on ~Copyable bases.",
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
       "crossRefs": []
@@ -84,7 +84,7 @@
     {
       "directory": "sendnonsendable-iife-borrowing-init-crash",
       "category": "Swift Language Issues",
-      "purpose": "Swift 6.3.1 SendNonSendable SIL pass aborts with signal 6 when a function body wraps the construction of a cross-module `~Copyable, ~Escapable` View (via a `@_lifetime(borrow base) init(_ base: borrowing Base)`) inside an IIFE. Minimal reducer: 10 lines across two modules. Workaround: bind the view at the outer scope — the IIFE is the load-bearing trigger.",
+      "purpose": "Swift 6.3.1 SendNonSendable SIL pass aborts with signal 6 when a function body wraps the construction of a cross-module `~Copyable, ~Escapable` View (via a `@_lifetime(borrow base) init(_ base: borrowing Base)`) inside an IIFE. Minimal reducer: 10 lines across two modules. Workaround: bind the view at the outer scope \u2014 the IIFE is the load-bearing trigger.",
       "date": "2026-04-21",
       "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
       "status": "CONFIRMED",
@@ -96,11 +96,11 @@
     {
       "directory": "docc-tutorial-host-necessity",
       "category": "Architecture Patterns",
-      "purpose": "Does a DocC .tutorial need a separate SwiftPM host target for its @Code source files? REFUTED — H2 confirmed: catalog-resident .docc/Resources/*.swift is sufficient. H3 also confirmed: DocC renders step source as text, does not compile it (invalid Swift in a step file still builds the doc archive).",
+      "purpose": "Does a DocC .tutorial need a separate SwiftPM host target for its @Code source files? REFUTED \u2014 H2 confirmed: catalog-resident .docc/Resources/*.swift is sufficient. H3 also confirmed: DocC renders step source as text, does not compile it (invalid Swift in a step file still builds the doc archive).",
       "date": "2026-04-21",
       "toolchain": "Swift 6.3.1 (Xcode 26.4.1)",
       "status": "CONFIRMED",
-      "statusDetail": "H2 + H3 confirmed. Corollary: @Tutorial files require a @Tutorials TOC file in the same catalog — without it docbuild warns and omits the tutorial.",
+      "statusDetail": "H2 + H3 confirmed. Corollary: @Tutorial files require a @Tutorials TOC file in the same catalog \u2014 without it docbuild warns and omits the tutorial.",
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
       "crossRefs": []
@@ -149,7 +149,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -161,7 +161,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -173,7 +173,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -185,7 +185,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -197,7 +197,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -209,7 +209,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -221,7 +221,7 @@
       "toolchain": "Swift 6.0",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -233,7 +233,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-constraint-behavior",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-constraint-behavior",
       "supersededBy": "noncopyable-constraint-behavior",
       "crossRefs": []
     },
@@ -336,7 +336,7 @@
     {
       "directory": "tagged-string-literal",
       "category": "Swift Language Issues",
-      "purpose": "Literally Tagged\\<Domain, StringStorage\\> (Option D'): deinit through Tagged, ~Escapable View, @_lifetime, Span, Sendable inheritance, conditional namespaces, callAsFunction, protocol Domain, .retag() domain migration, .map() value transformation, typealiases. 10 variants all confirmed (debug + release). V6 release needs @_optimize(none) workaround for CopyPropagation #87029. Finding: rawValue _read coroutine blocks @_lifetime propagation — must access _storage directly.",
+      "purpose": "Literally Tagged\\<Domain, StringStorage\\> (Option D'): deinit through Tagged, ~Escapable View, @_lifetime, Span, Sendable inheritance, conditional namespaces, callAsFunction, protocol Domain, .retag() domain migration, .map() value transformation, typealiases. 10 variants all confirmed (debug + release). V6 release needs @_optimize(none) workaround for CopyPropagation #87029. Finding: rawValue _read coroutine blocks @_lifetime propagation \u2014 must access _storage directly.",
       "date": "2026-02-25",
       "toolchain": "Swift 6.2.3",
       "status": "CONFIRMED",
@@ -420,7 +420,7 @@
     {
       "directory": "tagged-string-crossmodule",
       "category": "Swift Language Issues",
-      "purpose": "Cross-module Tagged\\<Tag, StringStorage\\> (Option D'): 3 modules (TaggedLib/StringLib/Consumer). 9/11 confirmed, 2 falsified. Critical finding 1: @usableFromInline internal does NOT enable cross-module source access — must use package access. Critical finding 2: @_lifetime propagation through package _storage works cross-module for ~Escapable views. Critical finding 3: generic arity (String\\<Tag\\> vs String) does NOT prevent shadowing — Swift.String qualification still required.",
+      "purpose": "Cross-module Tagged\\<Tag, StringStorage\\> (Option D'): 3 modules (TaggedLib/StringLib/Consumer). 9/11 confirmed, 2 falsified. Critical finding 1: @usableFromInline internal does NOT enable cross-module source access \u2014 must use package access. Critical finding 2: @_lifetime propagation through package _storage works cross-module for ~Escapable views. Critical finding 3: generic arity (String\\<Tag\\> vs String) does NOT prevent shadowing \u2014 Swift.String qualification still required.",
       "date": "2026-02-27",
       "toolchain": "Swift 6.2.3",
       "status": "PARTIAL",
@@ -444,7 +444,7 @@
     {
       "directory": "tagged-two-level-lifetime",
       "category": "Swift Language Issues",
-      "purpose": "Two-level @_lifetime chain through Tagged\\<Domain, ConcreteType\\>: 6 variants testing chained Span (V1/V2), ~Escapable View (V3), direct Span (V4), domain-specific forwarding (V5), type distinctness (V6). Validates D' architecture: concrete types (String, Path) as RawValue, domain (Kernel) as Tag. Kind × Domain = two orthogonal axes. ALL 6 CONFIRMED (debug + release). Prerequisite: stored property rawValue from tagged-escapable-accessor.",
+      "purpose": "Two-level @_lifetime chain through Tagged\\<Domain, ConcreteType\\>: 6 variants testing chained Span (V1/V2), ~Escapable View (V3), direct Span (V4), domain-specific forwarding (V5), type distinctness (V6). Validates D' architecture: concrete types (String, Path) as RawValue, domain (Kernel) as Tag. Kind \u00d7 Domain = two orthogonal axes. ALL 6 CONFIRMED (debug + release). Prerequisite: stored property rawValue from tagged-escapable-accessor.",
       "date": "2026-02-27",
       "toolchain": "Swift 6.2.3",
       "status": "CONFIRMED",
@@ -528,7 +528,7 @@
     {
       "directory": "set-protocol-noncopyable-conformance",
       "category": "Swift Language Issues",
-      "purpose": "`where Element: ~Copyable` in conformance clause breaks witness matching. Closures consume captured ~Copyable values — no borrowing closure capture. `hashValue` computed property not found on `T: HashProto & ~Copyable`. 12 variants.",
+      "purpose": "`where Element: ~Copyable` in conformance clause breaks witness matching. Closures consume captured ~Copyable values \u2014 no borrowing closure capture. `hashValue` computed property not found on `T: HashProto & ~Copyable`. 12 variants.",
       "date": "2026-03-02",
       "toolchain": "Swift 6.2.4",
       "status": "CONFIRMED",
@@ -566,7 +566,7 @@
       "category": "Swift Language Issues",
       "purpose": "**Moved to** `swift-buffer-primitives/Experiments/noncopyable-nested-deinit-chain/` (its natural home alongside the other @_rawLayout experiments).",
       "date": "2026-03-21",
-      "toolchain": "—",
+      "toolchain": "\u2014",
       "status": "MOVED",
       "statusDetail": null,
       "statusRaw": "MOVED",
@@ -576,7 +576,7 @@
     {
       "directory": "member-import-visibility-body-conflict",
       "category": "Swift Language Issues",
-      "purpose": "MemberImportVisibility + stored `body` property: does `public import SwiftUI` in same file cause SwiftUI.View.Body collision? 10 variants. V1–V5 rule out import-level explanations (REFUTED); V6 establishes the rename mechanism with `Content` (CONFIRMED); V7 (`@retroactive`) and V8 (SE-0491 module selectors) are REFUTED; V9 (wrapper escape hatch) and V10 (`Render.Body` + `associatedtype Rendered`, the blog-recommended shape) are CONFIRMED.",
+      "purpose": "MemberImportVisibility + stored `body` property: does `public import SwiftUI` in same file cause SwiftUI.View.Body collision? 10 variants. V1\u2013V5 rule out import-level explanations (REFUTED); V6 establishes the rename mechanism with `Content` (CONFIRMED); V7 (`@retroactive`) and V8 (SE-0491 module selectors) are REFUTED; V9 (wrapper escape hatch) and V10 (`Render.Body` + `associatedtype Rendered`, the blog-recommended shape) are CONFIRMED.",
       "date": "2026-03-13 (V10 added 2026-04-15)",
       "toolchain": "Swift 6.3",
       "status": "CONFIRMED",
@@ -648,7 +648,7 @@
     {
       "directory": "silgen-sendable-typed-throws-closure-cast",
       "category": "Swift Language Issues",
-      "purpose": "SILGen signal-5 crash (createInputFunctionArgument / LoweredParamGenerator::claimNext) when a typed-throws `@Sendable` closure literal is passed — via an inline `as @Sendable (In) throws(E) -> Out` conversion — into a generic `<V: Sendable>` parameter. Crash is at closure prolog emission lowering the Int parameter under the inline as-conversion. Surfaced during the MOD-017 batch follow-up for swift-machine-primitives. Workaround: introduce a concrete-typed overload of the callee so the closure flows through a non-generic function-typed parameter rather than a generic Sendable substitution with an inline cast.",
+      "purpose": "SILGen signal-5 crash (createInputFunctionArgument / LoweredParamGenerator::claimNext) when a typed-throws `@Sendable` closure literal is passed \u2014 via an inline `as @Sendable (In) throws(E) -> Out` conversion \u2014 into a generic `<V: Sendable>` parameter. Crash is at closure prolog emission lowering the Int parameter under the inline as-conversion. Surfaced during the MOD-017 batch follow-up for swift-machine-primitives. Workaround: introduce a concrete-typed overload of the callee so the closure flows through a non-generic function-typed parameter rather than a generic Sendable substitution with an inline cast.",
       "date": "2026-04-21",
       "toolchain": "Swift 6.3.1",
       "status": "CONFIRMED",
@@ -716,7 +716,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -776,7 +776,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → noncopyable-access-patterns",
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns",
       "supersededBy": "noncopyable-access-patterns",
       "crossRefs": []
     },
@@ -896,7 +896,7 @@
       "toolchain": "Swift 6.2.4 / 6.3 / 6.4-dev",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -987,7 +987,7 @@
     {
       "directory": "witness-noncopyable-default-forwarding",
       "category": "Witness Infrastructure",
-      "purpose": "Root cause analysis of protocol property forwarding constraint for ~Copyable. Protocol witness table dispatches properties through `_read` coroutines (borrow); functions through direct return (owned). 15 variants isolate exact boundary. Solutions A–D evaluated; Solution A (constrain to Copyable) recommended. Not a compiler bug — semantic consequence of property dispatch model.",
+      "purpose": "Root cause analysis of protocol property forwarding constraint for ~Copyable. Protocol witness table dispatches properties through `_read` coroutines (borrow); functions through direct return (owned). 15 variants isolate exact boundary. Solutions A\u2013D evaluated; Solution A (constrain to Copyable) recommended. Not a compiler bug \u2014 semantic consequence of property dispatch model.",
       "date": "2026-02-24",
       "toolchain": "Swift 6.2.3",
       "status": "CONFIRMED",
@@ -999,7 +999,7 @@
     {
       "directory": "protocol-diamond-noncopyable-refinement",
       "category": "Witness Infrastructure",
-      "purpose": "Protocol diamond with shared `~Copyable & Sendable` associated type: `WitnessKey: DependencyKey, WitnessKeyTest`. 8 variants: diamond compiles, `= Self` default propagates, default chain `testValue → previewValue → liveValue` resolves correctly, `~Copyable` conformers work, IS-A resolution through `K: DependencyKey` subscript works. Validates Option D of `dependency-witness-store-coherence.md`.",
+      "purpose": "Protocol diamond with shared `~Copyable & Sendable` associated type: `WitnessKey: DependencyKey, WitnessKeyTest`. 8 variants: diamond compiles, `= Self` default propagates, default chain `testValue \u2192 previewValue \u2192 liveValue` resolves correctly, `~Copyable` conformers work, IS-A resolution through `K: DependencyKey` subscript works. Validates Option D of `dependency-witness-store-coherence.md`.",
       "date": "2026-03-03",
       "toolchain": "Swift 6.2.4",
       "status": "CONFIRMED",
@@ -1035,7 +1035,7 @@
     {
       "directory": "nonsending-closure-type-constraints",
       "category": "Concurrency & Isolation",
-      "purpose": "Where can nonisolated(nonsending) be applied? Async closures in structs (B1a) and actors (B1b): yes. Sync function types (B1d): no — compiler rejects. Key discovery: nonsending ONLY applies to async function types.",
+      "purpose": "Where can nonisolated(nonsending) be applied? Async closures in structs (B1a) and actors (B1b): yes. Sync function types (B1d): no \u2014 compiler rejects. Key discovery: nonsending ONLY applies to async function types.",
       "date": "2026-02-25",
       "toolchain": "Swift 6.2.3",
       "status": "CONFIRMED",
@@ -1059,24 +1059,24 @@
     {
       "directory": "nonsending-clock-feasibility",
       "category": "Concurrency & Isolation",
-      "purpose": "Can a NonsendingClock protocol refining Clock be defined? Yes — ImmediateClock with nonisolated(nonsending) sleep preserves MainActor with zero thread hop (B5). Foundation for deterministic temporal testing.",
+      "purpose": "Can a NonsendingClock protocol refining Clock be defined? Yes \u2014 ImmediateClock with nonisolated(nonsending) sleep preserves MainActor with zero thread hop (B5). Foundation for deterministic temporal testing.",
       "date": "2026-02-25",
       "toolchain": "Swift 6.2.3",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonsending-dispatch",
+      "statusRaw": "SUPERSEDED \u2192 nonsending-dispatch",
       "supersededBy": "nonsending-dispatch",
       "crossRefs": []
     },
     {
       "directory": "nonsending-sendable-iterator",
       "category": "Concurrency & Isolation",
-      "purpose": "Test nonisolated(nonsending) @Sendable stored closure isolation. Finding: @Sendable wins — isolation broken on stored closures. nonisolated(nonsending) without @Sendable preserves.",
+      "purpose": "Test nonisolated(nonsending) @Sendable stored closure isolation. Finding: @Sendable wins \u2014 isolation broken on stored closures. nonisolated(nonsending) without @Sendable preserves.",
       "date": "2026-02-25",
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonsending-dispatch",
+      "statusRaw": "SUPERSEDED \u2192 nonsending-dispatch",
       "supersededBy": "nonsending-dispatch",
       "crossRefs": []
     },
@@ -1088,7 +1088,7 @@
       "toolchain": "Swift 6.2.3",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonsending-dispatch",
+      "statusRaw": "SUPERSEDED \u2192 nonsending-dispatch",
       "supersededBy": "nonsending-dispatch",
       "crossRefs": []
     },
@@ -1107,7 +1107,7 @@
     {
       "directory": "callback-isolated-prototype",
       "category": "Concurrency & Isolation",
-      "purpose": "Validate nonsending callback prototype: 5 approaches (A–E), 14 tests, 6 discoveries. Approach C (isolated parameter) and D (explicit nonsending) preserve map/flatMap isolation. Issue #83812 CONFIRMED: stored closure-in-closure loses isolation; method wrapper workaround. Non-Sendable Value works. Replacement feasibility confirmed (T11).",
+      "purpose": "Validate nonsending callback prototype: 5 approaches (A\u2013E), 14 tests, 6 discoveries. Approach C (isolated parameter) and D (explicit nonsending) preserve map/flatMap isolation. Issue #83812 CONFIRMED: stored closure-in-closure loses isolation; method wrapper workaround. Non-Sendable Value works. Replacement feasibility confirmed (T11).",
       "date": "2026-02-25",
       "toolchain": "Swift 6.2.3",
       "status": "CONFIRMED",
@@ -1136,7 +1136,7 @@
       "toolchain": "Swift 6.2",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonsending-dispatch",
+      "statusRaw": "SUPERSEDED \u2192 nonsending-dispatch",
       "supersededBy": "nonsending-dispatch",
       "crossRefs": []
     },
@@ -1167,7 +1167,7 @@
     {
       "directory": "noncopyable-operation-closure-pipeline",
       "category": "Concurrency & Isolation",
-      "purpose": "A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure → box → Operation → Lane → Job → execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 — requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work.",
+      "purpose": "A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure \u2192 box \u2192 Operation \u2192 Lane \u2192 Job \u2192 execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 \u2014 requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work.",
       "date": "2026-04-03",
       "toolchain": "Swift 6.3",
       "status": "CONFIRMED",
@@ -1280,14 +1280,14 @@
       "toolchain": "Swift 6.2.3",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
     {
       "directory": "resumption-nonescapable-noncopyable",
       "category": "~Escapable & Ownership",
-      "purpose": "Validate Resumption as ~Copyable + ~Escapable: 7 variants (struct, Optional, consuming, drain, let-bind, closure param, optional binding). All PASS in isolation. **Production deployment REVERTED** — cache/pool need `[Resumption]` (heap-backed, requires Escapable).",
+      "purpose": "Validate Resumption as ~Copyable + ~Escapable: 7 variants (struct, Optional, consuming, drain, let-bind, closure param, optional binding). All PASS in isolation. **Production deployment REVERTED** \u2014 cache/pool need `[Resumption]` (heap-backed, requires Escapable).",
       "date": "2026-03-02",
       "toolchain": "Swift 6.2.4",
       "status": "CONFIRMED",
@@ -1316,7 +1316,7 @@
       "toolchain": "Swift 6.2.4",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -1328,7 +1328,7 @@
       "toolchain": "Swift 6.2.4",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -1340,7 +1340,7 @@
       "toolchain": "Swift 6.2.3",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -1364,7 +1364,7 @@
       "toolchain": "Swift 6.3",
       "status": "SUPERSEDED",
       "statusDetail": null,
-      "statusRaw": "SUPERSEDED → nonescapable-patterns",
+      "statusRaw": "SUPERSEDED \u2192 nonescapable-patterns",
       "supersededBy": "nonescapable-patterns",
       "crossRefs": []
     },
@@ -1407,7 +1407,7 @@
     {
       "directory": "escapable-slot-inlinable-sqe",
       "category": "~Escapable & Ownership",
-      "purpose": "~Escapable Slot + `@inlinable` mutating entry methods: the io_uring SQE pointer-elimination architecture. ~Copyable ~Escapable slot types with `nonmutating _modify` support @inlinable mutating methods. V1/V2/V4–V6 confirmed; V3 refuted.",
+      "purpose": "~Escapable Slot + `@inlinable` mutating entry methods: the io_uring SQE pointer-elimination architecture. ~Copyable ~Escapable slot types with `nonmutating _modify` support @inlinable mutating methods. V1/V2/V4\u2013V6 confirmed; V3 refuted.",
       "date": "2026-04-14",
       "toolchain": "Swift 6.3",
       "status": "CONFIRMED",
@@ -1419,7 +1419,7 @@
     {
       "directory": "atexit-swiftsyntax-rewrite",
       "category": "Test Framework Integration",
-      "purpose": "SwiftSyntax parsing, SyntaxRewriter, and atomic file write inside atexit handler. 4 variants: file I/O (V1), parse (V2), rewrite \"hello\"→\"goodbye\" (V3), LIFO ordering (V4). Validates Option R1 from expectation-failure-bridge research.",
+      "purpose": "SwiftSyntax parsing, SyntaxRewriter, and atomic file write inside atexit handler. 4 variants: file I/O (V1), parse (V2), rewrite \"hello\"\u2192\"goodbye\" (V3), LIFO ordering (V4). Validates Option R1 from expectation-failure-bridge research.",
       "date": "2026-03-03",
       "toolchain": "Swift 6.2.4",
       "status": "CONFIRMED",
@@ -1455,7 +1455,7 @@
     {
       "directory": "dependency-scope-writeback",
       "category": "Test Framework Integration",
-      "purpose": "Verify Dependency.Scope mutability from within scoped operation. Direct value mutation impossible (struct copy). Reference type (class) injected via Dependency.Scope IS visible after mutation — works across await, nested scopes. Full benchmark pattern (scope provider injects Box, measure {} writes, provider reads back) confirmed. 6 variants all pass.",
+      "purpose": "Verify Dependency.Scope mutability from within scoped operation. Direct value mutation impossible (struct copy). Reference type (class) injected via Dependency.Scope IS visible after mutation \u2014 works across await, nested scopes. Full benchmark pattern (scope provider injects Box, measure {} writes, provider reads back) confirmed. 6 variants all pass.",
       "date": "2026-03-10",
       "toolchain": "Swift 6.2",
       "status": "CONFIRMED",
@@ -1527,7 +1527,7 @@
     {
       "directory": "implicit-graph-diff-benchmark",
       "category": "Architecture Patterns",
-      "purpose": "0-1 BFS on implicit edit graph vs Myers O(ND) for sequence diff. BFS 10-110x slower with O(N*M) space vs O(D²). Graph-primitives cannot subsume specialized Myers.",
+      "purpose": "0-1 BFS on implicit edit graph vs Myers O(ND) for sequence diff. BFS 10-110x slower with O(N*M) space vs O(D\u00b2). Graph-primitives cannot subsume specialized Myers.",
       "date": "2026-02-27",
       "toolchain": "Swift 6.2.3",
       "status": "REFUTED",
@@ -1539,7 +1539,7 @@
     {
       "directory": "rendering-context-protocol-vs-witness",
       "category": "Architecture Patterns",
-      "purpose": "Protocol vs witness vs action vs existential dispatch for Rendering.Context. V2 Witness ≈ V1 Protocol (0.99–1.04x release). Action 1.20–1.36x. AnyView 1.03–1.07x. Decision: hybrid (protocol + Action enum).",
+      "purpose": "Protocol vs witness vs action vs existential dispatch for Rendering.Context. V2 Witness \u2248 V1 Protocol (0.99\u20131.04x release). Action 1.20\u20131.36x. AnyView 1.03\u20131.07x. Decision: hybrid (protocol + Action enum).",
       "date": "2026-03-14",
       "toolchain": "Swift 6.2.4",
       "status": "CONFIRMED",
@@ -1563,7 +1563,7 @@
     {
       "directory": "markdown-rendering-performance-profiling",
       "category": "Architecture Patterns",
-      "purpose": "Capture-based vs pure action markdown rendering. Per-element: Paragraph 17.6x, InlineCode 7.0x, ListItem 36.4x. Full pipeline: 3 pure elements → 9% improvement. Children replay amplification dominates — incremental conversion yields diminishing returns. All-or-nothing conversion recommended.",
+      "purpose": "Capture-based vs pure action markdown rendering. Per-element: Paragraph 17.6x, InlineCode 7.0x, ListItem 36.4x. Full pipeline: 3 pure elements \u2192 9% improvement. Children replay amplification dominates \u2014 incremental conversion yields diminishing returns. All-or-nothing conversion recommended.",
       "date": "2026-03-15",
       "toolchain": "Swift 6.2",
       "status": "CONFIRMED",
@@ -1580,7 +1580,7 @@
       "toolchain": "Swift 6.2",
       "status": "DEFERRED",
       "statusDetail": "awaiting pool design completion",
-      "statusRaw": "DEFERRED — awaiting pool design completion",
+      "statusRaw": "DEFERRED \u2014 awaiting pool design completion",
       "supersededBy": null,
       "crossRefs": []
     },
@@ -1628,7 +1628,7 @@
       "toolchain": "Swift 6.2.4",
       "status": "DEFERRED",
       "statusDetail": "awaiting iterative-tuple-rendering.md research",
-      "statusRaw": "DEFERRED — awaiting iterative-tuple-rendering.md research",
+      "statusRaw": "DEFERRED \u2014 awaiting iterative-tuple-rendering.md research",
       "supersededBy": null,
       "crossRefs": []
     },
@@ -1659,7 +1659,7 @@
     {
       "directory": "~~predictable-memopt-destroy-value-source~~",
       "category": "Architecture Patterns",
-      "purpose": "Root-cause investigation of #88022 (spurious `destroy_value` in CopyPropagation). Documentation-only, deleted — #88022 fixed in Swift 6.3.",
+      "purpose": "Root-cause investigation of #88022 (spurious `destroy_value` in CopyPropagation). Documentation-only, deleted \u2014 #88022 fixed in Swift 6.3.",
       "date": "2026-03-19",
       "toolchain": "Swift 6.2.4",
       "status": "SUPERSEDED",
@@ -1709,7 +1709,7 @@
     {
       "directory": "static-stored-property-in-generic-type",
       "category": "Swift Language Issues",
-      "purpose": "Validate whether Swift 6.3.1 allows `static let` / `static var` stored properties in generic types. swift-ownership-primitives has two workarounds (Ownership.Slot.__OwnershipSlotState and Ownership.Transfer._Box.__OwnershipTransferBoxState) that hoist state-machine constants to module scope. STILL PRESENT — V1 (static let in generic class) produces `error: static stored properties not supported in generic types`. Keep the hoisted enums.",
+      "purpose": "Validate whether Swift 6.3.1 allows `static let` / `static var` stored properties in generic types. swift-ownership-primitives has two workarounds (Ownership.Slot.__OwnershipSlotState and Ownership.Transfer._Box.__OwnershipTransferBoxState) that hoist state-machine constants to module scope. STILL PRESENT \u2014 V1 (static let in generic class) produces `error: static stored properties not supported in generic types`. Keep the hoisted enums.",
       "date": "2026-04-23",
       "toolchain": "Apple Swift 6.3.1 (swiftlang-6.3.1.1.2)",
       "status": "STILL PRESENT",
@@ -1724,7 +1724,7 @@
     {
       "directory": "unsafe-bitcast-generic-thin-function-pointer",
       "category": "Swift Language Issues",
-      "purpose": "Validate whether Swift 6.3.1 supports `@convention(thin)` function pointers whose closure body captures a generic parameter (for type-erased destroy functions in Ownership.Transfer.Box.Header). STILL PRESENT — V1 fails at compile-time with `error: INTERNAL ERROR: feature not implemented: nontrivial thin function reference`. V2 (closure-based baseline, current workaround) runs cleanly. Keep the heap-allocating closure per [DOC-045] WORKAROUND note.",
+      "purpose": "Validate whether Swift 6.3.1 supports `@convention(thin)` function pointers whose closure body captures a generic parameter (for type-erased destroy functions in Ownership.Transfer.Box.Header). STILL PRESENT \u2014 V1 fails at compile-time with `error: INTERNAL ERROR: feature not implemented: nontrivial thin function reference`. V2 (closure-based baseline, current workaround) runs cleanly. Keep the heap-allocating closure per [DOC-045] WORKAROUND note.",
       "date": "2026-04-23",
       "toolchain": "Apple Swift 6.3.1 (swiftlang-6.3.1.1.2)",
       "status": "STILL PRESENT",
@@ -1734,18 +1734,438 @@
       "crossRefs": [
         "swift-primitives/swift-ownership-primitives/Sources/Ownership Transfer Box Primitives/Ownership.Transfer.Box.swift"
       ]
+    },
+    {
+      "directory": "borrowing-foreach-view-read",
+      "category": "~Escapable & Ownership",
+      "purpose": "Borrowing forEach view read pattern for ~Copyable",
+      "date": "",
+      "toolchain": "",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns (swift-institute)",
+      "supersededBy": "noncopyable-access-patterns (swift-institute)",
+      "crossRefs": []
+    },
+    {
+      "directory": "bridge-noncopyable-ownership",
+      "category": "~Escapable & Ownership",
+      "purpose": "Mutex extensions for ~Copyable value transfer; Bridge.push() simplification; UnsafeContinuation constraint; Element?? vs _Take enum",
+      "date": "2026-03-31",
+      "toolchain": "Swift 6.3",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 ownership-transfer-patterns",
+      "supersededBy": "ownership-transfer-patterns",
+      "crossRefs": []
+    },
+    {
+      "directory": "checkpoint-protocol-test",
+      "category": "API Design Patterns",
+      "purpose": "Refactor Input.Checkpoint to reuse Index primitives",
+      "date": "2026-01-21",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "consuming-iterator-pattern",
+      "category": "~Escapable & Ownership",
+      "purpose": "ConsumingIterator pattern for ~Copyable containers",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "copyable-overload-resolution",
+      "category": "Swift Language Issues",
+      "purpose": "Copyable overload cannot call ~Copyable same-name method; _ prefix or static methods required",
+      "date": "2026-02-12",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "finite-collection-extraction",
+      "category": "API Design Patterns",
+      "purpose": "Cross-module CaseIterable, Collection, witness matching for finite-collection join-point extraction",
+      "date": "2026-02-10",
+      "toolchain": "Swift 6.2.3",
+      "status": "CONFIRMED",
+      "statusDetail": "/ NOT_PURSUED",
+      "statusRaw": "CONFIRMED/NOT_PURSUED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "foreach-consuming-accessor",
+      "category": "~Escapable & Ownership",
+      "purpose": ".forEach.consuming accessor pattern",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.2",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns (swift-institute)",
+      "supersededBy": "noncopyable-access-patterns (swift-institute)",
+      "crossRefs": []
+    },
+    {
+      "directory": "generic-vector-bit-substrate",
+      "category": "Architecture Patterns",
+      "purpose": "Can generic Vector serve as Bit.Vector substrate?",
+      "date": "2026-02-04",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "member-import-visibility-stdlib-subscript",
+      "category": "Name Resolution and Imports",
+      "purpose": "Generic subscript label==param name compiler bug; Ordinal subscripts dead infrastructure",
+      "date": "2026-02-10",
+      "toolchain": "Swift 6.2.3",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "mutex-coroutine-rawlayout",
+      "category": "Concurrency & Isolation",
+      "purpose": "Struct Mutex with @_rawLayout, let binding, nonmutating _modify, zero heap. Parity with Synchronization.Mutex plus coroutine accessor. 6/6 CONFIRMED.",
+      "date": "2026-03-31",
+      "toolchain": "Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "mutex-coroutine-realistic",
+      "category": "Concurrency & Isolation",
+      "purpose": "Production-viable coroutine Mutex: real os_unfair_lock, ~Escapable view, consuming in/out, 1000-task concurrency, withLock coexistence, action enum dispatch. 8/8 CONFIRMED.",
+      "date": "2026-03-31",
+      "toolchain": "Swift 6.3",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 ownership-transfer-patterns",
+      "supersededBy": "ownership-transfer-patterns",
+      "crossRefs": []
+    },
+    {
+      "directory": "mutex-escapable-accessor",
+      "category": "~Escapable & Ownership",
+      "purpose": "~Escapable Mutex accessor: direct property access eliminates closures/Optional/.take()!. Works with custom Mutex (V1-V5 CONFIRMED). Cannot compose with Synchronization.Mutex (V4 REFUTED \u2014 yield not in closures).",
+      "date": "2026-03-31",
+      "toolchain": "Swift 6.3",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 ownership-transfer-patterns",
+      "supersededBy": "ownership-transfer-patterns",
+      "crossRefs": []
+    },
+    {
+      "directory": "nested-type-noncopyable-pattern",
+      "category": "~Escapable & Ownership",
+      "purpose": "Nested types MUST be in enum body for ~Copyable",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.0",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "noncopyable-consuming-chain-cross-module",
+      "category": "~Escapable & Ownership",
+      "purpose": "Cross-module consuming chain for ~Copyable",
+      "date": "",
+      "toolchain": "",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns (swift-institute)",
+      "supersededBy": "noncopyable-access-patterns (swift-institute)",
+      "crossRefs": []
+    },
+    {
+      "directory": "noncopyable-consumption-enforcement",
+      "category": "~Escapable & Ownership",
+      "purpose": "~Copyable consumption enforcement patterns",
+      "date": "",
+      "toolchain": "",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns (swift-institute)",
+      "supersededBy": "noncopyable-access-patterns (swift-institute)",
+      "crossRefs": []
+    },
+    {
+      "directory": "noncopyable-peek-escapable",
+      "category": "~Escapable & Ownership",
+      "purpose": "Borrowed<T: ~Copyable>: ~Escapable enables non-closure var peek: Borrowed<Element>? for ~Copyable deque elements. Optional<Copyable & ~Escapable> works in functions, properties, and _read coroutines. Key insight: blocker is ~Copyable+Optional, NOT ~Escapable+Optional. 7/7 CONFIRMED (debug+release).",
+      "date": "2026-03-31",
+      "toolchain": "Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "nonescapable-edge-cases",
+      "category": "~Escapable & Ownership",
+      "purpose": "Validate 5 claims from nonescapable-support-memory-storage-buffer research",
+      "date": "2026-02-28",
+      "toolchain": "Swift 6.2.4",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "optional-noncopyable-unwrap",
+      "category": "~Escapable & Ownership",
+      "purpose": "Safe alternatives to ! and try! on Optional<\\~Copyable>; _read/_modify projection as primary pattern",
+      "date": "2026-02-12",
+      "toolchain": "Swift 6.2.3",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED \u2192 noncopyable-access-patterns (swift-institute)",
+      "supersededBy": "noncopyable-access-patterns (swift-institute)",
+      "crossRefs": []
+    },
+    {
+      "directory": "optional-take-sending-region-isolation",
+      "category": "Concurrency & Isolation",
+      "purpose": "mutating func take() -> sending Wrapped? on Optional where Wrapped: ~Copyable triggers #RegionIsolation on 6.4-dev nightly. 6.3 PASS. Regression: compiler can no longer prove consume self disconnects from caller's region for non-Sendable types. Workaround: split into Sendable/non-Sendable overloads.",
+      "date": "2026-04-09",
+      "toolchain": "Swift 6.3 / 6.4-dev",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "sendable-noncopyable-conditional-conformance",
+      "category": "Concurrency & Isolation",
+      "purpose": "Which Protocol & ~Copyable compositions compile in conditional conformance where clauses on Swift 6.3 \u2014 Sendable & ~Copyable compiles (Sendable opts out of Copyable), Equatable & ~Copyable does not.",
+      "date": "2026-04-01",
+      "toolchain": "Swift 6.3",
+      "status": "REFUTED",
+      "statusDetail": null,
+      "statusRaw": "REFUTED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "rfc-4291-ipv6-address-poc",
+      "category": "API Design Patterns",
+      "purpose": "Proof-of-concept for RFC 4291 IPv6 Addressing Architecture as entry point for the networking RFC implementation plan",
+      "date": "2026-03-16",
+      "toolchain": "Swift 6.2.4",
+      "status": "DEFERRED",
+      "statusDetail": "awaiting networking RFC implementation plan",
+      "statusRaw": "DEFERRED \u2014 awaiting networking RFC implementation plan",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "typed-throws-protocol-conformance",
+      "category": "Swift Language Issues",
+      "purpose": "Verify whether Codable/Clock protocol conformances can use typed throws in Swift 6.2.4",
+      "date": "2026-03-05",
+      "toolchain": "Apple Swift 6.2.4",
+      "status": "CONFIRMED",
+      "statusDetail": "(with nuance)",
+      "statusRaw": "CONFIRMED (with nuance)",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "async-let-noncopyable-transfer",
+      "category": "Concurrency & Isolation",
+      "purpose": "Can async let pass ~Copyable via consuming params without Transfer.Cell?",
+      "date": "2026-04-06",
+      "toolchain": "",
+      "status": "REFUTED",
+      "statusDetail": null,
+      "statusRaw": "REFUTED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "noncopyable-actor-driver-ownership",
+      "category": "~Escapable & Ownership",
+      "purpose": "Can actors store ~Copyable properties and call methods on them?",
+      "date": "2026-04-07",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "noncopyable-driver-witness",
+      "category": "Witness Infrastructure",
+      "purpose": "Can ~Copyable struct hold ~Copyable resource AND Sendable closures that borrow it?",
+      "date": "2026-04-05",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "polling-two-phase-api",
+      "category": "API Design Patterns",
+      "purpose": "Does splitting a Polling-like reactor into init(source:) + start(tick:) eliminate the [weak self] init-order trap and allow sending @escaping on the tick?",
+      "date": "2026-04-15",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "runtime-noncopyable-shutdown",
+      "category": "~Escapable & Ownership",
+      "purpose": "Can double-shutdown be prevented via ~Copyable token?",
+      "date": "2026-04-04",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "sending-continuation-dispatch",
+      "category": "Concurrency & Isolation",
+      "purpose": "Can withCheckedContinuation dispatch sending closure to executor without unsafe?",
+      "date": "2026-04-08",
+      "toolchain": "",
+      "status": "SUPERSEDED",
+      "statusDetail": null,
+      "statusRaw": "SUPERSEDED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "sending-init-weakself-di",
+      "category": "Concurrency & Isolation",
+      "purpose": "Does sending @escaping on init's tick parameter relax the DI rule for [weak self]?",
+      "date": "2026-04-15",
+      "toolchain": "",
+      "status": "REFUTED",
+      "statusDetail": null,
+      "statusRaw": "REFUTED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "taskgroup-executor-preference-noncopyable",
+      "category": "Concurrency & Isolation",
+      "purpose": "Optimal pattern for TaskGroup with executor preference + ~Copyable?",
+      "date": "2026-04-06",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "witness-driver-composition",
+      "category": "Witness Infrastructure",
+      "purpose": "Can witness drivers borrow ~Copyable descriptor across layer composition?",
+      "date": "2026-04-09",
+      "toolchain": "",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "actor-var-polling-default-nil",
+      "category": "Concurrency & Isolation",
+      "purpose": "Actor var polling with default nil \u2014 relocated from pre-dismantle swift-foundations/Experiments/. (Index entry synthesized 2026-04-24 during layer-container orphan triage; original index entry absent.)",
+      "date": "2026-04-15",
+      "toolchain": "Swift 6.3",
+      "status": "PENDING",
+      "statusDetail": "Synthesized index entry; verify against experiment header.",
+      "statusRaw": "PENDING",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "stored-proxy-prop-before-polling",
+      "category": "API Design Patterns",
+      "purpose": "Stored proxy prop pattern pre-polling \u2014 relocated from pre-dismantle swift-foundations/Experiments/. (Index entry synthesized 2026-04-24 during layer-container orphan triage; original index entry absent.)",
+      "date": "2026-04-15",
+      "toolchain": "Swift 6.3",
+      "status": "PENDING",
+      "statusDetail": "Synthesized index entry; verify against experiment header.",
+      "statusRaw": "PENDING",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "unmanaged-passunretained-init-di",
+      "category": "~Escapable & Ownership",
+      "purpose": "Unmanaged passUnretained init DI pattern \u2014 relocated from pre-dismantle swift-foundations/Experiments/. (Index entry synthesized 2026-04-24 during layer-container orphan triage; original index entry absent.)",
+      "date": "2026-04-15",
+      "toolchain": "Swift 6.3",
+      "status": "PENDING",
+      "statusDetail": "Synthesized index entry; verify against experiment header.",
+      "statusRaw": "PENDING",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "ownership-transfer-patterns",
+      "category": "~Escapable & Ownership",
+      "purpose": "Ownership transfer patterns \u2014 consolidated home for bridge-noncopyable-ownership + mutex-coroutine-realistic + mutex-escapable-accessor (all SUPERSEDED \u2192 this dir). Relocated from pre-dismantle swift-primitives/Experiments/. (Index entry synthesized 2026-04-24 during layer-container orphan triage; original index entry absent.)",
+      "date": "2026-02-01",
+      "toolchain": "Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": "Canonical consolidation target for three SUPERSEDED siblings.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
     }
   ],
   "narrativeSections": [
     {
       "heading": "Bug: ~Copyable Inline Storage Deinit (Swift Compiler Bug)",
       "relatedExperiments": [],
-      "body": "**Location**: `noncopyable-inline-deinit/`\n\n**Symptom**: ~Copyable structs fail to call element deinitializers when destroyed. Elements are leaked.\n\n### Root Cause: Precise Trigger Conditions\n\nThe bug is triggered by this **exact combination**:\n\n1. `InlineArray<capacity, ...>` where `capacity` is a **value generic parameter** (not a literal)\n2. ~Copyable struct containing only value-type properties\n3. **Cross-module boundary**: Element type (e.g., `TrackedElement`) defined in a different module than the container\n4. deinit that performs manual element cleanup\n\n### Isolation Test Results\n\n| Configuration | Deinit Called? |\n|---------------|----------------|\n| `InlineArray<4, ...>` (literal capacity) | ✅ YES |\n| Value generic `<let capacity: Int>` without InlineArray | ✅ YES |\n| `InlineArray<capacity, ...>` with value generic | ❌ NO (BUG) |\n| Same + `var _deinitWorkaround: AnyObject? = nil` | ✅ YES |\n\n### Minimal Reproduction\n\n```swift\n// In Module A (ContainerLib):\npublic struct Container<Element: ~Copyable, let capacity: Int>: ~Copyable {\n    var _storage: InlineArray<capacity, (Int, Int, Int, Int, Int, Int, Int, Int)>\n    var _count: Int\n    // NO reference type properties\n\n    deinit {\n        // This code path is never executed for cross-module ~Copyable elements\n        for i in 0..<_count {\n            // deinitialize elements...\n        }\n    }\n}\n\n// In Module B (Tests):\nstruct TrackedElement: ~Copyable {\n    deinit { print(\"deinit called\") }  // NEVER PRINTED\n}\n\nvar container = Container<TrackedElement, 4>()\ncontainer.push(TrackedElement())\n// container goes out of scope - TrackedElement.deinit NOT called\n```\n\n### Workaround\n\nAdd a reference type property to the struct:\n\n```swift\nvar _deinitWorkaround: AnyObject? = nil\n```\n\nThis forces the compiler to generate correct deinit dispatch.\n\n### NOT Contributing Factors\n\nThese were tested and do NOT affect the bug:\n- `@inlinable` / `@usableFromInline` attributes\n- Nesting inside a generic outer container\n- Whether outer container is generic or not\n- Ring buffer logic / modulo calculations\n- `withUnsafeBytes` vs `withUnsafePointer` pattern\n\n### Affected Packages\n\n| Package | Type | Status |\n|---------|------|--------|\n| swift-deque-primitives | `Deque.Inline` | Fixed (workaround applied) |\n| swift-queue-primitives | `Queue.Inline` | Fixed (workaround applied) |\n| swift-stack-primitives | `Stack.Inline` | Fixed (workaround applied) |\n\n### Filing Bug Report\n\nThis experiment provides a minimal reproduction case suitable for a Swift compiler bug report:\n\n```\nnoncopyable-inline-deinit/\n├── Package.swift\n├── Sources/ContainerLib/Container.swift  (library with bug trigger)\n└── Tests/ContainerTests.swift            (reproduction tests)\n```\n\nRun `swift test --filter \"Critical\"` to demonstrate the bug.\n\n**TODO**: File Swift compiler bug report with this reproduction case."
+      "body": "**Location**: `noncopyable-inline-deinit/`\n\n**Symptom**: ~Copyable structs fail to call element deinitializers when destroyed. Elements are leaked.\n\n### Root Cause: Precise Trigger Conditions\n\nThe bug is triggered by this **exact combination**:\n\n1. `InlineArray<capacity, ...>` where `capacity` is a **value generic parameter** (not a literal)\n2. ~Copyable struct containing only value-type properties\n3. **Cross-module boundary**: Element type (e.g., `TrackedElement`) defined in a different module than the container\n4. deinit that performs manual element cleanup\n\n### Isolation Test Results\n\n| Configuration | Deinit Called? |\n|---------------|----------------|\n| `InlineArray<4, ...>` (literal capacity) | \u2705 YES |\n| Value generic `<let capacity: Int>` without InlineArray | \u2705 YES |\n| `InlineArray<capacity, ...>` with value generic | \u274c NO (BUG) |\n| Same + `var _deinitWorkaround: AnyObject? = nil` | \u2705 YES |\n\n### Minimal Reproduction\n\n```swift\n// In Module A (ContainerLib):\npublic struct Container<Element: ~Copyable, let capacity: Int>: ~Copyable {\n    var _storage: InlineArray<capacity, (Int, Int, Int, Int, Int, Int, Int, Int)>\n    var _count: Int\n    // NO reference type properties\n\n    deinit {\n        // This code path is never executed for cross-module ~Copyable elements\n        for i in 0..<_count {\n            // deinitialize elements...\n        }\n    }\n}\n\n// In Module B (Tests):\nstruct TrackedElement: ~Copyable {\n    deinit { print(\"deinit called\") }  // NEVER PRINTED\n}\n\nvar container = Container<TrackedElement, 4>()\ncontainer.push(TrackedElement())\n// container goes out of scope - TrackedElement.deinit NOT called\n```\n\n### Workaround\n\nAdd a reference type property to the struct:\n\n```swift\nvar _deinitWorkaround: AnyObject? = nil\n```\n\nThis forces the compiler to generate correct deinit dispatch.\n\n### NOT Contributing Factors\n\nThese were tested and do NOT affect the bug:\n- `@inlinable` / `@usableFromInline` attributes\n- Nesting inside a generic outer container\n- Whether outer container is generic or not\n- Ring buffer logic / modulo calculations\n- `withUnsafeBytes` vs `withUnsafePointer` pattern\n\n### Affected Packages\n\n| Package | Type | Status |\n|---------|------|--------|\n| swift-deque-primitives | `Deque.Inline` | Fixed (workaround applied) |\n| swift-queue-primitives | `Queue.Inline` | Fixed (workaround applied) |\n| swift-stack-primitives | `Stack.Inline` | Fixed (workaround applied) |\n\n### Filing Bug Report\n\nThis experiment provides a minimal reproduction case suitable for a Swift compiler bug report:\n\n```\nnoncopyable-inline-deinit/\n\u251c\u2500\u2500 Package.swift\n\u251c\u2500\u2500 Sources/ContainerLib/Container.swift  (library with bug trigger)\n\u2514\u2500\u2500 Tests/ContainerTests.swift            (reproduction tests)\n```\n\nRun `swift test --filter \"Critical\"` to demonstrate the bug.\n\n**TODO**: File Swift compiler bug report with this reproduction case."
     },
     {
       "heading": "Issue: ~Copyable Constraint Poisoning (Compiler Limitation)",
       "relatedExperiments": [],
-      "body": "**Related experiments**: `noncopyable-pointer-propagation`, `noncopyable-storage-poisoning`, `noncopyable-multifile-poisoning`, `noncopyable-sequence-protocol-test`\n\n**Research paper**: `Noncopyable Generics Constraint Propagation.md`\n\n**Symptom**: Adding a conditional conformance `where Element: Copyable` causes stored properties using `Element` to fail with \"type 'Element' does not conform to protocol 'Copyable'\"—even when those properties (like `UnsafeMutablePointer<Element>`) explicitly support ~Copyable elements.\n\n### Root Cause\n\nWhen a type `T<E: ~Copyable>` gains a conformance with `where E: Copyable`, Swift's type checker propagates the `Copyable` constraint backwards to the type definition. This \"poisons\" stored properties:\n\n```swift\nstruct Container<Element: ~Copyable>: ~Copyable {\n    var storage: UnsafeMutablePointer<Element>  // ❌ Poisoned by conformance below\n}\n\nextension Container: Sequence where Element: Copyable {\n    // This conformance causes the error above\n}\n```\n\n### What Does NOT Prevent Poisoning\n\n| Approach | Result |\n|----------|--------|\n| Conformance in separate file | ❌ Still poisons |\n| Conformance in same file | ❌ Still poisons |\n| Custom protocol instead of Swift.Sequence | ❌ Still poisons |\n| Protocol without `associatedtype Element` | ✅ Works (but loses Sequence) |\n| Conditional `Copyable` on the type itself | ❌ Still poisons |\n\n### What DOES Prevent Poisoning\n\n| Approach | Result |\n|----------|--------|\n| **Separate SPM module** | ✅ Works |\n| **Wrapper type** | ✅ Works (less ergonomic) |\n\n### Solution: Module Boundary Isolation\n\nModule boundaries are real compilation boundaries. The compiler processes each target independently:\n\n```\nPackage/\n├── Sources/\n│   ├── Core/           # Type with ~Copyable support, NO Sequence conformance\n│   │   └── Container.swift\n│   ├── Sequence/       # Conformances for Copyable elements\n│   │   └── Container+Sequence.swift  (imports Core)\n│   └── Public/         # Re-exports both\n│       └── exports.swift\n```\n\nWhen Sequence module adds conformances, Core has already been compiled—its stored properties validated without the Copyable constraint.\n\n### Applied Solution\n\n| Package | Implementation |\n|---------|----------------|\n| swift-array-primitives | Split into Core/Sequence internal modules |\n\n### Wrapper Alternative\n\nWhen module splitting is impractical, wrapper types avoid direct conformance:\n\n```swift\nextension Container where Element: Copyable {\n    public var iterable: IterableView { ... }\n}\nfor x in container.iterable { }  // Not `for x in container`\n```\n\nTrade-off: Requires `.iterable` accessor; copies elements upfront.\n\n### Related Swift Evolution\n\n- **SE-0427**: Noncopyable Generics (implemented, constraint propagation is intended)\n- **SE-0437**: Noncopyable Stdlib Primitives (UnsafeMutablePointer supports ~Copyable)\n- **Suppressed Associated Types Pitch**: Would solve this if accepted (not available today)"
+      "body": "**Related experiments**: `noncopyable-pointer-propagation`, `noncopyable-storage-poisoning`, `noncopyable-multifile-poisoning`, `noncopyable-sequence-protocol-test`\n\n**Research paper**: `Noncopyable Generics Constraint Propagation.md`\n\n**Symptom**: Adding a conditional conformance `where Element: Copyable` causes stored properties using `Element` to fail with \"type 'Element' does not conform to protocol 'Copyable'\"\u2014even when those properties (like `UnsafeMutablePointer<Element>`) explicitly support ~Copyable elements.\n\n### Root Cause\n\nWhen a type `T<E: ~Copyable>` gains a conformance with `where E: Copyable`, Swift's type checker propagates the `Copyable` constraint backwards to the type definition. This \"poisons\" stored properties:\n\n```swift\nstruct Container<Element: ~Copyable>: ~Copyable {\n    var storage: UnsafeMutablePointer<Element>  // \u274c Poisoned by conformance below\n}\n\nextension Container: Sequence where Element: Copyable {\n    // This conformance causes the error above\n}\n```\n\n### What Does NOT Prevent Poisoning\n\n| Approach | Result |\n|----------|--------|\n| Conformance in separate file | \u274c Still poisons |\n| Conformance in same file | \u274c Still poisons |\n| Custom protocol instead of Swift.Sequence | \u274c Still poisons |\n| Protocol without `associatedtype Element` | \u2705 Works (but loses Sequence) |\n| Conditional `Copyable` on the type itself | \u274c Still poisons |\n\n### What DOES Prevent Poisoning\n\n| Approach | Result |\n|----------|--------|\n| **Separate SPM module** | \u2705 Works |\n| **Wrapper type** | \u2705 Works (less ergonomic) |\n\n### Solution: Module Boundary Isolation\n\nModule boundaries are real compilation boundaries. The compiler processes each target independently:\n\n```\nPackage/\n\u251c\u2500\u2500 Sources/\n\u2502   \u251c\u2500\u2500 Core/           # Type with ~Copyable support, NO Sequence conformance\n\u2502   \u2502   \u2514\u2500\u2500 Container.swift\n\u2502   \u251c\u2500\u2500 Sequence/       # Conformances for Copyable elements\n\u2502   \u2502   \u2514\u2500\u2500 Container+Sequence.swift  (imports Core)\n\u2502   \u2514\u2500\u2500 Public/         # Re-exports both\n\u2502       \u2514\u2500\u2500 exports.swift\n```\n\nWhen Sequence module adds conformances, Core has already been compiled\u2014its stored properties validated without the Copyable constraint.\n\n### Applied Solution\n\n| Package | Implementation |\n|---------|----------------|\n| swift-array-primitives | Split into Core/Sequence internal modules |\n\n### Wrapper Alternative\n\nWhen module splitting is impractical, wrapper types avoid direct conformance:\n\n```swift\nextension Container where Element: Copyable {\n    public var iterable: IterableView { ... }\n}\nfor x in container.iterable { }  // Not `for x in container`\n```\n\nTrade-off: Requires `.iterable` accessor; copies elements upfront.\n\n### Related Swift Evolution\n\n- **SE-0427**: Noncopyable Generics (implemented, constraint propagation is intended)\n- **SE-0437**: Noncopyable Stdlib Primitives (UnsafeMutablePointer supports ~Copyable)\n- **Suppressed Associated Types Pitch**: Would solve this if accepted (not available today)"
     }
   ]
 }
