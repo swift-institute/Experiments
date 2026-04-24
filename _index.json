@@ -1,7 +1,7 @@
 {
   "$schema": "https://swift-institute.org/schemas/experiments-index-v1.json",
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-04-17",
+  "generatedAt": "2026-04-24",
   "title": "Experiments Index",
   "blurb": "Ecosystem-wide experiments for Swift Institute.",
   "categories": [
@@ -57,6 +57,18 @@
     }
   ],
   "experiments": [
+    {
+      "category": "~Escapable & Ownership",
+      "crossRefs": [],
+      "date": "2026-04-24",
+      "directory": "borrow-pointer-storage-release-miscompile",
+      "purpose": "Minimal reproducer for a Swift 6.3.1 / 6.4-dev release-mode miscompile: withUnsafePointer(to: borrowing value) with Value: ~Copyable does not return a caller-stable pointer despite @_lifetime(borrow value) on the enclosing init. Storing the returned raw pointer in a ~Escapable wrapper produces a dangling pointer \u2014 release-mode reads return garbage or trap with EXC_BREAKPOINT; debug-mode reads succeed (stale slot still happens to hold the right bits). Seven variants discriminate hypotheses.",
+      "status": "CONFIRMED",
+      "statusDetail": "V5 (heap-owned class storage, Copyable Value): PASS. V4 (caller-scoped typed init via withUnsafePointer): PASS. V8 (inout + withUnsafeMutablePointer): PASS \u2014 proves the stored-pointer pattern works with inout ABI. V7 (_overrideLifetime on ~Escapable carrier): CRASH \u2014 mirrors Property.View's borrowing init pattern; that pattern's release-mode correctness is untested in Property.View (tests use the inout init) and the reproducer suggests it is broken too. V6 (@_addressableForDependencies on Value type): CRASH. V3 (~Copyable wrapper): CRASH. V1/V2 (baselines, ~Copyable and Copyable Value): CRASH. Standalone swiftc-buildable reproducer at /tmp/borrow-repro.swift (40 lines contrasting V1 vs V8). Still present on swift-6.4-dev (swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a). The bug directly blocked the WIP refactor of swift-property-primitives Property.View.Read to Tagged<Tag, Ownership.Borrow<Base>> storage; that WIP was reverted and preserved on the wip-ownership-borrow-storage branch for resumption after the compiler fix (or SE-0519 stdlib stabilisation).",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1) and swift-6.4-dev (swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a)"
+    },
     {
       "directory": "unapplied-init-literal-inference-footgun",
       "category": "Swift Language Issues",
