@@ -70,6 +70,18 @@
       "toolchain": "Swift 6.3.1 (Xcode 26.4.1) and swift-6.4-dev (swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a)"
     },
     {
+      "category": "~Escapable & Ownership",
+      "crossRefs": ["borrow-pointer-storage-release-miscompile"],
+      "date": "2026-04-24",
+      "directory": "wrapper-init-inlinability-cost",
+      "purpose": "Measure the per-init performance cost of the `@inlinable`-removal workaround applied to `Ownership.Borrow.init(borrowing:)` and `Property.View.@unsafe init(_ base: borrowing Base)` (swift-ownership-primitives `ece5d7e`, swift-property-primitives `764db07`) to rescue cross-module consumers from the release-mode miscompile documented in `borrow-pointer-storage-release-miscompile`. Two-module setup (`Wrappers` library + `Benchmark` executable) with `InlineWrapper` (@inlinable init) and `OutOfLineWrapper` (non-@inlinable init) of identical one-line bodies (`withUnsafeMutablePointer(to: &value) { UnsafeMutableRawPointer($0) }`) called in a tight loop. Uses `inout` parameter shape (not `borrowing`) since the `borrowing` variant crashes under @inlinable — the calling-convention cost measured here is architecturally equivalent to the borrowing-parameter case.",
+      "status": "CONFIRMED",
+      "statusDetail": "Realistic hot-path overhead ≈ 3.5 ns per non-inlined wrapper construction (Apple Silicon, macOS .v26, release mode, 500M iterations). Loop B (opaque write + wrapper + load): Direct 0.806 ns/iter, InlineWrapper 0.808 ns/iter (fully elided — optimizer sees through the @inlinable body), OutOfLineWrapper 4.354 ns/iter. Delta ≈ 3.5 ns ≈ 12 CPU cycles at 3.5 GHz — firmly in the function-call-overhead regime, consistent with the workaround replacing an inlined body with a cross-module call. Loop A (no load, DCE-friendly): inlined 0 ns (fully eliminated), non-inlined 5.5 ns — confirms the upper bound when the wrapper's only use is DCE-able. Interpretation: the absolute overhead is bounded; relative overhead depends on surrounding work. For Property.View hot paths with ~50–100 ns of real work per view, the workaround costs <5% relative. For synthetic tight loops doing only pointer loads through views, the overhead approaches 5x vs direct access.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "toolchain": "Swift 6.3.1 (Xcode 26.4.1)"
+    },
+    {
       "directory": "unapplied-init-literal-inference-footgun",
       "category": "Swift Language Issues",
       "purpose": "Domain-free minimal reproducer for the overload-resolution footgun where `(0..<5).map(Target.init)` silently routes through `ExpressibleByIntegerLiteral + Strideable` on an intermediate type to select an unlabeled cross-domain init. Four variants confirm (1) the footgun fires in pure-algebra form, (2) `@_disfavoredOverload` provides no protection, (3) removing `Strideable` breaks the chain, (4) explicit cross-domain invocation produces the same (correct) scaling semantics.",
