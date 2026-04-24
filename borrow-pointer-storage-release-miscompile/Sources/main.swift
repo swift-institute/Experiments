@@ -34,6 +34,17 @@
 // Toolchain: swift-6.3.1 (Xcode 26.4.1 default)
 // Platform: macOS 26 (arm64)
 //
+// Minimal single-file companion: `../minimal-repro.swift` — 100 lines,
+// pure `swiftc -O` invocation, no SwiftPM. Contrasts V1 (borrowing →
+// broken) vs V2 (inout → works). Suitable for direct attachment to an
+// upstream swiftlang/swift bug report. The 9-variant file below is the
+// extended discriminator; the minimal-repro is the "start here" artifact.
+//
+// Workaround in ecosystem code: keep `Ownership.Borrow.init(borrowing:)
+// where Value: ~Copyable` NON-`@inlinable`. Cross-module non-inlining
+// preserves the `@in_guaranteed` ABI that the inlined form loses. See
+// swift-primitives/swift-ownership-primitives commit `ece5d7e`.
+//
 // Status: STILL PRESENT on Swift 6.3.1 AND swift-6.4-dev
 //         (swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a).
 // Result: CONFIRMED COMPILER BUG, narrow shape:
