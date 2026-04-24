@@ -1,52 +1,43 @@
-// MARK: - Borrow-Pointer Storage Release Miscompile
+// MARK: - Borrow-Pointer Storage Release Miscompile — 9-variant discriminator
 //
-// Purpose: Minimal reproducer for a Swift 6.3 release-mode miscompile where a
-//          raw pointer captured via `withUnsafePointer(to: value) { $0 }` and
-//          stored in a `~Escapable` wrapper struct produces a dangling pointer
-//          the moment `withUnsafePointer`'s frame is popped. The pattern:
+// Purpose: Hypothesis-discriminating reproducer for a Swift 6.3.1 / 6.4-dev
+//          release-mode miscompile where a raw pointer captured via
+//          `withUnsafePointer(to: value) { $0 }` and stored in a
+//          `~Escapable` wrapper struct produces a dangling pointer the
+//          moment `withUnsafePointer`'s frame is popped. The minimal-bar
+//          single-file reproducer lives at `../minimal-repro.swift` and
+//          is what should be attached to an upstream bug report. This
+//          file extends the minimal reproducer with eight additional
+//          variants that isolate the pattern's required ingredients and
+//          rule out specific workaround hypotheses.
 //
+//          Pattern:
+//
+//              @inlinable
 //              @_lifetime(borrow value)
 //              init(borrowing value: borrowing Value) {
 //                  self._pointer = withUnsafePointer(to: value) { $0 }
 //              }
 //
-//          Release-mode reads via `self._pointer.pointee` either return
-//          garbage pointer-shaped integers or trap on `EXC_BREAKPOINT`
-//          (observed on Swift 6.3.1 arm64 macOS 26). Debug-mode reads return
-//          the correct value (stale slot happens to still hold the right bits).
+//          Release-mode reads via `self._pointer.pointee` return garbage
+//          pointer-shaped integers or trap on `EXC_BREAKPOINT` (observed
+//          on macOS 26 arm64). Debug-mode reads return the correct value
+//          (stale slot happens to still hold the right bits).
 //
-// Hypothesis (H0): `withUnsafePointer(to: value)` spills `value` into a stack
-//          slot within its own frame and passes that slot's address to the
-//          closure. After the closure returns the slot dies but the captured
-//          address is retained in `self._pointer`. `@_lifetime(borrow value)`
-//          does not make the captured slot-address survive — the annotation
-//          binds the wrapper's lifetime to `value` but does not change what
-//          address `withUnsafePointer` returned.
+// Hypothesis (H0): `withUnsafePointer(to: value)` spills `value` into a
+//          stack slot within its own frame and passes that slot's address
+//          to the closure. After the closure returns the slot dies but
+//          the captured address is retained in `self._pointer`.
+//          `@_lifetime(borrow value)` does not make the captured
+//          slot-address survive — the annotation binds the wrapper's
+//          lifetime to `value` but does not change what address
+//          `withUnsafePointer` returned.
 //
-// Context: Reduction of a bug in swift-ownership-primitives where
-//          `Ownership.Borrow<Value>.init(borrowing:)` produced 9 release-mode
-//          test failures in the `Ownership Borrow Tests` suite and 14 cascaded
-//          failures in swift-property-primitives `Property.View.Read` tests
-//          (which store `Tagged<Tag, Ownership.Borrow<Base>>`). This
-//          reproducer isolates the miscompile from all ecosystem dependencies
-//          — only stdlib + `withUnsafePointer`.
+// Toolchain: Swift 6.3.1 (Xcode 26.4.1 default) and
+//            swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a (6.4-dev)
+// Platform:  macOS 26 (arm64)
 //
-// Toolchain: swift-6.3.1 (Xcode 26.4.1 default)
-// Platform: macOS 26 (arm64)
-//
-// Minimal single-file companion: `../minimal-repro.swift` — 100 lines,
-// pure `swiftc -O` invocation, no SwiftPM. Contrasts V1 (borrowing →
-// broken) vs V2 (inout → works). Suitable for direct attachment to an
-// upstream swiftlang/swift bug report. The 9-variant file below is the
-// extended discriminator; the minimal-repro is the "start here" artifact.
-//
-// Workaround in ecosystem code: keep `Ownership.Borrow.init(borrowing:)
-// where Value: ~Copyable` NON-`@inlinable`. Cross-module non-inlining
-// preserves the `@in_guaranteed` ABI that the inlined form loses. See
-// swift-primitives/swift-ownership-primitives commit `ece5d7e`.
-//
-// Status: STILL PRESENT on Swift 6.3.1 AND swift-6.4-dev
-//         (swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a).
+// Status: STILL PRESENT on Swift 6.3.1 AND swift-6.4-dev.
 // Result: CONFIRMED COMPILER BUG, narrow shape:
 //
 //         Variant verdicts (consolidated across reorderings):
@@ -80,17 +71,18 @@
 //
 //         Neither `_overrideLifetime` on a ~Escapable wrapper (V7) nor
 //         `@_addressableForDependencies` on Value (V6) nor `~Copyable`
-//         wrapper (V3) rescues the borrowing path. The only safe patterns
-//         are caller-scoped typed pointer (V4), heap-owned copy (V5;
+//         wrapper (V3) rescues the borrowing path. Safe patterns:
+//         caller-scoped typed pointer (V4), heap-owned copy (V5;
 //         Copyable only), or inout parameter (V8; not borrowing).
 //
-//         This rules out a fix inside `Ownership.Borrow.init(borrowing:)`
-//         for `~Copyable Value`. The working inout sibling exists as
-//         `Ownership.Inout.init(mutating: inout Value)` and is exercised
-//         by `Property.View`'s release-passing tests. `Property.View`'s
-//         `borrowing` init (@unsafe-marked) mirrors V7's pattern and is
-//         likely also broken in release — just not exercised by its
-//         tests (the view tests use the inout init).
+//         Separately observed: removing `@inlinable` from V1's init
+//         and calling the init from a SEPARATE MODULE works. The
+//         cross-module function-call boundary preserves the
+//         `@in_guaranteed` indirect ABI that inlining at `-O`
+//         inlines-away. This reproducer is single-file, so the
+//         cross-module route is not exercised here — any consumer
+//         that needs the borrowing-init pattern must arrange the
+//         non-@inlinable cross-module call themselves.
 // Date: 2026-04-24
 
 // MARK: - Shared test value
