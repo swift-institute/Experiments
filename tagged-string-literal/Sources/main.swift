@@ -1,6 +1,6 @@
 // MARK: - Literally Tagged String Experiment
 // Purpose: Validate whether Tagged<Domain, StringStorage> (literally using the
-//          Tagged type from swift-identity-primitives) works for all 9 variants
+//          Tagged type from swift-tagged-primitives) works for all 9 variants
 //          proven in the phantom-tagged-string-unification experiment.
 //
 // Hypothesis: Tagged<Domain, StringStorage> where StringStorage has a deinit
@@ -37,11 +37,11 @@
 // Date: 2026-02-25
 
 // ============================================================================
-// MARK: - Tagged (Minimal Reproduction of swift-identity-primitives)
+// MARK: - Tagged (Minimal Reproduction of swift-tagged-primitives)
 // ============================================================================
 // This reproduces Tagged<Tag, RawValue> exactly as defined in
-// swift-identity-primitives, including functor operations.
-// In production, this would be `import Identity_Primitives`.
+// swift-tagged-primitives, including functor operations.
+// In production, this would be `import Tagged_Primitives`.
 
 struct Tagged<Tag: ~Copyable, RawValue: ~Copyable>: ~Copyable {
     var _storage: RawValue
