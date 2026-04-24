@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write stored-proxy-prop-before-polling-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling stored_proxy_prop_before_polling main.swift
+[5/8] Emitting module stored_proxy_prop_before_polling
+[5/8] Write Objects.LinkFileList
+[6/8] Linking stored-proxy-prop-before-polling
+[7/8] Applying stored-proxy-prop-before-polling
+Build complete! (0.66s)

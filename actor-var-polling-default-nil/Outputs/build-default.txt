@@ -1,0 +1,17 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write actor-var-polling-default-nil-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module actor_var_polling_default_nil
+[5/8] Compiling actor_var_polling_default_nil main.swift
+/Users/coen/Developer/swift-foundations/Experiments/actor-var-polling-default-nil/Sources/actor-var-polling-default-nil/main.swift:112:24: error: passing closure as a 'sending' parameter risks causing data races between code in the current task and concurrent execution of the closure [#SendingClosureRisksDataRace]
+110 | 
+111 |     init() {
+112 |         self.polling = FakePolling(tick: { [weak self] in
+    |                        `- error: passing closure as a 'sending' parameter risks causing data races between code in the current task and concurrent execution of the closure [#SendingClosureRisksDataRace]
+113 |             guard let self else { return .halt }
+    |             `- note: closure captures 'self' which is accessible to code in the current task
+114 |             self.counter += 1   // needs lock for concurrent safety
+115 |             return .continue
+
+[#SendingClosureRisksDataRace]: <https://docs.swift.org/compiler/documentation/diagnostics/sending-closure-risks-data-race>

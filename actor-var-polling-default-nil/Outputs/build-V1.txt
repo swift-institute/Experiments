@@ -1,0 +1,22 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[2/6] Emitting module actor_var_polling_default_nil
+/Users/coen/Developer/swift-foundations/Experiments/actor-var-polling-default-nil/Sources/actor-var-polling-default-nil/main.swift:56:5: error: 'nonisolated' cannot be applied to mutable stored properties
+ 54 | #if ENABLE_V1
+ 55 | actor ReactorV1 {
+ 56 |     nonisolated var polling: FakePolling! = nil   // EXPECTED: rejected
+    |     |               `- note: convert 'polling' to a 'let' constant or consider declaring it 'nonisolated(unsafe)' if manually managing concurrency safety
+    |     `- error: 'nonisolated' cannot be applied to mutable stored properties
+ 57 |     var counter: Int = 0
+ 58 | 
+[3/6] Compiling actor_var_polling_default_nil main.swift
+/Users/coen/Developer/swift-foundations/Experiments/actor-var-polling-default-nil/Sources/actor-var-polling-default-nil/main.swift:56:5: error: 'nonisolated' cannot be applied to mutable stored properties
+ 54 | #if ENABLE_V1
+ 55 | actor ReactorV1 {
+ 56 |     nonisolated var polling: FakePolling! = nil   // EXPECTED: rejected
+    |     |               `- note: convert 'polling' to a 'let' constant or consider declaring it 'nonisolated(unsafe)' if manually managing concurrency safety
+    |     `- error: 'nonisolated' cannot be applied to mutable stored properties
+ 57 |     var counter: Int = 0
+ 58 | 

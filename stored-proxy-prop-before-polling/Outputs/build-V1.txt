@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling stored_proxy_prop_before_polling main.swift
+[4/7] Emitting module stored_proxy_prop_before_polling
+[4/7] Write Objects.LinkFileList
+[5/7] Linking stored-proxy-prop-before-polling
+[6/7] Applying stored-proxy-prop-before-polling
+Build complete! (0.36s)

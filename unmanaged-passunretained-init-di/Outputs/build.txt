@@ -1,0 +1,59 @@
+Building for debugging...
+[0/6] Write sources
+[0/6] Write unmanaged-passunretained-init-di-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[4/8] Emitting module unmanaged_passunretained_init_di
+/Users/coen/Developer/swift-foundations/Experiments/unmanaged-passunretained-init-di/Sources/unmanaged-passunretained-init-di/main.swift:43:23: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+41 |         self.polling = FakePolling(tick: {
+42 |             // Attempt: reference self via Unmanaged, not a closure capture
+43 |             let box = Unmanaged.passUnretained(self).takeUnretainedValue()
+   |                       |         |- note: argument 'self' in call to instance method 'takeUnretainedValue' has unsafe type 'Unmanaged<Reactor>'
+   |                       |         `- note: reference to static method 'passUnretained' involves unsafe type 'Unmanaged<Reactor>'
+   |                       |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+   |                       |- note: argument 'self' in call to static method 'passUnretained' has unsafe type 'Unmanaged<Reactor>.Type'
+   |                       `- note: reference to unsafe type 'Unmanaged<Reactor>'
+44 |             return box.assumeIsolated { isolated in
+45 |                 isolated.counter += 1
+
+/Users/coen/Developer/swift-foundations/Experiments/unmanaged-passunretained-init-di/Sources/unmanaged-passunretained-init-di/main.swift:41:42: error: 'self' captured by a closure before all members were initialized
+35 | 
+36 | actor Reactor {
+37 |     nonisolated let polling: FakePolling
+   |                     `- note: 'self.polling' not initialized
+38 |     var counter: Int = 0
+39 | 
+40 |     init() {
+41 |         self.polling = FakePolling(tick: {
+   |                                          `- error: 'self' captured by a closure before all members were initialized
+42 |             // Attempt: reference self via Unmanaged, not a closure capture
+43 |             let box = Unmanaged.passUnretained(self).takeUnretainedValue()
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[5/8] Compiling unmanaged_passunretained_init_di main.swift
+/Users/coen/Developer/swift-foundations/Experiments/unmanaged-passunretained-init-di/Sources/unmanaged-passunretained-init-di/main.swift:43:23: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+41 |         self.polling = FakePolling(tick: {
+42 |             // Attempt: reference self via Unmanaged, not a closure capture
+43 |             let box = Unmanaged.passUnretained(self).takeUnretainedValue()
+   |                       |         |- note: argument 'self' in call to instance method 'takeUnretainedValue' has unsafe type 'Unmanaged<Reactor>'
+   |                       |         `- note: reference to static method 'passUnretained' involves unsafe type 'Unmanaged<Reactor>'
+   |                       |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+   |                       |- note: argument 'self' in call to static method 'passUnretained' has unsafe type 'Unmanaged<Reactor>.Type'
+   |                       `- note: reference to unsafe type 'Unmanaged<Reactor>'
+44 |             return box.assumeIsolated { isolated in
+45 |                 isolated.counter += 1
+
+/Users/coen/Developer/swift-foundations/Experiments/unmanaged-passunretained-init-di/Sources/unmanaged-passunretained-init-di/main.swift:41:42: error: 'self' captured by a closure before all members were initialized
+35 | 
+36 | actor Reactor {
+37 |     nonisolated let polling: FakePolling
+   |                     `- note: 'self.polling' not initialized
+38 |     var counter: Int = 0
+39 | 
+40 |     init() {
+41 |         self.polling = FakePolling(tick: {
+   |                                          `- error: 'self' captured by a closure before all members were initialized
+42 |             // Attempt: reference self via Unmanaged, not a closure capture
+43 |             let box = Unmanaged.passUnretained(self).takeUnretainedValue()
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
