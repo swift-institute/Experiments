@@ -1,0 +1,9 @@
+# .github/metadata.yaml
+# Triaged by AI-assisted bulk pass (2026-04-29).
+description: "Standalone Swift packages that verify compiler and runtime behaviour for the Swift Institute ecosystem (non-normative)."
+topics:
+  - swift-institute
+  - experiments
+  - verification
+  - compiler-validation
+homepage: "https://swift-institute.org"
