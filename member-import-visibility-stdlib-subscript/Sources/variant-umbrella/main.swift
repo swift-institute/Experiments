@@ -5,6 +5,8 @@
 //             be visible → may fail to compile
 //
 // Toolchain: Apple Swift 6.2.3 (swiftlang-6.2.3.3.21)
+// Status: SUPERSEDED 2026-04-30 — Argument label 'position:' on subscript no longer accepted; experiment relies on a removed/renamed subscript surface
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT (deep API drift; SUPERSEDED per [META-007])
 // Platform: macOS 26.2 (arm64)
 //
 // Result: <PENDING>

@@ -291,6 +291,7 @@ func test_v5_with_drain() {
 //             in deinit ("was cleaned up" flag) is the best available safety
 //             mechanism.
 // Result: CONFIRMED — runtime detection works (prints BUG message on
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 //         forgotten cleanup). But requires deinit on storage, which
 //         reintroduces #86652 constraints. Trade-off: safety vs composability.
 

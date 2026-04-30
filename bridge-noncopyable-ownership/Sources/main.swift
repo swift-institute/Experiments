@@ -426,6 +426,7 @@ func testV8() {
 //   slot with .take()!). Demonstrate the concrete improvement.
 //
 // Result: CONFIRMED — all three simplified patterns work
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 // ============================================================================
 
 func testV9() {

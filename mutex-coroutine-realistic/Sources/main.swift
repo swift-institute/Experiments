@@ -307,6 +307,7 @@ func testV7() {
 //   outside the lock scope via switch consume.
 //
 // Result: [PENDING]
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 // ============================================================================
 
 enum Action: ~Copyable {

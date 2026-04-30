@@ -9,6 +9,8 @@
 //             for the existential opening to work — only V needs to be generic.
 //
 // Toolchain: Swift 6.2
+// Status: SUPERSEDED 2026-04-30 — Ownership.Inout.pointee accessor surface changed; experiment relies on a member that no longer exists
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT (deep API drift; SUPERSEDED per [META-007])
 // Platform: macOS 26 (arm64)
 //
 // Result: {PENDING}

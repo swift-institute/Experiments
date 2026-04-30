@@ -1,6 +1,8 @@
 // MARK: - ~Escapable Edge Case Validation
 // Purpose: Validate 5 claims from nonescapable-support-memory-storage-buffer.md
 // Toolchain: Apple Swift 6.2.4
+// Status: SUPERSEDED 2026-04-30 — BorrowAndMutateAccessors experimental feature now required for previously-accepted borrow accessor syntax; experiment was authored before the gate tightened
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT (deep API drift; SUPERSEDED per [META-007])
 // Platform: macOS 26.0 (arm64)
 // Date: 2026-02-28
 

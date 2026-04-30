@@ -186,6 +186,7 @@ func testV4() {
 //   directly into locked state without any closure or Optional wrapper.
 //
 // Result: [PENDING]
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 // ============================================================================
 
 func testV5() {

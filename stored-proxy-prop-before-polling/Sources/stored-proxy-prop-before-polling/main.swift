@@ -22,6 +22,8 @@
 //        No win.
 //
 // Toolchain: Swift 6.3 (Xcode 26 beta)
+// Status: SUPERSEDED 2026-04-30 — Type ReactorV1 referenced from earlier draft no longer in scope; experiment requires updating against current Reactor design
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT (deep API drift; SUPERSEDED per [META-007])
 // Platform: macOS 26.0 (arm64)
 //
 // Result: PARTIAL — V1 COMPILES (hypothesis wrong). DI permits

@@ -497,6 +497,7 @@ struct SmallBuffer_Combined: ~Copyable {
 //   (A) Propagating typed throws to the caller
 //   (B) Non-throwing variant when capacity is pre-validated
 // Result: (pending)
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 // =============================================================================
 
 enum BufferError: Error, Hashable, Sendable {

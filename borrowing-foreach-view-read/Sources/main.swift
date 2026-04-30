@@ -152,6 +152,7 @@ struct MutableView<Base>: ~Copyable, ~Escapable {
 // }
 //
 // Result: [H1] [pending — uncomment to verify]
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 
 // ============================================================================
 // MARK: - V2: Fix — Non-mutating _read with ReadView

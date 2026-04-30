@@ -19,6 +19,8 @@
 // on GitHub as the receipt for "single stamp fails in that context."
 //
 // Toolchain: Swift 6.3.1
+// Status: SUPERSEDED 2026-04-30 — HTML.Document<Body, Head> View conformance surface changed; experiment requires re-targeting against current HTML/View shape
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT (deep API drift; SUPERSEDED per [META-007])
 // Date:      2026-04-20
 // Result:    CONFIRMED — two-stamp version compiles in debug and release.
 //            Applied pattern at swift-html-rendering HTML.Document.swift.

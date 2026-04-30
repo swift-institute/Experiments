@@ -14,6 +14,7 @@
 // Platform:  macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — debug + release, all elements properly deinitialized
+// Revalidated: Swift 6.3.1 (2026-04-30) — SUPERSEDED (per existing Status line; not re-run)
 //         Output: "Deinit order: [1, 2, 3]"
 // Date:   2026-04-01
 
