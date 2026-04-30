@@ -1,0 +1,1532 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "Identity_Primitives",
+    "printedName": "Identity_Primitives",
+    "children": [
+      {
+        "kind": "TypeDecl",
+        "name": "Tagged",
+        "printedName": "Tagged",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "_storage",
+            "printedName": "_storage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:19Identity_Primitives6TaggedV8_storageq_vp",
+            "mangledName": "$s19Identity_Primitives6TaggedV8_storageq_vp",
+            "moduleName": "Identity_Primitives",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "SPIAccessControl",
+              "RawDocComment"
+            ],
+            "spi_group_names": [
+              "Internal"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8_storageq_vg",
+                "mangledName": "$s19Identity_Primitives6TaggedV8_storageq_vg",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "implicit": true,
+                "spi_group_names": [
+                  "Internal"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8_storageq_vs",
+                "mangledName": "$s19Identity_Primitives6TaggedV8_storageq_vs",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "implicit": true,
+                "spi_group_names": [
+                  "Internal"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8_storageq_vM",
+                "mangledName": "$s19Identity_Primitives6TaggedV8_storageq_vM",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "implicit": true,
+                "spi_group_names": [
+                  "Internal"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:19Identity_Primitives6TaggedV8rawValueq_vp",
+            "mangledName": "$s19Identity_Primitives6TaggedV8rawValueq_vp",
+            "moduleName": "Identity_Primitives",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8rawValueq_vg",
+                "mangledName": "$s19Identity_Primitives6TaggedV8rawValueq_vg",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8rawValueq_vs",
+                "mangledName": "$s19Identity_Primitives6TaggedV8rawValueq_vs",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV8rawValueq_vM",
+                "mangledName": "$s19Identity_Primitives6TaggedV8rawValueq_vM",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "_rawValue",
+            "printedName": "_rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:19Identity_Primitives6TaggedV9_rawValueq_vp",
+            "mangledName": "$s19Identity_Primitives6TaggedV9_rawValueq_vp",
+            "moduleName": "Identity_Primitives",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "Available",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV9_rawValueq_vg",
+                "mangledName": "$s19Identity_Primitives6TaggedV9_rawValueq_vg",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV9_rawValueq_vs",
+                "mangledName": "$s19Identity_Primitives6TaggedV9_rawValueq_vs",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedV9_rawValueq_vM",
+                "mangledName": "$s19Identity_Primitives6TaggedV9_rawValueq_vM",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1>",
+                "sugared_genericSig": "<Tag, RawValue>",
+                "deprecated": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVyACyxq_Gq_cfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVyACyxq_Gq_cfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1>",
+            "sugared_genericSig": "<Tag, RawValue>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedV8rawValueACyxq_Gq__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedV8rawValueACyxq_Gq__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1>",
+            "sugared_genericSig": "<Tag, RawValue>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "modifyRawValue",
+            "printedName": "modifyRawValue(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_1_0"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout τ_0_1) -> τ_1_0",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedV14modifyRawValueyqd__qd__q_zXElF",
+            "mangledName": "$s19Identity_Primitives6TaggedV14modifyRawValueyqd__qd__q_zXElF",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0>",
+            "sugared_genericSig": "<Tag, RawValue, T>",
+            "isInternal": true,
+            "declAttributes": [
+              "Mutating",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASQR_rlE2eeoiySbACyxq_G_AEtFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASQR_rlE2eeoiySbACyxq_G_AEtFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Equatable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Equatable>",
+            "static": true,
+            "implicit": true,
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:19Identity_Primitives6TaggedVAASHR_rlE9hashValueSivp",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASHR_rlE9hashValueSivp",
+            "moduleName": "Identity_Primitives",
+            "implicit": true,
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:19Identity_Primitives6TaggedVAASHR_rlE9hashValueSivg",
+                "mangledName": "$s19Identity_Primitives6TaggedVAASHR_rlE9hashValueSivg",
+                "moduleName": "Identity_Primitives",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Hashable>",
+                "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Hashable>",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASHR_rlE4hash4intoys6HasherVz_tF",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASHR_rlE4hash4intoys6HasherVz_tF",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Hashable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Hashable>",
+            "implicit": true,
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAASeR_SER_rlE4fromACyxq_Gs7Decoder_p_tKcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASeR_SER_rlE4fromACyxq_Gs7Decoder_p_tKcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Decodable, τ_0_1 : Swift.Encodable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Decodable, RawValue : Swift.Encodable>",
+            "implicit": true,
+            "isFromExtension": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASeR_SER_rlE6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASeR_SER_rlE6encode2toys7Encoder_p_tKF",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Decodable, τ_0_1 : Swift.Encodable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Decodable, RawValue : Swift.Encodable>",
+            "implicit": true,
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "<",
+            "printedName": "<(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASLR_rlE1loiySbACyxq_G_AEtFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASLR_rlE1loiySbACyxq_G_AEtFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Comparable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Comparable>",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "max",
+            "printedName": "max(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASLR_rlE3maxyACyxq_GAE_AEtFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASLR_rlE3maxyACyxq_GAE_AEtFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Comparable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Comparable>",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "min",
+            "printedName": "min(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedVAASLR_rlE3minyACyxq_GAE_AEtFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedVAASLR_rlE3minyACyxq_GAE_AEtFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Comparable>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.Comparable>",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "map",
+            "printedName": "map(_:transform:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_1_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_1) throws(τ_1_0) -> τ_1_1",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_1"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedV3map_9transformACyxqd_0_GACyxq_G_qd_0_q_qd__YKXEtqd__YKs5ErrorRd__r0_lFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedV3map_9transformACyxqd_0_GACyxq_G_qd_0_q_qd__YKXEtqd__YKs5ErrorRd__r0_lFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0, τ_1_1 where τ_1_0 : Swift.Error>",
+            "sugared_genericSig": "<Tag, RawValue, E, NewRawValue where E : Swift.Error>",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "retag",
+            "printedName": "retag(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_1_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Metatype",
+                "printedName": "τ_1_0.Type",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "hasDefaultArg": true
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedV5retag_2toACyqd__q_GACyxq_G_qd__mtlFZ",
+            "mangledName": "$s19Identity_Primitives6TaggedV5retag_2toACyqd__q_GACyxq_G_qd__mtlFZ",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0>",
+            "sugared_genericSig": "<Tag, RawValue, NewTag>",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "map",
+            "printedName": "map(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_1_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_0_1) throws(τ_1_0) -> τ_1_1",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_1"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedV3mapyACyxqd_0_Gqd_0_q_qd__YKXEqd__YKs5ErrorRd__r0_lF",
+            "mangledName": "$s19Identity_Primitives6TaggedV3mapyACyxqd_0_Gqd_0_q_qd__YKXEqd__YKs5ErrorRd__r0_lF",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0, τ_1_1 where τ_1_0 : Swift.Error>",
+            "sugared_genericSig": "<Tag, RawValue, E, NewRawValue where E : Swift.Error>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "retag",
+            "printedName": "retag(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_1_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Metatype",
+                "printedName": "τ_1_0.Type",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "hasDefaultArg": true
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:19Identity_Primitives6TaggedV5retagyACyqd__q_Gqd__mlF",
+            "mangledName": "$s19Identity_Primitives6TaggedV5retagyACyqd__q_Gqd__mlF",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1, τ_1_0>",
+            "sugared_genericSig": "<Tag, RawValue, NewTag>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(integerLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.IntegerLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs27ExpressibleByIntegerLiteralR_rlE07integerG0ACyxq_G0fG4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs27ExpressibleByIntegerLiteralR_rlE07integerG0ACyxq_G0fG4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByIntegerLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByIntegerLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(floatLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.FloatLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs25ExpressibleByFloatLiteralR_rlE05floatG0ACyxq_G0fG4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs25ExpressibleByFloatLiteralR_rlE05floatG0ACyxq_G0fG4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByFloatLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByFloatLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(unicodeScalarLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.UnicodeScalarLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs33ExpressibleByUnicodeScalarLiteralR_rlE07unicodegH0ACyxq_G0fgH4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs33ExpressibleByUnicodeScalarLiteralR_rlE07unicodegH0ACyxq_G0fgH4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByUnicodeScalarLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByUnicodeScalarLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(extendedGraphemeClusterLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.ExtendedGraphemeClusterLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs43ExpressibleByExtendedGraphemeClusterLiteralR_rlE08extendedghI0ACyxq_G0fghI4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs43ExpressibleByExtendedGraphemeClusterLiteralR_rlE08extendedghI0ACyxq_G0fghI4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByExtendedGraphemeClusterLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(stringLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.StringLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs26ExpressibleByStringLiteralR_rlE06stringG0ACyxq_G0fG4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs26ExpressibleByStringLiteralR_rlE06stringG0ACyxq_G0fG4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByStringLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByStringLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(booleanLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tagged",
+                "printedName": "Identity_Primitives.Tagged<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:19Identity_Primitives6TaggedV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DependentMember",
+                "printedName": "τ_0_1.BooleanLiteralType"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:19Identity_Primitives6TaggedVAAs27ExpressibleByBooleanLiteralR_rlE07booleanG0ACyxq_G0fG4TypeQy__tcfc",
+            "mangledName": "$s19Identity_Primitives6TaggedVAAs27ExpressibleByBooleanLiteralR_rlE07booleanG0ACyxq_G0fG4TypeQy__tcfc",
+            "moduleName": "Identity_Primitives",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.ExpressibleByBooleanLiteral>",
+            "sugared_genericSig": "<Tag, RawValue where RawValue : Swift.ExpressibleByBooleanLiteral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:19Identity_Primitives6TaggedV",
+        "mangledName": "$s19Identity_Primitives6TaggedV",
+        "moduleName": "Identity_Primitives",
+        "genericSig": "<τ_0_0, τ_0_1>",
+        "sugared_genericSig": "<Tag, RawValue>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByIntegerLiteral",
+            "printedName": "ExpressibleByIntegerLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "IntegerLiteralType",
+                "printedName": "IntegerLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.IntegerLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s27ExpressibleByIntegerLiteralP",
+            "mangledName": "$ss27ExpressibleByIntegerLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByFloatLiteral",
+            "printedName": "ExpressibleByFloatLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "FloatLiteralType",
+                "printedName": "FloatLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.FloatLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s25ExpressibleByFloatLiteralP",
+            "mangledName": "$ss25ExpressibleByFloatLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByUnicodeScalarLiteral",
+            "printedName": "ExpressibleByUnicodeScalarLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarLiteralType",
+                "printedName": "UnicodeScalarLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.UnicodeScalarLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s33ExpressibleByUnicodeScalarLiteralP",
+            "mangledName": "$ss33ExpressibleByUnicodeScalarLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "printedName": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ExtendedGraphemeClusterLiteralType",
+                "printedName": "ExtendedGraphemeClusterLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.ExtendedGraphemeClusterLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s43ExpressibleByExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss43ExpressibleByExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByStringLiteral",
+            "printedName": "ExpressibleByStringLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "StringLiteralType",
+                "printedName": "StringLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.StringLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s26ExpressibleByStringLiteralP",
+            "mangledName": "$ss26ExpressibleByStringLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByBooleanLiteral",
+            "printedName": "ExpressibleByBooleanLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "BooleanLiteralType",
+                "printedName": "BooleanLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DependentMember",
+                    "printedName": "τ_0_1.BooleanLiteralType"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s27ExpressibleByBooleanLiteralP",
+            "mangledName": "$ss27ExpressibleByBooleanLiteralP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": []
+}

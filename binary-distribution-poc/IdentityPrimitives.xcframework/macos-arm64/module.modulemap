@@ -1,0 +1,4 @@
+module Identity_Primitives {
+    header "Identity_Primitives-Swift.h"
+    export *
+}

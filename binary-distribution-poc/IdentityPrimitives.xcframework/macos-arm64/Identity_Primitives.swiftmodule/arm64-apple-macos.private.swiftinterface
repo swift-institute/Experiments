@@ -1,0 +1,74 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.3 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target arm64-apple-macosx26.0 -enable-objc-interop -enable-library-evolution -swift-version 6 -O -module-name Identity_Primitives -package-name swift_identity_primitives
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct Tagged<Tag, RawValue> {
+  @_spi(Internal) public var _storage: RawValue
+  public var rawValue: RawValue {
+    get
+    set
+  }
+  @available(*, deprecated, renamed: "rawValue", message: "Use 'rawValue' instead. '_rawValue' will be removed in a future version.")
+  public var _rawValue: RawValue {
+    get
+    set
+  }
+  public init(_ rawValue: RawValue)
+  public init(rawValue: RawValue)
+}
+extension Identity_Primitives.Tagged : Swift.Sendable where RawValue : Swift.Sendable {
+}
+extension Identity_Primitives.Tagged : Swift.Equatable where RawValue : Swift.Equatable {
+  public static func == (a: Identity_Primitives.Tagged<Tag, RawValue>, b: Identity_Primitives.Tagged<Tag, RawValue>) -> Swift.Bool
+}
+extension Identity_Primitives.Tagged : Swift.Hashable where RawValue : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Identity_Primitives.Tagged : Swift.Codable where RawValue : Swift.Decodable, RawValue : Swift.Encodable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension Identity_Primitives.Tagged : Swift.Comparable where RawValue : Swift.Comparable {
+  public static func < (lhs: Identity_Primitives.Tagged<Tag, RawValue>, rhs: Identity_Primitives.Tagged<Tag, RawValue>) -> Swift.Bool
+  public static func max(_ a: Identity_Primitives.Tagged<Tag, RawValue>, _ b: Identity_Primitives.Tagged<Tag, RawValue>) -> Identity_Primitives.Tagged<Tag, RawValue>
+  public static func min(_ a: Identity_Primitives.Tagged<Tag, RawValue>, _ b: Identity_Primitives.Tagged<Tag, RawValue>) -> Identity_Primitives.Tagged<Tag, RawValue>
+}
+extension Identity_Primitives.Tagged {
+  public static func map<E, NewRawValue>(_ tagged: Identity_Primitives.Tagged<Tag, RawValue>, transform: (RawValue) throws(E) -> NewRawValue) throws(E) -> Identity_Primitives.Tagged<Tag, NewRawValue> where E : Swift.Error
+  public static func retag<NewTag>(_ tagged: Identity_Primitives.Tagged<Tag, RawValue>, to _: NewTag.Type = NewTag.self) -> Identity_Primitives.Tagged<NewTag, RawValue>
+}
+extension Identity_Primitives.Tagged {
+  public func map<E, NewRawValue>(_ transform: (RawValue) throws(E) -> NewRawValue) throws(E) -> Identity_Primitives.Tagged<Tag, NewRawValue> where E : Swift.Error
+  public func retag<NewTag>(_: NewTag.Type = NewTag.self) -> Identity_Primitives.Tagged<NewTag, RawValue>
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByIntegerLiteral where RawValue : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: RawValue.IntegerLiteralType)
+  public typealias IntegerLiteralType = RawValue.IntegerLiteralType
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByFloatLiteral where RawValue : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: RawValue.FloatLiteralType)
+  public typealias FloatLiteralType = RawValue.FloatLiteralType
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByUnicodeScalarLiteral where RawValue : Swift.ExpressibleByUnicodeScalarLiteral {
+  public init(unicodeScalarLiteral value: RawValue.UnicodeScalarLiteralType)
+  public typealias UnicodeScalarLiteralType = RawValue.UnicodeScalarLiteralType
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByExtendedGraphemeClusterLiteral where RawValue : Swift.ExpressibleByExtendedGraphemeClusterLiteral {
+  public init(extendedGraphemeClusterLiteral value: RawValue.ExtendedGraphemeClusterLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = RawValue.ExtendedGraphemeClusterLiteralType
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByStringLiteral where RawValue : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: RawValue.StringLiteralType)
+  public typealias StringLiteralType = RawValue.StringLiteralType
+}
+extension Identity_Primitives.Tagged : Swift.ExpressibleByBooleanLiteral where RawValue : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: RawValue.BooleanLiteralType)
+  public typealias BooleanLiteralType = RawValue.BooleanLiteralType
+}
