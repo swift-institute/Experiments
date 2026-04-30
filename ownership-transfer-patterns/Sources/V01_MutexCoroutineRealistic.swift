@@ -11,6 +11,7 @@
 //   - Both withLock (closure) and locked (coroutine) APIs
 //
 // Status: CONFIRMED — all 8 variants pass. Real os_unfair_lock, ~Escapable
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   scoped view, consuming in/out of ~Copyable values, concurrent safety (1000
 //   tasks), coexists with withLock, action enum dispatch. Production-viable
 //   replacement for closure-based Mutex access.

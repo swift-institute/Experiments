@@ -20,6 +20,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — `swift build` crashes with `signal 5` during SILGen.
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL CRASHES
 //   Frame 4: `createInputFunctionArgument`
 //   Frame 5: `(anonymous namespace)::LoweredParamGenerator::claimNext()`
 //   Frame 6: `visitBuiltinIntegerType` — lowering the closure's `Int` parameter

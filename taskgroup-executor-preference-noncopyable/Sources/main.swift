@@ -240,6 +240,7 @@ func v4_broadPrefAsyncLet() async throws(IOError) -> Int {
 // Hypothesis: TaskGroup cancelAll() cancels write child.
 //   Read error propagates. Same semantics as async let.
 // Result: CONFIRMED — Output: "write task was cancelled", "error = read failed"
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 
 func v5_errorSemantics() async {
     let result: Result<Int, IOError> = await withTaskGroup(

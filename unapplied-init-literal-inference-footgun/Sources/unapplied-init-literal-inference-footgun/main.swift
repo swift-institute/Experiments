@@ -28,6 +28,7 @@
 // Date:      2026-04-22
 //
 // Result: CONFIRMED — footgun reproduces in pure-algebra form.
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //
 // Evidence (stdout on the default run):
 //   === Unapplied-init literal-inference overload-resolution footgun ===

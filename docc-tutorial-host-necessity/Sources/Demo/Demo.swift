@@ -12,6 +12,7 @@
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — H2 and H3 both hold; H1 is REFUTED.
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 // Build: ** BUILD DOCUMENTATION SUCCEEDED ** via `xcodebuild docbuild`.
 // Evidence:
 //   - .docc/Resources/step-01-empty.swift, step-02-with-api.swift render

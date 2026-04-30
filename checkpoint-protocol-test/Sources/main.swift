@@ -6,6 +6,7 @@
 // Toolchain: swift-6.2-RELEASE
 // Date: 2026-01-21
 // Result: CONFIRMED — Checkpoint should use Index<Element> phantom type.
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   checkpointRange.contains() centralizes validation. Pattern prevents
 //   cross-input checkpoint misuse.
 

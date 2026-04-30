@@ -18,6 +18,7 @@
 // Status: STILL PRESENT (verified 2026-04-23)
 //
 // Result: STILL PRESENT — V1 uncommented produces the exact diagnostic
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //         "error: static stored properties not supported in generic types"
 //         (main.swift:31:23). Variants V2–V4 follow the same pattern.
 //         V5 baseline (non-generic class) compiles and runs — printing

@@ -59,6 +59,7 @@ func testVariant2() {
 // MARK: - Variant 3: `where T: Equatable & ~Copyable`
 // Hypothesis: Does not compile on 6.3
 // Result: CONFIRMED — does not compile
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   error: composition cannot contain '~Copyable' when another member requires 'Copyable'
 //   error: type 'EqBox<T>' does not conform to protocol 'Copyable'
 //   note: type 'EqBox<T>' does not conform to inherited protocol 'Copyable'

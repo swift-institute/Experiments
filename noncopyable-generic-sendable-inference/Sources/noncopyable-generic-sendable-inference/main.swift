@@ -28,6 +28,7 @@
 // Status: FIXED (verified 2026-04-23)
 //
 // Result: FIXED — V1 HYPOTHESIS REFUTED.
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //
 //   V1 (PlainSharedClass — final class with ~Copyable & Sendable generic
 //       and `let value: Value`): compiles and runs with plain `Sendable`.

@@ -10,6 +10,7 @@
 // Debug: swift build — passes
 // Date: 2026-03-31
 // Revalidated: Swift 6.3.1 (swiftlang-6.3.1.1.2) 2026-04-17 — STILL CRASHES
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL CRASHES
 //              (MoveOnlyChecker pass #214). The upstream fix for #85743 was
 //              NOT included in 6.3.1's cherry-pick set.
 //

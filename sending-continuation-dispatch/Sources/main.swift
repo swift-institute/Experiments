@@ -4,6 +4,7 @@
 //          WITHOUT requiring T: Sendable and WITHOUT nonisolated(unsafe).
 //
 // Toolchain: Swift 6.3 (Xcode 26 beta)
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // Platform: macOS 26.0 (arm64)
 //
 // Results:

@@ -52,6 +52,7 @@ struct Handle: ~Copyable {
 
 // V1a: Can a regular (Copyable) enum have a ~Copyable associated value?
 // Result: REFUTED — error: "associated value 'register' of 'Copyable'-conforming
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //         enum 'Action' has non-Copyable type 'Handle'"
 // enum Action {
 //     case register(Handle, Int32)

@@ -18,6 +18,7 @@
 // Platform: arm64-apple-macosx26.0
 //
 // Result: CONFIRMED (all 5 variants; minor: underestimatedCount=0 via generic CaseIterable dispatch)
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // Decision: NOT_PURSUED — tier compression not worth splitting Finite.Enumerable into two-import experience
 // Date: 2026-02-10
 

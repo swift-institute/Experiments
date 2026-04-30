@@ -119,6 +119,7 @@ extension Container where Element: Copyable {
 // Hypothesis: A method in where Element: ~Copyable always calls the ~Copyable
 //             overload, even when Element is actually Copyable at runtime.
 // Result: CONFIRMED — ~Copyable caller() dispatches to ~Copyable mutate(),
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //         NOT Copyable mutate(), even though Element is Int (Copyable).
 // Evidence: Output: "~Copyable mutate() called, value = 1"
 //           (NOT "Copyable mutate() entered")

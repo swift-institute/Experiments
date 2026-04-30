@@ -37,6 +37,7 @@
 //           V5 distinct ~Copyable Value: box.value.raw = 123
 //           [cross-module] Q1: 8, Q2: 15, Q3: 3, Q4: 24, distinct: 105
 // Result: CONFIRMED — four-quadrant trivial-self default extensions
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //         provide working `_read`/`_modify` witnesses for the `Mutable`
 //         protocol. Q1/Q2 require no `@_lifetime` annotations; Q3/Q4
 //         require `@_lifetime(borrow self)` on `_read` and

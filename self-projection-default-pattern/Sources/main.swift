@@ -400,6 +400,7 @@ public typealias _V4_TokenHashResult = V4_Token.HashResult
 //             conformer itself. A default `Element = Memory.Contiguous<Self>.Element`
 //             is nonsensical because Element is orthogonal to Self.
 // Result: DOES NOT FIT — the pattern's structural preconditions are
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //         met, but the semantic precondition (associatedtype = projection
 //         of Self) is not. This is the most important negative finding:
 //         the pattern is defined by the *role* of the associatedtype,

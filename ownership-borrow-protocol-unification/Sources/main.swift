@@ -368,6 +368,7 @@ extension V9_Path: V9_Ownership.Borrow<V9_Path>.`Protocol` {}
 //       using the typealias (not the hoisted __ name) in a where-clause.
 //   (b) Protocol-identity at the conformance site uses the typealias form.
 // Result: PENDING — needs test.
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // ============================================================================
 
 public struct V10_Tagged<Tag: ~Copyable, RawValue: ~Copyable>: ~Copyable {

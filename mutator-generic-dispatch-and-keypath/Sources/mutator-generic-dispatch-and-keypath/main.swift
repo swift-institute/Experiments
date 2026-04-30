@@ -38,6 +38,7 @@
 //         path, mirroring the prior Carrier finding in
 //         `swift-carrier-primitives/Research/dynamic-member-lookup-decision.md`.
 // Result: CONFIRMED. Output:
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //           V1 Q1 generic: c.value.raw = 11
 //           V2 Q1 KeyPath set: c.raw = 200; c.value.raw = 200
 //           V3 Q2 generic: u.value.raw = 11

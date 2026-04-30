@@ -28,6 +28,7 @@
 //         conformers (Int) pick up defaults from both protocols with
 //         single-line typealiases. Release build also passes.
 // Result: CONFIRMED. Output:
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //           V1 dual: Carrier.underlying = 42; Mutable.value (after +5) = 105
 //           V2 generic Carrier&Mutable: c.value = 14; c.underlying = 14
 //           V3 ~Copyable dual: u.underlying = 13; u.value (after +7) = 20

@@ -13,6 +13,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: REFUTED — sending @escaping at init does NOT relax the DI rule.
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //   Compiler error (Swift 6.3):
 //     main.swift:47:50: error: variable 'self.polling' used before being initialized
 //         self.polling = FakePolling(tick: { [weak self] in

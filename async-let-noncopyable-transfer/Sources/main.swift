@@ -85,6 +85,7 @@ func v4_wrapper() async {
 // MARK: - V5: Full callAsFunction pattern
 // Hypothesis: Replicate IO.Stream.callAsFunction without Transfer.Cell.
 // Result: REFUTED — writer cannot be consumed in async let expression.
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 #if false
 struct Writer: ~Copyable, Sendable {
     let id: Int

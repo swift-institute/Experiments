@@ -15,6 +15,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — `swift build` crashes with `signal 11` during SILGen.
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL CRASHES
 //   Stack frames 5 and 6: "While emitting reabstraction thunk in SIL function
 //     '@$sBA...silgen_thunk_noncopyable_sending_capture7PayloadVIgTo_...'"
 //   Crash site: `swift::Lowering::SILGenFunction::emitApplyWithRethrow` →

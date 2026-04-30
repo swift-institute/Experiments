@@ -259,6 +259,7 @@ struct BitVector_RawPointer: ~Copyable {
 //             it means "N bits" (not N words). These are categorically different
 //             and a shared substrate would be confusing.
 // Result: (pending)
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 
 // This is what you'd want if vector-primitives stored bits:
 // Vector<Bit, 256> — 256 elements of type Bit (256 separate values)

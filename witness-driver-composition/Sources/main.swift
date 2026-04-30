@@ -12,6 +12,7 @@
 // Platform: macOS 26 (arm64)
 //
 // Result: CONFIRMED — all 5 variants build and run correctly
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // Date: 2026-04-09
 
 // ============================================================================

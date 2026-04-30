@@ -15,6 +15,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: REFUTED — observed diagnostic (Swift 6.3):
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //     main.swift:41:42: error: 'self' captured by a closure before all
 //     members were initialized
 //     main.swift:37: note: 'self.polling' not initialized

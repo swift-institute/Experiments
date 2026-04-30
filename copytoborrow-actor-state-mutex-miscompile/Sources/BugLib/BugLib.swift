@@ -7,6 +7,7 @@
 //
 // Toolchain: Swift 6.3 (Xcode 26)
 // Revalidated: Swift 6.3.1 (2026-04-17) — STILL PRESENT (BUG observed in
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //          ~50/100 iterations on 6.3.1; final "PASS" line is the script's
 //          end-marker, not a verdict — the BUG print lines confirm the
 //          miscompile. See memory `swift-6.3-fix-status.md`).

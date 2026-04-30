@@ -5,6 +5,7 @@
 // Date: 2026-03-16
 // Toolchain: Swift 6.2.4
 // Status: DEFERRED
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // Purpose: Proof-of-concept for RFC 4291 IPv6 Addressing Architecture
 //          as entry point for the networking RFC implementation plan.
 // Research: swift-standards/Research/NETWORKING_RFC_IMPLEMENTATION_PLAN.md

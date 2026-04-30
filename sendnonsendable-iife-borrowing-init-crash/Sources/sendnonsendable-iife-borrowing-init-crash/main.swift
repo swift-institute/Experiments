@@ -30,6 +30,7 @@
 //   full stack dump.
 //
 // Toolchain: Swift 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102), Xcode 26.4.1
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL CRASHES
 // Platform: macOS 26.0 (arm64)
 // Date: 2026-04-21
 //

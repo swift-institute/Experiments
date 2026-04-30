@@ -16,6 +16,7 @@
 // Platform:  macOS 26.2 (arm64)
 //
 // Result:
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   (a) Unified landing page   — CONFIRMED
 //   (b) Cross-archive nav      — CONFIRMED
 //   (c) Cross-archive search   — REFUTED

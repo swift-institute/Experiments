@@ -24,6 +24,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: REFUTED — observed diagnostics:
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //   V1 (ENABLE_V1): "'nonisolated' cannot be applied to mutable stored
 //     properties" — compiler suggests `nonisolated(unsafe)` (rule #2
 //     forbids on `polling`).

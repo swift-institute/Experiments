@@ -16,6 +16,7 @@
 // Status: STILL PRESENT (verified 2026-04-23)
 //
 // Result: STILL PRESENT — V1 fails to compile with
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //           error: INTERNAL ERROR: feature not implemented:
 //                  nontrivial thin function reference
 //         at the return-closure site (main.swift:33:12). The closure

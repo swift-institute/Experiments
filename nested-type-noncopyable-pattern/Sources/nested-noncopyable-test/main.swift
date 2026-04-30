@@ -8,6 +8,7 @@
 //
 // STATUS: [SUCCESS]
 // Result: CONFIRMED — Nested ~Copyable types work correctly. Conditional
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   Copyable conformance (where Value: Copyable) compiles and functions
 //   as designed.
 //

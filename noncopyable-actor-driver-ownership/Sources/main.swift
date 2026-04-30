@@ -171,6 +171,7 @@ func simulateDeinitWithTask(runtime: PinnedRuntime, id: Int) {
 //             This enables BOTH sync run loop access AND async actor access,
 //             since the pointer is stored on the executor (shared).
 // Result: CONFIRMED
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // ==========================================================================
 
 final class SharedStorage {

@@ -12,6 +12,7 @@
 // Platform: macOS (arm64)
 //
 // Result: CONFIRMED — all 5 variants compile and produce correct output
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // Output: V1: 52 / V2: 300 / V3: 10 / V4: count=1 / V5: id=55, polled 1, closed
 // Date: 2026-04-05
 

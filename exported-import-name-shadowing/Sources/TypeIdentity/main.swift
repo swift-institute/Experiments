@@ -40,6 +40,7 @@ print("V2 [T] == Swift.Array<T>: true (compiled)")
 
 // MARK: - V4: Module-qualified printing
 // Result: CONFIRMED
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 
 print("V4 bare module: \(Swift.Array<Int>.self == type(of: sugar))")
 print("V4 bare module: \(Core.Array<Int>.self == type(of: bare))")

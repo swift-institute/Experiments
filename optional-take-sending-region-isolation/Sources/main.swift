@@ -194,6 +194,7 @@ extension Optional where Wrapped: ~Copyable {
 // Hypothesis: Split the API: Sendable types get `sending` return (safe),
 //             non-Sendable types get plain return (correct but less flexible).
 // Result: CONFIRMED — 6.3 PASS, 6.4-dev PASS (both overloads compile)
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 
 extension Optional where Wrapped: ~Copyable & Sendable {
     @inlinable

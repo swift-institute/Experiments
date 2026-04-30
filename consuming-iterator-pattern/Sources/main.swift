@@ -243,6 +243,7 @@ func testNestedNaming() {
 // MARK: - Variant 7: Tuple limitation demonstration (commented out)
 // Hypothesis: Tuples can contain ~Copyable elements
 // Result: REFUTED - Swift 6.2 does not support this
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //
 // The following code does NOT compile:
 // ```

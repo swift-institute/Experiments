@@ -137,6 +137,7 @@ struct MockScope4: ~Copyable {
 //             the token field without the partial-consume limitation.
 //             Trade-off: no emergency cleanup on drop.
 // Result: CONFIRMED — cleanest pattern but loses deinit safety net
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // ============================================================================
 
 struct MockScope5: ~Copyable {

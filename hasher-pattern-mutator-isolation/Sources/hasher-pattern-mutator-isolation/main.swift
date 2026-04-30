@@ -51,6 +51,7 @@
 //         an inout-pointer storage shape and corresponding
 //         `@_lifetime(&subject)` annotations on its init.
 // Result: CONFIRMED. Output:
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //           Role A normal mutation: c.raw = 8; aborted = false
 //           Role A abort path: c2.raw = 151; aborted = true
 //           Role A ~Copyable Subject: u.raw = 15

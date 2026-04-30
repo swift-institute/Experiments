@@ -12,6 +12,7 @@
 // Platform: macOS 26.0 (arm64)
 //
 // Result: CONFIRMED — 6/6 variants pass. Struct Mutex with @_rawLayout inline
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //   storage, let binding, nonmutating _modify on Locked view, zero heap allocation,
 //   26 bytes total, 1000-task concurrent safety. Parity with Synchronization.Mutex
 //   on every axis plus coroutine accessor. ~Escapable blocked by lifetime checker

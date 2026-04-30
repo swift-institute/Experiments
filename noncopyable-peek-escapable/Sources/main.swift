@@ -198,6 +198,7 @@ struct V6Box: ~Copyable {
 // Hypothesis: The current closure pattern works for ~Copyable elements.
 //             This is the production pattern from Queue.DoubleEnded.
 // Result: CONFIRMED
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 // ============================================================================
 
 struct V7Box: ~Copyable {

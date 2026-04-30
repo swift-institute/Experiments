@@ -4,6 +4,7 @@
 // Revalidation: FIXED in Swift 6.2.4 — deinits fire correctly (2026-03-10)
 // Revalidation: Swift 6.3.1 (2026-04-17) — STILL WORKS
 // Result: BUG REPRODUCED — cross-module ~Copyable inline deinit was broken in Swift 6.2, fixed in 6.2.4
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //
 // This experiment mirrors production: Tracked element is defined in a separate Lib module,
 // containers are defined here. This is the critical cross-module case that production uses.

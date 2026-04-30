@@ -15,6 +15,7 @@
 // Date:     2026-04-24
 //
 // Result: CONFIRMED — realistic hot-path overhead ≈ 3.5 ns per non-inlined
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //         wrapper construction.
 //
 //         Loop B (opaque write + wrapper + load):

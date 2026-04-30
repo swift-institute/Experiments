@@ -39,6 +39,7 @@
 //
 // Status: STILL PRESENT on Swift 6.3.1 AND swift-6.4-dev.
 // Result: CONFIRMED COMPILER BUG, narrow shape:
+// Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
 //
 //         Variant verdicts (consolidated across reorderings):
 //

@@ -342,6 +342,7 @@ struct V8: TypedProtocol {
 // Hypothesis: When calling a concrete type (not through protocol), the caller
 //             sees the narrowed throws(E) and benefits from typed error handling
 // Result: CONFIRMED — concrete caller can use throws(DecodingError) context
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //
 // Evidence: Build Succeeded (swiftc -typecheck)
 // ============================================================================
