@@ -1,3 +1,6 @@
+// Toolchain: Swift 6.3.1 (2026-04-30) — anchor added during Phase 7a sweep [EXP-007a]
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
+//
 // MARK: - V2: Context Transformer (Algebra Endomorphism)
 // Purpose: Validate that Rendering.Context can be consumed and rewrapped
 //          with additional stateful logic — the algebra composition pattern.
