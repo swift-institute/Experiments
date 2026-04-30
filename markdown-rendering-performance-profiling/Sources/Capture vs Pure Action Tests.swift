@@ -6,6 +6,7 @@
 //  Hypothesis: Pure action closures eliminate _render recursion → 5-10x speedup
 //  Toolchain: Swift 6.2
 // Revalidated: Swift 6.3.1 (2026-04-17) — PASSES
+// Revalidated: Swift 6.3.1 (2026-04-30) — PASSES
 //  Platform: macOS 26
 //  Date: 2026-03-15
 
