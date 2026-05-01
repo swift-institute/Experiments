@@ -1,0 +1,10 @@
+Building for debugging...
+[0/5] Write V5_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V5_Consumer
+[4/5] Applying V5_Consumer
+Build of product 'V5_Consumer' complete! (0.22s)
+V5 (a) typed: ok
+V5 (b) raw via consumer-owned shim: rc=0
+V5 (c) cross-module: typed crosses normally; raw is consumer-local (duplication)

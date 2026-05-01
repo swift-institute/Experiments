@@ -1,0 +1,7 @@
+Building for production...
+[0/4] Write sources
+[3/4] Write swift-version--58304C5D6DBC2206.txt
+[5/5] Compiling V5_L2 Close.swift
+[6/6] Compiling V5_L3 Policy.swift
+[7/7] Compiling V5_Consumer ConsumerShim.swift
+Build of target: 'V5_Consumer' complete! (0.46s)

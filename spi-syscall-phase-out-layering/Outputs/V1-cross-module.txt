@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write V1_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V1_Consumer
+[4/5] Applying V1_Consumer
+Build of product 'V1_Consumer' complete! (0.25s)
+V1 (a) typed: ok
+V1 (b) raw via @_spi(Syscall): rc=0
+V1 (c) cross-module: typed visible across modules; @_spi raw visible with import attribute

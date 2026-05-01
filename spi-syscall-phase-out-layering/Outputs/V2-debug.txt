@@ -1,0 +1,12 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[3/4] Write swift-version--58304C5D6DBC2206.txt
+[5/7] Emitting module V2_L2
+[6/7] Compiling V2_L2 Descriptor.swift
+[7/7] Compiling V2_L2 Close.swift
+[8/9] Emitting module V2_L3
+[9/9] Compiling V2_L3 Policy.swift
+[10/11] Compiling V2_Consumer main.swift
+[11/11] Emitting module V2_Consumer
+Build of target: 'V2_Consumer' complete! (0.46s)

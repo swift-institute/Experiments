@@ -1,0 +1,10 @@
+Building for debugging...
+[0/5] Write V6_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V6_Consumer
+[4/5] Applying V6_Consumer
+Build of product 'V6_Consumer' complete! (0.22s)
+V6 (a) typed: ok
+V6 (b) raw: REFUTED — no raw access; production raw use cases unserved
+V6 (c) cross-module: typed surface crosses; raw use cases unserved

@@ -58,6 +58,30 @@
   ],
   "experiments": [
     {
+      "category": "Architecture Patterns",
+      "crossRefs": [],
+      "date": "2026-04-30",
+      "directory": "windows-l2-l3-namespace-separation",
+      "purpose": "Empirically determine which namespace-separation pattern for the Windows-side L2/L3 platform stack compiles cleanly across module boundaries, preserves consumer ergonomics under the cross-platform `Kernel.X` unifier alias, and gives genuine spec-vs-policy separation. Triggered by the Path X close (2026-04-30) and the user direction that future strict-platform compliance phases raw forms out at L2 entirely (typed-only L2 surface). The POSIX-side stack already has `ISO_9945` (IEEE spec root) / `POSIX` (L3-policy / unifier root) as a two-name structure (today typealiased: `POSIX = ISO_9945`); the Windows side has only `Windows`. Five variants tested as 3-target shapes (L2 raw / L3 typed policy / Consumer): V1 status-quo `Windows.Kernel.X` at both L2 and L3; V2 sub-namespace `Windows.ABI.Kernel.X` at L2 + `Windows.Kernel.X` at L3; V3 twin roots `Win32.Kernel.X` at L2 + `Windows.Kernel.X` at L3 (mirrors POSIX shape); V4 org-prefix `Microsoft.Kernel.X` at L2 + `Windows.Kernel.X` at L3; V5 literal-spec `WinSDK.Kernel.X` at L2 + `Windows.Kernel.X` at L3. All 16 targets (5 variants \u00d7 {L2, L3, Consumer} + SharedHandle utility) build green in debug + release; each consumer's build is itself the cross-module receipt (Consumer \u2192 L3 \u2192 L2 chain crosses two module boundaries). The differential signal is architectural \u2014 spec/policy separation, [API-NAME-003] specification-mirroring fidelity, and Windows-host module-vs-type collision risk. Recommendation document: `swift-institute/Research/windows-l2-l3-namespace-separation.md`.",
+      "status": "CONFIRMED",
+      "statusDetail": "V1 (`Windows.Kernel.X` at both L2 and L3) CONFIRMED mechanically with raw `UInt` at L2 and typed `FakeHandle` at L3 \u2014 the parameter-type difference resolves the overload ambiguity; REFUTED on spec/policy-separation grounds because there is no namespace-level audit boundary between the two tiers, and the future typed-only L2 phase-out collides with typed-at-L3 at the same syntactic slot per [PLAT-ARCH-008e]. V2 (sub-namespace) CONFIRMED \u2014 disjoint extension paths under one `Windows` root; the L2 tier sits at `Windows.ABI.Kernel`, the L3 unifier slot at `Windows.Kernel`. V3 (twin roots) CONFIRMED \u2014 entirely disjoint namespace trees; the cleanest spec/policy split and the only variant that mirrors the POSIX-side `ISO_9945`/`POSIX` shape. V4 (org-prefix) CONFIRMED mechanically; sub-optimal because the org-prefix root conflicts with [API-NAME-003] specification-mirroring naming (the ecosystem already roots specs at the spec name \u2014 `ISO_9945`, `RFC_4122` \u2014 not at the publisher). V5 (literal-spec) CONFIRMED on macOS; ships a latent identifier-overload tax on Windows because `WinSDK` is already the Microsoft-published Swift module name for the Windows SDK headers \u2014 Swift modules and top-level types share a single name space at qualified-reference sites, so any consumer reaching for raw C surface will collide with the Swift `enum WinSDK`. The collision cannot fire on macOS or Linux CI; cross-platform CI alone cannot rule out the latent risk. Recommendation: V3.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1)"
+    },
+    {
+      "category": "Architecture Patterns",
+      "crossRefs": [],
+      "date": "2026-04-30",
+      "directory": "spi-syscall-phase-out-layering",
+      "purpose": "Empirically determine which access-control mechanism supports legitimate raw-FFI use cases without exposing raw shape at any L2 public surface, after the Path X close (2026-04-30) decision to phase out `@_spi(Syscall)` entirely. Six variants tested as 3-target shapes (L2 / L3 / Consumer): V1 status-quo `@_spi(Syscall) public func close(Int32)`; V2 file-scope `private` raw helper inside L2; V3 `internal` raw + sibling target via `@testable import` (V3_L2 compiled with `-enable-testing`); V4 `package` raw form; V5 typed-only L2 with consumer-side raw shim; V6 typed-only at every layer (feasibility baseline). All 18 targets build green in debug + release; cross-module is captured by linking and running each Vk_Consumer (which imports its Vk_L2 + Vk_L3). The differential signal is in the architectural reachability each access-control mechanism provides for the cross-package-stack consumer topology our ecosystem actually has, not in any compile failure. Recommendation document: `swift-institute/Research/spi-syscall-phase-out-layering.md`.",
+      "status": "CONFIRMED",
+      "statusDetail": "V1 reachable via `@_spi(Syscall) import`; CONFIRMED mechanically but blocked by user direction (Path X close). V2 raw is invisible to consumers \u2014 REFUTED for the consumer-reachable raw use case; CONFIRMED only for in-file raw containment. V3 reachable via `@testable import` only when V3_L2 is compiled with `-enable-testing` \u2014 practically refuted at ecosystem scale (compile-flag spread + optimization implications). V4 reachable within one Package.swift, structurally REFUTED across SPM-package boundaries (SE-0386 `package` does not span sibling Package.swift files). V5 reachable via consumer-owned shim, structurally REFUTED by [PLAT-ARCH-008a] (consumers must not bypass the platform stack to import platform C). V6 typed-only is REFUTED \u2014 production raw-required use cases (posix_spawn_file_actions, setrlimit / dup2 fd-table manipulation, ABI shims, benchmark bypass) cannot be served without unbounded growth of the typed surface.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1)"
+    },
+    {
       "category": "~Escapable & Ownership",
       "crossRefs": [],
       "date": "2026-04-24",

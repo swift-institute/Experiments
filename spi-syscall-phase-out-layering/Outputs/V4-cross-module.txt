@@ -1,0 +1,10 @@
+Building for debugging...
+[0/5] Write V4_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V4_Consumer
+[4/5] Applying V4_Consumer
+Build of product 'V4_Consumer' complete! (0.21s)
+V4 (a) typed: ok
+V4 (b) raw via package: rc=0
+V4 (c) cross-module: works WITHIN one SPM package only

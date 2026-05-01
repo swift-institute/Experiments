@@ -1,0 +1,11 @@
+Building for debugging...
+[0/4] Write sources
+[3/4] Write swift-version--58304C5D6DBC2206.txt
+[5/7] Compiling V1_L2 Close.swift
+[6/7] Emitting module V1_L2
+[7/7] Compiling V1_L2 Descriptor.swift
+[8/9] Emitting module V1_L3
+[9/9] Compiling V1_L3 Policy.swift
+[10/11] Emitting module V1_Consumer
+[11/11] Compiling V1_Consumer main.swift
+Build of target: 'V1_Consumer' complete! (0.66s)

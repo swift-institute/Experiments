@@ -1,0 +1,10 @@
+Building for debugging...
+[0/5] Write V3_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V3_Consumer
+[4/5] Applying V3_Consumer
+Build of product 'V3_Consumer' complete! (0.21s)
+V3 (a) typed: ok
+V3 (b) raw via @testable: rc=0
+V3 (c) cross-module: works only when L2 ships with -enable-testing

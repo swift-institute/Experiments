@@ -1,0 +1,8 @@
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[3/4] Write swift-version--58304C5D6DBC2206.txt
+[5/5] Compiling V2_L2 Close.swift
+[6/6] Compiling V2_L3 Policy.swift
+[7/7] Compiling V2_Consumer main.swift
+Build of target: 'V2_Consumer' complete! (0.49s)

@@ -1,0 +1,10 @@
+Building for debugging...
+[0/5] Write V2_Consumer-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking V2_Consumer
+[4/5] Applying V2_Consumer
+Build of product 'V2_Consumer' complete! (0.21s)
+V2 (a) typed: ok
+V2 (b) raw: NOT REACHABLE — private helper invisible to consumers
+V2 (c) cross-module: typed only crosses boundary
