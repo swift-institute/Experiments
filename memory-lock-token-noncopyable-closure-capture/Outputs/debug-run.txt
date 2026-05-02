@@ -1,0 +1,30 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'memory-lock-token-noncopyable-closure-capture' complete! (0.10s)
+=== Test 1: explicit release() then drop ===
+Resource(1) created
+Token init
+Token.release() called
+release closure: consuming Resource(1)
+Resource(1) deinit (close-on-drop)
+Token deinit
+
+=== Test 2: deinit-only release ===
+Resource(2) created
+Token init
+Token deinit
+release closure: consuming Resource(2)
+Resource(2) deinit (close-on-drop)
+
+=== Test 3: idempotent double-release ===
+Resource(3) created
+Token init
+Token.release() called
+release closure: consuming Resource(3)
+Resource(3) deinit (close-on-drop)
+Token.release() called
+Token deinit
+
+=== End of experiment ===
+Verdict: CONFIRMED — see header.
