@@ -1,0 +1,26 @@
+Building for debugging...
+[0/11] Write sources
+[5/11] Write l3-policy-layering-approach-13-carrier-generic-over-layers-entitlement.plist
+[7/11] Write swift-version--58304C5D6DBC2206.txt
+[9/19] Emitting module L1Defs
+[10/19] Compiling L1Defs Namespaces.swift
+[11/19] Compiling Carrier_Primitives Carrier.swift
+[12/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Copyable.swift
+[13/19] Emitting module Carrier_Primitives
+[14/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Escapable.swift
+[15/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Copyable & ~Escapable.swift
+[16/19] Compiling Carrier_Primitives Carrier where Underlying == Self.swift
+[17/25] Emitting module L2Methods
+[18/25] Compiling L2Methods ISO_9945.swift
+[19/25] Compiling Tagged_Primitives Tagged.swift
+[20/25] Compiling Tagged_Primitives Tagged+Carrier.swift
+[21/25] Compiling Tagged_Primitives Tagged+CustomStringConvertible.swift
+[22/25] Emitting module Tagged_Primitives
+[23/27] Compiling L3Policy POSIX.swift
+[24/27] Emitting module L3Policy
+[25/29] Emitting module l3_policy_layering_approach_13_carrier_generic_over_layers
+[26/29] Compiling l3_policy_layering_approach_13_carrier_generic_over_layers main.swift
+[26/29] Write Objects.LinkFileList
+[27/29] Linking l3-policy-layering-approach-13-carrier-generic-over-layers
+[28/29] Applying l3-policy-layering-approach-13-carrier-generic-over-layers
+Build complete! (1.86s)

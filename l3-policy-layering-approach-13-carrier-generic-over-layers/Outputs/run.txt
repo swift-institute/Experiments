@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'l3-policy-layering-approach-13-carrier-generic-over-layers' complete! (0.14s)
+L2 bare struct via describeStats: size=1024 perms=644
+L3 Tagged variant via describeStats: size=1024 perms=644
+Kernel.File.Stats (= L3 Tagged) via describeStats: size=1024 perms=644
+L2.underlying type matches L3.underlying type: true
+type(of: l2): Stats
+type(of: l3): Tagged<POSIX, Stats>
