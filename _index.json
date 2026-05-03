@@ -59,6 +59,18 @@
   "experiments": [
     {
       "category": "~Escapable & Ownership",
+      "crossRefs": ["se-0499-implications-for-equation-hash-comparison-primitives"],
+      "date": "2026-05-03",
+      "directory": "se-0499-stdlib-noncopyable-protocol-conformance",
+      "purpose": "[RES-021] verification spike for the SE-0499 implications research (`swift-institute/Research/se-0499-implications-for-equation-hash-comparison-primitives.md`). Tests whether SE-0499 (Support `~Copyable` and `~Escapable` in Standard Library Protocols) is shipping in any locally-installed toolchain, and whether the proposed namespace-adoption-typealias deployment shape (`extension Equation { typealias \\`Protocol\\` = Swift.Equatable }` etc.) resolves correctly. Two targets: SE0499Spike declares `~Copyable` conformances directly to Swift.Equatable / Swift.Hashable / Swift.Comparable (the SE-0499 surface itself), with generic-constraint use sites (`<T: Equatable & ~Copyable>`); SE0499SpikeTypealias declares the same conformances via the proposed `*.\\`Protocol\\`` typealias adoption shape on enums Equation/Hash/Comparison.",
+      "status": "CONFIRMED",
+      "statusDetail": "SE-0499 IS implemented in the 2026-03-16 nightly. Build FAIL on Apple Swift 6.3.1 (Xcode default, expected — pre-SE-0499 stdlib). Initial build under nightly via `xcrun --toolchain '<snapshot-name>' swift build` FAILED with identical diagnostics to 6.3 — but this was a build-config defect: `xcrun --toolchain` selects the compiler binary but does NOT redirect SwiftPM's stdlib resolution; the build resolved Equatable et al against the host Xcode SDK's pre-SE-0499 `.swiftinterface`. Re-run with `TOOLCHAINS=org.swift.64202603161a swift build` (env var with the toolchain bundle identifier from `defaults read .../Info CFBundleIdentifier`) PASSES — both targets build clean. Independently verified: the nightly's bundled stdlib at `usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftinterface` declares `public protocol Equatable : ~Copyable, ~Escapable` and analogously for Comparable/Hashable. Implementation truth: PR #85079 is the umbrella WIP, but SE-0499 actually landed via Ben Cohen's split PRs — #85746 (Equatable, 2025-12-03), #85747 (Comparable), #85748 (Hashable), plus #85854/#85891 for ~Escapable (verified against local swiftlang/swift main, fetched 2026-05-03). Lessons: (1) for nightly toolchain selection in SwiftPM, use TOOLCHAINS env var with the bundle identifier — `xcrun --toolchain '<snapshot-name>'` is insufficient; (2) when `.swiftinterface` inspection and build result disagree, suspect build-config first; (3) for SE-0499 specifically, checking only the umbrella PR misses the split-PR landings — must walk the family.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1, system default — fails as expected) AND Apple Swift 6.4-dev DEVELOPMENT-SNAPSHOT-2026-03-16-a via TOOLCHAINS=org.swift.64202603161a (passes)"
+    },
+    {
+      "category": "~Escapable & Ownership",
       "crossRefs": [],
       "date": "2026-05-02",
       "directory": "memory-lock-token-noncopyable-closure-capture",
