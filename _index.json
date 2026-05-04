@@ -963,6 +963,18 @@
       "crossRefs": []
     },
     {
+      "directory": "property-consuming-get-and-read",
+      "category": "API Design Patterns",
+      "purpose": "Whether a property accessor on a ~Copyable host can declare both `_read` (borrow) and `consuming get` (consume), with call-site dispatch by receiver ownership. V1-V3 REFUTED (Swift forbids dual-mode getters / consuming get is non-functional on properties); V4 CONFIRMED separate-name fix (`_read` property + `consuming func take()`). V5: `_read + _modify` satisfies Carrier conformance but does NOT recover consume-extract — `consume` rejects accessor results because computed accessors don't produce storage.",
+      "date": "2026-05-04",
+      "toolchain": "Swift 6.3.1",
+      "status": "CONFIRMED",
+      "statusDetail": "Property accessors do NOT support polymorphic borrow/consume dispatch; the Tagged.underlying regression after the rename from `let rawValue: U` to `_read { yield _storage }` is structurally forced by Swift's accessor model. Fix is a separate `consuming func take() -> Underlying`.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
       "directory": "fluent-api-pattern",
       "category": "API Design Patterns",
       "purpose": "Fluent API patterns with Property.View",
