@@ -1,0 +1,41 @@
+Building for debugging...
+[0/9] Write sources
+[3/9] Write l3-policy-layering-approach-3-implementation-only-import-entitlement.plist
+[4/9] Write sources
+[5/9] Write swift-version--58304C5D6DBC2206.txt
+[7/11] Emitting module L1Defs
+[8/11] Compiling L1Defs Foo.swift
+[9/13] Emitting module L2Methods
+[10/13] Compiling L2Methods Foo+typed.swift
+[11/15] Compiling L3Policy Foo+policy.swift
+/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-3-implementation-only-import/Sources/L3Policy/Foo+policy.swift:2:22: warning: using '@_implementationOnly' without enabling library evolution for 'L3Policy' may lead to instability during execution [#ImplementationOnlyDeprecated]
+ 1 | // Approach 3a: @_implementationOnly import — hide L2 from consumers entirely
+ 2 | @_implementationOnly import L2Methods
+   |                      `- warning: using '@_implementationOnly' without enabling library evolution for 'L3Policy' may lead to instability during execution [#ImplementationOnlyDeprecated]
+ 3 | // L1Defs needed for Foo public re-export to consumers
+ 4 | @_exported public import L1Defs
+
+/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-3-implementation-only-import/Sources/L3Policy/Foo+policy.swift:8:26: warning: function call causes an infinite recursion
+ 6 | extension Foo {
+ 7 |     public static func make() throws(FooError) -> Foo {
+ 8 |         let l2 = try Foo.make()
+   |                          `- warning: function call causes an infinite recursion
+ 9 |         return Foo(tag: "L3(\(l2.tag))")
+10 |     }
+
+[#ImplementationOnlyDeprecated]: <https://docs.swift.org/compiler/documentation/diagnostics/implementation-only-deprecated>
+[12/15] Emitting module L3Policy
+/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-3-implementation-only-import/Sources/L3Policy/Foo+policy.swift:2:22: warning: using '@_implementationOnly' without enabling library evolution for 'L3Policy' may lead to instability during execution [#ImplementationOnlyDeprecated]
+ 1 | // Approach 3a: @_implementationOnly import — hide L2 from consumers entirely
+ 2 | @_implementationOnly import L2Methods
+   |                      `- warning: using '@_implementationOnly' without enabling library evolution for 'L3Policy' may lead to instability during execution [#ImplementationOnlyDeprecated]
+ 3 | // L1Defs needed for Foo public re-export to consumers
+ 4 | @_exported public import L1Defs
+
+[#ImplementationOnlyDeprecated]: <https://docs.swift.org/compiler/documentation/diagnostics/implementation-only-deprecated>
+[13/17] Compiling l3_policy_layering_approach_3_implementation_only_import main.swift
+[14/17] Emitting module l3_policy_layering_approach_3_implementation_only_import
+[14/17] Write Objects.LinkFileList
+[15/17] Linking l3-policy-layering-approach-3-implementation-only-import
+[16/17] Applying l3-policy-layering-approach-3-implementation-only-import
+Build complete! (0.83s)

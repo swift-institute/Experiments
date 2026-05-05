@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write l3-policy-layering-approach-7-rule-legal-precedent-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling l3_policy_layering_approach_7_rule_legal_precedent main.swift
+[5/8] Emitting module l3_policy_layering_approach_7_rule_legal_precedent
+[5/8] Write Objects.LinkFileList
+[6/8] Linking l3-policy-layering-approach-7-rule-legal-precedent
+[7/8] Applying l3-policy-layering-approach-7-rule-legal-precedent
+Build complete! (0.56s)

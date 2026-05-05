@@ -1,0 +1,3 @@
+Foo.make() (type extension, L2) = L2
+Foo.makeWithPolicy() (protocol extension, L3) = L3-protocol(L2)
+Type identity preserved: L3-protocol(L2)

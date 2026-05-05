@@ -1,0 +1,9 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module without_spi
+[4/6] Compiling without_spi main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking without-spi
+[6/7] Applying without-spi
+Build complete! (0.32s)

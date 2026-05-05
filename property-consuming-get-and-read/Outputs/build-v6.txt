@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module property_consuming_get_and_read
+[4/6] Compiling property_consuming_get_and_read main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking property-consuming-get-and-read
+[6/7] Applying property-consuming-get-and-read
+Build complete! (0.34s)

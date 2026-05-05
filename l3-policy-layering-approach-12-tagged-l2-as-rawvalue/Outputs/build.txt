@@ -1,0 +1,31 @@
+Fetching file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.07s)
+Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives
+Working copy of file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (8dd87ca)
+Building for debugging...
+[0/11] Write sources
+[1/11] Write l3-policy-layering-approach-12-tagged-l2-as-rawvalue-entitlement.plist
+[3/11] Write sources
+[7/11] Write swift-version--58304C5D6DBC2206.txt
+[9/19] Compiling L1Defs Namespaces.swift
+[10/19] Emitting module L1Defs
+[11/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Copyable.swift
+[12/19] Compiling Carrier_Primitives Carrier where Underlying == Self.swift
+[13/19] Compiling Carrier_Primitives Carrier.swift
+[14/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Escapable.swift
+[15/19] Emitting module Carrier_Primitives
+[16/19] Compiling Carrier_Primitives Carrier where Underlying == Self, Self ~Copyable & ~Escapable.swift
+[17/25] Compiling L2Methods ISO_9945.swift
+[18/25] Emitting module L2Methods
+[19/25] Emitting module Tagged_Primitives
+[20/25] Compiling Tagged_Primitives Tagged.swift
+[21/25] Compiling Tagged_Primitives Tagged+Carrier.swift
+[22/25] Compiling Tagged_Primitives Tagged+CustomStringConvertible.swift
+[23/27] Emitting module L3Policy
+[24/27] Compiling L3Policy POSIX.swift
+[25/29] Emitting module l3_policy_layering_approach_12_tagged_l2_as_rawvalue
+[26/29] Compiling l3_policy_layering_approach_12_tagged_l2_as_rawvalue main.swift
+[26/29] Write Objects.LinkFileList
+[27/29] Linking l3-policy-layering-approach-12-tagged-l2-as-rawvalue
+[28/29] Applying l3-policy-layering-approach-12-tagged-l2-as-rawvalue
+Build complete! (2.80s)

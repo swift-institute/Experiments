@@ -1,0 +1,12 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module property_consuming_get_and_read
+[4/7] Compiling property_consuming_get_and_read main.swift
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:49:9: error: 'self' is borrowed and cannot be consumed
+47 |     }
+48 | 
+49 |     var contents: NC {
+   |         `- error: 'self' is borrowed and cannot be consumed
+50 |         consuming get {
+51 |             _storage

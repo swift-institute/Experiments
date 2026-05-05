@@ -1,0 +1,17 @@
+Building for debugging...
+[0/9] Write sources
+[2/9] Write l3-policy-layering-approach-11-operation-struct-pattern-entitlement.plist
+[3/9] Write sources
+[5/9] Write swift-version--58304C5D6DBC2206.txt
+[7/11] Compiling L1Defs Namespaces.swift
+[8/11] Emitting module L1Defs
+[9/13] Emitting module L2Methods
+[10/13] Compiling L2Methods ISO_9945.swift
+[11/15] Compiling L3Policy POSIX.swift
+[12/15] Emitting module L3Policy
+[13/17] Compiling l3_policy_layering_approach_11_operation_struct_pattern main.swift
+[14/17] Emitting module l3_policy_layering_approach_11_operation_struct_pattern
+[14/17] Write Objects.LinkFileList
+[15/17] Linking l3-policy-layering-approach-11-operation-struct-pattern
+[16/17] Applying l3-policy-layering-approach-11-operation-struct-pattern
+Build complete! (1.04s)

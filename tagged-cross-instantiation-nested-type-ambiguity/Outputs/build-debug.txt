@@ -1,0 +1,252 @@
+Building for debugging...
+[0/9] Write sources
+[0/9] Write tagged-cross-instantiation-nested-type-ambiguity-entitlement.plist
+[0/9] Write sources
+[5/9] Write swift-version--58304C5D6DBC2206.txt
+[7/11] Emitting module TaggedCore
+[8/11] Compiling TaggedCore TaggedCore.swift
+[9/15] Compiling LegA LegA.swift
+[10/15] Emitting module LegA
+[11/15] Emitting module LegB
+[12/15] Compiling LegB LegB.swift
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[13/17] Emitting module tagged_cross_instantiation_nested_type_ambiguity
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:82:52: error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 80 | // MARK: - V4: Typed-throws use in declarations
+ 81 | 
+ 82 | func v4_typed_throws_a() throws(Tagged<TagA, RawA>.Error) {
+    |                                                    `- error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 83 |     throw NestedAError.a
+ 84 | }
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:86:52: error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 84 | }
+ 85 | 
+ 86 | func v4_typed_throws_b() throws(Tagged<TagB, RawB>.Error) {
+    |                                                    `- error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 87 |     throw NestedBError.b
+ 88 | }
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+[14/17] Compiling tagged_cross_instantiation_nested_type_ambiguity main.swift
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:82:52: error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 80 | // MARK: - V4: Typed-throws use in declarations
+ 81 | 
+ 82 | func v4_typed_throws_a() throws(Tagged<TagA, RawA>.Error) {
+    |                                                    `- error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 83 |     throw NestedAError.a
+ 84 | }
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:86:52: error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 84 | }
+ 85 | 
+ 86 | func v4_typed_throws_b() throws(Tagged<TagB, RawB>.Error) {
+    |                                                    `- error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 87 |     throw NestedBError.b
+ 88 | }
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:53:31: error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 51 | 
+ 52 | func v1_baseline_legA_lookup() {
+ 53 |     let _: Tagged<TagA, RawA>.Error = NestedAError.a
+    |                               `- error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 54 |     print("V1 PASS: Tagged<TagA, RawA>.Error resolves to NestedAError when both legs imported")
+ 55 | }
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:63:35: error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 61 |     // The agent's claim: this line should fail to compile because
+ 62 |     // Tagged.Error is ambiguous between LegA's and LegB's typealiases.
+ 63 |     let value: Tagged<TagA, RawA>.Error = NestedAError.a
+    |                                   `- error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 64 |     // If the type system DOES respect the where-clause, this assertion
+ 65 |     // succeeds: the Error here is NestedAError, not NestedBError.
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:74:35: error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 72 | 
+ 73 | func v3_legB_lookup_with_legA_imported() {
+ 74 |     let value: Tagged<TagB, RawB>.Error = NestedBError.b
+    |                                   `- error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 75 |     let _: NestedBError = value
+ 76 |     print("V3 PASS: Tagged<TagB, RawB>.Error resolves unambiguously to NestedBError despite LegA being imported")
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:91:34: error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 89 | 
+ 90 | func v4_run() {
+ 91 |     do throws(Tagged<TagA, RawA>.Error) {
+    |                                  `- error: ambiguous type name 'Error' in 'Tagged<TagA, RawA>'
+ 92 |         try v4_typed_throws_a()
+ 93 |     } catch {
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagA, RawA>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:98:34: error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 96 |         print("V4a PASS: typed-throws catch resolves to NestedAError concretely")
+ 97 |     }
+ 98 |     do throws(Tagged<TagB, RawB>.Error) {
+    |                                  `- error: ambiguous type name 'Error' in 'Tagged<TagB, RawB>'
+ 99 |         try v4_typed_throws_b()
+100 |     } catch {
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegA/LegA.swift:9:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+ 7 | 
+ 8 | extension Tagged where Tag == TagA, RawValue == RawA {
+ 9 |     public typealias Error = NestedAError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedAError')
+10 | }
+11 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/LegB/LegB.swift:10:22: note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+ 8 | 
+ 9 | extension Tagged where Tag == TagB, RawValue == RawB {
+10 |     public typealias Error = NestedBError
+   |                      `- note: found candidate with type 'Tagged<TagB, RawB>.Error' (aka 'NestedBError')
+11 | }
+12 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:45:8: warning: public import of 'TaggedCore' was not used in public declarations or inlinable code
+ 43 | //   NestedBError) when the where-clause does respect concrete types.
+ 44 | 
+ 45 | public import TaggedCore
+    |        `- warning: public import of 'TaggedCore' was not used in public declarations or inlinable code
+ 46 | public import LegA
+ 47 | public import LegB
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:46:8: warning: public import of 'LegA' was not used in public declarations or inlinable code
+ 44 | 
+ 45 | public import TaggedCore
+ 46 | public import LegA
+    |        `- warning: public import of 'LegA' was not used in public declarations or inlinable code
+ 47 | public import LegB
+ 48 | 
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-cross-instantiation-nested-type-ambiguity/Sources/tagged-cross-instantiation-nested-type-ambiguity/main.swift:47:8: warning: public import of 'LegB' was not used in public declarations or inlinable code
+ 45 | public import TaggedCore
+ 46 | public import LegA
+ 47 | public import LegB
+    |        `- warning: public import of 'LegB' was not used in public declarations or inlinable code
+ 48 | 
+ 49 | // ─────────────────────────────────────────────────────────────────

@@ -1,0 +1,17 @@
+Building for debugging...
+[0/9] Write sources
+[2/9] Write l3-policy-layering-approach-5-sub-namespace-policy-entitlement.plist
+[3/9] Write sources
+[5/9] Write swift-version--58304C5D6DBC2206.txt
+[7/11] Emitting module L1Defs
+[8/11] Compiling L1Defs Foo.swift
+[9/13] Compiling L2Methods Foo+typed.swift
+[10/13] Emitting module L2Methods
+[11/15] Compiling L3Policy Foo+policy.swift
+[12/15] Emitting module L3Policy
+[13/17] Emitting module l3_policy_layering_approach_5_sub_namespace_policy
+[14/17] Compiling l3_policy_layering_approach_5_sub_namespace_policy main.swift
+[14/17] Write Objects.LinkFileList
+[15/17] Linking l3-policy-layering-approach-5-sub-namespace-policy
+[16/17] Applying l3-policy-layering-approach-5-sub-namespace-policy
+Build complete! (0.83s)

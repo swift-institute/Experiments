@@ -1,0 +1,3 @@
+Foo.make() = L3(L2.Syscall)
+Foo.Syscall.make() = L2.Syscall
+Type identity preserved: L3(L2.Syscall)

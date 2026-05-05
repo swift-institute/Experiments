@@ -1,0 +1,24 @@
+Building for debugging...
+[0/9] Write sources
+[2/9] Write l3-policy-layering-approach-8-spi-baseline-entitlement.plist
+[3/9] Write sources
+[5/9] Write swift-version--58304C5D6DBC2206.txt
+[7/11] Compiling L1Defs Foo.swift
+[8/11] Emitting module L1Defs
+[9/13] Compiling L2Methods Foo+typed.swift
+[10/13] Emitting module L2Methods
+[11/15] Emitting module L3Policy
+[12/15] Compiling L3Policy Foo+policy.swift
+/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-8-spi-baseline/Sources/L3Policy/Foo+policy.swift:5:26: warning: function call causes an infinite recursion
+3 | extension Foo {
+4 |     public static func make() throws(FooError) -> Foo {
+5 |         let l2 = try Foo.make()
+  |                          `- warning: function call causes an infinite recursion
+6 |         return Foo(tag: "L3(\(l2.tag))")
+7 |     }
+[13/17] Emitting module l3_policy_layering_approach_8_spi_baseline
+[14/17] Compiling l3_policy_layering_approach_8_spi_baseline main.swift
+[14/17] Write Objects.LinkFileList
+[15/17] Linking l3-policy-layering-approach-8-spi-baseline
+[16/17] Applying l3-policy-layering-approach-8-spi-baseline
+Build complete! (0.85s)

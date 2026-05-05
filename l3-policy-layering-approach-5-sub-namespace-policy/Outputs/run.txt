@@ -1,0 +1,3 @@
+Foo.make() (L2 direct) = L2
+Foo.Policy.make() (L3 wrap) = L3.Policy(L2)
+Type identity preserved: L3.Policy(L2)

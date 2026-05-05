@@ -1,0 +1,93 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/6] Emitting module property_consuming_get_and_read
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:107:32: error: cannot suppress 'Copyable' requirement of an associated type
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                                `- error: cannot suppress 'Copyable' requirement of an associated type
+108 |     var contents: Underlying { borrowing get }
+109 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:107:32: error: cannot suppress 'Escapable' requirement of an associated type
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                                `- error: cannot suppress 'Escapable' requirement of an associated type
+108 |     var contents: Underlying { borrowing get }
+109 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:111:1: error: type 'Box' does not conform to protocol 'CarrierLike'
+ 89 |     }
+ 90 | 
+ 91 |     var contents: NC {
+    |         `- note: candidate would match and infer 'Underlying' = 'NC' if 'NC' conformed to 'Copyable'
+ 92 |         _read {
+ 93 |             yield _storage
+    :
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                    `- note: unable to infer associated type 'Underlying' for protocol 'CarrierLike'
+108 |     var contents: Underlying { borrowing get }
+109 | }
+110 | 
+111 | extension Box: CarrierLike {}
+    | `- error: type 'Box' does not conform to protocol 'CarrierLike'
+112 | 
+113 | // Try to extract owned NC via _modify (swap-in / move-out patterns)
+[4/6] Compiling property_consuming_get_and_read main.swift
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:107:32: error: cannot suppress 'Copyable' requirement of an associated type
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                                `- error: cannot suppress 'Copyable' requirement of an associated type
+108 |     var contents: Underlying { borrowing get }
+109 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:107:32: error: cannot suppress 'Escapable' requirement of an associated type
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                                `- error: cannot suppress 'Escapable' requirement of an associated type
+108 |     var contents: Underlying { borrowing get }
+109 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:111:1: error: type 'Box' does not conform to protocol 'CarrierLike'
+ 89 |     }
+ 90 | 
+ 91 |     var contents: NC {
+    |         `- note: candidate would match and infer 'Underlying' = 'NC' if 'NC' conformed to 'Copyable'
+ 92 |         _read {
+ 93 |             yield _storage
+    :
+105 | // V5: emulate the Carrier protocol, then check Tagged-shape conforms with _read+_modify
+106 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+107 |     associatedtype Underlying: ~Copyable & ~Escapable
+    |                    `- note: unable to infer associated type 'Underlying' for protocol 'CarrierLike'
+108 |     var contents: Underlying { borrowing get }
+109 | }
+110 | 
+111 | extension Box: CarrierLike {}
+    | `- error: type 'Box' does not conform to protocol 'CarrierLike'
+112 | 
+113 | // Try to extract owned NC via _modify (swap-in / move-out patterns)
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:119:12: error: 'consume' can only be used to partially consume storage
+117 |     // If `_modify`-yielded inout permits `consume`, we get owned NC and leave
+118 |     // _storage in an invalid state — Swift should reject this.
+119 |     return consume b.contents
+    |            |         `- note: non-storage produced by this computed property
+    |            `- error: 'consume' can only be used to partially consume storage
+120 | }
+121 | 
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:115:9: warning: variable 'b' was never mutated; consider changing to 'let' constant
+113 | // Try to extract owned NC via _modify (swap-in / move-out patterns)
+114 | func extractViaModify(_ box: consuming Box) -> NC {
+115 |     var b = box
+    |         `- warning: variable 'b' was never mutated; consider changing to 'let' constant
+116 |     // Attempt 1: take ownership of yielded inout via consume on the lvalue.
+117 |     // If `_modify`-yielded inout permits `consume`, we get owned NC and leave

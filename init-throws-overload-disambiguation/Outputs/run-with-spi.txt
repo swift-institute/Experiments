@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'with-spi' complete! (0.11s)
+V2 plain (empty-tuple bypass): 11
+V2 validated (throwing, success): 11
+V2 validated (throwing, expected error): zero
+V5 plain (SPI + empty-tuple bypass): 17
+V5 validated (throwing, success): 17
+V5 validated (throwing, expected error): zero
+with-spi: V2 + V5 exercised cross-module under SPI import

@@ -1,0 +1,9 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'l3-policy-layering-approach-11-operation-struct-pattern' complete! (0.11s)
+Kernel.File.Stats.get(descriptor: 0) = size=1024 perms=644
+Kernel.File.Stats.get(descriptor: -1) = size=1024 perms=644 (L3 policy retry kicked in)
+ISO_9945.Kernel.File.Stats(descriptor: -1) THROWS interrupted (L2 has no retry — proves L2/L3 are distinct operation structs)
+POSIX.Kernel.File.Stats(descriptor: -1) = size=1024 (L3 init handles retry)
+Type via Kernel.File.Stats: size=1024

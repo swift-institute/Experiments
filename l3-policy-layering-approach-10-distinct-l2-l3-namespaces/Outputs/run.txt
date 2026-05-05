@@ -1,0 +1,4 @@
+ISO_9945.Kernel.File.Stats.get() = size=1024 perms=644
+POSIX.Kernel.File.Stats.get() = size=1024 perms=644
+Kernel.File.Stats.get() = size=1024 perms=644
+Type via Kernel.File.Stats: size=1024

@@ -1,0 +1,29 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write property-consuming-get-and-read-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[4/8] Emitting module property_consuming_get_and_read
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:37:9: error: variable cannot provide both a 'read' accessor and a getter
+35 | 
+36 |     var contents: NC {
+37 |         _read {
+   |         `- error: variable cannot provide both a 'read' accessor and a getter
+38 |             yield _storage
+39 |         }
+40 |         consuming get {
+   |                   `- note: getter defined here
+41 |             _storage
+42 |         }
+[5/8] Compiling property_consuming_get_and_read main.swift
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:37:9: error: variable cannot provide both a 'read' accessor and a getter
+35 | 
+36 |     var contents: NC {
+37 |         _read {
+   |         `- error: variable cannot provide both a 'read' accessor and a getter
+38 |             yield _storage
+39 |         }
+40 |         consuming get {
+   |                   `- note: getter defined here
+41 |             _storage
+42 |         }

@@ -1,0 +1,6 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'property-consuming-get-and-read' complete! (0.09s)
+borrow 1: id=42
+borrow 2: id=42
+extracted: id=42

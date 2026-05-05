@@ -1,0 +1,26 @@
+Building for debugging...
+[0/10] Write sources
+[4/10] Write l3-policy-layering-approach-2-types-only-module-split-entitlement.plist
+[4/10] Write sources
+[6/10] Write swift-version--58304C5D6DBC2206.txt
+[8/12] Compiling L1Defs L1Empty.swift
+[9/12] Emitting module L1Defs
+[10/14] Emitting module L2Types
+[11/14] Compiling L2Types Foo.swift
+[12/16] Emitting module L2Methods
+[13/16] Compiling L2Methods Foo+typed.swift
+[14/18] Compiling L3Policy Foo+policy.swift
+/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-2-types-only-module-split/Sources/L3Policy/Foo+policy.swift:8:26: warning: function call causes an infinite recursion
+ 6 | extension Foo {
+ 7 |     public static func make() throws(FooError) -> Foo {
+ 8 |         let l2 = try Foo.make()
+   |                          `- warning: function call causes an infinite recursion
+ 9 |         return Foo(tag: "L3(\(l2.tag))")
+10 |     }
+[15/18] Emitting module L3Policy
+[16/20] Emitting module l3_policy_layering_approach_2_types_only_module_split
+[17/20] Compiling l3_policy_layering_approach_2_types_only_module_split main.swift
+[17/20] Write Objects.LinkFileList
+[18/20] Linking l3-policy-layering-approach-2-types-only-module-split
+[19/20] Applying l3-policy-layering-approach-2-types-only-module-split
+Build complete! (0.93s)

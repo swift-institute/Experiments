@@ -1,0 +1,1 @@
+BUILD FAILED: cannot find 'Foo' in scope (in consumer main.swift)

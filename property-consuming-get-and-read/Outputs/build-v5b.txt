@@ -1,0 +1,74 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/6] Emitting module property_consuming_get_and_read
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:108:32: error: cannot suppress 'Copyable' requirement of an associated type
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                                `- error: cannot suppress 'Copyable' requirement of an associated type
+109 |     var contents: Underlying { borrowing get }
+110 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:108:32: error: cannot suppress 'Escapable' requirement of an associated type
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                                `- error: cannot suppress 'Escapable' requirement of an associated type
+109 |     var contents: Underlying { borrowing get }
+110 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:112:1: error: type 'Box' does not conform to protocol 'CarrierLike'
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                    `- note: protocol requires nested type 'Underlying'
+109 |     var contents: Underlying { borrowing get }
+110 | }
+111 | 
+112 | extension Box: CarrierLike {
+    | `- error: type 'Box' does not conform to protocol 'CarrierLike'
+113 |     typealias Underlying = NC
+    |               `- note: possibly intended match 'Box.Underlying' (aka 'NC') does not conform to 'Copyable'
+114 | }
+115 | 
+[4/6] Compiling property_consuming_get_and_read main.swift
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:108:32: error: cannot suppress 'Copyable' requirement of an associated type
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                                `- error: cannot suppress 'Copyable' requirement of an associated type
+109 |     var contents: Underlying { borrowing get }
+110 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:108:32: error: cannot suppress 'Escapable' requirement of an associated type
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                                `- error: cannot suppress 'Escapable' requirement of an associated type
+109 |     var contents: Underlying { borrowing get }
+110 | }
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:112:1: error: type 'Box' does not conform to protocol 'CarrierLike'
+106 | //     associated type via initial requirement)
+107 | protocol CarrierLike<Underlying>: ~Copyable, ~Escapable {
+108 |     associatedtype Underlying: ~Copyable & ~Escapable = Self
+    |                    `- note: protocol requires nested type 'Underlying'
+109 |     var contents: Underlying { borrowing get }
+110 | }
+111 | 
+112 | extension Box: CarrierLike {
+    | `- error: type 'Box' does not conform to protocol 'CarrierLike'
+113 |     typealias Underlying = NC
+    |               `- note: possibly intended match 'Box.Underlying' (aka 'NC') does not conform to 'Copyable'
+114 | }
+115 | 
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:118:9: warning: variable 'b' was never mutated; consider changing to 'let' constant
+116 | // Try to extract owned NC via _modify (verify `consume` on accessor result)
+117 | func extractViaModify(_ box: consuming Box) -> NC {
+118 |     var b = box
+    |         `- warning: variable 'b' was never mutated; consider changing to 'let' constant
+119 |     _ = b
+120 |     // CONFIRMED REJECTED: 'consume' can only be used to partially consume storage

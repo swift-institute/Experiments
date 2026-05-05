@@ -1,0 +1,36 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/6] Emitting module without_spi
+/Users/coen/Developer/swift-institute/Experiments/init-throws-overload-disambiguation/Sources/without-spi/main.swift:43:38: error: extra argument in call
+41 | 
+42 | // PROBE — temporarily exercising the SPI'd init to capture the diagnostic:
+43 | let v5SpiProbe = V5(__unchecked: (), 17)
+   |                                      `- error: extra argument in call
+44 | print("PROBE — SPI'd init reachable WITHOUT SPI import?:", v5SpiProbe.value)
+45 | 
+
+/Users/coen/Developer/swift-institute/Experiments/init-throws-overload-disambiguation/Sources/without-spi/main.swift:43:34: error: cannot convert value of type '()' to expected argument type 'UInt64'
+41 | 
+42 | // PROBE — temporarily exercising the SPI'd init to capture the diagnostic:
+43 | let v5SpiProbe = V5(__unchecked: (), 17)
+   |                                  `- error: cannot convert value of type '()' to expected argument type 'UInt64'
+44 | print("PROBE — SPI'd init reachable WITHOUT SPI import?:", v5SpiProbe.value)
+45 | 
+[4/6] Compiling without_spi main.swift
+/Users/coen/Developer/swift-institute/Experiments/init-throws-overload-disambiguation/Sources/without-spi/main.swift:43:38: error: extra argument in call
+41 | 
+42 | // PROBE — temporarily exercising the SPI'd init to capture the diagnostic:
+43 | let v5SpiProbe = V5(__unchecked: (), 17)
+   |                                      `- error: extra argument in call
+44 | print("PROBE — SPI'd init reachable WITHOUT SPI import?:", v5SpiProbe.value)
+45 | 
+
+/Users/coen/Developer/swift-institute/Experiments/init-throws-overload-disambiguation/Sources/without-spi/main.swift:43:34: error: cannot convert value of type '()' to expected argument type 'UInt64'
+41 | 
+42 | // PROBE — temporarily exercising the SPI'd init to capture the diagnostic:
+43 | let v5SpiProbe = V5(__unchecked: (), 17)
+   |                                  `- error: cannot convert value of type '()' to expected argument type 'UInt64'
+44 | print("PROBE — SPI'd init reachable WITHOUT SPI import?:", v5SpiProbe.value)
+45 | 

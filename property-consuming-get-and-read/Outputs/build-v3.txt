@@ -1,0 +1,30 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module property_consuming_get_and_read
+[4/7] Compiling property_consuming_get_and_read main.swift
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:59:17: error: 'box' is borrowed and cannot be consumed
+57 | 
+58 | // Borrow path: should hit _read accessor
+59 | func borrowID(_ box: borrowing Box) -> Int {
+   |                 `- error: 'box' is borrowed and cannot be consumed
+60 |     box.contents.id
+   |                  `- note: consumed here
+61 | }
+62 | 
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:77:23: error: cannot consume noncopyable stored property 'box' that is global
+75 | 
+76 | // Final consume — should extract owned NC
+77 | let owned = extractNC(box)
+   |                       `- error: cannot consume noncopyable stored property 'box' that is global
+78 | print("extracted: id=\(owned.id)")
+79 | 
+
+/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:49:9: error: 'self' is borrowed and cannot be consumed
+47 |     }
+48 | 
+49 |     var contents: NC {
+   |         `- error: 'self' is borrowed and cannot be consumed
+50 |         consuming get {
+51 |             _storage
