@@ -1,0 +1,66 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-perf' complete! (0.21s)
+Result-Builder Performance Experiment
+Toolchain: Swift 6.3.1
+Build mode: RELEASE
+======================================================================
+
+=== Swift.Array (stdlib reference) ===
+  Swift.Array imperative N=3                                 82.7 ns/iter
+  Swift.Array builder N=3 (literals)                         77.6 ns/iter
+  Swift.Array imperative N=100                              371.2 ns/iter
+  Swift.Array builder N=100 (for-loop)                     4773.6 ns/iter
+  Swift.Array builder N=100 (Sequence)                       46.6 ns/iter
+  Swift.Array imperative N=1000                            1004.5 ns/iter
+  Swift.Array builder N=1000 (for-loop)                   44480.1 ns/iter
+  Swift.Array builder N=1000 (Sequence)                     172.2 ns/iter
+
+=== Array<Int> (institute, ~Copyable) ===
+  Array<Int> imperative N=3                                 368.3 ns/iter
+  Array<Int> builder N=3 (literals)                         496.3 ns/iter
+
+=== Buffer<Int>.Linear (~Copyable) ===
+  Buffer.Linear imperative N=3                              372.1 ns/iter
+  Buffer.Linear builder N=3 (literals)                      512.5 ns/iter
+
+=== Stack<Int> (~Copyable) ===
+  Stack imperative N=3                                      370.0 ns/iter
+  Stack builder N=3 (literals)                              488.4 ns/iter
+
+=== Queue<Int> (~Copyable) ===
+  Queue imperative N=3                                      389.3 ns/iter
+  Queue builder N=3 (literals)                              551.9 ns/iter
+
+=== Set<Int>.Ordered (Copyable) ===
+  Set.Ordered imperative N=10                              1488.2 ns/iter
+  Set.Ordered builder N=10 (for-loop)                      2243.5 ns/iter
+
+=== Bitset ===
+  Bitset imperative N=10                                     81.2 ns/iter
+  Bitset builder N=10 (for-loop)                            886.7 ns/iter
+
+=== Heap<Int> (literal-only — Builder omits buildArray) ===
+  Heap imperative N=10 push-by-push                       10370.6 ns/iter
+  Heap builder N=10 (literals)                             5257.3 ns/iter
+
+==========================================================================================
+Summary
+==========================================================================================
+Type / Size                     Imperative      Builder         Ratio     Verdict
+------------------------------------------------------------------------------------------
+Swift.Array N=3                         82.7 ns          77.6 ns     0.94x  BUILDER FASTER
+Swift.Array N=100 (for-loop)           371.2 ns        4773.6 ns    12.86x  SLOWER
+Swift.Array N=100 (Sequence)           371.2 ns          46.6 ns     0.13x  BUILDER FASTER
+Swift.Array N=1000 (for-loop)         1004.5 ns       44480.1 ns    44.28x  SLOWER
+Swift.Array N=1000 (Sequence)         1004.5 ns         172.2 ns     0.17x  BUILDER FASTER
+Array<Int> N=3                         368.3 ns         496.3 ns     1.35x  ON PAR
+Buffer.Linear N=3                      372.1 ns         512.5 ns     1.38x  ON PAR
+Stack N=3                              370.0 ns         488.4 ns     1.32x  ON PAR
+Queue N=3                              389.3 ns         551.9 ns     1.42x  ON PAR
+Set.Ordered N=10                      1488.2 ns        2243.5 ns     1.51x  MARGINAL
+Bitset N=10                             81.2 ns         886.7 ns    10.92x  SLOWER
+Heap N=10                            10370.6 ns        5257.3 ns     0.51x  BUILDER FASTER
+
+On-par-or-better (≤ 1.5x): 8 / 12
+Acceptance: FAIL (criterion: builder ≤ 1.5× imperative)

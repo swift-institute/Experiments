@@ -1,0 +1,65 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-perf-repeat' complete! (0.15s)
+Repeat-Helper Validation Experiment
+Build mode: RELEASE
+==============================================================================
+
+=== N=100 ===
+  Imperative N=100 (var a; for i { a.append(i) })                  99.0 ns/iter
+  Builder for-loop N=100 (current)                               5610.8 ns/iter
+  Builder Repeat N=100 (Option E)                                 116.9 ns/iter
+  Builder bare Sequence N=100 (Option G)                           81.1 ns/iter
+
+=== N=1000 ===
+  Imperative N=1000                                               598.8 ns/iter
+  Builder for-loop N=1000 (current)                            268252.3 ns/iter
+  Builder Repeat N=1000 (Option E)                              12693.8 ns/iter
+  Builder bare Sequence N=1000 (Option G)                         278.5 ns/iter
+
+=== N=10000 ===
+  Imperative N=10000                                            14671.0 ns/iter
+  Builder for-loop N=10000 (current)                           950113.8 ns/iter
+  Builder Repeat N=10000 (Option E)                             10107.3 ns/iter
+  Builder bare Sequence N=10000 (Option G)                       2813.1 ns/iter
+
+=== N=3 (sanity, literal statements) ===
+  Imperative N=3                                                  117.9 ns/iter
+  Builder literal N=3                                             116.1 ns/iter
+  Builder Repeat N=3                                               54.5 ns/iter
+
+=== Mixed N=100 (literals + Repeat) ===
+  Imperative mixed: 1, 2, [0..<100], 99                           117.0 ns/iter
+  Builder for-loop mixed                                         6251.4 ns/iter
+  Builder Repeat mixed                                            260.3 ns/iter
+  Builder bare Sequence mixed                                     268.3 ns/iter
+
+=== Lazy chain N=100 (transform via .lazy.map) ===
+  Imperative lazy-equivalent                                      281.3 ns/iter
+  Builder bare Sequence + .lazy.map                              9029.7 ns/iter
+  Builder Repeat with transform                                   394.9 ns/iter
+
+==============================================================================================================
+Summary (release mode preferred for production interpretation)
+==============================================================================================================
+Case                    Imperative    for-loop      Repeat        Seq           for/imp    rep/imp    seq/imp  
+--------------------------------------------------------------------------------------------------------------
+N=3 (literal)                  117.9         116.1          54.5          54.5       0.98x       0.46x       0.46x
+N=100                           99.0        5610.8         116.9          81.1      56.66x       1.18x       0.82x
+N=1000                         598.8      268252.3       12693.8         278.5     447.99x       21.2x       0.47x
+N=10000                      14671.0      950113.8       10107.3        2813.1      64.76x       0.69x       0.19x
+Mixed N=100                    117.0        6251.4         260.3         268.3      53.42x       2.22x       2.29x
+
+Lazy/transform comparison (N=100, identity vs *2 transform):
+  Imperative *2                          281.3 ns/iter
+  Builder bare .lazy.map                9029.7 ns/iter  (    32.11x of imperative)
+  Builder Repeat { transform }           394.9 ns/iter  (      1.4x of imperative)
+
+Acceptance check (≤ 1.5× imperative) — Option G (bare Swift.Sequence):
+  N=100                        0.82x  PASS
+  N=1000                       0.47x  PASS
+  N=10000                      0.19x  PASS
+  Mixed N=100                  2.29x  FAIL
+  Lazy *2 N=100               32.11x  FAIL
+
+Option G passes ≤ 1.5×: 3 / 5

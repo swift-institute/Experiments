@@ -1,0 +1,65 @@
+warning: 'swift-storage-primitives': found 1 file(s) which are unhandled; explicitly declare them as resources or exclude from the target
+    /Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-perf' complete! (2.31s)
+Result-Builder Performance Experiment
+Toolchain: Swift 6.3.1
+Build mode: DEBUG
+======================================================================
+
+=== Swift.Array (stdlib reference) ===
+  Swift.Array imperative N=3                                378.1 ns/iter
+  Swift.Array builder N=3 (literals)                        953.6 ns/iter
+  Swift.Array imperative N=100                            13180.7 ns/iter
+  Swift.Array builder N=100 (for-loop)                    57868.6 ns/iter
+  Swift.Array imperative N=1000                          129992.6 ns/iter
+  Swift.Array builder N=1000 (for-loop)                  544513.7 ns/iter
+
+=== Array<Int> (institute, ~Copyable) ===
+  Array<Int> imperative N=3                                7532.5 ns/iter
+  Array<Int> builder N=3 (literals)                       14340.7 ns/iter
+
+=== Buffer<Int>.Linear (~Copyable) ===
+  Buffer.Linear imperative N=3                            10284.8 ns/iter
+  Buffer.Linear builder N=3 (literals)                    14032.1 ns/iter
+
+=== Stack<Int> (~Copyable) ===
+  Stack imperative N=3                                     7084.0 ns/iter
+  Stack builder N=3 (literals)                            13153.7 ns/iter
+
+=== Queue<Int> (~Copyable) ===
+  Queue imperative N=3                                     9423.0 ns/iter
+  Queue builder N=3 (literals)                            22273.8 ns/iter
+
+=== Set<Int>.Ordered (Copyable) ===
+  Set.Ordered imperative N=10                            223291.9 ns/iter
+  Set.Ordered builder N=10 (for-loop)                    228084.3 ns/iter
+
+=== Bitset ===
+  Bitset imperative N=10                                   2050.7 ns/iter
+  Bitset builder N=10 (for-loop)                           8242.8 ns/iter
+
+=== Heap<Int> (literal-only — Builder omits buildArray) ===
+  Heap imperative N=10 push-by-push                       30234.8 ns/iter
+  Heap builder N=10 (literals)                           100225.3 ns/iter
+
+==========================================================================================
+Summary
+==========================================================================================
+Type / Size                     Imperative      Builder         Ratio     Verdict
+------------------------------------------------------------------------------------------
+Swift.Array N=3                        378.1 ns         953.6 ns     2.52x  SLOWER
+Swift.Array N=100                    13180.7 ns       57868.6 ns     4.39x  SLOWER
+Swift.Array N=1000                  129992.6 ns      544513.7 ns     4.19x  SLOWER
+Array<Int> N=3                        7532.5 ns       14340.7 ns      1.9x  MARGINAL
+Buffer.Linear N=3                    10284.8 ns       14032.1 ns     1.36x  ON PAR
+Stack N=3                             7084.0 ns       13153.7 ns     1.86x  MARGINAL
+Queue N=3                             9423.0 ns       22273.8 ns     2.36x  SLOWER
+Set.Ordered N=10                    223291.9 ns      228084.3 ns     1.02x  ON PAR
+Bitset N=10                           2050.7 ns        8242.8 ns     4.02x  SLOWER
+Heap N=10                            30234.8 ns      100225.3 ns     3.31x  SLOWER
+
+On-par-or-better (≤ 1.5x): 2 / 10
+Acceptance: FAIL (criterion: builder ≤ 1.5× imperative)

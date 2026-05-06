@@ -1,0 +1,77 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-perf-repeat' complete! (0.11s)
+Repeat-Helper Validation Experiment
+Build mode: RELEASE
+==============================================================================
+
+=== N=100 ===
+  Imperative N=100 (var a; for i { a.append(i) })                  87.9 ns/iter
+  Builder for-loop N=100 (current)                               4593.7 ns/iter
+  Builder Repeat N=100 (Option E)                                  89.3 ns/iter
+  Builder bare Sequence N=100 (Option G)                           53.4 ns/iter
+
+=== N=1000 ===
+  Imperative N=1000                                               496.7 ns/iter
+  Builder for-loop N=1000 (current)                             42023.0 ns/iter
+  Builder Repeat N=1000 (Option E)                                477.8 ns/iter
+  Builder bare Sequence N=1000 (Option G)                         136.9 ns/iter
+
+=== N=10000 ===
+  Imperative N=10000                                             5047.3 ns/iter
+  Builder for-loop N=10000 (current)                           409903.8 ns/iter
+  Builder Repeat N=10000 (Option E)                              4792.3 ns/iter
+  Builder bare Sequence N=10000 (Option G)                       1709.3 ns/iter
+
+=== N=3 (sanity, literal statements) ===
+  Imperative N=3                                                   80.3 ns/iter
+  Builder literal N=3                                              84.1 ns/iter
+  Builder Repeat N=3                                               39.6 ns/iter
+
+=== Mixed N=100 (literals + Repeat) ===
+  Imperative mixed: 1, 2, [0..<100], 99                            96.7 ns/iter
+  Builder for-loop mixed                                         4644.1 ns/iter
+  Builder Repeat mixed                                            223.5 ns/iter
+  Builder bare Sequence mixed                                     234.2 ns/iter
+
+=== Transform chain N=100 (multiple shapes) ===
+  Imperative *2 transform                                         237.7 ns/iter
+  Builder eager .map (existing [Element] overload)               4823.8 ns/iter
+  Builder .lazy.map (Option G — Sequence)                        4678.8 ns/iter
+  Builder Repeat with transform (Option E)                        229.0 ns/iter
+
+=== Pre-materialize via Array(_:) — uses existing [Element] overload ===
+  Imperative N=100 (baseline)                                      89.2 ns/iter
+  Builder Array(0..<100) (no new overload)                         51.8 ns/iter
+  Builder mixed Array(0..<100) + literals                         238.7 ns/iter
+
+==============================================================================================================
+Summary (release mode preferred for production interpretation)
+==============================================================================================================
+Case                    Imperative    for-loop      Repeat        Seq           for/imp    rep/imp    seq/imp  
+--------------------------------------------------------------------------------------------------------------
+N=3 (literal)                   80.3          84.1          39.6          39.6       1.05x       0.49x       0.49x
+N=100                           87.9        4593.7          89.3          53.4      52.27x       1.02x       0.61x
+N=1000                         496.7       42023.0         477.8         136.9       84.6x       0.96x       0.28x
+N=10000                       5047.3      409903.8        4792.3        1709.3      81.21x       0.95x       0.34x
+Mixed N=100                     96.7        4644.1         223.5         234.2      48.04x       2.31x       2.42x
+
+Transform comparison (N=100 with *2 transform, vs imperative):
+  Imperative *2                                              237.7 ns/iter
+  Builder eager .map (NO new overload)                      4823.8 ns/iter  (    20.29x)
+  Builder .lazy.map (Option G)                              4678.8 ns/iter  (    19.68x)
+  Builder Repeat { transform } (Option E)                    229.0 ns/iter  (     0.96x)
+
+Pre-materialize comparison (Array(seq), NO new overload, uses existing [Element]):
+  Imperative N=100                                            89.2 ns/iter
+  Builder Array(0..<100)                                      51.8 ns/iter  (     0.58x)
+  Builder mixed: 1; 2; Array(0..<100); 99                    238.7 ns/iter  (vs 1; 2; for; 99 in main set)
+
+Acceptance check (≤ 1.5× imperative) — Option G (bare Swift.Sequence):
+  N=100                        0.61x  PASS
+  N=1000                       0.28x  PASS
+  N=10000                      0.34x  PASS
+  Mixed N=100                  2.42x  FAIL
+  Lazy *2 N=100               19.68x  FAIL
+
+Option G passes ≤ 1.5×: 3 / 5

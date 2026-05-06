@@ -58,6 +58,30 @@
   ],
   "experiments": [
     {
+      "category": "API Design Patterns",
+      "crossRefs": ["HANDOFF-result-builder-ecosystem-extensions", "result-builder-performance-optimization"],
+      "date": "2026-05-06",
+      "directory": "result-builder-perf-repeat",
+      "purpose": "Real-world validation of `result-builder-performance-optimization.md` Option E (Repeat<S, Element> bulk-add expression). Compares imperative vs current for-loop builder vs new Repeat-based builder for Swift.Array at N=3/100/1000/10000 + a mixed (literal+Repeat) case.",
+      "status": "CONFIRMED",
+      "statusDetail": "Repeat helper VALIDATED. Pure Repeat-only builder bodies pass acceptance (≤ 1.5×) at every N tested: N=3 (0.46×, Repeat 2.16× FASTER), N=100 (0.76×, 1.31× FASTER), N=1000 (0.95× ON PAR), N=10000 (1.18× ON PAR). vs current for-loop shape, Repeat is ~57× / 112× / 89× faster at N=100/1000/10000. Single MARGINAL: Mixed N=100 (literals + Repeat) 2.24× — a buildPartialBlock `accumulated + next` concat cost, NOT a Repeat limitation. Combined Option E + Option B (consume + append(contentsOf:) buildPartialBlock) predicted to pass all cases.",
+      "statusRaw": "CONFIRMED — pure Repeat passes 4/4; mixed needs buildPartialBlock optimization",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1 default), macOS 26.x arm64"
+    },
+    {
+      "category": "API Design Patterns",
+      "crossRefs": ["HANDOFF-result-builder-ecosystem-extensions"],
+      "date": "2026-05-06",
+      "directory": "result-builder-perf",
+      "purpose": "Validate that result-builder construction is on par with or better than imperative `var x = T(); x.append(...)` patterns across the Round-1 + Round-2 result-builder ecosystem (Array, Buffer.Linear, Stack, Queue, Set.Ordered, Bitset, Heap). User acceptance: builder time ≤ 1.5× imperative. Compares LITERAL-statement, FOR-LOOP, and SEQUENCE variants of the builder body.",
+      "status": "CONFIRMED",
+      "statusDetail": "Revalidated 2026-05-06 after upstream Option G (bare Sequence overload) + Option B (consume buildPartialBlock) shipped to swift-standard-library-extensions. 8/12 cases pass at ≤ 1.5×; the 4 failing cases are exclusively the explicit `for i in 0..<N { i }` builder-body shape, structurally slow under SE-0289's per-iteration transform and documented as not-recommended. RECOMMENDED PATTERN (Sequence): Swift.Array N=100 (`0..<100`) 0.13× — builder 8× FASTER than imperative; N=1000 0.17× — 6× FASTER. LITERAL builders ON PAR: Swift.Array N=3 (0.94× FASTER), Array<Int>/Buffer.Linear/Stack/Queue N=3 (1.32-1.42×), Heap N=10 bulk-build 0.51× (2× FASTER). FOR-LOOP anti-pattern: Swift.Array N=100 12.86×, N=1000 44.28×, Bitset N=10 10.92× — users should write `0..<N` instead. Decision: Repeat helper rejected in favor of Option G; see result-builder-performance-optimization.md v2.0.0.",
+      "statusRaw": "CONFIRMED — Sequence pattern strictly faster than imperative; for-loop documented as anti-pattern",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1 default), macOS 26.x arm64"
+    },
+    {
       "category": "~Escapable & Ownership",
       "crossRefs": ["se-0499-implications-for-equation-hash-comparison-primitives"],
       "date": "2026-05-03",
