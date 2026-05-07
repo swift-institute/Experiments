@@ -1,0 +1,23 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+[1/4] Write sources
+[3/6] Emitting module binary_base_n_poc
+[4/6] Compiling binary_base_n_poc main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking binary-base-n-poc
+[6/7] Applying binary-base-n-poc
+Build of product 'binary-base-n-poc' complete! (0.44s)
+hex16 of [0xDE 0xAD 0xBE 0xEF]: DEADBEEF
+b64 of [0xDE 0xAD 0xBE 0xEF]: 3q2+7w==
+b62 of UInt64(123456789): 8M0kX
+hex16 of [0x12 0x34] via Span: 1234
+V6 hex via Binary.Base.`16`: DEADBEEF
+V6 b62 via Binary.Base.`62`: 8M0kX
+V6 b62 with GMP-style alphabet: IWAuh
+V7 hex via Binary.Base.`16`.encode (callAsFunction): DEADBEEF
+V7 b32 via Binary.Base.`32`.encode (default §6): 32W353Y=
+V7 b32 via Binary.Base.`32`.encode.hex (§7): RQMRTRO=
+V7 b32 via Binary.Base.`32`.encode.crockford: VTPVXVR
+V7 b62 via Binary.Base.`62`.encode: 8M0kX
+V7 b62 via Binary.Base.`62`.encode.gmp: IWAuh
+All variants CONFIRMED
