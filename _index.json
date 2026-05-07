@@ -58,6 +58,18 @@
   ],
   "experiments": [
     {
+      "category": "Compiler Behavior",
+      "crossRefs": ["result-builder-performance-optimization", "result-builder-perf", "result-builder-perf-repeat"],
+      "date": "2026-05-07",
+      "directory": "result-builder-map-investigation",
+      "purpose": "Root-cause the ~21x slowdown observed when `seq.map { ... }` is written inside `Swift.Array.Builder { }`, vs `Builder { 0..<N }` via the bare-Sequence overload (which is fast). Hypotheses tested: (1) overload-resolution interference, (2) result-builder transform applying to closure body, (3) lazy vs eager .map, (4) `rethrows` machinery defeating specialization, (5) cross-module specialization gap.",
+      "status": "REFUTED",
+      "statusDetail": "The slowdown is NOT a builder anomaly. It is the intrinsic cost of stdlib's `Collection.map` (and `.flatMap`, `.lazy.map`) when called with a closure literal. Same cost whether inside a builder body or standalone. Decisive comparisons (release mode, N=100): V14 same-module @inlinable map standalone = 211 ns, V8 stdlib .map standalone = 4083 ns (19x slower). V13 same-module map inside builder = 211 ns — builder adds ZERO measurable overhead. V15 same-module rethrows = 210 ns (rules out rethrows hypothesis). V4 explicit Array() wrap = 3950 ns (rules out overload resolution). Root cause: stdlib's Collection.map does not specialize the closure at the consumer call site despite @inlinable on both. ~40 ns/element of indirect-call + protocol-dispatch overhead vs ~2 ns/element for same-module map. Implication: the prior 'in-body .map is 21x' framing was wrong — there is no builder-specific transform issue. The for-loop-in-builder-body slowdown (12-44x) remains real and separate (SE-0289 per-iteration buildExpression([Element]) allocation). Closes the loose end filed in result-builder-performance-optimization.md v2.0.0.",
+      "statusRaw": "REFUTED — anomaly was stdlib .map cost, not builder-specific",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4.1 default), macOS 26.x arm64"
+    },
+    {
       "category": "API Design Patterns",
       "crossRefs": ["HANDOFF-result-builder-ecosystem-extensions", "result-builder-performance-optimization"],
       "date": "2026-05-06",

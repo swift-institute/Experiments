@@ -1,0 +1,45 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-map-investigation' complete! (0.09s)
+In-body .map/.flatMap anomaly investigation
+Build mode: RELEASE
+==============================================================================
+
+=== N=100, iterations=50000 ===
+
+  V1  imperative *2 (baseline)                                        431.6 ns/iter
+  V2  Array<Int> { (0..<N).map { f } } — INLINE                      4417.7 ns/iter
+  V3  let m = ...; Array<Int> { m } — PRE-MATERIALIZED               4069.0 ns/iter
+  V4  Array<Int> { Array((0..<N).map { f }) } — EXPLICIT WRAP        3950.4 ns/iter
+  V5  Array<Int> { (...).map { f } as [Int] } — TYPED                4060.5 ns/iter
+  V6  Array<Int> { (0..<N).flatMap { [f] } } — INLINE                5524.9 ns/iter
+  V7  let m = (..).flatMap; Array { m } — PRE-MATERIALIZED           5722.7 ns/iter
+  V8  (0..<N).map { f } — STANDALONE (no builder)                    4082.7 ns/iter
+  V9  Array<Int> { Array(0..<N) } — KNOWN FAST (no transform)          45.2 ns/iter
+  V10 Array<Int> { (0..<N).lazy.map { f } } — LAZY MAP INLINE        4264.2 ns/iter
+  V11 Array<Int> { mappedConst } — CONST PRE-MAT                        0.0 ns/iter
+  V12 Array<Int> { 0..<N } — BARE RANGE (Sequence overload)            40.8 ns/iter
+
+==============================================================================================================
+Summary — all ratios are vs V1 (imperative baseline)
+==============================================================================================================
+  V1  imperative *2                                                   431.6        1.0x  ON PAR
+  V2  inline .map (anomaly)                                          4417.7      10.24x  MUCH SLOWER
+  V3  pre-materialized .map                                          4069.0       9.43x  MUCH SLOWER
+  V4  explicit Array() wrap                                          3950.4       9.15x  MUCH SLOWER
+  V5  explicit type annotation                                       4060.5       9.41x  MUCH SLOWER
+  V6  inline .flatMap                                                5524.9       12.8x  MUCH SLOWER
+  V7  pre-materialized .flatMap                                      5722.7      13.26x  MUCH SLOWER
+  V8  standalone .map (no builder)                                   4082.7       9.46x  MUCH SLOWER
+  V9  Array<Int> { Array(0..<N) } (no transform)                       45.2        0.1x  MUCH FASTER
+  V10 inline .lazy.map                                               4264.2       9.88x  MUCH SLOWER
+  V11 const pre-materialized                                            0.0        0.0x  MUCH FASTER
+  V12 bare Range (Sequence overload)                                   40.8       0.09x  MUCH FASTER
+
+Key discriminators:
+  V2 vs V3 ratio (inline .map / pre-mat):         1.09x
+  V2 vs V4 ratio (inline .map / explicit Array wrap):      1.12x
+  V2 vs V5 ratio (inline .map / typed annotation):         1.09x
+  V6 vs V7 ratio (inline .flatMap / pre-mat):              0.97x
+  V8 vs V3 ratio (standalone .map / pre-mat builder):       1.0x
+  V11 vs V3 ratio (const pre-mat / let pre-mat):            0.0x

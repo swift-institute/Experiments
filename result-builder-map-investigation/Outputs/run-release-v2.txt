@@ -1,0 +1,52 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'result-builder-map-investigation' complete! (0.09s)
+In-body .map/.flatMap anomaly investigation
+Build mode: RELEASE
+==============================================================================
+
+=== N=100, iterations=50000 ===
+
+  V1  imperative *2 (baseline)                                        409.5 ns/iter
+  V2  Array<Int> { (0..<N).map { f } } — INLINE                      4146.2 ns/iter
+  V3  let m = ...; Array<Int> { m } — PRE-MATERIALIZED               3881.2 ns/iter
+  V4  Array<Int> { Array((0..<N).map { f }) } — EXPLICIT WRAP        3893.4 ns/iter
+  V5  Array<Int> { (...).map { f } as [Int] } — TYPED                3930.8 ns/iter
+  V6  Array<Int> { (0..<N).flatMap { [f] } } — INLINE                5590.2 ns/iter
+  V7  let m = (..).flatMap; Array { m } — PRE-MATERIALIZED           5650.5 ns/iter
+  V8  (0..<N).map { f } — STANDALONE (no builder)                    3937.3 ns/iter
+  V9  Array<Int> { Array(0..<N) } — KNOWN FAST (no transform)          41.6 ns/iter
+  V10 Array<Int> { (0..<N).lazy.map { f } } — LAZY MAP INLINE        3999.5 ns/iter
+  V11 Array<Int> { mappedConst } — CONST PRE-MAT                        0.0 ns/iter
+  V12 Array<Int> { 0..<N } — BARE RANGE (Sequence overload)            43.2 ns/iter
+  V13 Array<Int> { (0..<N).sameModuleMap { f } } — SAME-MODULE MAP        203.4 ns/iter
+  V14 (0..<N).sameModuleMap { f } — STANDALONE                        202.5 ns/iter
+
+==============================================================================================================
+Summary — all ratios are vs V1 (imperative baseline)
+==============================================================================================================
+  V1  imperative *2                                                   409.5        1.0x  ON PAR
+  V2  inline .map (anomaly)                                          4146.2      10.12x  MUCH SLOWER
+  V3  pre-materialized .map                                          3881.2       9.48x  MUCH SLOWER
+  V4  explicit Array() wrap                                          3893.4       9.51x  MUCH SLOWER
+  V5  explicit type annotation                                       3930.8        9.6x  MUCH SLOWER
+  V6  inline .flatMap                                                5590.2      13.65x  MUCH SLOWER
+  V7  pre-materialized .flatMap                                      5650.5       13.8x  MUCH SLOWER
+  V8  standalone .map (no builder)                                   3937.3       9.61x  MUCH SLOWER
+  V9  Array<Int> { Array(0..<N) } (no transform)                       41.6        0.1x  MUCH FASTER
+  V10 inline .lazy.map                                               3999.5       9.77x  MUCH SLOWER
+  V11 const pre-materialized                                            0.0        0.0x  MUCH FASTER
+  V12 bare Range (Sequence overload)                                   43.2       0.11x  MUCH FASTER
+  V13 @inlinable same-module map (in builder)                         203.4        0.5x  MUCH FASTER
+  V14 @inlinable same-module map (standalone)                         202.5       0.49x  MUCH FASTER
+
+Key discriminators:
+  V2 vs V3 ratio (inline .map / pre-mat):         1.07x
+  V2 vs V4 ratio (inline .map / explicit Array wrap):      1.06x
+  V2 vs V5 ratio (inline .map / typed annotation):         1.05x
+  V6 vs V7 ratio (inline .flatMap / pre-mat):              0.99x
+  V8 vs V3 ratio (standalone .map / pre-mat builder):      1.01x
+  V11 vs V3 ratio (const pre-mat / let pre-mat):            0.0x
+  V13 vs V2 ratio (same-module map / stdlib .map in builder):      0.05x
+  V14 vs V8 ratio (same-module map / stdlib .map standalone):      0.05x
+  V13 vs V1 ratio (same-module map in builder / imperative):        0.5x
