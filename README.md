@@ -30,6 +30,33 @@ The canonical browsable view of this corpus is the [Experiments dashboard](https
 
 [`_index.json`](_index.json) is the authoritative manifest — one entry per experiment with purpose, date, toolchain, status, category, and cross-references.
 
+## Per-experiment CI convention: deferred 2026-05-12
+
+The per-issue precedent at sibling repo
+[`swift-institute/Issues`](https://github.com/swift-institute/Issues) (one
+test target + one executable target per issue, `withKnownIssue` upstream-fix
+detection, per-issue matrix-of-reusable in `.github/workflows/ci.yml`) was
+considered for extension to this repo and **deferred**:
+
+- **Repo shape diverges.** Each experiment here is its own standalone
+  SwiftPM package with its own `Package.swift`. Issues uses ONE root
+  `Package.swift` with per-issue subdirs as paths into test targets.
+  Collapsing the per-experiment standalone packages into a monolithic
+  root package would discard the per-experiment isolation this repo was
+  designed for.
+- **Outcome model differs.** Experiments converge to write-time
+  conclusions (`CONFIRMED` / `REFUTED` / `CONSOLIDATED` — see
+  [`_index.json`](_index.json)). The `withKnownIssue` flip-on-upstream-fix
+  mechanism that motivates the per-issue precedent has no analogue here.
+- **Mostly executable-only.** 197 of 211 experiment packages have only
+  `executableTarget`; only 11 have `testTarget`. The "1 testTarget + 1
+  executableTarget per dir" precedent's load-bearing test surface is
+  absent for most experiments.
+
+A different CI shape for the experiment corpus is a separate design
+question; this note records the deferral so future contributors don't
+re-derive it from scratch.
+
 ## License
 
 [Apache 2.0](LICENSE.md).
