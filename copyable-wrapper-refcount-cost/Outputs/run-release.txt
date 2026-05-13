@@ -1,0 +1,45 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'copyable-wrapper-refcount-cost' complete! (0.09s)
+# Copyable Wrapper Refcount Cost
+# iterations=10000000, warmup=100000
+# Toolchain: Apple Swift 6.3.2; Platform: macOS 26 arm64; Build: -c release
+
+## V1: Trivial isolated probe (expected REFUTED — optimizer should elide)
+V1 K=1: 8.4e-06 ns/extract  (sum=646400000)
+V1 K=2: 4.2e-06 ns/extract  (sum=1292800000)
+V1 K=3: 4.2e-06 ns/extract  (sum=1939200000)
+V1 K=4: 4.2e-06 ns/extract  (sum=2585600000)
+
+V1 deltas (per added heap-backed component):
+  K=2-K=1: -4.2e-06 ns
+  K=3-K=2: 0.0 ns
+  K=4-K=3: 0.0 ns
+V1 verdict: NOT monotonic — REFUTED (optimizer elided the cost)
+
+## V2: Optimizer-resistant probe (expected CONFIRMED — global-sink + varied input)
+V2 K=1: 10.8746667 ns/extract
+V2 K=2: 18.2907292 ns/extract
+V2 K=3: 25.8391875 ns/extract
+V2 K=4: 33.900275 ns/extract
+
+V2 deltas (per added heap-backed component):
+  K=2-K=1: 7.416062500000001 ns
+  K=3-K=2: 7.5484583 ns
+  K=4-K=3: 8.0610875 ns
+V2 verdict: monotonic in K — CONFIRMED.
+  Slope: ~7.675202766666668 ns per additional heap-backed component.
+  This is the per-refcount-pair cost under optimizer-resistant conditions.
+  Matches the §2 cost-model prediction (K retain ops per copy, ~3-10 ns each).
+
+## Composite finding
+V1 (isolated): elided
+V2 (with barrier): K-linear (slope ~7.675202766666668 ns)
+
+Implication for [BENCH-011] integration-probe-requirement rule:
+  CONFIRMED. The cost-model term IS real and observable, but only when
+  the consumer's access path defeats optimizer elision. Isolated micro-
+  benches don't merely UNDERSTATE the integrated cost — they can
+  ELIMINATE it entirely. The integration-probe requirement is the only
+  way to measure the cost the production consumer will actually pay.

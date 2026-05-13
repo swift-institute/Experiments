@@ -59,6 +59,22 @@
   "experiments": [
     {
       "category": "API Design Patterns",
+      "crossRefs": [
+        "swift-institute/Research/copyable-wrapper-vs-multi-buffer-storage.md v1.0.1",
+        "swift-institute/Skills/benchmark/SKILL.md [BENCH-011]",
+        "swift-foundations/swift-json/Research/value-tree-redesign-v2.md v1.1.0 §12"
+      ],
+      "date": "2026-05-13",
+      "directory": "copyable-wrapper-refcount-cost",
+      "purpose": "Mechanically validate the §2 cost-model table in swift-institute/Research/copyable-wrapper-vs-multi-buffer-storage.md (Copyable wrapper with K heap-backed stored properties → K retain operations per pattern-match-extract). Two variants. V1: trivial isolated probe — K1..K4 wrappers around Array<UInt8>, pattern-match-extract in a tight loop with @inline(never), read .count on each Array as a cheap consumer. V2: optimizer-resistant probe — same K1..K4 wrappers, but each extract stores the bound payload into a global mutable sink (observable side-effect the optimizer cannot elide); input varied across 1024 wrappers per K (different array sizes/contents) to defeat loop-invariant hoisting.",
+      "status": "CONFIRMED",
+      "statusDetail": "V1 REFUTED, V2 CONFIRMED — composite CONFIRMED for [BENCH-011]. V1 measured ~0 ns scaling across K=1..4 (4-8 fs/extract, sub-clock-resolution); optimizer elides the K retain ops entirely under trivial isolation. V2 measured monotone K-linear scaling: K=1=10.87 ns, K=2=18.29 ns, K=3=25.84 ns, K=4=33.90 ns; per-step delta ~7.42, 7.55, 8.06 ns; slope ~7.68 ns per additional heap-backed component, within the ~3-10 ns refcount-op range the cost-model cited. Composite finding: the §2 cost-model term is structurally real and runtime-observable but ONLY when the consumer's access path defeats optimizer elision. V1's elision IS the strongest possible vindication of the [BENCH-011] integration-probe-requirement rule — isolated micro-benches do not merely understate the integrated cost, they can ELIMINATE it entirely. The composite jointly confirms both the cost-model (via V2's K-linear slope matching the predicted refcount-op range) and the integration-probe rule (via V1's complete elision under trivial isolation).",
+      "statusRaw": "CONFIRMED (V1 REFUTED + V2 CONFIRMED — composite confirms [BENCH-011])",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108), macOS 26 arm64, release build (-c release)"
+    },
+    {
+      "category": "API Design Patterns",
       "crossRefs": ["windows-l2-l3-namespace-separation"],
       "date": "2026-05-07",
       "directory": "binary-base-n-poc",
