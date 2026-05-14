@@ -1,9 +1,0 @@
-[0/1] Planning build
-Building for debugging...
-[0/4] Write swift-version--58304C5D6DBC2206.txt
-[2/6] Compiling parseable_associatedtype_implements main.swift
-[3/6] Emitting module parseable_associatedtype_implements
-[3/6] Write Objects.LinkFileList
-[4/6] Linking parseable-associatedtype-implements
-[5/6] Applying parseable-associatedtype-implements
-Build complete! (0.35s)
