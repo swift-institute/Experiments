@@ -1,0 +1,7 @@
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling parseable_associatedtype_implements main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking parseable-associatedtype-implements
+Build complete! (0.37s)

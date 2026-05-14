@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write parseable-associatedtype-implements-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module parseable_associatedtype_implements
+[5/8] Compiling parseable_associatedtype_implements main.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking parseable-associatedtype-implements
+[7/8] Applying parseable-associatedtype-implements
+Build complete! (0.71s)

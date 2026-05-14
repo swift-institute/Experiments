@@ -1,0 +1,89 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/6] Emitting module parseable_associatedtype_implements
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:28: error: type 'Self.Parser' constrained to non-protocol, non-class type 'Self.Parser.Protocol'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                            `- error: type 'Self.Parser' constrained to non-protocol, non-class type 'Self.Parser.Protocol'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:35: error: 'Protocol' is not a member type of type 'Self.Parser'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                                   `- error: 'Protocol' is not a member type of type 'Self.Parser'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:59: error: 'Output' is not a member type of type 'Self.Parser'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                                                           `- error: 'Output' is not a member type of type 'Self.Parser'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:57:41: error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V1SemanticVersion.Parser<Input>'
+ 55 |     public let patch: Int
+ 56 | 
+ 57 |     public struct Parser<Input>: Parser.`Protocol` {
+    |                   |                     `- error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V1SemanticVersion.Parser<Input>'
+    |                   `- note: 'Parser' declared here
+ 58 |         public typealias Output = V1SemanticVersion
+ 59 |         public init() {}
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:88:34: error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V2SemanticVersion.Parser<Input>'
+ 86 |     let patch: Int
+ 87 | 
+ 88 |     struct Parser<Input>: Parser.`Protocol` {
+    |            |                     `- error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V2SemanticVersion.Parser<Input>'
+    |            `- note: 'Parser' declared here
+ 89 |         typealias Output = V2SemanticVersion
+ 90 |         init() {}
+[4/6] Compiling parseable_associatedtype_implements main.swift
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:28: error: type 'Self.Parser' constrained to non-protocol, non-class type 'Self.Parser.Protocol'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                            `- error: type 'Self.Parser' constrained to non-protocol, non-class type 'Self.Parser.Protocol'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:35: error: 'Protocol' is not a member type of type 'Self.Parser'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                                   `- error: 'Protocol' is not a member type of type 'Self.Parser'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:36:59: error: 'Output' is not a member type of type 'Self.Parser'
+ 34 | 
+ 35 | public protocol Parseable {
+ 36 |     associatedtype Parser: Parser.`Protocol` where Parser.Output == Self
+    |                                                           `- error: 'Output' is not a member type of type 'Self.Parser'
+ 37 |     static var parser: Parser { get }
+ 38 | }
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:57:41: error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V1SemanticVersion.Parser<Input>'
+ 55 |     public let patch: Int
+ 56 | 
+ 57 |     public struct Parser<Input>: Parser.`Protocol` {
+    |                   |                     `- error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V1SemanticVersion.Parser<Input>'
+    |                   `- note: 'Parser' declared here
+ 58 |         public typealias Output = V1SemanticVersion
+ 59 |         public init() {}
+
+/Users/coen/Developer/swift-institute/Experiments/parseable-associatedtype-implements/Sources/main.swift:88:34: error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V2SemanticVersion.Parser<Input>'
+ 86 |     let patch: Int
+ 87 | 
+ 88 |     struct Parser<Input>: Parser.`Protocol` {
+    |            |                     `- error: 'Protocol' is not a member type of generic struct 'parseable_associatedtype_implements.V2SemanticVersion.Parser<Input>'
+    |            `- note: 'Parser' declared here
+ 89 |         typealias Output = V2SemanticVersion
+ 90 |         init() {}
