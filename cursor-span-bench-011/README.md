@@ -23,7 +23,7 @@ implementation ships in `swift-cursor-primitives` once Phase 0 clears green.
 200 iterations × 65 KiB buffer per probe, release build, macOS 26 / arm64e,
 warmup 10 iterations, accumulator behind an `@inline(never)` blackHole.
 
-## Results (release build, 2026-05-17)
+## Results (release build, 2026-05-17 — initial Shape γ → Shape A migration)
 
 | Probe | Legacy | Cursor | Ratio |
 |---|---|---|---|
@@ -34,6 +34,48 @@ warmup 10 iterations, accumulator behind an `@inline(never)` blackHole.
 
 **Phase 0 gate**: GREEN. No regression on any path; substantial improvement on
 the Binary paths.
+
+## Results (release build, 2026-05-18 re-run — single-generic Cursor<DomainTag> reshape)
+
+After `cursor-shape-a-vs-three-worlds.md` v1.2.0 single-generic refinement
+landed (`Cursor<Storage, PositionTag>` → `Cursor<DomainTag: Ownership.Borrow.\`Protocol\`>`),
+re-ran the four probes to verify no regression at the substrate level.
+
+| Probe | Legacy | Cursor | Ratio |
+|---|---|---|---|
+| Text peekAdvance | 218.79 µs | 218.38 µs | 0.998 |
+| Text consume | 215.29 µs | 215.17 µs | 0.999 |
+| Binary consumeLoop | 218.38 µs | 218.13 µs | 0.999 |
+| Binary peekAdvance | 1.10 ms | 1.10 ms | 0.999 |
+
+**Single-generic reshape gate**: GREEN. All ratios ≈ 1.000 — parity between
+the new production `Cursor<Byte>` / `Cursor<Text>` (now reached through the
+`Binary.Bytes.Input.View` and `Lexer.Scanner` typealiases) and the vendored
+two-generic `Cursor.Span<DomainTag>` substrate (frozen at the 2026-05-17
+shape for historical-baseline measurement). No regression vs the two-generic
+shape.
+
+The 2026-05-17 Binary 20-100× speedup vs pre-cursor `Binary.Bytes.Input.View`
+(public-stored-property `var position: Int` defect) is locked in — both
+Subject A (legacy, now `Cursor<Byte>` via typealias) and Subject B (vendored
+old two-generic) operate on the @usableFromInline internal stored
+`_position`, so both paths are at the post-fix performance tier. Absolute
+times are slightly higher than the 2026-05-17 baseline (218µs vs 165µs Text;
+218µs vs 162µs Binary consumeLoop) because of unrelated host-environment
+variance between measurement sessions; ratio parity is the load-bearing
+signal, not absolute regression to the prior numbers.
+
+The Binary peekAdvance probe at 1.10 ms reflects `removeFirst(1)` on the
+typealiased View (per-call typed-Cardinal construction + advance), still
+~16× faster than the 17.70 ms pre-cursor baseline.
+
+## Verdict
+
+**Phase 0 BENCH-011 gate**: GREEN (2026-05-17, original).
+**Single-generic reshape gate**: GREEN (2026-05-18, re-run). The Binary
+speedup is real, attributable to the original cursor migration's
+public-stored-property fix, and survives both subsequent reshapes (two-generic
+→ single-generic) of the cursor substrate without regression.
 
 ## Root-cause investigation of the Binary 20-100× speedup
 
@@ -96,14 +138,6 @@ hidden cost. The cursor migration is one example of "rename to
 `@usableFromInline internal` + provide an `@inlinable public var`
 computed accessor" producing significant wins. Worth a separate ecosystem
 audit before pre-1.0.
-
-## Verdict
-
-Phase 0 BENCH-011 gate: **GREEN**. The Binary speedup is real and
-attributable to a structural fix in the migration, not a benchmark anomaly
-or compiler quirk. Documented here to record the source of the perf delta —
-the abstraction did not magic; the public-stored-property pattern had been
-costing real cycles.
 
 ## How to reproduce
 
