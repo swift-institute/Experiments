@@ -1,0 +1,35 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write range-batch-smoke-test-entitlement.plist
+[1/7] Write sources
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/15] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+Map.swift
+[6/16] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+First.swift
+[7/16] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+Reduce.swift
+[8/16] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+Contains.swift
+[9/17] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+CompactMap.swift
+[10/17] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+Filter.swift
+[11/17] Emitting module Property_Primitives_Standard_Library_Integration
+[12/17] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+AllSatisfy.swift
+[13/17] Compiling Property_Primitives_Standard_Library_Integration exports.swift
+[14/17] Compiling Property_Primitives_Standard_Library_Integration Swift.Range+ForEach.swift
+[15/18] Emitting module Property_Primitives
+[16/20] Emitting module range_batch_smoke_test
+[17/20] Compiling range_batch_smoke_test main.swift
+[17/20] Write Objects.LinkFileList
+[18/20] Linking range-batch-smoke-test
+[19/20] Applying range-batch-smoke-test
+Build of product 'range-batch-smoke-test' complete! (0.89s)
+filter(non-throwing) PASS = [0, 2, 4, 6, 8]
+filter(typed-throws) PASS — propagated .oops(3)
+reduce(non-throwing) PASS = 10
+reduce(typed-throws) PASS — propagated .oops(2)
+allSatisfy(non-throwing) PASS = true
+allSatisfy(typed-throws) PASS — propagated .oops(4)
+contains(non-throwing) PASS = true
+contains(typed-throws) PASS — propagated .oops(2)
+first(non-throwing) PASS = 3
+first(typed-throws) PASS — propagated .oops(1)
+compactMap(non-throwing) PASS = [0, 20, 40]
+compactMap(typed-throws) PASS — propagated .oops(3)
+=== ALL Range bridges work — non-throwing AND typed-throws paths ===

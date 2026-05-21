@@ -1,0 +1,13 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write map-variant-test-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking map-variant-test
+[4/5] Applying map-variant-test
+Build of product 'map-variant-test' complete! (0.31s)
+M1 PASS (non-throwing map = [0, 2, 4])
+M2 PASS (typed-throws map = ["v0", "v1", "v2"])
+M3 PASS (typed throw .bad(2) propagated)
+M4 PASS (Int32 map = [0, 2, 4])
+=== ALL PASS — `map` Property bridge works for value-returning verb ===

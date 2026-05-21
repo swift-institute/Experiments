@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'range-property-typed-throws-iteration' complete! (0.17s)
+P1 PASS (collected = [0, 1, 2])
+P2/P5 PASS (typed throw propagated as MyError.bar(3))
+P3 PASS (caught .foo)
+P4 PASS (stdlib forEach output = [0, 1, 2])
+P6/P7-Int32 PASS (Int32 ints = [0, 1, 2])
+P6/P7-UInt PASS (UInt uints = [0, 1, 2])
+=== ALL PASS — Property-accessor pattern escapes stdlib overload competition ===

@@ -74,6 +74,22 @@
       "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108), macOS 26 arm64, release build (-c release)"
     },
     {
+      "category": "API Design Patterns",
+      "crossRefs": [
+        "swift-institute/Research/tensor-primitives-implementation-follow-ups.md (Item B)",
+        "swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.ForEach+Property.swift (precedent)",
+        "swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Swift.Range+ForEach.swift (Phase A failure — dead)"
+      ],
+      "date": "2026-05-17",
+      "directory": "range-property-typed-throws-iteration",
+      "purpose": "Empirically validate that the Property-accessor pattern on Swift.Range escapes stdlib Sequence.forEach overload competition for typed throws. Phase A of byte-arc Item B Option (a) installed `extension Swift.Range { public func forEach<E>(...) throws(E) }` in swift-vector-primitives; the file compiled but was unselectable — Swift 6.3.1 overload resolution prefers stdlib's rethrows Sequence.forEach over the institute typed-throws variant on Range<Int>, erasing throws(E) to any Error. This experiment tests the alternative: `range.iterate` returns Property<Range.Iterate, Range<Bound>>, with `callAsFunction<E>(...) throws(E)` declared on Property — mirroring Vector.ForEach+Property.swift's existing institute pattern. Predicates P1–P8 cover: compile, typed inference, typed catch binding, stdlib unchanged, typed propagation, nested-in-generic tag, cross-Bound generic, ecosystem swiftSettings. Per [EXP-017] validation matrix: cross-module debug + cross-module release; negative control (Sources/NegativeControl) reproduces the original Phase A failure on stdlib `Range.forEach` to prove the competition is real.",
+      "status": "CONFIRMED",
+      "statusDetail": "P1–P7 PASS in both cross-module debug and cross-module release; P8 confirmed by Package.swift building under institute ecosystem swiftSettings (ExistentialAny / InternalImportsByDefault / MemberImportVisibility / NonisolatedNonsendingByDefault). Negative control FAILS to compile with `error: thrown expression type 'any Error' cannot be converted to error type 'NegError'` — exact diagnostic Phase A hit on swift-vector-primitives, proving the Property pattern escapes a real competition rather than benefiting from a silent stdlib improvement. Mechanism: range.iterate returns Property<Tag, Range>; Property is not a Swift.Sequence, so stdlib's Sequence.forEach is not visible on the Property type, and the typed-throws callAsFunction declared on Property has no competing overload. Verdict admits production migration: Option (c.2 refined) Property accessor is the empirically validated pattern for typed-throws Range iteration in swift-vector-primitives + downstream consumers.",
+      "statusRaw": "CONFIRMED on Apple Swift 6.3.1 — empirically validates Property-accessor escape from stdlib overload competition for typed-throws Range iteration",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.1, macOS 26 arm64, swift-tools-version 6.3, debug + release"
+    },
+    {
       "category": "Concurrency & Isolation",
       "crossRefs": [],
       "date": "2026-05-13",
@@ -1233,6 +1249,42 @@
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
       "crossRefs": []
+    },
+    {
+      "directory": "parser-as-witness-namespace-collision",
+      "category": "API Design Patterns",
+      "purpose": "Tests whether `Parser` (currently an enum namespace) can be converted to a generic struct that is itself the canonical witness AND retains `Parser.Protocol` syntax for callers. Initial REFUTATIONS surfaced: (V1) stored function-typed property does NOT satisfy a protocol's method requirement of the same name — Swift treats stored properties and methods as distinct member kinds for witness-table satisfaction; (V4) protocol CANNOT be nested in a generic context — Swift forbids `extension GenericStruct { protocol P { ... } }`. THEN combined V8+V9 CONFIRMED the design IS viable: (V8) protocol-hoisting-via-typealias — declare the protocol at module level, then `extension Parser { typealias Protocol = ModuleLevelProtocol }` hoists the name into Parser's namespace. Bare-name reference `Parser.Protocol` works as a generic constraint without forcing callers to bind Parser's generic parameters (V8d critical test passed). (V9) stored `_parse: closure` internally + delegating `func parse(_:)` method satisfies the protocol requirement (same shape as V3 with underscore-prefix convention). DESIGN VERDICT (2026-05-15 ORIGINAL): 4-step pattern viable — (1) declare protocol at module level as Parser_Protocol; (2) make Parser a generic struct conforming to it; (3) store `_parse: closure` + delegate `func parse(_:)`; (4) hoist `typealias Protocol = Parser_Protocol` inside Parser's namespace. DESIGN PIVOT (2026-05-15 LATER, same day): the 4-step pattern was applied in production as C6 (Coder, 35bf00f) and W6 (Serializer, 38501f5). During Serializer combinator integration, call-site ergonomics surfaced a structural conflict — combinator types nested under a generic struct require outer-generic binding at every reference (`Serializer<O,B,F>.Literal<B>(...)`), forcing workarounds (typealias hoist + `Self.X` + `Serializers` plural). First-principles re-examination (per `family-as-enum-namespace-witness-nested` spike) confirmed enum namespace + nested `.Witness` resolves the conflict cleanly. The patterns this experiment confirmed remain technically valid but are NO LONGER the canonical institute shape; W6/C6 are queued for revert.",
+      "date": "2026-05-15",
+      "toolchain": "Apple Swift 6.3.1",
+      "status": "SUPERSEDED",
+      "statusDetail": "V8+V9 patterns empirically confirmed AND applied in C6 (35bf00f) and W6 (38501f5). Design subsequently pivoted away (same day) due to combinator namespace-collision cost at call sites; superseded by enum-namespace + nested Witness shape validated in `family-as-enum-namespace-witness-nested`.",
+      "statusRaw": "SUPERSEDED",
+      "supersededBy": "family-as-enum-namespace-witness-nested",
+      "crossRefs": ["rendering-context-protocol-vs-witness", "canonical-witness-capability", "nsviewrepresentable-body-witness", "family-as-enum-namespace-witness-nested", "witness-multi-target-namespace-collision"]
+    },
+    {
+      "directory": "family-as-enum-namespace-witness-nested",
+      "category": "API Design Patterns",
+      "purpose": "Design pivot spike following the C6/W6 application of `parser-as-witness-namespace-collision`'s 4-step pattern. Validates the structurally simpler alternative: keep the family root (`Parser` / `Serializer` / `Coder`) as an enum namespace (the original shape, pre-W6); nest the protocol as `Family.Protocol`; nest combinator types under the namespace (`Serializer.Literal<B>`, `Serializer.Map<U, V>`, etc.); add a closure-backed `Family.Witness<...>` as one combinator among many. Six validations (V1–V6) all pass: (V1) enum namespace + nested protocol compiles; (V2) `Serializer.Witness<Int, [UInt8], Never>(...)` at call site; (V3) `Serializer.Literal<[UInt8]>(...)` works WITHOUT outer-generic binding — the core ergonomic claim, fully resolves the conflict that drove C5 `Serializers` plural enum and C4 `Self.X` workarounds; (V4) generic combinator composition `Serializer.Map<Serializer.Literal<[UInt8]>, Int>(...)`; (V5) user conformer references nested combinators in its `serialize` body; (V6) same shape transfers to Parser (`Parser.Witness<Substring, Int, Never>`). DESIGN VERDICT: CONFIRMED. This shape is strictly better than swift-parsing's pattern on 5 of 6 axes (single namespace root vs Parser+Parsers+AnyParser triplet; no plural-enum deviation; clean combinator nesting; one call-site form per type; institute Nest.Name conformance) and equal on the witness-construction axis (`Serializer.Witness<O,B,F>(...)` vs `AnyParser(...)` — comparable verbosity). Implication: C6 (`35bf00f`) and W6 (`38501f5` and successors on swift-serializer-primitives) should be reverted to enum-namespace + nested-Witness shape; Parser conversion proceeds greenfield with the same shape.",
+      "date": "2026-05-15",
+      "toolchain": "Apple Swift 6.3.1",
+      "status": "CONFIRMED",
+      "statusDetail": "All 6 validations pass. Combinator namespace conflict fully resolved by non-generic enum root. No __FamilyX hoisted types needed; no Families plural enum needed; no four-call-site-forms decision tree. Pattern transfers across Parser/Serializer/Coder identically.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": ["parser-as-witness-namespace-collision", "witness-multi-target-namespace-collision", "canonical-witness-capability"]
+    },
+    {
+      "directory": "result-builder-parameter-packs-narity",
+      "category": "API Design Patterns",
+      "purpose": "Validate that @resultBuilder and SE-0393 parameter packs compose cleanly, so combinator-family Builders (Parser.Builder, Serializer.Builder) can replace their per-arity overload tables (currently 2/3/.../N tuple overloads inherited from swift-parsing's pre-SE-0393 era) with a single variadic-generic `buildBlock<each C: Protocol>(_ parts: repeat each C) -> Tuple<repeat each C>`. Five validations pass: (V1) single-arity build via @Builder attribute; (V2 a/b/c) 2/3/4-arity multi-children with heterogeneous Outputs preserved as type-level tuple concatenation `(repeat (each Child).Output)`; (V3) zero-arity (empty body) compiles and runs without crash; (V4) heterogeneous Output types preserved through the parameter pack including nested generics like `[String]` and `Double?`; (V5) @Builder attribute on `var body` in user-defined conformer works at the use site. DESIGN VERDICT: CONFIRMED. Parser.Builder + Serializer.Builder MAY replace their per-arity overload tables with one variadic buildBlock. Per-element constraints like `(each C).Input == SharedInput` and `(each C).Failure == SharedFailure` are valid SE-0393 where clauses; production refactor needs to encode those constraints alongside the variadic block. Implication: unblocks the API-review item to introduce N-arity in Parser/Serializer Builders, and indirectly enables `Many { }` (item 4) and `OneOf` parameter packs (item 2) to follow the same pattern.",
+      "date": "2026-05-15",
+      "toolchain": "Apple Swift 6.3.1",
+      "status": "CONFIRMED",
+      "statusDetail": "All 5 validations pass. @resultBuilder + parameter packs (SE-0393) compose without compiler issues. Production refactor of Parser.Builder + Serializer.Builder is unblocked.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": ["family-as-enum-namespace-witness-nested"]
     },
     {
       "directory": "hash-table-context-passing-lookup",
@@ -2634,6 +2686,23 @@
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
       "toolchain": "(unspecified)"
+    },
+    {
+      "category": "~Escapable & Ownership",
+      "crossRefs": [
+        "swift-primitives/swift-parser-primitives/Experiments/owned-consuming-get-on-protocol-extension/EXPERIMENT.md",
+        "swift-institute/Research/2026-05-18-consuming-get-protocol-extension-noncopyable-limitation.md",
+        "swift-institute/Research/noncopyable-property-extract-via-underscore-owned.md",
+        "swift-primitives/swift-sequence-primitives/Research/source-map-compact-chain-noncopyable-self-blocker.md"
+      ],
+      "date": "2026-05-21",
+      "directory": "sequence-map-fluent-chain-noncopyable-1",
+      "purpose": "Scaffold reproducer for `source.map.compact { }` / `.flat { }` / `.eager`-via-callAsFunction fluent chain on `Self: ~Copyable & ~Escapable`. V1 (`consuming get`) is the failing-direction declaration the package wants; V2 (`_read` yielding owned Builder) is structurally impossible; V3 (`_read` yielding ~Escapable Builder borrowing self via UnsafePointer) is the borrow-semantics Reframing A scaffold; V4 (`mutating _read` Property.View) is the var-source Reframing B scaffold. NONE OF THE VARIANTS WERE RUN — the closeout REFUTED the consume-semantics path at the language level per parser-primitives' owned-consuming-get experiment, and rejected Reframings A/B per Property.Inout.swift:90-101's release-mode miscompile + dual-conformer coverage gap on ~Copyable-only Sequence.Protocol sources.",
+      "status": "DEFERRED",
+      "statusDetail": "DEFERRED-revisit. Revisit trigger: a future Swift nightly compiles V1 (`let source = NCSource([1,2,3]); _ = source.v1_map`) without `sil_movechecking_capture_consumed` (DiagnosticsSIL.def:886). V3 retained as the alternative-Reframing-A scaffold even though rejected today.",
+      "statusRaw": "DEFERRED-revisit",
+      "supersededBy": null,
+      "toolchain": "swift-DEVELOPMENT-SNAPSHOT-2026-05-12-a (org.swift.64202605121a)"
     }
   ],
   "narrativeSections": [

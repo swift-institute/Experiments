@@ -1,0 +1,15 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write optional-result-stdlib-probe-entitlement.plist
+[1/6] Write sources
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module optional_result_stdlib_probe
+[5/8] Compiling optional_result_stdlib_probe main.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking optional-result-stdlib-probe
+[7/8] Applying optional-result-stdlib-probe
+Build of product 'optional-result-stdlib-probe' complete! (0.50s)
+Optional.map(typed-throws): STDLIB SUPPORTS — typed throw .foo propagated
+Optional.flatMap(typed-throws): STDLIB SUPPORTS — typed throw .bar propagated
+Result.map(non-throwing): STDLIB WORKS — success("v3")
+=== PROBE COMPLETE: see lines above for STDLIB SUPPORTS / NEEDS BRIDGE verdict per method ===

@@ -1,0 +1,20 @@
+Building for production...
+[0/17] Write sources
+[14/17] Write swift-version--58304C5D6DBC2206.txt
+[16/19] Compiling Ownership_Namespace Ownership.swift
+[17/19] Compiling Carrier_Primitives Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[18/22] Compiling Ownership_Primitives_Core Ownership.Transfer.swift
+[19/22] Compiling Property_Primitives_Core Property+Carrier.swift
+[20/23] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[21/25] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[22/25] Compiling Property_Typed_Primitives Property.Typed.swift
+[23/26] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[24/27] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[25/27] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[26/28] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[27/29] Compiling Property_Primitives exports.swift
+[28/30] Compiling RangeIterateAdapter RangeIterateAdapter.swift
+[29/31] Compiling range_property_typed_throws_iteration main.swift
+[29/31] Write Objects.LinkFileList
+[30/31] Linking range-property-typed-throws-iteration
+Build complete! (1.45s)

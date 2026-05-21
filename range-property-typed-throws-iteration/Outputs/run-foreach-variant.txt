@@ -1,0 +1,14 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write foreach-variant-test-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking foreach-variant-test
+[4/5] Applying foreach-variant-test
+Build of product 'foreach-variant-test' complete! (0.30s)
+P1 PASS (collected = [0, 1, 2])
+P2/P5 PASS (typed throw propagated as MyError.bar(3))
+P3 PASS (caught .foo)
+P4 PASS (non-throwing forEach output = [0, 1, 2])
+P6/P7-Int32 PASS
+=== ALL PASS — `forEach` can be the verb on Range too ===

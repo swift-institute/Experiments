@@ -1,0 +1,13 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Emitting module NegativeControl
+[4/4] Compiling NegativeControl negative.swift
+/Users/coen/Developer/swift-institute/Experiments/range-property-typed-throws-iteration/Sources/NegativeControl/negative.swift:10:13: error: thrown expression type 'any Error' cannot be converted to error type 'NegError'
+ 8 | func negativeControl() throws(NegError) {
+ 9 |     do throws(NegError) {
+10 |         try (0..<3).forEach { (i: Int) throws(NegError) in
+   |             `- error: thrown expression type 'any Error' cannot be converted to error type 'NegError'
+11 |             if i == 1 { throw .foo }
+12 |         }

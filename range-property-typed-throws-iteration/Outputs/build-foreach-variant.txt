@@ -1,0 +1,7 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Compiling foreach_variant_test main.swift
+[4/4] Emitting module foreach_variant_test
+Build of target: 'foreach-variant-test' complete! (0.41s)

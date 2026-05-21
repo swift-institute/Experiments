@@ -1,0 +1,9 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling parser_as_witness_namespace_collision main.swift
+[4/6] Emitting module parser_as_witness_namespace_collision
+[4/7] Write Objects.LinkFileList
+[5/7] Linking parser-as-witness-namespace-collision
+[6/7] Applying parser-as-witness-namespace-collision
+Build complete! (0.42s)

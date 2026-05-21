@@ -1,0 +1,23 @@
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling range_perf_bench main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking range-perf-bench
+Build of product 'range-perf-bench' complete! (0.58s)
+--- forEach (10M iters) ---
+A. stdlib forEach { non-throwing }                 0.80 ns/iter (total 8.0 ms)
+B. Property forEach { throws(NeverThrown) }        0.80 ns/iter (total 8.0 ms)
+C. manual while-loop                               0.80 ns/iter (total 8.0 ms)
+--- map (10M iters) ---
+A. stdlib map { non-throwing }                     0.40 ns/iter (total 4.0 ms)
+B. Property map { throws(NeverThrown) }            0.41 ns/iter (total 4.1 ms)
+C. manual array build                              0.41 ns/iter (total 4.1 ms)
+--- filter (10M iters) ---
+A. stdlib filter { non-throwing }                  1.10 ns/iter (total 11.0 ms)
+B. Property filter { throws(NeverThrown) }         1.11 ns/iter (total 11.1 ms)
+--- reduce (10M iters) ---
+A. stdlib reduce(0, &+)                            0.0  ns/iter (total 0.0 ms)
+B. Property reduce(0) { throws(NeverThrown) }      0.0  ns/iter (total 0.0 ms)
+
+blackHole = 1000000060000000

@@ -1,0 +1,64 @@
+Building for debugging...
+[0/19] Write sources
+[4/19] Write range-property-typed-throws-iteration-entitlement.plist
+[5/19] Write sources
+[15/19] Write swift-version--58304C5D6DBC2206.txt
+[17/29] Compiling Carrier_Primitives Carrier.Protocol where Underlying == Self, Self ~Copyable.swift
+[18/30] Emitting module Carrier_Primitives
+[19/30] Compiling Carrier_Primitives Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[20/30] Emitting module Ownership_Namespace
+[21/30] Compiling Ownership_Namespace Ownership.swift
+[22/30] Compiling Carrier_Primitives Carrying.swift
+[23/30] Compiling Carrier_Primitives Carrier.swift
+[24/30] Compiling Carrier_Primitives Carrier.Protocol where Underlying == Self.swift
+[25/30] Compiling Carrier_Primitives Carrier.Protocol where Underlying == Self, Self ~Copyable & ~Escapable.swift
+[26/30] Compiling Carrier_Primitives Carrier.Protocol where Underlying == Self, Self ~Escapable.swift
+[27/30] Compiling Carrier_Primitives _CarrierProtocol.swift
+[28/37] Compiling Ownership_Primitives_Core exports.swift
+[29/37] Emitting module Ownership_Primitives_Core
+[30/37] Compiling Ownership_Primitives_Core Ownership.Transfer.swift
+[31/41] Compiling Property_Primitives_Core exports.swift
+[32/41] Compiling Property_Primitives_Core Property+Carrier.swift
+[33/41] Compiling Property_Primitives_Core Property.swift
+[34/41] Emitting module Property_Primitives_Core
+[35/44] Emitting module Tagged_Primitives
+[36/44] Compiling Tagged_Primitives Tagged.swift
+[37/44] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[38/44] Compiling Tagged_Primitives Tagged+CustomStringConvertible.swift
+[39/44] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[40/44] Emitting module Ownership_Inout_Primitives
+[41/44] Compiling Ownership_Inout_Primitives exports.swift
+[42/51] Compiling Property_Consume_Primitives exports.swift
+[43/51] Emitting module Property_Consume_Primitives
+[44/51] Compiling Property_Consume_Primitives Property.Consume.swift
+[45/51] Compiling Property_Typed_Primitives Property.Typed.swift
+[46/51] Compiling Property_Typed_Primitives exports.swift
+[47/51] Emitting module Property_Typed_Primitives
+[48/57] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[49/63] Compiling Property_Inout_Primitives exports.swift
+[50/63] Compiling Ownership_Borrow_Primitives __Ownership_Borrow_Protocol.swift
+[51/63] Compiling Ownership_Borrow_Primitives exports.swift
+[52/63] Compiling Ownership_Borrow_Primitives _Ownership_Borrow_OwnedBuffer.swift
+[53/63] Compiling Ownership_Borrow_Primitives Tagged+Ownership.Borrow.Protocol.swift
+[54/63] Emitting module Ownership_Borrow_Primitives
+[55/63] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[56/63] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.swift
+[57/63] Compiling Property_Inout_Primitives Property.Inout.Typed.swift
+[58/63] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[59/63] Emitting module Property_Inout_Primitives
+[60/63] Compiling Property_Inout_Primitives Property.Inout.swift
+[61/68] Compiling Property_Borrow_Primitives exports.swift
+[62/68] Compiling Property_Borrow_Primitives Property.Borrow.swift
+[63/68] Compiling Property_Borrow_Primitives Property.Borrow.Typed.swift
+[64/68] Emitting module Property_Borrow_Primitives
+[65/68] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[66/70] Emitting module Property_Primitives
+[67/70] Compiling Property_Primitives exports.swift
+[68/72] Compiling RangeIterateAdapter RangeIterateAdapter.swift
+[69/72] Emitting module RangeIterateAdapter
+[70/74] Compiling range_property_typed_throws_iteration main.swift
+[71/74] Emitting module range_property_typed_throws_iteration
+[71/74] Write Objects.LinkFileList
+[72/74] Linking range-property-typed-throws-iteration
+[73/74] Applying range-property-typed-throws-iteration
+Build complete! (1.84s)

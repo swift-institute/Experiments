@@ -1,0 +1,9 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'parser-as-witness-namespace-collision' complete! (0.09s)
+V3: parsed count = 5
+V5: parsed count = 6 (via @_implements stamping _parse)
+V7: parsed count = 3 (enum namespace + nested protocol — control)
+V8c: parsed count = 5 (fully-applied Parser<X,Y,Z>.Protocol)
+V8d: parsed count = 2 (BARE Parser.Protocol — load-bearing!)
+V9: parsed count = 3 (_parse + method delegate)
