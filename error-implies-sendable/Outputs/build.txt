@@ -1,0 +1,67 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/6] Emitting module error_implies_sendable
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:28:9: warning: stored property 'payload' of 'Sendable'-conforming struct 'WrappingError' has non-Sendable type 'NonSendablePayload'
+19 | 
+20 | // A reference-typed payload that is NOT Sendable.
+21 | final class NonSendablePayload {
+   |             `- note: class 'NonSendablePayload' does not conform to the 'Sendable' protocol
+22 |     var note: String = "mutable"
+23 | }
+   :
+26 | // is NOT auto-Sendable. We conform to Error only — not Sendable.
+27 | struct WrappingError: Error {
+28 |     let payload: NonSendablePayload
+   |         `- warning: stored property 'payload' of 'Sendable'-conforming struct 'WrappingError' has non-Sendable type 'NonSendablePayload'
+29 | }
+30 | 
+
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:66:7: error: non-final class 'ClassError' cannot conform to the 'Sendable' protocol
+64 | //   conforming only to Error cannot rely on struct Sendable inference.
+65 | 
+66 | class ClassError: Error {
+   |       `- error: non-final class 'ClassError' cannot conform to the 'Sendable' protocol
+67 |     var counter: Int = 0
+68 | }
+
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:67:9: warning: stored property 'counter' of 'Sendable'-conforming class 'ClassError' is mutable
+65 | 
+66 | class ClassError: Error {
+67 |     var counter: Int = 0
+   |         `- warning: stored property 'counter' of 'Sendable'-conforming class 'ClassError' is mutable
+68 | }
+69 | 
+[4/6] Compiling error_implies_sendable main.swift
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:28:9: warning: stored property 'payload' of 'Sendable'-conforming struct 'WrappingError' has non-Sendable type 'NonSendablePayload'
+19 | 
+20 | // A reference-typed payload that is NOT Sendable.
+21 | final class NonSendablePayload {
+   |             `- note: class 'NonSendablePayload' does not conform to the 'Sendable' protocol
+22 |     var note: String = "mutable"
+23 | }
+   :
+26 | // is NOT auto-Sendable. We conform to Error only — not Sendable.
+27 | struct WrappingError: Error {
+28 |     let payload: NonSendablePayload
+   |         `- warning: stored property 'payload' of 'Sendable'-conforming struct 'WrappingError' has non-Sendable type 'NonSendablePayload'
+29 | }
+30 | 
+
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:66:7: error: non-final class 'ClassError' cannot conform to the 'Sendable' protocol
+64 | //   conforming only to Error cannot rely on struct Sendable inference.
+65 | 
+66 | class ClassError: Error {
+   |       `- error: non-final class 'ClassError' cannot conform to the 'Sendable' protocol
+67 |     var counter: Int = 0
+68 | }
+
+/Users/coen/Developer/swift-institute/Experiments/error-implies-sendable/Sources/error-implies-sendable/main.swift:67:9: warning: stored property 'counter' of 'Sendable'-conforming class 'ClassError' is mutable
+65 | 
+66 | class ClassError: Error {
+67 |     var counter: Int = 0
+   |         `- warning: stored property 'counter' of 'Sendable'-conforming class 'ClassError' is mutable
+68 | }
+69 | 

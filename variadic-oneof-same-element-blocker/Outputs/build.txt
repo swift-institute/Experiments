@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module variadic_oneof_same_element_blocker
+[4/7] Compiling variadic_oneof_same_element_blocker main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking variadic-oneof-same-element-blocker
+[6/7] Applying variadic-oneof-same-element-blocker
+Build complete! (0.36s)

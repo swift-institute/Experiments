@@ -1,0 +1,59 @@
+// swift-tools-version: 6.2
+
+import PackageDescription
+
+let package = Package(
+    name: "argv-parser-benchmark",
+    platforms: [.macOS(.v26)],
+    dependencies: [
+        // Apple swift-argument-parser (path dep, local clone).
+        .package(path: "../../../swiftlang/swift-argument-parser"),
+        // Institute parser ecosystem (same deps as argv-parser-protocol-spike).
+        .package(path: "../../../swift-primitives/swift-parser-primitives"),
+        .package(path: "../../../swift-primitives/swift-input-primitives"),
+        .package(path: "../../../swift-primitives/swift-array-primitives"),
+    ],
+    targets: [
+        // Executable that mirrors swift-argument-parser's canonical Repeat example.
+        .executableTarget(
+            name: "RepeatApple",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ]
+        ),
+        // Executable that implements the same logic via the institute Parser.Protocol
+        // leaf-variant (copied verbatim from argv-parser-protocol-spike).
+        .executableTarget(
+            name: "RepeatInstitute",
+            dependencies: [
+                .product(name: "Parser Primitives", package: "swift-parser-primitives"),
+                .product(name: "Input Primitives", package: "swift-input-primitives"),
+                .product(name: "Array Dynamic Primitives", package: "swift-array-primitives"),
+                .product(name: "Array Primitives Core", package: "swift-array-primitives"),
+            ]
+        ),
+        // Parse-latency micro-benchmark driver (links BOTH parsers and times them).
+        .executableTarget(
+            name: "BenchDriver",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Parser Primitives", package: "swift-parser-primitives"),
+                .product(name: "Input Primitives", package: "swift-input-primitives"),
+                .product(name: "Array Dynamic Primitives", package: "swift-array-primitives"),
+                .product(name: "Array Primitives Core", package: "swift-array-primitives"),
+            ]
+        ),
+    ],
+    swiftLanguageModes: [.v6]
+)
+
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
+    target.swiftSettings = (target.swiftSettings ?? []) + [
+        .enableUpcomingFeature("ExistentialAny"),
+        .enableUpcomingFeature("InternalImportsByDefault"),
+        .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+        .enableExperimentalFeature("Lifetimes"),
+        .enableExperimentalFeature("SuppressedAssociatedTypes"),
+    ]
+}

@@ -1,0 +1,20 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[2/6] Emitting module variadic_oneof_same_element_blocker
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:118:72: error: type placeholder not allowed here
+116 | 
+117 | #if VARIANT2
+118 | public struct OneOf_V2<Input, Output, each P: Parseable<Input, Output, _>>: Parseable {
+    |                                                                        `- error: type placeholder not allowed here
+119 |     public typealias Failure = Never
+120 |     public let parsers: (repeat each P)
+[3/6] Compiling variadic_oneof_same_element_blocker main.swift
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:118:72: error: type placeholder not allowed here
+116 | 
+117 | #if VARIANT2
+118 | public struct OneOf_V2<Input, Output, each P: Parseable<Input, Output, _>>: Parseable {
+    |                                                                        `- error: type placeholder not allowed here
+119 |     public typealias Failure = Never
+120 |     public let parsers: (repeat each P)

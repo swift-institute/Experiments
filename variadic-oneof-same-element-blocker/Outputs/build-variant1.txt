@@ -1,0 +1,36 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[2/6] Emitting module variadic_oneof_same_element_blocker
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:85:27: error: same-element requirements are not yet supported
+ 83 | public struct OneOf_V1<Input, Output, each P: Parseable>: Parseable
+ 84 | where
+ 85 |     repeat (each P).Input == Input,    // ❌ same-element not yet supported
+    |                           `- error: same-element requirements are not yet supported
+ 86 |     repeat (each P).Output == Output   // ❌ same-element not yet supported
+ 87 | {
+
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:86:28: error: same-element requirements are not yet supported
+ 84 | where
+ 85 |     repeat (each P).Input == Input,    // ❌ same-element not yet supported
+ 86 |     repeat (each P).Output == Output   // ❌ same-element not yet supported
+    |                            `- error: same-element requirements are not yet supported
+ 87 | {
+ 88 |     public typealias Failure = Never
+[3/6] Compiling variadic_oneof_same_element_blocker main.swift
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:85:27: error: same-element requirements are not yet supported
+ 83 | public struct OneOf_V1<Input, Output, each P: Parseable>: Parseable
+ 84 | where
+ 85 |     repeat (each P).Input == Input,    // ❌ same-element not yet supported
+    |                           `- error: same-element requirements are not yet supported
+ 86 |     repeat (each P).Output == Output   // ❌ same-element not yet supported
+ 87 | {
+
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:86:28: error: same-element requirements are not yet supported
+ 84 | where
+ 85 |     repeat (each P).Input == Input,    // ❌ same-element not yet supported
+ 86 |     repeat (each P).Output == Output   // ❌ same-element not yet supported
+    |                            `- error: same-element requirements are not yet supported
+ 87 | {
+ 88 |     public typealias Failure = Never

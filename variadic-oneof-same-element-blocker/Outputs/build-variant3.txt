@@ -1,0 +1,18 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write swift-version--58304C5D6DBC2206.txt
+[2/6] Emitting module variadic_oneof_same_element_blocker
+[3/6] Compiling variadic_oneof_same_element_blocker main.swift
+/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:191:9: warning: will never be executed
+188 |     public let parsers: (repeat each P)
+189 |     public init(_ parsers: repeat each P) { self.parsers = (repeat each parsers) }
+190 |     public func parse(_ input: inout Input) throws(Failure) -> Output {
+    |                                                                       `- note: 'input' is of type 'OneOf_V3<repeat each P>.Input' (aka 'Never') which cannot be constructed because it is an enum with no cases
+191 |         fatalError()
+    |         `- warning: will never be executed
+192 |     }
+193 | }
+[3/6] Write Objects.LinkFileList
+[4/6] Linking variadic-oneof-same-element-blocker
+[5/6] Applying variadic-oneof-same-element-blocker
+Build complete! (0.36s)

@@ -7,3 +7,5 @@ topics:
   - verification
   - compiler-validation
 homepage: "https://swift-institute.org"
+readme:
+  family: C
