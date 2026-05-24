@@ -58,6 +58,20 @@
   ],
   "experiments": [
     {
+      "category": "Architecture Patterns",
+      "crossRefs": [
+        "/tmp/buffer-storage-generic-converged.md (Claude×ChatGPT converged plan, 2026-05-23)"
+      ],
+      "date": "2026-05-24",
+      "directory": "storage-protocol-specialization",
+      "purpose": "Validate the compiler capability the buffer/storage Layer-2-hoist design relies on: does a Layer-2 algorithm generic over `some StorageProtocol` specialize — eliminating witness-table dispatch on the hot-path primitive `pointer(at:)` — in RELEASE across a MODULE boundary ([EXP-017])? Faithful reduction: capability protocol is ~Copyable with a suppressed associated Element and a single `pointer(at:)`; two concrete conformers (HeapStorage, OffsetStorage) so the witness table is real; a generic `Operations.sum/fill` core; a concrete non-@inlinable leaf `LinearHeap` that delegates to it; a separate `consumer` module exercises it in a hot loop.",
+      "status": "CONFIRMED",
+      "statusDetail": "Release build + cross-module run correct (sum: 10240000). Within-module SIL (core.sil): LinearHeap.total contains 0 witness_method, 0 apply, 0 call — Operations.sum<HeapStorage> specialized AND inlined to raw pointer arithmetic (struct_extract HeapStorage.base → index_addr → load → sadd); remaining witness_method lines are the unused generic fallback bodies. Cross-module SIL (consumer.sil): 0 witness_method; with SIL bodies available (@inlinable / package-CMO) total inlines to direct pointer arithmetic in the consumer, and default cross-package (non-inlinable) makes an opaque call into the already-specialized concrete total (still 0 witness dispatch). Two conformers, ~Copyable storage, and a suppressed associated Element do not defeat specialization. Scope ([EXP-020]): proves the compiler capability; does NOT prove the production swift-buffer-linear refactor specializes — that requires the refactor + in-package SIL recheck.",
+      "statusRaw": "CONFIRMED (release + cross-module SIL: 0 witness_method on pointer(at:))",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108), arm64-apple-macosx26.0, release build (-c release) + swiftc -O -wmo -emit-sil"
+    },
+    {
       "category": "API Design Patterns",
       "crossRefs": [
         "swift-institute/Research/copyable-wrapper-vs-multi-buffer-storage.md v1.0.1",
