@@ -1,0 +1,8 @@
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version--58304C5D6DBC2206.txt
+[4/6] Compiling StorageCore HeapStorage.swift
+[5/7] Compiling consumer main.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking consumer
+Build complete! (0.50s)

@@ -1,0 +1,10 @@
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version-5904E0B7DFDEA3B0.txt
+[4/6] Compiling BorrowLendKit BorrowLendKit.swift
+[5/7] Compiling escapable_output_borrow_lend main.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking escapable-output-borrow-lend
+Build of product 'escapable-output-borrow-lend' complete! (0.42s)
+P2a sum = 300
+P4 sum = 30

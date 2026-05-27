@@ -1,0 +1,689 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+public struct HeapStorage : StorageProtocol, ~Copyable {
+  public typealias Element = Int
+  @_hasStorage public let capacity: Int { get }
+  @usableFromInline
+  @_hasStorage let base: UnsafeMutablePointer<Int> { get }
+  public init(capacity: Int)
+  public func pointer(at slot: Int) -> UnsafeMutablePointer<Int>
+  deinit
+}
+
+public struct LinearHeap : ~Copyable {
+  @usableFromInline
+  @_hasStorage var storage: HeapStorage { get set }
+  public init(capacity: Int)
+  public func total(count: Int) -> Int
+}
+
+public struct OffsetStorage : StorageProtocol, ~Copyable {
+  public typealias Element = Int
+  @_hasStorage public let capacity: Int { get }
+  @usableFromInline
+  @_hasStorage let base: UnsafeMutablePointer<Int> { get }
+  @usableFromInline
+  @_hasStorage let offset: Int { get }
+  public init(capacity: Int, offset: Int)
+  public func pointer(at slot: Int) -> UnsafeMutablePointer<Int>
+  deinit
+}
+
+public enum Operations {
+  public static func fill<S>(_ storage: borrowing S, count: Int, value: Int) where S : StorageProtocol, S.Element == Int, S : ~Copyable
+  public static func sum<S>(_ storage: borrowing S, count: Int) -> Int where S : StorageProtocol, S.Element == Int, S : ~Copyable
+}
+
+public protocol StorageProtocol : ~Copyable {
+  associatedtype Element : ~Copyable
+  var capacity: Int { get }
+  func pointer(at slot: Int) -> UnsafeMutablePointer<Self.Element>
+}
+
+// HeapStorage.capacity.getter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore04HeapA0V8capacitySivg : $@convention(method) (@guaranteed HeapStorage) -> Int {
+[%0: noescape **]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #HeapStorage.capacity   // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore04HeapA0V8capacitySivg'
+
+// HeapStorage.base.getter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore04HeapA0V4baseSpySiGvg : $@convention(method) (@guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%0: escape v** => %r.v**, escape v**.c*.v** => %r.v**.c*.v**]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #HeapStorage.base       // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore04HeapA0V4baseSpySiGvg'
+
+// HeapStorage.init(capacity:)
+// Isolation: unspecified
+sil @$s11StorageCore04HeapA0V8capacityACSi_tcfC : $@convention(method) (Int, @thin HeapStorage.Type) -> @owned HeapStorage {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "capacity"                                  // users: %5, %7, %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin HeapStorage.Type):
+  %2 = alloc_stack [lexical] [var_decl] $HeapStorage, var, name "self", type $HeapStorage // users: %21, %4, %19, %23
+  debug_value %0, let, name "capacity", argno 1   // id: %3
+  %4 = struct_element_addr %2, #HeapStorage.capacity // user: %5
+  store %0 to %4                                  // id: %5
+  %6 = integer_literal $Builtin.Int64, 8          // user: %9
+  %7 = struct_extract %0, #Int._value             // users: %16, %9
+  %8 = integer_literal $Builtin.Int1, -1          // user: %9
+  %9 = builtin "smul_with_overflow_Int64"(%6, %7, %8) : $(Builtin.Int64, Builtin.Int1) // users: %11, %10
+  %10 = tuple_extract %9, 0                       // user: %14
+  %11 = tuple_extract %9, 1                       // user: %12
+  cond_fail %11, "arithmetic overflow"            // id: %12
+  %13 = integer_literal $Builtin.Word, 0          // user: %15
+  %14 = builtin "truncOrBitCast_Int64_Word"(%10) : $Builtin.Word // user: %15
+  %15 = builtin "allocRaw"(%14, %13) : $Builtin.RawPointer // users: %18, %17
+  %16 = builtin "truncOrBitCast_Int64_Word"(%7) : $Builtin.Word // user: %17
+  %17 = bind_memory %15, %16 to $*Int
+  %18 = struct $UnsafeMutablePointer<Int> (%15)   // user: %20
+  %19 = struct_element_addr %2, #HeapStorage.base // user: %20
+  store %18 to %19                                // id: %20
+  %21 = load %2                                   // user: %24
+  debug_value undef : $*HeapStorage, var, name "self" // id: %22
+  dealloc_stack %2                                // id: %23
+  return %21                                      // id: %24
+} // end sil function '$s11StorageCore04HeapA0V8capacityACSi_tcfC'
+
+// HeapStorage.pointer(at:)
+// Isolation: unspecified
+sil @$s11StorageCore04HeapA0V7pointer2atSpySiGSi_tF : $@convention(method) (Int, @guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **]
+[global: ]
+// %0 "slot"                                      // users: %6, %2
+// %1 "self"                                      // users: %4, %3
+bb0(%0 : $Int, %1 : $HeapStorage):
+  debug_value %0, let, name "slot", argno 1       // id: %2
+  debug_value %1, let, name "self", argno 2       // id: %3
+  %4 = struct_extract %1, #HeapStorage.base       // user: %5
+  %5 = struct_extract %4, #UnsafeMutablePointer._rawValue // user: %8
+  %6 = struct_extract %0, #Int._value             // user: %7
+  %7 = builtin "truncOrBitCast_Int64_Word"(%6) : $Builtin.Word // user: %9
+  %8 = pointer_to_address %5 to [strict] $*Int    // user: %9
+  %9 = index_addr [stack_protection] %8, %7       // user: %10
+  %10 = address_to_pointer [stack_protection] %9 to $Builtin.RawPointer // user: %11
+  %11 = struct $UnsafeMutablePointer<Int> (%10)   // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s11StorageCore04HeapA0V7pointer2atSpySiGSi_tF'
+
+// HeapStorage.deinit
+// Isolation: nonisolated
+sil @$s11StorageCore04HeapA0VfD : $@convention(method) (@owned HeapStorage) -> () {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %5, %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  debug_value %0, let, name "self", argno 1       // id: %2
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %3
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %4
+  %5 = struct_extract %0, #HeapStorage.base       // user: %6
+  %6 = struct_extract %5, #UnsafeMutablePointer._rawValue // user: %10
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %7
+  %8 = integer_literal $Builtin.Word, -1          // user: %10
+  %9 = integer_literal $Builtin.Word, 0           // user: %10
+  %10 = builtin "deallocRaw"(%6, %8, %9) : $()
+  %11 = tuple ()                                  // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s11StorageCore04HeapA0VfD'
+
+// protocol witness for StorageProtocol.capacity.getter in conformance HeapStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP8capacitySivgTW : $@convention(witness_method: StorageProtocol) (@in_guaranteed HeapStorage) -> Int {
+[%0: noescape **, read s0.v**]
+[global: ]
+// %0                                             // user: %1
+bb0(%0 : $*HeapStorage):
+  %1 = struct_element_addr %0, #HeapStorage.capacity // user: %2
+  %2 = load %1                                    // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP8capacitySivgTW'
+
+// protocol witness for StorageProtocol.pointer(at:) in conformance HeapStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW : $@convention(witness_method: StorageProtocol) (Int, @in_guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **, read s1.s0.v**]
+[global: ]
+// %0                                             // users: %6, %5
+// %1                                             // user: %2
+bb0(%0 : $Int, %1 : $*HeapStorage):
+  %2 = struct_element_addr %1, #HeapStorage.base  // user: %3
+  %3 = struct_element_addr %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = load %3                                    // user: %8
+  debug_value %0, let, name "slot", argno 1       // id: %5
+  %6 = struct_extract %0, #Int._value             // user: %7
+  %7 = builtin "truncOrBitCast_Int64_Word"(%6) : $Builtin.Word // user: %9
+  %8 = pointer_to_address %4 to [strict] $*Int    // user: %9
+  %9 = index_addr [stack_protection] %8, %7       // user: %10
+  %10 = address_to_pointer [stack_protection] %9 to $Builtin.RawPointer // user: %11
+  %11 = struct $UnsafeMutablePointer<Int> (%10)   // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW'
+
+// LinearHeap.storage.read
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore10LinearHeapV7storageAA0dA0Vvr : $@yield_once @convention(method) (@guaranteed LinearHeap) -> @yields @guaranteed HeapStorage {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $LinearHeap):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #LinearHeap.storage     // user: %3
+  yield %2, resume bb1, unwind bb2                // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = tuple ()                                   // user: %5
+  return %4                                       // id: %5
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %6
+} // end sil function '$s11StorageCore10LinearHeapV7storageAA0dA0Vvr'
+
+// LinearHeap.storage.setter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore10LinearHeapV7storageAA0dA0Vvs : $@convention(method) (@owned HeapStorage, @inout LinearHeap) -> () {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[%1: read s0.s1.s0.v**, write s0.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "value"                                     // users: %16, %2
+// %1 "self"                                      // users: %5, %17, %3
+bb0(%0 : $HeapStorage, %1 : $*LinearHeap):
+  debug_value %0, let, name "value", argno 1      // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  debug_value undef : $*HeapStorage, let, name "value", argno 1 // id: %4
+  %5 = struct_element_addr %1, #LinearHeap.storage // users: %6, %16
+  %6 = struct_element_addr %5, #HeapStorage.base  // user: %7
+  %7 = struct_element_addr %6, #UnsafeMutablePointer._rawValue // user: %8
+  %8 = load %7                                    // user: %14
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %9
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %10
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %11
+  %12 = integer_literal $Builtin.Word, -1         // user: %14
+  %13 = integer_literal $Builtin.Word, 0          // user: %14
+  %14 = builtin "deallocRaw"(%8, %12, %13) : $()
+  debug_value undef : $*LinearHeap, var, name "self", argno 2, expr op_deref // id: %15
+  store %0 to %5                                  // id: %16
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %17
+  %18 = tuple ()                                  // user: %19
+  return %18                                      // id: %19
+} // end sil function '$s11StorageCore10LinearHeapV7storageAA0dA0Vvs'
+
+// LinearHeap.storage.modify
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore10LinearHeapV7storageAA0dA0VvM : $@yield_once @convention(method) (@inout LinearHeap) -> @yields @inout HeapStorage {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $*LinearHeap):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = struct_element_addr %0, #LinearHeap.storage // user: %3
+  yield %2, resume bb1, unwind bb2                // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = tuple ()                                   // user: %5
+  return %4                                       // id: %5
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %6
+} // end sil function '$s11StorageCore10LinearHeapV7storageAA0dA0VvM'
+
+// LinearHeap.init(capacity:)
+// Isolation: unspecified
+sil @$s11StorageCore10LinearHeapV8capacityACSi_tcfC : $@convention(method) (Int, @thin LinearHeap.Type) -> @owned LinearHeap {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "capacity"                                  // users: %6, %8, %4, %25, %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin LinearHeap.Type):
+  %2 = alloc_stack [lexical] $HeapStorage, var, name "self", type $LinearHeap, expr op_fragment:#LinearHeap.storage // users: %47, %5, %20, %50
+  debug_value %0, let, name "capacity", argno 1   // id: %3
+  debug_value %0, let, name "capacity", argno 1   // id: %4
+  %5 = struct_element_addr %2, #HeapStorage.capacity // user: %6
+  store %0 to %5                                  // id: %6
+  %7 = integer_literal $Builtin.Int64, 8          // user: %10
+  %8 = struct_extract %0, #Int._value             // users: %29, %43, %17, %10
+  %9 = integer_literal $Builtin.Int1, -1          // user: %10
+  %10 = builtin "smul_with_overflow_Int64"(%7, %8, %9) : $(Builtin.Int64, Builtin.Int1) // users: %12, %11
+  %11 = tuple_extract %10, 0                      // user: %15
+  %12 = tuple_extract %10, 1                      // user: %13
+  cond_fail %12, "arithmetic overflow"            // id: %13
+  %14 = integer_literal $Builtin.Word, 0          // user: %16
+  %15 = builtin "truncOrBitCast_Int64_Word"(%11) : $Builtin.Word // user: %16
+  %16 = builtin "allocRaw"(%15, %14) : $Builtin.RawPointer // users: %32, %19, %18
+  %17 = builtin "truncOrBitCast_Int64_Word"(%8) : $Builtin.Word // user: %18
+  %18 = bind_memory %16, %17 to $*Int
+  %19 = struct $UnsafeMutablePointer<Int> (%16)   // user: %21
+  %20 = struct_element_addr %2, #HeapStorage.base // user: %21
+  store %19 to %20                                // id: %21
+  debug_value undef : $*HeapStorage, var, name "self" // id: %22
+  %23 = integer_literal $Builtin.Int64, 1         // users: %40, %24
+  %24 = struct $Int (%23)                         // users: %39, %26
+  debug_value %0, let, name "count", argno 2      // id: %25
+  debug_value %24, let, name "value", argno 3     // id: %26
+  %27 = integer_literal $Builtin.Int64, 0         // users: %33, %29, %28
+  debug_value %27, var, name "i", type $Int, expr op_fragment:#Int._value // id: %28
+  %29 = builtin "cmp_slt_Int64"(%27, %8) : $Builtin.Int1 // user: %30
+  cond_br %29, bb1, bb2                           // id: %30
+
+bb1:                                              // Preds: bb0
+  %31 = integer_literal $Builtin.Int1, 0          // user: %40
+  %32 = pointer_to_address %16 to [strict] $*Int  // user: %38
+  br bb3(%27)                                     // id: %33
+
+bb2:                                              // Preds: bb0
+  br bb6                                          // id: %34
+
+// %35                                            // users: %40, %37, %36
+bb3(%35 : $Builtin.Int64):                        // Preds: bb4 bb1
+  debug_value %35, let, name "slot", argno 1, type $Int, expr op_fragment:#Int._value // id: %36
+  %37 = builtin "truncOrBitCast_Int64_Word"(%35) : $Builtin.Word // user: %38
+  %38 = index_addr [stack_protection] %32, %37    // user: %39
+  store %24 to %38                                // id: %39
+  %40 = builtin "sadd_with_overflow_Int64"(%35, %23, %31) : $(Builtin.Int64, Builtin.Int1) // user: %41
+  %41 = tuple_extract %40, 0                      // users: %45, %43, %42
+  debug_value %41, var, name "i", type $Int, expr op_fragment:#Int._value // id: %42
+  %43 = builtin "cmp_slt_Int64"(%41, %8) : $Builtin.Int1 // user: %44
+  cond_br %43, bb4, bb5                           // id: %44
+
+bb4:                                              // Preds: bb3
+  br bb3(%41)                                     // id: %45
+
+bb5:                                              // Preds: bb3
+  br bb6                                          // id: %46
+
+bb6:                                              // Preds: bb2 bb5
+  %47 = load %2                                   // user: %48
+  %48 = struct $LinearHeap (%47)                  // user: %51
+  debug_value undef : $*LinearHeap, var, name "self" // id: %49
+  dealloc_stack %2                                // id: %50
+  return %48                                      // id: %51
+} // end sil function '$s11StorageCore10LinearHeapV8capacityACSi_tcfC'
+
+// static Operations.fill<A>(_:count:value:)
+// Isolation: unspecified
+sil @$s11StorageCore10OperationsO4fill_5count5valueyx_S2itAA0A8ProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <S where S : StorageProtocol, S.Element == Int, S : ~Copyable> (@in_guaranteed S, Int, Int, @thin Operations.Type) -> () {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "storage"                                   // users: %20, %4
+// %1 "count"                                     // users: %10, %5
+// %2 "value"                                     // users: %23, %6
+// %3 "self"                                      // user: %7
+bb0(%0 : $*S, %1 : $Int, %2 : $Int, %3 : $@thin Operations.Type):
+  debug_value %0, let, name "storage", argno 1, expr op_deref // id: %4
+  debug_value %1, let, name "count", argno 2      // id: %5
+  debug_value %2, let, name "value", argno 3      // id: %6
+  debug_value %3, let, name "self", argno 4       // id: %7
+  %8 = integer_literal $Builtin.Int64, 0          // users: %17, %11, %9
+  debug_value %8, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %1, #Int._value            // users: %11, %27
+  %11 = builtin "cmp_slt_Int64"(%8, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb2, bb1                           // id: %12
+
+bb1:                                              // Preds: bb0
+  br bb6                                          // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = witness_method $S, #StorageProtocol.pointer : <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %20
+  %15 = integer_literal $Builtin.Int64, 1         // user: %24
+  %16 = integer_literal $Builtin.Int1, 0          // user: %24
+  br bb3(%8)                                      // id: %17
+
+// %18                                            // users: %19, %24
+bb3(%18 : $Builtin.Int64):                        // Preds: bb2 bb5
+  %19 = struct $Int (%18)                         // user: %20
+  %20 = apply %14<S>(%19, %0) : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %21
+  %21 = struct_extract %20, #UnsafeMutablePointer._rawValue // user: %22
+  %22 = pointer_to_address %21 to [strict] $*Int  // user: %23
+  store %2 to %22                                 // id: %23
+  %24 = builtin "sadd_with_overflow_Int64"(%18, %15, %16) : $(Builtin.Int64, Builtin.Int1) // user: %25
+  %25 = tuple_extract %24, 0                      // users: %30, %27, %26
+  debug_value %25, var, name "i", type $Int, expr op_fragment:#Int._value // id: %26
+  %27 = builtin "cmp_slt_Int64"(%25, %10) : $Builtin.Int1 // user: %28
+  cond_br %27, bb5, bb4                           // id: %28
+
+bb4:                                              // Preds: bb3
+  br bb6                                          // id: %29
+
+bb5:                                              // Preds: bb3
+  br bb3(%25)                                     // id: %30
+
+bb6:                                              // Preds: bb4 bb1
+  %31 = tuple ()                                  // user: %32
+  return %31                                      // id: %32
+} // end sil function '$s11StorageCore10OperationsO4fill_5count5valueyx_S2itAA0A8ProtocolRzSi7ElementRtzRi_zlFZ'
+
+// LinearHeap.total(count:)
+// Isolation: unspecified
+sil @$s11StorageCore10LinearHeapV5total5countS2i_tF : $@convention(method) (Int, @guaranteed LinearHeap) -> Int {
+[%1: noescape **, read v**.c*.v**]
+[global: read,deinit_barrier]
+// %0 "count"                                     // users: %10, %6, %2
+// %1 "self"                                      // users: %4, %3
+bb0(%0 : $Int, %1 : $LinearHeap):
+  debug_value %0, let, name "count", argno 1      // id: %2
+  debug_value %1, let, name "self", argno 2       // id: %3
+  %4 = struct_extract %1, #LinearHeap.storage     // users: %5, %15, %16
+  debug_value %4, let, name "storage", argno 1    // id: %5
+  debug_value %0, let, name "count", argno 2      // id: %6
+  %7 = integer_literal $Builtin.Int64, 0          // users: %20, %19, %19, %11, %9, %8
+  debug_value %7, var, name "total", type $Int, expr op_fragment:#Int._value // id: %8
+  debug_value %7, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %0, #Int._value            // users: %34, %11
+  %11 = builtin "cmp_slt_Int64"(%7, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb1, bb2                           // id: %12
+
+bb1:                                              // Preds: bb0
+  %13 = integer_literal $Builtin.Int1, 0          // users: %31, %28
+  %14 = integer_literal $Builtin.Int64, 1         // user: %31
+  debug_value %4, let, name "self", argno 2       // id: %15
+  %16 = struct_extract %4, #HeapStorage.base      // user: %17
+  %17 = struct_extract %16, #UnsafeMutablePointer._rawValue // user: %18
+  %18 = pointer_to_address %17 to [strict] $*Int  // user: %25
+  br bb3(%7, %7)                                  // id: %19
+
+bb2:                                              // Preds: bb0
+  br bb6(%7)                                      // id: %20
+
+// %21                                            // user: %28
+// %22                                            // users: %31, %24, %23
+bb3(%21 : $Builtin.Int64, %22 : $Builtin.Int64):  // Preds: bb4 bb1
+  debug_value %22, let, name "slot", argno 1, type $Int, expr op_fragment:#Int._value // id: %23
+  %24 = builtin "truncOrBitCast_Int64_Word"(%22) : $Builtin.Word // user: %25
+  %25 = index_addr [stack_protection] %18, %24    // user: %26
+  %26 = struct_element_addr %25, #Int._value      // user: %27
+  %27 = load %26                                  // user: %28
+  %28 = builtin "sadd_with_overflow_Int64"(%21, %27, %13) : $(Builtin.Int64, Builtin.Int1) // user: %29
+  %29 = tuple_extract %28, 0                      // users: %37, %36, %30
+  debug_value %29, var, name "total", type $Int, expr op_fragment:#Int._value // id: %30
+  %31 = builtin "sadd_with_overflow_Int64"(%22, %14, %13) : $(Builtin.Int64, Builtin.Int1) // user: %32
+  %32 = tuple_extract %31, 0                      // users: %36, %34, %33
+  debug_value %32, var, name "i", type $Int, expr op_fragment:#Int._value // id: %33
+  %34 = builtin "cmp_slt_Int64"(%32, %10) : $Builtin.Int1 // user: %35
+  cond_br %34, bb4, bb5                           // id: %35
+
+bb4:                                              // Preds: bb3
+  br bb3(%29, %32)                                // id: %36
+
+bb5:                                              // Preds: bb3
+  br bb6(%29)                                     // id: %37
+
+// %38                                            // user: %39
+bb6(%38 : $Builtin.Int64):                        // Preds: bb2 bb5
+  %39 = struct $Int (%38)                         // user: %40
+  return %39                                      // id: %40
+} // end sil function '$s11StorageCore10LinearHeapV5total5countS2i_tF'
+
+// static Operations.sum<A>(_:count:)
+// Isolation: unspecified
+sil @$s11StorageCore10OperationsO3sum_5countSix_SitAA0A8ProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <S where S : StorageProtocol, S.Element == Int, S : ~Copyable> (@in_guaranteed S, Int, @thin Operations.Type) -> Int {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "storage"                                   // users: %21, %3
+// %1 "count"                                     // users: %10, %4
+// %2 "self"                                      // user: %5
+bb0(%0 : $*S, %1 : $Int, %2 : $@thin Operations.Type):
+  debug_value %0, let, name "storage", argno 1, expr op_deref // id: %3
+  debug_value %1, let, name "count", argno 2      // id: %4
+  debug_value %2, let, name "self", argno 3       // id: %5
+  %6 = integer_literal $Builtin.Int64, 0          // users: %17, %11, %17, %9, %8, %7
+  %7 = struct $Int (%6)                           // users: %13, %17
+  debug_value %6, var, name "total", type $Int, expr op_fragment:#Int._value // id: %8
+  debug_value %6, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %1, #Int._value            // users: %11, %33
+  %11 = builtin "cmp_slt_Int64"(%6, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb2, bb1                           // id: %12
+
+bb1:                                              // Preds: bb0
+  br bb6(%7)                                      // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = witness_method $S, #StorageProtocol.pointer : <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %21
+  %15 = integer_literal $Builtin.Int1, 0          // users: %30, %26
+  %16 = integer_literal $Builtin.Int64, 1         // user: %30
+  br bb3(%6, %7, %6)                              // id: %17
+
+// %18                                            // user: %26
+// %19                                            // user: %21
+// %20                                            // user: %30
+bb3(%18 : $Builtin.Int64, %19 : $Int, %20 : $Builtin.Int64): // Preds: bb5 bb2
+  %21 = apply %14<S>(%19, %0) : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %22
+  %22 = struct_extract %21, #UnsafeMutablePointer._rawValue // user: %23
+  %23 = pointer_to_address %22 to [strict] $*Int  // user: %24
+  %24 = struct_element_addr %23, #Int._value      // user: %25
+  %25 = load %24                                  // user: %26
+  %26 = builtin "sadd_with_overflow_Int64"(%18, %25, %15) : $(Builtin.Int64, Builtin.Int1) // user: %27
+  %27 = tuple_extract %26, 0                      // users: %37, %29, %28
+  %28 = struct $Int (%27)                         // user: %35
+  debug_value %27, var, name "total", type $Int, expr op_fragment:#Int._value // id: %29
+  %30 = builtin "sadd_with_overflow_Int64"(%20, %16, %15) : $(Builtin.Int64, Builtin.Int1) // user: %31
+  %31 = tuple_extract %30, 0                      // users: %33, %37, %32, %36
+  debug_value %31, var, name "i", type $Int, expr op_fragment:#Int._value // id: %32
+  %33 = builtin "cmp_slt_Int64"(%31, %10) : $Builtin.Int1 // user: %34
+  cond_br %33, bb5, bb4                           // id: %34
+
+bb4:                                              // Preds: bb3
+  br bb6(%28)                                     // id: %35
+
+bb5:                                              // Preds: bb3
+  %36 = struct $Int (%31)                         // user: %37
+  br bb3(%27, %36, %31)                           // id: %37
+
+// %38                                            // user: %39
+bb6(%38 : $Int):                                  // Preds: bb4 bb1
+  return %38                                      // id: %39
+} // end sil function '$s11StorageCore10OperationsO3sum_5countSix_SitAA0A8ProtocolRzSi7ElementRtzRi_zlFZ'
+
+// OffsetStorage.capacity.getter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore06OffsetA0V8capacitySivg : $@convention(method) (@guaranteed OffsetStorage) -> Int {
+[%0: noescape **]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $OffsetStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #OffsetStorage.capacity // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore06OffsetA0V8capacitySivg'
+
+// OffsetStorage.base.getter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore06OffsetA0V4baseSpySiGvg : $@convention(method) (@guaranteed OffsetStorage) -> UnsafeMutablePointer<Int> {
+[%0: escape v** => %r.v**, escape v**.c*.v** => %r.v**.c*.v**]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $OffsetStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #OffsetStorage.base     // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore06OffsetA0V4baseSpySiGvg'
+
+// OffsetStorage.offset.getter
+// Isolation: unspecified
+sil [transparent] @$s11StorageCore06OffsetA0V6offsetSivg : $@convention(method) (@guaranteed OffsetStorage) -> Int {
+[%0: noescape **]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $OffsetStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #OffsetStorage.offset   // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore06OffsetA0V6offsetSivg'
+
+// OffsetStorage.init(capacity:offset:)
+// Isolation: unspecified
+sil @$s11StorageCore06OffsetA0V8capacity6offsetACSi_SitcfC : $@convention(method) (Int, Int, @thin OffsetStorage.Type) -> @owned OffsetStorage {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "capacity"                                  // users: %7, %10, %4
+// %1 "offset"                                    // users: %9, %11, %5
+// %2 "$metatype"
+bb0(%0 : $Int, %1 : $Int, %2 : $@thin OffsetStorage.Type):
+  %3 = alloc_stack [lexical] [var_decl] $OffsetStorage, var, name "self", type $OffsetStorage // users: %30, %6, %8, %28, %32
+  debug_value %0, let, name "capacity", argno 1   // id: %4
+  debug_value %1, let, name "offset", argno 2     // id: %5
+  %6 = struct_element_addr %3, #OffsetStorage.capacity // user: %7
+  store %0 to %6                                  // id: %7
+  %8 = struct_element_addr %3, #OffsetStorage.offset // user: %9
+  store %1 to %8                                  // id: %9
+  %10 = struct_extract %0, #Int._value            // user: %13
+  %11 = struct_extract %1, #Int._value            // user: %13
+  %12 = integer_literal $Builtin.Int1, -1         // users: %18, %13
+  %13 = builtin "sadd_with_overflow_Int64"(%10, %11, %12) : $(Builtin.Int64, Builtin.Int1) // users: %15, %14
+  %14 = tuple_extract %13, 0                      // users: %18, %25
+  %15 = tuple_extract %13, 1                      // user: %16
+  cond_fail %15, "arithmetic overflow"            // id: %16
+  %17 = integer_literal $Builtin.Int64, 8         // user: %18
+  %18 = builtin "smul_with_overflow_Int64"(%17, %14, %12) : $(Builtin.Int64, Builtin.Int1) // users: %20, %19
+  %19 = tuple_extract %18, 0                      // user: %23
+  %20 = tuple_extract %18, 1                      // user: %21
+  cond_fail %20, "arithmetic overflow"            // id: %21
+  %22 = integer_literal $Builtin.Word, 0          // user: %24
+  %23 = builtin "truncOrBitCast_Int64_Word"(%19) : $Builtin.Word // user: %24
+  %24 = builtin "allocRaw"(%23, %22) : $Builtin.RawPointer // users: %27, %26
+  %25 = builtin "truncOrBitCast_Int64_Word"(%14) : $Builtin.Word // user: %26
+  %26 = bind_memory %24, %25 to $*Int
+  %27 = struct $UnsafeMutablePointer<Int> (%24)   // user: %29
+  %28 = struct_element_addr %3, #OffsetStorage.base // user: %29
+  store %27 to %28                                // id: %29
+  %30 = load %3                                   // user: %33
+  debug_value undef : $*OffsetStorage, var, name "self" // id: %31
+  dealloc_stack %3                                // id: %32
+  return %30                                      // id: %33
+} // end sil function '$s11StorageCore06OffsetA0V8capacity6offsetACSi_SitcfC'
+
+// OffsetStorage.pointer(at:)
+// Isolation: unspecified
+sil @$s11StorageCore06OffsetA0V7pointer2atSpySiGSi_tF : $@convention(method) (Int, @guaranteed OffsetStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **]
+[global: ]
+// %0 "slot"                                      // users: %7, %2
+// %1 "self"                                      // users: %4, %6, %3
+bb0(%0 : $Int, %1 : $OffsetStorage):
+  debug_value %0, let, name "slot", argno 1       // id: %2
+  debug_value %1, let, name "self", argno 2       // id: %3
+  %4 = struct_extract %1, #OffsetStorage.base     // user: %5
+  %5 = struct_extract %4, #UnsafeMutablePointer._rawValue // user: %15
+  %6 = struct_extract %1, #OffsetStorage.offset   // user: %8
+  %7 = struct_extract %0, #Int._value             // user: %10
+  %8 = struct_extract %6, #Int._value             // user: %10
+  %9 = integer_literal $Builtin.Int1, -1          // user: %10
+  %10 = builtin "sadd_with_overflow_Int64"(%7, %8, %9) : $(Builtin.Int64, Builtin.Int1) // users: %12, %11
+  %11 = tuple_extract %10, 0                      // user: %14
+  %12 = tuple_extract %10, 1                      // user: %13
+  cond_fail %12, "arithmetic overflow"            // id: %13
+  %14 = builtin "truncOrBitCast_Int64_Word"(%11) : $Builtin.Word // user: %16
+  %15 = pointer_to_address %5 to [strict] $*Int   // user: %16
+  %16 = index_addr [stack_protection] %15, %14    // user: %17
+  %17 = address_to_pointer [stack_protection] %16 to $Builtin.RawPointer // user: %18
+  %18 = struct $UnsafeMutablePointer<Int> (%17)   // user: %19
+  return %18                                      // id: %19
+} // end sil function '$s11StorageCore06OffsetA0V7pointer2atSpySiGSi_tF'
+
+// OffsetStorage.deinit
+// Isolation: nonisolated
+sil @$s11StorageCore06OffsetA0VfD : $@convention(method) (@owned OffsetStorage) -> () {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %5, %2, %1
+bb0(%0 : $OffsetStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  debug_value %0, let, name "self", argno 1       // id: %2
+  debug_value undef : $*OffsetStorage, let, name "self", argno 1 // id: %3
+  debug_value undef : $*OffsetStorage, let, name "self", argno 1 // id: %4
+  %5 = struct_extract %0, #OffsetStorage.base     // user: %6
+  %6 = struct_extract %5, #UnsafeMutablePointer._rawValue // user: %10
+  debug_value undef : $*OffsetStorage, let, name "self", argno 1 // id: %7
+  %8 = integer_literal $Builtin.Word, -1          // user: %10
+  %9 = integer_literal $Builtin.Word, 0           // user: %10
+  %10 = builtin "deallocRaw"(%6, %8, %9) : $()
+  %11 = tuple ()                                  // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s11StorageCore06OffsetA0VfD'
+
+// protocol witness for StorageProtocol.capacity.getter in conformance OffsetStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP8capacitySivgTW : $@convention(witness_method: StorageProtocol) (@in_guaranteed OffsetStorage) -> Int {
+[%0: noescape **, read s0.v**]
+[global: ]
+// %0                                             // user: %1
+bb0(%0 : $*OffsetStorage):
+  %1 = struct_element_addr %0, #OffsetStorage.capacity // user: %2
+  %2 = load %1                                    // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP8capacitySivgTW'
+
+// protocol witness for StorageProtocol.pointer(at:) in conformance OffsetStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW : $@convention(witness_method: StorageProtocol) (Int, @in_guaranteed OffsetStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **, read v**]
+[global: ]
+// %0                                             // users: %9, %8
+// %1                                             // users: %5, %2
+bb0(%0 : $Int, %1 : $*OffsetStorage):
+  %2 = struct_element_addr %1, #OffsetStorage.base // user: %3
+  %3 = struct_element_addr %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = load %3                                    // user: %16
+  %5 = struct_element_addr %1, #OffsetStorage.offset // user: %6
+  %6 = struct_element_addr %5, #Int._value        // user: %7
+  %7 = load %6                                    // user: %11
+  debug_value %0, let, name "slot", argno 1       // id: %8
+  %9 = struct_extract %0, #Int._value             // user: %11
+  %10 = integer_literal $Builtin.Int1, -1         // user: %11
+  %11 = builtin "sadd_with_overflow_Int64"(%9, %7, %10) : $(Builtin.Int64, Builtin.Int1) // users: %13, %12
+  %12 = tuple_extract %11, 0                      // user: %15
+  %13 = tuple_extract %11, 1                      // user: %14
+  cond_fail %13, "arithmetic overflow"            // id: %14
+  %15 = builtin "truncOrBitCast_Int64_Word"(%12) : $Builtin.Word // user: %17
+  %16 = pointer_to_address %4 to [strict] $*Int   // user: %17
+  %17 = index_addr [stack_protection] %16, %15    // user: %18
+  %18 = address_to_pointer [stack_protection] %17 to $Builtin.RawPointer // user: %19
+  %19 = struct $UnsafeMutablePointer<Int> (%18)   // user: %20
+  return %19                                      // id: %20
+} // end sil function '$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW'
+
+sil_witness_table HeapStorage: StorageProtocol module StorageCore {
+  associated_type Element: Int
+  method #StorageProtocol.capacity!getter: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> () -> Int : @$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP8capacitySivgTW	// protocol witness for StorageProtocol.capacity.getter in conformance HeapStorage
+  method #StorageProtocol.pointer: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : @$s11StorageCore04HeapA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW	// protocol witness for StorageProtocol.pointer(at:) in conformance HeapStorage
+}
+
+sil_witness_table OffsetStorage: StorageProtocol module StorageCore {
+  associated_type Element: Int
+  method #StorageProtocol.capacity!getter: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> () -> Int : @$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP8capacitySivgTW	// protocol witness for StorageProtocol.capacity.getter in conformance OffsetStorage
+  method #StorageProtocol.pointer: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : @$s11StorageCore06OffsetA0VAA0A8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW	// protocol witness for StorageProtocol.pointer(at:) in conformance OffsetStorage
+}
+
+sil_moveonlydeinit HeapStorage {
+  @$s11StorageCore04HeapA0VfD	// HeapStorage.deinit
+}
+
+sil_moveonlydeinit OffsetStorage {
+  @$s11StorageCore06OffsetA0VfD	// OffsetStorage.deinit
+}
+
+/* externally visible decls: 
+StorageProtocol.pointer
+*/
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'StorageCore/OffsetStorage.swift' => 'Sources/StorageCore/OffsetStorage.swift'
+//   'StorageCore/HeapStorage.swift' => 'Sources/StorageCore/HeapStorage.swift'
+//   'StorageCore/StorageProtocol.swift' => 'Sources/StorageCore/StorageProtocol.swift'
+//   'StorageCore/Operations.swift' => 'Sources/StorageCore/Operations.swift'
+//   'StorageCore/LinearHeap.swift' => 'Sources/StorageCore/LinearHeap.swift'
+
+

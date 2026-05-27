@@ -1,0 +1,10 @@
+Building for debugging...
+Planning deferred tasks
+[59/100] BorrowLendKit 22 / 37
+[62/100] BorrowLendKit 26 / 41
+[85/100] BorrowLendKit 38 / 44
+[95/100] escapable-output-borrow-lend-product 42 / 44
+[100/100] 
+Build complete! (1,76 sec)
+P2a sum = 300
+P4 sum = 30

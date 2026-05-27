@@ -1,0 +1,8 @@
+Cross-module receipt — SwiftPM release build compiles StorageCore (module A) + consumer (module B).
+Run output:
+sum: 10240000
+
+SIL evidence:
+  core.sil     LinearHeap.total: witness_method on pointer(at:)? ->
+    witness_method in total body = 0
+  consumer.sil witness_method total = 0

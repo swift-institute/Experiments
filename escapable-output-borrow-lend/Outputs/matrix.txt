@@ -1,0 +1,24 @@
+[6.3.2|P1.swift|debug] REFUTED: type 'View' does not conform to protocol 'Escapable'
+[6.3.2|P2a.swift|debug] CONFIRMED
+[6.3.2|P2b.swift|debug] REFUTED: experimental feature 'BorrowAndMutateAccessors' cannot be enabled in production compiler
+[6.3.2|P2c.swift|debug] CONFIRMED
+[6.3.2|P3.swift|debug] REFUTED: experimental feature 'BorrowAndMutateAccessors' cannot be enabled in production compiler
+[6.3.2|P4.swift|debug] CONFIRMED
+[6.3.2|P1.swift|release] REFUTED: type 'View' does not conform to protocol 'Escapable'
+[6.3.2|P2a.swift|release] CONFIRMED
+[6.3.2|P2b.swift|release] REFUTED: experimental feature 'BorrowAndMutateAccessors' cannot be enabled in production compiler
+[6.3.2|P2c.swift|release] CONFIRMED
+[6.3.2|P3.swift|release] REFUTED: experimental feature 'BorrowAndMutateAccessors' cannot be enabled in production compiler
+[6.3.2|P4.swift|release] CONFIRMED
+[main-snapshot-2026-05-12|P1.swift|debug] REFUTED: type 'View' does not conform to protocol 'Escapable'
+[main-snapshot-2026-05-12|P2a.swift|debug] CONFIRMED
+[main-snapshot-2026-05-12|P2b.swift|debug] CONFIRMED
+[main-snapshot-2026-05-12|P2c.swift|debug] CONFIRMED
+[main-snapshot-2026-05-12|P3.swift|debug] CONFIRMED
+[main-snapshot-2026-05-12|P4.swift|debug] CONFIRMED
+[main-snapshot-2026-05-12|P1.swift|release] REFUTED: type 'View' does not conform to protocol 'Escapable'
+[main-snapshot-2026-05-12|P2a.swift|release] CONFIRMED
+[main-snapshot-2026-05-12|P2b.swift|release] CONFIRMED
+[main-snapshot-2026-05-12|P2c.swift|release] CONFIRMED
+[main-snapshot-2026-05-12|P3.swift|release] CONFIRMED
+[main-snapshot-2026-05-12|P4.swift|release] CONFIRMED

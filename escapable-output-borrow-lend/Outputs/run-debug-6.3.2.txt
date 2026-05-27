@@ -1,0 +1,14 @@
+Building for debugging...
+[0/7] Write escapable-output-borrow-lend-entitlement.plist
+[0/7] Write sources
+[3/7] Write swift-version-5904E0B7DFDEA3B0.txt
+[5/9] Compiling BorrowLendKit BorrowLendKit.swift
+[6/9] Emitting module BorrowLendKit
+[7/11] Compiling escapable_output_borrow_lend main.swift
+[8/11] Emitting module escapable_output_borrow_lend
+[8/11] Write Objects.LinkFileList
+[9/11] Linking escapable-output-borrow-lend
+[10/11] Applying escapable-output-borrow-lend
+Build of product 'escapable-output-borrow-lend' complete! (1.42s)
+P2a sum = 300
+P4 sum = 30

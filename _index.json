@@ -117,7 +117,9 @@
     },
     {
       "category": "API Design Patterns",
-      "crossRefs": ["windows-l2-l3-namespace-separation"],
+      "crossRefs": [
+        "windows-l2-l3-namespace-separation"
+      ],
       "date": "2026-05-07",
       "directory": "binary-base-n-poc",
       "purpose": "Validate the namespace shape for a unified baseN encoding family (base16/32/58/62/64/85). Two designs tested side-by-side as separate library targets: (A) value-generic `Binary.Base<let N: Int>` per V1-V5 in target BinaryBase; (B) closed-radix-set `Binary.Base.`16`` / `Binary.Base.`62`` (each a distinct nominal struct under non-generic `Binary.Base` enum) per V6 in target BinaryBaseClosed. Per-variant: V1 value-generic Sendable/Hashable-conforming struct declares cleanly; V2 `where N == <literal>` per-radix dispatch; V2b multi-radix `where N == 16 || N == 32 || N == 64` shared-API shape; V3 witness pattern (Base IS the witness, alphabet+pad bundled, canonical static instances under conditional extensions); V4 cross-module consumption per [EXP-017]; V5 `borrowing [UInt8]` + `Span<UInt8>` byte sources; V6 closed-radix-set with backticked-digit nested types mirroring [PLAT-ARCH-008k]'s `Windows.\\`32\\`` pattern. POC is the architectural validation step before committing to a `swift-binary-base-primitives` package whose existence supersedes the legacy `swift-base62-primitives` (heritage drift from a renamed swift-standards package; not an actual leaf at tier 0 because depends on swift-binary-primitives at tier 14; convention-mismatched namespace `Base62_Primitives`).",
@@ -1274,7 +1276,13 @@
       "statusDetail": "V8+V9 patterns empirically confirmed AND applied in C6 (35bf00f) and W6 (38501f5). Design subsequently pivoted away (same day) due to combinator namespace-collision cost at call sites; superseded by enum-namespace + nested Witness shape validated in `family-as-enum-namespace-witness-nested`.",
       "statusRaw": "SUPERSEDED",
       "supersededBy": "family-as-enum-namespace-witness-nested",
-      "crossRefs": ["rendering-context-protocol-vs-witness", "canonical-witness-capability", "nsviewrepresentable-body-witness", "family-as-enum-namespace-witness-nested", "witness-multi-target-namespace-collision"]
+      "crossRefs": [
+        "rendering-context-protocol-vs-witness",
+        "canonical-witness-capability",
+        "nsviewrepresentable-body-witness",
+        "family-as-enum-namespace-witness-nested",
+        "witness-multi-target-namespace-collision"
+      ]
     },
     {
       "directory": "family-as-enum-namespace-witness-nested",
@@ -1286,7 +1294,11 @@
       "statusDetail": "All 6 validations pass. Combinator namespace conflict fully resolved by non-generic enum root. No __FamilyX hoisted types needed; no Families plural enum needed; no four-call-site-forms decision tree. Pattern transfers across Parser/Serializer/Coder identically.",
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
-      "crossRefs": ["parser-as-witness-namespace-collision", "witness-multi-target-namespace-collision", "canonical-witness-capability"]
+      "crossRefs": [
+        "parser-as-witness-namespace-collision",
+        "witness-multi-target-namespace-collision",
+        "canonical-witness-capability"
+      ]
     },
     {
       "directory": "result-builder-parameter-packs-narity",
@@ -1298,7 +1310,9 @@
       "statusDetail": "All 5 validations pass. @resultBuilder + parameter packs (SE-0393) compose without compiler issues. Production refactor of Parser.Builder + Serializer.Builder is unblocked.",
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
-      "crossRefs": ["family-as-enum-namespace-witness-nested"]
+      "crossRefs": [
+        "family-as-enum-namespace-witness-nested"
+      ]
     },
     {
       "directory": "hash-table-context-passing-lookup",
@@ -2717,6 +2731,24 @@
       "statusRaw": "DEFERRED-revisit",
       "supersededBy": null,
       "toolchain": "swift-DEVELOPMENT-SNAPSHOT-2026-05-12-a (org.swift.64202605121a)"
+    },
+    {
+      "category": "Memory Safety",
+      "crossRefs": [
+        "swift-institute/Research/sequencer-primitives-reconciliation-refactor.md §15 (claim under test)",
+        "swift-institute/Experiments/pointer-nonescapable-storage",
+        "swift-institute/Experiments/nonescapable-patterns",
+        "swift-institute/Experiments/ownership-borrow-protocol-unification",
+        "swift-ownership-primitives Ownership.Borrow.swift (W1/W2 origin)"
+      ],
+      "date": "2026-05-26",
+      "directory": "escapable-output-borrow-lend",
+      "purpose": "Determine whether a borrowing-Map-shaped iterator (~Copyable & ~Escapable, @_lifetime(&self) mutating next()) can lend a genuinely ~Escapable OUTPUT tied to self, and classify the result FUNDAMENTAL-wall / PRODUCTION-GATED / ACHIEVABLE-TODAY. Tests the sequencer-reconciliation §15 claim that a ~Escapable output 'walls in both worlds' (W1: UnsafeMutablePointer<Out> needs Out: Escapable; W2: Ownership.Borrow.value read-back is where Value: Escapable). Six probes across two toolchains (6.3.2 release, main-snapshot-2026-05-12 dev), debug+release.",
+      "status": "CONFIRMED",
+      "statusDetail": "ACHIEVABLE TODAY on 6.3.2 via two shapes (built+run cross-module, debug+release): P2a stored ~Escapable property returned under @_lifetime(&self) (P2a sum=300), and P4 bespoke nested ~Escapable Borrowed vending struct over an iterator-owned Int slot (P4 sum=30). The §15 'walls in both worlds' claim is scoped, not fundamental: W1 (P1: UnsafeMutablePointer<~Escapable> REFUTED both toolchains, 'type does not conform to Escapable') and W2 are limits of the Ownership.Borrow + pointer-slot design only. The ergonomic stdlib path is PRODUCTION-GATED: SE-0519 ships on dev as `Ref<Value>` (NOT `Borrow`), @available(anyAppleOS 9999), its ~Escapable read-back via SE-0507 `borrow` accessor gated on BorrowAndMutateAccessors (P2b/P3 REFUTED on 6.3.2 'cannot be enabled in production compiler', CONFIRMED on dev). Nothing fundamentally impossible on any available toolchain.",
+      "statusRaw": "CONFIRMED (P2a+P4 achievable-today 6.3.2 debug+release+cross-module; P2b/P3 production-gated, live on dev; P1/W1 wall confirmed both toolchains)",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swift-6.3.2-RELEASE) and Apple Swift 6.5-dev (main-snapshot-2026-05-12-a), arm64-apple-macosx26.0, debug + release"
     }
   ],
   "narrativeSections": [

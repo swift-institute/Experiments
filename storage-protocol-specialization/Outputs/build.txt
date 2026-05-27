@@ -1,0 +1,16 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write consumer-entitlement.plist
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/13] Compiling StorageCore StorageProtocol.swift
+[6/13] Compiling StorageCore Operations.swift
+[7/13] Compiling StorageCore OffsetStorage.swift
+[8/13] Compiling StorageCore HeapStorage.swift
+[9/13] Emitting module StorageCore
+[10/13] Compiling StorageCore LinearHeap.swift
+[11/15] Compiling consumer main.swift
+[12/15] Emitting module consumer
+[12/15] Write Objects.LinkFileList
+[13/15] Linking consumer
+[14/15] Applying consumer
+Build complete! (0.82s)
