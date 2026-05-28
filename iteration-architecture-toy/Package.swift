@@ -5,7 +5,14 @@ let package = Package(
     name: "iteration-architecture-toy",
     platforms: [.macOS(.v26)],
     targets: [
-        .executableTarget(name: "iteration-architecture-toy")
+        // Gap (c): a SECOND target in the same package. Houses the family protocol + the ~Escapable
+        // view type(s) + conformers for D1 / route-3 forEach (C) / route-2, so the executable can
+        // exercise them ACROSS A MODULE BOUNDARY ([EXP-017]).
+        .target(name: "iteration-architecture-toy-lib"),
+        .executableTarget(
+            name: "iteration-architecture-toy",
+            dependencies: ["iteration-architecture-toy-lib"]
+        ),
     ]
 )
 
