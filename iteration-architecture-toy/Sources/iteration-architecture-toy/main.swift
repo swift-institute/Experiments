@@ -18,6 +18,9 @@
 //         v1.2.0 adds three GATING verdicts: (a) piecewise D1 CONFIRMED; (b) non-contiguous D1
 //         REFUTED (plain makeIterator + forEach survive); (c) cross-module D1/C/route-2 CONFIRMED
 //         (debug+release across a lib→exe module boundary).
+//         v1.3.0 RE-ATTACKS non-contiguous D1 (Phase6's REFUTED used the EASY ESCAPABLE walker). With a
+//         ~Escapable, self-lifetime-tied walker the traversal-only design space RE-OPENS: trees/hashes DO
+//         ride the unified family delegation. Angles A (Phase8/9), B (Phase10), C (Phase11) below.
 // Date: 2026-05-28
 //
 // ============================ EXPRESSIBILITY ENVELOPE =============================
@@ -59,15 +62,46 @@
 //    |   a, copy b) for BOTH segments. → [50,60,10,20,30] in order.    |
 //    |   (single-arg @_lifetime(copy a) on a 2-span init = the only    |
 //    |   delta; "lifetime-dependent variable 'self' escapes its scope") |
-//  b | NON-CONTIGUOUS: D1 over a tree(boxed nodes)/hash(buckets) view, | D1 REFUTED (compile);
-//    |   NO span. The copy-self view's makeIterator is rejected:        | PLAIN makeIterator
-//    |   "invalid lifetime dependence on an Escapable result" (a node-  | + route-3 forEach
-//    |   /bucket iterator is Escapable, so @_lifetime is invalid on it).| (C) SURVIVE.
-//    |   → trees/hashes/graphs need a SECOND shape, not the D1 family.  |
+//  b | NON-CONTIGUOUS: D1 over a tree(boxed nodes)/hash(buckets) view, | D1 REFUTED (compile)
+//    |   using the EASY ESCAPABLE walker (plain struct owning [Node]).  | *** SUPERSEDED by
+//    |   "invalid lifetime dependence on an Escapable result".          | v1.3.0 Angle A:
+//    |   *** This refutes ONLY the easy-Escapable formulation. v1.3.0  | re-attack with a
+//    |   re-attacks with a ~Escapable self-tied walker (Angles A/B/C). | ~Escapable walker.
 //  c | CROSS-MODULE: D1, forEach (C), route-2 across a lib→exe module  | CONFIRMED (run,
 //    |   boundary. Downstream conformers inherit upstream lib defaults. | debug+release,
 //    |   Only deltas: consumer must `import` the lib (MemberImport-     | cross-module)
 //    |   Visibility) + leaf conformers stay internal. Mechanics intact. |
+//
+// TRAVERSAL-ONLY RE-ATTACK (v1.3.0 — overturns gap (b)'s "REFUTED" for the easy-Escapable walker;
+//   re-does the walker as a ~Escapable, self-lifetime-tied type. Angles A→B→C, first clean signal):
+// A1 | TREE (index-addressed/heap-style): ~Escapable walker borrows   | CONFIRMED (run,
+//    |   the node array as Span<Node> + internal index-stack, rides    | debug+release)
+//    |   the SAME FamD.makeIteratorD1 default. → [1..7].               |
+// A2 | TREE (genuinely BOXED, TreeNode refs): ~Escapable walker,      | PARTIAL — debug OK;
+//    |   @_lifetime(immortal), via FamD default. Compiles+runs DEBUG.  | RELEASE COMPILER
+//    |   `swift build -c release` CRASHES: forwardToInit /"Cannot init | CRASH (SIL inliner).
+//    |   a nonCopyable type with a guaranteed value" inlining          | A2-direct (bypass
+//    |   makeIteratorD1<ToyBoxedTree>. NOT a language wall: A2-direct  | default) + A2b (real
+//    |   (direct view call) + A2b (walker holds a REAL span) = CLEAN.  | span) = CLEAN both.
+// A3 | HASH (separate chaining): flatten chains into one [Int] pool,  | CONFIRMED (run,
+//    |   ~Escapable walker over Span<Int>, rides FamD default. SAME A1 | debug+release)
+//    |   mechanism. → [10,11,22,30,31,32]. (Hash IS span-projecting.)  |
+// A4 | ~COPYABLE elements via the D1/external-iterator route: next()  | REFUTED-for-D1
+//    |   returns by value → MOVE a ~Copyable out of a borrowed span.   | (CRASHES SILGen:
+//    |   `return span[i]` CRASHES (forwardToInit at SILGen, even debug);| forwardToInit). Use
+//    |   `return span[i].copyableField` + `return nil` both clean.     | route-3 forEach (C).
+//  B | ONE family protocol, TWO conditional makeIteratorB defaults     | CONFIRMED (run,
+//    |   (copy-self gated Backing:IterableByCopy; plain gated          | debug+release).
+//    |   Backing:PlainIterable), dispatched by Backing.Iterator        | Dispatch sound; only
+//    |   escapability. → [10,20,30] copy-self / [7,8,9] plain.         | release hazard = A2 bug.
+//  C | ONE forEach family default unifies span array / boxed tree /   | CONFIRMED (run,
+//    |   ~Copyable, all via one body. → 60 / [1..7] / 600. forEach     | debug+release). Most
+//    |   LENDS (Void return) so carries ~Copyable + needs no span.     | complete unification.
+//    |   (Boxed backing needs A2b real-span to dodge the A2 bug.)      | Loses pull-style ext iter.
+// A2-BUG (touches A2/B/C boxed-immortal paths): the forwardToInit /"nonCopyable from guaranteed value"
+//   abort fires whenever an @_lifetime(immortal) ~Escapable BACKING/walker is specialized through ANY
+//   generic family default (makeIteratorD1 / makeIteratorB / forEach) — independent of return type
+//   (forEach returns Void and still crashes). Workaround: give the backing a REAL borrowed region (A2b).
 //
 // THE GOVERNING PRINCIPLE: a lifetime-dependent return value (an iterator) composes through
 // `@_lifetime(COPY …)`, never through `@_lifetime(BORROW <local>)`. `copy` flattens the source's
@@ -242,5 +276,127 @@ do {
     while let element = drainIter.next() { total &+= element }
     print("gap (c) cross-module route-2 (consuming drain via lib default): total=\(total)")
     precondition(total == 10, "gap (c) cross-module route-2 mismatch")
+}
+
+// MARK: Phase 8 (Angle A1) — index-addressed tree, ~Escapable walker borrows Span<Node>, rides D1 — RUNTIME
+do {
+    // Same logical tree as gap (b), stored flat:
+    //   idx: 0=4(L1,R4) 1=2(L2,R3) 2=1 3=3 4=6(L5,R6) 5=5 6=7   in-order: [1,2,3,4,5,6,7]
+    let nodes = [
+        TreeFlatNode(value: 4, left: 1, right: 4),
+        TreeFlatNode(value: 2, left: 2, right: 3),
+        TreeFlatNode(value: 1, left: -1, right: -1),
+        TreeFlatNode(value: 3, left: -1, right: -1),
+        TreeFlatNode(value: 6, left: 5, right: 6),
+        TreeFlatNode(value: 5, left: -1, right: -1),
+        TreeFlatNode(value: 7, left: -1, right: -1),
+    ]
+    let tree = ToyFlatTree(nodes: nodes, root: 0)
+    var iterator = tree.makeIteratorD1()
+    var collected: [Int] = []
+    while let v = iterator.next() { collected.append(v) }
+    print("Phase 8 A1 (index-addressed tree, ~Escapable walker over Span<Node>, D1): \(collected)")
+    precondition(collected == [1, 2, 3, 4, 5, 6, 7], "Phase 8 A1 mismatch")
+}
+
+// MARK: Phase 8 (Angle A2) — boxed-node tree, ~Escapable (immortal) walker, via FamD family default — RUNTIME
+// MUST STAY COMMENTED: this compiles + runs in DEBUG, but CRASHES THE COMPILER in `swift build -c release`
+// (EarlyPerfInliner specializing makeIteratorD1 for ToyBoxedTree: "Cannot initialize a nonCopyable type
+// with a guaranteed value", forwardToInit at SILValue.h:375). See Phase8 A2 VERDICT for the isolation.
+// Re-enabling this block would make `swift build -c release` fail for the whole toy. The boxed-via-family-
+// default path is exercised release-safely by A2-direct (direct view call) and A2b (real-span walker) below.
+/*
+do {
+    let root = TreeNode(4,
+        left: TreeNode(2, left: TreeNode(1), right: TreeNode(3)),
+        right: TreeNode(6, left: TreeNode(5), right: TreeNode(7)))
+    let tree = ToyBoxedTree(root: root)
+    var iterator = tree.makeIteratorD1()
+    var collected: [Int] = []
+    while let v = iterator.next() { collected.append(v) }
+    print("Phase 8 A2 (boxed-node tree, ~Escapable walker (immortal), D1): \(collected)")
+    precondition(collected == [1, 2, 3, 4, 5, 6, 7], "Phase 8 A2 mismatch")
+}
+*/
+
+// MARK: Phase 8 (Angle A2-direct) — boxed walker via DIRECT view.makeIterator() (NOT the family default).
+// RELEASE-CLEAN — localizes the A2 crash to the generic family default specialization.
+do {
+    let collected = a2DirectView()
+    print("Phase 8 A2-direct (boxed walker, direct view.makeIterator, NOT family default): \(collected)")
+    precondition(collected == [1, 2, 3, 4, 5, 6, 7], "Phase 8 A2-direct mismatch")
+}
+
+// MARK: Phase 8 (Angle A2b) — boxed walker holding a REAL Span, via the FamD family default. RELEASE-CLEAN —
+// proves the A2 crash is the @_lifetime(immortal) walker, not the boxed/ARC walk: a real borrowed region fixes it.
+do {
+    let root = TreeNode(4,
+        left: TreeNode(2, left: TreeNode(1), right: TreeNode(3)),
+        right: TreeNode(6, left: TreeNode(5), right: TreeNode(7)))
+    let tree = TreeBoxedWithSideArray(root: root)
+    var iterator = tree.makeIteratorD1()
+    var collected: [Int] = []
+    while let v = iterator.next() { collected.append(v) }
+    print("Phase 8 A2b (boxed walker + REAL span, via FamD family default): \(collected)")
+    precondition(collected == [1, 2, 3, 4, 5, 6, 7], "Phase 8 A2b mismatch")
+}
+
+// MARK: Phase 9 (Angle A3) — separate-chaining HASH as a ~Escapable walker over a flat value pool, rides D1 — RUNTIME
+do {
+    // Logical chains: bucket0=[10,11] bucket1=[] bucket2=[22] bucket3=[30,31,32] (Phase6's hash data),
+    // flattened into one pool in logical order; bucketEnds are prefix-sum end offsets.
+    let hash = ToyFlatHash(pool: [10, 11, 22, 30, 31, 32], bucketEnds: [2, 2, 3, 6])
+    var iterator = hash.makeIteratorD1()
+    var collected: [Int] = []
+    while let v = iterator.next() { collected.append(v) }
+    print("Phase 9 A3 (separate-chaining hash, ~Escapable walker over flat pool, D1): \(collected)")
+    precondition(collected == [10, 11, 22, 30, 31, 32], "Phase 9 A3 mismatch")
+}
+
+// MARK: Phase 10 (Angle B) — ONE family protocol, TWO conditional makeIteratorB defaults dispatched by
+// Backing.Iterator escapability (copy-self for ~Escapable backing iterator; plain for Escapable) — RUNTIME
+do {
+    // Conformer 1 (copy-self family): Backing = Memory.CopyView (~Escapable iterator) → B-default-1.
+    let contiguous = FamBContiguous([10, 20, 30])
+    var it1 = contiguous.makeIteratorB()
+    var c1: [Int] = []
+    while let v = it1.next() { c1.append(v) }
+    print("Phase 10 B (copy-self default, ~Escapable backing iterator): \(c1)")
+    precondition(c1 == [10, 20, 30], "Phase 10 B copy-self mismatch")
+
+    // Conformer 2 (plain family): Backing = OwningBulkBacking (Escapable OwningBulkIterator) → B-default-2.
+    let plain = FamBPlain([7, 8, 9])
+    var it2 = plain.makeIteratorB()
+    var c2: [Int] = []
+    while let v = it2.next() { c2.append(v) }
+    print("Phase 10 B (plain default, Escapable backing iterator): \(c2)")
+    precondition(c2 == [7, 8, 9], "Phase 10 B plain mismatch")
+}
+
+// MARK: Phase 11 (Angle C) — ONE forEach family default unifies span / boxed-tree / ~Copyable — RUNTIME
+do {
+    // Conformer 1: span-projecting array (Int element).
+    let array = FamCArray([10, 20, 30])
+    var s1 = 0
+    array.forEach { s1 &+= $0 }
+    print("Phase 11 C (span-projecting array, ONE forEach default): sum=\(s1)")
+    precondition(s1 == 60, "Phase 11 C array mismatch")
+
+    // Conformer 2: traversal-only BOXED tree (the A2-refuted case — trivial here).
+    let root = TreeNode(4,
+        left: TreeNode(2, left: TreeNode(1), right: TreeNode(3)),
+        right: TreeNode(6, left: TreeNode(5), right: TreeNode(7)))
+    let tree = FamCBoxedTree(root: root)
+    var inOrder: [Int] = []
+    tree.forEach { inOrder.append($0) }
+    print("Phase 11 C (traversal-only boxed tree, SAME forEach default): \(inOrder)")
+    precondition(inOrder == [1, 2, 3, 4, 5, 6, 7], "Phase 11 C tree mismatch")
+
+    // Conformer 3: ~Copyable elements (the A4-refuted-for-D1 case — works via forEach).
+    let resources = FamCResources([100, 200, 300])
+    var s3 = 0
+    resources.forEach { s3 &+= $0.id }
+    print("Phase 11 C (~Copyable elements, SAME forEach default): sum=\(s3)")
+    precondition(s3 == 600, "Phase 11 C ~Copyable mismatch")
 }
 
