@@ -1,0 +1,23 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+[1/4] Write sources
+[3/6] Emitting module D_real_buffer_linear_lib
+[4/6] Compiling D_real_buffer_linear_lib Conformance.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+17 | public import Memory_Cursor_Primitives
+18 | public import Sequence_Protocol_Primitives
+19 | public import Sequence_Hint_Primitives
+   |        `- warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+20 | import Index_Primitives
+21 | import Ordinal_Primitives
+[5/8] Emitting module D_real_buffer_linear_exe
+[6/8] Compiling D_real_buffer_linear_exe main.swift
+[6/9] Write Objects.LinkFileList
+[7/9] Linking D-real-buffer-linear-exe
+[8/9] Applying D-real-buffer-linear-exe
+Build of product 'D-real-buffer-linear-exe' complete! (2.09s)
+D viaHelper: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)
+D direct: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)

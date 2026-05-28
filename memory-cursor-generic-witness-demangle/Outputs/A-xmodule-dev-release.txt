@@ -1,0 +1,571 @@
+Fetching /Users/coen/Developer/swift-primitives/swift-pair-primitives
+Fetching /Users/coen/Developer/swift-primitives/swift-either-primitives
+Fetching /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache
+Fetching /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
+Fetched /Users/coen/Developer/swift-primitives/swift-pair-primitives from cache (0.12s)
+Fetched /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache (0.19s)
+Fetched /Users/coen/Developer/swift-primitives/swift-standard-library-extensions from cache (0.19s)
+Fetched /Users/coen/Developer/swift-primitives/swift-either-primitives from cache (0.19s)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-either-primitives
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-equation-primitives
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-pair-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-equation-primitives resolved at main (7cfea6f)
+Working copy of /Users/coen/Developer/swift-primitives/swift-pair-primitives resolved at main (379eb4c)
+Working copy of /Users/coen/Developer/swift-primitives/swift-either-primitives resolved at main (58b3336)
+Working copy of /Users/coen/Developer/swift-primitives/swift-standard-library-extensions resolved at main (58443ba)
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+Building for production...
+[0/108] Write sources
+[105/108] Write swift-version-466F05F4537467F9.txt
+[107/116] Compiling Equation_Primitive Equation.swift
+[108/116] Compiling Hash_Primitive Hash.swift
+[109/116] Compiling Iterator_Primitive Iterator.swift
+[110/116] Compiling Sequence_Primitive Sequence.swift
+[111/116] Compiling Ownership_Primitive Ownership.swift
+[112/116] Compiling Memory_Primitive Memory.swift
+[113/118] Compiling Ordinal_Primitive Ordinal.swift
+[114/122] Compiling Iterator_Protocol Iterating.swift
+/Users/coen/Developer/swift-primitives/swift-iterator-primitives/Sources/Iterator Protocol/Iterator.Protocol.swift:33:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+31 |     public protocol `Protocol`<Element, Failure>: ~Copyable, ~Escapable {
+32 |         /// The type of value this iterator yields.
+33 |         associatedtype Element: ~Copyable & ~Escapable
+   |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |         /// The error type. Defaults to `Never` for infallible iterators.
+
+/Users/coen/Developer/swift-primitives/swift-iterator-primitives/Sources/Iterator Protocol/Iterator.Protocol.swift:33:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+31 |     public protocol `Protocol`<Element, Failure>: ~Copyable, ~Escapable {
+32 |         /// The type of value this iterator yields.
+33 |         associatedtype Element: ~Copyable & ~Escapable
+   |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |         /// The error type. Defaults to `Never` for infallible iterators.
+[115/123] Compiling Byte_Primitive Byte.swift
+[116/123] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[117/123] Compiling Carrier_Primitive Carrier.swift
+[118/127] Compiling Cardinal_Primitive Cardinal.swift
+[119/127] Compiling Ownership_Unique_Primitives Ownership.Unique+Copyable.swift
+[120/127] Compiling Ownership_Shared_Primitives Ownership.Shared.swift
+[121/127] Compiling Ownership_Primitives_Standard_Library_Integration Optional+take.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+56 |             // swift-linter:disable:next intermediate binding then return
+57 |             nonisolated(unsafe) let v = value
+58 |             return v
+   |                    |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+   |                    `- note: reference to nonisolated(unsafe) let 'v' is unsafe in concurrently-executing code
+59 | 
+60 |         case .none:
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[122/127] Compiling Ownership_Mutable_Primitives Ownership.Mutable.Unchecked.swift
+[123/132] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[124/132] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 70 |     @_lifetime(borrow pointer)
+ 71 |     public init(_ pointer: UnsafeMutablePointer<Value>) {
+ 72 |         self._pointer = UnsafeMutableRawPointer(pointer)
+    |         |    `- note: reference to property '_pointer' involves unsafe type 'UnsafeMutableRawPointer'
+    |         `- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 73 |     }
+ 74 | }
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[125/133] Compiling Ownership_Indirect_Primitives Ownership.Indirect.swift
+[126/133] Compiling Ordinal_Error_Primitives Ordinal.Error.swift
+[127/133] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[128/135] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Sources/Carrier Protocol/_CarrierProtocol.swift:33:28: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+31 |     /// wrappers override it with the domain type they belong to
+32 |     /// (e.g., `User.ID.Domain == User`).
+33 |     associatedtype Domain: ~Copyable & ~Escapable = Never
+   |                            `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |     /// The wrapped value type.
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Sources/Carrier Protocol/_CarrierProtocol.swift:33:28: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+31 |     /// wrappers override it with the domain type they belong to
+32 |     /// (e.g., `User.ID.Domain == User`).
+33 |     associatedtype Domain: ~Copyable & ~Escapable = Never
+   |                            `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |     /// The wrapped value type.
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Sources/Carrier Protocol/_CarrierProtocol.swift:36:32: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |     /// The wrapped value type.
+36 |     associatedtype Underlying: ~Copyable & ~Escapable
+   |                                `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+37 | 
+38 |     /// Borrowing access to the carried underlying value.
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Sources/Carrier Protocol/_CarrierProtocol.swift:36:32: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+34 | 
+35 |     /// The wrapped value type.
+36 |     associatedtype Underlying: ~Copyable & ~Escapable
+   |                                `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+37 | 
+38 |     /// Borrowing access to the carried underlying value.
+[129/136] Compiling Affine_Primitive Affine.swift
+[130/136] Compiling Cardinal_Error_Primitives Cardinal.Error.swift
+[131/136] Compiling Carrier_Primitives exports.swift
+[132/141] Compiling Ordinal_Carrier_Primitives Ordinal+Carrier.swift
+[133/141] Compiling Property_Primitives_Core Property+Carrier.swift
+[134/141] Compiling Cardinal_Carrier_Primitives Cardinal+Carrier.swift
+[135/144] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[136/144] Compiling Property_Typed_Primitives Property.Typed.swift
+[137/144] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[138/146] Compiling Carrier_Primitives_Standard_Library_Integration Bool+Carrier.swift
+[139/148] Compiling Byte_Protocol_Primitives Byte+Carrier.swift
+/Users/coen/Developer/swift-primitives/swift-byte-primitives/Sources/Byte Protocol Primitives/Byte+Codable.swift:25:31: warning: use of protocol 'Decoder' as a type must be written 'any Decoder'; this will be an error in a future Swift language mode [#ExistentialAny]
+23 | extension Byte: Codable {
+24 |     @inlinable
+25 |     public init(from decoder: Decoder) throws {
+   |                               `- warning: use of protocol 'Decoder' as a type must be written 'any Decoder'; this will be an error in a future Swift language mode [#ExistentialAny]
+26 |         try self.init(UInt8(from: decoder))
+27 |     }
+
+/Users/coen/Developer/swift-primitives/swift-byte-primitives/Sources/Byte Protocol Primitives/Byte+Codable.swift:30:36: warning: use of protocol 'Encoder' as a type must be written 'any Encoder'; this will be an error in a future Swift language mode [#ExistentialAny]
+28 | 
+29 |     @inlinable
+30 |     public func encode(to encoder: Encoder) throws {
+   |                                    `- warning: use of protocol 'Encoder' as a type must be written 'any Encoder'; this will be an error in a future Swift language mode [#ExistentialAny]
+31 |         try underlying.encode(to: encoder)
+32 |     }
+
+/Users/coen/Developer/swift-primitives/swift-byte-primitives/Sources/Byte Protocol Primitives/Byte.Protocol.swift:94:32: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 92 |         /// enabling cross-type operators to enforce same-tag safety
+ 93 |         /// via `where A.Domain == B.Domain`.
+ 94 |         associatedtype Domain: ~Copyable = Never
+    |                                `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 95 | 
+ 96 |         /// The error thrown by `init(_:)` for conformers whose byte-domain
+
+[#ExistentialAny]: <https://docs.swift.org/compiler/documentation/diagnostics/existential-any>
+[140/148] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Borrow Primitives/__Ownership_Borrow_Protocol.swift:31:30: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+29 | /// remains prohibited on Swift 6.3.1.
+30 | public protocol __Ownership_Borrow_Protocol: ~Copyable, ~Escapable {
+31 |     associatedtype Borrowed: ~Copyable, ~Escapable = Ownership.Borrow<Self>
+   |                              `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+32 | }
+33 | 
+
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Borrow Primitives/__Ownership_Borrow_Protocol.swift:31:41: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+29 | /// remains prohibited on Swift 6.3.1.
+30 | public protocol __Ownership_Borrow_Protocol: ~Copyable, ~Escapable {
+31 |     associatedtype Borrowed: ~Copyable, ~Escapable = Ownership.Borrow<Self>
+   |                                         `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+32 | }
+33 | 
+[141/148] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[142/148] Compiling Hash_Value_Primitives Hash.Value.swift
+[143/148] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[144/151] Compiling Byte_Tagged_Primitives Tagged+Byte.Protocol.swift
+[145/151] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[146/152] Compiling Property_Primitives exports.swift
+[147/155] Compiling Equation_Primitives exports.swift
+[148/155] Compiling Cardinal_Subtract_Primitives Cardinal.Subtract.swift
+[149/158] Compiling Cardinal_Add_Primitives Cardinal.Add.swift
+[150/158] Compiling Hash_Protocol_Primitives Hash.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-hash-primitives/Sources/Hash Protocol Primitives/Hash.Protocol.swift:10:8: warning: public import of 'Equation_Primitives' was not used in public declarations or inlinable code
+ 8 | 
+ 9 | public import Hash_Primitive
+10 | public import Equation_Primitives
+   |        `- warning: public import of 'Equation_Primitives' was not used in public declarations or inlinable code
+11 | public import Tagged_Primitives
+12 | 
+
+/Users/coen/Developer/swift-primitives/swift-hash-primitives/Sources/Hash Protocol Primitives/Hash.Protocol.swift:11:8: warning: public import of 'Tagged_Primitives' was not used in public declarations or inlinable code
+ 9 | public import Hash_Primitive
+10 | public import Equation_Primitives
+11 | public import Tagged_Primitives
+   |        `- warning: public import of 'Tagged_Primitives' was not used in public declarations or inlinable code
+12 | 
+13 | #if swift(>=6.4)
+[151/158] Compiling Ordinal_Equation_Primitives Ordinal+Equation.Protocol.swift
+[152/159] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Protocol Primitives/Comparison.Protocol.swift:9:8: warning: public import of 'Equation_Primitives' was not used in public declarations or inlinable code
+  7 | // See: swift-institute/Research/se-0499-implications-for-equation-hash-comparison-primitives.md
+  8 | 
+  9 | public import Equation_Primitives
+    |        `- warning: public import of 'Equation_Primitives' was not used in public declarations or inlinable code
+ 10 | 
+ 11 | #if swift(>=6.4)
+[153/161] Compiling Hash_Tagged_Primitives Hash.Protocol+Tagged.swift
+[154/162] Compiling Cardinal_Equation_Primitives Cardinal+Equation.Protocol.swift
+[155/164] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[156/164] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Add.swift
+[157/164] Compiling Ownership_Latch_Primitives Ownership.Latch.swift
+[158/164] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[159/164] Compiling Ownership_Slot_Primitives Ownership.Slot+Store.swift
+[160/166] Compiling Standard_Library_Extensions Actor.swift
+[161/166] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[162/167] Compiling Hash_Primitives exports.swift
+[163/168] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+AtomicRepresentable.swift
+[164/169] Compiling Ownership_Transfer_Primitives Ownership.Transfer.Retained.Incoming.Token.swift
+[165/171] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:7:27: warning: conformance of 'Int' to protocol 'Comparable' was already stated in the type's module 'Swift'
+  5 | 
+  6 | /// Conformance for `Int` to `Comparison.Protocol`.
+  7 | extension Int: Comparison.`Protocol` {}
+    |                           `- warning: conformance of 'Int' to protocol 'Comparable' was already stated in the type's module 'Swift'
+  8 | 
+  9 | /// Conformance for `UInt` to `Comparison.Protocol`.
+
+Swift.Int:1:23: note: 'Int' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct Int : FixedWidthInteger, SignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'Int' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = Int
+ 3 |     public var _value: Builtin.Int64
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:10:28: warning: conformance of 'UInt' to protocol 'Comparable' was already stated in the type's module 'Swift'
+  8 | 
+  9 | /// Conformance for `UInt` to `Comparison.Protocol`.
+ 10 | extension UInt: Comparison.`Protocol` {}
+    |                            `- warning: conformance of 'UInt' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 11 | 
+ 12 | /// Conformance for `Int8` to `Comparison.Protocol`.
+
+Swift.UInt:1:23: note: 'UInt' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct UInt : FixedWidthInteger, UnsignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'UInt' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = UInt
+ 3 |     public var _value: Builtin.Int64
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:13:28: warning: conformance of 'Int8' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 11 | 
+ 12 | /// Conformance for `Int8` to `Comparison.Protocol`.
+ 13 | extension Int8: Comparison.`Protocol` {}
+    |                            `- warning: conformance of 'Int8' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 14 | 
+ 15 | /// Conformance for `Int16` to `Comparison.Protocol`.
+
+Swift.Int8:1:23: note: 'Int8' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct Int8 : FixedWidthInteger, SignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'Int8' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = Int8
+ 3 |     public var _value: Builtin.Int8
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:16:29: warning: conformance of 'Int16' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 14 | 
+ 15 | /// Conformance for `Int16` to `Comparison.Protocol`.
+ 16 | extension Int16: Comparison.`Protocol` {}
+    |                             `- warning: conformance of 'Int16' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 17 | 
+ 18 | /// Conformance for `Int32` to `Comparison.Protocol`.
+
+Swift.Int16:1:23: note: 'Int16' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct Int16 : FixedWidthInteger, SignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'Int16' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = Int16
+ 3 |     public var _value: Builtin.Int16
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:19:29: warning: conformance of 'Int32' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 17 | 
+ 18 | /// Conformance for `Int32` to `Comparison.Protocol`.
+ 19 | extension Int32: Comparison.`Protocol` {}
+    |                             `- warning: conformance of 'Int32' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 20 | 
+ 21 | /// Conformance for `Int64` to `Comparison.Protocol`.
+
+Swift.Int32:1:23: note: 'Int32' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct Int32 : FixedWidthInteger, SignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'Int32' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = Int32
+ 3 |     public var _value: Builtin.Int32
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:22:29: warning: conformance of 'Int64' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 20 | 
+ 21 | /// Conformance for `Int64` to `Comparison.Protocol`.
+ 22 | extension Int64: Comparison.`Protocol` {}
+    |                             `- warning: conformance of 'Int64' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 23 | 
+ 24 | /// Conformance for `UInt8` to `Comparison.Protocol`.
+
+Swift.Int64:1:23: note: 'Int64' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct Int64 : FixedWidthInteger, SignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'Int64' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = Int64
+ 3 |     public var _value: Builtin.Int64
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:25:29: warning: conformance of 'UInt8' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 23 | 
+ 24 | /// Conformance for `UInt8` to `Comparison.Protocol`.
+ 25 | extension UInt8: Comparison.`Protocol` {}
+    |                             `- warning: conformance of 'UInt8' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 26 | 
+ 27 | /// Conformance for `UInt16` to `Comparison.Protocol`.
+
+Swift.UInt8:1:23: note: 'UInt8' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct UInt8 : FixedWidthInteger, UnsignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'UInt8' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = UInt8
+ 3 |     public var _value: Builtin.Int8
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:28:30: warning: conformance of 'UInt16' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 26 | 
+ 27 | /// Conformance for `UInt16` to `Comparison.Protocol`.
+ 28 | extension UInt16: Comparison.`Protocol` {}
+    |                              `- warning: conformance of 'UInt16' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 29 | 
+ 30 | /// Conformance for `UInt32` to `Comparison.Protocol`.
+
+Swift.UInt16:1:23: note: 'UInt16' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct UInt16 : FixedWidthInteger, UnsignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'UInt16' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = UInt16
+ 3 |     public var _value: Builtin.Int16
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:31:30: warning: conformance of 'UInt32' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 29 | 
+ 30 | /// Conformance for `UInt32` to `Comparison.Protocol`.
+ 31 | extension UInt32: Comparison.`Protocol` {}
+    |                              `- warning: conformance of 'UInt32' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 32 | 
+ 33 | /// Conformance for `UInt64` to `Comparison.Protocol`.
+
+Swift.UInt32:1:23: note: 'UInt32' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct UInt32 : FixedWidthInteger, UnsignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'UInt32' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = UInt32
+ 3 |     public var _value: Builtin.Int32
+
+/Users/coen/Developer/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Standard Library Integration/Comparison+Swift.Comparable.swift:34:30: warning: conformance of 'UInt64' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 32 | 
+ 33 | /// Conformance for `UInt64` to `Comparison.Protocol`.
+ 34 | extension UInt64: Comparison.`Protocol` {}
+    |                              `- warning: conformance of 'UInt64' to protocol 'Comparable' was already stated in the type's module 'Swift'
+ 35 | 
+ 36 | // MARK: - Comparison Initializer
+
+Swift.UInt64:1:23: note: 'UInt64' declares conformance to protocol 'Comparable' here
+ 1 | @frozen public struct UInt64 : FixedWidthInteger, UnsignedInteger, _ExpressibleByBuiltinIntegerLiteral {
+   |                       `- note: 'UInt64' declares conformance to protocol 'Comparable' here
+ 2 |     public typealias IntegerLiteralType = UInt64
+ 3 |     public var _value: Builtin.Int64
+[166/171] Compiling Ordinal_Hash_Primitives Ordinal+Hash.Protocol.swift
+[167/171] Compiling Cardinal_Hash_Primitives Cardinal+Hash.Protocol.swift
+[168/172] Compiling Comparison_Primitives exports.swift
+[169/174] Compiling Ownership_Transfer_Erased_Primitives Ownership.Transfer.Erased.Incoming.Token.swift
+[170/176] Compiling Cardinal_Comparison_Primitives Cardinal+Comparison.Protocol.swift
+[171/176] Compiling Ordinal_Comparison_Primitives Ordinal+Comparison.Protocol.swift
+[172/176] Compiling Ownership_Primitives exports.swift
+[173/177] Compiling Byte_Borrowed_Primitives Byte.Borrowed.swift
+/Users/coen/Developer/swift-primitives/swift-byte-primitives/Sources/Byte Borrowed Primitives/Byte.Borrowed.swift:13:8: warning: public import of 'Byte_Protocol_Primitives' was not used in public declarations or inlinable code
+ 11 | 
+ 12 | public import Ownership_Primitives
+ 13 | public import Byte_Protocol_Primitives
+    |        `- warning: public import of 'Byte_Protocol_Primitives' was not used in public declarations or inlinable code
+ 14 | 
+ 15 | public import Byte_Primitive
+[174/177] Compiling Cardinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[175/179] Compiling Either_Primitives Either+Accessors.swift
+[176/180] Compiling Byte_Primitives exports.swift
+[177/180] Compiling Cardinal_Primitives exports.swift
+[178/184] Compiling Iterable Iterable+Contains.swift
+/Users/coen/Developer/swift-primitives/swift-iterator-primitives/Sources/Iterable/Iterable.swift:45:70: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+43 |     /// own name `Iterator` would otherwise collide with the namespace identifier inside the
+44 |     /// constraint expression.)
+45 |     associatedtype Iterator: Iterator_Primitive.Iterator.`Protocol`, ~Copyable, ~Escapable
+   |                                                                      `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+46 | 
+47 |     /// Construct a fresh iterator over this value.
+
+/Users/coen/Developer/swift-primitives/swift-iterator-primitives/Sources/Iterable/Iterable.swift:45:81: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+43 |     /// own name `Iterator` would otherwise collide with the namespace identifier inside the
+44 |     /// constraint expression.)
+45 |     associatedtype Iterator: Iterator_Primitive.Iterator.`Protocol`, ~Copyable, ~Escapable
+   |                                                                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+46 | 
+47 |     /// Construct a fresh iterator over this value.
+[179/184] Compiling Memory_Contiguous_Primitives Memory.Contiguous+Byte.Borrowed.swift
+/Users/coen/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Contiguous Primitives/Memory.ContiguousProtocol.swift:92:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 90 |     public protocol ContiguousProtocol: ~Copyable {
+ 91 |         /// The type of element stored contiguously.
+ 92 |         associatedtype Element: ~Copyable
+    |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 93 | 
+ 94 |         /// Safe, bounds-checked read access to contiguous storage.
+
+/Users/coen/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Contiguous Primitives/__Memory_Contiguous_Borrowed_Protocol.swift:43:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+41 | public protocol __Memory_Contiguous_Borrowed_Protocol: ~Copyable, ~Escapable {
+42 |     /// The type of element stored contiguously.
+43 |     associatedtype Element: ~Copyable
+   |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+44 | 
+45 |     /// Safe, bounds-checked read access to the borrowed contiguous span.
+[180/184] Compiling Ordinal_Protocol_Primitives Ordinal.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Protocol Primitives/Ordinal.Protocol.swift:65:32: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 63 |         /// cross-type operators to enforce same-tag safety via
+ 64 |         /// `where O.Domain == C.Domain`.
+ 65 |         associatedtype Domain: ~Copyable
+    |                                `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 66 | 
+ 67 |         /// The cardinal-carrying type that measures distances between
+
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Protocol Primitives/Ordinal.Protocol.swift:23:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 21 | 
+ 22 | public import Cardinal_Primitives
+ 23 | public import Carrier_Primitives
+    |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 24 | public import Ordinal_Primitive
+ 25 | public import Tagged_Primitives
+[181/184] Compiling Iterator_Chunk_Primitives Iterator.Chunk.Protocol.swift
+[182/188] Compiling Affine_Discrete_Primitives Affine.Discrete.Ratio.swift
+[183/192] Compiling Ordinal_Distance_Primitives Ordinal.Distance.swift
+[184/192] Compiling Memory_Iterator_Primitives Memory.Contiguous+Iterable.swift
+[185/192] Compiling Ordinal_Predecessor_Primitives Ordinal.Predecessor.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Predecessor Primitives/Tagged+Ordinal.Predecessor.swift:14:8: warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+12 | public import Ordinal_Error_Primitives
+13 | public import Ordinal_Primitive
+14 | public import Ordinal_Protocol_Primitives
+   |        `- warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+15 | public import Property_Primitives
+16 | public import Tagged_Primitives
+[186/192] Compiling Ordinal_Cardinal_Primitives Cardinal+Ordinal.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Cardinal Primitives/Ordinal+Cardinal.swift:11:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+  9 | 
+ 10 | public import Cardinal_Primitives
+ 11 | public import Carrier_Primitives
+    |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 12 | public import Ordinal_Primitive
+ 13 | public import Ordinal_Protocol_Primitives
+[187/192] Compiling Ordinal_Retreat_Primitives Ordinal.Retreat.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Retreat Primitives/Tagged+Ordinal.Retreat.swift:14:8: warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+12 | public import Cardinal_Primitives
+13 | public import Ordinal_Primitive
+14 | public import Ordinal_Protocol_Primitives
+   |        `- warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+15 | public import Property_Primitives
+16 | public import Tagged_Primitives
+[188/192] Compiling Ordinal_Successor_Primitives Ordinal.Successor.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Successor Primitives/Tagged+Ordinal.Successor.swift:14:8: warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+12 | public import Ordinal_Error_Primitives
+13 | public import Ordinal_Primitive
+14 | public import Ordinal_Protocol_Primitives
+   |        `- warning: public import of 'Ordinal_Protocol_Primitives' was not used in public declarations or inlinable code
+15 | public import Property_Primitives
+16 | public import Tagged_Primitives
+[189/197] Compiling Affine_Hash_Primitives Affine.Discrete.Vector+Hash.Protocol.swift
+[190/197] Compiling Ordinal_Advance_Primitives Ordinal.Advance.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Advance Primitives/Ordinal.Advance.swift:2:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 1 | public import Cardinal_Primitives
+ 2 | public import Carrier_Primitives
+   |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 3 | public import Ordinal_Error_Primitives
+ 4 | public import Ordinal_Primitive
+[191/197] Compiling Affine_Equation_Primitives Affine.Discrete.Vector+Equation.Protocol.swift
+[192/197] Compiling Affine_Composition_Primitives Affine.Discrete.Ratio+Composition.swift
+[193/197] Compiling Affine_Comparison_Primitives Affine.Discrete.Vector+Comparison.Protocol.swift
+[194/197] Compiling Affine_Carrier_Primitives Affine.Discrete.Vector+Carrier.swift
+[195/197] Compiling Ordinal_Tagged_Primitives Tagged+Ordinal.swift
+[196/198] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Atomic+Ordinal.swift:14:12: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+12 | #if SYNCHRONIZATION_AVAILABLE
+13 |     public import Cardinal_Primitives
+14 |     public import Carrier_Primitives
+   |            `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+15 |     public import Ordinal_Cardinal_Primitives
+16 |     public import Ordinal_Primitive
+
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Swift.Range+Ordinal.swift:12:8: warning: public import of 'Ordinal_Cardinal_Primitives' was not used in public declarations or inlinable code
+10 | // ===----------------------------------------------------------------------===//
+11 | 
+12 | public import Ordinal_Cardinal_Primitives
+   |        `- warning: public import of 'Ordinal_Cardinal_Primitives' was not used in public declarations or inlinable code
+13 | public import Ordinal_Distance_Primitives
+14 | 
+
+/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutablePointer.Move+Tagged.Ordinal.swift:12:8: warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
+10 | // ===----------------------------------------------------------------------===//
+11 | 
+12 | public import Cardinal_Primitives
+   |        `- warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
+13 | public import Cardinal_Primitives_Standard_Library_Integration
+14 | public import Property_Primitives
+[197/199] Compiling Ordinal_Primitives exports.swift
+[198/203] Compiling Cursor_Primitive Cursor.swift
+[199/204] Compiling Affine_Ordinal_Primitives Ordinal+Affine.swift
+[200/204] Compiling Affine_Quotient_Primitives Affine.Discrete.Ratio+QuotientAndRemainder.swift
+[201/204] Compiling Memory_Cursor_Primitives Cursor+MemoryContiguousBorrowed.swift
+/Users/coen/Developer/swift-primitives/swift-memory-cursor-primitives/Sources/Memory Cursor Primitives/Cursor+MemoryContiguousBorrowed.swift:15:8: warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
+ 13 | public import Byte_Primitives
+ 14 | public import Memory_Contiguous_Primitives
+ 15 | public import Cardinal_Primitives
+    |        `- warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
+ 16 | public import Ordinal_Primitives
+ 17 | public import Tagged_Primitives
+
+/Users/coen/Developer/swift-primitives/swift-memory-cursor-primitives/Sources/Memory Cursor Primitives/Cursor+MemoryContiguousBorrowed.swift:16:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+ 14 | public import Memory_Contiguous_Primitives
+ 15 | public import Cardinal_Primitives
+ 16 | public import Ordinal_Primitives
+    |        `- warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+ 17 | public import Tagged_Primitives
+ 18 | 
+[202/204] Compiling Affine_Arithmetic_Primitives Affine.Discrete+Arithmetic.swift
+[203/205] Compiling Affine_Tagged_Primitives Affine.Discrete.Ratio+Tagged.swift
+/Users/coen/Developer/swift-primitives/swift-affine-primitives/Sources/Affine Tagged Primitives/Tagged+Affine.swift:16:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 14 | public import Affine_Discrete_Primitives
+ 15 | public import Cardinal_Primitives
+ 16 | public import Carrier_Primitives
+    |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+ 17 | public import Ordinal_Primitives
+ 18 | public import Tagged_Primitives
+[204/206] Compiling Affine_Primitives_Standard_Library_Integration Affine.Discrete.Vector+AtomicRepresentable.swift
+[205/207] Compiling Affine_Primitives exports.swift
+[206/208] Compiling Index_Primitives Index.swift
+[207/209] Compiling Sequence_Protocol_Primitives Sequenceable+Count.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Protocol Primitives/Sequenceable.swift:104:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+102 |     /// uniformly `@_lifetime(&self)`, so a returned element would otherwise escape its scope). The
+103 |     /// bulk path (`Iterator.Chunk.`Protocol``) stays `Escapable`-narrowed (the `Span` ceiling).
+104 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+105 | 
+106 |     /// The iterator type that produces elements — the foundation `Iterator.`Protocol``.
+
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Protocol Primitives/Sequenceable.swift:104:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+102 |     /// uniformly `@_lifetime(&self)`, so a returned element would otherwise escape its scope). The
+103 |     /// bulk path (`Iterator.Chunk.`Protocol``) stays `Escapable`-narrowed (the `Span` ceiling).
+104 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+105 | 
+106 |     /// The iterator type that produces elements — the foundation `Iterator.`Protocol``.
+
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Protocol Primitives/Sequenceable.swift:111:70: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+109 |     /// allocations (`~Copyable` for `deinit`) or borrow from the sequence (`~Escapable`).
+110 |     /// Conformers providing plain `Copyable` + `Escapable` iterators satisfy it automatically.
+111 |     associatedtype Iterator: Iterator_Primitive.Iterator.`Protocol`, ~Copyable, ~Escapable
+    |                                                                      `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+112 |     where Iterator.Element == Element
+113 | 
+
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Protocol Primitives/Sequenceable.swift:111:81: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+109 |     /// allocations (`~Copyable` for `deinit`) or borrow from the sequence (`~Escapable`).
+110 |     /// Conformers providing plain `Copyable` + `Escapable` iterators satisfy it automatically.
+111 |     associatedtype Iterator: Iterator_Primitive.Iterator.`Protocol`, ~Copyable, ~Escapable
+    |                                                                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+112 |     where Iterator.Element == Element
+113 | 
+[208/211] Compiling Memory_Sequence_Primitives Memory.Contiguous+Sequenceable.swift
+[209/211] Compiling Sequence_Hint_Primitives Sequence.Hint+Property.Inout.swift
+[210/212] Compiling AConformerLib Region.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionDual.swift:22:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+20 | public import Memory_Contiguous_Primitives
+21 | public import Memory_Cursor_Primitives
+22 | public import Memory_Sequence_Primitives
+   |        `- warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+23 | public import Sequence_Protocol_Primitives
+24 | public import Iterable
+[211/213] Compiling A_xmodule_exe main.swift
+[211/213] Write Objects.LinkFileList
+warning: input verification failed
+note: while processing /Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/.build/arm64-apple-macosx/release/Ownership_Transfer_Erased_Primitives.build/Ownership.Transfer.Erased.Outgoing.swift.o
+[212/213] Linking A-xmodule-exe
+Build of product 'A-xmodule-exe' complete! (7.42s)
+A-xmodule: collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity fixed=8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity generic, =8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule DUAL (Iterable+Sequenceable @_implements): collect() = [10, 20, 30] (expect [10, 20, 30])

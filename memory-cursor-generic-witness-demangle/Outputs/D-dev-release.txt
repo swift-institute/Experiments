@@ -1,0 +1,226 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for production...
+[0/61] Write sources
+[59/62] Write swift-version-466F05F4537467F9.txt
+[61/70] Compiling Storage_Primitive Storage.swift
+[62/71] Compiling Sequence_First_Primitives Sequence.First+Property.Inout.swift
+[63/71] Compiling Sequence_Reduce_Primitives Sequence.Reduce+Property.Inout.swift
+[64/71] Compiling Sequence_Satisfies_Primitives Sequence.Satisfies+Property.Inout.swift
+[65/71] Compiling Sequence_Filter_Primitives Sequence.Filter.Iterator.swift
+[66/75] Compiling Sequence_Map_Primitives Sequence.CompactMap.swift
+[67/75] Compiling Storage_Accessor_Primitives Storage.Copy.swift
+[68/75] Compiling Storage_Protocol_Primitives Storage.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Protocol Primitives/Storage.Protocol.swift:22:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+20 | public protocol __StorageProtocol: ~Copyable {
+21 |     /// The element type stored in each physical slot.
+22 |     associatedtype Element: ~Copyable
+   |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+23 | 
+24 |     /// The total number of physical slots this storage provides.
+[69/76] Compiling Storage_Error_Primitives Storage.Error.swift
+[70/76] Compiling Sequence_Iterator_Primitives Sequence.Iterator.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Iterator Primitives/Sequence.Iterator.Protocol.swift:116:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+114 |         /// `Swift.Span<Element>` accepts `Element: ~Escapable` upstream
+115 |         /// (Swift 6.3.1 requires `Element: Escapable`).
+116 |         associatedtype Element: ~Copyable
+    |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+117 | 
+118 |         /// Returns the next batch of elements as a contiguous span.
+[71/80] Compiling Sequence_Prefix_Primitives Sequence.Prefix.First.Iterator.swift
+[72/80] Compiling Storage_Initialization_Primitives Storage.Initialization+ops.swift
+[73/80] Compiling Sequence_Drain_Primitives Sequence.Drain+Property.Inout.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Drain Primitives/Sequence.Drain.swift:75:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+73 |     public protocol `Protocol`: ~Copyable {
+74 |         /// The type of element produced during draining.
+75 |         associatedtype Element: ~Copyable
+   |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+76 | 
+77 |         /// Drains all elements, passing each to the closure.
+[74/83] Compiling Sequence_Clearable_Primitives Sequence.Clearable.swift
+[75/83] Compiling Sequence_Contains_Primitives Sequence.Contains+Property.Inout.swift
+[76/83] Compiling Sequence_Consume_Primitives Sequence.Consume.View.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Consume Primitives/Sequence.Consume.swift:87:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 85 |     public protocol `Protocol`: ~Copyable {
+ 86 |         /// The type of element produced during consuming iteration.
+ 87 |         associatedtype Element: ~Copyable
+    |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 88 | 
+ 89 |         /// The state type holding iteration data with deinit for cleanup.
+[77/83] Compiling Sequence_Drop_Primitives Sequence.Drop.First.Iterator.swift
+[78/86] Compiling Sequence_Borrowing_Primitives Sequence.Borrowing.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Borrowing Primitives/Sequence.Borrowing.Protocol.swift:50:33: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+48 |         /// `Swift.Span<Element>` accepts `Element: ~Escapable` upstream
+49 |         /// (Swift 6.3.1 requires `Element: Escapable`).
+50 |         associatedtype Element: ~Copyable
+   |                                 `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+51 | 
+52 |         /// The iterator type that produces spans of elements.
+
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Borrowing Primitives/Sequence.Borrowing.Protocol.swift:59:34: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+57 |         /// dependency). Conformers providing plain
+58 |         /// `Copyable` + `Escapable` iterators satisfy this automatically.
+59 |         associatedtype Iterator: Sequence.Iterator.`Protocol` & ~Copyable & ~Escapable
+   |                                  `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+60 |         where Iterator.Element == Element
+61 | 
+
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Borrowing Primitives/Sequence.Borrowing.Protocol.swift:59:34: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+57 |         /// dependency). Conformers providing plain
+58 |         /// `Copyable` + `Escapable` iterators satisfy this automatically.
+59 |         associatedtype Iterator: Sequence.Iterator.`Protocol` & ~Copyable & ~Escapable
+   |                                  `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+60 |         where Iterator.Element == Element
+61 | 
+[79/88] Compiling Algebra_Primitive Algebra.swift
+[80/88] Compiling Bit_Primitives_Core Bit.Order.swift
+[81/88] Compiling Range_Primitives Swift.Range+AllSatisfy.swift
+[82/89] Compiling Memory_Address_Primitives Memory+Affine.Discrete.Ratio.swift
+[83/89] Compiling Pair_Primitives Pair+BitwiseCopyable.swift
+[84/89] Compiling Sequence_ForEach_Primitives Sequence.ForEach+Property.Inout.swift
+[85/94] Compiling Sequence_Span_Primitives Sequence.Span+Property.Inout.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Span Primitives/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+  1 | public import Index_Primitives
+  2 | public import Property_Primitives
+    |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+  3 | public import Sequence_Borrowing_Primitives
+  4 | 
+[86/94] Compiling Algebra_Iso_Primitives Algebra.Iso.swift
+[87/95] Compiling Bit_Boolean_Primitives Bit Boolean Operations.swift
+[88/96] Compiling Sequence_Primitives_Standard_Library_Integration Sequenceable+Swift.Sequence.swift
+[89/97] Compiling Algebra_Polarity_Primitives Polarity.swift
+[90/97] Compiling Algebra_Sign_Primitives Sign.swift
+[91/97] Compiling Algebra_Parity_Primitives Parity.swift
+[92/97] Compiling Algebra_Monotonicity_Primitives Monotonicity.swift
+[93/98] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/Carrier+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Cardinal_Primitives
+13 | public import Carrier_Primitives
+   |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+14 | 
+15 | // MARK: - Cardinal Shift Operators on Carrier<FixedWidthInteger>
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/FixedWidthInteger+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Cardinal_Primitives
+13 | public import Carrier_Primitives
+   |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+14 | 
+15 | // MARK: - Cardinal Shift Operators
+[94/98] Compiling Algebra_Ternary_Primitives Ternary.swift
+[95/99] Compiling Algebra_Primitives exports.swift
+[96/99] Compiling Finite_Primitives_Core Bound.swift
+[97/100] Compiling Sequence_Difference_Primitives Sequence.Difference+core.swift
+[98/101] Compiling Algebra_Magma_Primitives Algebra.Magma.swift
+[99/102] Compiling Sequence_Primitives exports.swift
+[100/102] Compiling Algebra_Semigroup_Primitives Algebra.Semigroup+Magma.swift
+[101/103] Compiling Algebra_Monoid_Primitives Algebra.Monoid+Bool.swift
+[102/105] Compiling Algebra_Semiring_Primitives Algebra.Semiring+Bool.swift
+[103/105] Compiling Algebra_Group_Primitives Algebra.Group+Monoid.swift
+[104/107] Compiling Algebra_Ring_Primitives Algebra.Ring+Convenience.swift
+[105/108] Compiling Finite_Primitives Algebra.Group+Bound.swift
+[106/108] Compiling Algebra_Field_Primitives Algebra.Field+Convenience.swift
+[107/109] Compiling Bit_Field_Primitives Algebra.Field+Bit.swift
+[108/110] Compiling Bit_Primitives Bit+Comparison.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives/Bit+Equation.Protocol.swift:6:25: warning: conformance of 'Bit' to protocol 'Equatable' was already stated in the type's module 'Bit_Primitives_Core'
+4 | import Equation_Primitives
+5 | 
+6 | extension Bit: Equation.`Protocol` {}
+  |                         `- warning: conformance of 'Bit' to protocol 'Equatable' was already stated in the type's module 'Bit_Primitives_Core'
+7 | 
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Core/Bit.swift:18:13: note: 'Bit' declares conformance to protocol 'Equatable' here
+16 | /// ```
+17 | @frozen
+18 | public enum Bit: UInt8, Sendable, Hashable, Equatable {
+   |             `- note: 'Bit' declares conformance to protocol 'Equatable' here
+19 |     /// Binary zero (false, off, low).
+20 |     case zero = 0
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives/Bit+Hash.Protocol.swift:8:21: warning: conformance of 'Bit' to protocol 'Hashable' was already stated in the type's module 'Bit_Primitives_Core'
+6 | // Bit already conforms to Swift.Hashable, so it has the required
+7 | // == and hash(into:) methods. This conformance is trivial.
+8 | extension Bit: Hash.`Protocol` {}
+  |                     `- warning: conformance of 'Bit' to protocol 'Hashable' was already stated in the type's module 'Bit_Primitives_Core'
+9 | 
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Core/Bit.swift:18:13: note: 'Bit' declares conformance to protocol 'Hashable' here
+16 | /// ```
+17 | @frozen
+18 | public enum Bit: UInt8, Sendable, Hashable, Equatable {
+   |             `- note: 'Bit' declares conformance to protocol 'Hashable' here
+19 |     /// Binary zero (false, off, low).
+20 |     case zero = 0
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives/Bit+Hash.Protocol.swift:4:8: warning: public import of 'Hash_Primitives' was not used in public declarations or inlinable code
+2 | // Extends Bit to conform to Hash.Protocol.
+3 | 
+4 | public import Hash_Primitives
+  |        `- warning: public import of 'Hash_Primitives' was not used in public declarations or inlinable code
+5 | 
+6 | // Bit already conforms to Swift.Hashable, so it has the required
+[109/112] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
+/Users/coen/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+13 | public import Byte_Primitives
+14 | public import Index_Primitives
+15 | public import Ordinal_Primitives
+   |        `- warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+16 | 
+17 | extension Bit.Index {
+[110/113] Compiling Memory_Shift_Primitives Memory.Shift+Cardinal.Protocol.swift
+[111/113] Compiling Bit_Pack_Primitives Bit.Index+Pack.swift
+[112/115] Compiling Memory_Alignment_Primitives Memory.Aligned.swift
+[113/116] Compiling Bit_Vector_Primitives_Core Bit.Vector+Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
+183 |     @inlinable
+184 |     public mutating func all() {
+185 |         unsafe Base.setAll(&base.value)
+    |         `- warning: no unsafe operations occur within 'unsafe' expression
+186 |     }
+187 | }
+
+/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
+191 |     @inlinable
+192 |     public mutating func all() {
+193 |         unsafe Base.clearAll(&base.value)
+    |         `- warning: no unsafe operations occur within 'unsafe' expression
+194 |     }
+195 | }
+[114/117] Compiling Memory_Primitives_Standard_Library_Integration Memory+Array.swift
+[115/118] Compiling Bit_Vector_Static_Primitives Bit.Vector.Ones.Static.Iterator.swift
+[116/118] Compiling Storage_Heap_Primitives Storage.Heap Copyable.swift
+/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Heap Primitives/Storage.Heap.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+ 11 | 
+ 12 | public import Storage_Primitive
+ 13 | public import Index_Primitives
+    |        `- warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+ 14 | import Affine_Primitives_Standard_Library_Integration
+ 15 | import Ordinal_Primitives_Standard_Library_Integration
+[117/119] Compiling Storage_Inline_Primitives Storage.Inline Copyable.swift
+/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline.swift:135:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+133 |             for bitIndex in _slots.ones {
+134 |                 let slot = bitIndex.retag(Element.self)
+135 |                 unsafe withUnsafePointer(to: _storage) { base in
+    |                        `- warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+136 |                     unsafe UnsafeMutableRawPointer(mutating: UnsafeRawPointer(base))
+137 |                         .advanced(by: Index<Element>.Offset(fromZero: slot) * .stride)
+[118/120] Compiling D_real_buffer_linear_lib Conformance.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+17 | public import Memory_Cursor_Primitives
+18 | public import Sequence_Protocol_Primitives
+19 | public import Sequence_Hint_Primitives
+   |        `- warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+20 | import Index_Primitives
+21 | import Ordinal_Primitives
+[119/121] Compiling D_real_buffer_linear_exe main.swift
+[119/121] Write Objects.LinkFileList
+warning: input verification failed
+note: while processing /Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/.build/arm64-apple-macosx/release/Ownership_Transfer_Erased_Primitives.build/Ownership.Transfer.Erased.Outgoing.swift.o
+warning: input verification failed
+note: while processing /Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/.build/arm64-apple-macosx/release/Storage_Heap_Primitives.build/Storage.Heap ~Copyable.swift.o
+[120/121] Linking D-real-buffer-linear-exe
+Build of product 'D-real-buffer-linear-exe' complete! (7.65s)
+D viaHelper: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)
+D direct: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)

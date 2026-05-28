@@ -1,0 +1,16 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for debugging...
+[0/6] Write A-xmodule-exe-entitlement.plist
+[1/7] Write sources
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/9] Emitting module AConformerLib
+[6/9] Compiling AConformerLib Region.swift
+[7/11] Emitting module A_xmodule_exe
+[8/11] Compiling A_xmodule_exe main.swift
+[8/11] Write Objects.LinkFileList
+[9/11] Linking A-xmodule-exe
+[10/11] Applying A-xmodule-exe
+Build of product 'A-xmodule-exe' complete! (1.60s)
+A-xmodule: collect() = [10, 20, 30] (expect [10, 20, 30])

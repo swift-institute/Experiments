@@ -1,0 +1,44 @@
+[0/1] Planning build
+Building for production...
+[0/39] Write sources
+[39/40] Write swift-version--58304C5D6DBC2206.txt
+[41/46] Compiling Affine_Primitive Affine.swift
+[42/46] Compiling Sequence_Primitive Sequence.swift
+[43/46] Compiling Iterator_Once_Primitives Iterator.Once.swift
+[44/46] Compiling Iterator_Witness_Primitives Iteration.swift
+[45/46] Compiling Ordinal_Primitive Ordinal.swift
+[46/53] Compiling Ordinal_Carrier_Primitives Ordinal+Carrier.swift
+[47/53] Compiling Ordinal_Hash_Primitives Ordinal+Hash.Protocol.swift
+[48/53] Compiling Ordinal_Equation_Primitives Ordinal+Equation.Protocol.swift
+[49/53] Compiling Ordinal_Error_Primitives Ordinal.Error.swift
+[50/53] Compiling Ordinal_Comparison_Primitives Ordinal+Comparison.Protocol.swift
+[51/53] Compiling Affine_Discrete_Primitives Affine.Discrete.Ratio.swift
+[52/53] Compiling Ordinal_Protocol_Primitives Ordinal.Protocol.swift
+[53/60] Compiling Affine_Composition_Primitives Affine.Discrete.Ratio+Composition.swift
+[54/60] Compiling Affine_Equation_Primitives Affine.Discrete.Vector+Equation.Protocol.swift
+[55/60] Compiling Affine_Hash_Primitives Affine.Discrete.Vector+Hash.Protocol.swift
+[56/60] Compiling Affine_Comparison_Primitives Affine.Discrete.Vector+Comparison.Protocol.swift
+[57/60] Compiling Affine_Carrier_Primitives Affine.Discrete.Vector+Carrier.swift
+[58/60] Compiling Ordinal_Predecessor_Primitives Ordinal.Predecessor.swift
+[59/64] Compiling Ordinal_Successor_Primitives Ordinal.Successor.swift
+[60/64] Compiling Ordinal_Retreat_Primitives Ordinal.Retreat.swift
+[61/64] Compiling Ordinal_Cardinal_Primitives Cardinal+Ordinal.swift
+[62/64] Compiling Ordinal_Distance_Primitives Ordinal.Distance.swift
+[63/64] Compiling Ordinal_Advance_Primitives Ordinal.Advance.swift
+[64/65] Compiling Ordinal_Tagged_Primitives Tagged+Ordinal.swift
+[65/66] Compiling Standard_Library_Extensions Actor.swift
+[66/66] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[67/68] Compiling Ordinal_Primitives exports.swift
+[68/71] Compiling Either_Primitives Either+Accessors.swift
+[69/72] Compiling Affine_Ordinal_Primitives Ordinal+Affine.swift
+[70/72] Compiling Affine_Quotient_Primitives Affine.Discrete.Ratio+QuotientAndRemainder.swift
+[71/72] Compiling Iterable Iterable+Contains.swift
+[72/73] Compiling Affine_Arithmetic_Primitives Affine.Discrete+Arithmetic.swift
+[73/73] Compiling Iterator_Primitives exports.swift
+[74/74] Compiling Affine_Tagged_Primitives Affine.Discrete.Ratio+Tagged.swift
+[75/75] Compiling Affine_Primitives_Standard_Library_Integration Affine.Discrete.Vector+AtomicRepresentable.swift
+[76/76] Compiling Affine_Primitives exports.swift
+[77/77] Compiling Index_Primitives Index.swift
+[78/78] Compiling Sequence_Protocol_Primitives Sequenceable+Count.swift
+[79/79] Compiling oq2_owned_cursor main.swift
+Build of target: 'oq2-owned-cursor' complete! (3.68s)

@@ -1,0 +1,140 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for production...
+[0/61] Write sources
+[65/68] Write swift-version--58304C5D6DBC2206.txt
+[67/72] Compiling Algebra_Primitive Algebra.swift
+[68/72] Compiling Storage_Primitive Storage.swift
+[69/72] Compiling Property_Primitives_Core Property+Carrier.swift
+[70/72] Compiling Bit_Primitives_Core Bit.Order.swift
+[71/80] Compiling Storage_Accessor_Primitives Storage.Copy.swift
+[72/80] Compiling Algebra_Iso_Primitives Algebra.Iso.swift
+[73/80] Compiling Storage_Error_Primitives Storage.Error.swift
+[74/80] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[75/80] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[76/80] Compiling Bit_Boolean_Primitives Bit Boolean Operations.swift
+[77/80] Compiling Property_Typed_Primitives Property.Typed.swift
+[78/80] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[79/81] Compiling Property_Primitives exports.swift
+[80/89] Compiling Storage_Protocol_Primitives Storage.Protocol.swift
+[81/89] Compiling Sequence_First_Primitives Sequence.First+Property.Inout.swift
+[82/89] Compiling Sequence_Satisfies_Primitives Sequence.Satisfies+Property.Inout.swift
+[83/89] Compiling Sequence_Reduce_Primitives Sequence.Reduce+Property.Inout.swift
+[84/89] Compiling Storage_Initialization_Primitives Storage.Initialization+ops.swift
+[85/91] Compiling Sequence_Map_Primitives Sequence.CompactMap.swift
+[86/94] Compiling Sequence_Iterator_Primitives Sequence.Iterator.Protocol.swift
+[87/95] Compiling Sequence_Drain_Primitives Sequence.Drain+Property.Inout.swift
+[88/95] Compiling Sequence_Contains_Primitives Sequence.Contains+Property.Inout.swift
+[89/95] Compiling Sequence_Prefix_Primitives Sequence.Prefix.First.Iterator.swift
+[90/95] Compiling Sequence_Filter_Primitives Sequence.Filter.Iterator.swift
+[91/96] Compiling Sequence_Consume_Primitives Sequence.Consume.View.swift
+[92/101] Compiling Sequence_Clearable_Primitives Sequence.Clearable.swift
+[93/101] Compiling Sequence_Borrowing_Primitives Sequence.Borrowing.Protocol.swift
+[94/101] Compiling Sequence_Drop_Primitives Sequence.Drop.First.Iterator.swift
+[95/101] Compiling Memory_Address_Primitives Memory+Affine.Discrete.Ratio.swift
+[96/101] Compiling Range_Primitives Swift.Range+AllSatisfy.swift
+[97/104] Compiling Pair_Primitives Pair+BitwiseCopyable.swift
+[98/107] Compiling Sequence_Span_Primitives Sequence.Span+Property.Inout.swift
+/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Span Primitives/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+  1 | public import Index_Primitives
+  2 | public import Property_Primitives
+    |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+  3 | public import Sequence_Borrowing_Primitives
+  4 | 
+[99/107] Compiling Sequence_ForEach_Primitives Sequence.ForEach+Property.Inout.swift
+[100/107] Compiling Sequence_Primitives_Standard_Library_Integration Sequenceable+Swift.Sequence.swift
+[101/108] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/Carrier+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Cardinal_Primitives
+13 | public import Carrier_Primitives
+   |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+14 | 
+15 | // MARK: - Cardinal Shift Operators on Carrier<FixedWidthInteger>
+
+/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/FixedWidthInteger+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Cardinal_Primitives
+13 | public import Carrier_Primitives
+   |        `- warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+14 | 
+15 | // MARK: - Cardinal Shift Operators
+[102/109] Compiling Algebra_Polarity_Primitives Polarity.swift
+[103/109] Compiling Algebra_Sign_Primitives Sign.swift
+[104/109] Compiling Algebra_Parity_Primitives Parity.swift
+[105/110] Compiling Algebra_Monotonicity_Primitives Monotonicity.swift
+[106/110] Compiling Algebra_Ternary_Primitives Ternary.swift
+[107/110] Compiling Sequence_Difference_Primitives Sequence.Difference+core.swift
+[108/111] Compiling Algebra_Primitives exports.swift
+[109/112] Compiling Finite_Primitives_Core Bound.swift
+[110/113] Compiling Sequence_Primitives exports.swift
+[111/113] Compiling Algebra_Magma_Primitives Algebra.Magma.swift
+[112/114] Compiling Algebra_Semigroup_Primitives Algebra.Semigroup+Magma.swift
+[113/115] Compiling Algebra_Monoid_Primitives Algebra.Monoid+Bool.swift
+[114/117] Compiling Algebra_Semiring_Primitives Algebra.Semiring+Bool.swift
+[115/117] Compiling Algebra_Group_Primitives Algebra.Group+Monoid.swift
+[116/119] Compiling Algebra_Ring_Primitives Algebra.Ring+Convenience.swift
+[117/120] Compiling Finite_Primitives Algebra.Group+Bound.swift
+[118/120] Compiling Algebra_Field_Primitives Algebra.Field+Convenience.swift
+[119/121] Compiling Bit_Field_Primitives Algebra.Field+Bit.swift
+[120/122] Compiling Bit_Primitives Bit+Comparison.Protocol.swift
+[121/124] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
+/Users/coen/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+13 | public import Byte_Primitives
+14 | public import Index_Primitives
+15 | public import Ordinal_Primitives
+   |        `- warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+16 | 
+17 | extension Bit.Index {
+[122/125] Compiling Memory_Shift_Primitives Memory.Shift+Cardinal.Protocol.swift
+[123/125] Compiling Bit_Pack_Primitives Bit.Index+Pack.swift
+[124/127] Compiling Memory_Alignment_Primitives Memory.Aligned.swift
+[125/128] Compiling Bit_Vector_Primitives_Core Bit.Vector+Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
+183 |     @inlinable
+184 |     public mutating func all() {
+185 |         unsafe Base.setAll(&base.value)
+    |         `- warning: no unsafe operations occur within 'unsafe' expression
+186 |     }
+187 | }
+
+/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
+191 |     @inlinable
+192 |     public mutating func all() {
+193 |         unsafe Base.clearAll(&base.value)
+    |         `- warning: no unsafe operations occur within 'unsafe' expression
+194 |     }
+195 | }
+[126/128] Compiling Memory_Primitives_Standard_Library_Integration Memory+Array.swift
+[127/130] Compiling Bit_Vector_Static_Primitives Bit.Vector.Ones.Static.Iterator.swift
+[128/130] Compiling Storage_Heap_Primitives Storage.Heap Copyable.swift
+/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Heap Primitives/Storage.Heap.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+ 11 | 
+ 12 | public import Storage_Primitive
+ 13 | public import Index_Primitives
+    |        `- warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+ 14 | import Affine_Primitives_Standard_Library_Integration
+ 15 | import Ordinal_Primitives_Standard_Library_Integration
+[129/131] Compiling Storage_Inline_Primitives Storage.Inline Copyable.swift
+/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline.swift:135:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+133 |             for bitIndex in _slots.ones {
+134 |                 let slot = bitIndex.retag(Element.self)
+135 |                 unsafe withUnsafePointer(to: _storage) { base in
+    |                        `- warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+136 |                     unsafe UnsafeMutableRawPointer(mutating: UnsafeRawPointer(base))
+137 |                         .advanced(by: Index<Element>.Offset(fromZero: slot) * .stride)
+[130/132] Compiling D_real_buffer_linear_lib Conformance.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+17 | public import Memory_Cursor_Primitives
+18 | public import Sequence_Protocol_Primitives
+19 | public import Sequence_Hint_Primitives
+   |        `- warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+20 | import Index_Primitives
+21 | import Ordinal_Primitives
+[131/133] Compiling D_real_buffer_linear_exe main.swift
+[131/133] Write Objects.LinkFileList
+[132/133] Linking D-real-buffer-linear-exe
+Build of product 'D-real-buffer-linear-exe' complete! (6.62s)
+D viaHelper: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)
+D direct: RawRegion<Int,8>(@_rawLayout).collect().count = 8 (expect 8)

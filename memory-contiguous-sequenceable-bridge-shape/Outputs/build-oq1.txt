@@ -1,0 +1,6 @@
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Compiling oq1_chunk_floor main.swift
+[4/4] Emitting module oq1_chunk_floor
+Build of target: 'oq1-chunk-floor' complete! (0.59s)

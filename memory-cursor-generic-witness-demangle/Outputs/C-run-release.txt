@@ -1,0 +1,11 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling C_institute_bridge_concrete main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking C-institute-bridge-concrete
+Build of product 'C-institute-bridge-concrete' complete! (1.77s)
+C: collect() = [10, 20, 30] (expect [10, 20, 30])

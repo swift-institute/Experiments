@@ -1,0 +1,38 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[0/6] Write A-xmodule-exe-entitlement.plist
+[0/6] Write sources
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/12] Compiling AConformerLib Region.swift
+[6/12] Emitting module AConformerLib
+[7/12] Compiling AConformerLib RegionValueGeneric.swift
+[8/12] Compiling AConformerLib RegionDual.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionDual.swift:22:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+20 | public import Memory_Contiguous_Primitives
+21 | public import Memory_Cursor_Primitives
+22 | public import Memory_Sequence_Primitives
+   |        `- warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+23 | public import Sequence_Protocol_Primitives
+24 | public import Iterable
+[9/12] Compiling AConformerLib RegionBridgeDefault.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionBridgeDefault.swift:17:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+15 | public import Memory_Contiguous_Primitives
+16 | public import Memory_Cursor_Primitives
+17 | public import Memory_Sequence_Primitives  // the bridge — supplies the default makeIterator()
+   |        `- warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+18 | public import Sequence_Protocol_Primitives
+19 | 
+[10/14] Compiling A_xmodule_exe main.swift
+[11/14] Emitting module A_xmodule_exe
+[11/14] Write Objects.LinkFileList
+[12/14] Linking A-xmodule-exe
+[13/14] Applying A-xmodule-exe
+Build of product 'A-xmodule-exe' complete! (1.99s)
+A-xmodule: collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity fixed=8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity generic, =8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule DUAL (Iterable+Sequenceable @_implements): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule BRIDGE-DEFAULT (cross-module default witness): collect() = [10, 20, 30] (expect [10, 20, 30])

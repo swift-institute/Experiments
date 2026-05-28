@@ -1,0 +1,57 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version-466F05F4537467F9.txt
+[3/5] Compiling B_handrolled_bare_generic main.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:34:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 32 | //     Element ~Copyable & ~Escapable). ---
+ 33 | protocol Iter<Element>: ~Copyable, ~Escapable {
+ 34 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 35 |     // @_lifetime(&self): mirror of Iterator.`Protocol`.next(); the ~Escapable Element
+ 36 |     // result ties its lifetime to self.
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:34:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 32 | //     Element ~Copyable & ~Escapable). ---
+ 33 | protocol Iter<Element>: ~Copyable, ~Escapable {
+ 34 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 35 |     // @_lifetime(&self): mirror of Iterator.`Protocol`.next(); the ~Escapable Element
+ 36 |     // result ties its lifetime to self.
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:46:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 44 | //     so a ~Copyable cursor witness (Cursor) satisfies it. ---
+ 45 | protocol Seq<Element>: ~Copyable, ~Escapable {
+ 46 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 47 |     associatedtype Iterator: Iter, ~Copyable, ~Escapable where Iterator.Element == Element
+ 48 |     @_lifetime(copy self)
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:46:29: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 44 | //     so a ~Copyable cursor witness (Cursor) satisfies it. ---
+ 45 | protocol Seq<Element>: ~Copyable, ~Escapable {
+ 46 |     associatedtype Element: ~Copyable & ~Escapable
+    |                             `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 47 |     associatedtype Iterator: Iter, ~Copyable, ~Escapable where Iterator.Element == Element
+ 48 |     @_lifetime(copy self)
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:47:36: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 45 | protocol Seq<Element>: ~Copyable, ~Escapable {
+ 46 |     associatedtype Element: ~Copyable & ~Escapable
+ 47 |     associatedtype Iterator: Iter, ~Copyable, ~Escapable where Iterator.Element == Element
+    |                                    `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 48 |     @_lifetime(copy self)
+ 49 |     consuming func makeIterator() -> Iterator
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/B-handrolled-bare-generic/main.swift:47:47: warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 45 | protocol Seq<Element>: ~Copyable, ~Escapable {
+ 46 |     associatedtype Element: ~Copyable & ~Escapable
+ 47 |     associatedtype Iterator: Iter, ~Copyable, ~Escapable where Iterator.Element == Element
+    |                                               `- warning: experimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-0503 for the official version
+ 48 |     @_lifetime(copy self)
+ 49 |     consuming func makeIterator() -> Iterator
+[3/5] Write Objects.LinkFileList
+[4/5] Linking B-handrolled-bare-generic
+Build of product 'B-handrolled-bare-generic' complete! (2.07s)
+B: collect() = [10, 20, 30] (expect [10, 20, 30])

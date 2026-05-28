@@ -1,0 +1,8 @@
+Building for debugging...
+[0/5] Write B-handrolled-bare-generic-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking B-handrolled-bare-generic
+[4/5] Applying B-handrolled-bare-generic
+Build of product 'B-handrolled-bare-generic' complete! (0.23s)
+B: collect() = [10, 20, 30] (expect [10, 20, 30])

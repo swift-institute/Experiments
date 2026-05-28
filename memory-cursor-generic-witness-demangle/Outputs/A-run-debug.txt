@@ -1,0 +1,8 @@
+Building for debugging...
+[0/5] Write A-institute-bridge-generic-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking A-institute-bridge-generic
+[4/5] Applying A-institute-bridge-generic
+Build of product 'A-institute-bridge-generic' complete! (0.30s)
+A: collect() = [10, 20, 30] (expect [10, 20, 30])

@@ -1,0 +1,24 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Compiling D_real_buffer_linear_lib Conformance.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:36:13: warning: variable 's' was never mutated; consider changing to 'let' constant
+34 |     // associated-type WITNESS, not element count, so a full span is faithful.
+35 |     public init(fill value: Element) {
+36 |         var s = Storage<Element>.Inline<capacity>()
+   |             `- warning: variable 's' was never mutated; consider changing to 'let' constant
+37 |         for i in 0..<capacity {
+38 |             let slot = Index<Element>.Bounded<capacity>(Index<Element>(Ordinal(UInt(i))))!
+
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+17 | public import Memory_Cursor_Primitives
+18 | public import Sequence_Protocol_Primitives
+19 | public import Sequence_Hint_Primitives
+   |        `- warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+20 | import Index_Primitives
+21 | import Ordinal_Primitives
+[4/4] Emitting module D_real_buffer_linear_lib
+Build of target: 'D-real-buffer-linear-lib' complete! (2.09s)

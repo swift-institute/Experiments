@@ -1,0 +1,51 @@
+Building for production...
+[0/48] Write sources
+[47/48] Write swift-version--58304C5D6DBC2206.txt
+[49/55] Compiling Ownership_Primitive Ownership.swift
+[50/55] Compiling Hash_Primitive Hash.swift
+[51/55] Compiling Iterator_Primitive Iterator.swift
+[52/55] Compiling Equation_Primitive Equation.swift
+[53/55] Compiling Carrier_Primitive Carrier.swift
+[54/59] Compiling Cardinal_Primitive Cardinal.swift
+[55/59] Compiling Iterator_Protocol Iterating.swift
+[56/59] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[57/59] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[58/59] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[59/60] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[60/62] Compiling Cardinal_Error_Primitives Cardinal.Error.swift
+[61/62] Compiling Carrier_Primitives exports.swift
+[62/66] Compiling Cardinal_Carrier_Primitives Cardinal+Carrier.swift
+[63/66] Compiling Property_Primitives_Core Property+Carrier.swift
+[64/66] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[65/66] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[66/68] Compiling Carrier_Primitives_Standard_Library_Integration Bool+Carrier.swift
+[67/70] Compiling Property_Typed_Primitives Property.Typed.swift
+[68/72] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[69/72] Compiling Hash_Value_Primitives Hash.Value.swift
+[70/73] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[71/73] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[72/73] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[73/74] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[74/75] Compiling Property_Primitives exports.swift
+[75/78] Compiling Equation_Primitives exports.swift
+[76/78] Compiling Cardinal_Subtract_Primitives Cardinal.Subtract.swift
+[77/78] Compiling Cardinal_Add_Primitives Cardinal.Add.swift
+[78/81] Compiling Cardinal_Equation_Primitives Cardinal+Equation.Protocol.swift
+[79/81] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+[80/82] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+AtomicRepresentable.swift
+[81/82] Compiling Hash_Protocol_Primitives Hash.Protocol.swift
+[82/87] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Add.swift
+[83/87] Compiling Hash_Tagged_Primitives Hash.Protocol+Tagged.swift
+[84/87] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[85/87] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[86/88] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[87/89] Compiling Cardinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[88/89] Compiling Hash_Primitives exports.swift
+[89/89] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[90/91] Compiling Comparison_Primitives exports.swift
+[91/91] Compiling Cardinal_Hash_Primitives Cardinal+Hash.Protocol.swift
+[92/92] Compiling Cardinal_Comparison_Primitives Cardinal+Comparison.Protocol.swift
+[93/93] Compiling Cardinal_Primitives exports.swift
+[94/94] Compiling Iterator_Chunk_Primitives Iterator.Chunk.Protocol.swift
+[95/95] Compiling oq1_chunk_floor main.swift
+Build of target: 'oq1-chunk-floor' complete! (3.12s)

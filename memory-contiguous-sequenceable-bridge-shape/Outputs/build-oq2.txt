@@ -1,0 +1,571 @@
+Fetching /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.43s)
+Fetching /Users/coen/Developer/swift-primitives/swift-cardinal-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-cardinal-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-either-primitives
+Fetched /Users/coen/Developer/swift-primitives/swift-either-primitives from cache (0.20s)
+Fetching /Users/coen/Developer/swift-primitives/swift-property-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-property-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-index-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-index-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache (0.45s)
+Fetching /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-hash-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-hash-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-comparison-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-comparison-primitives from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
+Fetched /Users/coen/Developer/swift-primitives/swift-standard-library-extensions from cache (0.04s)
+Fetching /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache (1.24s)
+Fetching /Users/coen/Developer/swift-primitives/swift-ordinal-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-ordinal-primitives from cache (0.05s)
+Fetching /Users/coen/Developer/swift-primitives/swift-affine-primitives
+Fetched /Users/coen/Developer/swift-primitives/swift-affine-primitives from cache (0.04s)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-cardinal-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-cardinal-primitives resolved at main (9b2150c)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-index-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-index-primitives resolved at main (71b57d1)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-property-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-property-primitives resolved at main (d57d864)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-tagged-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-tagged-primitives resolved at main (3a16455)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-ownership-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-ownership-primitives resolved at main (04604c4)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-affine-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-affine-primitives resolved at main (4a909e8)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-hash-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-hash-primitives resolved at main (19de5bc)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
+Working copy of /Users/coen/Developer/swift-primitives/swift-standard-library-extensions resolved at main (58443ba)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-comparison-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-comparison-primitives resolved at main (2de8bee)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-either-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-either-primitives resolved at main (58b3336)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-equation-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-equation-primitives resolved at main (7cfea6f)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-ordinal-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-ordinal-primitives resolved at main (e46b3b7)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-carrier-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (4f9fc57)
+Building for debugging...
+[0/86] Write sources
+[85/86] Write swift-version--58304C5D6DBC2206.txt
+[87/172] Emitting module Ordinal_Primitive
+[88/182] Compiling Ownership_Primitive Ownership.swift
+[89/182] Emitting module Ownership_Primitive
+[90/182] Compiling Sequence_Primitive Sequence.swift
+[91/182] Emitting module Sequence_Primitive
+[92/182] Emitting module Iterator_Primitive
+[93/182] Compiling Iterator_Primitive Iterator.swift
+[94/182] Emitting module Equation_Primitive
+[95/182] Compiling Equation_Primitive Equation.swift
+[96/182] Compiling Comparison_Primitive Comparison+Reversal.swift
+[97/182] Compiling Sequence_Primitive exports.swift
+[98/182] Compiling Comparison_Primitive Comparison+Chaining.swift
+[99/182] Emitting module Comparison_Primitive
+[100/182] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[101/182] Compiling Hash_Primitive Hash.swift
+[102/182] Emitting module Hash_Primitive
+[103/189] Compiling Ordinal_Primitive Ordinal.swift
+[104/194] Emitting module Carrier_Primitive
+[105/194] Compiling Carrier_Primitive Carrier.swift
+[106/194] Compiling Iterator_Protocol Iterator.Protocol.swift
+[107/194] Compiling Iterator_Protocol Iterating.swift
+[108/194] Emitting module Iterator_Protocol
+[109/194] Compiling Iterator_Protocol exports.swift
+[110/196] Compiling Ownership_Inout_Primitives exports.swift
+[111/196] Emitting module Ownership_Inout_Primitives
+[112/196] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[113/198] Compiling Equation_Protocol_Primitives exports.swift
+[114/198] Emitting module Equation_Protocol_Primitives
+[115/198] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[116/200] Compiling Affine_Primitive Affine.swift
+[117/200] Emitting module Affine_Primitive
+[118/200] Compiling Cardinal_Primitive Cardinal.swift
+[119/200] Emitting module Cardinal_Primitive
+[120/200] Compiling Comparison_Primitive Comparison.swift
+[121/214] Compiling Carrier_Protocol _CarrierProtocol.swift
+[122/215] Compiling Carrier_Protocol Carrying.swift
+[123/215] Compiling Carrier_Protocol Carrier.Protocol.swift
+[124/215] Compiling Iterator_Witness_Primitives exports.swift
+[125/215] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self.swift
+[126/215] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Escapable.swift
+[127/218] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[128/218] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Copyable & ~Escapable.swift
+[129/218] Emitting module Carrier_Protocol
+[130/218] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Copyable.swift
+[131/221] Compiling Carrier_Protocol exports.swift
+[132/221] Compiling Iterator_Witness_Primitives Iterator.repeating.swift
+[133/241] Emitting module Iterator_Witness_Primitives
+[134/241] Compiling Iterator_Witness_Primitives Iterator.Witness.swift
+[135/241] Compiling Iterator_Witness_Primitives Iteration.swift
+[136/241] Compiling Ordinal_Error_Primitives Ordinal.Error.swift
+[137/241] Emitting module Ordinal_Error_Primitives
+[138/241] Emitting module Iterator_Once_Primitives
+[139/241] Compiling Iterator_Once_Primitives exports.swift
+[140/241] Compiling Iterator_Once_Primitives Iterator.Once.swift
+[141/243] Emitting module Cardinal_Error_Primitives
+[142/243] Compiling Cardinal_Error_Primitives exports.swift
+[143/243] Compiling Cardinal_Error_Primitives Cardinal.Error.swift
+[144/243] Compiling Standard_Library_Extensions KeyPath.swift
+[145/243] Compiling Standard_Library_Extensions LazyCollection.swift
+[146/243] Compiling Standard_Library_Extensions LazyDropWhileSequence.swift
+[147/243] Compiling Standard_Library_Extensions LazyFilterSequence.swift
+[148/243] Compiling Standard_Library_Extensions LazyMapSequence.swift
+[149/243] Compiling Standard_Library_Extensions LazyPrefixWhileSequence.swift
+[150/243] Compiling Standard_Library_Extensions LazySequence.swift
+[151/243] Compiling Standard_Library_Extensions ManagedBuffer.swift
+[152/243] Compiling Standard_Library_Extensions Mirror.swift
+[153/243] Compiling Standard_Library_Extensions Never.swift
+[154/243] Compiling Standard_Library_Extensions Numeric.swift
+[155/243] Compiling Standard_Library_Extensions Result.Builder.swift
+[156/243] Compiling Standard_Library_Extensions Result.swift
+[157/243] Compiling Standard_Library_Extensions ReversedCollection.swift
+[158/243] Compiling Standard_Library_Extensions Sequence.swift
+[159/243] Compiling Standard_Library_Extensions Set String.swift
+[160/243] Compiling Standard_Library_Extensions Set.Builder.swift
+[161/243] Compiling Standard_Library_Extensions Set.swift
+[162/243] Compiling Standard_Library_Extensions Slice.swift
+[163/243] Compiling Standard_Library_Extensions Span.swift
+[164/243] Compiling Standard_Library_Extensions StaticString.swift
+[165/243] Compiling Standard_Library_Extensions StrideThrough.swift
+[166/243] Compiling Standard_Library_Extensions Actor.swift
+[167/243] Compiling Standard_Library_Extensions AdditiveArithmetic.swift
+[168/243] Compiling Standard_Library_Extensions AnyBidirectionalCollection.swift
+[169/243] Compiling Standard_Library_Extensions AnyCollection.swift
+[170/243] Compiling Standard_Library_Extensions AnyHashable.swift
+[171/243] Compiling Standard_Library_Extensions AnyIterator.swift
+[172/243] Compiling Standard_Library_Extensions AnyRandomAccessCollection.swift
+[173/243] Compiling Standard_Library_Extensions AnySequence.swift
+[174/243] Compiling Standard_Library_Extensions Array.Builder.swift
+[175/243] Compiling Standard_Library_Extensions Array.swift
+[176/243] Compiling Standard_Library_Extensions ArraySlice.Builder.swift
+[177/254] Emitting module Carrier_Primitives
+[178/254] Compiling Carrier_Primitives exports.swift
+[179/254] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.UnsafeMutableRawPointer.swift
+[180/254] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.UnsafePointer.swift
+[181/256] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[182/256] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.ArraySlice.swift
+[183/256] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.CollectionOfOne.swift
+[184/263] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.UnsafeMutableBufferPointer.swift
+[185/263] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.UnsafeMutablePointer.swift
+[186/270] Compiling Cardinal_Carrier_Primitives exports.swift
+[187/293] Compiling Cardinal_Carrier_Primitives Cardinal+Carrier.swift
+[188/297] Compiling Ordinal_Carrier_Primitives Ordinal+Carrier.swift
+[189/297] Emitting module Cardinal_Carrier_Primitives
+[190/297] Compiling Carrier_Primitives_Standard_Library_Integration Duration+Carrier.swift
+[191/297] Compiling Carrier_Primitives_Standard_Library_Integration Float+Carrier.swift
+[192/297] Compiling Carrier_Primitives_Standard_Library_Integration Float16+Carrier.swift
+[193/297] Compiling Carrier_Primitives_Standard_Library_Integration StaticString+Carrier.swift
+[194/297] Compiling Carrier_Primitives_Standard_Library_Integration UInt16+Carrier.swift
+[195/297] Emitting module Ordinal_Carrier_Primitives
+[196/297] Compiling Carrier_Primitives_Standard_Library_Integration MutableRawSpan+Carrier.swift
+[197/297] Compiling Carrier_Primitives_Standard_Library_Integration MutableSpan+Carrier.swift
+[198/297] Compiling Carrier_Primitives_Standard_Library_Integration Never+Carrier.swift
+[199/297] Compiling Carrier_Primitives_Standard_Library_Integration Bool+Carrier.swift
+[200/297] Compiling Carrier_Primitives_Standard_Library_Integration Carrier+Bitwise.swift
+[201/297] Compiling Carrier_Primitives_Standard_Library_Integration Character+Carrier.swift
+[202/297] Compiling Carrier_Primitives_Standard_Library_Integration Int32+Carrier.swift
+[203/297] Compiling Carrier_Primitives_Standard_Library_Integration Int64+Carrier.swift
+[204/297] Compiling Carrier_Primitives_Standard_Library_Integration Int8+Carrier.swift
+[205/297] Emitting module Property_Primitives_Core
+[206/297] Compiling Property_Primitives_Core exports.swift
+[207/297] Compiling Property_Primitives_Core Property+Carrier.swift
+[208/297] Compiling Property_Primitives_Core Property.swift
+[209/297] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[213/297] Compiling Carrier_Primitives_Standard_Library_Integration Double+Carrier.swift
+[214/297] Compiling Carrier_Primitives_Standard_Library_Integration Int128+Carrier.swift
+[215/297] Compiling Carrier_Primitives_Standard_Library_Integration Int16+Carrier.swift
+[221/297] Emitting module Standard_Library_Extensions
+[230/300] Compiling Standard_Library_Extensions ArraySlice.swift
+[231/300] Compiling Standard_Library_Extensions Bool.Builder.swift
+[232/300] Compiling Standard_Library_Extensions Bool.swift
+[233/300] Compiling Standard_Library_Extensions Character.swift
+[234/300] Compiling Standard_Library_Extensions ClosedRange.swift
+[235/300] Compiling Standard_Library_Extensions Collection.swift
+[236/300] Compiling Standard_Library_Extensions CollectionOfOne.Builder.swift
+[237/300] Compiling Standard_Library_Extensions CollectionOfOne.swift
+[238/300] Compiling Standard_Library_Extensions CommandLine.swift
+[239/300] Compiling Standard_Library_Extensions Comparable.swift
+[240/300] Compiling Standard_Library_Extensions ContiguousArray.Builder.swift
+[241/300] Compiling Standard_Library_Extensions ObjectIdentifier.swift
+[242/300] Compiling Standard_Library_Extensions OpaquePointer.swift
+[243/300] Compiling Standard_Library_Extensions Optional.Builder.swift
+[244/300] Compiling Standard_Library_Extensions Optional.swift
+[245/300] Compiling Standard_Library_Extensions PartialRangeFrom.swift
+[246/300] Compiling Standard_Library_Extensions PartialRangeThrough.swift
+[247/300] Compiling Standard_Library_Extensions PartialRangeUpTo.swift
+[248/300] Compiling Standard_Library_Extensions Range.Builder.swift
+[249/300] Compiling Standard_Library_Extensions Range.swift
+[250/300] Compiling Standard_Library_Extensions RangeReplaceableCollection.swift
+[251/300] Compiling Standard_Library_Extensions Repeated.swift
+[256/300] Compiling Carrier_Primitives_Standard_Library_Integration Int+Carrier.swift
+[257/300] Compiling Carrier_Primitives_Standard_Library_Integration ObjectIdentifier+Carrier.swift
+[258/300] Compiling Carrier_Primitives_Standard_Library_Integration RawSpan+Carrier.swift
+[259/300] Compiling Carrier_Primitives_Standard_Library_Integration Span+Carrier.swift
+[262/300] Compiling Carrier_Primitives_Standard_Library_Integration UInt32+Carrier.swift
+[269/300] Compiling Carrier_Primitives_Standard_Library_Integration UInt64+Carrier.swift
+[270/300] Compiling Carrier_Primitives_Standard_Library_Integration String+Carrier.swift
+[271/300] Compiling Carrier_Primitives_Standard_Library_Integration Substring+Carrier.swift
+[272/300] Compiling Carrier_Primitives_Standard_Library_Integration UInt+Carrier.swift
+[273/300] Compiling Carrier_Primitives_Standard_Library_Integration UInt128+Carrier.swift
+[278/300] Emitting module Equation_Primitives_Standard_Library_Integration
+[279/300] Compiling Tagged_Primitives Tagged+CustomStringConvertible.swift
+[280/300] Emitting module Tagged_Primitives
+[281/300] Compiling Tagged_Primitives Tagged.swift
+[282/300] Compiling Standard_Library_Extensions UnsafeMutableRawBufferPointer.swift
+[283/300] Compiling Standard_Library_Extensions UnsafeMutableRawPointer.swift
+[284/300] Compiling Standard_Library_Extensions UnsafePointer.swift
+[285/300] Compiling Standard_Library_Extensions UnsafeRawBufferPointer.swift
+[286/300] Compiling Standard_Library_Extensions UnsafeRawPointer.swift
+[287/300] Compiling Standard_Library_Extensions Zip2Sequence.swift
+[288/300] Compiling Standard_Library_Extensions withCheckedContinuation.swift
+[289/300] Compiling Standard_Library_Extensions withTaskCancellationHandler.swift
+[290/300] Compiling Standard_Library_Extensions withUnsafeContinuation.swift
+[291/300] Compiling Standard_Library_Extensions withUnsafePointer.swift
+[292/300] Compiling Standard_Library_Extensions withUnsafeTemporaryAllocation.swift
+[293/300] Compiling Carrier_Primitives_Standard_Library_Integration UInt8+Carrier.swift
+[294/300] Compiling Carrier_Primitives_Standard_Library_Integration Unicode.Scalar+Carrier.swift
+[295/300] Compiling Carrier_Primitives_Standard_Library_Integration exports.swift
+[300/313] Emitting module Property_Typed_Primitives
+[301/313] Compiling Property_Typed_Primitives exports.swift
+[302/313] Compiling Property_Typed_Primitives Property.Typed.swift
+[303/319] Emitting module Carrier_Primitives_Standard_Library_Integration
+[304/319] Compiling Hash_Value_Primitives exports.swift
+[305/319] Compiling Hash_Value_Primitives Hash.Value.swift
+[306/319] Emitting module Hash_Value_Primitives
+[307/325] Compiling Ownership_Borrow_Primitives exports.swift
+[308/325] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[309/325] Compiling Property_Consume_Primitives exports.swift
+[310/325] Emitting module Property_Consume_Primitives
+[311/325] Compiling Property_Consume_Primitives Property.Consume.swift
+[312/325] Compiling Ownership_Borrow_Primitives __Ownership_Borrow_Protocol.swift
+[313/331] Compiling Ownership_Borrow_Primitives Tagged+Ownership.Borrow.Protocol.swift
+[314/331] Compiling Ownership_Borrow_Primitives _Ownership_Borrow_OwnedBuffer.swift
+[315/333] Emitting module Ownership_Borrow_Primitives
+[316/333] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[317/333] Compiling Equation_Tagged_Primitives exports.swift
+[318/333] Emitting module Equation_Tagged_Primitives
+[319/333] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[320/333] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.swift
+[321/333] Compiling Property_Inout_Primitives Property.Inout.Typed.swift
+[322/333] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[323/333] Emitting module Property_Inout_Primitives
+[324/333] Compiling Property_Inout_Primitives Property.Inout.swift
+[325/333] Compiling Property_Inout_Primitives exports.swift
+[326/338] Compiling Property_Borrow_Primitives exports.swift
+[327/338] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[328/338] Compiling Property_Borrow_Primitives Property.Borrow.Typed.swift
+[329/338] Emitting module Property_Borrow_Primitives
+[330/338] Compiling Property_Borrow_Primitives Property.Borrow.swift
+[331/340] Compiling Property_Primitives exports.swift
+[332/340] Emitting module Property_Primitives
+[333/348] Emitting module Equation_Primitives
+[334/348] Compiling Equation_Primitives exports.swift
+[335/348] Emitting module Cardinal_Subtract_Primitives
+[336/348] Compiling Cardinal_Subtract_Primitives Cardinal.Subtract.swift
+[337/348] Compiling Cardinal_Subtract_Primitives exports.swift
+[338/348] Compiling Cardinal_Add_Primitives exports.swift
+[339/348] Emitting module Cardinal_Add_Primitives
+[340/348] Compiling Cardinal_Add_Primitives Cardinal.Add.swift
+[341/360] Compiling Ordinal_Equation_Primitives Ordinal+Equation.Protocol.swift
+[342/360] Emitting module Ordinal_Equation_Primitives
+[343/360] Compiling Hash_Protocol_Primitives Hash.Protocol.swift
+[344/360] Emitting module Hash_Protocol_Primitives
+[345/360] Compiling Hash_Protocol_Primitives exports.swift
+[346/360] Compiling Comparison_Protocol_Primitives exports.swift
+[347/360] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+[348/360] Compiling Cardinal_Equation_Primitives Cardinal+Equation.Protocol.swift
+[349/360] Emitting module Cardinal_Equation_Primitives
+[350/360] Compiling Cardinal_Equation_Primitives exports.swift
+[351/360] Emitting module Comparison_Protocol_Primitives
+[352/360] Compiling Comparison_Protocol_Primitives Comparison.Protocol.swift
+[353/368] Emitting module Cardinal_Tagged_Primitives
+[354/368] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.swift
+[355/368] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Subtract.swift
+[356/368] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Add.swift
+[357/368] Compiling Cardinal_Tagged_Primitives exports.swift
+[358/378] Compiling Comparison_Tagged_Primitives exports.swift
+[359/378] Compiling Hash_Tagged_Primitives Hash.Protocol+Tagged.swift
+[360/378] Compiling Hash_Tagged_Primitives exports.swift
+[361/395] Compiling Comparison_Property_Primitives exports.swift
+[362/395] Compiling Comparison_Property_Primitives Comparison.Protocol+Property.Inout.swift
+[363/398] Emitting module Hash_Tagged_Primitives
+[364/398] Emitting module Comparison_Tagged_Primitives
+[365/398] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[366/398] Compiling Comparison_Property_Primitives Comparison.Compare.swift
+[367/398] Compiling Comparison_Property_Primitives Comparison.Clamp.swift
+[368/398] Compiling Comparison_Property_Primitives Comparison.Compare+Property.Inout.swift
+[369/398] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+Sequence.swift
+[370/398] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafeMutableRawPointer.swift
+[371/398] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafePointer.swift
+[372/398] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafeMutableBufferPointer.swift
+[373/398] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafeMutablePointer.swift
+[374/400] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[375/400] Emitting module Comparison_Property_Primitives
+[376/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.PartialRange.swift
+[377/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Range.swift
+[378/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Result.swift
+[379/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Hashable.swift
+[380/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.KeyValuePairs.swift
+[381/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Optional.swift
+[382/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[383/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.ArraySlice.swift
+[384/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.CollectionOfOne.swift
+[385/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.ReversedCollection.swift
+[386/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Set.swift
+[387/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafeBufferPointer.swift
+[388/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.ContiguousArray.swift
+[389/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Dictionary.swift
+[390/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.EmptyCollection.swift
+[391/400] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.UnsafeRawPointer.swift
+[392/400] Compiling Hash_Primitives_Standard_Library_Integration exports.swift
+[393/400] Emitting module Hash_Primitives_Standard_Library_Integration
+[394/400] Compiling Tagged_Primitives_Standard_Library_Integration exports.swift
+[395/400] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+LosslessStringConvertible.swift
+[396/419] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.ReversedCollection.swift
+[397/419] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafeBufferPointer.swift
+[398/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.ContiguousArray.swift
+[399/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.EmptyCollection.swift
+[400/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.KeyValuePairs.swift
+[401/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.Array.swift
+[402/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.ArraySlice.swift
+[403/421] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.CollectionOfOne.swift
+[404/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafeMutableBufferPointer.swift
+[405/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafeMutablePointer.swift
+[406/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafeMutableRawPointer.swift
+[407/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafePointer.swift
+[408/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.Optional.swift
+[409/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.PartialRange.swift
+[410/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.Range.swift
+[411/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[412/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Clamp+Swift.Comparable.swift
+[413/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Compare+Swift.Comparable.swift
+[414/423] Emitting module Comparison_Primitives_Standard_Library_Integration
+[415/423] Emitting module Hash_Primitives
+[416/423] Compiling Hash_Primitives exports.swift
+[417/423] Compiling Comparison_Primitives_Standard_Library_Integration Comparison.Protocol+Swift.UnsafeRawPointer.swift
+[418/423] Compiling Comparison_Primitives_Standard_Library_Integration exports.swift
+[419/430] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+Literals.swift
+[420/430] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+Collection.swift
+[421/430] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+Identifiable.swift
+[422/430] Emitting module Tagged_Primitives_Standard_Library_Integration
+[423/430] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+AtomicRepresentable.swift
+[424/430] Emitting module Comparison_Primitives
+[425/430] Compiling Comparison_Primitives exports.swift
+[426/430] Emitting module Cardinal_Hash_Primitives
+[427/430] Compiling Cardinal_Hash_Primitives exports.swift
+[428/430] Compiling Cardinal_Hash_Primitives Cardinal+Hash.Protocol.swift
+[429/430] Compiling Ordinal_Hash_Primitives Ordinal+Hash.Protocol.swift
+[430/430] Emitting module Ordinal_Hash_Primitives
+[431/470] Compiling Cardinal_Comparison_Primitives exports.swift
+[432/470] Compiling Either_Primitives Either+Swap.swift
+[433/470] Compiling Either_Primitives Either+StandardLibraryExtensions.Result.swift
+[434/470] Compiling Either_Primitives Either+Never.swift
+[435/471] Emitting module Cardinal_Comparison_Primitives
+[436/471] Compiling Cardinal_Comparison_Primitives Cardinal+Comparison.Protocol.swift
+[437/471] Emitting module Ordinal_Comparison_Primitives
+[438/471] Compiling Either_Primitives Either+Fold.swift
+[439/471] Compiling Either_Primitives Either+Hash.Protocol.swift
+[440/471] Compiling Ordinal_Comparison_Primitives Ordinal+Comparison.Protocol.swift
+[441/471] Compiling Either_Primitives Either+Map.swift
+[442/471] Compiling Cardinal_Primitives_Standard_Library_Integration RawSpan+Cardinal.swift
+[443/471] Compiling Cardinal_Primitives_Standard_Library_Integration Set+Cardinal.swift
+[444/471] Compiling Cardinal_Primitives_Standard_Library_Integration Span+Cardinal.swift
+[445/471] Compiling Cardinal_Primitives_Standard_Library_Integration Cardinal+ExpressibleByIntegerLiteral.swift
+[446/471] Compiling Cardinal_Primitives_Standard_Library_Integration Cardinal+UnsignedInteger.swift
+[447/471] Compiling Cardinal_Primitives_Standard_Library_Integration Collection+Cardinal.swift
+[448/471] Compiling Cardinal_Primitives_Standard_Library_Integration ContiguousArray+Cardinal.swift
+[449/473] Compiling Either_Primitives Either+Accessors.swift
+[450/474] Compiling Either_Primitives Either+Comparison.Protocol.swift
+[451/474] Compiling Either_Primitives Either+Equation.Protocol.swift
+[452/474] Compiling Either_Primitives Either+FlatMap.swift
+[453/474] Compiling Cardinal_Primitives_Standard_Library_Integration MutableSpan+Cardinal.swift
+[454/474] Compiling Cardinal_Primitives_Standard_Library_Integration OutputSpan+Cardinal.swift
+[455/474] Compiling Cardinal_Primitives_Standard_Library_Integration RangeReplaceableCollection+Cardinal.swift
+[462/474] Compiling Cardinal_Primitives_Standard_Library_Integration MutableRawSpan+Cardinal.swift
+[463/474] Emitting module Either_Primitives
+[464/474] Compiling Cardinal_Primitives_Standard_Library_Integration UnsafeBufferPointer+Cardinal.swift
+[465/474] Compiling Cardinal_Primitives_Standard_Library_Integration UnsafeMutableBufferPointer+Cardinal.swift
+[466/474] Compiling Cardinal_Primitives_Standard_Library_Integration UnsafeMutablePointer+Cardinal.swift
+[467/474] Compiling Cardinal_Primitives_Standard_Library_Integration String+Cardinal.swift
+[468/474] Compiling Cardinal_Primitives_Standard_Library_Integration Tagged+Int+Cardinal.swift
+[469/474] Compiling Cardinal_Primitives_Standard_Library_Integration UInt32+Cardinal.swift
+[470/474] Emitting module Cardinal_Primitives_Standard_Library_Integration
+[471/474] Compiling Either_Primitives Either.swift
+[472/474] Compiling Cardinal_Primitives_Standard_Library_Integration UnsafeMutableRawBufferPointer+Cardinal.swift
+[473/474] Compiling Cardinal_Primitives_Standard_Library_Integration UnsafeRawBufferPointer+Cardinal.swift
+[474/474] Compiling Cardinal_Primitives_Standard_Library_Integration exports.swift
+[475/483] Compiling Iterable Iterable+ForEach.swift
+[476/483] Compiling Iterable Iterable+Reduce.swift
+[477/483] Emitting module Iterable
+[478/483] Compiling Iterable Iterable.swift
+[479/483] Compiling Iterable exports.swift
+[480/483] Compiling Iterable Iterable+First.swift
+[481/483] Compiling Iterable Iterable+Contains.swift
+[482/483] Emitting module Cardinal_Primitives
+[483/483] Compiling Cardinal_Primitives exports.swift
+[484/496] Compiling Affine_Discrete_Primitives exports.swift
+[485/496] Compiling Affine_Discrete_Primitives Affine.Discrete.swift
+[486/496] Compiling Iterator_Chunk_Primitives exports.swift
+[487/496] Emitting module Ordinal_Protocol_Primitives
+[488/496] Compiling Ordinal_Protocol_Primitives Ordinal.Protocol.swift
+[489/496] Emitting module Affine_Discrete_Primitives
+[490/496] Compiling Iterator_Chunk_Primitives Iterator.Chunk.Protocol.swift
+[491/496] Compiling Iterator_Chunk_Primitives __IteratorChunkProtocol.swift
+[492/496] Emitting module Iterator_Chunk_Primitives
+[493/496] Compiling Iterator_Chunk_Primitives Iterator.Chunk.swift
+[494/496] Compiling Affine_Discrete_Primitives Affine.Discrete.Vector.Error.swift
+[495/496] Compiling Affine_Discrete_Primitives Affine.Discrete.Vector.swift
+[496/496] Compiling Affine_Discrete_Primitives Affine.Discrete.Ratio.swift
+[497/520] Emitting module Iterator_Primitives
+[498/520] Compiling Affine_Comparison_Primitives exports.swift
+[499/520] Compiling Iterator_Primitives exports.swift
+[500/520] Compiling Ordinal_Successor_Primitives Tagged+Ordinal.Successor.swift
+[501/520] Compiling Affine_Composition_Primitives exports.swift
+[502/520] Compiling Ordinal_Cardinal_Primitives Cardinal+Ordinal.swift
+[503/520] Emitting module Affine_Comparison_Primitives
+[504/520] Compiling Affine_Comparison_Primitives Affine.Discrete.Vector+Comparison.Protocol.swift
+[505/520] Compiling Ordinal_Cardinal_Primitives Ordinal+Cardinal.Count.swift
+[506/520] Emitting module Affine_Equation_Primitives
+[507/520] Compiling Affine_Equation_Primitives exports.swift
+[508/520] Compiling Affine_Equation_Primitives Affine.Discrete.Vector+Equation.Protocol.swift
+[509/520] Compiling Affine_Hash_Primitives exports.swift
+[510/520] Emitting module Affine_Composition_Primitives
+[511/520] Compiling Affine_Composition_Primitives Affine.Discrete.Ratio+Composition.swift
+[512/520] Compiling Ordinal_Distance_Primitives Ordinal.Distance.swift
+[513/520] Compiling Ordinal_Distance_Primitives Tagged+Ordinal.Distance.swift
+[514/520] Emitting module Ordinal_Successor_Primitives
+[515/520] Emitting module Ordinal_Cardinal_Primitives
+[516/520] Emitting module Ordinal_Distance_Primitives
+[517/520] Emitting module Affine_Hash_Primitives
+[518/520] Compiling Affine_Hash_Primitives Affine.Discrete.Vector+Hash.Protocol.swift
+[519/520] Compiling Ordinal_Cardinal_Primitives Ordinal+Cardinal.swift
+[520/523] Compiling Ordinal_Successor_Primitives Ordinal.Successor.swift
+[521/534] Compiling Ordinal_Predecessor_Primitives Tagged+Ordinal.Predecessor.swift
+[522/534] Emitting module Ordinal_Predecessor_Primitives
+[523/534] Compiling Ordinal_Predecessor_Primitives Ordinal.Predecessor.swift
+[524/534] Compiling Ordinal_Advance_Primitives Tagged+Ordinal.Advance.swift
+[525/534] Compiling Ordinal_Tagged_Primitives Tagged+Ordinal.swift
+[526/534] Emitting module Ordinal_Tagged_Primitives
+[527/534] Compiling Affine_Carrier_Primitives Affine.Discrete.Vector+Carrier.swift
+[528/534] Emitting module Affine_Carrier_Primitives
+[529/534] Compiling Affine_Carrier_Primitives exports.swift
+[530/534] Compiling Ordinal_Retreat_Primitives Tagged+Ordinal.Retreat.swift
+[531/534] Emitting module Ordinal_Retreat_Primitives
+[532/534] Compiling Ordinal_Retreat_Primitives Ordinal.Retreat.swift
+[533/534] Emitting module Ordinal_Advance_Primitives
+[534/534] Compiling Ordinal_Advance_Primitives Ordinal.Advance.swift
+[535/558] Compiling Ordinal_Primitives_Standard_Library_Integration Ordinal+AtomicRepresentable.swift
+[536/558] Compiling Ordinal_Primitives_Standard_Library_Integration Ordinal+CustomStringConvertible.swift
+[537/558] Compiling Ordinal_Primitives_Standard_Library_Integration Ordinal+ExpressibleByIntegerLiteral.swift
+[538/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeMutablePointer+Ordinal.swift
+[539/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeMutablePointer.Move+Tagged.Ordinal.swift
+[540/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeMutableRawPointer+Ordinal.swift
+[541/561] Compiling Ordinal_Primitives_Standard_Library_Integration Ordinal+UnsignedInteger.swift
+[542/561] Compiling Ordinal_Primitives_Standard_Library_Integration OutputSpan+Ordinal.swift
+[543/561] Compiling Ordinal_Primitives_Standard_Library_Integration RangeReplaceableCollection+Ordinal.swift
+[544/561] Compiling Ordinal_Primitives_Standard_Library_Integration UInt32+Ordinal.swift
+[545/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeBufferPointer+Tagged.Ordinal.swift
+[546/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeMutableBufferPointer+Tagged.Ordinal.swift
+[547/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafePointer+Ordinal.swift
+[548/561] Compiling Ordinal_Primitives_Standard_Library_Integration UnsafeRawPointer+Ordinal.swift
+[549/561] Compiling Ordinal_Primitives_Standard_Library_Integration exports.swift
+[550/561] Compiling Ordinal_Primitives_Standard_Library_Integration Span+Tagged.Ordinal.swift
+[551/561] Compiling Ordinal_Primitives_Standard_Library_Integration Swift.Range+Ordinal.swift
+[552/561] Compiling Ordinal_Primitives_Standard_Library_Integration Tagged+Int+Ordinal.swift
+[553/561] Compiling Ordinal_Primitives_Standard_Library_Integration InlineArray+Ordinal.swift
+[554/561] Compiling Ordinal_Primitives_Standard_Library_Integration Int+Ordinal.swift
+[555/561] Compiling Ordinal_Primitives_Standard_Library_Integration MutableCollection+Ordinal.swift
+[556/561] Compiling Ordinal_Primitives_Standard_Library_Integration MutableSpan+Tagged.Ordinal.swift
+[557/561] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[558/561] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Ordinal.swift
+[559/561] Compiling Ordinal_Primitives_Standard_Library_Integration Atomic+Ordinal.swift
+[560/561] Compiling Ordinal_Primitives_Standard_Library_Integration ContiguousArray+Ordinal.swift
+[561/561] Emitting module Ordinal_Primitives_Standard_Library_Integration
+[562/563] Emitting module Ordinal_Primitives
+[563/563] Compiling Ordinal_Primitives exports.swift
+[564/572] Compiling Affine_Arithmetic_Primitives exports.swift
+[565/572] Compiling Affine_Ordinal_Primitives Ordinal+Affine.swift
+[566/572] Emitting module Affine_Ordinal_Primitives
+[567/572] Compiling Affine_Ordinal_Primitives exports.swift
+[568/572] Compiling Affine_Quotient_Primitives Affine.Discrete.Ratio+QuotientAndRemainder.swift
+[569/572] Compiling Affine_Quotient_Primitives exports.swift
+[570/572] Emitting module Affine_Quotient_Primitives
+[571/572] Emitting module Affine_Arithmetic_Primitives
+[572/572] Compiling Affine_Arithmetic_Primitives Affine.Discrete+Arithmetic.swift
+[573/576] Emitting module Affine_Tagged_Primitives
+[574/576] Compiling Affine_Tagged_Primitives Tagged+Affine.swift
+[575/576] Compiling Affine_Tagged_Primitives exports.swift
+[576/576] Compiling Affine_Tagged_Primitives Affine.Discrete.Ratio+Tagged.swift
+[577/585] Compiling Affine_Primitives_Standard_Library_Integration UnsafeMutableRawPointer+Affine.Discrete.Vector.swift
+[578/585] Compiling Affine_Primitives_Standard_Library_Integration UnsafePointer+Tagged.Ordinal.swift
+[579/585] Compiling Affine_Primitives_Standard_Library_Integration UnsafeRawPointer+Affine.Discrete.Vector.swift
+[580/586] Compiling Affine_Primitives_Standard_Library_Integration UnsafeMutablePointer+Tagged.Ordinal.swift
+[581/586] Compiling Affine_Primitives_Standard_Library_Integration Affine.Discrete.Vector+AtomicRepresentable.swift
+[582/586] Compiling Affine_Primitives_Standard_Library_Integration Collection+Affine.Discrete.Vector.swift
+[583/586] Compiling Affine_Primitives_Standard_Library_Integration RandomAccessCollection+Tagged.Ordinal.Offset.swift
+[584/586] Compiling Affine_Primitives_Standard_Library_Integration Int+Affine.Discrete.Vector.swift
+[585/586] Emitting module Affine_Primitives_Standard_Library_Integration
+[586/586] Compiling Affine_Primitives_Standard_Library_Integration exports.swift
+[587/588] Emitting module Affine_Primitives
+[588/588] Compiling Affine_Primitives exports.swift
+[589/591] Emitting module Index_Primitives
+[590/591] Compiling Index_Primitives Index.swift
+[591/591] Compiling Index_Primitives exports.swift
+[592/595] Compiling Sequence_Protocol_Primitives Sequenceable+Count.swift
+[593/595] Compiling Sequence_Protocol_Primitives Sequenceable.swift
+[594/595] Emitting module Sequence_Protocol_Primitives
+[595/595] Compiling Sequence_Protocol_Primitives exports.swift
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[596/597] Emitting module oq2_owned_cursor
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
+35 |     }
+36 | 
+37 |     @_lifetime(&self)
+   |      `- error: invalid lifetime dependence on an Escapable result
+38 |     mutating func next() -> Int? {
+39 |         guard position < base.count else { return nil }
+
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
+49 |     typealias Iterator = OwnedCursor
+50 | 
+51 |     @_lifetime(copy self)
+   |      `- error: invalid lifetime dependence on an Escapable result
+52 |     consuming func makeIterator() -> OwnedCursor {
+53 |         OwnedCursor(elements)
+
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
+49 |     typealias Iterator = OwnedCursor
+50 | 
+51 |     @_lifetime(copy self)
+   |                     `- error: invalid lifetime dependence on an Escapable value with consuming ownership
+52 |     consuming func makeIterator() -> OwnedCursor {
+53 |         OwnedCursor(elements)
+[597/597] Compiling oq2_owned_cursor main.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
+35 |     }
+36 | 
+37 |     @_lifetime(&self)
+   |      `- error: invalid lifetime dependence on an Escapable result
+38 |     mutating func next() -> Int? {
+39 |         guard position < base.count else { return nil }
+
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
+49 |     typealias Iterator = OwnedCursor
+50 | 
+51 |     @_lifetime(copy self)
+   |      `- error: invalid lifetime dependence on an Escapable result
+52 |     consuming func makeIterator() -> OwnedCursor {
+53 |         OwnedCursor(elements)
+
+/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
+49 |     typealias Iterator = OwnedCursor
+50 | 
+51 |     @_lifetime(copy self)
+   |                     `- error: invalid lifetime dependence on an Escapable value with consuming ownership
+52 |     consuming func makeIterator() -> OwnedCursor {
+53 |         OwnedCursor(elements)

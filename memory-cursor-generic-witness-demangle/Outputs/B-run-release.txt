@@ -1,0 +1,8 @@
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling B_handrolled_bare_generic main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking B-handrolled-bare-generic
+Build of product 'B-handrolled-bare-generic' complete! (1.28s)
+B: collect() = [10, 20, 30] (expect [10, 20, 30])

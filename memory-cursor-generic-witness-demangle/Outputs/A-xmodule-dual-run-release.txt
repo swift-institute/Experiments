@@ -1,0 +1,27 @@
+warning: 'memory-cursor-generic-witness-demangle': Source files for target BHandrolledLib should be located under 'Sources/BHandrolledLib', or a custom sources path can be set with the 'path' property in Package.swift
+warning: 'memory-cursor-generic-witness-demangle': Source files for target B-xmodule-exe should be located under 'Sources/B-xmodule-exe', or a custom sources path can be set with the 'path' property in Package.swift
+[0/1] Planning build
+Building for production...
+[0/6] Write sources
+[7/10] Write swift-version--58304C5D6DBC2206.txt
+[9/12] Compiling Iterator_Chunk_Primitives Iterator.Chunk.Protocol.swift
+[10/12] Compiling Standard_Library_Extensions Actor.swift
+[11/13] Compiling Either_Primitives Either+Accessors.swift
+[12/14] Compiling Iterable Iterable+Contains.swift
+[13/15] Compiling Memory_Iterator_Primitives Memory.Contiguous+Iterable.swift
+[14/16] Compiling AConformerLib Region.swift
+/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionDual.swift:22:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+20 | public import Memory_Contiguous_Primitives
+21 | public import Memory_Cursor_Primitives
+22 | public import Memory_Sequence_Primitives
+   |        `- warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+23 | public import Sequence_Protocol_Primitives
+24 | public import Iterable
+[15/17] Compiling A_xmodule_exe main.swift
+[15/17] Write Objects.LinkFileList
+[16/17] Linking A-xmodule-exe
+Build of product 'A-xmodule-exe' complete! (3.07s)
+A-xmodule: collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity fixed=8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule VG (capacity generic, =8): collect() = [10, 20, 30] (expect [10, 20, 30])
+A-xmodule DUAL (Iterable+Sequenceable @_implements): collect() = [10, 20, 30] (expect [10, 20, 30])

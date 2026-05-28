@@ -60,6 +60,37 @@
     {
       "category": "Architecture Patterns",
       "crossRefs": [
+        "swift-institute/Research/iteration-architecture-expressibility-envelope.md (this experiment's RECOMMENDATION writeup)",
+        "swift-institute/Research/memory-contiguous-iteration-bridge.md (substrate bridges; OQ-2 route-2 runtime REFUTED)",
+        "HANDOFF-iteration-architecture-probe.md (the arc; the family-protocol lean this adjudicates)"
+      ],
+      "date": "2026-05-28",
+      "directory": "iteration-architecture-toy",
+      "purpose": "Top-to-bottom toy mapping the expressibility envelope of the three-route iteration architecture (Iterable / Sequenceable / Iterator.Borrow) + the family-protocol-with-Backing shape in current Swift. No package deps; toy protocols defined in-package. Verifies the two REFUTED 'family-protocol lift' shapes minimally, then finds the positive end-to-end shape, exercising BOTH Copyable and ~Copyable elements (route 3 the crux: compiles AND runs).",
+      "status": "PARTIAL",
+      "statusDetail": "REFUTED (compile): (A) conformance LIFT via protocol extension -- 'extension of protocol cannot have an inheritance clause'; (B) makeIterator family default delegating to a BORROW-self backing.makeIterator() -- 'lifetime-dependent value escapes its scope'; (D2) _overrideLifetime rescue at the family-default level (the computed view temporary escapes / cannot be consumed); (D3) adding `where Element: ~Copyable/~Escapable` -- 'cannot suppress ~Copyable on generic parameter defined in outer scope'; boundary: an Escapable OWNED container conforming copy-self makeIterator directly (its ~Escapable iterator escapes the copy-self contract). CONFIRMED (compile+run, debug+release, WARNING-CLEAN under the FULL ecosystem settings incl. .strictMemorySafety()): (D1) makeIterator family default DELEGATES through a ~Escapable VIEW backing whose makeIterator is @_lifetime(COPY self) -- the rescue, runs [11,22,33]; (b) makeIterator default via direct self.span projection + @_lifetime(copy span) init = the green Memory.Contiguous->Iterable bridge; (C) forEach family default via backing.forEach() (route 3, ~Copyable, sum=600); (a) withBacking closure-callback; (c) witness-struct delegation; route 2 consuming-makeIterator family default (toy CONFIRMED; real generic path REFUTED-runtime per bridge OQ-2, not reproduced minimally). GOVERNING PRINCIPLE: a lifetime-dependent iterator composes through @_lifetime(copy ...), never @_lifetime(borrow <local>). The handoff goal 'Backing carries makeIterator delegation once' IS achievable via a copy-self ~Escapable view. Decision for principal: the backing-view iteration protocol must use @_lifetime(copy self) makeIterator (distinct from the current borrow-self Iterable). Single-module ([EXP-017] cross-module deferred).",
+      "statusRaw": "PARTIAL (A,B,D2,D3,boundary REFUTED; D1,b,C,a,c CONFIRMED debug+release warning-clean; route-2 toy-CONFIRMED / real-REFUTED-runtime per bridge OQ-2). v1.1.0: makeIterator delegation RESCUED via copy-self ~Escapable view (D1) -- supersedes v1.0.0 'delegation REFUTED'.",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108), arm64-apple-macosx26.0, debug + release (-c release)"
+    },
+    {
+      "category": "Ownership & Lifetimes",
+      "crossRefs": [
+        "swift-institute/Research/memory-contiguous-iteration-bridge.md (§1 revision + OQ-1/OQ-2)",
+        "swift-institute/Research/cursor-shape-a-vs-three-worlds.md (W1 owned-cursor deferral this validates)"
+      ],
+      "date": "2026-05-27",
+      "directory": "memory-contiguous-sequenceable-bridge-shape",
+      "purpose": "Two probes for the Sequence.Borrowing.Protocol retirement plan. OQ-1: does Iterator.Chunk require Element: BitwiseCopyable, or can the memory->Iterable bridge relax its floor to Copyable (buffer-linear's current multipass element constraint)? OQ-2: does an Escapable OWNED cursor conforming the foundation Iterator.`Protocol`, vended from Sequenceable's `@_lifetime(copy self) consuming func makeIterator()`, typecheck? (validates the deferred W1 owned-cursor sibling shape).",
+      "status": "CONFIRMED",
+      "statusDetail": "OQ-1 CONFIRMED: Iterator.Chunk constructs for Copyable non-BitwiseCopyable elements (generic + concrete), debug+release => BitwiseCopyable floor is relaxable. OQ-2 CONFIRMED (V2a): Escapable owned cursor typechecks WHEN @_lifetime is omitted (V1 with @_lifetime REFUTED: 'invalid lifetime dependence on an Escapable result'); debug+release build, run total=60. Cross-module axis ([EXP-017]) deferred to execution.",
+      "statusRaw": "CONFIRMED (OQ-1 relaxable-to-Copyable; OQ-2 Escapable-owned-cursor-no-@_lifetime; debug+release; cross-module deferred)",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108), arm64-apple-macosx26.0, debug + release (-c release)"
+    },
+    {
+      "category": "Architecture Patterns",
+      "crossRefs": [
         "/tmp/buffer-storage-generic-converged.md (Claude×ChatGPT converged plan, 2026-05-23)"
       ],
       "date": "2026-05-24",
@@ -2749,6 +2780,21 @@
       "statusRaw": "CONFIRMED (P2a+P4 achievable-today 6.3.2 debug+release+cross-module; P2b/P3 production-gated, live on dev; P1/W1 wall confirmed both toolchains)",
       "supersededBy": null,
       "toolchain": "Apple Swift 6.3.2 (swift-6.3.2-RELEASE) and Apple Swift 6.5-dev (main-snapshot-2026-05-12-a), arm64-apple-macosx26.0, debug + release"
+    },
+    {
+      "category": "Compiler Behavior",
+      "crossRefs": [
+        "memory-contiguous-sequenceable-bridge-shape",
+        "noncopyable-sequence-emit-module-bug"
+      ],
+      "date": "2026-05-27",
+      "directory": "memory-cursor-generic-witness-demangle",
+      "purpose": "Diagnose the confirmed Signal-6 runtime crash 'failed to demangle witness for associated type Iterator in conformance Buffer.Linear.Inline<8>: Sequenceable -> swift_getAssociatedTypeWitnessSlowImpl -> Sequenceable.collect()' on a GENERIC contiguous conformer driven through the Wave-1 memory->Sequenceable bridge (Memory.Cursor<Self> owned cursor). Verdict sought: Swift compiler/runtime codegen bug vs Memory.Cursor design issue. Tests: hand-rolled bare-generic discriminator (B), institute-bridge concrete control (C), institute-bridge generic single-module + cross-module (A), value-generic capacity, dual Iterable+Sequenceable @_implements, cross-module bridge-default witness, and a @_rawLayout-backed conformer owning a real Storage.Inline (D).",
+      "status": "INVESTIGATION",
+      "statusDetail": "NOT REPRODUCIBLE from any synthetic reconstruction (all variants PASS debug+release on both Swift 6.3.2 and 6.4-dev). The hand-rolled bare-generic case (B) does NOT crash, ruling out a general generic-associated-type-witness compiler bug per the brief's discriminator; but every faithful institute-bridge reconstruction (single Sequenceable, value-generic, dual @_implements, @_rawLayout storage, cross-module conformance, cross-module bridge-default witness) ALSO passes, so it is not Memory.Cursor's shape alone either. The crash needs a factor specific to the literal Buffer.Linear.Inline type that cannot be isolated outside swift-buffer-linear-primitives. Compounding: the crashing dual Iterable+Sequenceable conformance was a transient working-tree state in buffer-linear, since migrated to Iterable-only by a parallel subordinate (HEAD never had the Sequenceable bridge form). A retroactive Sequenceable on the real type hit a COMPILE-time witness-thunk collision with the migration's Iterable conformance (lifetime escape), not the runtime demangle. Leading hypothesis: buffer-linear's 3-module type/ops/bridge topology for a single generic @_rawLayout type. No [ISSUE-*] upstream writeup warranted (no standalone reproducer per [ISSUE-002]/[ISSUE-017]).",
+      "statusRaw": "INVESTIGATION -> NOT-REPRODUCIBLE (needs literal Buffer.Linear.Inline; trigger un-isolable synthetically)",
+      "supersededBy": null,
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108) AND 6.4-dev (LLVM a3655ee8d8c4d74, +assertions), macOS 26 arm64"
     }
   ],
   "narrativeSections": [
