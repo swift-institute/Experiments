@@ -13,6 +13,7 @@
 import Sequence_Protocol_Primitives
 import Iterator_Primitive
 import Iterator_Protocol
+import Either_Primitives
 
 /// A move-only (`~Copyable`), Escapable element — the resource-shaped case (file
 /// descriptor / unique handle / token).
@@ -83,14 +84,55 @@ struct Source: ~Copyable, Sequenceable {
     }
 }
 
-/// THE SMALL ADD — an owned-consuming `forEach` terminal on `Sequenceable` for
-/// `~Copyable` elements (Sequenceable's existing `forEach` is Copyable-gated).
-/// This is the `Sequence.Consume.View.forEach(consuming:)` equivalent.
+// THE PERFECTED "small ADD" — a CONSUMING `forEach` terminal on `Sequenceable`.
+//
+// Surface: a plain `consuming func forEach` (NOT a `Property.Inout` accessor, NOT a
+// compound `forEachConsuming`). Mirrors `Iterable.forEach`'s method shape (typed-throws
+// + a fallible `Either<E, Iterator.Failure>` overload), `consuming` instead of `borrowing`.
+//
+// WHY a method, not the `Collection.ForEach` Property accessor: `Collection.ForEach`'s
+// accessor is INDEX-based (borrow-by-index + removeAll, never consuming self). A
+// `Property.Inout` accessor cannot (a) consume self (it is an `&self` borrow view) nor
+// (b) hold a `makeIterator()` iterator across a `while` loop on the production compiler
+// (the `_read` coroutine is statement-scoped — documented at `Iterable+ForEach.swift`
+// and `Collection.ForEach+Property.Inout.Iterable.swift`). Sequenceable has no indices
+// and `makeIterator()` is consuming-self, so it mirrors `Iterable`'s func-method shape.
+//
+// `Element: Escapable` because this is an EXTRACTION terminal (like `collect`/`first`);
+// `~Escapable` elements use the borrowing `forEach` on `Sequence.Borrowing.Protocol`.
+
 extension Sequenceable where Self: ~Copyable, Element: Escapable, Iterator.Failure == Never {
-    consuming func forEachConsuming(_ body: (consuming Element) -> Void) {
+    /// Consuming iteration terminal (infallible iterator). `consuming` → single-pass.
+    consuming func forEach<E: Swift.Error>(
+        _ body: (consuming Element) throws(E) -> Void
+    ) throws(E) {
         var iterator = makeIterator()
         while let element = iterator.next() {
-            body(element)
+            try body(element)
+        }
+    }
+}
+
+extension Sequenceable where Self: ~Copyable, Element: Escapable {
+    /// Consuming iteration terminal (fallible iterator) — fuses the closure error `E`
+    /// and the iterator's `Failure` into `Either`, unerased ([API-ERR-001]).
+    consuming func forEach<E: Swift.Error>(
+        _ body: (consuming Element) throws(E) -> Void
+    ) throws(Either<E, Iterator.Failure>) {
+        var iterator = makeIterator()
+        while true {
+            let step: Element?
+            do {
+                step = try iterator.next()
+            } catch {
+                throw Either.right(error)
+            }
+            guard let element = step else { return }
+            do {
+                try body(element)
+            } catch {
+                throw Either.left(error)
+            }
         }
     }
 }
@@ -98,10 +140,10 @@ extension Sequenceable where Self: ~Copyable, Element: Escapable, Iterator.Failu
 // --- Exercises ---
 
 func fullDrain() {
-    print("[ii/iv] Full drain via forEachConsuming:")
+    print("[ii/iv] Full drain via consuming forEach (typed-throws):")
     let source = Source([10, 20, 30])
     var sum = 0
-    source.forEachConsuming { token in
+    source.forEach { token in
         sum += token.id
     }
     print("  sum=\(sum)  (expect 60; expect Drainer.deinit: 0 remaining)")

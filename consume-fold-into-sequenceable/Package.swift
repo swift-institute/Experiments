@@ -12,6 +12,7 @@ let package = Package(
     dependencies: [
         .package(path: "../../../swift-primitives/swift-sequence-primitives"),
         .package(path: "../../../swift-primitives/swift-iterator-primitives"),
+        .package(path: "../../../swift-primitives/swift-either-primitives"),
     ],
     targets: [
         .executableTarget(
@@ -20,6 +21,7 @@ let package = Package(
                 .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
                 .product(name: "Iterator Primitive", package: "swift-iterator-primitives"),
                 .product(name: "Iterator Protocol", package: "swift-iterator-primitives"),
+                .product(name: "Either Primitives", package: "swift-either-primitives"),
             ]
         ),
     ]
