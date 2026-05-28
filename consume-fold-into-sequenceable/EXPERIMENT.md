@@ -22,14 +22,23 @@ capability-gap check of `Sequence.Consume.View` against **`Sequenceable`'s consu
 
 ## The perfected terminal (supervisor perfection directives 1–3, 5)
 
-The terminal is a plain **`consuming func forEach`** (NOT a compound `forEachConsuming`,
-[API-NAME-002]; NOT a `Property.Inout` accessor — see below). It MIRRORS
-`Iterable.forEach`'s method shape: typed-throws + a fallible `Either<E, Iterator.Failure>`
-overload ([API-ERR-001]), `consuming` instead of `borrowing`. Verified DEBUG + RELEASE.
+**FINAL SHAPE (after the coexistence rounds): a DISTINCT `consuming func consume`** — NOT a
+`forEach` overload, NOT the `Property.Inout` accessor, NOT a compound name ([API-NAME-002]).
+Coexistence journey: (a) the `Property.Inout` accessor was rejected — it cannot host a
+consuming-self drain on the production compiler (the `_read`-coroutine wall; see below);
+(b) a `consuming func forEach` overload was rejected — it is **ambiguous** with the existing
+Copyable `forEach` (117/142) for Copyable conformers (verified: the test suite failed to
+compile), and `@_disfavoredOverload` only papers over it with a borrow-vs-consume asymmetry
+(a mechanism-nudge workaround) that *also* under-counts the Iterable-floor dual-conformer
+candidates; (c) **a distinct `consume` verb is the clean shape** — no overload, no ambiguity,
+no `@_disfavoredOverload`, clear of `Sequence.Drain`. Mirrors `Iterable.forEach`'s method
+shape (typed-throws + fallible `Either` overload, [API-ERR-001]), `consuming`. Verified
+ambiguity-free DEBUG + RELEASE (164/122 sequence-primitives tests pass; `source.consume { }`
+resolves over the real overload).
 
 ```swift
 extension Sequenceable where Self: ~Copyable, Element: Escapable, Iterator.Failure == Never {
-    consuming func forEach<E: Swift.Error>(
+    consuming func consume<E: Swift.Error>(
         _ body: (consuming Element) throws(E) -> Void
     ) throws(E) {
         var iterator = makeIterator()
@@ -37,7 +46,7 @@ extension Sequenceable where Self: ~Copyable, Element: Escapable, Iterator.Failu
     }
 }
 extension Sequenceable where Self: ~Copyable, Element: Escapable {     // fallible iterator
-    consuming func forEach<E: Swift.Error>(
+    consuming func consume<E: Swift.Error>(
         _ body: (consuming Element) throws(E) -> Void
     ) throws(Either<E, Iterator.Failure>) { /* fuse closure-E + iterator-Failure */ }
 }

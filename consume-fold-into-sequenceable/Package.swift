@@ -19,6 +19,7 @@ let package = Package(
             name: "consume-fold-into-sequenceable",
             dependencies: [
                 .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
+                .product(name: "Sequence ForEach Primitives", package: "swift-sequence-primitives"),
                 .product(name: "Iterator Primitive", package: "swift-iterator-primitives"),
                 .product(name: "Iterator Protocol", package: "swift-iterator-primitives"),
                 .product(name: "Either Primitives", package: "swift-either-primitives"),
