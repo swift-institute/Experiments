@@ -16,7 +16,70 @@ failed to demangle witness for associated type 'Iterator' in conformance
   load-bearing — the institute `Sequenceable`/`Iterator.Protocol` declare `associatedtype
   Iterator: …, ~Copyable, ~Escapable`, which requires it).
 
-## Verdict
+## UPDATE 2026-05-28 — literal-topology REPRODUCED + RESHAPE FOUND
+
+The 2026-05-27 verdict below ("not synthetically reproducible") **stands** — and was pushed
+further: a faithful **3-module topology** reconstruction (target **E**: type module / ops
+module / bridge-default module, plus doubly-nested value-generic `@_rawLayout` type, dual
+`@_implements`, cross-module bridge-default witness, AND the span witness in the type module
+while the `Memory.Contiguous` conformance is in the ops module) **also PASSES** (debug +
+release). So even the one structural factor the original verdict flagged as un-reconstructed
+does not fire synthetically.
+
+To get a crashing baseline, a **principal-authorized transient-restore** of the crashing
+`Memory.Cursor<Self>` Sequenceable conformance was applied to the **literal**
+`Buffer.Linear.Inline` (2-file edit to `swift-buffer-linear-primitives`: Package.swift deps +
+`Buffer.Linear.Inline+Sequence.Protocol.swift`), driven by target **F**. It **REPRODUCES**:
+
+```
+$ swift run F-literal-buffer-linear-exe           # DEBUG
+failed to demangle witness for associated type 'Iterator' in conformance
+'…Buffer<A>.Linear.Inline<8>: Sequenceable' from mangled name '}' - unknown error   # SIGABRT (134)
+```
+
+Two distinct failure modes were separated:
+1. **DEBUG runtime demangle** (`mangled name '}'`, Signal 6 in `collect()`) — the
+   `Memory.Cursor` generic-witness bug under investigation.
+2. **RELEASE LLVM "Broken module" verifier ICE** — **AMBIENT to buffer-linear**: it fires at
+   clean HEAD with the *production hand-written scalar* iterator too (verified by building the
+   standalone `Buffer Linear Inline Primitives` target at HEAD, `-c release`). Almost certainly
+   the documented `@_rawLayout`+deinit verifier issue (cf. swiftlang/swift#86652). NOT a
+   `Memory.Cursor` problem; a Memory.Cursor reshape neither causes nor fixes it.
+
+**The corrupt mangled name is literally the single byte `'}'`** — the runtime relative-pointer /
+mangled-name accessor for the `Sequenceable.Iterator` associated-type witness resolves to a
+truncated/garbage string. IRGen emits a corrupt associated-type-witness mangled name for the
+**deep generic instantiation** `Memory.Cursor<Buffer<A>.Linear.Inline<8>>`.
+
+### Reshape directions tested against F (the literal crash), hard-clean
+
+| Reshape | Change | Result |
+|---------|--------|--------|
+| 1 | conform `Iterator.\`Protocol\`` **unconditionally** on the struct (vs conditional `extension … where Base: ~Copyable`) | **FAIL** — still `'}'` |
+| 2 | **element-only-generic erased witness** `Memory.Snapshot.Cursor<Element>` (eager span→`[Element]` snapshot), vended by `makeSnapshotIterator()` | **PASS** — dodges (debug `[10,20,30]`; release `-disable-llvm-verify` `[10,20,30]`) |
+| 3 | remove `@frozen` from `Memory.Cursor` | **FAIL** — still `'}'` |
+
+**Reshape 2 is the working dodge.** Triangulation (1 & 3 fail, 2 passes) pins the trigger to the
+**deep generic instantiation in the witness mangled name**: flattening the witness to an
+Element-only-generic type (the conforming type absent from the witness's mangling) is the only
+lever that works. Layout/`@frozen` and conditional-vs-unconditional conformance are NOT levers.
+The reshape lives in `swift-memory-cursor-primitives` (`Memory.Snapshot.Cursor<Element>`,
+`Memory.Snapshot.Cursor.swift`) + a `makeSnapshotIterator()` witness in
+`swift-memory-sequence-primitives`. See
+`swift-institute/Research/memory-cursor-generic-witness-demangle-reshape.md`.
+
+**Trade-off**: the snapshot eagerly copies the span into one `[Element]` allocation up front
+(vs the lazy cursor's per-`next()` re-derivation). For inline `@_rawLayout` conformers this is
+the *only* safe element-only-generic shape (a lazy element-only iterator would dangle a pointer
+into consumed inline storage). Adoption (replace vs alongside the lazy `Memory.Cursor`, final
+name, and the separate ambient release ICE) is a principal decision.
+
+> **All transient buffer-linear edits were fully reverted after capture** (`git checkout`;
+> package clean at HEAD `dd9b8c2`). No production package was left altered. No commits.
+
+---
+
+## Original verdict (2026-05-27) — retained
 
 **NEITHER cleanly demonstrated. The crash is NOT reproducible from any synthetic
 reconstruction — single-pass result per [EXP-011a] / [ISSUE-013] / [ISSUE-025] /
@@ -112,4 +175,12 @@ without a verified failing baseline in the experiment).
 - `Sources/C-institute-bridge-concrete/` — concrete control.
 - `Sources/D-real-buffer-linear-lib/` + `Sources/D-real-buffer-linear-exe/` — `@_rawLayout`
   conformer (owns a real `Storage.Inline`), single + dual `Sequenceable`, cross-module.
-- `Outputs/` — captured build/run logs per variant and toolchain.
+- `Sources/E-type-module/` + `Sources/E-ops-module/` + `Sources/E-xmodule-exe/` — **(2026-05-28)**
+  faithful **3-module topology** reconstruction (type / ops / bridge-default split + span-witness-
+  in-type-module). PASSES — the 3-module factor does not fire synthetically either.
+- `Sources/F-literal-buffer-linear-exe/` — **(2026-05-28)** drives `.collect()` on the **literal**
+  `Buffer.Linear.Inline` (real buffer-linear, transiently-restored crashing form). The only target
+  that exercises the literal failing type; REPRODUCES the demangle (debug) and validates the
+  reshape.
+- `Outputs/F-literal-baseline-debug.txt`, `F-reshape-snapshot-cursor-{debug,release}.txt`,
+  `E-3module-reconstruction-debug.txt`, `reshape-attempts-summary.txt` — **(2026-05-28)**.

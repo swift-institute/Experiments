@@ -1,0 +1,25 @@
+=== RESHAPE ATTEMPTS vs the LITERAL F crash (all hard-clean, debug oracle) ===
+Date: 2026-05-28  Toolchain: Apple Swift 6.3.2  Platform: macOS 26 (arm64)
+
+Baseline (Memory.Cursor<Self> as Sequenceable.Iterator witness):
+  CRASH — SIGABRT, "failed to demangle witness for associated type 'Iterator' ... from
+  mangled name '}'" (debug); LLVM broken-module verifier abort (release, but see ambient note).
+
+Reshape 1 — conform Iterator.`Protocol` UNCONDITIONALLY on the struct (vs conditional
+            `extension … where Base: ~Copyable`):
+  FAIL — still crashes, identical '}' demangle. Conditional-vs-unconditional conformance is
+  NOT the lever.
+
+Reshape 2 — ELEMENT-only-generic erased witness (Memory.Snapshot.Cursor<Element>, eager span
+            snapshot into [Element]) vended by makeSnapshotIterator():
+  PASS — dodges the crash (debug: [10,20,30]; release with -disable-llvm-verify: [10,20,30]).
+  The witness mangled name is the shallow `Memory.Snapshot.Cursor<A>`, never embedding the
+  deeply-nested conforming type. THIS IS THE WORKING RESHAPE.
+
+Reshape 3 — remove @frozen from Memory.Cursor (test layout/metadata lever):
+  FAIL — still crashes, identical '}' demangle. @frozen/layout is NOT the lever.
+
+CONCLUSION: the corruption is tied specifically to the DEEP generic instantiation
+`Memory.Cursor<Buffer<A>.Linear.Inline<8>>` appearing as the Sequenceable.Iterator
+associated-type-witness mangled name. Only flattening the witness to an Element-only-generic
+type (so the conforming type is absent from the witness mangling) dodges it.

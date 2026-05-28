@@ -1,0 +1,6 @@
+=== F-literal (DEBUG) — TRANSIENT-RESTORE crashing baseline ===
+Toolchain: swift-driver version: 1.148.6 Apple Swift version 6.3.2 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+Date: 2026-05-28
+
+failed to demangle witness for associated type 'Iterator' in conformance '(extension in Buffer_Linear_Inline_Primitive):(extension in Buffer_Linear_Primitive):Buffer_Primitive.Buffer<A>.Linear.Inline<8>: Sequenceable' from mangled name '}' - unknown error
+EXIT: 134  (134 = SIGABRT / Signal 6)

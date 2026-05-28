@@ -1,0 +1,15 @@
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version-5904E0B7DFDEA3B0.txt
+[4/6] Compiling SE503Defs Defs.swift
+[5/7] Compiling se503_cross_version main.swift
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:27:10: warning: BRANCH WITNESS: compiler<6.4 → prototype bare branch
+25 | 
+26 | #else
+27 | #warning("BRANCH WITNESS: compiler<6.4 → prototype bare branch")
+   |          `- warning: BRANCH WITNESS: compiler<6.4 → prototype bare branch
+28 | 
+29 | // V1..V5 in the CURRENT (prototype, pre-migration) bare form — no restatement.
+[5/7] Write Objects.LinkFileList
+[6/7] Linking se503-cross-version
+Build complete! (0.39s)

@@ -1,0 +1,5 @@
+Building for debugging...
+Planning deferred tasks
+[100/100] 
+Build complete! (0,32 sec)
+se503-cross-version built

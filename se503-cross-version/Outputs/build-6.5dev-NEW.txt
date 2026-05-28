@@ -1,0 +1,91 @@
+Building for debugging...
+Planning deferred tasks
+[54/100] SE503Defs 28 / 51
+[57/100] SE503Defs 32 / 55
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:22:27: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m20 |[0;0m // Doc's canonical shape: primary `Items` (suppressed) + non-primary `Generator` (suppressed).
+[0;36m21 |[0;0m public protocol Mailbox<Items>: ~Copyable {
+[0;36m22 |[0;0m     associatedtype Items: ~Copyable
+   [0;36m|[0;0m                           `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m23 |[0;0m     associatedtype Generator: ~Copyable
+[0;36m24 |[0;0m }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:23:31: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m21 |[0;0m public protocol Mailbox<Items>: ~Copyable {
+[0;36m22 |[0;0m     associatedtype Items: ~Copyable
+[0;36m23 |[0;0m     associatedtype Generator: ~Copyable
+   [0;36m|[0;0m                               `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m24 |[0;0m }
+[0;36m25 |[0;0m 
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:30:29: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m28 |[0;0m // `Input.`Protocol`<Element>: Streaming` and `Parser.Bidirectional`.
+[0;36m29 |[0;0m public protocol Streaming {
+[0;36m30 |[0;0m     associatedtype Element: ~Copyable
+   [0;36m|[0;0m                             `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m31 |[0;0m }
+[0;36m32 |[0;0m public protocol Stream<Element>: Streaming {
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:41:32: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m39 |[0;0m // swift-carrier-primitives Fixture+describe.swift.
+[0;36m40 |[0;0m public protocol Quantity<Underlying>: ~Copyable {
+[0;36m41 |[0;0m     associatedtype Underlying: ~Copyable
+   [0;36m|[0;0m                                `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m42 |[0;0m     associatedtype Domain: ~Copyable = Never
+[0;36m43 |[0;0m }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:42:28: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m40 |[0;0m public protocol Quantity<Underlying>: ~Copyable {
+[0;36m41 |[0;0m     associatedtype Underlying: ~Copyable
+[0;36m42 |[0;0m     associatedtype Domain: ~Copyable = Never
+   [0;36m|[0;0m                            `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m43 |[0;0m }
+[0;36m44 |[0;0m 
+
+[#OldSuppressedAssociatedTypes]: <https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes>
+[74/100] se503-cross-version 46 / 61
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:22:27: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m20 |[0;0m // Doc's canonical shape: primary `Items` (suppressed) + non-primary `Generator` (suppressed).
+[0;36m21 |[0;0m public protocol Mailbox<Items>: ~Copyable {
+[0;36m22 |[0;0m     associatedtype Items: ~Copyable
+   [0;36m|[0;0m                           `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m23 |[0;0m     associatedtype Generator: ~Copyable
+[0;36m24 |[0;0m }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:23:31: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m21 |[0;0m public protocol Mailbox<Items>: ~Copyable {
+[0;36m22 |[0;0m     associatedtype Items: ~Copyable
+[0;36m23 |[0;0m     associatedtype Generator: ~Copyable
+   [0;36m|[0;0m                               `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m24 |[0;0m }
+[0;36m25 |[0;0m 
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:30:29: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m28 |[0;0m // `Input.`Protocol`<Element>: Streaming` and `Parser.Bidirectional`.
+[0;36m29 |[0;0m public protocol Streaming {
+[0;36m30 |[0;0m     associatedtype Element: ~Copyable
+   [0;36m|[0;0m                             `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m31 |[0;0m }
+[0;36m32 |[0;0m public protocol Stream<Element>: Streaming {
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:41:32: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m39 |[0;0m // swift-carrier-primitives Fixture+describe.swift.
+[0;36m40 |[0;0m public protocol Quantity<Underlying>: ~Copyable {
+[0;36m41 |[0;0m     associatedtype Underlying: ~Copyable
+   [0;36m|[0;0m                                `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m42 |[0;0m     associatedtype Domain: ~Copyable = Never
+[0;36m43 |[0;0m }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/SE503Defs/Defs.swift:42:28: [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m40 |[0;0m public protocol Quantity<Underlying>: ~Copyable {
+[0;36m41 |[0;0m     associatedtype Underlying: ~Copyable
+[0;36m42 |[0;0m     associatedtype Domain: ~Copyable = Never
+   [0;36m|[0;0m                            `- [1;33mwarning: [1;39mexperimental feature 'SuppressedAssociatedTypes' is deprecated; see SE-503 for the official version[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes\OldSuppressedAssociatedTypes]8;;\]
+[0;36m43 |[0;0m }
+[0;36m44 |[0;0m 
+
+[#OldSuppressedAssociatedTypes]: <https://docs.swift.org/compiler/documentation/diagnostics/old-suppressed-associatedtypes>
+[86/100] SE503Defs 53 / 61
+[96/100] se503-cross-version-product 59 / 61
+[100/100] 
+Build complete! (1,38 sec)

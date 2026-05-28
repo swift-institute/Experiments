@@ -1,0 +1,103 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write se503-cross-version-entitlement.plist
+[3/7] Write swift-version-5904E0B7DFDEA3B0.txt
+[5/9] Compiling SE503Defs Defs.swift
+[6/9] Emitting module SE503Defs
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[7/11] Emitting module se503_cross_version
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:11:30: error: cannot suppress '~Copyable' on generic parameter 'Self.Items' defined in outer scope
+ 9 | // MARK: - V1: extension restating the suppressed PRIMARY assoc (doc's verbatim form)
+10 | // doc: `extension Mailbox where Items: ~Copyable {}`
+11 | extension Mailbox where Items: ~Copyable {
+   |                              `- error: cannot suppress '~Copyable' on generic parameter 'Self.Items' defined in outer scope
+12 |     public func v1() {}
+13 | }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:17:62: error: cannot suppress '~Copyable' on generic parameter 'T.Items' defined in outer scope
+15 | // MARK: - V2: generic function with restatement
+16 | // doc: `func foo<T>(..) where T: Mailbox, T.Items: ~Copyable {}`
+17 | public func v2<T>(_ t: borrowing T) where T: Mailbox, T.Items: ~Copyable {}
+   |                                                              `- error: cannot suppress '~Copyable' on generic parameter 'T.Items' defined in outer scope
+18 | 
+19 | // MARK: - V3: generic struct with restatement
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:21:43: error: cannot suppress '~Copyable' on generic parameter 'M.Items' defined in outer scope
+19 | // MARK: - V3: generic struct with restatement
+20 | // doc: `struct PostOffice<M: Mailbox> where M.Items: ~Copyable {}`
+21 | public struct V3<M: Mailbox> where M.Items: ~Copyable {}
+   |                                           `- error: cannot suppress '~Copyable' on generic parameter 'M.Items' defined in outer scope
+22 | 
+23 | // MARK: - V4: INHERITED re-exposed PRIMARY — restate inherited suppression (the red-flag shape)
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:24:31: error: cannot suppress '~Copyable' on generic parameter 'Self.Element' defined in outer scope
+22 | 
+23 | // MARK: - V4: INHERITED re-exposed PRIMARY — restate inherited suppression (the red-flag shape)
+24 | extension Stream where Element: ~Copyable {
+   |                               `- error: cannot suppress '~Copyable' on generic parameter 'Self.Element' defined in outer scope
+25 |     public func v4() {}
+26 | }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:27:64: error: cannot suppress '~Copyable' on generic parameter 'S.Element' defined in outer scope
+25 |     public func v4() {}
+26 | }
+27 | public func v4f<S>(_ s: borrowing S) where S: Stream, S.Element: ~Copyable {}
+   |                                                                `- error: cannot suppress '~Copyable' on generic parameter 'S.Element' defined in outer scope
+28 | 
+29 | // MARK: - V5: defaulted NON-primary inherited assoc restatement (literal Fixture+describe shape)
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:30:64: error: cannot suppress '~Copyable' on generic parameter 'C.Domain' defined in outer scope
+28 | 
+29 | // MARK: - V5: defaulted NON-primary inherited assoc restatement (literal Fixture+describe shape)
+30 | public func v5<C>(_ c: borrowing C) where C: Quantity, C.Domain: ~Copyable {}
+   |                                                                `- error: cannot suppress '~Copyable' on generic parameter 'C.Domain' defined in outer scope
+31 | 
+32 | print("se503-cross-version built")
+[8/11] Compiling se503_cross_version main.swift
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:11:30: error: cannot suppress '~Copyable' on generic parameter 'Self.Items' defined in outer scope
+ 9 | // MARK: - V1: extension restating the suppressed PRIMARY assoc (doc's verbatim form)
+10 | // doc: `extension Mailbox where Items: ~Copyable {}`
+11 | extension Mailbox where Items: ~Copyable {
+   |                              `- error: cannot suppress '~Copyable' on generic parameter 'Self.Items' defined in outer scope
+12 |     public func v1() {}
+13 | }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:17:62: error: cannot suppress '~Copyable' on generic parameter 'T.Items' defined in outer scope
+15 | // MARK: - V2: generic function with restatement
+16 | // doc: `func foo<T>(..) where T: Mailbox, T.Items: ~Copyable {}`
+17 | public func v2<T>(_ t: borrowing T) where T: Mailbox, T.Items: ~Copyable {}
+   |                                                              `- error: cannot suppress '~Copyable' on generic parameter 'T.Items' defined in outer scope
+18 | 
+19 | // MARK: - V3: generic struct with restatement
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:21:43: error: cannot suppress '~Copyable' on generic parameter 'M.Items' defined in outer scope
+19 | // MARK: - V3: generic struct with restatement
+20 | // doc: `struct PostOffice<M: Mailbox> where M.Items: ~Copyable {}`
+21 | public struct V3<M: Mailbox> where M.Items: ~Copyable {}
+   |                                           `- error: cannot suppress '~Copyable' on generic parameter 'M.Items' defined in outer scope
+22 | 
+23 | // MARK: - V4: INHERITED re-exposed PRIMARY — restate inherited suppression (the red-flag shape)
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:24:31: error: cannot suppress '~Copyable' on generic parameter 'Self.Element' defined in outer scope
+22 | 
+23 | // MARK: - V4: INHERITED re-exposed PRIMARY — restate inherited suppression (the red-flag shape)
+24 | extension Stream where Element: ~Copyable {
+   |                               `- error: cannot suppress '~Copyable' on generic parameter 'Self.Element' defined in outer scope
+25 |     public func v4() {}
+26 | }
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:27:64: error: cannot suppress '~Copyable' on generic parameter 'S.Element' defined in outer scope
+25 |     public func v4() {}
+26 | }
+27 | public func v4f<S>(_ s: borrowing S) where S: Stream, S.Element: ~Copyable {}
+   |                                                                `- error: cannot suppress '~Copyable' on generic parameter 'S.Element' defined in outer scope
+28 | 
+29 | // MARK: - V5: defaulted NON-primary inherited assoc restatement (literal Fixture+describe shape)
+
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:30:64: error: cannot suppress '~Copyable' on generic parameter 'C.Domain' defined in outer scope
+28 | 
+29 | // MARK: - V5: defaulted NON-primary inherited assoc restatement (literal Fixture+describe shape)
+30 | public func v5<C>(_ c: borrowing C) where C: Quantity, C.Domain: ~Copyable {}
+   |                                                                `- error: cannot suppress '~Copyable' on generic parameter 'C.Domain' defined in outer scope
+31 | 
+32 | print("se503-cross-version built")

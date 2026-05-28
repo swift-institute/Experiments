@@ -1,0 +1,26 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write se503-cross-version-entitlement.plist
+[3/7] Write swift-version-5904E0B7DFDEA3B0.txt
+[5/9] Emitting module SE503Defs
+[6/9] Compiling SE503Defs Defs.swift
+[7/11] Emitting module se503_cross_version
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:27:10: warning: BRANCH WITNESS: hasFeature=false → prototype bare branch
+25 | 
+26 | #else
+27 | #warning("BRANCH WITNESS: hasFeature=false → prototype bare branch")
+   |          `- warning: BRANCH WITNESS: hasFeature=false → prototype bare branch
+28 | 
+29 | // V1..V5 in the CURRENT (prototype, pre-migration) bare form — no restatement.
+[8/11] Compiling se503_cross_version main.swift
+/Users/coen/Developer/swift-institute/Experiments/se503-cross-version/Sources/se503-cross-version/main.swift:27:10: warning: BRANCH WITNESS: hasFeature=false → prototype bare branch
+25 | 
+26 | #else
+27 | #warning("BRANCH WITNESS: hasFeature=false → prototype bare branch")
+   |          `- warning: BRANCH WITNESS: hasFeature=false → prototype bare branch
+28 | 
+29 | // V1..V5 in the CURRENT (prototype, pre-migration) bare form — no restatement.
+[8/11] Write Objects.LinkFileList
+[9/11] Linking se503-cross-version
+[10/11] Applying se503-cross-version
+Build complete! (1.31s)

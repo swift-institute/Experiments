@@ -1,0 +1,14 @@
+=== F-literal vs RESHAPE (Memory.Snapshot.Cursor<Element>) — DEBUG, hard-clean ===
+Toolchain: Apple Swift 6.3.2 (swiftlang-6.3.2.1.108)  Platform: macOS 26 (arm64)
+Date: 2026-05-28
+
+Buffer.Linear.Inline+Sequence.Protocol.swift (transient) binds:
+  @_implements(Sequenceable, Iterator) typealias = Memory.Snapshot.Cursor<Element>
+  makeIterator() -> Memory.Snapshot.Cursor<Element> { makeSnapshotIterator() }
+
+$ swift run F-literal-buffer-linear-exe
+F literal: Buffer<Int>.Linear.Inline<8>.collect() = [10, 20, 30] (expect [10, 20, 30])
+
+RESULT: PASS — no SIGABRT, no demangle failure. Reshape DODGES the crash.
+(Baseline Memory.Cursor<Self> on identical setup: SIGABRT, "failed to demangle witness
+ for associated type 'Iterator' ... from mangled name '}'". See F-literal-baseline-debug.txt.)

@@ -1,0 +1,24 @@
+=== E: faithful 3-MODULE topology reconstruction (the un-tested factor per prior EXPERIMENT.md
+    lines 80-87) — DEBUG + RELEASE ===
+Toolchain: Apple Swift 6.3.2  Platform: macOS 26 (arm64)  Date: 2026-05-28
+
+E reconstructs, WITHOUT buffer-linear:
+  - type module (E-type-module)        ≈ "Buffer Linear Inline Primitive" (singular)
+  - ops/conformance module (E-ops-module) ≈ "Buffer Linear Inline Primitives" (plural)
+  - bridge-default witness              = swift-memory-sequence-primitives (3rd module)
+  PLUS: doubly-nested value-generic ~Copyable type (EBuffer<E>.Linear.Inline<cap>),
+        owned real Storage.Inline (@_rawLayout), dual Iterable+Sequenceable @_implements,
+        cross-module bridge-default Sequenceable witness, AND the span witness declared in the
+        TYPE module while the Memory.Contiguous conformance is declared in the OPS module.
+
+$ swift run E-xmodule-exe
+E fixed: EBuffer<Int>.Linear.Inline<8>.collect().count = 8 (expect 8)
+E value-generic: EBuffer<Int>.Linear.Inline<8>.collect().count = 8 (expect 8)
+E fully-generic: EBuffer<Int>.Linear.Inline<8>.collect().count = 8 (expect 8)
+
+RESULT: PASS (debug + release). The 3-module split — the ONE structural factor the prior
+investigation flagged as un-reconstructed — STILL does NOT reproduce the demangle synthetically.
+Combined with prior targets A/C/D, NO synthetic reconstruction fires it; only the LITERAL
+buffer-linear type (target F) does. Reinforces: the trigger is specific to the literal
+Buffer.Linear.Inline (some factor beyond the enumerated structural ones — likely the full
+member/extension/conformance-cluster surface of the real type), not any isolable shape.

@@ -52,6 +52,9 @@ let package = Package(
         .package(path: "../../../swift-primitives/swift-ordinal-primitives"),
         .package(path: "../../../swift-primitives/swift-cardinal-primitives"),
         .package(path: "../../../swift-primitives/swift-finite-primitives"),
+        // TRANSIENT (issue-investigation): the LITERAL buffer-linear, to drive .collect() on the
+        // real Buffer.Linear.Inline with the transiently-restored Memory.Cursor Sequenceable bridge.
+        .package(path: "../../../swift-primitives/swift-buffer-linear-primitives"),
     ],
     targets: [
         // --- A: institute bridge, GENERIC conformer (single-module) ---
@@ -136,6 +139,62 @@ let package = Package(
                 .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
                 .product(name: "Sequence Hint Primitives", package: "swift-sequence-primitives"),
                 .product(name: "Iterable", package: "swift-iterator-primitives"),
+            ],
+            swiftSettings: settings
+        ),
+        // --- E: FULL 3-MODULE TOPOLOGY reconstruction (the un-tested factor per EXPERIMENT.md
+        //     lines 80-87). Type module (singular analog) / ops-conformance module (plural
+        //     analog) / bridge-default witness module (swift-memory-sequence-primitives). PLUS
+        //     a doubly-nested value-generic ~Copyable @_rawLayout type + dual @_implements +
+        //     cross-module bridge-default Sequenceable witness. The closest reconstruction of
+        //     Buffer.Linear.Inline<8>: Sequenceable achievable without buffer-linear.
+        .target(
+            name: "E-type-module",
+            dependencies: [
+                .product(name: "Storage Inline Primitives", package: "swift-storage-primitives"),
+                .product(name: "Storage Primitive", package: "swift-storage-primitives"),
+                .product(name: "Index Primitives", package: "swift-index-primitives"),
+                .product(name: "Ordinal Primitive", package: "swift-ordinal-primitives"),
+                .product(name: "Cardinal Primitive", package: "swift-cardinal-primitives"),
+                .product(name: "Finite Primitives", package: "swift-finite-primitives"),
+            ],
+            swiftSettings: settings
+        ),
+        .target(
+            name: "E-ops-module",
+            dependencies: [
+                "E-type-module",
+                .product(name: "Storage Inline Primitives", package: "swift-storage-primitives"),
+                .product(name: "Memory Contiguous Primitives", package: "swift-memory-primitives"),
+                .product(name: "Memory Cursor Primitives", package: "swift-memory-cursor-primitives"),
+                .product(name: "Memory Sequence Primitives", package: "swift-memory-sequence-primitives"),
+                .product(name: "Memory Iterator Primitives", package: "swift-memory-iterator-primitives"),
+                .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
+                .product(name: "Iterable", package: "swift-iterator-primitives"),
+                .product(name: "Iterator Chunk Primitives", package: "swift-iterator-primitives"),
+                .product(name: "Iterator Primitive", package: "swift-iterator-primitives"),
+            ],
+            swiftSettings: settings
+        ),
+        .executableTarget(
+            name: "E-xmodule-exe",
+            dependencies: [
+                "E-type-module",
+                "E-ops-module",
+                .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
+                .product(name: "Sequence Hint Primitives", package: "swift-sequence-primitives"),
+            ],
+            swiftSettings: settings
+        ),
+        // --- F: drive .collect() on the LITERAL Buffer.Linear.Inline (real buffer-linear with the
+        //     transiently-restored crashing Memory.Cursor Sequenceable bridge). The only target
+        //     that exercises the literal failing type; expected to crash Signal-6.
+        .executableTarget(
+            name: "F-literal-buffer-linear-exe",
+            dependencies: [
+                .product(name: "Buffer Linear Inline Primitives", package: "swift-buffer-linear-primitives"),
+                .product(name: "Sequence Protocol Primitives", package: "swift-sequence-primitives"),
+                .product(name: "Sequence Hint Primitives", package: "swift-sequence-primitives"),
             ],
             swiftSettings: settings
         ),

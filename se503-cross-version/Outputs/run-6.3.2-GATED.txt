@@ -1,0 +1,5 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version-5904E0B7DFDEA3B0.txt
+Build of product 'se503-cross-version' complete! (0.08s)
+se503-cross-version built

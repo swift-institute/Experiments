@@ -1,0 +1,20 @@
+=== F-literal vs RESHAPE (Memory.Snapshot.Cursor<Element>) — RELEASE, hard-clean ===
+Toolchain: Apple Swift 6.3.2 (swiftlang-6.3.2.1.108)  Platform: macOS 26 (arm64)
+Date: 2026-05-28
+
+NOTE: swift-buffer-linear-primitives FAILS to compile in release mode with an LLVM
+"Broken module found" verifier abort EVEN AT CLEAN HEAD with the production hand-written
+scalar iterator (no Memory.Cursor) — confirmed by building the standalone
+`Buffer Linear Inline Primitives` target at HEAD, -c release. This release-mode IRGen ICE
+is AMBIENT to buffer-linear (almost certainly the documented @_rawLayout+deinit LLVM
+verifier issue, cf. Buffer.Linear.Inline.swift WORKAROUND comments + swiftlang/swift#86652)
+and is UNRELATED to the Memory.Cursor demangle. To isolate the reshape's own release codegen,
+the LLVM verifier is disabled:
+
+$ swift run -c release F-literal-buffer-linear-exe -Xswiftc -disable-llvm-verify
+F literal: Buffer<Int>.Linear.Inline<8>.collect() = [10, 20, 30] (expect [10, 20, 30])
+
+RESULT: PASS — the reshape's generated code is correct in release. (The same setup with the
+baseline Memory.Cursor<Self> + verifier disabled ALSO links and runs correctly, confirming the
+release broken-module is the verifier rejecting IR that nonetheless executes — i.e. the demangle
+corruption + the ambient verifier issue are distinct; the reshape fixes the former.)
