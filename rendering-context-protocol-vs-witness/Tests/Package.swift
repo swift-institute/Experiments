@@ -7,7 +7,7 @@ let package = Package(
     platforms: [.macOS(.v26)],
     dependencies: [
         .package(path: ".."),
-        .package(path: "../../../../swift-foundations/swift-testing"),
+        .package(url: "https://github.com/swift-foundations/swift-testing.git", branch: "main"),
     ],
     targets: [
         .testTarget(

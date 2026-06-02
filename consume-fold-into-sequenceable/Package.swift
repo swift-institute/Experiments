@@ -10,9 +10,9 @@ let package = Package(
     name: "consume-fold-into-sequenceable",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-sequence-primitives"),
-        .package(path: "../../../swift-primitives/swift-iterator-primitives"),
-        .package(path: "../../../swift-primitives/swift-either-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-sequence-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-iterator-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-either-primitives.git", branch: "main"),
     ],
     targets: [
         .executableTarget(

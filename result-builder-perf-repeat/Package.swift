@@ -5,7 +5,7 @@ let package = Package(
     name: "result-builder-perf-repeat",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-standard-library-extensions"),
+        .package(url: "https://github.com/swift-primitives/swift-standard-library-extensions.git", branch: "main"),
     ],
     targets: [
         .executableTarget(

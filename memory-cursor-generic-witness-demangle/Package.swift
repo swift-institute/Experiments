@@ -41,20 +41,20 @@ let package = Package(
     name: "memory-cursor-generic-witness-demangle",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-memory-primitives"),
-        .package(path: "../../../swift-primitives/swift-memory-cursor-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-memory-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-memory-cursor-primitives.git", branch: "main"),
         .package(path: "../../../swift-primitives/swift-memory-sequence-primitives"),
-        .package(path: "../../../swift-primitives/swift-memory-iterator-primitives"),
-        .package(path: "../../../swift-primitives/swift-sequence-primitives"),
-        .package(path: "../../../swift-primitives/swift-iterator-primitives"),
-        .package(path: "../../../swift-primitives/swift-storage-primitives"),
-        .package(path: "../../../swift-primitives/swift-index-primitives"),
-        .package(path: "../../../swift-primitives/swift-ordinal-primitives"),
-        .package(path: "../../../swift-primitives/swift-cardinal-primitives"),
-        .package(path: "../../../swift-primitives/swift-finite-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-memory-iterator-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-sequence-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-iterator-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-storage-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-index-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ordinal-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-cardinal-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-finite-primitives.git", branch: "main"),
         // TRANSIENT (issue-investigation): the LITERAL buffer-linear, to drive .collect() on the
         // real Buffer.Linear.Inline with the transiently-restored Memory.Cursor Sequenceable bridge.
-        .package(path: "../../../swift-primitives/swift-buffer-linear-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-buffer-linear-primitives.git", branch: "main"),
     ],
     targets: [
         // --- A: institute bridge, GENERIC conformer (single-module) ---

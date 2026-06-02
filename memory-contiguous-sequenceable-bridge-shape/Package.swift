@@ -17,8 +17,8 @@ let package = Package(
     name: "memory-contiguous-sequenceable-bridge-shape",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-iterator-primitives"),
-        .package(path: "../../../swift-primitives/swift-sequence-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-iterator-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-sequence-primitives.git", branch: "main"),
     ],
     targets: [
         .executableTarget(

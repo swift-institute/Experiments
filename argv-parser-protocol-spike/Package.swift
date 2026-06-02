@@ -6,9 +6,9 @@ let package = Package(
     name: "argv-parser-protocol-spike",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-parser-primitives"),
-        .package(path: "../../../swift-primitives/swift-input-primitives"),
-        .package(path: "../../../swift-primitives/swift-array-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-parser-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-input-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-array-primitives.git", branch: "main"),
     ],
     targets: [
         .target(

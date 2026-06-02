@@ -12,9 +12,9 @@ let package = Package(
         .visionOS(.v26),
     ],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-tagged-primitives"),
-        .package(path: "../../../swift-primitives/swift-ordinal-primitives"),
-        .package(path: "../../../swift-primitives/swift-cardinal-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-tagged-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ordinal-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-cardinal-primitives.git", branch: "main"),
     ],
     targets: [
         .target(

@@ -5,8 +5,8 @@ let package = Package(
     name: "l3-policy-layering-approach-13-carrier-generic-over-layers",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-tagged-primitives"),
-        .package(path: "../../../swift-primitives/swift-carrier-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-tagged-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-carrier-primitives.git", branch: "main"),
     ],
     targets: [
         .target(name: "L1Defs"),

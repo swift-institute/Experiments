@@ -6,7 +6,7 @@ let package = Package(
     name: "rendering-witness-migration-blockers",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-property-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-property-primitives.git", branch: "main"),
     ],
     targets: [
         .target(

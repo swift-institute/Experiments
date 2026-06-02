@@ -16,7 +16,7 @@ let package = Package(
     name: "range-property-typed-throws-iteration",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-property-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-property-primitives.git", branch: "main"),
     ],
     targets: [
         .target(

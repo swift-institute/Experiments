@@ -5,7 +5,7 @@ let package = Package(
     name: "l3-policy-layering-approach-12-tagged-l2-as-rawvalue",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-tagged-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-tagged-primitives.git", branch: "main"),
     ],
     targets: [
         .target(name: "L1Defs"),

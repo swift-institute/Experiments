@@ -5,7 +5,7 @@ let package = Package(
     name: "dependency-scope-writeback",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-dependency-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-dependency-primitives.git", branch: "main"),
     ],
     targets: [
         .executableTarget(

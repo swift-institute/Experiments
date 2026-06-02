@@ -7,11 +7,11 @@ let package = Package(
     platforms: [.macOS(.v26)],
     dependencies: [
         // Apple swift-argument-parser (path dep, local clone).
-        .package(path: "../../../swiftlang/swift-argument-parser"),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", branch: "main"),
         // Institute parser ecosystem (same deps as argv-parser-protocol-spike).
-        .package(path: "../../../swift-primitives/swift-parser-primitives"),
-        .package(path: "../../../swift-primitives/swift-input-primitives"),
-        .package(path: "../../../swift-primitives/swift-array-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-parser-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-input-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-array-primitives.git", branch: "main"),
     ],
     targets: [
         // Executable that mirrors swift-argument-parser's canonical Repeat example.

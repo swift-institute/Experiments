@@ -6,8 +6,8 @@ let package = Package(
     name: "markdown-rendering-performance-profiling",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-foundations/swift-markdown-html-render"),
-        .package(path: "../../../swift-foundations/swift-testing"),
+        .package(url: "https://github.com/swift-foundations/swift-markdown-html-render.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-testing.git", branch: "main"),
     ],
     targets: [
         .testTarget(

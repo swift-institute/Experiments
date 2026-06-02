@@ -5,14 +5,14 @@ let package = Package(
     name: "result-builder-perf",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../../../swift-primitives/swift-array-primitives"),
-        .package(path: "../../../swift-primitives/swift-buffer-primitives"),
-        .package(path: "../../../swift-primitives/swift-stack-primitives"),
-        .package(path: "../../../swift-primitives/swift-queue-primitives"),
-        .package(path: "../../../swift-primitives/swift-heap-primitives"),
-        .package(path: "../../../swift-primitives/swift-set-primitives"),
-        .package(path: "../../../swift-primitives/swift-bitset-primitives"),
-        .package(path: "../../../swift-primitives/swift-standard-library-extensions"),
+        .package(url: "https://github.com/swift-primitives/swift-array-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-buffer-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-stack-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-queue-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-heap-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-set-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-bitset-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-standard-library-extensions.git", branch: "main"),
     ],
     targets: [
         .executableTarget(
