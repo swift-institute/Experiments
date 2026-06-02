@@ -1,0 +1,9 @@
+Building for production...
+Planning deferred tasks
+[61/100] ScopedSliceKit 20 / 33
+[83/100] escapable-scoped-slice-view 29 / 35
+[100/100] 
+Build complete! (0,71 sec)
+lower.isBefore(upper) = true
+observed sum = 90
+OK: ~Escapable scoped-slice view is usable within the borrow

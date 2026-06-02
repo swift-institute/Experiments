@@ -1,0 +1,40 @@
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/4] Emitting module EscapeRejection
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/EscapeRejection/EscapeRejection.swift:27:16: error: stored property 'slice' of 'Escapable'-conforming struct 'EscapableHolder' has non-Escapable type 'ScopedSlice'
+24 | 
+25 | // (1) Storing a ~Escapable value in an Escapable struct — EXPECT REJECTED.
+26 | public struct EscapableHolder {
+   |               `- note: consider adding '~Escapable' to struct 'EscapableHolder'
+27 |     public var slice: ScopedSlice
+   |                `- error: stored property 'slice' of 'Escapable'-conforming struct 'EscapableHolder' has non-Escapable type 'ScopedSlice'
+28 | }
+29 | 
+
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/EscapeRejection/EscapeRejection.swift:35:6: error: a function with a ~Escapable result requires '@_lifetime(...)'
+33 |     _ lo: borrowing Cursor,
+34 |     _ hi: borrowing Cursor
+35 | ) -> ScopedSlice {
+   |      `- error: a function with a ~Escapable result requires '@_lifetime(...)'
+36 |     return base.slice(from: lo, upTo: hi)
+37 | }
+[4/4] Compiling EscapeRejection EscapeRejection.swift
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/EscapeRejection/EscapeRejection.swift:27:16: error: stored property 'slice' of 'Escapable'-conforming struct 'EscapableHolder' has non-Escapable type 'ScopedSlice'
+24 | 
+25 | // (1) Storing a ~Escapable value in an Escapable struct — EXPECT REJECTED.
+26 | public struct EscapableHolder {
+   |               `- note: consider adding '~Escapable' to struct 'EscapableHolder'
+27 |     public var slice: ScopedSlice
+   |                `- error: stored property 'slice' of 'Escapable'-conforming struct 'EscapableHolder' has non-Escapable type 'ScopedSlice'
+28 | }
+29 | 
+
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/EscapeRejection/EscapeRejection.swift:35:6: error: a function with a ~Escapable result requires '@_lifetime(...)'
+33 |     _ lo: borrowing Cursor,
+34 |     _ hi: borrowing Cursor
+35 | ) -> ScopedSlice {
+   |      `- error: a function with a ~Escapable result requires '@_lifetime(...)'
+36 |     return base.slice(from: lo, upTo: hi)
+37 | }

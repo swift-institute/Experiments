@@ -1,0 +1,7 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Emitting module escapable_scoped_slice_view
+[4/4] Compiling escapable_scoped_slice_view main.swift
+Build of target: 'escapable-scoped-slice-view' complete! (0.25s)

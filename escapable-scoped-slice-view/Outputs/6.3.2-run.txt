@@ -1,0 +1,16 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write escapable-scoped-slice-view-entitlement.plist
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[2/5] Write Objects.LinkFileList
+[3/5] Linking escapable-scoped-slice-view
+[4/5] Applying escapable-scoped-slice-view
+Build of product 'escapable-scoped-slice-view' complete! (0.26s)
+within-scope sum   = 90
+within-scope count = 3
+within-scope [0]   = 20
+within-scope [2]   = 40
+within-scope [at lo] = 20
+lower.isBefore(upper) = true
+observed sum = 90
+OK: ~Escapable scoped-slice view is usable within the borrow

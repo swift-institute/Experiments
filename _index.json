@@ -58,6 +58,25 @@
   ],
   "experiments": [
     {
+      "directory": "escapable-scoped-slice-view",
+      "category": "~Escapable & Ownership",
+      "purpose": "Refute-first viability of a ~Escapable scoped-slice VIEW (consumer-fallout v1.3.0 steelman #4 / the §Foreclosed 'scoped view'): a slice that is ITSELF ~Escapable, storing its two ~Escapable bound indices directly (no stored Range) + a base borrow, produced by a borrowing-bounds func, offering within-scope indexed sub-access (offset- AND ~Escapable-cursor-keyed subscript). VIABLE: builds + runs (debug+release, cross-module) identically on 6.3.2 AND 6.5-dev; the [MEM-LIFE-004] @_lifetime version-skew did NOT fire (same @_lifetime(copy lower, copy upper) / @_lifetime(borrow base)). Escape rejected (storing in an Escapable struct, and returning without @_lifetime, both fail — the symmetric counterpart of the toolchain-fallout doc's Option-B obstruction). Shape caveat: the bounds PRODUCER must be a func, not a subscript (SubscriptProducerProbe REFUTED on both: 'borrowing' rejected on subscript params; a ~Escapable-returning subscript getter cannot thread the bounds' lifetimes).",
+      "date": "2026-06-02",
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108) + 6.5-dev (org.swift.64202605121a)",
+      "status": "CONFIRMED",
+      "statusDetail": "VIABLE both toolchains (debug+release, cross-module); producer must be a func (subscript-producer REFUTED); escape rejected",
+      "statusRaw": "CONFIRMED (viable) — producer-subscript REFUTED",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-institute/Research/collection-slice-escapable-index-toolchain-fallout.md (the Residual this experiment backs per [RES-027]; cited from v1.2.0)",
+        "swift-institute/Research/collection-index-escapable-consumer-fallout.md (v1.3.0 DECISION; KEEP steelman #4 = the scoped-view idea this tests)",
+        "swift-collection-primitives/Experiments/collection-index-escapable-lifetime (the @_lifetime(copy i) storable-index harness this extends; 6.3.2 CONFIRMED)",
+        "swift-institute/Experiments/pointer-nonescapable-storage (TuplePair/Triple: N ~Escapable fields under @_lifetime(copy ...) — prior art for the storage)",
+        "swift-institute/Experiments/escapable-output-borrow-lend (bespoke ~Escapable Borrowed view under @_lifetime(borrow owner) — prior art)",
+        "swift-collection-primitives/Experiments/self-slicing-noncopyable + protocol-subscript-noncopyable (the ~Copyable self-slice / subscript axis)"
+      ]
+    },
+    {
       "category": "Architecture Patterns",
       "crossRefs": [
         "swift-institute/Research/iteration-architecture-expressibility-envelope.md (this experiment's RECOMMENDATION writeup; v1.3.0 adds the traversal-only re-attack \u00a77 + Angle A/B/C rows; overturns v1.2.0's gap-(b) 'non-contiguous D1 REFUTED' headline)",

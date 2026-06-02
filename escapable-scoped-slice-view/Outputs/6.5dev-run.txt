@@ -1,0 +1,14 @@
+Building for debugging...
+Planning deferred tasks
+[70/100] escapable-scoped-slice-view-product 10 / 15
+[88/100] escapable-scoped-slice-view-product 13 / 15
+[100/100] 
+Build complete! (0,67 sec)
+within-scope sum   = 90
+within-scope count = 3
+within-scope [0]   = 20
+within-scope [2]   = 40
+within-scope [at lo] = 20
+lower.isBefore(upper) = true
+observed sum = 90
+OK: ~Escapable scoped-slice view is usable within the borrow

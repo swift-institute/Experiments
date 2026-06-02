@@ -1,0 +1,30 @@
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Emitting module SubscriptProducerProbe
+[4/4] Compiling SubscriptProducerProbe SubscriptProducerProbe.swift
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/SubscriptProducerProbe/SubscriptProducerProbe.swift:40:9: error: lifetime-dependent value escapes its scope
+37 |     // the compiler-generated getter.
+38 |     @_lifetime(copy lower, copy upper)
+39 |     subscript(from lower: Cursor, upTo upper: Cursor) -> ScopedSlice {
+   |                    |                                                 `- note: error in compiler-generated 'get'
+   |                    `- note: it depends on the lifetime of argument 'lower'
+40 |         ScopedSlice(buffer: self.buffer, lower: lower, upper: upper)
+   |         `- error: lifetime-dependent value escapes its scope
+41 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+42 | }
+43 | 
+
+/Users/coen/Developer/swift-institute/Experiments/escapable-scoped-slice-view/Sources/SubscriptProducerProbe/SubscriptProducerProbe.swift:40:9: error: lifetime-dependent value escapes its scope
+37 |     // the compiler-generated getter.
+38 |     @_lifetime(copy lower, copy upper)
+39 |     subscript(from lower: Cursor, upTo upper: Cursor) -> ScopedSlice {
+   |                                        |                             `- note: error in compiler-generated 'get'
+   |                                        `- note: it depends on the lifetime of argument 'upper'
+40 |         ScopedSlice(buffer: self.buffer, lower: lower, upper: upper)
+   |         `- error: lifetime-dependent value escapes its scope
+41 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+42 | }
+43 | 

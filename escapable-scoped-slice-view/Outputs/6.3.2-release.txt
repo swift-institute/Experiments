@@ -1,0 +1,14 @@
+Building for production...
+[0/3] Write sources
+[2/3] Write swift-version--58304C5D6DBC2206.txt
+[4/4] Compiling ScopedSliceKit ScopedSliceView.swift
+[5/5] Compiling escapable_scoped_slice_view main.swift
+Build of target: 'escapable-scoped-slice-view' complete! (0.42s)
+within-scope sum   = 90
+within-scope count = 3
+within-scope [0]   = 20
+within-scope [2]   = 40
+within-scope [at lo] = 20
+lower.isBefore(upper) = true
+observed sum = 90
+OK: ~Escapable scoped-slice view is usable within the borrow
