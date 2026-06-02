@@ -6,7 +6,7 @@ let package = Package(
     name: "foreach-consuming-accessor-test",
     platforms: [.macOS(.v26)],
     dependencies: [
-        .package(path: "../.."),
+        .package(url: "https://github.com/swift-primitives/swift-property-primitives.git", branch: "main"),
     ],
     targets: [
         .executableTarget(

@@ -43,7 +43,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-primitives/swift-memory-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-memory-cursor-primitives.git", branch: "main"),
-        .package(path: "../../../swift-primitives/swift-memory-sequence-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-memory-sequence-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-memory-iterator-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-sequence-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-iterator-primitives.git", branch: "main"),
