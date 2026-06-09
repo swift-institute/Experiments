@@ -1,0 +1,12 @@
+=== matched -Onone ===
+nested, box, no IKUR : oracleDeinit=1 fieldFree=1 OK
+nested, box + IKUR   : oracleDeinit=1 fieldFree=1 OK
+nested, no box, drop : oracleDeinit=1 fieldFree=1 OK
+no-Wrap box + IKUR   : oracleDeinit=1 fieldFree=1 OK
+BoxD(deinit) + IKUR  : oracleDeinit=1 fieldFree=1 OK
+=== matched -O ===
+nested, box, no IKUR : oracleDeinit=1 fieldFree=1 OK
+nested, box + IKUR   : oracleDeinit=0 fieldFree=1 ** SKIP **
+nested, no box, drop : oracleDeinit=1 fieldFree=1 OK
+no-Wrap box + IKUR   : oracleDeinit=0 fieldFree=1 ** SKIP **
+BoxD(deinit) + IKUR  : oracleDeinit=0 fieldFree=1 ** SKIP **

@@ -1,0 +1,12 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version-5904E0B7DFDEA3B0.txt
+Build of product 'Repro' complete! (0.07s)
+nested, no box, direct drop          : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed, NO uniqueness call    : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed, + isKnownUniquelyRef  : userDeinit=1 fieldFree=1 drains=0 OK
+FLAT,   boxed, + isKnownUniquelyRef  : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed+IKUR, empty box deinit : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed+IKUR, AnyObject? field : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed+IKUR, DRAIN box deinit : userDeinit=1 fieldFree=1 drains=1 OK
+RESULT: all shapes correct (expected in -Onone; a fixed toolchain would also print this under -O)

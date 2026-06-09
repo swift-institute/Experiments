@@ -1,0 +1,12 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version-5904E0B7DFDEA3B0.txt
+Build of product 'Repro' complete! (0.08s)
+nested, no box, direct drop          : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed, NO uniqueness call    : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed, + isKnownUniquelyRef  : userDeinit=0 fieldFree=1 drains=0 ** SKIP — user deinit omitted **
+FLAT,   boxed, + isKnownUniquelyRef  : userDeinit=1 fieldFree=1 drains=0 OK
+nested, boxed+IKUR, empty box deinit : userDeinit=0 fieldFree=1 drains=0 ** SKIP — user deinit omitted **
+nested, boxed+IKUR, AnyObject? field : userDeinit=0 fieldFree=1 drains=0 ** SKIP — user deinit omitted **
+nested, boxed+IKUR, DRAIN box deinit : userDeinit=1 fieldFree=1 drains=1 OK
+RESULT: 3 shape(s) SKIPPED the user deinit (the 6.3.2 -O miscompile reproduces)
