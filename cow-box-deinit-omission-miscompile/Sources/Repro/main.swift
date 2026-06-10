@@ -23,6 +23,11 @@ final class BoxDrain {                             // the WORKING mitigation: de
     deinit { w.drain() }
 }
 
+final class BoxExclUnchecked<W: ~Copyable> {       // Q8 guard candidate: exclusivity off — ✗
+    @exclusivity(unchecked) var w: W
+    init(_ w: consuming W) { self.w = w }
+}
+
 final class Payload {}
 
 var failures = 0
@@ -61,6 +66,18 @@ check("nested, boxed+IKUR, AnyObject? field ") {   // mitigation ✗ ([MEM-SAFE-
 }
 check("nested, boxed+IKUR, DRAIN box deinit ", expectDrains: 1) {   // mitigation ✓
     var b = BoxDrain(NS<Region>.InnerD<Payload>(region: Region()))
+    _ = isKnownUniquelyReferenced(&b)
+    _ = b
+}
+// Q8 guard-candidate evaluation (W4, 2026-06-10): NEITHER attribute prevents the
+// omission — both rows SKIP under -O. The drain-box rule remains the only fix.
+check("nested, boxed+IKUR, @exclusivity(unch)") {   // guard candidate ✗
+    var b = BoxExclUnchecked(NS<Region>.Inner<Payload>(region: Region()))
+    _ = isKnownUniquelyReferenced(&b)
+    _ = b
+}
+check("nested, boxed+IKUR, @_eagerMove local ") {   // guard candidate ✗
+    @_eagerMove var b = Box(NS<Region>.Inner<Payload>(region: Region()))
     _ = isKnownUniquelyReferenced(&b)
     _ = b
 }
