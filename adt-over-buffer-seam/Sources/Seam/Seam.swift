@@ -107,3 +107,18 @@ extension LinearBuffer: BufferRich where S: ~Copyable {
 extension ArrayADT where B: ~Copyable, B: BufferRich {
     public var ridingCount: Int { buffer.count }   // rides the buffer directly (single-protocol constraint; no storage reach)
 }
+
+// MARK: - V3 — REFUTED on 6.3.2: the explicit `B.Storage.Element: ~Copyable` clause does NOT compile.
+//   error: cannot suppress '~Copyable' on generic parameter 'B.Storage.Element' defined in outer scope.
+//   You cannot RE-suppress ~Copyable on a nested associated type whose protocol already declares it ~Copyable;
+//   the clause is also UNNECESSARY — B.Storage.Element is already ~Copyable from StoreSeam, so the 2-level V1
+//   shape already admits ~Copyable elements. (Original V3 kept commented for the record.)
+/*
+extension ArrayADT where B: ~Copyable, B: BufferSeam, B.Storage: StoreSeam, B.Storage.Element: ~Copyable {
+    public var deepCount: Int { buffer.count }
+    public subscript(deep i: Int) -> B.Storage.Element {
+        _read { yield buffer.storage[i] }
+        _modify { yield &buffer.storage[i] }
+    }
+}
+*/

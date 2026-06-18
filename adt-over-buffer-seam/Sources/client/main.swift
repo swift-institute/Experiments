@@ -9,3 +9,5 @@ print("V1 after set a[1]=\(a[1])")
 
 // V2 — ride-the-buffer alternative (single-protocol constraint).
 print("V2 ridingCount=\(a.ridingCount)")
+
+// V3 REFUTED (see Seam.swift): `B.Storage.Element: ~Copyable` can't be re-suppressed; clause unnecessary.
