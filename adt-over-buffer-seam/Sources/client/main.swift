@@ -11,3 +11,6 @@ print("V1 after set a[1]=\(a[1])")
 print("V2 ridingCount=\(a.ridingCount)")
 
 // V3 REFUTED (see Seam.swift): `B.Storage.Element: ~Copyable` can't be re-suppressed; clause unnecessary.
+
+// V4 — a NORMAL protocol constraint on the deep element (Hashable, not a suppression).
+print("V4 deepHash(at:0)=\(a.deepHash(at: 0))")

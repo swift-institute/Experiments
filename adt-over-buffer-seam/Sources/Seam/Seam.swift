@@ -122,3 +122,9 @@ extension ArrayADT where B: ~Copyable, B: BufferSeam, B.Storage: StoreSeam, B.St
     }
 }
 */
+
+// MARK: - V4 — a NORMAL (non-suppression) protocol constraint on the deep element: does it compile?
+// `B.Storage.Element: Hashable` is a CONFORMANCE requirement (narrowing), not a suppression like ~Copyable.
+extension ArrayADT where B: ~Copyable, B: BufferSeam, B.Storage: StoreSeam, B.Storage.Element: Hashable {
+    public func deepHash(at i: Int) -> Int { buffer.storage[i].hashValue }
+}
