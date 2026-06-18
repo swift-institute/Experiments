@@ -1,0 +1,12 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write client-entitlement.plist
+[3/7] Write swift-version-5904E0B7DFDEA3B0.txt
+[5/9] Emitting module Seam
+[6/9] Compiling Seam Seam.swift
+[7/11] Emitting module client
+[8/11] Compiling client main.swift
+[8/11] Write Objects.LinkFileList
+[9/11] Linking client
+[10/11] Applying client
+Build complete! (1.50s)

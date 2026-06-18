@@ -1,0 +1,7 @@
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version-5904E0B7DFDEA3B0.txt
+Build of product 'client' complete! (0.07s)
+V1 count=3 a[1]=20
+V1 after set a[1]=99
+V2 ridingCount=3

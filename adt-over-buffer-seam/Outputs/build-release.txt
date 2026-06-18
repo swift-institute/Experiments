@@ -1,0 +1,8 @@
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version-5904E0B7DFDEA3B0.txt
+[4/6] Compiling Seam Seam.swift
+[5/7] Compiling client main.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking client
+Build complete! (0.45s)
