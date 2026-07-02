@@ -40,6 +40,7 @@
 // Status: STILL PRESENT on Swift 6.3.1 AND swift-6.4-dev.
 // Result: CONFIRMED COMPILER BUG, narrow shape:
 // Revalidated: Swift 6.3.1 (2026-04-30) — STILL PRESENT
+// Revalidated: Swift 6.3.3 (2026-07-02) — STILL CRASHES (release run SIGTRAP rc=133; V8 inout idiom remains the stable shape)
 //
 //         Variant verdicts (consolidated across reorderings):
 //

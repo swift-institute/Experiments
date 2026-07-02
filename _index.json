@@ -159,6 +159,21 @@
       "crossRefs": []
     },
     {
+      "directory": "adt-tower-walls",
+      "category": "Architecture Patterns",
+      "purpose": "6.3.3 re-probe of the ADT-tower compiler walls: Wall 4 typealias SIGSEGV FIXED (7 shapes incl. value-generic + enforced where-clauses); Wall 3 dual-storage FIXED in reduction; Wall 2 #86652 STILL PRESENT debug-only (workaround required); protocol-seam ~Copyable borrow/mutate CONFIRMED cross-package, whole-value get rejected at SIL; borrow/mutate accessors unavailable; no default generic args.",
+      "date": "2026-07-02",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "Mixed per-wall verdicts recorded in headers + Outputs/probes.txt; backs Research/adt-tower.md §3",
+      "statusRaw": "CONFIRMED (A,B) / STILL PRESENT (C, debug)",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-institute/Research/adt-tower.md",
+        "swiftlang/swift#86652"
+      ]
+    },
+    {
       "directory": "adt-tower-worked-example",
       "category": "ADT / Buffer / Storage layering",
       "purpose": "[EXP-017] cross-module worked example of the ADT-tower canonical shape (heap-allocated column: push out of order, pop sorted).",
@@ -171,6 +186,22 @@
       "crossRefs": []
     },
     {
+      "directory": "adt-tower-worked-example",
+      "category": "Architecture Patterns",
+      "purpose": "The measured worked example for Research/adt-tower.md: a new ADT (Heap, binary min priority queue) + two allocation variants against the REAL upstream columns; 105 code lines total, 3-line marginal allocation variant, full ~Copyable elements via Comparison.Protocol, 0 witness_method on tower ops.",
+      "date": "2026-07-02",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "The Q9 declaration-cost metric of record; [EXP-020] real-shape (path deps on 7 upstream packages)",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-institute/Research/adt-tower.md",
+        "swift-buffer-linear-primitives",
+        "swift-comparison-primitives"
+      ]
+    },
+    {
       "directory": "adt-variant-front-doors",
       "category": "ADT / Buffer / Storage layering",
       "purpose": "[EXP-017] cross-module consumer of ADT alias front-doors: canonical alias, nested variant alias, value-generic pinned init, ~Copyable element, generic algorithm over carrier.",
@@ -181,6 +212,20 @@
       "statusRaw": "CONFIRMED — all five spellings compile+run cross-module, debug AND release, 0 witness_method in -O client SIL",
       "supersededBy": null,
       "crossRefs": []
+    },
+    {
+      "directory": "adt-variant-front-doors",
+      "category": "Architecture Patterns",
+      "purpose": "The variant front-door mechanism: one bound-free carrier + canonical top-level alias + constrained nested variant aliases (Vector<Int>.Small<8>); S.Element in alias bodies; value-generic pins through the alias chain; ~Copyable elements end-to-end; 0 witness_method in -O cross-module client SIL.",
+      "date": "2026-07-02",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "Inexpressible on 6.3.2 (namespaced value-generic alias SIGSEGV); backs [DS-028]",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-institute/Research/adt-tower.md"
+      ]
     },
     {
       "directory": "argv-parser-benchmark",
@@ -1691,18 +1736,6 @@
       "crossRefs": []
     },
     {
-      "directory": "~~noncopyable-nested-deinit-chain~~",
-      "category": "Swift Language Issues",
-      "purpose": "**Moved to** `swift-buffer-primitives/Experiments/noncopyable-nested-deinit-chain/` (its natural home alongside the other @_rawLayout experiments).",
-      "date": "2026-03-21",
-      "toolchain": "—",
-      "status": "MOVED",
-      "statusDetail": null,
-      "statusRaw": "MOVED",
-      "supersededBy": null,
-      "crossRefs": []
-    },
-    {
       "directory": "noncopyable-operation-closure-pipeline",
       "category": "Concurrency & Isolation",
       "purpose": "A+E feasibility spike: ~Copyable Sendable Operation through stored closure pipeline. Non-Sendable closure → box → Operation → Lane → Job → execute. 13/14 CONFIRMED, 1 REFUTED. Key finding: UnsafeMutableRawPointer is @unsafe Sendable in 6.3 — requires nonisolated(unsafe) on field. Pipeline mechanics (consuming, forwarding, deinit cleanup, async) all work.",
@@ -2128,18 +2161,6 @@
       "status": "CONFIRMED",
       "statusDetail": null,
       "statusRaw": "CONFIRMED",
-      "supersededBy": null,
-      "crossRefs": []
-    },
-    {
-      "directory": "~~predictable-memopt-destroy-value-source~~",
-      "category": "Architecture Patterns",
-      "purpose": "Root-cause investigation of #88022 (spurious `destroy_value` in CopyPropagation). Documentation-only, deleted — #88022 fixed in Swift 6.3.",
-      "date": "2026-03-19",
-      "toolchain": "Swift 6.2.4",
-      "status": "SUPERSEDED",
-      "statusDetail": "deleted",
-      "statusRaw": "SUPERSEDED & DELETED",
       "supersededBy": null,
       "crossRefs": []
     },
@@ -3212,6 +3233,30 @@
       "status": "DEFERRED",
       "statusDetail": "awaiting pool design completion",
       "statusRaw": "DEFERRED — awaiting pool design completion",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "~~noncopyable-nested-deinit-chain~~",
+      "category": "Swift Language Issues",
+      "purpose": "**Moved to** `swift-buffer-primitives/Experiments/noncopyable-nested-deinit-chain/` (its natural home alongside the other @_rawLayout experiments).",
+      "date": "2026-03-21",
+      "toolchain": "—",
+      "status": "MOVED",
+      "statusDetail": null,
+      "statusRaw": "MOVED",
+      "supersededBy": null,
+      "crossRefs": []
+    },
+    {
+      "directory": "~~predictable-memopt-destroy-value-source~~",
+      "category": "Architecture Patterns",
+      "purpose": "Root-cause investigation of #88022 (spurious `destroy_value` in CopyPropagation). Documentation-only, deleted — #88022 fixed in Swift 6.3.",
+      "date": "2026-03-19",
+      "toolchain": "Swift 6.2.4",
+      "status": "SUPERSEDED",
+      "statusDetail": "deleted",
+      "statusRaw": "SUPERSEDED & DELETED",
       "supersededBy": null,
       "crossRefs": []
     }
