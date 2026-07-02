@@ -1,3 +1,9 @@
+// Status: STILL PRESENT (as of Apple Swift 6.3.2; user deinit omitted on the nested-generic
+//         ~Copyable struct in a generic class box after isKnownUniquelyReferenced, -O only)
+// Revalidated: Swift 6.3.3 (2026-07-02) — STILL CRASHES/PRESENT: 5 shapes SKIP the user deinit
+//         at -O (nested+IKUR bare / empty-deinit / AnyObject? field / @exclusivity(unchecked) /
+//         @_eagerMove); ONLY the DRAIN-box-deinit shape is safe — [MEM-SAFE-028] confirmed required.
+//
 // Module B — the box + the evidence matrix. Run BOTH configs:
 //   swift run Repro            (debug — expect all OK)
 //   swift run -c release Repro (release — expect the `box + IKUR` rows to print SKIP)
