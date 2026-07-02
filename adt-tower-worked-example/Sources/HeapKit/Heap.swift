@@ -55,6 +55,7 @@ public import Comparison_Primitives
 
 // MARK: 1. The carrier (thin, bound-free; hoisted)
 
+@frozen
 public struct __Heap<S: ~Copyable>: ~Copyable {
     @usableFromInline
     package var column: S
