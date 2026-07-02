@@ -1,0 +1,4 @@
+Build of product 'adt-tower-walls' complete! (2.05s)
+A: peek=10 sum=60 afterBump=61
+B: deinits(with workaround)=2 (expect 2)
+C: deinits(no workaround)=2 (2 = fixed, 0 = #86652 persists)

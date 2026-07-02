@@ -1,0 +1,66 @@
+=== p1-alias-in-namespace [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p1 ok: 1
+run rc=0
+=== p1b-alias-in-namespace-valuegeneric [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p1b ok: 0
+run rc=0
+=== p2-alias-in-generic-type [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p2 ok: Impl2<Pair<Int, Int>>
+run rc=0
+=== p2b-alias-in-generic-type-valuegeneric [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p2b ok: Impl3<VG2<Int, 4>>
+run rc=0
+=== p3-alias-top-level [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p3 ok: 2
+run rc=0
+=== p3b-extension-of-alias [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p3b ok
+run rc=0
+=== p3c-alias-where-clause [RUN] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+p3c ok
+run rc=0
+=== p4-suppression-clause [FAIL] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+Probes/p4-suppression-clause.swift:6:87: error: cannot suppress '~Copyable' on generic parameter 'B.Storage.Element' defined in outer scope
+   |                                                                                       `- error: cannot suppress '~Copyable' on generic parameter 'B.Storage.Element' defined in outer scope
+rc=1 (expected nonzero)
+=== p5-borrow-mutate-accessors [FAIL] flags: none ===
+Probes/p5-borrow-mutate-accessors.swift:6:16: error: borrow accessor requires '-enable-experimental-feature BorrowAndMutateAccessors'
+   |                `- error: borrow accessor requires '-enable-experimental-feature BorrowAndMutateAccessors'
+Probes/p5-borrow-mutate-accessors.swift:6:23: error: consecutive statements on a line must be separated by ';'
+   |                       `- error: consecutive statements on a line must be separated by ';'
+rc=1 (expected nonzero)
+=== p6-coroutine-accessors [FAIL] flags: -enable-experimental-feature CoroutineAccessors -enable-experimental-feature SuppressedAssociatedTypes ===
+Probes/p6-coroutine-accessors.swift:12:35: error: expected get, read, or set in a protocol property
+   |                                   `- error: expected get, read, or set in a protocol property
+rc=1 (expected nonzero)
+=== p7-extension-implies-copyable [FAIL] flags: none ===
+Probes/p7-extension-implies-copyable.swift:7:3: error: referencing instance method 'f()' on 'W7' requires that 'MO' conform to 'Copyable'
+2 | // Result (Apple Swift 6.3.3, 2026-07-02): STILL PRESENT — bare extension constrains to Copyable; error at ~Copyable use site.
+  |   `- error: referencing instance method 'f()' on 'W7' requires that 'MO' conform to 'Copyable'
+rc=1 (expected nonzero)
+=== p8-wall3-dual-storage [RUNO] flags: -enable-experimental-feature RawLayout ===
+p8 ok
+run rc=0
+=== p8b-wall3-field-after-rawlayout [RUNO] flags: -enable-experimental-feature RawLayout ===
+p8b ok: 7
+run rc=0
+=== p8c-wall3-generic-dual [RUNO] flags: -enable-experimental-feature RawLayout ===
+p8c ok: 1
+run rc=0
+=== p10-default-generic-arg [FAIL] flags: none ===
+Probes/p10-default-generic-arg.swift:3:15: error: expected '>' to complete generic parameter list
+  |         |     `- error: expected '>' to complete generic parameter list
+rc=1 (expected nonzero)
+=== p11-noncopyable-whole-value-get [TYPECHECK-OK] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+rc=0 (Sema accepts — the SIL layer is the gate; see FAILC twin)
+=== p11b-noncopyable-whole-value-get-full [FAILC] flags: -enable-experimental-feature SuppressedAssociatedTypes ===
+Probes/p11b-noncopyable-whole-value-get-full.swift:21:6: error: noncopyable 's.subscript' cannot be consumed when captured by an escaping closure or borrowed by a non-Escapable type
+   |      `- error: noncopyable 's.subscript' cannot be consumed when captured by an escaping closure or borrowed by a non-Escapable type
+rc=1 (expected nonzero at SIL)
+=== p12-inlinearray-deinit [RUN] flags: none ===
+p12: deinits=2 (expect 2 if clean)
+run rc=0
+=== p12-inlinearray-deinit [RUNO] flags: none ===
+p12: deinits=2 (expect 2 if clean)
+run rc=0
+--- done ---
