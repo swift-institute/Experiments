@@ -1,0 +1,5 @@
+Build of product 'client' complete! (0.31s)
+canonical: count=3 v[2]=30
+small: count=2 s[1]=42
+moSmall: count=1 m[0].x=8
+generic: total(v)=60 total(s)=43
