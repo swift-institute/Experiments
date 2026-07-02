@@ -1,0 +1,3 @@
+canonical: [3, 3, 7, 19, 25, 42]
+small: min=1 then 1 2 8 9
+jobs: first=1 remaining=2
