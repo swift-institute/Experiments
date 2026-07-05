@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling client main.swift
+[4/6] Emitting module client
+[4/7] Write Objects.LinkFileList
+[5/7] Linking client
+[6/7] Applying client
+Build complete! (3.51s)

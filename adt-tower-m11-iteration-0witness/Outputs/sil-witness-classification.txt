@@ -1,0 +1,22 @@
+SIL file: Outputs/client.sil
+Raw `grep witness_method` line count ...... 4
+  REAL `= witness_method` instructions .... 2
+  `$@convention(witness_method:)` annots .. 2  (type annotations, not dispatch)
+
+=== REAL witness_method instructions, by enclosing SIL function ===
+- x2  [public_external]  Iterable<>.forEach<A>(_:)
+      attrs: [public_external]   at SIL line(s): [1897, 1903]
+      mangled: $s8IterableAAPAAs5NeverO8Iterator_7FailureRTzRi_zRi0_zrlE7forEachyyyAE_7ElementQZqd__YKXEqd__YKs5ErrorRd__lF
+
+=== Gate 1: the three specialized client paths MUST hold 0 each ===
+- countViaIterable: PASS (0)
+- sumViaLinearForEach: PASS (0)
+- sumViaRingForEach: PASS (0)
+
+=== Gate 2: every REAL witness_method must be inside a public_external template ===
+PASS — all REAL witness_method instructions are in public_external (unreachable) templates.
+
+=== Gate 3: the ONLY residual template is Iterable.forEach ===
+PASS — every REAL witness_method is inside the Iterable.forEach template.
+
+VERDICT: 0-WITNESS CONFIRMED

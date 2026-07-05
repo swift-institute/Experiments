@@ -1,0 +1,7 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'client' complete! (0.16s)
+linear-iterable-count: 5
+linear-foreach-sum: 19
+ring-foreach-sum: 19
+OK: count=5 sum=19 (all three iteration paths agree)

@@ -3265,6 +3265,21 @@
         "Research/adt-tower.md §2 D4.5 (M8)",
         "Research/adt-tower.md F3 note"
       ]
+    },
+    {
+      "directory": "adt-tower-m11-iteration-0witness",
+      "category": "Architecture Patterns",
+      "purpose": "Phase-3 re-verification (2026-07-05) of the lost m11-iteration-0witness scratch spike backing D9 (Research/adt-tower.md §2 D9): borrowing forEach over a move-only element on REAL Linear and Ring columns is 0-witness cross-module at -O — all three executing client paths (Linear Iterable count, Linear bespoke forEach sum, Ring bespoke forEach sum) hold 0 witness_method; the only residual sits in the unreachable public_external Iterable.forEach template (2 real instructions + 2 convention annotations = the prior spike's raw-grep 4). Ring conforms NO multipass Iterable (asymmetry intact — the load-bearing D9 fact).",
+      "date": "2026-07-05",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "Proves D9's design contract on real Linear/Ring columns; W1.9 executes the ADT-tier iteration re-home. Full client.sil regenerable via run-sil-probe.sh (not committed); classification receipt committed.",
+      "statusRaw": "CONFIRMED (0-witness on executing paths; residual = unreachable template only)",
+      "supersededBy": null,
+      "crossRefs": [
+        "Research/adt-tower.md §2 D9 (M11)",
+        "Research/adt-tower.md §4.7 iteration rider"
+      ]
     }
   ],
   "narrativeSections": [
