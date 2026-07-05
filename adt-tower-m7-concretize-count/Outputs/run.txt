@@ -1,0 +1,13 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'adt-tower-m7-concretize-count' complete! (0.13s)
+== M7 concretized seam — conformers observed through the generic seam ==
+Linear(4)      : count=4 isEmpty=false
+Linear(empty)  : count=0 isEmpty=true
+Ring[2,7)      : count=5 isEmpty=false
+Ring(empty)    : count=0 isEmpty=true
+SlabStatic(3)  : count=3 isEmpty=false
+SlabBounded(5) : count=5 isEmpty=false
+SlabSmall(0)   : count=0 isEmpty=true
+Generational(9): count=9 isEmpty=false
+== done ==

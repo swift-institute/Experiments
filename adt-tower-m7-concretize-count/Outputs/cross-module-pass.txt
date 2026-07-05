@@ -1,0 +1,41 @@
+=== Cross-module validation ([EXP-017]) ===
+Toolchain: swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+Target:    arm64-apple-macosx26.0
+Date:      2026-07-05
+
+The M7 concretized seam crosses TWO module boundaries in this package:
+
+    SeamKit            (declares __M7BufferProtocol + unconstrained isEmpty default)
+       ^  imported by
+    Witnesses          (six conformers; conform __M7BufferProtocol across the boundary)
+       ^  imported by
+    adt-tower-m7-concretize-count  (executable; the generic `report(_:_:)`
+                                    dispatches count/isEmpty over the seam)
+
+The EXECUTABLE target IS the cross-module consumer of record: its generic
+function `report<B: __M7BufferProtocol & ~Copyable & ~Escapable>(_:_:)` invokes
+`buffer.count` (concrete `Index<Element>.Count`) and `buffer.isEmpty` (the
+unconstrained protocol-extension default) on values whose conformances are
+witnessed in the *separate* Witnesses module. This is genuine cross-module
+generic dispatch over the seam, not a same-module pass.
+
+Both build modes crossed the boundary with zero errors:
+  - debug   : see Outputs/build.txt              (full clean-build compile chain)
+  - release : see Outputs/release-mode-pass.txt  (swift build -c release)
+
+Compile chain observed in Outputs/build.txt (clean debug build):
+  [576/585] Compiling SeamKit __M7BufferProtocol.swift
+  [577/585] Emitting module SeamKit
+  [583/592] Compiling Witnesses Ring.swift
+  [584/592] Compiling Witnesses Generational.swift
+  [585/592] Emitting module Witnesses
+  [586/592] Compiling Witnesses SlabBounded.swift
+  [587/592] Compiling Witnesses Linear.swift
+  [588/592] Compiling Witnesses SlabStatic.swift
+  [589/592] Compiling Witnesses SlabSmall.swift
+  [592/594] Linking adt-tower-m7-concretize-count
+  Build complete!
+
+Runtime dispatch confirmed (Outputs/run.txt): all six conformers reported
+correct counts through the generic seam consumer; empty witnesses (Linear(0),
+Ring[5,5), SlabSmall(0)) reported isEmpty=true via the unconstrained default.

@@ -1,0 +1,15 @@
+=== negative-control [expect: compile FAILS at type-check] ===
+modules: .build/arm64-apple-macosx/debug/Modules
+command: swiftc -typecheck -enable-experimental-feature SuppressedAssociatedTypes \
+         -target arm64-apple-macos26.0 -sdk <sdk> -I <modules> Probes/negative-control.swift
+--- diagnostics ---
+Probes/negative-control.swift:33:9: error: cannot convert return expression of type 'Bit.Index.Count' (aka 'Tagged<Bit, Cardinal>') to return type 'Index<Int>.Count' (aka 'Tagged<Int, Cardinal>')
+31 |     //    (Tagged<Int, Cardinal>).
+32 |     var count: Index<Int>.Count {
+33 |         occupancy
+   |         |- error: cannot convert return expression of type 'Bit.Index.Count' (aka 'Tagged<Bit, Cardinal>') to return type 'Index<Int>.Count' (aka 'Tagged<Int, Cardinal>')
+   |         `- note: arguments to generic parameter 'Tag' ('Bit' and 'Int') are expected to be equal
+34 |     }
+35 | }
+--- end diagnostics ---
+swiftc rc=1  (nonzero == PASS: the un-retagged witness is correctly REJECTED)

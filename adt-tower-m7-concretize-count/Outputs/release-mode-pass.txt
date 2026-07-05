@@ -1,0 +1,110 @@
+Building for production...
+[0/100] Write sources
+[97/100] Write swift-version--58304C5D6DBC2206.txt
+[99/108] Compiling Equation_Primitive Equation.swift
+[100/108] Compiling Carrier_Primitive Carrier.swift
+[101/108] Compiling Ownership_Primitive Ownership.swift
+[102/108] Compiling Hash_Primitive Hash.swift
+[103/108] Compiling Ordinal_Primitive Ordinal.swift
+[104/108] Compiling Property_Primitive Property.swift
+[105/110] Compiling Cardinal_Primitive Cardinal.swift
+[106/114] Compiling Byte_Primitive Byte.swift
+[107/114] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[108/114] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[109/115] Compiling Bit_Primitive Bit Boolean Operations.swift
+[110/115] Compiling Ownership_Unique_Primitives Ownership.Unique+Copyable.swift
+[111/117] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[112/118] Compiling Property_Typed_Primitives Property.Typed.swift
+[113/119] Compiling Ownership_Primitives_Standard_Library_Integration Optional+take.swift
+[114/120] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[115/120] Compiling Ownership_Shared_Primitives Ownership.Shared.swift
+[116/121] Compiling Ownership_Mutable_Primitives Ownership.Mutable.Unchecked.swift
+[117/125] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[118/126] Compiling Carrier_Primitives exports.swift
+[119/126] Compiling Ownership_Box_Primitives Ownership.Box.Storage.swift
+[120/126] Compiling Ordinal_Error_Primitives Ordinal.Error.swift
+[121/127] Compiling Cardinal_Error_Primitives Cardinal.Error.swift
+[122/131] Compiling Property_Carrier_Primitives Property+Carrier.swift
+[123/131] Compiling Ordinal_Carrier_Primitives Ordinal+Carrier.swift
+[124/131] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
+[125/131] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[126/131] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[127/136] Compiling Ownership_Latch_Primitives Ownership.Latch.swift
+[128/136] Compiling Cardinal_Carrier_Primitives Cardinal+Carrier.swift
+[129/136] Compiling Ownership_Slot_Primitives Ownership.Slot+Store.swift
+[130/136] Compiling Affine_Primitive Affine.swift
+[131/136] Compiling Bit_Pattern_Primitives Bit.Pattern.Ones.swift
+[132/136] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[133/136] Compiling Byte_Protocol_Primitives Byte+Carrier.swift
+[134/136] Compiling Carrier_Primitives_Standard_Library_Integration Bool+Carrier.swift
+[135/140] Compiling Hash_Value_Primitives Hash.Value.swift
+[136/141] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[137/142] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[138/142] Compiling Ownership_Transfer_Primitives Ownership.Transfer.Erased.swift
+[139/142] Compiling Byte_Tagged_Primitives Tagged+Byte.Protocol.swift
+[140/144] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+AtomicRepresentable.swift
+[141/144] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[142/146] Compiling Ownership_Transfer_Erased_Primitives Ownership.Transfer.Erased.Incoming.Token.swift
+[143/146] Compiling Property_Primitives exports.swift
+[144/150] Compiling Ownership_Primitives exports.swift
+[145/150] Compiling Equation_Primitives exports.swift
+[146/150] Compiling Cardinal_Subtract_Primitives Cardinal.Subtract.swift
+[147/152] Compiling Cardinal_Add_Primitives Cardinal.Add.swift
+[148/155] Compiling Byte_Borrowed_Primitives Byte+Ownership.Borrow.Protocol.swift
+[149/155] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+[150/155] Compiling Ordinal_Equation_Primitives Ordinal+Equation.Protocol.swift
+[151/155] Compiling Cardinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[152/155] Compiling Cardinal_Equation_Primitives Cardinal+Equation.Protocol.swift
+[153/155] Compiling Hash_Protocol_Primitives Hash.Protocol.swift
+[154/161] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Add.swift
+[155/161] Compiling Byte_Primitives exports.swift
+[156/161] Compiling Hash_Tagged_Primitives Hash.Protocol+Tagged.swift
+[157/161] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[158/161] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[159/162] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[160/163] Compiling Hash_Primitives exports.swift
+[161/163] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[162/166] Compiling Comparison_Primitives exports.swift
+[163/166] Compiling Cardinal_Hash_Primitives Cardinal+Hash.Protocol.swift
+[164/166] Compiling Ordinal_Hash_Primitives Ordinal+Hash.Protocol.swift
+[165/169] Compiling Ordinal_Comparison_Primitives Ordinal+Comparison.Protocol.swift
+[166/169] Compiling Cardinal_Comparison_Primitives Cardinal+Comparison.Protocol.swift
+[167/169] Compiling Bit_Primitives Bit+Comparison.Protocol.swift
+[168/170] Compiling Cardinal_Primitives exports.swift
+[169/171] Compiling Ordinal_Protocol_Primitives Ordinal.Protocol.swift
+[170/177] Compiling Ordinal_Predecessor_Primitives Ordinal.Predecessor.swift
+[171/177] Compiling Ordinal_Retreat_Primitives Ordinal.Retreat.swift
+[172/177] Compiling Ordinal_Cardinal_Primitives Cardinal+Ordinal.swift
+[173/177] Compiling Ordinal_Distance_Primitives Ordinal.Distance.swift
+[174/177] Compiling Ordinal_Successor_Primitives Ordinal.Successor.swift
+[175/177] Compiling Ordinal_Advance_Primitives Ordinal.Advance.swift
+[176/178] Compiling Ordinal_Tagged_Primitives Tagged+Ordinal.swift
+[177/179] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[178/180] Compiling Ordinal_Primitives exports.swift
+[179/181] Compiling Affine_Discrete_Primitives Affine.Discrete.Ratio.swift
+[180/188] Compiling Affine_Composition_Primitives Affine.Discrete.Ratio+Composition.swift
+[181/188] Compiling Affine_Equation_Primitives Affine.Discrete.Region+Equation.Protocol.swift
+[182/188] Compiling Affine_Hash_Primitives Affine.Discrete.Region+Hash.Protocol.swift
+[183/188] Compiling Affine_Carrier_Primitives Affine.Discrete.Vector+Carrier.swift
+[184/188] Compiling Affine_Comparison_Primitives Affine.Discrete.Vector+Comparison.Protocol.swift
+[185/188] Compiling Affine_Ordinal_Primitives Ordinal+Affine.swift
+[186/189] Compiling Affine_Quotient_Primitives Affine.Discrete.Ratio+QuotientAndRemainder.swift
+[187/189] Compiling Affine_Arithmetic_Primitives Affine.Discrete+Arithmetic.swift
+[188/190] Compiling Affine_Tagged_Primitives Affine.Discrete.Ratio+Tagged.swift
+[189/191] Compiling Affine_Primitives_Standard_Library_Integration Affine.Discrete.Vector+AtomicRepresentable.swift
+[190/192] Compiling Affine_Primitives exports.swift
+[191/193] Compiling Index_Primitives Index.swift
+[192/195] Compiling SeamKit __M7BufferProtocol.swift
+[193/195] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
+/Users/coen/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+13 | public import Byte_Primitives
+14 | public import Index_Primitives
+15 | public import Ordinal_Primitives
+   |        `- warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+16 | 
+17 | extension Bit.Index {
+[194/196] Compiling Witnesses Generational.swift
+[195/197] Compiling adt_tower_m7_concretize_count main.swift
+[195/197] Write Objects.LinkFileList
+[196/197] Linking adt-tower-m7-concretize-count
+Build complete! (6.44s)

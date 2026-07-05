@@ -148,18 +148,6 @@
     },
     {
       "directory": "adt-tower-walls",
-      "category": "ADT / Buffer / Storage layering",
-      "purpose": "Re-probe on current toolchain the runtime walls the ADT-tower re-derivation depends on: protocol-vended borrowing access to ~Copyable elements cross-package (A), Wall 2 swiftlang/swift#86652 with [MEM-SAFE-027] workaround (B) and naked (C).",
-      "date": null,
-      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3), macOS 26 (arm64)",
-      "status": "PARTIAL",
-      "statusDetail": "Directory untracked at git HEAD (in-flight ADT-tower work). [Backfilled 2026-07-02 by corpus-meta-analysis sweep: directory existed on disk but had no index entry ([META-008] check 1). Fields extracted from source headers; verify on next touch.]",
-      "statusRaw": "CONFIRMED (A, B) / STILL PRESENT with a debug/release asymmetry (C)",
-      "supersededBy": null,
-      "crossRefs": []
-    },
-    {
-      "directory": "adt-tower-walls",
       "category": "Architecture Patterns",
       "purpose": "6.3.3 re-probe of the ADT-tower compiler walls: Wall 4 typealias SIGSEGV FIXED (7 shapes incl. value-generic + enforced where-clauses); Wall 3 dual-storage FIXED in reduction; Wall 2 #86652 STILL PRESENT debug-only (workaround required); protocol-seam ~Copyable borrow/mutate CONFIRMED cross-package, whole-value get rejected at SIL; borrow/mutate accessors unavailable; no default generic args.",
       "date": "2026-07-02",
@@ -172,18 +160,6 @@
         "swift-institute/Research/adt-tower.md",
         "swiftlang/swift#86652"
       ]
-    },
-    {
-      "directory": "adt-tower-worked-example",
-      "category": "ADT / Buffer / Storage layering",
-      "purpose": "[EXP-017] cross-module worked example of the ADT-tower canonical shape (heap-allocated column: push out of order, pop sorted).",
-      "date": null,
-      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3), macOS 26 (arm64)",
-      "status": "PENDING",
-      "statusDetail": "Result placeholder not yet filled. Directory untracked at git HEAD. [Backfilled 2026-07-02 by corpus-meta-analysis sweep: directory existed on disk but had no index entry ([META-008] check 1). Fields extracted from source headers; verify on next touch.]",
-      "statusRaw": "Result: (filled after run)",
-      "supersededBy": null,
-      "crossRefs": []
     },
     {
       "directory": "adt-tower-worked-example",
@@ -3259,6 +3235,21 @@
       "statusRaw": "SUPERSEDED & DELETED",
       "supersededBy": null,
       "crossRefs": []
+    },
+    {
+      "directory": "adt-tower-m7-concretize-count",
+      "category": "Architecture Patterns",
+      "purpose": "Phase-3 re-verification (2026-07-05) of the lost m7-concretize-count scratch spike: [DS-025]/[DS-026] M7 amendment — Buffer.Protocol deletes associatedtype Count and vends concrete Index<Element>.Count; the unconstrained isEmpty default (W18 resolution) fires on retagged slab counts; an un-retagged Bit-domain witness is REJECTED (negative control, constraint load-bearing); SeamKit imports only Index_Primitives under InternalImportsByDefault+MemberImportVisibility (dep-surface reduction confirmed strict).",
+      "date": "2026-07-05",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "Design-proven, NOT production-proven: W1.7 requires the same green against the REAL slab/slot-map/generational packages before the production seam change lands ([EXP-020] boundary).",
+      "statusRaw": "CONFIRMED (build x2 + run + negative control rejected)",
+      "supersededBy": null,
+      "crossRefs": [
+        "Research/adt-tower.md §4.2 (M7)",
+        "Research/adt-tower.md §3 W18"
+      ]
     }
   ],
   "narrativeSections": [
