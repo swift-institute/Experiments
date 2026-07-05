@@ -1,0 +1,22 @@
+=== [EXP-017] cross-module leg ===
+
+The executable target `adt-tower-m8-ownership-shared-rehome` is the cross-module consumer.
+It `import RehomeKit` and spells the re-homed column across the module boundary:
+
+    typealias Column = Buffer<Storage<Memory.Allocator<Memory.Heap>>.Contiguous<Int>>.Linear
+    typealias Col    = Ownership.Rehomed<Int, Column>
+
+It exercises, from a DIFFERENT module than the one that declares the re-home:
+  - construction via the pinned direct heap-linear column init (Copyable form, captures clone);
+  - the CoW-checked mutation surface (`append`);
+  - the `Store.Protocol` seam subscript (`r[Index(Ordinal(UInt(i)))]`) and `Buffer.Protocol`
+    `count` — the generic cross-module mutate seam;
+  - the uniqueness gate (`isUnique`) and the box-identity window (`_boxID`).
+
+`Ownership.Rehomed` is declared as `extension Ownership { public struct Rehomed<…> }` in
+RehomeKit — a CROSS-PACKAGE namespace extension onto the `Ownership` enum owned by
+swift-ownership-primitives — and consumed here across the RehomeKit -> executable module
+boundary. This confirms the M8(b) mechanism works end-to-end across modules, not merely within
+the declaring module.
+
+Result: CONFIRMED cross-module, debug AND release, byte-identical output (see run.txt).

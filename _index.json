@@ -3250,6 +3250,21 @@
         "Research/adt-tower.md §4.2 (M7)",
         "Research/adt-tower.md §3 W18"
       ]
+    },
+    {
+      "directory": "adt-tower-m8-ownership-shared-rehome",
+      "category": "Architecture Patterns",
+      "purpose": "Phase-3 re-verification (2026-07-05) of the M8 re-home mechanism (Research/adt-tower.md §D4.5): H1 CONFIRMED — the real CoW column shape re-homed as extension Ownership { struct Rehomed<Element,B> } over the REAL Ownership.Box + heap-linear column compiles debug+release cross-module with CoW semantics precondition-guarded at runtime; H2 pins the ordering — coexisting 1-param/2-param Ownership.Shared declarations compile, but ANY co-visible type-level use site is 'ambiguous type name' and arity does NOT disambiguate: M8(a) rename-first is compiler-FORCED.",
+      "date": "2026-07-05",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3)",
+      "status": "CONFIRMED",
+      "statusDetail": "Proves the W1.8 MECHANISM only; production W1.8 executes the real box rename (M8(a) FIRST — compiler-forced), the column move, the F3(c) package rename, and the ~45-site sweep. Drain-box [MEM-SAFE-028] untouched (wrapped, never reimplemented).",
+      "statusRaw": "H1 CONFIRMED / H2 rename-first compiler-forced (use-site ambiguity, arity-blind)",
+      "supersededBy": null,
+      "crossRefs": [
+        "Research/adt-tower.md §2 D4.5 (M8)",
+        "Research/adt-tower.md F3 note"
+      ]
     }
   ],
   "narrativeSections": [

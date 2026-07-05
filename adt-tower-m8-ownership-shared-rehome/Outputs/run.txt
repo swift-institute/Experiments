@@ -1,0 +1,29 @@
+=== DEBUG RUN ===
+=== H1: CoW semantics over the cross-package re-homed Ownership.Rehomed column ===
+a (initial): [10, 20, 30]
+a.isUnique (sole owner): true
+after copy — same box: true
+a.isUnique while shared: false
+b.isUnique while shared: false
+after mutation — boxes diverged: true
+a.isUnique after divergence: true
+b.isUnique after divergence: true
+a (unchanged): [10, 20, 30]
+b (mutated): [10, 20, 30, 99]
+unique-handle in-place (box stable): true -> [1, 2]
+H1 VERDICT: CONFIRMED
+
+=== RELEASE RUN ===
+=== H1: CoW semantics over the cross-package re-homed Ownership.Rehomed column ===
+a (initial): [10, 20, 30]
+a.isUnique (sole owner): true
+after copy — same box: true
+a.isUnique while shared: false
+b.isUnique while shared: false
+after mutation — boxes diverged: true
+a.isUnique after divergence: true
+b.isUnique after divergence: true
+a (unchanged): [10, 20, 30]
+b (mutated): [10, 20, 30, 99]
+unique-handle in-place (box stable): true -> [1, 2]
+H1 VERDICT: CONFIRMED

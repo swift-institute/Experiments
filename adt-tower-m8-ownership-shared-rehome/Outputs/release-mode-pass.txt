@@ -1,0 +1,229 @@
+Building for production...
+[0/161] Write sources
+[158/161] Write swift-version--58304C5D6DBC2206.txt
+[160/169] Compiling Span_Primitive Span.Mutable.swift
+[161/169] Compiling Store_Primitive Store.swift
+[162/169] Compiling Memory_Primitive Memory.swift
+[163/169] Compiling Sequence_Primitive Sequence.swift
+[164/169] Compiling Storage_Primitive Storage.swift
+[165/169] Compiling Ordinal_Primitive Ordinal.swift
+[166/169] Compiling Property_Primitive Property.swift
+[167/176] Compiling Ownership_Primitive Ownership.swift
+[168/176] Compiling Equation_Primitive Equation.swift
+[169/176] Compiling Hash_Primitive Hash.swift
+[170/176] Compiling Iterator_Primitive Iterator.swift
+[171/176] Compiling Finite_Primitive Finite.swift
+[172/176] Compiling Ordinal_Error_Primitives Ordinal.Error.swift
+[173/181] Compiling Property_Typed_Primitives Property.Typed.swift
+[174/182] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[175/182] Compiling Ownership_Shared_Primitives Ownership.Shared.swift
+[176/182] Compiling Ownership_Unique_Primitives Ownership.Unique+Copyable.swift
+[177/182] Compiling Ownership_Primitives_Standard_Library_Integration Optional+take.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+56 |             // swift-linter:disable:next intermediate binding then return
+57 |             nonisolated(unsafe) let v = value
+58 |             return v
+   |                    |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+   |                    `- note: reference to nonisolated(unsafe) let 'v' is unsafe in concurrently-executing code
+59 | 
+60 |         case .none:
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[178/183] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[179/187] Compiling Ownership_Mutable_Primitives Ownership.Mutable.Unchecked.swift
+[180/187] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 70 |     @_lifetime(borrow pointer)
+ 71 |     public init(_ pointer: UnsafeMutablePointer<Value>) {
+ 72 |         self._pointer = UnsafeMutableRawPointer(pointer)
+    |         |    `- note: reference to property '_pointer' involves unsafe type 'UnsafeMutableRawPointer'
+    |         `- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 73 |     }
+ 74 | }
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[181/188] Compiling Iterator_Protocol Iterating.swift
+[182/188] Compiling Ownership_Box_Primitives Ownership.Box.Storage.swift
+[183/189] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[184/191] Compiling Carrier_Primitive Carrier.swift
+[185/192] Compiling Byte_Primitive Byte.swift
+[186/193] Compiling Buffer_Primitive Buffer.swift
+[187/194] Compiling Cardinal_Primitive Cardinal.swift
+[188/196] Compiling Bit_Primitive Bit Boolean Operations.swift
+[189/196] Compiling Affine_Primitive Affine.swift
+[190/197] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[191/199] Compiling Cardinal_Error_Primitives Cardinal.Error.swift
+[192/200] Compiling Carrier_Primitives exports.swift
+[193/200] Compiling Ownership_Slot_Primitives Ownership.Slot+Store.swift
+[194/200] Compiling Ownership_Latch_Primitives Ownership.Latch.swift
+[195/202] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[196/202] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
+[197/204] Compiling Property_Carrier_Primitives Property+Carrier.swift
+[198/205] Compiling Ordinal_Carrier_Primitives Ordinal+Carrier.swift
+[199/206] Compiling Bit_Pattern_Primitives Bit.Pattern.Ones.swift
+[200/207] Compiling Cardinal_Carrier_Primitives Cardinal+Carrier.swift
+[201/207] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[202/207] Compiling Ownership_Transfer_Primitives Ownership.Transfer.Erased.swift
+[203/211] Compiling Hash_Value_Primitives Hash.Value.swift
+[204/211] Compiling Carrier_Primitives_Standard_Library_Integration Bool+Carrier.swift
+[205/211] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[206/212] Compiling Byte_Protocol_Primitives Byte+Carrier.swift
+[207/212] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[208/212] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[209/215] Compiling Byte_Tagged_Primitives Tagged+Byte.Protocol.swift
+[210/215] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[211/215] Compiling Ownership_Transfer_Erased_Primitives Ownership.Transfer.Erased.Incoming.Token.swift
+[212/215] Compiling Standard_Library_Extensions Actor.swift
+[213/215] Compiling Tagged_Primitives_Standard_Library_Integration Tagged+AtomicRepresentable.swift
+[214/217] Compiling Property_Primitives exports.swift
+[215/218] Compiling Ownership_Primitives exports.swift
+[216/221] Compiling Equation_Primitives exports.swift
+[217/222] Compiling Cardinal_Subtract_Primitives Cardinal.Subtract.swift
+[218/222] Compiling Cardinal_Add_Primitives Cardinal.Add.swift
+[219/226] Compiling Byte_Borrowed_Primitives Byte+Ownership.Borrow.Protocol.swift
+[220/226] Compiling Cardinal_Equation_Primitives Cardinal+Equation.Protocol.swift
+[221/226] Compiling Hash_Protocol_Primitives Hash.Protocol.swift
+[222/227] Compiling Ordinal_Equation_Primitives Ordinal+Equation.Protocol.swift
+[223/227] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+[224/231] Compiling Byte_Primitives exports.swift
+[225/232] Compiling Cardinal_Tagged_Primitives Tagged+Cardinal.Add.swift
+[226/232] Compiling Cardinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[227/232] Compiling Hash_Tagged_Primitives Hash.Protocol+Tagged.swift
+[228/232] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[229/232] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[230/233] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[231/234] Compiling Hash_Primitives exports.swift
+[232/234] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[233/237] Compiling Ordinal_Hash_Primitives Ordinal+Hash.Protocol.swift
+[234/237] Compiling Cardinal_Hash_Primitives Cardinal+Hash.Protocol.swift
+[235/237] Compiling Comparison_Primitives exports.swift
+[236/241] Compiling Ordinal_Comparison_Primitives Ordinal+Comparison.Protocol.swift
+[237/241] Compiling Cardinal_Comparison_Primitives Cardinal+Comparison.Protocol.swift
+[238/241] Compiling Bit_Primitives Bit+Comparison.Protocol.swift
+[239/242] Compiling Cardinal_Primitives exports.swift
+[240/242] Compiling Either_Primitives Either+Accessors.swift
+[241/245] Compiling Ordinal_Protocol_Primitives Ordinal.Protocol.swift
+[242/245] Compiling Finite_Capacity_Primitives Finite.Capacity.swift
+[243/251] Compiling Ordinal_Retreat_Primitives Ordinal.Retreat.swift
+[244/251] Compiling Iterator_Chunk_Primitives Iterator.Chunk.Protocol.swift
+[245/251] Compiling Ordinal_Distance_Primitives Ordinal.Distance.swift
+[246/251] Compiling Ordinal_Cardinal_Primitives Cardinal+Ordinal.swift
+[247/251] Compiling Ordinal_Predecessor_Primitives Ordinal.Predecessor.swift
+[248/251] Compiling Ordinal_Successor_Primitives Ordinal.Successor.swift
+[249/251] Compiling Ordinal_Advance_Primitives Ordinal.Advance.swift
+[250/253] Compiling Ordinal_Tagged_Primitives Tagged+Ordinal.swift
+[251/254] Compiling Iterable Iterable+AllSatisfy.swift
+[252/254] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
+[253/255] Compiling Ordinal_Primitives exports.swift
+[254/256] Compiling Affine_Discrete_Primitives Affine.Discrete.Ratio.swift
+[255/263] Compiling Affine_Composition_Primitives Affine.Discrete.Ratio+Composition.swift
+[256/263] Compiling Affine_Carrier_Primitives Affine.Discrete.Vector+Carrier.swift
+[257/263] Compiling Affine_Hash_Primitives Affine.Discrete.Region+Hash.Protocol.swift
+[258/263] Compiling Affine_Equation_Primitives Affine.Discrete.Region+Equation.Protocol.swift
+[259/263] Compiling Affine_Comparison_Primitives Affine.Discrete.Vector+Comparison.Protocol.swift
+[260/263] Compiling Affine_Ordinal_Primitives Ordinal+Affine.swift
+[261/264] Compiling Affine_Quotient_Primitives Affine.Discrete.Ratio+QuotientAndRemainder.swift
+[262/264] Compiling Affine_Arithmetic_Primitives Affine.Discrete+Arithmetic.swift
+[263/265] Compiling Affine_Tagged_Primitives Affine.Discrete.Ratio+Tagged.swift
+[264/266] Compiling Affine_Primitives_Standard_Library_Integration Affine.Discrete.Vector+AtomicRepresentable.swift
+[265/267] Compiling Affine_Primitives exports.swift
+[266/269] Compiling Index_Primitives Index.swift
+[267/269] Compiling Memory_Address_Primitives Memory+Affine.Discrete.Ratio.swift
+[268/277] Compiling Sequence_Iterator_Primitives Sequence.Iterator.swift
+[269/277] Compiling Span_Protocol_Primitives Swift.MutableSpan+Span.Mutable.Protocol.swift
+[270/277] Compiling Sequence_Protocol_Primitives Sequenceable+Count.swift
+[271/277] Compiling Store_Initialization_Primitives Store.Initialization+ops.swift
+[272/277] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
+[273/277] Compiling Store_Protocol_Primitives Column.Direct.swift
+[274/283] Compiling Sequence_Borrowing_Primitives Sequence.Borrowing.Protocol.swift
+[275/283] Compiling Memory_Region_Primitives Memory.Region.swift
+[276/283] Compiling Finite_Bounded_Primitives Finite.Bounded.swift
+[277/283] Compiling Buffer_Protocol_Primitives Buffer.Protocol.swift
+[278/283] Compiling Sequence_Satisfies_Primitives Sequence.Satisfies+Property.Inout.swift
+[279/284] Compiling Sequence_Reduce_Primitives Sequence.Reduce+Property.Inout.swift
+[280/287] Compiling Finite_Enumerable_Primitives Finite.Enumerable+CaseIterable.swift
+[281/288] Compiling Store_Ledgered_Primitives Store.Ledgered.swift
+[282/291] Compiling Sequence_Span_Primitives Sequence.Span+Property.Inout.swift
+[283/292] Compiling Sequence_First_Primitives Sequence.First+Property.Inout.swift
+[284/292] Compiling Sequence_Primitives_Standard_Library_Integration Sequenceable+first.swift
+[285/292] Compiling Sequence_Hint_Primitives Sequence.Hint+Property.Inout.swift
+[286/292] Compiling Sequence_ForEach_Primitives Sequence.ForEach+Property.Inout.swift
+[287/292] Compiling Sequence_Map_Primitives Sequence.CompactMap.swift
+[288/292] Compiling Sequence_Prefix_Primitives Sequence.Prefix.First.Iterator.swift
+[289/292] Compiling Storage_Protocol_Primitives Store.Protocol+Copy.swift
+[290/298] Compiling Sequence_Filter_Primitives Sequence.Filter.Iterator.swift
+[291/299] Compiling Sequence_Drain_Primitives Sequence.Drain+Property.Inout.swift
+[292/299] Compiling Finite_Primitives exports.swift
+[293/299] Compiling Sequence_Contains_Primitives Sequence.Contains+Property.Inout.swift
+[294/299] Compiling Bit_Pack_Primitives Bit.Index+Pack.swift
+[295/299] Compiling Sequence_Drop_Primitives Sequence.Drop.First.Iterator.swift
+[296/299] Compiling Memory_Shift_Primitives Memory.Shift+Carrier.Protocol.swift
+[297/300] Compiling Memory_Alignment_Primitives Memory.Alignable.swift
+[298/302] Compiling Sequence_Difference_Primitives Sequence.Difference+core.swift
+[299/303] Compiling Memory_Allocator_Primitive Memory.Allocator.swift
+/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Primitive/Memory.Allocator.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Memory_Address_Primitives
+13 | public import Memory_Alignment_Primitives
+   |        `- warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+14 | public import Memory_Primitive
+15 | public import Memory_Region_Primitives
+[300/305] Compiling Sequence_Primitives exports.swift
+[301/305] Compiling Memory_Primitives_Standard_Library_Integration Memory+Array.swift
+[302/307] Compiling Memory_Allocator_Protocol_Primitives Memory.Allocatable.Protocol.swift
+[303/307] Compiling Memory_Allocation_Primitive Memory.Allocation.Error.swift
+[304/307] Compiling Memory_Primitives exports.swift
+[305/308] Compiling Memory_Allocator_Arena_Primitives Memory.Allocator.Arena+Memory.Allocator.Protocol.swift
+/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+11 | 
+12 | public import Memory_Address_Primitives
+13 | public import Memory_Alignment_Primitives
+   |        `- warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+14 | public import Memory_Allocation_Primitive
+15 | public import Memory_Allocator_Primitive
+
+/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:14:8: warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
+12 | public import Memory_Address_Primitives
+13 | public import Memory_Alignment_Primitives
+14 | public import Memory_Allocation_Primitive
+   |        `- warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
+15 | public import Memory_Allocator_Primitive
+16 | public import Memory_Primitive
+
+/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:17:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
+15 | public import Memory_Allocator_Primitive
+16 | public import Memory_Primitive
+17 | public import Memory_Primitives_Standard_Library_Integration
+   |        `- warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
+18 | public import Memory_Region_Primitives
+19 | 
+[306/308] Compiling Bit_Vector_Storage_Primitives Bit.Vector+Protocol.swift
+[307/311] Compiling Bit_Vector_Static_Primitives Bit.Vector.Ones.Static.Iterator.swift
+[308/311] Compiling Bit_Vector_Inline_Primitives Bit.Vector.Inline+Protocol.swift
+[309/311] Compiling Bit_Vector_Bounded_Primitives Bit.Vector.Bounded+Protocol.swift
+[310/312] Compiling Bit_Vector_Dynamic_Primitives Bit.Vector.Dynamic+Protocol.swift
+[311/313] Compiling Bit_Vector_Primitives exports.swift
+[312/314] Compiling Memory_Allocator_Pool_Primitives Memory.Allocator.Pool+Allocating.swift
+[313/315] Compiling Memory_Heap_Primitives Memory.Heap ~Copyable.swift
+[314/316] Compiling Storage_Contiguous_Primitives Storage.Contiguous+Span.swift
+[315/317] Compiling Buffer_Linear_Primitive Buffer.Linear Copyable.swift
+[316/318] Compiling RehomeKit Ownership.Rehomed.Column.swift
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:21:8: warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
+19 | public import Memory_Heap_Primitives
+20 | public import Memory_Allocator_Primitive
+21 | public import Memory_Allocator_Protocol_Primitives
+   |        `- warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
+22 | public import Index_Primitives
+23 | public import Ownership_Box_Primitives
+
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:22:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+20 | public import Memory_Allocator_Primitive
+21 | public import Memory_Allocator_Protocol_Primitives
+22 | public import Index_Primitives
+   |        `- warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+23 | public import Ownership_Box_Primitives
+24 | 
+[317/319] Compiling adt_tower_m8_ownership_shared_rehome main.swift
+[317/319] Write Objects.LinkFileList
+[318/319] Linking adt-tower-m8-ownership-shared-rehome
+Build complete! (13.05s)

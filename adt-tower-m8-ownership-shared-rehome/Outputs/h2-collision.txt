@@ -1,0 +1,62 @@
+=== H2 arity-collision probe — manual swiftc drive ===
+Toolchain: swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 
+
+--- Step 1: build stub module OwnershipBoxStub (faithful 1-param Ownership.Shared class) ---
+step1 swiftc exit: 0
+
+--- Step 2: -typecheck the probe (imports the stub + declares 2-param Ownership.Shared struct) ---
+step2 swiftc exit: 0
+
+--- Step 3: emit H2Probe module (the 2-param Ownership.Shared struct) for the use-site leg ---
+step3 swiftc exit: 0
+
+--- Step 4: -typecheck a use-site importing BOTH — does Ownership.Shared<…> resolve by arity? ---
+h2-usesite.swift:13:27: error: ambiguous type name 'Shared' in 'Ownership'
+11 | func probe() {
+12 |     // TYPE-NAME references (annotation + metatype): does arity select the candidate?
+13 |     let oneArg: Ownership.Shared<Int>.Type = Ownership.Shared<Int>.self       // 1 arg -> class?
+   |                           `- error: ambiguous type name 'Shared' in 'Ownership'
+14 |     let twoArg: Ownership.Shared<Int, Int>.Type = Ownership.Shared<Int, Int>.self // 2 args -> struct?
+15 |     _ = oneArg
+
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
+14 | 
+15 | extension Ownership {
+16 |     public final class Shared<Value: ~Copyable & Sendable>: Sendable {
+   |                        `- note: found candidate with type 'Ownership.Shared'
+17 |         public let value: Value
+18 |         public init(_ value: consuming Value) { self.value = value }
+
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
+14 | 
+15 | extension Ownership {
+16 |     public struct Shared<Element: ~Copyable, B: ~Copyable> {
+   |                   `- note: found candidate with type 'Ownership.Shared'
+17 |         public init() {}
+18 |     }
+
+h2-usesite.swift:14:27: error: ambiguous type name 'Shared' in 'Ownership'
+12 |     // TYPE-NAME references (annotation + metatype): does arity select the candidate?
+13 |     let oneArg: Ownership.Shared<Int>.Type = Ownership.Shared<Int>.self       // 1 arg -> class?
+14 |     let twoArg: Ownership.Shared<Int, Int>.Type = Ownership.Shared<Int, Int>.self // 2 args -> struct?
+   |                           `- error: ambiguous type name 'Shared' in 'Ownership'
+15 |     _ = oneArg
+16 |     _ = twoArg
+
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
+14 | 
+15 | extension Ownership {
+16 |     public final class Shared<Value: ~Copyable & Sendable>: Sendable {
+   |                        `- note: found candidate with type 'Ownership.Shared'
+17 |         public let value: Value
+18 |         public init(_ value: consuming Value) { self.value = value }
+
+/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
+14 | 
+15 | extension Ownership {
+16 |     public struct Shared<Element: ~Copyable, B: ~Copyable> {
+   |                   `- note: found candidate with type 'Ownership.Shared'
+17 |         public init() {}
+18 |     }
+step4 swiftc exit: 1
+(diagnostics above are verbatim compiler output; empty step blocks == zero diagnostics)
