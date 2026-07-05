@@ -11,7 +11,7 @@ set -u
 HERE="${0:A:h}"
 cd "$HERE"
 OUT="../Outputs/h2-collision.txt"
-BUILD="./.build-h2"
+BUILD="../.build/h2-probe"   # under the package .build so git never tracks probe artifacts
 mkdir -p "$BUILD"
 
 SWIFTC_COMMON=(-swift-version 6 -enable-experimental-feature SuppressedAssociatedTypes)
