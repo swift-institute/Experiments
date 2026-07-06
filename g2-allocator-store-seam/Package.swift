@@ -20,9 +20,12 @@ let package = Package(
         .macOS(.v26),
     ],
     dependencies: [
-        // The seam under test.
-        .package(path: "../../../swift-primitives/swift-store-primitives"),
-        // NOTE: swift-storage-primitives is INTENTIONALLY NOT a dependency.
+        // The seam under test. (swift-store-primitives was absorbed into
+        // swift-storage-primitives, 2026-06 — §9.6.8 manifest repair; the
+        // Store Protocol / Store Initialization products live there now.)
+        .package(path: "../../../swift-primitives/swift-storage-primitives"),
+        // NOTE (historical, pre-absorption): swift-storage-primitives' FULL closure was
+        // INTENTIONALLY NOT a dependency at authoring time.
         // Its `Storage Protocol Primitives` target (pulled in transitively by
         // `Storage Contiguous Primitives`) does not compile under the required
         // toolchain org.swift.64202605271a (Swift 6.5-dev): see the upstream-error
@@ -46,8 +49,8 @@ let package = Package(
         .target(
             name: "G2AllocatorStoreSeam",
             dependencies: [
-                .product(name: "Store Protocol Primitives", package: "swift-store-primitives"),
-                .product(name: "Store Initialization Primitives", package: "swift-store-primitives"),
+                .product(name: "Store Protocol Primitives", package: "swift-storage-primitives"),
+                .product(name: "Store Initialization Primitives", package: "swift-storage-primitives"),
                 .product(name: "Memory Primitive", package: "swift-memory-primitives"),
                 .product(name: "Memory Contiguous Primitives", package: "swift-memory-primitives"),
                 .product(name: "Memory Address Primitives", package: "swift-memory-primitives"),
