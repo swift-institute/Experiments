@@ -1,0 +1,14 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'Consumer' complete! (0.22s)
+V1a (CharOnlyString<Char>.span — generic Char): CONFIRMED — count=3, first=65
+V1b (GenericString<Char,Backing>.span — generic Char + generic Backing): CONFIRMED — count=2, first=72
+V2 (GenericString.View — ~Escapable through generic): CONFIRMED — length=4, first=88
+V3 (Tagged concrete .spanConcrete — option a): CONFIRMED — count=4, first=47
+V4 (Tagged generic .span where Underlying: ContiguousString — option b): CONFIRMED — count=3, first=100
+V5 (Tagged.view — ~Escapable two-level through generic): CONFIRMED — length=5, first=97
+V6 (String1<Storage>.span — one-parameter framing): CONFIRMED — count=3, first=10
+V7 (distinctness: encoding × domain through generic): CONFIRMED — kU8=2, kU16=1, lU8=3
+
+All variants complete.

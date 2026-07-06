@@ -1,0 +1,49 @@
+[0/1] Planning build
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module Consumer
+[4/6] Compiling Consumer main.swift
+/Users/coen/Developer/swift-institute/Experiments/tagged-generic-rawvalue-lifetime/Sources/Consumer/main.swift:43:15: warning: no unsafe operations occur within 'unsafe' expression
+ 41 | func makeHeap(_ bytes: [UInt8]) -> HeapStub {
+ 42 |     let n = bytes.count
+ 43 |     let raw = unsafe UnsafeMutableRawPointer.allocate(
+    |               `- warning: no unsafe operations occur within 'unsafe' expression
+ 44 |         byteCount: n, alignment: MemoryLayout<UInt8>.alignment
+ 45 |     )
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-generic-rawvalue-lifetime/Sources/Consumer/main.swift:46:17: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 44 |         byteCount: n, alignment: MemoryLayout<UInt8>.alignment
+ 45 |     )
+ 46 |     let typed = raw.bindMemory(to: UInt8.self, capacity: n)
+    |                 |   `- note: reference to instance method 'bindMemory(to:capacity:)' involves unsafe type 'UnsafeMutablePointer<UInt8>'
+    |                 |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+    |                 |- note: argument 'self' in call to instance method 'bindMemory' has unsafe type 'UnsafeMutableRawPointer'
+    |                 `- note: reference to let 'raw' involves unsafe type 'UnsafeMutableRawPointer'
+ 47 |     for i in 0..<n { unsafe typed[i] = bytes[i] }
+ 48 |     return unsafe HeapStub(adopting: raw)
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-generic-rawvalue-lifetime/Sources/Consumer/main.swift:53:15: warning: no unsafe operations occur within 'unsafe' expression
+ 51 | func makeStorage(_ bytes: [UInt8]) -> HeapStorage<UInt8> {
+ 52 |     let n = bytes.count
+ 53 |     let raw = unsafe UnsafeMutableRawPointer.allocate(
+    |               `- warning: no unsafe operations occur within 'unsafe' expression
+ 54 |         byteCount: n, alignment: MemoryLayout<UInt8>.alignment
+ 55 |     )
+
+/Users/coen/Developer/swift-institute/Experiments/tagged-generic-rawvalue-lifetime/Sources/Consumer/main.swift:56:17: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+ 54 |         byteCount: n, alignment: MemoryLayout<UInt8>.alignment
+ 55 |     )
+ 56 |     let typed = raw.bindMemory(to: UInt8.self, capacity: n)
+    |                 |   `- note: reference to instance method 'bindMemory(to:capacity:)' involves unsafe type 'UnsafeMutablePointer<UInt8>'
+    |                 |- warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+    |                 |- note: argument 'self' in call to instance method 'bindMemory' has unsafe type 'UnsafeMutableRawPointer'
+    |                 `- note: reference to let 'raw' involves unsafe type 'UnsafeMutableRawPointer'
+ 57 |     for i in 0..<n { unsafe typed[i] = bytes[i] }
+ 58 |     return unsafe HeapStorage<UInt8>(adopting: raw, count: n)
+
+[#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
+[4/7] Write Objects.LinkFileList
+[5/7] Linking Consumer
+[6/7] Applying Consumer
+Build complete! (1.87s)
