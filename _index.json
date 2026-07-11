@@ -1,7 +1,7 @@
 {
   "$schema": "https://swift-institute.org/schemas/experiments-index-v1.json",
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-07-02",
+  "generatedAt": "2026-07-11T13:13:54Z",
   "title": "Experiments Index",
   "blurb": "Ecosystem-wide experiments for Swift Institute.",
   "categories": [
@@ -2370,6 +2370,20 @@
       "statusRaw": "DEFERRED — awaiting networking RFC implementation plan",
       "supersededBy": null,
       "crossRefs": []
+    },
+    {
+      "directory": "routing-engine-l1-composition",
+      "category": "API Design Patterns",
+      "purpose": "Spike A (routing-arc W2 de-risk): proves an end-to-end Route body (Path + Query + Body) round-trips both ways (parse and print) on the institute L1 engine swift-parser-primitives. Records 5 W2 frictions (OneOf needs Input.Protocol cursor; builder tuple-flatten parse-only; Witness not Sendable; OneOf.Sequence printer gap; typed-throws Either nesting).",
+      "date": "2026-07-11",
+      "toolchain": "Swift 6.3.3",
+      "status": "CONFIRMED",
+      "statusDetail": "Round-trip holds in both directions for all 3 cases; 7 tests / 4 suites pass. Frictions worked around locally, not patched upstream.",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [
+        "PARITY-routing-engine-2026-07-11.md"
+      ]
     },
     {
       "directory": "runtime-noncopyable-shutdown",
