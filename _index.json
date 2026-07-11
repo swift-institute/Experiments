@@ -3280,6 +3280,18 @@
         "Research/adt-tower.md §2 D9 (M11)",
         "Research/adt-tower.md §4.7 iteration rider"
       ]
+    },
+    {
+      "directory": "cases-macro-keypath-feasibility",
+      "category": "API Design Patterns",
+      "purpose": "Spike B (de-risks routing-arc W1): macro feasibility for the @Cases design's hard parts — the .is(\\.case) / .case(\\.case) keypath-literal call-site shape (KeyPath<Enum.Cases, Case.Path<Enum, Value>>), depth-3 @dynamicMemberLookup case-path composition (\\.authenticate.api.credentials), and coexistence next to a second member/extension macro (the @Dual shape). A minimal member+extension macro reproduces swift-dual's enum-analysis patterns without importing or editing swift-dual; no pointfreeco dependency.",
+      "date": "2026-07-11",
+      "toolchain": "Apple Swift 6.3.3 (swiftlang-6.3.3.1.3), macOS 26 / arm64",
+      "status": "CONFIRMED",
+      "statusDetail": "Verdict FEASIBLE (README.md). 9/9 XCTest cases pass; build + test exit 0. Load-bearing requirements W1 must honor: (1) the Case.Path value type is @dynamicMemberLookup + nested enums carry a CaseAnalyzable witness protocol (this is what enables depth-3; @Dual's Optic.Prism value type is not composable), (2) .case(\\.case) needs Root pinned by builder context, (3) don't co-attach @Cases and @Dual on the SAME enum or bare .is(\\.case) is ambiguous.",
+      "statusRaw": "CONFIRMED — FEASIBLE",
+      "supersededBy": null,
+      "crossRefs": []
     }
   ],
   "narrativeSections": [
