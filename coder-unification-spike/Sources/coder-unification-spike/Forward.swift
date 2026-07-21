@@ -26,6 +26,8 @@
 //
 
 public import Coder_Primitives
+public import Parser_Primitive
+public import Serializer_Primitive
 
 public enum Forward {}
 
@@ -53,7 +55,7 @@ extension Forward {
 
         public init(_ c0: C0, _ c1: C1) { self.c0 = c0; self.c1 = c1 }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> Output {
             let o0 = try c0.parse(&input)
@@ -89,7 +91,7 @@ extension Forward {
 
         public init(_ c0: C0, _ c1: C1, _ c2: C2) { self.c0 = c0; self.c1 = c1; self.c2 = c2 }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> Output {
             let o0 = try c0.parse(&input)
@@ -129,7 +131,7 @@ extension Forward {
 
         public init(_ c0: C0, _ c1: C1) { self.c0 = c0; self.c1 = c1 }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> C1.Output {
             try c0.parse(&input)
@@ -163,7 +165,7 @@ extension Forward {
 
         public init(_ c0: C0, _ c1: C1) { self.c0 = c0; self.c1 = c1 }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> C0.Output {
             let o0 = try c0.parse(&input)
@@ -198,7 +200,7 @@ extension Forward {
 
         public init(_ wrapped: C) { self.wrapped = wrapped }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> C.Output? {
             let checkpoint = input
@@ -248,7 +250,7 @@ extension Forward {
 
         public init(_ c0: C0, _ c1: C1) { self.c0 = c0; self.c1 = c1 }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> Output {
             let checkpoint = input
@@ -305,7 +307,7 @@ extension Forward {
             self.maximum = maximum
         }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> [C.Output] {
             var results: [C.Output] = []
@@ -365,7 +367,7 @@ extension Forward {
             self.maximum = maximum
         }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> [C.Output] {
             var results: [C.Output] = []
@@ -430,7 +432,7 @@ extension Forward {
             self.unapply = unapply
         }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> NewOutput {
             apply(try upstream.parse(&input))

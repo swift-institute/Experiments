@@ -52,7 +52,7 @@ extension Leaf {
 
         public init(_ text: String) { self.text = text }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) {
             guard input.hasPrefix(text) else {
@@ -86,7 +86,7 @@ extension Leaf {
 
         public init() {}
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> Int {
             let digits = input.prefix(while: { $0.isASCII && $0.isNumber })
@@ -122,7 +122,7 @@ extension Leaf {
 
         public init() {}
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> String {
             let letters = input.prefix(while: { $0.isASCII && $0.isLetter })
@@ -156,7 +156,7 @@ extension Leaf {
 
         public init() {}
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> String {
             let all = String(input)
@@ -188,7 +188,7 @@ extension Leaf {
 
         public init() {}
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) {
             guard input.isEmpty else { throw .endExpected }
@@ -216,7 +216,7 @@ extension Leaf {
 
         public init(_ value: Value) { self.value = value }
 
-        public var body: Never { fatalError("leaf") }
+        public var body: Never { return fatalError("leaf") }
 
         public func parse(_ input: inout Substring) throws(Leaf.Fault) -> Value { value }
 

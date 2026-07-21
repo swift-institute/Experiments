@@ -97,7 +97,7 @@ struct TakeLaws {
         var buffer: Substring = ""
         try forward.serialize(((), 99), into: &buffer)
         let parsed = try l1.parse(&buffer)
-        #expect(parsed == 99)
+        #expect(parsed.1 == 99)
         #expect(buffer.isEmpty)
     }
 }
@@ -209,14 +209,18 @@ struct OneOfLaws {
                 upstream: Leaf.Integer(),
                 downstream: Parser.Conversion.Witness<Int, Tag, Leaf.Fault>(
                     apply: { .number($0) },
-                    unapply: { if case .number(let v) = $0 { return v } else { throw .unapplyFailed } }
+                    unapply: { (tag: Tag) throws(Leaf.Fault) -> Int in
+                        if case .number(let v) = tag { return v } else { throw .unapplyFailed }
+                    }
                 )
             ),
             Parser.Converted(
                 upstream: Leaf.Word(),
                 downstream: Parser.Conversion.Witness<String, Tag, Leaf.Fault>(
                     apply: { .word($0) },
-                    unapply: { if case .word(let w) = $0 { return w } else { throw .unapplyFailed } }
+                    unapply: { (tag: Tag) throws(Leaf.Fault) -> String in
+                        if case .word(let w) = tag { return w } else { throw .unapplyFailed }
+                    }
                 )
             )
         )
@@ -386,7 +390,7 @@ struct NonEmptyRestLaws {
         #expect(String(input) == "id=42&remainder")
 
         let parsed = try l1.parse(&input)
-        #expect(parsed == 42)
+        #expect(parsed.1 == 42)
         #expect(String(input) == "&remainder")
     }
 
