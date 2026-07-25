@@ -1,5 +1,5 @@
 // MARK: - Approach 12: Tagged<POSIX, ISO_9945.Stats> — L2-as-RawValue
-// Purpose: Verify the principal's 2026-05-02 refinement of approach 11:
+// Purpose: Verify the 2026-05-02 design refinement of approach 11:
 //          instead of declaring a hand-written wrapping struct at L3,
 //          use `swift-tagged-primitives.Tagged` with the L3 namespace
 //          enum as the phantom tag and L2's struct as the RawValue.

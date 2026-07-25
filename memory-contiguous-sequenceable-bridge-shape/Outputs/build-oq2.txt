@@ -1,55 +1,55 @@
-Fetching /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.43s)
-Fetching /Users/coen/Developer/swift-primitives/swift-cardinal-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-cardinal-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-either-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-either-primitives from cache (0.20s)
-Fetching /Users/coen/Developer/swift-primitives/swift-property-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-property-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-index-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-index-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache (0.45s)
-Fetching /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-hash-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-hash-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-comparison-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-comparison-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
-Fetched /Users/coen/Developer/swift-primitives/swift-standard-library-extensions from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache (1.24s)
-Fetching /Users/coen/Developer/swift-primitives/swift-ordinal-primitives from cache
-Fetched /Users/coen/Developer/swift-primitives/swift-ordinal-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-affine-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-affine-primitives from cache (0.04s)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-cardinal-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-cardinal-primitives resolved at main (9b2150c)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-index-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-index-primitives resolved at main (71b57d1)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-property-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-property-primitives resolved at main (d57d864)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-tagged-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-tagged-primitives resolved at main (3a16455)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-ownership-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-ownership-primitives resolved at main (04604c4)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-affine-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-affine-primitives resolved at main (4a909e8)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-hash-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-hash-primitives resolved at main (19de5bc)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
-Working copy of /Users/coen/Developer/swift-primitives/swift-standard-library-extensions resolved at main (58443ba)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-comparison-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-comparison-primitives resolved at main (2de8bee)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-either-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-either-primitives resolved at main (58b3336)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-equation-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-equation-primitives resolved at main (7cfea6f)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-ordinal-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-ordinal-primitives resolved at main (e46b3b7)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-carrier-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (4f9fc57)
+Fetching ~/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-carrier-primitives from cache (0.43s)
+Fetching ~/Developer/swift-primitives/swift-cardinal-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-cardinal-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-either-primitives
+Fetched ~/Developer/swift-primitives/swift-either-primitives from cache (0.20s)
+Fetching ~/Developer/swift-primitives/swift-property-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-property-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-index-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-index-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-tagged-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-tagged-primitives from cache (0.45s)
+Fetching ~/Developer/swift-primitives/swift-equation-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-equation-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-hash-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-hash-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-comparison-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-comparison-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-standard-library-extensions
+Fetched ~/Developer/swift-primitives/swift-standard-library-extensions from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-ownership-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-ownership-primitives from cache (1.24s)
+Fetching ~/Developer/swift-primitives/swift-ordinal-primitives from cache
+Fetched ~/Developer/swift-primitives/swift-ordinal-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-affine-primitives
+Fetched ~/Developer/swift-primitives/swift-affine-primitives from cache (0.04s)
+Creating working copy for ~/Developer/swift-primitives/swift-cardinal-primitives
+Working copy of ~/Developer/swift-primitives/swift-cardinal-primitives resolved at main (9b2150c)
+Creating working copy for ~/Developer/swift-primitives/swift-index-primitives
+Working copy of ~/Developer/swift-primitives/swift-index-primitives resolved at main (71b57d1)
+Creating working copy for ~/Developer/swift-primitives/swift-property-primitives
+Working copy of ~/Developer/swift-primitives/swift-property-primitives resolved at main (d57d864)
+Creating working copy for ~/Developer/swift-primitives/swift-tagged-primitives
+Working copy of ~/Developer/swift-primitives/swift-tagged-primitives resolved at main (3a16455)
+Creating working copy for ~/Developer/swift-primitives/swift-ownership-primitives
+Working copy of ~/Developer/swift-primitives/swift-ownership-primitives resolved at main (04604c4)
+Creating working copy for ~/Developer/swift-primitives/swift-affine-primitives
+Working copy of ~/Developer/swift-primitives/swift-affine-primitives resolved at main (4a909e8)
+Creating working copy for ~/Developer/swift-primitives/swift-hash-primitives
+Working copy of ~/Developer/swift-primitives/swift-hash-primitives resolved at main (19de5bc)
+Creating working copy for ~/Developer/swift-primitives/swift-standard-library-extensions
+Working copy of ~/Developer/swift-primitives/swift-standard-library-extensions resolved at main (58443ba)
+Creating working copy for ~/Developer/swift-primitives/swift-comparison-primitives
+Working copy of ~/Developer/swift-primitives/swift-comparison-primitives resolved at main (2de8bee)
+Creating working copy for ~/Developer/swift-primitives/swift-either-primitives
+Working copy of ~/Developer/swift-primitives/swift-either-primitives resolved at main (58b3336)
+Creating working copy for ~/Developer/swift-primitives/swift-equation-primitives
+Working copy of ~/Developer/swift-primitives/swift-equation-primitives resolved at main (7cfea6f)
+Creating working copy for ~/Developer/swift-primitives/swift-ordinal-primitives
+Working copy of ~/Developer/swift-primitives/swift-ordinal-primitives resolved at main (e46b3b7)
+Creating working copy for ~/Developer/swift-primitives/swift-carrier-primitives
+Working copy of ~/Developer/swift-primitives/swift-carrier-primitives resolved at main (4f9fc57)
 Building for debugging...
 [0/86] Write sources
 [85/86] Write swift-version--58304C5D6DBC2206.txt
@@ -522,7 +522,7 @@ Building for debugging...
 [595/595] Compiling Sequence_Protocol_Primitives exports.swift
 error: emit-module command failed with exit code 1 (use -v to see invocation)
 [596/597] Emitting module oq2_owned_cursor
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
 35 |     }
 36 | 
 37 |     @_lifetime(&self)
@@ -530,7 +530,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 38 |     mutating func next() -> Int? {
 39 |         guard position < base.count else { return nil }
 
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
 49 |     typealias Iterator = OwnedCursor
 50 | 
 51 |     @_lifetime(copy self)
@@ -538,7 +538,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 52 |     consuming func makeIterator() -> OwnedCursor {
 53 |         OwnedCursor(elements)
 
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
 49 |     typealias Iterator = OwnedCursor
 50 | 
 51 |     @_lifetime(copy self)
@@ -546,7 +546,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 52 |     consuming func makeIterator() -> OwnedCursor {
 53 |         OwnedCursor(elements)
 [597/597] Compiling oq2_owned_cursor main.swift
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:37:6: error: invalid lifetime dependence on an Escapable result
 35 |     }
 36 | 
 37 |     @_lifetime(&self)
@@ -554,7 +554,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 38 |     mutating func next() -> Int? {
 39 |         guard position < base.count else { return nil }
 
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:6: error: invalid lifetime dependence on an Escapable result
 49 |     typealias Iterator = OwnedCursor
 50 | 
 51 |     @_lifetime(copy self)
@@ -562,7 +562,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 52 |     consuming func makeIterator() -> OwnedCursor {
 53 |         OwnedCursor(elements)
 
-/Users/coen/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
+~/Developer/swift-institute/Experiments/memory-contiguous-sequenceable-bridge-shape/Sources/oq2-owned-cursor/main.swift:51:21: error: invalid lifetime dependence on an Escapable value with consuming ownership
 49 |     typealias Iterator = OwnedCursor
 50 | 
 51 |     @_lifetime(copy self)

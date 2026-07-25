@@ -19,7 +19,7 @@ h2-usesite.swift:13:27: error: ambiguous type name 'Shared' in 'Ownership'
 14 |     let twoArg: Ownership.Shared<Int, Int>.Type = Ownership.Shared<Int, Int>.self // 2 args -> struct?
 15 |     _ = oneArg
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
 14 | 
 15 | extension Ownership {
 16 |     public final class Shared<Value: ~Copyable & Sendable>: Sendable {
@@ -27,7 +27,7 @@ h2-usesite.swift:13:27: error: ambiguous type name 'Shared' in 'Ownership'
 17 |         public let value: Value
 18 |         public init(_ value: consuming Value) { self.value = value }
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
 14 | 
 15 | extension Ownership {
 16 |     public struct Shared<Element: ~Copyable, B: ~Copyable> {
@@ -43,7 +43,7 @@ h2-usesite.swift:14:27: error: ambiguous type name 'Shared' in 'Ownership'
 15 |     _ = oneArg
 16 |     _ = twoArg
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/OwnershipBoxStub.swift:16:24: note: found candidate with type 'Ownership.Shared'
 14 | 
 15 | extension Ownership {
 16 |     public final class Shared<Value: ~Copyable & Sendable>: Sendable {
@@ -51,7 +51,7 @@ h2-usesite.swift:14:27: error: ambiguous type name 'Shared' in 'Ownership'
 17 |         public let value: Value
 18 |         public init(_ value: consuming Value) { self.value = value }
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Probes/h2-collision.swift:16:19: note: found candidate with type 'Ownership.Shared'
 14 | 
 15 | extension Ownership {
 16 |     public struct Shared<Element: ~Copyable, B: ~Copyable> {

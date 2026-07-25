@@ -3,7 +3,7 @@ Building for debugging...
 [0/4] Write swift-version--58304C5D6DBC2206.txt
 [2/6] Emitting module variadic_oneof_same_element_blocker
 [3/6] Compiling variadic_oneof_same_element_blocker main.swift
-/Users/coen/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:191:9: warning: will never be executed
+~/Developer/swift-institute/Experiments/variadic-oneof-same-element-blocker/Sources/variadic-oneof-same-element-blocker/main.swift:191:9: warning: will never be executed
 188 |     public let parsers: (repeat each P)
 189 |     public init(_ parsers: repeat each P) { self.parsers = (repeat each parsers) }
 190 |     public func parse(_ input: inout Input) throws(Failure) -> Output {

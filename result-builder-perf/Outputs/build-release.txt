@@ -1,9 +1,9 @@
-Fetching file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache
-Fetched file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache (0.04s)
-Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives
-Working copy of file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives resolved at main (b8470fe)
+Fetching file://~/Developer/swift-primitives/swift-ownership-primitives from cache
+Fetched file://~/Developer/swift-primitives/swift-ownership-primitives from cache (0.04s)
+Creating working copy for file://~/Developer/swift-primitives/swift-ownership-primitives
+Working copy of file://~/Developer/swift-primitives/swift-ownership-primitives resolved at main (b8470fe)
 warning: 'swift-storage-primitives': found 1 file(s) which are unhandled; explicitly declare them as resources or exclude from the target
-    /Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
+    ~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
 Building for production...
 [0/162] Write sources
 [159/162] Write swift-version--58304C5D6DBC2206.txt
@@ -43,7 +43,7 @@ Building for production...
 [194/199] Compiling Hash_Primitives_Core Hash.Protocol.swift
 [195/199] Compiling Algebra_Group_Primitives Algebra.Group+Monoid.swift
 [196/201] Compiling Order_Primitives Order.Comparator+Chaining.swift
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Comparable.swift:25:13: warning: capture of non-Sendable type 'T.Type' in an isolated closure [#SendableMetatypes]
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Comparable.swift:25:13: warning: capture of non-Sendable type 'T.Type' in an isolated closure [#SendableMetatypes]
 23 |         nonisolated(unsafe) let _: T.Type = T.self
 24 |         self.init { lhs, rhs in
 25 |             Comparison(lhs, rhs)
@@ -51,7 +51,7 @@ Building for production...
 26 |         }
 27 |     }
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Projection.swift:35:13: warning: capture of non-Sendable type 'Value.Type' in an isolated closure [#SendableMetatypes]
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Projection.swift:35:13: warning: capture of non-Sendable type 'Value.Type' in an isolated closure [#SendableMetatypes]
 33 |         nonisolated(unsafe) let _: Value.Type = Value.self
 34 |         return Order.Comparator { lhs, rhs in
 35 |             Comparison(selector(lhs), selector(rhs))
@@ -59,7 +59,7 @@ Building for production...
 36 |         }
 37 |     }
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Swift.Comparable.swift:54:17: warning: capture of non-Sendable type 'T.Type' in an isolated closure [#SendableMetatypes]
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Swift.Comparable.swift:54:17: warning: capture of non-Sendable type 'T.Type' in an isolated closure [#SendableMetatypes]
  52 |             nonisolated(unsafe) let _: T.Type = T.self
  53 |             self.init { lhs, rhs in
  54 |                 Comparison(comparing: lhs, to: rhs)
@@ -67,7 +67,7 @@ Building for production...
  55 |             }
  56 |         }
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Swift.Comparable.swift:110:13: warning: capture of non-Sendable type 'Value.Type' in an isolated closure [#SendableMetatypes]
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Comparator+Swift.Comparable.swift:110:13: warning: capture of non-Sendable type 'Value.Type' in an isolated closure [#SendableMetatypes]
 108 |         nonisolated(unsafe) let _: Value.Type = Value.self
 109 |         return Order.Comparator { lhs, rhs in
 110 |             Comparison(comparing: selector(lhs), to: selector(rhs))
@@ -75,7 +75,7 @@ Building for production...
 111 |         }
 112 |     }
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:29:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:29:9: warning: no unsafe operations occur within 'unsafe' expression
  27 |         by comparator: Order.Comparator<Base>
  28 |     ) -> Bool {
  29 |         unsafe comparator(base.value, other).isLess
@@ -83,7 +83,7 @@ Building for production...
  30 |     }
  31 | 
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:45:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:45:9: warning: no unsafe operations occur within 'unsafe' expression
  43 |         by comparator: Order.Comparator<Base>
  44 |     ) -> Bool {
  45 |         unsafe comparator(base.value, other).isGreater
@@ -91,7 +91,7 @@ Building for production...
  46 |     }
  47 | 
 
-/Users/coen/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:64:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-order-primitives/Sources/Order Primitives/Order.Order+Property.Inout.swift:64:9: warning: no unsafe operations occur within 'unsafe' expression
  62 |         by comparator: Order.Comparator<Base>
  63 |     ) -> Bool {
  64 |         unsafe comparator(base.value, other).isEqual
@@ -109,7 +109,7 @@ Building for production...
 [203/206] Compiling Bit_Field_Primitives Algebra.Field+Bit.swift
 [204/206] Compiling Cardinal_Primitives Tagged+Cardinal.Add.swift
 [205/208] Compiling Ordinal_Primitives_Core Cardinal+Ordinal.swift
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Advance.swift:3:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Advance.swift:3:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
  1 | public import Cardinal_Primitives
  2 | public import Carrier_Primitives
  3 | public import Property_Primitives
@@ -117,7 +117,7 @@ Building for production...
  4 | 
  5 | extension Ordinal {
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Distance.swift:3:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Distance.swift:3:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
  1 | public import Cardinal_Primitives
  2 | public import Carrier_Primitives
  3 | public import Property_Primitives
@@ -125,7 +125,7 @@ Building for production...
  4 | 
  5 | extension Ordinal {
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Retreat.swift:13:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Core/Ordinal.Retreat.swift:13:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Cardinal_Primitives
 13 | public import Property_Primitives
@@ -134,7 +134,7 @@ Building for production...
 15 | extension Ordinal {
 [206/208] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
 [207/209] Compiling Ordinal_Primitives_Standard_Library_Integration Array+Cardinal.swift
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Array+Cardinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Array+Cardinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -142,7 +142,7 @@ Building for production...
 13 | 
 14 | // MARK: - Array + Tagged<Tag, Cardinal>
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Array+Ordinal.swift:3:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Array+Ordinal.swift:3:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
  1 | // Array+Ordinal.swift
  2 | 
  3 | public import Carrier_Primitives
@@ -150,7 +150,7 @@ Building for production...
  4 | 
  5 | // MARK: - Array Subscript with Ordinal
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/ContiguousArray+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/ContiguousArray+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -158,7 +158,7 @@ Building for production...
 13 | 
 14 | // MARK: - ContiguousArray + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/InlineArray+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/InlineArray+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -166,7 +166,7 @@ Building for production...
 13 | 
 14 | // MARK: - InlineArray + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/MutableSpan+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/MutableSpan+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -174,7 +174,7 @@ Building for production...
 13 | public import Tagged_Primitives
 14 | 
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/OutputSpan+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/OutputSpan+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -182,7 +182,7 @@ Building for production...
 13 | 
 14 | // MARK: - OutputSpan + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Span+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Span+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -190,7 +190,7 @@ Building for production...
 13 | public import Tagged_Primitives
 14 | 
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Swift.Range+Ordinal.swift:12:8: warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Swift.Range+Ordinal.swift:12:8: warning: public import of 'Cardinal_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Cardinal_Primitives
@@ -198,7 +198,7 @@ Building for production...
 13 | 
 14 | // MARK: - Computed Properties
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Tagged+Ordinal.AtomicRepresentable.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/Tagged+Ordinal.AtomicRepresentable.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -206,7 +206,7 @@ Building for production...
 13 | public import Synchronization
 14 | 
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeBufferPointer+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeBufferPointer+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -214,7 +214,7 @@ Building for production...
 13 | public import Tagged_Primitives
 14 | 
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutableBufferPointer+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutableBufferPointer+Tagged.Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -222,7 +222,7 @@ Building for production...
 13 | public import Tagged_Primitives
 14 | 
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutablePointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutablePointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -230,7 +230,7 @@ Building for production...
 13 | 
 14 | // MARK: - UnsafeMutablePointer + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutablePointer.Move+Tagged.Ordinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutablePointer.Move+Tagged.Ordinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Cardinal_Primitives
 13 | public import Carrier_Primitives
@@ -238,7 +238,7 @@ Building for production...
 14 | import Property_Primitives
 15 | public import Tagged_Primitives
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutableRawPointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeMutableRawPointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -246,7 +246,7 @@ Building for production...
 13 | 
 14 | // MARK: - UnsafeMutableRawPointer + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafePointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafePointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -254,7 +254,7 @@ Building for production...
 13 | 
 14 | // MARK: - UnsafePointer + Ordinal.Protocol
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeRawPointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives Standard Library Integration/UnsafeRawPointer+Ordinal.swift:12:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 10 | // ===----------------------------------------------------------------------===//
 11 | 
 12 | public import Carrier_Primitives
@@ -262,7 +262,7 @@ Building for production...
 13 | 
 14 | // MARK: - UnsafeRawPointer + Ordinal.Protocol
 [208/210] Compiling Ordinal_Primitives Tagged+Ordinal.Advance.swift
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives/Tagged+Ordinal.Distance.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives/Tagged+Ordinal.Distance.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Cardinal_Primitives
 13 | public import Carrier_Primitives
@@ -270,7 +270,7 @@ Building for production...
 14 | public import Property_Primitives
 15 | public import Tagged_Primitives
 
-/Users/coen/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives/Tagged+Ordinal.Distance.swift:14:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-ordinal-primitives/Sources/Ordinal Primitives/Tagged+Ordinal.Distance.swift:14:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
 12 | public import Cardinal_Primitives
 13 | public import Carrier_Primitives
 14 | public import Property_Primitives
@@ -279,7 +279,7 @@ Building for production...
 16 | 
 [209/212] Compiling System_Primitives Exports.swift
 [210/212] Compiling Affine_Primitives_Core Affine.Discrete+Arithmetic.swift
-/Users/coen/Developer/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Tagged+Affine.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Tagged+Affine.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | internal import Cardinal_Primitives
  13 | public import Carrier_Primitives
@@ -291,7 +291,7 @@ Building for production...
 [213/215] Compiling Index_Primitives_Core Index.swift
 [214/216] Compiling Index_Primitives exports.swift
 [215/217] Compiling Sequence_Primitives_Core Sequence.Borrowing.Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Primitives Core/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Primitives Core/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
   1 | public import Index_Primitives
   2 | public import Property_Primitives
     |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
@@ -301,7 +301,7 @@ Building for production...
 [217/221] Compiling Sequence_Primitives_Standard_Library_Integration Sequence.Protocol+Swift.Sequence.swift
 [218/222] Compiling Sequence_Lazy_Primitives Sequence.CompactMap.Iterator.swift
 [219/222] Compiling Sequence_Terminal_Primitives Sequence.Contains+Property.Inout.swift
-/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Terminal Primitives/Sequence.Count+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Terminal Primitives/Sequence.Count+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
  1 | public import Index_Primitives
  2 | public import Property_Primitives
    |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
@@ -312,7 +312,7 @@ Building for production...
 [222/227] Compiling Finite_Primitives_Core Finite.Bounded.swift
 [223/227] Compiling Cyclic_Primitives Cyclic.Group+Arithmetic.swift
 [224/227] Compiling Collection_Primitives Collection.Access.Random+Swift.RandomAccessCollection.swift
-/Users/coen/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.ForEach+Property.Inout.swift:102:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.ForEach+Property.Inout.swift:102:9: warning: no unsafe operations occur within 'unsafe' expression
 100 |             index = base.value.index(after: index)
 101 |         }
 102 |         unsafe Base.removeAll(&base.value)
@@ -320,14 +320,14 @@ Building for production...
 103 |     }
 104 | }
 
-/Users/coen/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.Max+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.Max+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
   1 | public import Order_Primitives
   2 | public import Property_Primitives
     |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
   3 | 
   4 | // MARK: - Universal index-based max (works with ~Copyable elements)
 
-/Users/coen/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.Min+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-collection-primitives/Sources/Collection Primitives/Collection.Min+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
   1 | public import Order_Primitives
   2 | public import Property_Primitives
     |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
@@ -336,7 +336,7 @@ Building for production...
 [225/231] Compiling Cyclic_Index_Primitives Index.Cyclic.swift
 [226/231] Compiling Finite_Primitives Algebra.Group+Bound.swift
 [227/233] Compiling Input_Primitives Input.Access.Error.swift
-/Users/coen/Developer/swift-primitives/swift-input-primitives/Sources/Input Primitives/Input.Access.Random.swift:131:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-input-primitives/Sources/Input Primitives/Input.Access.Random.swift:131:15: warning: no unsafe operations occur within 'unsafe' expression
 129 |     where Prefix.Element == Base.Element {
 130 |         let prefixCount = try! Index<Base.Element>.Count(prefix.count)
 131 |         guard unsafe prefixCount <= base.value.count else { return false }
@@ -344,7 +344,7 @@ Building for production...
 132 |         for (offset, element) in prefix.enumerated() {
 133 |             if base.value[offset: Index<Base.Element>.Offset(offset)] != element { return false }
 
-/Users/coen/Developer/swift-primitives/swift-input-primitives/Sources/Input Primitives/Input.Access.Random.swift:153:13: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-input-primitives/Sources/Input Primitives/Input.Access.Random.swift:153:13: warning: no unsafe operations occur within 'unsafe' expression
 151 |         @inlinable
 152 |         public func starts(with element: Base.Element) -> Bool {
 153 |             unsafe !base.value.isEmpty && base.value[offset: Index<Base.Element>.Offset(0)] == element
@@ -352,7 +352,7 @@ Building for production...
 154 |         }
 155 |     #endif
 [228/233] Compiling Vector_Primitives_Core Index.Count+Vector.swift
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector+Sequence.Protocol.swift:30:23: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector+Sequence.Protocol.swift:30:23: warning: no calls to throwing functions occur within 'try' expression
  28 |             _spanValue = transform(current)
  29 |             // Proof: current < end (from hasNext), so current + 1 <= end
  30 |             current = try! current + .one
@@ -360,7 +360,7 @@ Building for production...
  31 |         }
  32 |         let ptr = unsafe withUnsafeMutablePointer(to: &_spanValue) { p in
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Drop.swift:70:21: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Drop.swift:70:21: warning: no calls to throwing functions occur within 'try' expression
 68 |             if dropping && predicate(element) {
 69 |                 // Proof: i < end, so i + 1 <= end
 70 |                 i = try! i + .one
@@ -368,7 +368,7 @@ Building for production...
 71 |                 continue
 72 |             }
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Drop.swift:76:17: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Drop.swift:76:17: warning: no calls to throwing functions occur within 'try' expression
 74 |             result.append(element)
 75 |             // Proof: i < end, so i + 1 <= end
 76 |             i = try! i + .one
@@ -376,7 +376,7 @@ Building for production...
 77 |         }
 78 |         return result
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Prefix.swift:71:17: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.Prefix.swift:71:17: warning: no calls to throwing functions occur within 'try' expression
 69 |             result.append(element)
 70 |             // Proof: i < end, so i + 1 <= end
 71 |             i = try! i + .one
@@ -384,7 +384,7 @@ Building for production...
 72 |         }
 73 |         return result
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:166:23: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:166:23: warning: no calls to throwing functions occur within 'try' expression
 164 |             let result = transform(current)
 165 |             // Proof: current < end, so current + 1 <= end
 166 |             current = try! current + .one
@@ -392,7 +392,7 @@ Building for production...
 167 |             return result
 168 |         }
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:402:17: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:402:17: warning: no calls to throwing functions occur within 'try' expression
 400 |             try body(bound)
 401 |             // Proof: i < end, so i + 1 <= end
 402 |             i = try! i + .one
@@ -400,7 +400,7 @@ Building for production...
 403 |         }
 404 |     }
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:412:17: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:412:17: warning: no calls to throwing functions occur within 'try' expression
 410 |             body(transform(i))
 411 |             // Proof: i < end, so i + 1 <= end
 412 |             i = try! i + .one
@@ -408,7 +408,7 @@ Building for production...
 413 |         }
 414 |         start = end
 
-/Users/coen/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:13:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Core/Vector.swift:13:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | public import Index_Primitives
  13 | public import Property_Primitives
@@ -425,7 +425,7 @@ Building for production...
 [236/240] Compiling Link_Primitives Link+Topology.swift
 [237/240] Compiling Memory_Primitives_Core Memory+Affine.Discrete.Ratio.swift
 [238/241] Compiling Bit_Vector_Primitives_Core Bit.Vector+Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
 183 |     @inlinable
 184 |     public mutating func all() {
 185 |         unsafe Base.setAll(&base.value)
@@ -433,7 +433,7 @@ Building for production...
 186 |     }
 187 | }
 
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
 191 |     @inlinable
 192 |     public mutating func all() {
 193 |         unsafe Base.clearAll(&base.value)
@@ -444,7 +444,7 @@ Building for production...
 [240/247] Compiling Memory_Arena_Primitives Memory.Arena.Error.swift
 [241/247] Compiling Memory_Buffer_Primitives Memory.Allocator.Protocol.swift
 [242/247] Compiling Memory_Pool_Primitives Memory.Pool+allocation.swift
-/Users/coen/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Pool Primitives/Memory.Pool.Duplicate.swift:57:20: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Pool Primitives/Memory.Pool.Duplicate.swift:57:20: warning: no calls to throwing functions occur within 'try' expression
 55 |             }
 56 |             // Safe: loop guard `slot < _nextUnused` ensures +1 cannot overflow.
 57 |             slot = try! slot + .one
@@ -452,7 +452,7 @@ Building for production...
 58 |         }
 59 | 
 
-/Users/coen/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Pool Primitives/Memory.Pool.swift:253:23: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-memory-primitives/Sources/Memory Pool Primitives/Memory.Pool.swift:253:23: warning: no calls to throwing functions occur within 'try' expression
 251 |         let slot = _nextUnused
 252 |         // Safe: we just verified `_nextUnused < _sentinel`, so +1 cannot overflow.
 253 |         _nextUnused = try! _nextUnused + .one
@@ -462,7 +462,7 @@ Building for production...
 [243/247] Compiling Bit_Vector_Static_Primitives Bit.Vector.Ones.Static.Iterator.swift
 [244/248] Compiling Memory_Primitives exports.swift
 [245/248] Compiling Bit_Vector_Inline_Primitives Bit.Vector.Inline+Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.All.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.All.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
 24 |     @inlinable
 25 |     public var all: All.View {
 26 |         mutating _read { yield unsafe .init(&self) }
@@ -470,7 +470,7 @@ Building for production...
 27 |     }
 28 | }
 
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.Capacity.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.Capacity.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
 24 |     @inlinable
 25 |     public var capacity: Capacity.View {
 26 |         mutating _read { yield unsafe .init(&self) }
@@ -478,7 +478,7 @@ Building for production...
 27 |     }
 28 | }
 
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.Statistic.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Inline Primitives/Bit.Vector.Inline.Statistic.swift:26:32: warning: no unsafe operations occur within 'unsafe' expression
 24 |     @inlinable
 25 |     public var statistic: Statistic.View {
 26 |         mutating _read { yield unsafe .init(&self) }
@@ -487,7 +487,7 @@ Building for production...
 28 | }
 [246/248] Compiling Bit_Vector_Bounded_Primitives Bit.Vector.Bounded+Protocol.swift
 [247/250] Compiling Storage_Primitives_Core Storage.Arena.Inline.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Primitives Core/Storage.Inline.swift:133:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Primitives Core/Storage.Inline.swift:133:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
 131 |             for bitIndex in _slots.ones {
 132 |                 let slot = bitIndex.retag(Element.self)
 133 |                 unsafe withUnsafePointer(to: _storage) { base in
@@ -495,7 +495,7 @@ Building for production...
 134 |                     unsafe UnsafeMutableRawPointer(mutating: UnsafeRawPointer(base))
 135 |                         .advanced(by: Index<Element>.Offset(fromZero: slot) * .stride)
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Primitives Core/Storage.Inline.swift:13:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Primitives Core/Storage.Inline.swift:13:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
  11 | 
  12 | public import Bit_Vector_Static_Primitives
  13 | public import Memory_Primitives_Standard_Library_Integration
@@ -505,7 +505,7 @@ Building for production...
 [248/257] Compiling Storage_Arena_Primitives Storage.Arena ~Copyable.swift
 [249/257] Compiling Storage_Pool_Primitives Storage.Pool Copyable.swift
 [250/257] Compiling Storage_Arena_Inline_Primitives Storage.Arena.Inline ~Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Arena Inline Primitives/Storage.Arena.Inline ~Copyable.swift:170:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Arena Inline Primitives/Storage.Arena.Inline ~Copyable.swift:170:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 168 |     where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Arena.Inline<capacity> {
 169 |         for bitIndex in base.value._slots.ones {
 170 |             base.value.pointer(at: bitIndex.retag(Element.self)).deinitialize(count: .one)
@@ -519,7 +519,7 @@ Building for production...
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [251/257] Compiling Storage_Split_Primitives Storage.Field.swift
 [252/257] Compiling Storage_Pool_Inline_Primitives Storage.Pool.Inline ~Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Pool Inline Primitives/Storage.Pool.Inline ~Copyable.swift:178:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Pool Inline Primitives/Storage.Pool.Inline ~Copyable.swift:178:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 176 |     where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Pool.Inline<capacity> {
 177 |         for bitIndex in base.value._slots.ones {
 178 |             base.value.pointer(at: bitIndex.retag(Element.self)).deinitialize(count: .one)
@@ -534,7 +534,7 @@ Building for production...
 [253/257] Compiling Bit_Vector_Dynamic_Primitives Bit.Vector.Dynamic+Protocol.swift
 [254/257] Compiling Storage_Heap_Primitives Storage.Heap Copyable.swift
 [255/257] Compiling Storage_Inline_Primitives Storage.Inline Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:44:19: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:44:19: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  42 |         @_unsafeNonescapableResult
  43 |         _read {
  44 |             yield Property<Storage.Deinitialize, Self>.Inout(self)
@@ -543,7 +543,7 @@ Building for production...
  45 |         }
  46 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:68:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:68:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  66 |         let capacity: Int
  67 |     >(at slot: Index<Element>.Bounded<capacity>) where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Inline<capacity> {
  68 |         base.value.pointer(at: slot).deinitialize(count: .one)
@@ -554,7 +554,7 @@ Building for production...
  69 |         base.value._slots[Index<Element>(slot).retag()] = false
  70 |     }
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:82:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:82:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  80 |     ) where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Inline<capacity> {
  81 |         guard !range.isEmpty else { return }
  82 |         base.value._mutablePointer(at: range.lowerBound)
@@ -566,7 +566,7 @@ Building for production...
  84 |         base.value._slots.clear.range(range.map.bounds { $0.retag(Bit.self) })
  85 |     }
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:103:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:103:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 101 |     where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Inline<capacity> {
 102 |         for bitIndex in base.value._slots.ones {
 103 |             base.value._mutablePointer(at: bitIndex.retag(Element.self))
@@ -578,7 +578,7 @@ Building for production...
 105 |         }
 106 |         base.value._slots.clear.all()
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:126:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Deinitialize.swift:126:13: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 124 |     where Tag == Storage<Element>.Deinitialize, Base == Storage<Element>.Inline<capacity> {
 125 |         for bitIndex in base.value._slots.ones {
 126 |             base.value._mutablePointer(at: bitIndex.retag(Element.self))
@@ -590,7 +590,7 @@ Building for production...
 128 |         }
 129 |     }
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Initialize.swift:57:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Initialize.swift:57:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 55 |         at slot: Index<Element>.Bounded<capacity>
 56 |     ) where Tag == Storage<Element>.Initialize, Base == Storage<Element>.Inline<capacity> {
 57 |         base.value.pointer(at: slot).initialize(to: element)
@@ -600,7 +600,7 @@ Building for production...
 58 |         base.value._slots[Index<Element>(slot).retag()] = true
 59 |     }
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Initialize.swift:85:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Initialize.swift:85:15: warning: no unsafe operations occur within 'unsafe' expression
 83 |     where Tag == Storage<Element>.Initialize, Base == Storage<Element>.Inline<capacity> {
 84 |         let slot = base.value.initialization.count.map(Ordinal.init)
 85 |         guard unsafe slot < base.value.slotCapacity else { throw .capacityExceeded }
@@ -608,7 +608,7 @@ Building for production...
 86 |         let bounded = Index<Element>.Bounded<capacity>(slot)!
 87 |         self(to: element, at: bounded)
 
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Move.swift:102:23: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline+Move.swift:102:23: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 100 |         at slot: Index<Element>.Bounded<capacity>
 101 |     ) -> Element where Tag == Storage<Element>.Move, Base == Storage<Element>.Inline<capacity> {
 102 |         let element = base.value.pointer(at: slot).move()
@@ -634,7 +634,7 @@ Building for production...
 [268/276] Compiling Buffer_Unbounded_Primitives_Core Buffer.Unbounded.swift
 [269/276] Compiling Buffer_Slab_Primitives Buffer.Slab+Consume.swift
 [270/276] Compiling Buffer_Linked_Primitives Buffer.Linked Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:57:14: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:57:14: warning: no unsafe operations occur within 'unsafe' expression
  55 |         base.value.ensureUnique()
  56 |         if base.value.isFull { base.value._grow() }
  57 |         try! unsafe Buffer<Element>.Linked<n>.insertFront(
@@ -642,7 +642,7 @@ Building for production...
  58 |             consume element,
  59 |             header: &base.value.header,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:76:14: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:76:14: warning: no unsafe operations occur within 'unsafe' expression
  74 |         base.value.ensureUnique()
  75 |         if base.value.isFull { base.value._grow() }
  76 |         try! unsafe Buffer<Element>.Linked<n>.insertBack(
@@ -650,7 +650,7 @@ Building for production...
  77 |             consume element,
  78 |             header: &base.value.header,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:99:16: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:99:16: warning: no unsafe operations occur within 'unsafe' expression
  97 |     public mutating func front() -> Element? {
  98 |         base.value.ensureUnique()
  99 |         return unsafe Buffer<Element>.Linked<n>.removeFront(
@@ -658,7 +658,7 @@ Building for production...
 100 |             header: &base.value.header,
 101 |             storage: base.value.storage
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:112:16: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked Copyable.swift:112:16: warning: no unsafe operations occur within 'unsafe' expression
 110 |     public mutating func back() -> Element? {
 111 |         base.value.ensureUnique()
 112 |         return unsafe Buffer<Element>.Linked<n>.removeBack(
@@ -666,7 +666,7 @@ Building for production...
 113 |             header: &base.value.header,
 114 |             storage: base.value.storage
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:105:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:105:19: warning: no unsafe operations occur within 'unsafe' expression
 103 |     public var insert: Insert.View {
 104 |         mutating _read {
 105 |             yield unsafe .init(&self)
@@ -674,7 +674,7 @@ Building for production...
 106 |         }
 107 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:108:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:108:37: warning: no unsafe operations occur within 'unsafe' expression
 106 |         }
 107 |         mutating _modify {
 108 |             var view: Insert.View = unsafe .init(&self)
@@ -682,7 +682,7 @@ Building for production...
 109 |             yield &view
 110 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:120:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:120:19: warning: no unsafe operations occur within 'unsafe' expression
 118 |     public var remove: Remove.View {
 119 |         mutating _read {
 120 |             yield unsafe .init(&self)
@@ -690,7 +690,7 @@ Building for production...
 121 |         }
 122 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:123:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:123:37: warning: no unsafe operations occur within 'unsafe' expression
 121 |         }
 122 |         mutating _modify {
 123 |             var view: Remove.View = unsafe .init(&self)
@@ -698,7 +698,7 @@ Building for production...
 124 |             yield &view
 125 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:146:13: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:146:13: warning: no unsafe operations occur within 'unsafe' expression
 144 |         _ element: consuming Element
 145 |     ) throws(Buffer<Element>.Linked<n>.Error) {
 146 |         try unsafe Buffer<Element>.Linked<n>.insertFront(
@@ -706,7 +706,7 @@ Building for production...
 147 |             consume element,
 148 |             header: &base.value.header,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:162:13: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:162:13: warning: no unsafe operations occur within 'unsafe' expression
 160 |         _ element: consuming Element
 161 |     ) throws(Buffer<Element>.Linked<n>.Error) {
 162 |         try unsafe Buffer<Element>.Linked<n>.insertBack(
@@ -714,7 +714,7 @@ Building for production...
 163 |             consume element,
 164 |             header: &base.value.header,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:184:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:184:9: warning: no unsafe operations occur within 'unsafe' expression
 182 |     @inlinable
 183 |     public mutating func front() -> Element? {
 184 |         unsafe Buffer<Element>.Linked<n>.removeFront(
@@ -722,7 +722,7 @@ Building for production...
 185 |             header: &base.value.header,
 186 |             storage: base.value.storage
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:196:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Primitives/Buffer.Linked ~Copyable.swift:196:9: warning: no unsafe operations occur within 'unsafe' expression
 194 |     @inlinable
 195 |     public mutating func back() -> Element? {
 196 |         unsafe Buffer<Element>.Linked<n>.removeBack(
@@ -730,7 +730,7 @@ Building for production...
 197 |             header: &base.value.header,
 198 |             storage: base.value.storage
 [271/278] Compiling Buffer_Arena_Primitives Buffer.Arena Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Primitives/Buffer.Arena+forEach Property.Inout.swift:12:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Primitives/Buffer.Arena+forEach Property.Inout.swift:12:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 10 |         _ body: (Index<Element>) -> Void
 11 |     ) where Tag == Sequence.ForEach, Base == Buffer<Element>.Arena {
 12 |         let meta = base.value.storage.meta
@@ -739,7 +739,7 @@ Building for production...
 13 |         unsafe Buffer<Element>.Arena.forEach(
 14 |             occupied: base.value.header,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Primitives/Buffer.Arena+forEach Property.Inout.swift:30:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Primitives/Buffer.Arena+forEach Property.Inout.swift:30:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 28 |         _ body: (Index<Element>) -> Void
 29 |     ) where Tag == Sequence.ForEach, Base == Buffer<Element>.Arena.Bounded {
 30 |         let meta = base.value.storage.meta
@@ -750,7 +750,7 @@ Building for production...
 
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [272/279] Compiling Buffer_Linear_Primitives Buffer.Linear Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear Copyable.swift:111:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear Copyable.swift:111:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 109 |     @inlinable
 110 |     public var front: Element {
 111 |         base.value.storage.pointer(at: .zero).pointee
@@ -759,7 +759,7 @@ Building for production...
 112 |     }
 113 | 
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear Copyable.swift:119:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear Copyable.swift:119:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 117 |     @inlinable
 118 |     public var back: Element {
 119 |         return base.value.storage.pointer(at: base.value.header.count.subtract.saturating(.one).map(Ordinal.init)).pointee
@@ -768,7 +768,7 @@ Building for production...
 120 |     }
 121 | }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded Copyable.swift:14:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded Copyable.swift:14:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  12 |     @inlinable
  13 |     public var front: Element {
  14 |         base.value.storage.pointer(at: .zero).pointee
@@ -777,7 +777,7 @@ Building for production...
  15 |     }
  16 | 
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded Copyable.swift:22:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded Copyable.swift:22:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  20 |     @inlinable
  21 |     public var back: Element {
  22 |         return base.value.storage.pointer(at: base.value.header.count.subtract.saturating(.one).map(Ordinal.init)).pointee
@@ -786,7 +786,7 @@ Building for production...
  23 |     }
  24 | }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded.swift:123:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded.swift:123:19: warning: no unsafe operations occur within 'unsafe' expression
 121 |     public var remove: Remove.View {
 122 |         mutating _read {
 123 |             yield unsafe .init(&self)
@@ -794,7 +794,7 @@ Building for production...
 124 |         }
 125 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded.swift:126:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.Bounded.swift:126:37: warning: no unsafe operations occur within 'unsafe' expression
 124 |         }
 125 |         mutating _modify {
 126 |             var view: Remove.View = unsafe .init(&self)
@@ -802,7 +802,7 @@ Building for production...
 127 |             yield &view
 128 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.swift:173:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.swift:173:19: warning: no unsafe operations occur within 'unsafe' expression
 171 |     public var remove: Remove.View {
 172 |         mutating _read {
 173 |             yield unsafe .init(&self)
@@ -810,7 +810,7 @@ Building for production...
 174 |         }
 175 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.swift:176:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Primitives/Buffer.Linear.swift:176:37: warning: no unsafe operations occur within 'unsafe' expression
 174 |         }
 175 |         mutating _modify {
 176 |             var view: Remove.View = unsafe .init(&self)
@@ -820,7 +820,7 @@ Building for production...
 
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [273/279] Compiling Buffer_Ring_Primitives Buffer.Ring Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring Copyable.swift:99:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring Copyable.swift:99:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  97 |     @inlinable
  98 |     public var front: Element {
  99 |         base.value.storage.pointer(at: base.value.header.head).pointee
@@ -829,7 +829,7 @@ Building for production...
 100 |     }
 101 | 
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring Copyable.swift:108:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring Copyable.swift:108:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 106 |     @inlinable
 107 |     public var back: Element {
 108 |         return base.value.storage.pointer(
@@ -838,7 +838,7 @@ Building for production...
 109 |             at: Index.Modular.advanced(
 110 |                 base.value.header.head,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded Copyable.swift:101:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded Copyable.swift:101:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  99 |     @inlinable
 100 |     public var front: Element {
 101 |         base.value.storage.pointer(at: base.value.header.head).pointee
@@ -847,7 +847,7 @@ Building for production...
 102 |     }
 103 | 
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded Copyable.swift:109:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded Copyable.swift:109:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 107 |     @inlinable
 108 |     public var back: Element {
 109 |         return base.value.storage.pointer(
@@ -856,7 +856,7 @@ Building for production...
 110 |             at: Index.Modular.advanced(
 111 |                 base.value.header.head,
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:94:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:94:19: warning: no unsafe operations occur within 'unsafe' expression
  92 |     public var push: Push.View {
  93 |         mutating _read {
  94 |             yield unsafe .init(&self)
@@ -864,7 +864,7 @@ Building for production...
  95 |         }
  96 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:97:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:97:35: warning: no unsafe operations occur within 'unsafe' expression
  95 |         }
  96 |         mutating _modify {
  97 |             var view: Push.View = unsafe .init(&self)
@@ -872,7 +872,7 @@ Building for production...
  98 |             yield &view
  99 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:105:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:105:19: warning: no unsafe operations occur within 'unsafe' expression
 103 |     public var pop: Pop.View {
 104 |         mutating _read {
 105 |             yield unsafe .init(&self)
@@ -880,7 +880,7 @@ Building for production...
 106 |         }
 107 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:108:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:108:34: warning: no unsafe operations occur within 'unsafe' expression
 106 |         }
 107 |         mutating _modify {
 108 |             var view: Pop.View = unsafe .init(&self)
@@ -888,7 +888,7 @@ Building for production...
 109 |             yield &view
 110 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:123:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:123:19: warning: no unsafe operations occur within 'unsafe' expression
 121 |     public var remove: Remove.View {
 122 |         mutating _read {
 123 |             yield unsafe .init(&self)
@@ -896,7 +896,7 @@ Building for production...
 124 |         }
 125 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:126:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.Bounded.swift:126:37: warning: no unsafe operations occur within 'unsafe' expression
 124 |         }
 125 |         mutating _modify {
 126 |             var view: Remove.View = unsafe .init(&self)
@@ -904,7 +904,7 @@ Building for production...
 127 |             yield &view
 128 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:155:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:155:19: warning: no unsafe operations occur within 'unsafe' expression
 153 |     public var push: Push.View {
 154 |         mutating _read {
 155 |             yield unsafe .init(&self)
@@ -912,7 +912,7 @@ Building for production...
 156 |         }
 157 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:158:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:158:35: warning: no unsafe operations occur within 'unsafe' expression
 156 |         }
 157 |         mutating _modify {
 158 |             var view: Push.View = unsafe .init(&self)
@@ -920,7 +920,7 @@ Building for production...
 159 |             yield &view
 160 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:170:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:170:19: warning: no unsafe operations occur within 'unsafe' expression
 168 |     public var pop: Pop.View {
 169 |         mutating _read {
 170 |             yield unsafe .init(&self)
@@ -928,7 +928,7 @@ Building for production...
 171 |         }
 172 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:173:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:173:34: warning: no unsafe operations occur within 'unsafe' expression
 171 |         }
 172 |         mutating _modify {
 173 |             var view: Pop.View = unsafe .init(&self)
@@ -936,7 +936,7 @@ Building for production...
 174 |             yield &view
 175 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:196:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:196:19: warning: no unsafe operations occur within 'unsafe' expression
 194 |     public var remove: Remove.View {
 195 |         mutating _read {
 196 |             yield unsafe .init(&self)
@@ -944,7 +944,7 @@ Building for production...
 197 |         }
 198 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:199:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Primitives/Buffer.Ring.swift:199:37: warning: no unsafe operations occur within 'unsafe' expression
 197 |         }
 198 |         mutating _modify {
 199 |             var view: Remove.View = unsafe .init(&self)
@@ -954,7 +954,7 @@ Building for production...
 
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [274/280] Compiling Hash_Table_Primitives_Core Hash.Occupied.Static.Iterator.swift
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Primitives Core/Hash.Table.swift:16:8: warning: public import of 'Hash_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Primitives Core/Hash.Table.swift:16:8: warning: public import of 'Hash_Primitives' was not used in public declarations or inlinable code
  14 | internal import Cyclic_Index_Primitives
  15 | internal import Finite_Primitives
  16 | public import Hash_Primitives
@@ -962,7 +962,7 @@ Building for production...
  17 | public import Index_Primitives
  18 | internal import Ordinal_Primitives
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Primitives Core/Hash.Table.swift:17:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Primitives Core/Hash.Table.swift:17:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
  15 | internal import Finite_Primitives
  16 | public import Hash_Primitives
  17 | public import Index_Primitives
@@ -970,7 +970,7 @@ Building for production...
  18 | internal import Ordinal_Primitives
  19 | 
 [275/282] Compiling Buffer_Arena_Inline_Primitives Buffer.Arena.Inline.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small Copyable.swift:20:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small Copyable.swift:20:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 18 |             self = Self(_storage: .heap(consume buf))
 19 |             return copied
 20 |         case .inline(var buf):
@@ -978,7 +978,7 @@ Building for production...
 21 |             self = Self(_storage: .inline(consume buf))
 22 |             return false  // inline is always unique
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small.swift:244:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small.swift:244:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 242 |     ) -> UnsafeMutablePointer<Element> {
 243 |         switch _storage {
 244 |         case .heap(var buf):
@@ -986,7 +986,7 @@ Building for production...
 245 |             // Heap pointer is into ref-counted storage — stable after extraction.
 246 |             let ptr = unsafe buf.pointer(at: slot)
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small.swift:249:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Arena Inline Primitives/Buffer.Arena.Small.swift:249:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 247 |             self = Self(_storage: .heap(consume buf))
 248 |             return unsafe ptr
 249 |         case .inline(var buf):
@@ -995,7 +995,7 @@ Building for production...
 251 |             // because `buf` lives on the stack and the pointer would dangle after
 [276/282] Compiling Buffer_Slab_Inline_Primitives Buffer.Slab.Inline Copyable.swift
 [277/282] Compiling Buffer_Linked_Inline_Primitives Buffer.Linked.Inline Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:124:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:124:19: warning: no unsafe operations occur within 'unsafe' expression
 122 |     public var insert: Insert.View {
 123 |         mutating _read {
 124 |             yield unsafe .init(&self)
@@ -1003,7 +1003,7 @@ Building for production...
 125 |         }
 126 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:127:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:127:37: warning: no unsafe operations occur within 'unsafe' expression
 125 |         }
 126 |         mutating _modify {
 127 |             var view: Insert.View = unsafe .init(&self)
@@ -1011,7 +1011,7 @@ Building for production...
 128 |             yield &view
 129 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:139:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:139:19: warning: no unsafe operations occur within 'unsafe' expression
 137 |     public var remove: Remove.View {
 138 |         mutating _read {
 139 |             yield unsafe .init(&self)
@@ -1019,7 +1019,7 @@ Building for production...
 140 |         }
 141 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:142:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Inline ~Copyable.swift:142:37: warning: no unsafe operations occur within 'unsafe' expression
 140 |         }
 141 |         mutating _modify {
 142 |             var view: Remove.View = unsafe .init(&self)
@@ -1027,7 +1027,7 @@ Building for production...
 143 |             yield &view
 144 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small Copyable.swift:52:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small Copyable.swift:52:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 50 |     public mutating func ensureUnique() -> Bool {
 51 |         switch _storage {
 52 |         case .inline(var buf):
@@ -1035,7 +1035,7 @@ Building for production...
 53 |             self = Self(_storage: .inline(consume buf))
 54 |             return false
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:92:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:92:19: warning: no unsafe operations occur within 'unsafe' expression
  90 |     public var insert: Insert.View {
  91 |         mutating _read {
  92 |             yield unsafe .init(&self)
@@ -1043,7 +1043,7 @@ Building for production...
  93 |         }
  94 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:95:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:95:37: warning: no unsafe operations occur within 'unsafe' expression
  93 |         }
  94 |         mutating _modify {
  95 |             var view: Insert.View = unsafe .init(&self)
@@ -1051,7 +1051,7 @@ Building for production...
  96 |             yield &view
  97 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:107:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:107:19: warning: no unsafe operations occur within 'unsafe' expression
 105 |     public var remove: Remove.View {
 106 |         mutating _read {
 107 |             yield unsafe .init(&self)
@@ -1059,7 +1059,7 @@ Building for production...
 108 |         }
 109 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:110:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linked Inline Primitives/Buffer.Linked.Small ~Copyable.swift:110:37: warning: no unsafe operations occur within 'unsafe' expression
 108 |         }
 109 |         mutating _modify {
 110 |             var view: Remove.View = unsafe .init(&self)
@@ -1067,7 +1067,7 @@ Building for production...
 111 |             yield &view
 112 |         }
 [278/282] Compiling Hash_Table_Accessor_Primitives Hash.Occupied.Static+Sequence.Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Bucket.swift:37:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Bucket.swift:37:19: warning: no unsafe operations occur within 'unsafe' expression
 35 |     public var bucket: Bucket.Ops.View {
 36 |         mutating _read {
 37 |             yield unsafe .init(&self)
@@ -1075,7 +1075,7 @@ Building for production...
 38 |         }
 39 |     }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+ForEach.swift:26:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+ForEach.swift:26:19: warning: no unsafe operations occur within 'unsafe' expression
 24 |     public var forEach: ForEach.View {
 25 |         mutating _read {
 26 |             yield unsafe .init(&self)
@@ -1083,7 +1083,7 @@ Building for production...
 27 |         }
 28 |     }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+PositionUpdates.swift:25:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+PositionUpdates.swift:25:19: warning: no unsafe operations occur within 'unsafe' expression
 23 |     public var positions: Positions.View {
 24 |         mutating _read {
 25 |             yield unsafe .init(&self)
@@ -1091,7 +1091,7 @@ Building for production...
 26 |         }
 27 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+PositionUpdates.swift:28:40: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+PositionUpdates.swift:28:40: warning: no unsafe operations occur within 'unsafe' expression
 26 |         }
 27 |         mutating _modify {
 28 |             var view: Positions.View = unsafe .init(&self)
@@ -1099,7 +1099,7 @@ Building for production...
 29 |             yield &view
 30 |         }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Removal.swift:149:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Removal.swift:149:19: warning: no unsafe operations occur within 'unsafe' expression
 147 |     public var remove: Remove.View {
 148 |         mutating _read {
 149 |             yield unsafe .init(&self)
@@ -1107,7 +1107,7 @@ Building for production...
 150 |         }
 151 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Removal.swift:152:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table+Removal.swift:152:37: warning: no unsafe operations occur within 'unsafe' expression
 150 |         }
 151 |         mutating _modify {
 152 |             var view: Remove.View = unsafe .init(&self)
@@ -1115,7 +1115,7 @@ Building for production...
 153 |             yield &view
 154 |         }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Bucket.swift:29:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Bucket.swift:29:32: warning: no unsafe operations occur within 'unsafe' expression
 27 |     @inlinable
 28 |     public var bucket: Ops.View {
 29 |         mutating _read { yield unsafe .init(&self) }
@@ -1123,7 +1123,7 @@ Building for production...
 30 |     }
 31 | }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+ForEach.swift:29:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+ForEach.swift:29:32: warning: no unsafe operations occur within 'unsafe' expression
 27 |     @inlinable
 28 |     public var forEach: ForEach.View {
 29 |         mutating _read { yield unsafe .init(&self) }
@@ -1131,7 +1131,7 @@ Building for production...
 30 |     }
 31 | }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Removal.swift:25:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Removal.swift:25:32: warning: no unsafe operations occur within 'unsafe' expression
 23 |     @inlinable
 24 |     public var remove: Remove.View {
 25 |         mutating _read { yield unsafe .init(&self) }
@@ -1139,7 +1139,7 @@ Building for production...
 26 |         mutating _modify {
 27 |             var view: Remove.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Removal.swift:27:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static+Removal.swift:27:37: warning: no unsafe operations occur within 'unsafe' expression
 25 |         mutating _read { yield unsafe .init(&self) }
 26 |         mutating _modify {
 27 |             var view: Remove.View = unsafe .init(&self)
@@ -1147,7 +1147,7 @@ Building for production...
 28 |             yield &view
 29 |         }
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static.Positions.swift:25:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static.Positions.swift:25:32: warning: no unsafe operations occur within 'unsafe' expression
  23 |     @inlinable
  24 |     public var positions: Positions.View {
  25 |         mutating _read { yield unsafe .init(&self) }
@@ -1155,7 +1155,7 @@ Building for production...
  26 |         mutating _modify {
  27 |             var view: Positions.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static.Positions.swift:27:40: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-hash-table-primitives/Sources/Hash Table Accessor Primitives/Hash.Table.Static.Positions.swift:27:40: warning: no unsafe operations occur within 'unsafe' expression
  25 |         mutating _read { yield unsafe .init(&self) }
  26 |         mutating _modify {
  27 |             var view: Positions.View = unsafe .init(&self)
@@ -1163,7 +1163,7 @@ Building for production...
  28 |             yield &view
  29 |         }
 [279/283] Compiling Buffer_Linear_Inline_Primitives Buffer.Linear+Inline Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline Copyable.swift:14:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline Copyable.swift:14:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  12 |     @inlinable
  13 |     public var front: Element {
  14 |         base.value.storage.pointer(at: Index<Element>.Bounded<n>(.zero)!).pointee
@@ -1172,7 +1172,7 @@ Building for production...
  15 |     }
  16 | 
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline Copyable.swift:22:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline Copyable.swift:22:16: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  20 |     @inlinable
  21 |     public var back: Element {
  22 |         return base.value.storage.pointer(at: Index<Element>.Bounded<n>(base.value.header.count.subtract.saturating(.one).map(Ordinal.init))!).pointee
@@ -1181,7 +1181,7 @@ Building for production...
  23 |     }
  24 | }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline.swift:137:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline.swift:137:19: warning: no unsafe operations occur within 'unsafe' expression
 135 |     public var remove: Remove.View {
 136 |         mutating _read {
 137 |             yield unsafe .init(&self)
@@ -1189,7 +1189,7 @@ Building for production...
 138 |         }
 139 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline.swift:140:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Inline Primitives/Buffer.Linear.Inline.swift:140:37: warning: no unsafe operations occur within 'unsafe' expression
 138 |         }
 139 |         mutating _modify {
 140 |             var view: Remove.View = unsafe .init(&self)
@@ -1199,7 +1199,7 @@ Building for production...
 
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [280/285] Compiling Buffer_Ring_Inline_Primitives Buffer.Ring+Inline Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline Copyable.swift:15:43: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline Copyable.swift:15:43: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  13 |     public var front: Element {
  14 |         let bounded = Index<Element>.Bounded<n>(base.value.header.head)!
  15 |         let ptr: UnsafePointer<Element> = base.value.storage.pointer(at: bounded)
@@ -1208,7 +1208,7 @@ Building for production...
  16 |         return unsafe ptr.pointee
  17 |     }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline Copyable.swift:31:43: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline Copyable.swift:31:43: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  29 |             )
  30 |         )!
  31 |         let ptr: UnsafePointer<Element> = base.value.storage.pointer(at: bounded)
@@ -1217,7 +1217,7 @@ Building for production...
  32 |         return unsafe ptr.pointee
  33 |     }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:92:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:92:19: warning: no unsafe operations occur within 'unsafe' expression
  90 |     public var push: Push.View {
  91 |         mutating _read {
  92 |             yield unsafe .init(&self)
@@ -1225,7 +1225,7 @@ Building for production...
  93 |         }
  94 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:95:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:95:35: warning: no unsafe operations occur within 'unsafe' expression
  93 |         }
  94 |         mutating _modify {
  95 |             var view: Push.View = unsafe .init(&self)
@@ -1233,7 +1233,7 @@ Building for production...
  96 |             yield &view
  97 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:103:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:103:19: warning: no unsafe operations occur within 'unsafe' expression
 101 |     public var pop: Pop.View {
 102 |         mutating _read {
 103 |             yield unsafe .init(&self)
@@ -1241,7 +1241,7 @@ Building for production...
 104 |         }
 105 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:106:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:106:34: warning: no unsafe operations occur within 'unsafe' expression
 104 |         }
 105 |         mutating _modify {
 106 |             var view: Pop.View = unsafe .init(&self)
@@ -1249,7 +1249,7 @@ Building for production...
 107 |             yield &view
 108 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:121:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:121:19: warning: no unsafe operations occur within 'unsafe' expression
 119 |     public var remove: Remove.View {
 120 |         mutating _read {
 121 |             yield unsafe .init(&self)
@@ -1257,7 +1257,7 @@ Building for production...
 122 |         }
 123 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:124:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Inline.swift:124:37: warning: no unsafe operations occur within 'unsafe' expression
 122 |         }
 123 |         mutating _modify {
 124 |             var view: Remove.View = unsafe .init(&self)
@@ -1265,7 +1265,7 @@ Building for production...
 125 |             yield &view
 126 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:17:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:17:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  15 |             self = Self(_storage: .heap(consume buf))
  16 |             return copied
  17 |         case .inline(var buf):
@@ -1273,7 +1273,7 @@ Building for production...
  18 |             self = Self(_storage: .inline(consume buf))
  19 |             return false
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:32:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:32:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  30 |             buf.reserveCapacity(minimumCapacity)
  31 |             self = Self(_storage: .heap(consume buf))
  32 |         case .inline(var buf):
@@ -1281,7 +1281,7 @@ Building for production...
  33 |             self = Self(_storage: .inline(consume buf))
  34 |             if minimumCapacity > Index<Element>.Count(UInt(inlineCapacity)) {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:49:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:49:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  47 |     mutating func _spillToHeap() {
  48 |         switch _storage {
  49 |         case .heap(var buf):
@@ -1289,7 +1289,7 @@ Building for production...
  50 |             self = Self(_storage: .heap(consume buf))
  51 |             return
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:52:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:52:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  50 |             self = Self(_storage: .heap(consume buf))
  51 |             return
  52 |         case .inline(var buf):
@@ -1297,7 +1297,7 @@ Building for production...
  53 |             let currentCount = buf.count
  54 |             let newCapacity = Index<Element>.Count(UInt(inlineCapacity * 2))
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:76:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:76:24: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  74 |     mutating func _spillToHeap(minimumCapacity: Index<Element>.Count) {
  75 |         switch _storage {
  76 |         case .heap(var buf):
@@ -1305,7 +1305,7 @@ Building for production...
  77 |             self = Self(_storage: .heap(consume buf))
  78 |             return
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:79:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:79:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  77 |             self = Self(_storage: .heap(consume buf))
  78 |             return
  79 |         case .inline(var buf):
@@ -1313,7 +1313,7 @@ Building for production...
  80 |             let currentCount = buf.count
  81 |             let newStorage = Storage<Element>.Heap.create(minimumCapacity: minimumCapacity)
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:120:34: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:120:34: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 118 |                     buf._pushBack(consume element)
 119 |                     self = Self(_storage: .heap(consume buf))
 120 |                 case .inline(var buf):
@@ -1321,7 +1321,7 @@ Building for production...
 121 |                     self = Self(_storage: .inline(consume buf))
 122 |                     fatalError("_spillToHeap must transition to heap")
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:159:34: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small Copyable.swift:159:34: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 157 |                     buf._pushFront(consume element)
 158 |                     self = Self(_storage: .heap(consume buf))
 159 |                 case .inline(var buf):
@@ -1329,7 +1329,7 @@ Building for production...
 160 |                     self = Self(_storage: .inline(consume buf))
 161 |                     fatalError("_spillToHeap must transition to heap")
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:193:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:193:19: warning: no unsafe operations occur within 'unsafe' expression
 191 |     public var push: Push.View {
 192 |         mutating _read {
 193 |             yield unsafe .init(&self)
@@ -1337,7 +1337,7 @@ Building for production...
 194 |         }
 195 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:196:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:196:35: warning: no unsafe operations occur within 'unsafe' expression
 194 |         }
 195 |         mutating _modify {
 196 |             var view: Push.View = unsafe .init(&self)
@@ -1345,7 +1345,7 @@ Building for production...
 197 |             yield &view
 198 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:204:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:204:19: warning: no unsafe operations occur within 'unsafe' expression
 202 |     public var pop: Pop.View {
 203 |         mutating _read {
 204 |             yield unsafe .init(&self)
@@ -1353,7 +1353,7 @@ Building for production...
 205 |         }
 206 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:207:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:207:34: warning: no unsafe operations occur within 'unsafe' expression
 205 |         }
 206 |         mutating _modify {
 207 |             var view: Pop.View = unsafe .init(&self)
@@ -1361,7 +1361,7 @@ Building for production...
 208 |             yield &view
 209 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:222:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:222:19: warning: no unsafe operations occur within 'unsafe' expression
 220 |     public var remove: Remove.View {
 221 |         mutating _read {
 222 |             yield unsafe .init(&self)
@@ -1369,7 +1369,7 @@ Building for production...
 223 |         }
 224 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:225:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Ring Inline Primitives/Buffer.Ring.Small.swift:225:37: warning: no unsafe operations occur within 'unsafe' expression
 223 |         }
 224 |         mutating _modify {
 225 |             var view: Remove.View = unsafe .init(&self)
@@ -1381,7 +1381,7 @@ Building for production...
 [281/285] Compiling Hash_Table_Primitives exports.swift
 [282/285] Compiling List_Primitives_Core List.Index.swift
 [283/286] Compiling Buffer_Linear_Small_Primitives Buffer.Linear.Small Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:17:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:17:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  15 |             self = Self(_storage: .heap(consume buf))
  16 |             return copied
  17 |         case .inline(var buf):
@@ -1389,7 +1389,7 @@ Building for production...
  18 |             self = Self(_storage: .inline(consume buf))
  19 |             return false
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:32:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:32:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
  30 |             buf.reserveCapacity(minimumCapacity)
  31 |             self = Self(_storage: .heap(consume buf))
  32 |         case .inline(var buf):
@@ -1397,7 +1397,7 @@ Building for production...
  33 |             if minimumCapacity > Index<Element>.Count(UInt(inlineCapacity)) {
  34 |                 self = Self(_storage: .inline(consume buf))
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:68:34: warning: variable 'inlineBuf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small Copyable.swift:68:34: warning: variable 'inlineBuf' was never mutated; consider changing to 'let' constant
  66 |                     heapBuf.append(consume element)
  67 |                     self = Self(_storage: .heap(consume heapBuf))
  68 |                 case .inline(var inlineBuf):
@@ -1405,7 +1405,7 @@ Building for production...
  69 |                     self = Self(_storage: .inline(consume inlineBuf))
  70 |                     fatalError("expected heap mode after spill")
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:207:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:207:19: warning: no unsafe operations occur within 'unsafe' expression
 205 |     public var remove: Remove.View {
 206 |         mutating _read {
 207 |             yield unsafe .init(&self)
@@ -1413,7 +1413,7 @@ Building for production...
 208 |         }
 209 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:210:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:210:37: warning: no unsafe operations occur within 'unsafe' expression
 208 |         }
 209 |         mutating _modify {
 210 |             var view: Remove.View = unsafe .init(&self)
@@ -1421,7 +1421,7 @@ Building for production...
 211 |             yield &view
 212 |         }
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:333:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:333:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 331 |             self = Self(_storage: .heap(consume buf))
 332 |             return
 333 |         case .inline(var buf):
@@ -1429,7 +1429,7 @@ Building for production...
 334 |             let currentCount = buf.count
 335 |             let newCapacity = Index<Element>.Count(UInt(inlineCapacity * 2))
 
-/Users/coen/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:360:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
+~/Developer/swift-primitives/swift-buffer-primitives/Sources/Buffer Linear Small Primitives/Buffer.Linear.Small.swift:360:26: warning: variable 'buf' was never mutated; consider changing to 'let' constant
 358 |             self = Self(_storage: .heap(consume buf))
 359 |             return
 360 |         case .inline(var buf):
@@ -1438,7 +1438,7 @@ Building for production...
 362 |             let newStorage = Storage<Element>.Heap.create(minimumCapacity: minimumCapacity)
 [284/290] Compiling Buffer_Primitives exports.swift
 [285/290] Compiling List_Linked_Primitives List.Linked Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-list-primitives/Sources/List Linked Primitives/List.Linked.Inline.swift:13:8: warning: public import of 'Buffer_Linked_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-list-primitives/Sources/List Linked Primitives/List.Linked.Inline.swift:13:8: warning: public import of 'Buffer_Linked_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | public import Buffer_Linked_Inline_Primitives
  13 | public import Buffer_Linked_Primitives
@@ -1446,7 +1446,7 @@ Building for production...
  14 | 
  15 | // MARK: - Initialization
 
-/Users/coen/Developer/swift-primitives/swift-list-primitives/Sources/List Linked Primitives/List.Linked.Small.swift:13:8: warning: public import of 'Buffer_Linked_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-list-primitives/Sources/List Linked Primitives/List.Linked.Small.swift:13:8: warning: public import of 'Buffer_Linked_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | public import Buffer_Linked_Inline_Primitives
  13 | public import Buffer_Linked_Primitives
@@ -1455,7 +1455,7 @@ Building for production...
  15 | // MARK: - Initialization
 [286/290] Compiling Stack_Primitives_Core Stack.Error.swift
 [287/293] Compiling Array_Primitives_Core Array+OutputSpan.swift
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array+freeCapacity.swift:14:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array+freeCapacity.swift:14:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
 12 | public import Buffer_Linear_Primitives
 13 | public import Buffer_Linear_Small_Primitives
 14 | public import Index_Primitives
@@ -1463,7 +1463,7 @@ Building for production...
 15 | 
 16 | // MARK: - freeCapacity across Array variants
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array+swap.swift:15:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array+swap.swift:15:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
 13 | public import Buffer_Linear_Primitives
 14 | public import Buffer_Linear_Small_Primitives
 15 | public import Index_Primitives
@@ -1471,7 +1471,7 @@ Building for production...
 16 | 
 17 | // MARK: - swap across Array variants
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.Protocol+defaults.swift:32:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.Protocol+defaults.swift:32:15: warning: no unsafe operations occur within 'unsafe' expression
 30 |     public func callAsFunction(_ body: (borrowing Base.Element) -> Void) {
 31 |         var i = base.value.startIndex
 32 |         while unsafe i < base.value.endIndex {
@@ -1479,7 +1479,7 @@ Building for production...
 33 |             body(base.value[i])
 34 |             i = base.value.index(after: i)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.Protocol+defaults.swift:51:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.Protocol+defaults.swift:51:15: warning: no unsafe operations occur within 'unsafe' expression
 49 |     public func index(_ body: (Base.Index) -> Void) {
 50 |         var i = base.value.startIndex
 51 |         while unsafe i < base.value.endIndex {
@@ -1487,7 +1487,7 @@ Building for production...
 52 |             body(i)
 53 |             i = base.value.index(after: i)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Primitives Core/Array.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | public import Buffer_Linear_Primitives
  13 | public import Index_Primitives
@@ -1496,7 +1496,7 @@ Building for production...
  15 | // MARK: - Array (Growable, Heap-Allocated)
 [288/297] Compiling Set_Primitives_Core Set.Index.swift
 [289/297] Compiling Heap_Primitives_Core Heap Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:209:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:209:19: warning: no unsafe operations occur within 'unsafe' expression
 207 |     public var remove: Remove.View {
 208 |         mutating _read {
 209 |             yield unsafe .init(&self)
@@ -1504,7 +1504,7 @@ Building for production...
 210 |         }
 211 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:212:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:212:37: warning: no unsafe operations occur within 'unsafe' expression
 210 |         }
 211 |         mutating _modify {
 212 |             var view: Remove.View = unsafe .init(&self)
@@ -1512,7 +1512,7 @@ Building for production...
 213 |             yield &view
 214 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:235:13: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Primitives Core/Heap ~Copyable.swift:235:13: warning: no unsafe operations occur within 'unsafe' expression
 233 |         base.value._buffer.remove.all()
 234 |         if !keepingCapacity {
 235 |             unsafe (base.value._buffer = Buffer<Element>.Linear(minimumCapacity: .zero))
@@ -1521,7 +1521,7 @@ Building for production...
 237 |     }
 [290/298] Compiling Stack_Dynamic_Primitives Stack Copyable.swift
 [291/299] Compiling Queue_Primitives_Core Queue.DoubleEnded.Error.swift
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.DoubleEnded.Small.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.DoubleEnded.Small.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Buffer_Ring_Inline_Primitives
 13 | public import Buffer_Ring_Primitives
@@ -1529,7 +1529,7 @@ Building for production...
 14 | 
 15 | extension Queue.DoubleEnded where Element: ~Copyable {
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.DoubleEnded.Static.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.DoubleEnded.Static.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Buffer_Ring_Inline_Primitives
 13 | public import Buffer_Ring_Primitives
@@ -1537,7 +1537,7 @@ Building for production...
 14 | 
 15 | extension Queue.DoubleEnded where Element: ~Copyable {
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.Small.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.Small.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Buffer_Ring_Inline_Primitives
 13 | public import Buffer_Ring_Primitives
@@ -1545,7 +1545,7 @@ Building for production...
 14 | 
 15 | extension Queue where Element: ~Copyable {
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.Static.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Primitives Core/Queue.Static.swift:13:8: warning: public import of 'Buffer_Ring_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Buffer_Ring_Inline_Primitives
 13 | public import Buffer_Ring_Primitives
@@ -1554,7 +1554,7 @@ Building for production...
 15 | extension Queue where Element: ~Copyable {
 [292/300] Compiling Array_Bounded_Primitives Array.Bounded.Index.swift
 [293/302] Compiling Array_Fixed_Primitives Array.Fixed Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed Copyable.swift:13:8: warning: public import of 'Collection_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed Copyable.swift:13:8: warning: public import of 'Collection_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Array_Primitives_Core
 13 | public import Collection_Primitives
@@ -1562,7 +1562,7 @@ Building for production...
 14 | import Index_Primitives
 15 | 
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed ~Copyable.swift:208:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed ~Copyable.swift:208:32: warning: no unsafe operations occur within 'unsafe' expression
 206 |     @inlinable
 207 |     public var forEach: Property<Collection.ForEach, Self>.Inout.Typed<Element> {
 208 |         mutating _read { yield unsafe .init(&self) }
@@ -1570,7 +1570,7 @@ Building for production...
 209 |         mutating _modify {
 210 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed ~Copyable.swift:210:81: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Fixed Primitives/Array.Fixed ~Copyable.swift:210:81: warning: no unsafe operations occur within 'unsafe' expression
 208 |         mutating _read { yield unsafe .init(&self) }
 209 |         mutating _modify {
 210 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
@@ -1578,7 +1578,7 @@ Building for production...
 211 |             yield &view
 212 |         }
 [294/302] Compiling Array_Static_Primitives Array Static.swift
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:177:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:177:32: warning: no unsafe operations occur within 'unsafe' expression
 175 |     @inlinable
 176 |     public var forEach: Property<Collection.ForEach, Self>.Inout.Typed<Element> {
 177 |         mutating _read { yield unsafe .init(&self) }
@@ -1586,7 +1586,7 @@ Building for production...
 178 |         mutating _modify {
 179 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:179:81: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:179:81: warning: no unsafe operations occur within 'unsafe' expression
 177 |         mutating _read { yield unsafe .init(&self) }
 178 |         mutating _modify {
 179 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
@@ -1594,7 +1594,7 @@ Building for production...
 180 |             yield &view
 181 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:191:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:191:32: warning: no unsafe operations occur within 'unsafe' expression
 189 |     @inlinable
 190 |     public var drain: Drain.View {
 191 |         mutating _read { yield unsafe .init(&self) }
@@ -1602,7 +1602,7 @@ Building for production...
 192 |         mutating _modify {
 193 |             var view: Drain.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:193:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:193:36: warning: no unsafe operations occur within 'unsafe' expression
 191 |         mutating _read { yield unsafe .init(&self) }
 192 |         mutating _modify {
 193 |             var view: Drain.View = unsafe .init(&self)
@@ -1610,7 +1610,7 @@ Building for production...
 194 |             yield &view
 195 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:208:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Static Primitives/Array.Static ~Copyable.swift:208:15: warning: no unsafe operations occur within 'unsafe' expression
 206 |         let count = base.value._buffer.count
 207 |         guard count > .zero else { return }
 208 |         while unsafe !base.value._buffer.isEmpty {
@@ -1618,7 +1618,7 @@ Building for production...
 209 |             body(base.value._buffer.remove.first())
 210 |         }
 [295/302] Compiling Array_Small_Primitives Array.Small Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:221:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:221:32: warning: no unsafe operations occur within 'unsafe' expression
 219 |     @inlinable
 220 |     public var forEach: Property<Collection.ForEach, Self>.Inout.Typed<Element> {
 221 |         mutating _read { yield unsafe .init(&self) }
@@ -1626,7 +1626,7 @@ Building for production...
 222 |         mutating _modify {
 223 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:223:81: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:223:81: warning: no unsafe operations occur within 'unsafe' expression
 221 |         mutating _read { yield unsafe .init(&self) }
 222 |         mutating _modify {
 223 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
@@ -1634,7 +1634,7 @@ Building for production...
 224 |             yield &view
 225 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:235:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:235:32: warning: no unsafe operations occur within 'unsafe' expression
 233 |     @inlinable
 234 |     public var drain: Drain.View {
 235 |         mutating _read { yield unsafe .init(&self) }
@@ -1642,7 +1642,7 @@ Building for production...
 236 |         mutating _modify {
 237 |             var view: Drain.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:237:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:237:36: warning: no unsafe operations occur within 'unsafe' expression
 235 |         mutating _read { yield unsafe .init(&self) }
 236 |         mutating _modify {
 237 |             var view: Drain.View = unsafe .init(&self)
@@ -1650,7 +1650,7 @@ Building for production...
 238 |             yield &view
 239 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:250:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Small Primitives/Array.Small ~Copyable.swift:250:15: warning: no unsafe operations occur within 'unsafe' expression
 248 |     @inlinable
 249 |     public mutating func callAsFunction(_ body: (consuming Element) -> Void) {
 250 |         while unsafe !base.value._buffer.isEmpty {
@@ -1658,7 +1658,7 @@ Building for production...
 251 |             body(base.value._buffer.remove.first())
 252 |         }
 [296/305] Compiling Array_Dynamic_Primitives Array+ExpressibleByArrayLiteral.swift
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:224:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:224:32: warning: no unsafe operations occur within 'unsafe' expression
 222 |     @inlinable
 223 |     public var forEach: Property<Collection.ForEach, Self>.Inout.Typed<Element> {
 224 |         mutating _read { yield unsafe .init(&self) }
@@ -1666,7 +1666,7 @@ Building for production...
 225 |         mutating _modify {
 226 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:226:81: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:226:81: warning: no unsafe operations occur within 'unsafe' expression
 224 |         mutating _read { yield unsafe .init(&self) }
 225 |         mutating _modify {
 226 |             var view: Property<Collection.ForEach, Self>.Inout.Typed<Element> = unsafe .init(&self)
@@ -1674,7 +1674,7 @@ Building for production...
 227 |             yield &view
 228 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:245:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:245:19: warning: no unsafe operations occur within 'unsafe' expression
 243 |     public var drain: Drain.View {
 244 |         mutating _read {
 245 |             yield unsafe .init(&self)
@@ -1682,7 +1682,7 @@ Building for production...
 246 |         }
 247 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:248:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:248:36: warning: no unsafe operations occur within 'unsafe' expression
 246 |         }
 247 |         mutating _modify {
 248 |             var view: Drain.View = unsafe .init(&self)
@@ -1690,7 +1690,7 @@ Building for production...
 249 |             yield &view
 250 |         }
 
-/Users/coen/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:261:15: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-array-primitives/Sources/Array Dynamic Primitives/Array.Dynamic ~Copyable.swift:261:15: warning: no unsafe operations occur within 'unsafe' expression
 259 |     @inlinable
 260 |     public mutating func callAsFunction(_ body: (consuming Element) -> Void) {
 261 |         while unsafe !base.value._buffer.isEmpty {
@@ -1698,7 +1698,7 @@ Building for production...
 262 |             body(base.value._buffer.remove.first())
 263 |         }
 [297/305] Compiling Stack_Static_Primitives Stack.Static Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-stack-primitives/Sources/Stack Static Primitives/Stack.Static Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-stack-primitives/Sources/Stack Static Primitives/Stack.Static Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  13 | public import Buffer_Linear_Primitives
  14 | internal import Property_Primitives
  15 | public import Sequence_Primitives
@@ -1706,7 +1706,7 @@ Building for production...
  16 | 
  17 | // Note: Stack.Static is unconditionally ~Copyable (inline storage requires deinit),
 [298/306] Compiling Stack_Small_Primitives Stack.Small Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-stack-primitives/Sources/Stack Small Primitives/Stack.Small Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-stack-primitives/Sources/Stack Small Primitives/Stack.Small Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  13 | public import Buffer_Linear_Small_Primitives
  14 | internal import Property_Primitives
  15 | public import Sequence_Primitives
@@ -1714,7 +1714,7 @@ Building for production...
  16 | 
  17 | // Note: Stack.Small is unconditionally ~Copyable (inline storage requires deinit),
 [299/307] Compiling Heap_Static_Primitives Heap.Static Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:167:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:167:32: warning: no unsafe operations occur within 'unsafe' expression
 165 |     /// Accessor for drain operations.
 166 |     public var drain: Drain.View {
 167 |         mutating _read { yield unsafe .init(&self) }
@@ -1722,7 +1722,7 @@ Building for production...
 168 |         mutating _modify {
 169 |             var view: Drain.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:169:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:169:36: warning: no unsafe operations occur within 'unsafe' expression
 167 |         mutating _read { yield unsafe .init(&self) }
 168 |         mutating _modify {
 169 |             var view: Drain.View = unsafe .init(&self)
@@ -1730,7 +1730,7 @@ Building for production...
 170 |             yield &view
 171 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:176:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:176:32: warning: no unsafe operations occur within 'unsafe' expression
 174 |     /// Accessor for forEach operations.
 175 |     public var forEach: ForEach.View {
 176 |         mutating _read { yield unsafe .init(&self) }
@@ -1738,7 +1738,7 @@ Building for production...
 177 |         mutating _modify {
 178 |             var view: ForEach.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:178:38: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:178:38: warning: no unsafe operations occur within 'unsafe' expression
 176 |         mutating _read { yield unsafe .init(&self) }
 177 |         mutating _modify {
 178 |             var view: ForEach.View = unsafe .init(&self)
@@ -1746,7 +1746,7 @@ Building for production...
 179 |             yield &view
 180 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:185:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:185:32: warning: no unsafe operations occur within 'unsafe' expression
 183 |     /// Accessor for predicate satisfaction checks.
 184 |     public var satisfies: Satisfies.View {
 185 |         mutating _read { yield unsafe .init(&self) }
@@ -1754,7 +1754,7 @@ Building for production...
 186 |         mutating _modify {
 187 |             var view: Satisfies.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:187:40: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:187:40: warning: no unsafe operations occur within 'unsafe' expression
 185 |         mutating _read { yield unsafe .init(&self) }
 186 |         mutating _modify {
 187 |             var view: Satisfies.View = unsafe .init(&self)
@@ -1762,7 +1762,7 @@ Building for production...
 188 |             yield &view
 189 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:194:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:194:32: warning: no unsafe operations occur within 'unsafe' expression
 192 |     /// Accessor for finding the first matching element.
 193 |     public var first: First.View {
 194 |         mutating _read { yield unsafe .init(&self) }
@@ -1770,7 +1770,7 @@ Building for production...
 195 |         mutating _modify {
 196 |             var view: First.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:196:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:196:36: warning: no unsafe operations occur within 'unsafe' expression
 194 |         mutating _read { yield unsafe .init(&self) }
 195 |         mutating _modify {
 196 |             var view: First.View = unsafe .init(&self)
@@ -1778,7 +1778,7 @@ Building for production...
 197 |             yield &view
 198 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:203:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:203:32: warning: no unsafe operations occur within 'unsafe' expression
 201 |     /// Accessor for reduce operations.
 202 |     public var reduce: Reduce.View {
 203 |         mutating _read { yield unsafe .init(&self) }
@@ -1786,7 +1786,7 @@ Building for production...
 204 |         mutating _modify {
 205 |             var view: Reduce.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:205:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:205:37: warning: no unsafe operations occur within 'unsafe' expression
 203 |         mutating _read { yield unsafe .init(&self) }
 204 |         mutating _modify {
 205 |             var view: Reduce.View = unsafe .init(&self)
@@ -1794,7 +1794,7 @@ Building for production...
 206 |             yield &view
 207 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:212:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:212:32: warning: no unsafe operations occur within 'unsafe' expression
 210 |     /// Accessor for containment checks.
 211 |     public var contains: Contains.View {
 212 |         mutating _read { yield unsafe .init(&self) }
@@ -1802,7 +1802,7 @@ Building for production...
 213 |         mutating _modify {
 214 |             var view: Contains.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:214:39: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:214:39: warning: no unsafe operations occur within 'unsafe' expression
 212 |         mutating _read { yield unsafe .init(&self) }
 213 |         mutating _modify {
 214 |             var view: Contains.View = unsafe .init(&self)
@@ -1810,7 +1810,7 @@ Building for production...
 215 |             yield &view
 216 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:221:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:221:32: warning: no unsafe operations occur within 'unsafe' expression
 219 |     /// Accessor for drop operations.
 220 |     public var drop: Drop.View {
 221 |         mutating _read { yield unsafe .init(&self) }
@@ -1818,7 +1818,7 @@ Building for production...
 222 |         mutating _modify {
 223 |             var view: Drop.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:223:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:223:35: warning: no unsafe operations occur within 'unsafe' expression
 221 |         mutating _read { yield unsafe .init(&self) }
 222 |         mutating _modify {
 223 |             var view: Drop.View = unsafe .init(&self)
@@ -1826,7 +1826,7 @@ Building for production...
 224 |             yield &view
 225 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:230:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:230:32: warning: no unsafe operations occur within 'unsafe' expression
 228 |     /// Accessor for prefix operations.
 229 |     public var prefix: Prefix.View {
 230 |         mutating _read { yield unsafe .init(&self) }
@@ -1834,7 +1834,7 @@ Building for production...
 231 |         mutating _modify {
 232 |             var view: Prefix.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:232:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:232:37: warning: no unsafe operations occur within 'unsafe' expression
 230 |         mutating _read { yield unsafe .init(&self) }
 231 |         mutating _modify {
 232 |             var view: Prefix.View = unsafe .init(&self)
@@ -1842,7 +1842,7 @@ Building for production...
 233 |             yield &view
 234 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:14:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static Copyable.swift:14:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  12 | public import Buffer_Linear_Primitives
  13 | internal import Property_Primitives
  14 | public import Sequence_Primitives
@@ -1850,7 +1850,7 @@ Building for production...
  15 | 
  16 | // MARK: - Heap.Static Iterator
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static ~Copyable.swift:238:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static ~Copyable.swift:238:19: warning: no unsafe operations occur within 'unsafe' expression
 236 |     public var remove: Remove.View {
 237 |         mutating _read {
 238 |             yield unsafe .init(&self)
@@ -1858,7 +1858,7 @@ Building for production...
 239 |         }
 240 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static ~Copyable.swift:241:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Static Primitives/Heap.Static ~Copyable.swift:241:37: warning: no unsafe operations occur within 'unsafe' expression
 239 |         }
 240 |         mutating _modify {
 241 |             var view: Remove.View = unsafe .init(&self)
@@ -1871,7 +1871,7 @@ Building for production...
 [303/312] Compiling Stack_Primitives exports.swift
 [304/312] Compiling Queue_Dynamic_Primitives Queue+Conveniences.swift
 [305/313] Compiling Heap_Small_Primitives Heap.Small Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:181:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:181:32: warning: no unsafe operations occur within 'unsafe' expression
 179 |     /// Accessor for drain operations.
 180 |     public var drain: Drain.View {
 181 |         mutating _read { yield unsafe .init(&self) }
@@ -1879,7 +1879,7 @@ Building for production...
 182 |         mutating _modify {
 183 |             var view: Drain.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:183:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:183:36: warning: no unsafe operations occur within 'unsafe' expression
 181 |         mutating _read { yield unsafe .init(&self) }
 182 |         mutating _modify {
 183 |             var view: Drain.View = unsafe .init(&self)
@@ -1887,7 +1887,7 @@ Building for production...
 184 |             yield &view
 185 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:190:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:190:32: warning: no unsafe operations occur within 'unsafe' expression
 188 |     /// Accessor for forEach operations.
 189 |     public var forEach: ForEach.View {
 190 |         mutating _read { yield unsafe .init(&self) }
@@ -1895,7 +1895,7 @@ Building for production...
 191 |         mutating _modify {
 192 |             var view: ForEach.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:192:38: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:192:38: warning: no unsafe operations occur within 'unsafe' expression
 190 |         mutating _read { yield unsafe .init(&self) }
 191 |         mutating _modify {
 192 |             var view: ForEach.View = unsafe .init(&self)
@@ -1903,7 +1903,7 @@ Building for production...
 193 |             yield &view
 194 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:199:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:199:32: warning: no unsafe operations occur within 'unsafe' expression
 197 |     /// Accessor for predicate satisfaction checks.
 198 |     public var satisfies: Satisfies.View {
 199 |         mutating _read { yield unsafe .init(&self) }
@@ -1911,7 +1911,7 @@ Building for production...
 200 |         mutating _modify {
 201 |             var view: Satisfies.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:201:40: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:201:40: warning: no unsafe operations occur within 'unsafe' expression
 199 |         mutating _read { yield unsafe .init(&self) }
 200 |         mutating _modify {
 201 |             var view: Satisfies.View = unsafe .init(&self)
@@ -1919,7 +1919,7 @@ Building for production...
 202 |             yield &view
 203 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:208:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:208:32: warning: no unsafe operations occur within 'unsafe' expression
 206 |     /// Accessor for finding the first matching element.
 207 |     public var first: First.View {
 208 |         mutating _read { yield unsafe .init(&self) }
@@ -1927,7 +1927,7 @@ Building for production...
 209 |         mutating _modify {
 210 |             var view: First.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:210:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:210:36: warning: no unsafe operations occur within 'unsafe' expression
 208 |         mutating _read { yield unsafe .init(&self) }
 209 |         mutating _modify {
 210 |             var view: First.View = unsafe .init(&self)
@@ -1935,7 +1935,7 @@ Building for production...
 211 |             yield &view
 212 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:217:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:217:32: warning: no unsafe operations occur within 'unsafe' expression
 215 |     /// Accessor for reduce operations.
 216 |     public var reduce: Reduce.View {
 217 |         mutating _read { yield unsafe .init(&self) }
@@ -1943,7 +1943,7 @@ Building for production...
 218 |         mutating _modify {
 219 |             var view: Reduce.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:219:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:219:37: warning: no unsafe operations occur within 'unsafe' expression
 217 |         mutating _read { yield unsafe .init(&self) }
 218 |         mutating _modify {
 219 |             var view: Reduce.View = unsafe .init(&self)
@@ -1951,7 +1951,7 @@ Building for production...
 220 |             yield &view
 221 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:226:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:226:32: warning: no unsafe operations occur within 'unsafe' expression
 224 |     /// Accessor for containment checks.
 225 |     public var contains: Contains.View {
 226 |         mutating _read { yield unsafe .init(&self) }
@@ -1959,7 +1959,7 @@ Building for production...
 227 |         mutating _modify {
 228 |             var view: Contains.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:228:39: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:228:39: warning: no unsafe operations occur within 'unsafe' expression
 226 |         mutating _read { yield unsafe .init(&self) }
 227 |         mutating _modify {
 228 |             var view: Contains.View = unsafe .init(&self)
@@ -1967,7 +1967,7 @@ Building for production...
 229 |             yield &view
 230 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:235:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:235:32: warning: no unsafe operations occur within 'unsafe' expression
 233 |     /// Accessor for drop operations.
 234 |     public var drop: Drop.View {
 235 |         mutating _read { yield unsafe .init(&self) }
@@ -1975,7 +1975,7 @@ Building for production...
 236 |         mutating _modify {
 237 |             var view: Drop.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:237:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:237:35: warning: no unsafe operations occur within 'unsafe' expression
 235 |         mutating _read { yield unsafe .init(&self) }
 236 |         mutating _modify {
 237 |             var view: Drop.View = unsafe .init(&self)
@@ -1983,7 +1983,7 @@ Building for production...
 238 |             yield &view
 239 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:244:32: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:244:32: warning: no unsafe operations occur within 'unsafe' expression
 242 |     /// Accessor for prefix operations.
 243 |     public var prefix: Prefix.View {
 244 |         mutating _read { yield unsafe .init(&self) }
@@ -1991,7 +1991,7 @@ Building for production...
 245 |         mutating _modify {
 246 |             var view: Prefix.View = unsafe .init(&self)
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:246:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:246:37: warning: no unsafe operations occur within 'unsafe' expression
 244 |         mutating _read { yield unsafe .init(&self) }
 245 |         mutating _modify {
 246 |             var view: Prefix.View = unsafe .init(&self)
@@ -1999,7 +1999,7 @@ Building for production...
 247 |             yield &view
 248 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:14:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small Copyable.swift:14:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  12 | public import Buffer_Linear_Primitives
  13 | internal import Property_Primitives
  14 | public import Sequence_Primitives
@@ -2007,7 +2007,7 @@ Building for production...
  15 | 
  16 | // MARK: - Heap.Small Iterator
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small ~Copyable.swift:44:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small ~Copyable.swift:44:19: warning: no unsafe operations occur within 'unsafe' expression
  42 |     public var remove: Remove.View {
  43 |         mutating _read {
  44 |             yield unsafe .init(&self)
@@ -2015,7 +2015,7 @@ Building for production...
  45 |         }
  46 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small ~Copyable.swift:47:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Small Primitives/Heap.Small ~Copyable.swift:47:37: warning: no unsafe operations occur within 'unsafe' expression
  45 |         }
  46 |         mutating _modify {
  47 |             var view: Remove.View = unsafe .init(&self)
@@ -2023,7 +2023,7 @@ Building for production...
  48 |             yield &view
  49 |         }
 [306/313] Compiling Queue_Linked_Primitives Queue.Linked Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Linked Primitives/Queue.Linked.Small+Builder.swift:26:13: warning: no calls to throwing functions occur within 'try' expression
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue Linked Primitives/Queue.Linked.Small+Builder.swift:26:13: warning: no calls to throwing functions occur within 'try' expression
 24 |         self.init()
 25 |         while let elem = dynamic.dequeue() {
 26 |             try self.enqueue(elem)
@@ -2032,7 +2032,7 @@ Building for production...
 28 |     }
 [307/316] Compiling Array_Primitives exports.swift
 [308/317] Compiling Heap_Binary_Primitives Heap Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Binary Primitives/Heap Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Binary Primitives/Heap Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  13 | public import Heap_Primitives_Core
  14 | internal import Property_Primitives
  15 | public import Sequence_Primitives
@@ -2040,7 +2040,7 @@ Building for production...
  16 | 
  17 | // MARK: - Swift.Sequence Conformance (Copyable only)
 [309/317] Compiling Heap_Fixed_Primitives Heap.Fixed Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed Copyable.swift:15:8: warning: public import of 'Sequence_Primitives' was not used in public declarations or inlinable code
  13 | public import Heap_Primitives_Core
  14 | internal import Property_Primitives
  15 | public import Sequence_Primitives
@@ -2048,7 +2048,7 @@ Building for production...
  16 | 
  17 | // MARK: - Heap.Fixed Iterator
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed ~Copyable.swift:241:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed ~Copyable.swift:241:19: warning: no unsafe operations occur within 'unsafe' expression
 239 |     public var remove: Remove.View {
 240 |         mutating _read {
 241 |             yield unsafe .init(&self)
@@ -2056,7 +2056,7 @@ Building for production...
 242 |         }
 243 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed ~Copyable.swift:244:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap Fixed Primitives/Heap.Fixed ~Copyable.swift:244:37: warning: no unsafe operations occur within 'unsafe' expression
 242 |         }
 243 |         mutating _modify {
 244 |             var view: Remove.View = unsafe .init(&self)
@@ -2067,7 +2067,7 @@ Building for production...
 [311/317] Compiling Queue_Static_Primitives Queue.Static Copyable.swift
 [312/317] Compiling Queue_Fixed_Primitives Queue.Bounded+Input.Protocol.swift
 [313/317] Compiling Heap_MinMax_Primitives Heap.MinMax Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:297:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:297:19: warning: no unsafe operations occur within 'unsafe' expression
 295 |     public var min: Min.View {
 296 |         mutating _read {
 297 |             yield unsafe .init(&self)
@@ -2075,7 +2075,7 @@ Building for production...
 298 |         }
 299 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:300:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:300:34: warning: no unsafe operations occur within 'unsafe' expression
 298 |         }
 299 |         mutating _modify {
 300 |             var view: Min.View = unsafe .init(&self)
@@ -2083,7 +2083,7 @@ Building for production...
 301 |             yield &view
 302 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:363:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:363:19: warning: no unsafe operations occur within 'unsafe' expression
 361 |     public var max: Max.View {
 362 |         mutating _read {
 363 |             yield unsafe .init(&self)
@@ -2091,7 +2091,7 @@ Building for production...
 364 |         }
 365 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:366:34: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax Copyable.swift:366:34: warning: no unsafe operations occur within 'unsafe' expression
 364 |         }
 365 |         mutating _modify {
 366 |             var view: Max.View = unsafe .init(&self)
@@ -2099,7 +2099,7 @@ Building for production...
 367 |             yield &view
 368 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:132:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:132:19: warning: no unsafe operations occur within 'unsafe' expression
 130 |     public var remove: Remove.View {
 131 |         mutating _read {
 132 |             yield unsafe .init(&self)
@@ -2107,7 +2107,7 @@ Building for production...
 133 |         }
 134 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:135:37: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:135:37: warning: no unsafe operations occur within 'unsafe' expression
 133 |         }
 134 |         mutating _modify {
 135 |             var view: Remove.View = unsafe .init(&self)
@@ -2115,7 +2115,7 @@ Building for production...
 136 |             yield &view
 137 |         }
 
-/Users/coen/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:158:13: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-heap-primitives/Sources/Heap MinMax Primitives/Heap.MinMax.swift:158:13: warning: no unsafe operations occur within 'unsafe' expression
 156 |         base.value._buffer.remove.all()
 157 |         if !keepingCapacity {
 158 |             unsafe (base.value._buffer = Buffer<Element>.Linear(minimumCapacity: .zero))
@@ -2123,7 +2123,7 @@ Building for production...
 159 |         }
 160 |     }
 [314/317] Compiling Queue_DoubleEnded_Primitives Queue.DoubleEnded Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:97:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:97:19: warning: no unsafe operations occur within 'unsafe' expression
  95 |     public var front: Front.View {
  96 |         mutating _read {
  97 |             yield unsafe .init(&self)
@@ -2131,7 +2131,7 @@ Building for production...
  98 |         }
  99 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:100:36: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:100:36: warning: no unsafe operations occur within 'unsafe' expression
  98 |         }
  99 |         mutating _modify {
 100 |             var view: Front.View = unsafe .init(&self)
@@ -2139,7 +2139,7 @@ Building for production...
 101 |             yield &view
 102 |         }
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:191:19: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:191:19: warning: no unsafe operations occur within 'unsafe' expression
 189 |     public var back: Back.View {
 190 |         mutating _read {
 191 |             yield unsafe .init(&self)
@@ -2147,7 +2147,7 @@ Building for production...
 192 |         }
 193 |         mutating _modify {
 
-/Users/coen/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:194:35: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-queue-primitives/Sources/Queue DoubleEnded Primitives/Queue.DoubleEnded.Accessor.swift:194:35: warning: no unsafe operations occur within 'unsafe' expression
 192 |         }
 193 |         mutating _modify {
 194 |             var view: Back.View = unsafe .init(&self)
@@ -2159,7 +2159,7 @@ Building for production...
 [317/319] Compiling Set_Ordered_Primitives Set.Ordered Copyable.swift
 [318/320] Compiling Set_Primitives exports.swift
 [319/321] Compiling result_builder_perf main.swift
-/Users/coen/Developer/swift-institute/Experiments/result-builder-perf/Sources/result-builder-perf/main.swift:307:54: warning: will never be executed
+~/Developer/swift-institute/Experiments/result-builder-perf/Sources/result-builder-perf/main.swift:307:54: warning: will never be executed
 305 | print("Result-Builder Performance Experiment")
 306 | print("Toolchain: Swift 6.3.1")
 307 | print("Build mode: \(_isDebugAssertConfiguration() ? "DEBUG" : "RELEASE")")

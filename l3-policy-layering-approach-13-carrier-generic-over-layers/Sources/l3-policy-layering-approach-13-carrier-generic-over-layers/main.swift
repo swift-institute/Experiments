@@ -1,5 +1,5 @@
 // MARK: - Approach 13: Carrier-generic over L2 and L3 layers
-// Purpose: Verify the principal's 2026-05-02 generalization that
+// Purpose: Verify the 2026-05-02 design generalization that
 //          swift-carrier-primitives' Carrier protocol enables generic
 //          functions accepting BOTH L2 (bare struct) AND L3 (Tagged-
 //          wrapped) types uniformly via `some Carrier<L2.Type>`.

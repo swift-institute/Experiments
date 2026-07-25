@@ -1,15 +1,15 @@
-Fetching file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache
-Fetched file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache (0.07s)
-Fetching file:///Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache
-Fetched file:///Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache (0.13s)
-Fetching file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
-Fetched file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.07s)
-Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-tagged-primitives
-Working copy of file:///Users/coen/Developer/swift-primitives/swift-tagged-primitives resolved at main (8077430)
-Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives
-Working copy of file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (0f714ec)
-Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives
-Working copy of file:///Users/coen/Developer/swift-primitives/swift-ownership-primitives resolved at main (b8470fe)
+Fetching file://~/Developer/swift-primitives/swift-ownership-primitives from cache
+Fetched file://~/Developer/swift-primitives/swift-ownership-primitives from cache (0.07s)
+Fetching file://~/Developer/swift-primitives/swift-tagged-primitives from cache
+Fetched file://~/Developer/swift-primitives/swift-tagged-primitives from cache (0.13s)
+Fetching file://~/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched file://~/Developer/swift-primitives/swift-carrier-primitives from cache (0.07s)
+Creating working copy for file://~/Developer/swift-primitives/swift-tagged-primitives
+Working copy of file://~/Developer/swift-primitives/swift-tagged-primitives resolved at main (8077430)
+Creating working copy for file://~/Developer/swift-primitives/swift-carrier-primitives
+Working copy of file://~/Developer/swift-primitives/swift-carrier-primitives resolved at main (0f714ec)
+Creating working copy for file://~/Developer/swift-primitives/swift-ownership-primitives
+Working copy of file://~/Developer/swift-primitives/swift-ownership-primitives resolved at main (b8470fe)
 Building for debugging...
 [0/21] Write sources
 [9/21] Write binary-base-n-poc-entitlement.plist

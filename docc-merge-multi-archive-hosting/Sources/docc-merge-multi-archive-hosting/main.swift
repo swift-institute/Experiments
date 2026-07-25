@@ -39,7 +39,7 @@
 //       single. See research doc for detail.
 //
 // Cross-reference:
-//   /Users/coen/Developer/swift-institute/Research/docc-search-capabilities-and-merged-site-strategy.md
+//   ~/Developer/swift-institute/Research/docc-search-capabilities-and-merged-site-strategy.md
 //
 // Date:   2026-04-17
 //

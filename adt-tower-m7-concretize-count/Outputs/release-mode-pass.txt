@@ -96,7 +96,7 @@ Building for production...
 [191/193] Compiling Index_Primitives Index.swift
 [192/195] Compiling SeamKit __M7BufferProtocol.swift
 [193/195] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
-/Users/coen/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
 13 | public import Byte_Primitives
 14 | public import Index_Primitives
 15 | public import Ordinal_Primitives

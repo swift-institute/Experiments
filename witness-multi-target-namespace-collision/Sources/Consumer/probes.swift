@@ -191,7 +191,7 @@ where B.Element == UInt8 {
 //  }
 
 
-// MARK: - Probe W — current workaround (HOIST LEAK; principal rejects)
+// MARK: - Probe W — current workaround (HOIST LEAK; design review rejects)
 
 struct ProbeW: Witness.`Protocol` {
     typealias Output = ()
@@ -202,7 +202,7 @@ struct ProbeW: Witness.`Protocol` {
     }
 }
 
-// MARK: - Probe FB — full outer-binding (verbose; principal rejects as default)
+// MARK: - Probe FB — full outer-binding (verbose; design review rejects as default)
 
 struct ProbeFB: Witness.`Protocol` {
     typealias Output = ()

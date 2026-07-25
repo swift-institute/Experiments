@@ -13,7 +13,7 @@ Both targets implement the same canonical `Repeat` example
 byte-identical at stdout for the same argv.
 
 This feeds U8 in
-`/Users/coen/Developer/swift-institute/Research/2026-05-15-swift-arguments-ecosystem-design.md`.
+`~/Developer/swift-institute/Research/2026-05-15-swift-arguments-ecosystem-design.md`.
 
 ## Methodology
 
@@ -180,7 +180,7 @@ mean vs. Apple's ~60,000 ns), the institute design still wins by
 ## Build and run
 
 ```sh
-cd /Users/coen/Developer/swift-institute/Experiments/argv-parser-benchmark
+cd ~/Developer/swift-institute/Experiments/argv-parser-benchmark
 swift build -c release
 .build/release/RepeatApple --count 3 --include-counter hello
 .build/release/RepeatInstitute --count 3 --include-counter hello

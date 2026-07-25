@@ -86,7 +86,7 @@ parameterization over `DomainTag = Text` adds no overhead at the
 instantiation site.
 
 The Binary path's 20-100× speedup is a real perf delta that warrants
-explanation. Per principal review (2026-05-17), the speedup falls into
+explanation. Per design review (2026-05-17), the speedup falls into
 category (a) — *legacy Binary.Bytes.Input.View had a real perf defect that
 the cursor migration accidentally fixed*. The structural difference:
 
@@ -142,7 +142,7 @@ audit before pre-1.0.
 ## How to reproduce
 
 ```bash
-cd /Users/coen/Developer/swift-institute/Experiments/cursor-span-bench-011
+cd ~/Developer/swift-institute/Experiments/cursor-span-bench-011
 rm -rf .build
 swift test -c release
 ```

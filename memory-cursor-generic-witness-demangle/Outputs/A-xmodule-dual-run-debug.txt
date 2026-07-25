@@ -4,7 +4,7 @@ Building for debugging...
 [0/5] Write sources
 [1/5] Write swift-version--58304C5D6DBC2206.txt
 [3/7] Compiling AConformerLib RegionDual.swift
-/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionDual.swift:22:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/AConformerLib/RegionDual.swift:22:8: warning: public import of 'Memory_Sequence_Primitives' was not used in public declarations or inlinable code
 20 | public import Memory_Contiguous_Primitives
 21 | public import Memory_Cursor_Primitives
 22 | public import Memory_Sequence_Primitives

@@ -15,7 +15,7 @@
 // Investigation method (grep, no swift build needed):
 //
 //   $ grep -rln "@_spi\|@_implementationOnly\|@_disfavoredOverload\|@_exported" \
-//       /Users/coen/Developer/rule-legal/ /Users/coen/Developer/rule-law/
+//       ~/Developer/rule-legal/ ~/Developer/rule-law/
 //
 // Findings:
 //   • rule-legal-demo: uses @_exported import only (the standard

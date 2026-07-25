@@ -10,7 +10,7 @@ Building for debugging...
 [12/16] Emitting module L2Methods
 [13/16] Compiling L2Methods Foo+typed.swift
 [14/18] Compiling L3Policy Foo+policy.swift
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-2-types-only-module-split/Sources/L3Policy/Foo+policy.swift:8:26: warning: function call causes an infinite recursion
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-2-types-only-module-split/Sources/L3Policy/Foo+policy.swift:8:26: warning: function call causes an infinite recursion
  6 | extension Foo {
  7 |     public static func make() throws(FooError) -> Foo {
  8 |         let l2 = try Foo.make()

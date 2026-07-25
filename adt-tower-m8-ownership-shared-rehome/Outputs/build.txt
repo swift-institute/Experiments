@@ -1,91 +1,91 @@
-Fetching /Users/coen/Developer/swift-primitives/swift-tagged-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache (0.71s)
-Fetching /Users/coen/Developer/swift-primitives/swift-memory-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-memory-primitives from cache (0.06s)
-Fetching /Users/coen/Developer/swift-primitives/swift-carrier-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.66s)
-Fetching /Users/coen/Developer/swift-primitives/swift-cardinal-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-cardinal-primitives from cache (0.06s)
-Fetching /Users/coen/Developer/swift-primitives/swift-affine-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-affine-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-ordinal-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-ordinal-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-span-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-span-primitives from cache (0.18s)
-Fetching /Users/coen/Developer/swift-primitives/swift-finite-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-finite-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-sequence-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-sequence-primitives from cache (0.06s)
-Fetching /Users/coen/Developer/swift-primitives/swift-iterator-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-iterator-primitives from cache (0.28s)
-Fetching /Users/coen/Developer/swift-primitives/swift-memory-iterator-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-memory-iterator-primitives from cache (0.11s)
-Fetching /Users/coen/Developer/swift-primitives/swift-bit-vector-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-bit-vector-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-byte-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-byte-primitives from cache (0.26s)
-Fetching /Users/coen/Developer/swift-primitives/swift-comparison-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-comparison-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-bit-index-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-bit-index-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-property-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-property-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-equation-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-equation-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-hash-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-hash-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-either-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-either-primitives from cache (0.27s)
-Fetching /Users/coen/Developer/swift-primitives/swift-bit-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-bit-primitives from cache (0.04s)
-Fetching /Users/coen/Developer/swift-primitives/swift-bit-pack-primitives
-Fetched /Users/coen/Developer/swift-primitives/swift-bit-pack-primitives from cache (0.05s)
-Fetching /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
-Fetched /Users/coen/Developer/swift-primitives/swift-standard-library-extensions from cache (0.05s)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-bit-pack-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-bit-pack-primitives resolved at main (26af41a)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-hash-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-hash-primitives resolved at main (b6a2a50)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-memory-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-memory-primitives resolved at main (218312d)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-carrier-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (e7db647)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-property-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-property-primitives resolved at main (b5a5f8f)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-equation-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-equation-primitives resolved at main (84d6673)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-comparison-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-comparison-primitives resolved at main (b4d78bf)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-bit-vector-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-bit-vector-primitives resolved at main (4eb94c6)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-bit-index-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-bit-index-primitives resolved at main (7ae61cd)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-standard-library-extensions
-Working copy of /Users/coen/Developer/swift-primitives/swift-standard-library-extensions resolved at main (cc6b5a0)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-either-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-either-primitives resolved at main (bb86127)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-bit-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-bit-primitives resolved at main (2e75f31)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-cardinal-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-cardinal-primitives resolved at main (6cbc434)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-sequence-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-sequence-primitives resolved at main (99b853a)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-iterator-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-iterator-primitives resolved at main (b0c709c)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-affine-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-affine-primitives resolved at main (91d2ada)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-byte-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-byte-primitives resolved at main (8bb189b)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-memory-iterator-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-memory-iterator-primitives resolved at main (685c2ab)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-finite-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-finite-primitives resolved at main (b646374)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-tagged-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-tagged-primitives resolved at main (c3b88f6)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-span-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-span-primitives resolved at main (3dfc43a)
-Creating working copy for /Users/coen/Developer/swift-primitives/swift-ordinal-primitives
-Working copy of /Users/coen/Developer/swift-primitives/swift-ordinal-primitives resolved at main (db7b7fe)
+Fetching ~/Developer/swift-primitives/swift-tagged-primitives
+Fetched ~/Developer/swift-primitives/swift-tagged-primitives from cache (0.71s)
+Fetching ~/Developer/swift-primitives/swift-memory-primitives
+Fetched ~/Developer/swift-primitives/swift-memory-primitives from cache (0.06s)
+Fetching ~/Developer/swift-primitives/swift-carrier-primitives
+Fetched ~/Developer/swift-primitives/swift-carrier-primitives from cache (0.66s)
+Fetching ~/Developer/swift-primitives/swift-cardinal-primitives
+Fetched ~/Developer/swift-primitives/swift-cardinal-primitives from cache (0.06s)
+Fetching ~/Developer/swift-primitives/swift-affine-primitives
+Fetched ~/Developer/swift-primitives/swift-affine-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-ordinal-primitives
+Fetched ~/Developer/swift-primitives/swift-ordinal-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-span-primitives
+Fetched ~/Developer/swift-primitives/swift-span-primitives from cache (0.18s)
+Fetching ~/Developer/swift-primitives/swift-finite-primitives
+Fetched ~/Developer/swift-primitives/swift-finite-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-sequence-primitives
+Fetched ~/Developer/swift-primitives/swift-sequence-primitives from cache (0.06s)
+Fetching ~/Developer/swift-primitives/swift-iterator-primitives
+Fetched ~/Developer/swift-primitives/swift-iterator-primitives from cache (0.28s)
+Fetching ~/Developer/swift-primitives/swift-memory-iterator-primitives
+Fetched ~/Developer/swift-primitives/swift-memory-iterator-primitives from cache (0.11s)
+Fetching ~/Developer/swift-primitives/swift-bit-vector-primitives
+Fetched ~/Developer/swift-primitives/swift-bit-vector-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-byte-primitives
+Fetched ~/Developer/swift-primitives/swift-byte-primitives from cache (0.26s)
+Fetching ~/Developer/swift-primitives/swift-comparison-primitives
+Fetched ~/Developer/swift-primitives/swift-comparison-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-bit-index-primitives
+Fetched ~/Developer/swift-primitives/swift-bit-index-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-property-primitives
+Fetched ~/Developer/swift-primitives/swift-property-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-equation-primitives
+Fetched ~/Developer/swift-primitives/swift-equation-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-hash-primitives
+Fetched ~/Developer/swift-primitives/swift-hash-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-either-primitives
+Fetched ~/Developer/swift-primitives/swift-either-primitives from cache (0.27s)
+Fetching ~/Developer/swift-primitives/swift-bit-primitives
+Fetched ~/Developer/swift-primitives/swift-bit-primitives from cache (0.04s)
+Fetching ~/Developer/swift-primitives/swift-bit-pack-primitives
+Fetched ~/Developer/swift-primitives/swift-bit-pack-primitives from cache (0.05s)
+Fetching ~/Developer/swift-primitives/swift-standard-library-extensions
+Fetched ~/Developer/swift-primitives/swift-standard-library-extensions from cache (0.05s)
+Creating working copy for ~/Developer/swift-primitives/swift-bit-pack-primitives
+Working copy of ~/Developer/swift-primitives/swift-bit-pack-primitives resolved at main (26af41a)
+Creating working copy for ~/Developer/swift-primitives/swift-hash-primitives
+Working copy of ~/Developer/swift-primitives/swift-hash-primitives resolved at main (b6a2a50)
+Creating working copy for ~/Developer/swift-primitives/swift-memory-primitives
+Working copy of ~/Developer/swift-primitives/swift-memory-primitives resolved at main (218312d)
+Creating working copy for ~/Developer/swift-primitives/swift-carrier-primitives
+Working copy of ~/Developer/swift-primitives/swift-carrier-primitives resolved at main (e7db647)
+Creating working copy for ~/Developer/swift-primitives/swift-property-primitives
+Working copy of ~/Developer/swift-primitives/swift-property-primitives resolved at main (b5a5f8f)
+Creating working copy for ~/Developer/swift-primitives/swift-equation-primitives
+Working copy of ~/Developer/swift-primitives/swift-equation-primitives resolved at main (84d6673)
+Creating working copy for ~/Developer/swift-primitives/swift-comparison-primitives
+Working copy of ~/Developer/swift-primitives/swift-comparison-primitives resolved at main (b4d78bf)
+Creating working copy for ~/Developer/swift-primitives/swift-bit-vector-primitives
+Working copy of ~/Developer/swift-primitives/swift-bit-vector-primitives resolved at main (4eb94c6)
+Creating working copy for ~/Developer/swift-primitives/swift-bit-index-primitives
+Working copy of ~/Developer/swift-primitives/swift-bit-index-primitives resolved at main (7ae61cd)
+Creating working copy for ~/Developer/swift-primitives/swift-standard-library-extensions
+Working copy of ~/Developer/swift-primitives/swift-standard-library-extensions resolved at main (cc6b5a0)
+Creating working copy for ~/Developer/swift-primitives/swift-either-primitives
+Working copy of ~/Developer/swift-primitives/swift-either-primitives resolved at main (bb86127)
+Creating working copy for ~/Developer/swift-primitives/swift-bit-primitives
+Working copy of ~/Developer/swift-primitives/swift-bit-primitives resolved at main (2e75f31)
+Creating working copy for ~/Developer/swift-primitives/swift-cardinal-primitives
+Working copy of ~/Developer/swift-primitives/swift-cardinal-primitives resolved at main (6cbc434)
+Creating working copy for ~/Developer/swift-primitives/swift-sequence-primitives
+Working copy of ~/Developer/swift-primitives/swift-sequence-primitives resolved at main (99b853a)
+Creating working copy for ~/Developer/swift-primitives/swift-iterator-primitives
+Working copy of ~/Developer/swift-primitives/swift-iterator-primitives resolved at main (b0c709c)
+Creating working copy for ~/Developer/swift-primitives/swift-affine-primitives
+Working copy of ~/Developer/swift-primitives/swift-affine-primitives resolved at main (91d2ada)
+Creating working copy for ~/Developer/swift-primitives/swift-byte-primitives
+Working copy of ~/Developer/swift-primitives/swift-byte-primitives resolved at main (8bb189b)
+Creating working copy for ~/Developer/swift-primitives/swift-memory-iterator-primitives
+Working copy of ~/Developer/swift-primitives/swift-memory-iterator-primitives resolved at main (685c2ab)
+Creating working copy for ~/Developer/swift-primitives/swift-finite-primitives
+Working copy of ~/Developer/swift-primitives/swift-finite-primitives resolved at main (b646374)
+Creating working copy for ~/Developer/swift-primitives/swift-tagged-primitives
+Working copy of ~/Developer/swift-primitives/swift-tagged-primitives resolved at main (c3b88f6)
+Creating working copy for ~/Developer/swift-primitives/swift-span-primitives
+Working copy of ~/Developer/swift-primitives/swift-span-primitives resolved at main (3dfc43a)
+Creating working copy for ~/Developer/swift-primitives/swift-ordinal-primitives
+Working copy of ~/Developer/swift-primitives/swift-ordinal-primitives resolved at main (db7b7fe)
 Building for debugging...
 [0/163] Write sources
 [2/163] Write adt-tower-m8-ownership-shared-rehome-entitlement.plist
@@ -129,7 +129,7 @@ Building for debugging...
 [196/295] Emitting module Ownership_Shared_Primitives
 [197/295] Compiling Ownership_Primitives_Standard_Library_Integration exports.swift
 [198/295] Emitting module Ownership_Primitives_Standard_Library_Integration
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 56 |             // swift-linter:disable:next intermediate binding then return
 57 |             nonisolated(unsafe) let v = value
 58 |             return v
@@ -140,7 +140,7 @@ Building for debugging...
 
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [199/295] Compiling Ownership_Primitives_Standard_Library_Integration Optional+take.swift
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 56 |             // swift-linter:disable:next intermediate binding then return
 57 |             nonisolated(unsafe) let v = value
 58 |             return v
@@ -163,7 +163,7 @@ Building for debugging...
 [210/309] Compiling Property_Consume_Primitives exports.swift
 [211/309] Compiling Ownership_Box_Primitives exports.swift
 [212/315] Emitting module Ownership_Inout_Primitives
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  70 |     @_lifetime(borrow pointer)
  71 |     public init(_ pointer: UnsafeMutablePointer<Value>) {
  72 |         self._pointer = UnsafeMutableRawPointer(pointer)
@@ -175,7 +175,7 @@ Building for debugging...
 [#StrictMemorySafety]: <https://docs.swift.org/compiler/documentation/diagnostics/strict-memory-safety>
 [213/315] Compiling Ownership_Inout_Primitives exports.swift
 [214/315] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  70 |     @_lifetime(borrow pointer)
  71 |     public init(_ pointer: UnsafeMutablePointer<Value>) {
  72 |         self._pointer = UnsafeMutableRawPointer(pointer)
@@ -912,7 +912,7 @@ Building for debugging...
 [964/1000] Compiling Memory_Allocator_Primitive exports.swift
 [965/1000] Emitting module Memory_Allocator_Primitive
 [966/1000] Compiling Memory_Allocator_Primitive Memory.Allocator.swift
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Primitive/Memory.Allocator.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Primitive/Memory.Allocator.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
@@ -963,7 +963,7 @@ Building for debugging...
 [1012/1015] Emitting module Memory_Primitives
 [1013/1063] Compiling Memory_Allocator_Arena_Primitives exports.swift
 [1014/1063] Compiling Memory_Allocator_Arena_Primitives Memory.Allocator.Arena.swift
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
@@ -971,7 +971,7 @@ Building for debugging...
 14 | public import Memory_Allocation_Primitive
 15 | public import Memory_Allocator_Primitive
 
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:14:8: warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:14:8: warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
 14 | public import Memory_Allocation_Primitive
@@ -979,7 +979,7 @@ Building for debugging...
 15 | public import Memory_Allocator_Primitive
 16 | public import Memory_Primitive
 
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:17:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:17:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
 15 | public import Memory_Allocator_Primitive
 16 | public import Memory_Primitive
 17 | public import Memory_Primitives_Standard_Library_Integration
@@ -1082,7 +1082,7 @@ Building for debugging...
 [1129/1134] Compiling RehomeKit Ownership.Rehomed.swift
 [1130/1134] Emitting module RehomeKit
 [1131/1134] Compiling RehomeKit Ownership.Rehomed.Column.swift
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:21:8: warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:21:8: warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
 19 | public import Memory_Heap_Primitives
 20 | public import Memory_Allocator_Primitive
 21 | public import Memory_Allocator_Protocol_Primitives
@@ -1090,7 +1090,7 @@ Building for debugging...
 22 | public import Index_Primitives
 23 | public import Ownership_Box_Primitives
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:22:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:22:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
 20 | public import Memory_Allocator_Primitive
 21 | public import Memory_Allocator_Protocol_Primitives
 22 | public import Index_Primitives

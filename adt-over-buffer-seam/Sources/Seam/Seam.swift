@@ -1,6 +1,6 @@
 // MARK: - ADT-over-Buffer seam — validate `extension ADT where B: Buffer.`Protocol`, B.Storage: Store.`Protocol``
 //
-// Purpose:   Validate the principal's sketch — an ADT generic over a CONCRETE buffer value
+// Purpose:   Validate the design sketch — an ADT generic over a CONCRETE buffer value
 //            (`struct ArrayADT<B: ~Copyable>`), with the Buffer / Store capabilities purely ADDITIVE,
 //            and element ops attached by a conditional extension that reaches the storage THROUGH the
 //            buffer's associated type: `extension ArrayADT where B: BufferSeam, B.Storage: StoreSeam`.

@@ -59,7 +59,7 @@ Swift 6.3.1 (Apple Swift 6.3), macOS 26 / arm64e, 2026-05-18.
 ## How to reproduce
 
 ```bash
-cd /Users/coen/Developer/swift-institute/Experiments/cursor-shape-a-feasibility
+cd ~/Developer/swift-institute/Experiments/cursor-shape-a-feasibility
 rm -rf .build
 swift build              # V1, V2, V5, V6 compile clean
 swift run -c release     # V7 cross-module + release-mode validates

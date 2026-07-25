@@ -1,5 +1,5 @@
 warning: 'swift-storage-primitives': found 1 file(s) which are unhandled; explicitly declare them as resources or exclude from the target
-    /Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
+    ~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
 [0/1] Planning build
 Building for debugging...
 [0/3] Write swift-version--58304C5D6DBC2206.txt

@@ -18,7 +18,7 @@
 //   (4.52s) + release (3.68s); run => total = 60.
 //   V1 (Escapable result WITH @_lifetime) REFUTED: "error: invalid lifetime dependence on an
 //   Escapable result" / "...on an Escapable value with consuming ownership" (on both next() and
-//   makeIterator). So: the owned cursor IS Escapable (as the principal predicted) AND omits
+//   makeIterator). So: the owned cursor IS Escapable (as predicted in design review) AND omits
 //   @_lifetime — Swift accepts the Escapable witness against the @_lifetime-annotated protocol
 //   requirements. (Cross-module axis deferred to execution per [EXP-017].)
 // Date: 2026-05-27

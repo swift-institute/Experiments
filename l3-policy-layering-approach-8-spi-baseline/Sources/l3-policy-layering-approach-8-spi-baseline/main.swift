@@ -20,7 +20,7 @@
 //   overflow → segmentation fault.
 //
 // CRITICAL — Production verification:
-//   /Users/coen/Developer/swift-foundations/swift-posix/Sources/POSIX
+//   ~/Developer/swift-foundations/swift-posix/Sources/POSIX
 //   Kernel File/POSIX.Kernel.File.Open.swift:97 EXHIBITS THE SAME
 //   WARNING under clean build. The Wave 3.5-Corrective-2 commit `d8c5877`
 //   landed broken delegation; the Stats analogue (commit `0c3545a`,

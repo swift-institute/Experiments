@@ -1,7 +1,7 @@
 ---
 target: MSB decomposition/composition design (architecture, not a single package)
 proxy_package: sparse-inline-slot-storage
-path: /Users/coen/Developer/swift-institute/Experiments/sparse-inline-slot-storage
+path: ~/Developer/swift-institute/Experiments/sparse-inline-slot-storage
 generated: 2026-06-07
 mode: predict (architecture — corpus-grounded angle ranking, not a shipped-package simulation)
 venue: related-projects / community-showcase (primitives architecture) [FREVIEW-009]

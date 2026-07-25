@@ -1,7 +1,7 @@
-Fetching file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
-Fetched file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.07s)
-Creating working copy for file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives
-Working copy of file:///Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (8dd87ca)
+Fetching file://~/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched file://~/Developer/swift-primitives/swift-carrier-primitives from cache (0.07s)
+Creating working copy for file://~/Developer/swift-primitives/swift-carrier-primitives
+Working copy of file://~/Developer/swift-primitives/swift-carrier-primitives resolved at main (8dd87ca)
 Building for debugging...
 [0/11] Write sources
 [1/11] Write l3-policy-layering-approach-12-tagged-l2-as-rawvalue-entitlement.plist

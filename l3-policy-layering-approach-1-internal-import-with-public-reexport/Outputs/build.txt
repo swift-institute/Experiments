@@ -8,7 +8,7 @@ Building for debugging...
 [9/13] Compiling L2Methods Foo+typed.swift
 [10/13] Emitting module L2Methods
 [11/15] Compiling L3Policy Foo+policy.swift
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:2:17: warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:2:17: warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
  1 | // Variant 1a: internal import + public import of same module — does Swift allow?
  2 | internal import L2Methods
    |                 `- warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
@@ -17,7 +17,7 @@ Building for debugging...
  4 | 
  5 | extension Foo {
 
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:7:26: warning: function call causes an infinite recursion
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:7:26: warning: function call causes an infinite recursion
  5 | extension Foo {
  6 |     public static func make() throws(FooError) -> Foo {
  7 |         let l2 = try Foo.make()
@@ -25,7 +25,7 @@ Building for debugging...
  8 |         return Foo(tag: "L3(\(l2.tag))")
  9 |     }
 [12/15] Emitting module L3Policy
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:2:17: warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/L3Policy/Foo+policy.swift:2:17: warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
  1 | // Variant 1a: internal import + public import of same module — does Swift allow?
  2 | internal import L2Methods
    |                 `- warning: module 'L2Methods' is imported as 'public' from the same file; this 'internal' access level will be ignored
@@ -35,7 +35,7 @@ Building for debugging...
  5 | extension Foo {
 error: emit-module command failed with exit code 1 (use -v to see invocation)
 [13/17] Emitting module l3_policy_layering_approach_1_internal_import_with_public_reexport
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:18:18: error: cannot find 'Foo' in scope
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:18:18: error: cannot find 'Foo' in scope
 16 | import L3Policy
 17 | 
 18 | let result = try Foo.make()
@@ -43,7 +43,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 19 | print("Foo.make() returned tag = \(result.tag)")
 20 | 
 
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:21:12: error: cannot find type 'Foo' in scope
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:21:12: error: cannot find type 'Foo' in scope
 19 | print("Foo.make() returned tag = \(result.tag)")
 20 | 
 21 | let typed: Foo = result
@@ -51,7 +51,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 22 | print("Type identity preserved: \(typed.tag)")
 23 | 
 [14/17] Compiling l3_policy_layering_approach_1_internal_import_with_public_reexport main.swift
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:18:18: error: cannot find 'Foo' in scope
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:18:18: error: cannot find 'Foo' in scope
 16 | import L3Policy
 17 | 
 18 | let result = try Foo.make()
@@ -59,7 +59,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 19 | print("Foo.make() returned tag = \(result.tag)")
 20 | 
 
-/Users/coen/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:21:12: error: cannot find type 'Foo' in scope
+~/Developer/swift-institute/Experiments/l3-policy-layering-approach-1-internal-import-with-public-reexport/Sources/l3-policy-layering-approach-1-internal-import-with-public-reexport/main.swift:21:12: error: cannot find type 'Foo' in scope
 19 | print("Foo.make() returned tag = \(result.tag)")
 20 | 
 21 | let typed: Foo = result

@@ -4,7 +4,7 @@ Building for debugging...
 [1/5] Write swift-version--58304C5D6DBC2206.txt
 error: emit-module command failed with exit code 1 (use -v to see invocation)
 [3/7] Emitting module property_consuming_get_and_read
-/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:46:19: error: variable already has a getter
+~/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:46:19: error: variable already has a getter
 41 | 
 42 |     var contents: NC {
 43 |         borrowing get {
@@ -16,7 +16,7 @@ error: emit-module command failed with exit code 1 (use -v to see invocation)
 47 |             _storage
 48 |         }
 [4/7] Compiling property_consuming_get_and_read main.swift
-/Users/coen/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:46:19: error: variable already has a getter
+~/Developer/swift-institute/Experiments/property-consuming-get-and-read/Sources/main.swift:46:19: error: variable already has a getter
 41 | 
 42 |     var contents: NC {
 43 |         borrowing get {

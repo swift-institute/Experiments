@@ -36,7 +36,7 @@ Building for production...
 [96/101] Compiling Range_Primitives Swift.Range+AllSatisfy.swift
 [97/104] Compiling Pair_Primitives Pair+BitwiseCopyable.swift
 [98/107] Compiling Sequence_Span_Primitives Sequence.Span+Property.Inout.swift
-/Users/coen/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Span Primitives/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-sequence-primitives/Sources/Sequence Span Primitives/Sequence.Span+Property.Inout.swift:2:8: warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
   1 | public import Index_Primitives
   2 | public import Property_Primitives
     |        `- warning: public import of 'Property_Primitives' was not used in public declarations or inlinable code
@@ -45,7 +45,7 @@ Building for production...
 [99/107] Compiling Sequence_ForEach_Primitives Sequence.ForEach+Property.Inout.swift
 [100/107] Compiling Sequence_Primitives_Standard_Library_Integration Sequenceable+Swift.Sequence.swift
 [101/108] Compiling Bit_Primitives_Standard_Library_Integration Bit+CaseIterable.swift
-/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/Carrier+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/Carrier+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Cardinal_Primitives
 13 | public import Carrier_Primitives
@@ -53,7 +53,7 @@ Building for production...
 14 | 
 15 | // MARK: - Cardinal Shift Operators on Carrier<FixedWidthInteger>
 
-/Users/coen/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/FixedWidthInteger+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Standard Library Integration/FixedWidthInteger+Cardinal.swift:13:8: warning: public import of 'Carrier_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Cardinal_Primitives
 13 | public import Carrier_Primitives
@@ -80,7 +80,7 @@ Building for production...
 [119/121] Compiling Bit_Field_Primitives Algebra.Field+Bit.swift
 [120/122] Compiling Bit_Primitives Bit+Comparison.Protocol.swift
 [121/124] Compiling Bit_Index_Primitives Bit+Affine.Discrete.Ratio.swift
-/Users/coen/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-bit-index-primitives/Sources/Bit Index Primitives/Bit.Index+Byte.swift:15:8: warning: public import of 'Ordinal_Primitives' was not used in public declarations or inlinable code
 13 | public import Byte_Primitives
 14 | public import Index_Primitives
 15 | public import Ordinal_Primitives
@@ -91,7 +91,7 @@ Building for production...
 [123/125] Compiling Bit_Pack_Primitives Bit.Index+Pack.swift
 [124/127] Compiling Memory_Alignment_Primitives Memory.Aligned.swift
 [125/128] Compiling Bit_Vector_Primitives_Core Bit.Vector+Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:185:9: warning: no unsafe operations occur within 'unsafe' expression
 183 |     @inlinable
 184 |     public mutating func all() {
 185 |         unsafe Base.setAll(&base.value)
@@ -99,7 +99,7 @@ Building for production...
 186 |     }
 187 | }
 
-/Users/coen/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
+~/Developer/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Primitives Core/Bit.Vector.Protocol+defaults.swift:193:9: warning: no unsafe operations occur within 'unsafe' expression
 191 |     @inlinable
 192 |     public mutating func all() {
 193 |         unsafe Base.clearAll(&base.value)
@@ -109,7 +109,7 @@ Building for production...
 [126/128] Compiling Memory_Primitives_Standard_Library_Integration Memory+Array.swift
 [127/130] Compiling Bit_Vector_Static_Primitives Bit.Vector.Ones.Static.Iterator.swift
 [128/130] Compiling Storage_Heap_Primitives Storage.Heap Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Heap Primitives/Storage.Heap.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Heap Primitives/Storage.Heap.swift:13:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
  11 | 
  12 | public import Storage_Primitive
  13 | public import Index_Primitives
@@ -117,7 +117,7 @@ Building for production...
  14 | import Affine_Primitives_Standard_Library_Integration
  15 | import Ordinal_Primitives_Standard_Library_Integration
 [129/131] Compiling Storage_Inline_Primitives Storage.Inline Copyable.swift
-/Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline.swift:135:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
+~/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/Storage.Inline.swift:135:24: warning: result of call to 'withUnsafePointer(to:_:)' is unused [#no-usage]
 133 |             for bitIndex in _slots.ones {
 134 |                 let slot = bitIndex.retag(Element.self)
 135 |                 unsafe withUnsafePointer(to: _storage) { base in
@@ -125,7 +125,7 @@ Building for production...
 136 |                     unsafe UnsafeMutableRawPointer(mutating: UnsafeRawPointer(base))
 137 |                         .advanced(by: Index<Element>.Offset(fromZero: slot) * .stride)
 [130/132] Compiling D_real_buffer_linear_lib Conformance.swift
-/Users/coen/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/memory-cursor-generic-witness-demangle/Sources/D-real-buffer-linear-lib/Conformance.swift:19:8: warning: public import of 'Sequence_Hint_Primitives' was not used in public declarations or inlinable code
 17 | public import Memory_Cursor_Primitives
 18 | public import Sequence_Protocol_Primitives
 19 | public import Sequence_Hint_Primitives

@@ -19,7 +19,7 @@ Building for production...
 [175/182] Compiling Ownership_Shared_Primitives Ownership.Shared.swift
 [176/182] Compiling Ownership_Unique_Primitives Ownership.Unique+Copyable.swift
 [177/182] Compiling Ownership_Primitives_Standard_Library_Integration Optional+take.swift
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives Standard Library Integration/Optional+take.swift:58:20: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
 56 |             // swift-linter:disable:next intermediate binding then return
 57 |             nonisolated(unsafe) let v = value
 58 |             return v
@@ -32,7 +32,7 @@ Building for production...
 [178/183] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
 [179/187] Compiling Ownership_Mutable_Primitives Ownership.Mutable.Unchecked.swift
 [180/187] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
-/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
+~/Developer/swift-primitives/swift-ownership-primitives/Sources/Ownership Inout Primitives/Ownership.Inout.swift:72:9: warning: expression uses unsafe constructs but is not marked with 'unsafe' [#StrictMemorySafety]
  70 |     @_lifetime(borrow pointer)
  71 |     public init(_ pointer: UnsafeMutablePointer<Value>) {
  72 |         self._pointer = UnsafeMutableRawPointer(pointer)
@@ -161,7 +161,7 @@ Building for production...
 [297/300] Compiling Memory_Alignment_Primitives Memory.Alignable.swift
 [298/302] Compiling Sequence_Difference_Primitives Sequence.Difference+core.swift
 [299/303] Compiling Memory_Allocator_Primitive Memory.Allocator.swift
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Primitive/Memory.Allocator.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Primitive/Memory.Allocator.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
@@ -174,7 +174,7 @@ Building for production...
 [303/307] Compiling Memory_Allocation_Primitive Memory.Allocation.Error.swift
 [304/307] Compiling Memory_Primitives exports.swift
 [305/308] Compiling Memory_Allocator_Arena_Primitives Memory.Allocator.Arena+Memory.Allocator.Protocol.swift
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:13:8: warning: public import of 'Memory_Alignment_Primitives' was not used in public declarations or inlinable code
 11 | 
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
@@ -182,7 +182,7 @@ Building for production...
 14 | public import Memory_Allocation_Primitive
 15 | public import Memory_Allocator_Primitive
 
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:14:8: warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:14:8: warning: public import of 'Memory_Allocation_Primitive' was not used in public declarations or inlinable code
 12 | public import Memory_Address_Primitives
 13 | public import Memory_Alignment_Primitives
 14 | public import Memory_Allocation_Primitive
@@ -190,7 +190,7 @@ Building for production...
 15 | public import Memory_Allocator_Primitive
 16 | public import Memory_Primitive
 
-/Users/coen/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:17:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
+~/Developer/swift-primitives/swift-memory-allocation-primitives/Sources/Memory Allocator Arena Primitives/Memory.Allocator.Arena.swift:17:8: warning: public import of 'Memory_Primitives_Standard_Library_Integration' was not used in public declarations or inlinable code
 15 | public import Memory_Allocator_Primitive
 16 | public import Memory_Primitive
 17 | public import Memory_Primitives_Standard_Library_Integration
@@ -208,7 +208,7 @@ Building for production...
 [314/316] Compiling Storage_Contiguous_Primitives Storage.Contiguous+Span.swift
 [315/317] Compiling Buffer_Linear_Primitive Buffer.Linear Copyable.swift
 [316/318] Compiling RehomeKit Ownership.Rehomed.Column.swift
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:21:8: warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:21:8: warning: public import of 'Memory_Allocator_Protocol_Primitives' was not used in public declarations or inlinable code
 19 | public import Memory_Heap_Primitives
 20 | public import Memory_Allocator_Primitive
 21 | public import Memory_Allocator_Protocol_Primitives
@@ -216,7 +216,7 @@ Building for production...
 22 | public import Index_Primitives
 23 | public import Ownership_Box_Primitives
 
-/Users/coen/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:22:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
+~/Developer/swift-institute/Experiments/adt-tower-m8-ownership-shared-rehome/Sources/RehomeKit/Ownership.Rehomed.Column.swift:22:8: warning: public import of 'Index_Primitives' was not used in public declarations or inlinable code
 20 | public import Memory_Allocator_Primitive
 21 | public import Memory_Allocator_Protocol_Primitives
 22 | public import Index_Primitives

@@ -165,7 +165,7 @@ carry them.
 ## How to reproduce
 
 ```bash
-cd /Users/coen/Developer/swift-institute/Experiments/cases-macro-keypath-feasibility
+cd ~/Developer/swift-institute/Experiments/cases-macro-keypath-feasibility
 swift build      # first run compiles swift-syntax from source (several minutes)
 swift test       # 9/9 pass, cross-module
 
