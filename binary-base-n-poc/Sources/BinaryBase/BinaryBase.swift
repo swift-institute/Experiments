@@ -47,7 +47,7 @@
 //   V5 CONFIRMED   `borrowing [UInt8]` and `Span<UInt8>` byte sources both supported.
 //                  Sub-finding: `for byte in <borrowing [UInt8]>` triggers consume-from-borrow
 //                  errors — must use indexed iteration (`for i in 0..<bytes.count`).
-//                  Pre-existing institute pattern per `feedback_span_indexed_over_unsafe_pointer.md`.
+//                  Pre-existing institute pattern per an internal feedback note.
 //   V6 CONFIRMED   Closed-radix-set shape via backticked-digit nested types
 //                  (`Binary.Base.`16``, `Binary.Base.`62``) — see `Sources/BinaryBaseClosed/`
 //                  target. Each radix is a distinct nominal struct under the non-generic

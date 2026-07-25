@@ -53,7 +53,7 @@ extension Sequenceable where Self: ~Copyable, Element: Escapable {     // fallib
 ```
 
 (`~Copyable` cannot be re-suppressed on the inherited `Element` in a where-clause —
-envelope D3 / `feedback_extension_implies_copyable`; constrain `Self: ~Copyable` +
+envelope D3 / an internal feedback note; constrain `Self: ~Copyable` +
 `Element: Escapable` instead. The infallible overload wins resolution for `Never`-failure
 conformers, exactly as on `Iterable.forEach`.)
 

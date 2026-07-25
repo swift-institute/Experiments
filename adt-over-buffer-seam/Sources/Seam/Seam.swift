@@ -22,7 +22,7 @@
 //       the namespaced-generic-typealias SIGSEGV zone. The ADT-over-a-concrete-buffer + additive-protocols shape is viable.
 //   (2) Required boilerplate (none about the constraint, all standard ~Copyable idiom): the buffer struct must be
 //       `~Copyable`; element-returning accessors must be `_read`/`_modify` (not get/set — a get can't return a ~Copyable
-//       element by value); conditional extensions must propagate `where B: ~Copyable` (feedback_extension_implies_copyable).
+//       element by value); conditional extensions must propagate `where B: ~Copyable` (an internal feedback note).
 //   (3) Specialization: a no-`@inlinable` cross-module client SIL shows 6 witness_method — an artifact of omitting
 //       `@inlinable`, NOT a sketch property; the pattern-class's 0-witness is established by
 //       Experiments/storage-protocol-specialization + the GATE-1 receipts. An `@inlinable` pass would replicate it here.
