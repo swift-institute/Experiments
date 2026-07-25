@@ -1,6 +1,6 @@
 // V10: Render namespace + `associatedtype Rendered` — the blog's recommended fix
 // Purpose:   Verify that the specific rename recommended in
-//            Blog/Draft/associated-type-trap-final.md — protocol namespace
+//            an internal blog draft — protocol namespace
 //            `Rendering → Render`, associated type `Body → Rendered` —
 //            resolves the unification collision with SwiftUI.View.Body.
 //            Unlike V6 (which renames to `Content`, a name SwiftUI itself

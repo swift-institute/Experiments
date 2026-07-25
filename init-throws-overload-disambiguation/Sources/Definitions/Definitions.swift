@@ -10,7 +10,7 @@
 // Platform:  macOS 26 (arm64)
 // Date:      2026-05-02
 // Blog:      BLOG-IDEA-078 "Three Ways NOT to Disambiguate a Swift Init"
-//            (see swift-institute/Blog/Ideas/BLOG-IDEA-078-context.md)
+//            (see an internal blog draft)
 // Status:    COMPLETE — V1/V3 REFUTED, V4-original REFUTED, V2/V5 CONFIRMED.
 // Result:    Build Succeeded (debug + release); cross-module exercised in
 //            both `with-spi` and `without-spi` targets; SPI-gated init's

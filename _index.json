@@ -2034,7 +2034,7 @@
       "statusRaw": "CONFIRMED",
       "supersededBy": null,
       "crossRefs": [
-        "swift-institute/Blog/Published/2026-04-20-associated-type-trap.md",
+        "an internal blog draft",
         "swift-primitives/swift-version-primitives/Sources/Version Primitives/Version.Semantic+Parseable.swift"
       ]
     },

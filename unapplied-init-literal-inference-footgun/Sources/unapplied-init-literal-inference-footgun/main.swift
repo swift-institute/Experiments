@@ -1,7 +1,7 @@
 // MARK: - Unapplied-Init Literal-Inference Overload-Resolution Footgun
 //
 // Blog: BLOG-IDEA-060 "Why `.map(Type.init)` can silently compute wrong values"
-//       Draft: swift-institute/Blog/Draft/unapplied-init-overload-footgun.md
+//       Draft: an internal blog draft
 //
 // Purpose: Demonstrate that Swift's overload resolution, when forming an
 //          unapplied function reference (`.map(Type.init)`), will silently

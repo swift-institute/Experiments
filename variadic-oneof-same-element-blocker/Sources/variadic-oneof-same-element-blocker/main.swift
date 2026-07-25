@@ -2,7 +2,7 @@
 //
 // Blog: BLOG-IDEA-103 "Three diagnostics, one wall: same-element requirements
 //       and variadic parser combinators" — see
-//       swift-institute/Blog/Draft/three-diagnostics-one-wall.md
+//       an internal blog draft
 //
 // Purpose: Verify whether parser-primitives' per-arity OneOf.Two / OneOf.Three
 // types can be unified into a single variadic-generic `Parser.OneOf<each P>`

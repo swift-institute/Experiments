@@ -21,7 +21,7 @@
 // Date: 2026-05-17
 //
 // Blog: BLOG-IDEA-104 "Overloading by member kind: coexisting with the
-//       standard library" — Blog/Draft/overloading-by-member-kind.md
+//       standard library" — an internal blog draft
 //
 // Result: CONFIRMED — Property-accessor pattern (range.iterate{...})
 //   escapes stdlib Sequence.forEach overload competition. P1–P7 all PASS

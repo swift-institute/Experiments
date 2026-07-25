@@ -3,7 +3,7 @@
 **Status**: CONFIRMED (root cause identified; `@_implements` preferred fix verified)
 **Date**: 2026-03-13 (initial); 2026-04-15 (V10 added); 2026-04-20 (V11 added)
 **Toolchain**: Swift 6.3.1 (originally Swift 6.2.4)
-**Receipt for**: [Blog/Draft/associated-type-trap-final.md](../../Blog/Draft/associated-type-trap-final.md) — "The associated type trap, and the escape hatch I missed"
+**Receipt for**: an internal blog draft — "The associated type trap, and the escape hatch I missed"
 
 ## Investigation
 

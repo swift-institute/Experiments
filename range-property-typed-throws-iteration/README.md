@@ -214,4 +214,4 @@ Outputs/build-negative-control.txt
 ## Blog Potential
 
 This experiment has been captured as a blog idea:
-- [BLOG-IDEA-104: Overloading by member kind: coexisting with the standard library](../../../swift-institute/Blog/_index.json) — currently in `In Progress` (draft at `Blog/Draft/overloading-by-member-kind.md`)
+- BLOG-IDEA-104: Overloading by member kind: coexisting with the standard library (internal blog index) — currently in `In Progress` (draft at an internal blog draft)
