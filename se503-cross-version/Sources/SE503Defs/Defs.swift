@@ -61,7 +61,7 @@
 //
 // Reference: https://github.com/swiftlang/swift/blob/main/userdocs/diagnostics/old-suppressed-associatedtypes.md
 //            SE-0503 (Accepted): proposals/0503-suppressed-associated-types.md
-// Audit:     swift-institute/Audits/AUDIT-se-503-suppressed-associated-types-2026-05-28.md
+// Audit:     an internal audit record
 
 // Doc's canonical shape: primary `Items` (suppressed) + non-primary `Generator` (suppressed).
 public protocol Mailbox<Items>: ~Copyable {

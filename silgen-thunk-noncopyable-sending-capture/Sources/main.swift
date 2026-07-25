@@ -30,7 +30,7 @@
 //
 // Provenance:
 //   Surfaced during the `swift-effect-primitives` `~Copyable & Sendable`
-//   widening (HANDOFF: `swift-primitives/HANDOFF-effect-primitives-ncopyable-modernization.md`)
+//   widening (HANDOFF: an internal handoff document)
 //   when attempting the canonical thunk form for `Effect.Continuation.One._resume`.
 //   Workaround landed: two-callback storage (`_onValue` + `_onError`) —
 //   denotationally equivalent (tagged union via two channels), avoids the

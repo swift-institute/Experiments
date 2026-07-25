@@ -36,7 +36,7 @@ public struct V3_BuilderBorrowed<Base: SeqProtocol & ~Copyable & ~Escapable>: ~C
         // package. The standard guidance is that this init MUST be
         // non-@inlinable for cross-module callers to avoid a known
         // release-mode miscompile (Audit
-        // `swift-institute/Audits/borrow-pointer-storage-release-miscompile.md`).
+        // an internal audit record).
         // For an in-package experiment we keep @inlinable; the
         // miscompile is module-boundary specific.
         let ptr = unsafe withUnsafePointer(to: base) { unsafe $0 }

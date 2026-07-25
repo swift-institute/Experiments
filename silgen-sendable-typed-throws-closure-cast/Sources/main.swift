@@ -39,7 +39,7 @@
 //   Surfaced during the MOD-017 batch follow-up investigation for
 //   `swift-machine-primitives` — the package's test suite could not compile
 //   on Swift 6.3.1. Handoff:
-//     `swift-primitives/HANDOFF-mod-017-batch-followups.md`
+//     an internal handoff document
 //   The production workaround (test-file `fileprivate` extension overload of
 //   `Machine.Capture.Store.insert`) is denotationally equivalent: the closure
 //   flows through a concrete non-generic parameter type rather than a generic

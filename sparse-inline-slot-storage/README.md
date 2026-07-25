@@ -6,7 +6,7 @@ favour of a uniform `Buffer<Storage.Contiguous<Memory.X>>` end-state, *if* a slo
 `Memory.Inline`/`Memory.Small` clears the four must-resolve risks.
 
 Consolidates the `/tmp/cdspikes2` + `/tmp/cdexp` spikes from
-`.handoffs/REPORT-conditional-deinit-inlinearray-reopener.md` into a durable, reproducible
+an internal handoff record into a durable, reproducible
 package, and closes the two open items that report flagged (move-out; Embedded floor).
 
 ## Hypothesis
@@ -57,6 +57,6 @@ TOOLCHAINS=swift swift run        # TESTs 1–5 (runtime teardown, move-out, gen
 
 ## References
 
-- `.handoffs/REPORT-conditional-deinit-inlinearray-reopener.md` (the reopener; Results 1–4)
+- an internal handoff record (the reopener; Results 1–4)
 - `swift-institute/Research/conditional-deinit-conditionally-copyable-generics.md` (the two-wall analysis)
-- Cleave-9 `.handoffs/GOAL-cleave-9-allocation-arc.md`, `.handoffs/cleave-9-PROGRESS.md`
+- Cleave-9 an internal handoff record, an internal handoff record

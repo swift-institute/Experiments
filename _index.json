@@ -1020,7 +1020,7 @@
       "crossRefs": [
         "swift-institute/Research/iteration-architecture-expressibility-envelope.md (this experiment's RECOMMENDATION writeup; v1.3.0 adds the traversal-only re-attack §7 + Angle A/B/C rows; overturns v1.2.0's gap-(b) 'non-contiguous D1 REFUTED' headline)",
         "swift-institute/Research/memory-contiguous-iteration-bridge.md (substrate bridges; OQ-2 route-2 runtime REFUTED)",
-        "HANDOFF-iteration-architecture-probe.md (the arc; the family-protocol lean this adjudicates)"
+        "an internal handoff document (the arc; the family-protocol lean this adjudicates)"
       ],
       "date": "2026-05-28",
       "directory": "iteration-architecture-toy",
@@ -2321,7 +2321,7 @@
     {
       "category": "API Design Patterns",
       "crossRefs": [
-        "HANDOFF-result-builder-ecosystem-extensions"
+        "an internal handoff document"
       ],
       "date": "2026-05-06",
       "directory": "result-builder-perf",
@@ -2335,7 +2335,7 @@
     {
       "category": "API Design Patterns",
       "crossRefs": [
-        "HANDOFF-result-builder-ecosystem-extensions",
+        "an internal handoff document",
         "result-builder-performance-optimization"
       ],
       "date": "2026-05-06",
@@ -2426,7 +2426,7 @@
     {
       "category": "~Escapable & Ownership",
       "crossRefs": [
-        "swift-institute/Audits/AUDIT-se-503-suppressed-associated-types-2026-05-28.md"
+        "an internal audit record"
       ],
       "date": "2026-05-28",
       "directory": "se503-cross-version",

@@ -114,7 +114,7 @@
 //         empirically broken in release mode cross-module — existing
 //         tests pass by stale-bits luck, not correctness. See audit
 //         finding #12 in
-//         `swift-institute/Audits/borrow-pointer-storage-release-miscompile.md`.
+//         an internal audit record.
 // Date: 2026-04-24
 
 import V10FieldOfSelfLib
