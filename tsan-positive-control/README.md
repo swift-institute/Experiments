@@ -35,6 +35,6 @@ is blind** — investigate before trusting any quiet TSan run.
 
 ## Provenance
 
-Re-homed from an internal handoff record (the W1 shared-soundness
+Re-homed from an internal working record (the W1 shared-soundness
 spike, `GOAL-tower-arc-shared-soundness §W1.3`) to this durable location in **Round P P0.4**, so
 the carved-gate discipline survives publication.

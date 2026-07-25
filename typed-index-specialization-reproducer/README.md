@@ -6,7 +6,7 @@ Reproducer scaffold for the typed-index specialization audit
 **Status**: SCAFFOLD. No reproducer code written yet. Filing
 artifacts staged for principal disposition; construction of the
 actual minimal reproducer is gated on principal authorization
-(per an internal handoff document
+(per an internal working document
 Phase 5 — "filing venue + timing is principal's call").
 
 ## Hypothesis under test (if construction is authorized)
@@ -93,7 +93,7 @@ the reproducer construction be authorized.
 ## References
 
 - Parent audit: `swift-institute/Research/typed-index-specialization-audit.md`
-- Dispatch: an internal handoff document
+- Dispatch: an internal working document
 - Upstream investigation: `swift-foundations/swift-json/Research/parse-performance-canada-anomaly.md` v1.4.1
 - `[ISSUE-002]` minimal reproducer discipline (skill: `issue-investigation`)
 - `[ISSUE-025]` in-package verification of synthetic-reproducer claims
