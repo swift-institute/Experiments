@@ -59,4 +59,4 @@ TOOLCHAINS=swift swift run        # TESTs 1–5 (runtime teardown, move-out, gen
 
 - an internal working record (the reopener; Results 1–4)
 - `swift-institute/Research/conditional-deinit-conditionally-copyable-generics.md` (the two-wall analysis)
-- Cleave-9 an internal working record, an internal working record
+- Cleave-9 internal working records (goal and progress)
