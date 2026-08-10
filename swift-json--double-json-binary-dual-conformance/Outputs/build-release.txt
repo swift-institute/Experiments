@@ -1,0 +1,10 @@
+warning: 'swift-storage-primitives': found 1 file(s) which are unhandled; explicitly declare them as resources or exclude from the target
+    /Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
+[0/1] Planning build
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/4] Compiling double_json_binary_dual_conformance main.swift
+[3/5] Write Objects.LinkFileList
+[4/5] Linking double-json-binary-dual-conformance
+Build complete! (8.28s)

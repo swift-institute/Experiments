@@ -1,0 +1,46 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'double-json-binary-dual-conformance' complete! (0.33s)
+=== V1: Compile-clean dual conformance ===
+PASS: Double conforms to both JSON.Serializable and Binary.Serializable
+
+=== V2: JSON round-trip ===
+PASS: Round-trip Double(0.0) via JSON
+PASS: Round-trip Double(1.0) via JSON
+PASS: Round-trip Double(-1.0) via JSON
+PASS: Round-trip Double(3.14159) via JSON
+PASS: Round-trip Double(-2.71828) via JSON
+PASS: Round-trip Double(10000000000.0) via JSON
+PASS: Round-trip Double(1e-10) via JSON
+
+=== V3: Binary serialize ===
+PASS: Double serializes to 8 bytes for 0.0
+PASS: Bit-pattern preserved through Binary.serialize for 0.0
+PASS: Double serializes to 8 bytes for 1.0
+PASS: Bit-pattern preserved through Binary.serialize for 1.0
+PASS: Double serializes to 8 bytes for -1.0
+PASS: Bit-pattern preserved through Binary.serialize for -1.0
+PASS: Double serializes to 8 bytes for 3.14159
+PASS: Bit-pattern preserved through Binary.serialize for 3.14159
+PASS: Double serializes to 8 bytes for -2.71828
+PASS: Bit-pattern preserved through Binary.serialize for -2.71828
+PASS: Double serializes to 8 bytes for 10000000000.0
+PASS: Bit-pattern preserved through Binary.serialize for 10000000000.0
+PASS: Double serializes to 8 bytes for 1e-10
+PASS: Bit-pattern preserved through Binary.serialize for 1e-10
+PASS: Double serializes to 8 bytes for inf
+PASS: Bit-pattern preserved through Binary.serialize for inf
+PASS: Double serializes to 8 bytes for -inf
+PASS: Bit-pattern preserved through Binary.serialize for -inf
+PASS: Double serializes to 8 bytes for nan
+PASS: Bit-pattern preserved through Binary.serialize for nan
+PASS: Double.bytes convenience returns 8 bytes
+
+=== V4: Call-site disambiguation ===
+PASS: Double.serialize(3.14) with JSON return-type → JSON.Serializable
+PASS: Double.serialize(3.14, into: &buf) → Binary.Serializable
+PASS: Double.serialize(3.14) with [UInt8] return-type → Binary.Serializable
+PASS: Case D resolves deterministically to JSON.Serializable (not ambiguous)
+
+=== Summary ===
+All checks PASSED

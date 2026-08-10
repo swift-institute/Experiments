@@ -1,0 +1,161 @@
+warning: 'swift-storage-primitives': found 1 file(s) which are unhandled; explicitly declare them as resources or exclude from the target
+    /Users/coen/Developer/swift-primitives/swift-storage-primitives/Sources/Storage Inline Primitives/REVALIDATION-lifetime-read-6.3.md
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'symbol-graph-conformance-oracle' complete! (5.07s)
+=== Symbol-Graph Conformance Oracle ===
+Input:                 Outputs/swift-stdlib/Swift.symbols.json
+File size (chars):     90249142
+Symbols total:         14552
+Protocol-kind symbols: 75
+Relationships total:   18314 (all kinds)
+conformsTo total:      2734
+Protocol→protocol:     136 refinement pairs
+conformsTo (other):    2598 (concrete-type or cross-module endpoint)
+
+=== Refinement pairs (refining → refined) ===
+  AdditiveArithmetic → Equatable
+  BidirectionalCollection → Collection
+  BidirectionalCollection → Sequence
+  BinaryFloatingPoint → FloatingPoint
+  BinaryFloatingPoint → Strideable
+  BinaryFloatingPoint → Comparable
+  BinaryFloatingPoint → Equatable
+  BinaryFloatingPoint → SignedNumeric
+  BinaryFloatingPoint → Numeric
+  BinaryFloatingPoint → ExpressibleByIntegerLiteral
+  BinaryFloatingPoint → AdditiveArithmetic
+  BinaryFloatingPoint → Hashable
+  BinaryFloatingPoint → ExpressibleByFloatLiteral
+  BinaryInteger → Strideable
+  BinaryInteger → Comparable
+  BinaryInteger → Equatable
+  BinaryInteger → Numeric
+  BinaryInteger → ExpressibleByIntegerLiteral
+  BinaryInteger → AdditiveArithmetic
+  BinaryInteger → Hashable
+  BinaryInteger → CustomStringConvertible
+  CodingKey → Sendable
+  CodingKey → SendableMetatype
+  CodingKey → CustomStringConvertible
+  CodingKey → CustomDebugStringConvertible
+  Collection → Sequence
+  Comparable → Equatable
+  CustomLeafReflectable → CustomReflectable
+  DurationProtocol → Sendable
+  DurationProtocol → SendableMetatype
+  DurationProtocol → Comparable
+  DurationProtocol → Equatable
+  DurationProtocol → AdditiveArithmetic
+  Error → Sendable
+  Error → SendableMetatype
+  ExpressibleByExtendedGraphemeClusterLiteral → ExpressibleByUnicodeScalarLiteral
+  ExpressibleByStringInterpolation → ExpressibleByStringLiteral
+  ExpressibleByStringInterpolation → ExpressibleByExtendedGraphemeClusterLiteral
+  ExpressibleByStringInterpolation → ExpressibleByUnicodeScalarLiteral
+  ExpressibleByStringLiteral → ExpressibleByExtendedGraphemeClusterLiteral
+  ExpressibleByStringLiteral → ExpressibleByUnicodeScalarLiteral
+  FixedWidthInteger → LosslessStringConvertible
+  FixedWidthInteger → CustomStringConvertible
+  FixedWidthInteger → BinaryInteger
+  FixedWidthInteger → Strideable
+  FixedWidthInteger → Comparable
+  FixedWidthInteger → Equatable
+  FixedWidthInteger → Numeric
+  FixedWidthInteger → ExpressibleByIntegerLiteral
+  FixedWidthInteger → AdditiveArithmetic
+  FixedWidthInteger → Hashable
+  FloatingPoint → Strideable
+  FloatingPoint → Comparable
+  FloatingPoint → Equatable
+  FloatingPoint → SignedNumeric
+  FloatingPoint → Numeric
+  FloatingPoint → ExpressibleByIntegerLiteral
+  FloatingPoint → AdditiveArithmetic
+  FloatingPoint → Hashable
+  Hashable → Equatable
+  InstantProtocol → Sendable
+  InstantProtocol → SendableMetatype
+  InstantProtocol → Hashable
+  InstantProtocol → Equatable
+  InstantProtocol → Comparable
+  LazyCollectionProtocol → LazySequenceProtocol
+  LazyCollectionProtocol → Sequence
+  LazyCollectionProtocol → Collection
+  LazySequenceProtocol → Sequence
+  LosslessStringConvertible → CustomStringConvertible
+  MutableCollection → Collection
+  MutableCollection → Sequence
+  Numeric → ExpressibleByIntegerLiteral
+  Numeric → AdditiveArithmetic
+  Numeric → Equatable
+  OptionSet → SetAlgebra
+  OptionSet → ExpressibleByArrayLiteral
+  OptionSet → Equatable
+  OptionSet → RawRepresentable
+  RandomAccessCollection → BidirectionalCollection
+  RandomAccessCollection → Collection
+  RandomAccessCollection → Sequence
+  RangeReplaceableCollection → Collection
+  RangeReplaceableCollection → Sequence
+  SIMD → SIMDStorage
+  SIMD → Hashable
+  SIMD → Equatable
+  SIMD → ExpressibleByArrayLiteral
+  SIMD → Encodable
+  SIMD → Decodable
+  SIMD → CustomStringConvertible
+  SIMDScalar → BitwiseCopyable
+  Sendable → SendableMetatype
+  SetAlgebra → ExpressibleByArrayLiteral
+  SetAlgebra → Equatable
+  SignedInteger → SignedNumeric
+  SignedInteger → Numeric
+  SignedInteger → ExpressibleByIntegerLiteral
+  SignedInteger → AdditiveArithmetic
+  SignedInteger → Equatable
+  SignedInteger → BinaryInteger
+  SignedInteger → Strideable
+  SignedInteger → Comparable
+  SignedInteger → Hashable
+  SignedInteger → CustomStringConvertible
+  SignedNumeric → Numeric
+  SignedNumeric → ExpressibleByIntegerLiteral
+  SignedNumeric → AdditiveArithmetic
+  SignedNumeric → Equatable
+  Strideable → Comparable
+  Strideable → Equatable
+  StringProtocol → TextOutputStreamable
+  StringProtocol → TextOutputStream
+  StringProtocol → LosslessStringConvertible
+  StringProtocol → CustomStringConvertible
+  StringProtocol → Hashable
+  StringProtocol → Equatable
+  StringProtocol → ExpressibleByStringInterpolation
+  StringProtocol → ExpressibleByStringLiteral
+  StringProtocol → ExpressibleByExtendedGraphemeClusterLiteral
+  StringProtocol → ExpressibleByUnicodeScalarLiteral
+  StringProtocol → Comparable
+  StringProtocol → BidirectionalCollection
+  StringProtocol → Collection
+  StringProtocol → Sequence
+  UnsafeSendable → Sendable
+  UnsafeSendable → SendableMetatype
+  UnsignedInteger → BinaryInteger
+  UnsignedInteger → Strideable
+  UnsignedInteger → Comparable
+  UnsignedInteger → Equatable
+  UnsignedInteger → Numeric
+  UnsignedInteger → ExpressibleByIntegerLiteral
+  UnsignedInteger → AdditiveArithmetic
+  UnsignedInteger → Hashable
+  UnsignedInteger → CustomStringConvertible
+
+=== Timing ===
+Read:       0.062s
+Parse:      129.210s
+Reduce:     0.071s
+Total:      129.343s
+
+Output:     Outputs/conformance-oracle.json

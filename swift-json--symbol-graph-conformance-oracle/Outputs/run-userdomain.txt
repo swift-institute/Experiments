@@ -1,0 +1,77 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'symbol-graph-conformance-oracle' complete! (0.55s)
+=== Symbol-Graph Conformance Oracle (User-domain) ===
+Inputs:                28
+Modules:               Algebra_Field_Primitives, Algebra_Group_Primitives, Algebra_Magma_Primitives, Algebra_Module_Primitives, Algebra_Monoid_Primitives, Algebra_Ring_Primitives, Algebra_Semigroup_Primitives, Algebra_Semilattice_Primitives, Algebra_Semiring_Primitives, Bifunctor_Primitives, Comparison_Primitives, Comparison_Primitives_Core, Comparison_Primitives_Standard_Library_Integration, Equation_Primitives, Equation_Primitives_Core, Equation_Primitives_Standard_Library_Integration, Hash_Primitives, Hash_Primitives_Core, Hash_Primitives_Standard_Library_Integration, Property_Borrow_Primitives, Property_Consume_Primitives, Property_Inout_Primitives, Property_Primitives, Property_Primitives_Core, Property_Typed_Primitives, Tagged_Primitives, Tagged_Primitives_Standard_Library_Integration, Witness_Primitives
+
+Per-input stats:
+module                                       symbols   protocols  relations  conf-to   new pairs 
+Algebra_Field_Primitives                     0         0          0          0         0         
+Algebra_Group_Primitives                     0         0          0          0         0         
+Algebra_Magma_Primitives                     0         0          0          0         0         
+Algebra_Module_Primitives                    0         0          0          0         0         
+Algebra_Monoid_Primitives                    0         0          0          0         0         
+Algebra_Ring_Primitives                      0         0          0          0         0         
+Algebra_Semigroup_Primitives                 0         0          0          0         0         
+Algebra_Semilattice_Primitives               0         0          0          0         0         
+Algebra_Semiring_Primitives                  0         0          0          0         0         
+Bifunctor_Primitives                         6         0          9          4         0         
+Comparison_Primitives                        0         0          0          0         0         
+Comparison_Primitives_Core                   24        1          33         10        1         
+Comparison_Primitives_Standard_Library_Integration 0         0          0          0         0         
+Equation_Primitives                          0         0          0          0         0         
+Equation_Primitives_Core                     4         1          5          2         0         
+Equation_Primitives_Standard_Library_Integration 0         0          0          0         0         
+Hash_Primitives                              0         0          0          0         0         
+Hash_Primitives_Core                         5         1          7          3         1         
+Hash_Primitives_Standard_Library_Integration 0         0          0          0         0         
+Property_Borrow_Primitives                   0         0          0          0         0         
+Property_Consume_Primitives                  0         0          0          0         0         
+Property_Inout_Primitives                    0         0          0          0         0         
+Property_Primitives                          0         0          0          0         0         
+Property_Primitives_Core                     11        0          13         3         0         
+Property_Typed_Primitives                    0         0          0          0         0         
+Tagged_Primitives                            19        0          42         24        0         
+Tagged_Primitives_Standard_Library_Integration 0         0          0          0         0         
+Witness_Primitives                           6         1          9          4         0         
+
+Aggregate (union):     2 refinement pairs
+
+=== Refinement pairs (full path) ===
+  Comparison_Primitives_Core.Comparison.Protocol → Equation_Primitives_Core.Equation.Protocol  [LEAF COLLISION]
+  Hash_Primitives_Core.Hash.Protocol → Equation_Primitives_Core.Equation.Protocol  [LEAF COLLISION]
+
+=== Timing ===
+Total wall-clock:  0.553s
+  Algebra_Field_Primitives                     0.006s (parse)
+  Algebra_Group_Primitives                     0.001s (parse)
+  Algebra_Magma_Primitives                     0.001s (parse)
+  Algebra_Module_Primitives                    0.001s (parse)
+  Algebra_Monoid_Primitives                    0.001s (parse)
+  Algebra_Ring_Primitives                      0.001s (parse)
+  Algebra_Semigroup_Primitives                 0.001s (parse)
+  Algebra_Semilattice_Primitives               0.001s (parse)
+  Algebra_Semiring_Primitives                  0.001s (parse)
+  Bifunctor_Primitives                         0.077s (parse)
+  Comparison_Primitives                        0.002s (parse)
+  Comparison_Primitives_Core                   0.139s (parse)
+  Comparison_Primitives_Standard_Library_Integration 0.001s (parse)
+  Equation_Primitives                          0.001s (parse)
+  Equation_Primitives_Core                     0.033s (parse)
+  Equation_Primitives_Standard_Library_Integration 0.001s (parse)
+  Hash_Primitives                              0.001s (parse)
+  Hash_Primitives_Core                         0.035s (parse)
+  Hash_Primitives_Standard_Library_Integration 0.001s (parse)
+  Property_Borrow_Primitives                   0.001s (parse)
+  Property_Consume_Primitives                  0.001s (parse)
+  Property_Inout_Primitives                    0.001s (parse)
+  Property_Primitives                          0.001s (parse)
+  Property_Primitives_Core                     0.060s (parse)
+  Property_Typed_Primitives                    0.001s (parse)
+  Tagged_Primitives                            0.140s (parse)
+  Tagged_Primitives_Standard_Library_Integration 0.001s (parse)
+  Witness_Primitives                           0.038s (parse)
+
+Output (JSON):  Outputs/conformance-oracle.json
+Output (Swift): Outputs/UserDomainRefinementsTable.swift
