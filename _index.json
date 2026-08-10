@@ -3306,6 +3306,263 @@
       "statusRaw": "CONFIRMED — FEASIBLE",
       "supersededBy": null,
       "crossRefs": []
+    },
+    {
+      "directory": "swift-json--codec-throughput-vs-newcodable",
+      "category": "comparative-measurement",
+      "purpose": "Replicate Apple's NewCodable JSON benchmark suite against swift-json's `JSON.Serializable`, on the canonical twitter.json / canada.json / citm_catalog.json payloads with Apple's exact 256-iter MINIMUM-interval methodology and MB/s throughput. Five codec paths per payload: (1) Foundation.JSONDecoder / JSONEncoder baseline; (2) Apple NewCodable JSON-specific path (JSONDecodable / JSONEncodable via JSONParserDecoder); (3) Apple NewCodable common path (CommonDecodable / CommonEncodable); (4) Swift Institute JSON.Serializable tree-grain (`JSON.parse` + `T.deserialize(_:)`); (5) Swift Institute JSON.Serializable event-grain (`T.deserialize(events:)`). Driven by the architectural map at swift-institute/Research/ (TBD) and the comparison synthesis from the 2026-03-06 forum thread.",
+      "date": "2026-05-20",
+      "toolchain": "Apple Swift 6.3.2 (institute side) + 6.4-dev nightly swift-DEVELOPMENT-SNAPSHOT-2026-03-16-a (Apple side)",
+      "status": "PARTIAL",
+      "statusDetail": "Arc complete 2026-05-20. Comparison achieved 2026-05-19 via two-binary split (single-binary skeleton blocked by SIL verifier bug in 5/7+5/12 nightlies). Headlines: NewCodable JSON-specific decode is 3.3-7.7x over Foundation JSONDecoder (avg 5.8x — matches Apple's '6x' claim), encode 4.1-12.3x (avg 8.5x). swift-json parse-only is 1.4x slower than Foundation on twitter, 4.7x slower on citm, 17x slower on canada (full table in RESULTS.md). Three patches landed targeting the canada anomaly (Number.Original Span init + lexNumberValue alloc reduction + parseArray reserveCapacity, then Eisel-Lemire fast Double parser in swift-ascii-parser-primitives wired into lexNumberValue's float branch). Combined arc impact on canada: 253 -> 240 ms/iter (-5%), an order of magnitude less than the projected 40-60% reduction. Hypothesis 'Double.init(String) is the dominant cost on canada' REFUTED empirically; real bottleneck is RFC_8259.Value enum allocation + tree teardown across 333K+ Values per parse — NOT float parsing. Twelve sibling commits across swift-effect-/swift-ownership-/swift-bit-/swift-pair-/swift-either-/swift-coproduct-primitives/swift-posix prepared the institute deps for 6.4-dev nightlies (independent value). The streaming-deserialize event-grain arc and value-tree-shape redesign remain the open routes; tree-shape redesign was rolled back (value-tree-redesign-v2.md SUPERSEDED-BY-EVIDENCE). Profile-driven follow-up needed to attribute the canada residue across Value allocation / tree teardown / parseArray ring-array doublings / any remaining lexer cost.",
+      "statusRaw": "PARTIAL",
+      "crossRefs": [
+        "swift-foundations/swift-json/Sources/JSON/JSON.Serializable.swift",
+        "swift-foundations/swift-json/Experiments/parse-performance-bench/",
+        "swift-foundations/swift-json/Experiments/codec-throughput-vs-newcodable/RESULTS.md",
+        "https://github.com/swiftlang/swift-foundation/tree/experimental/new-codable",
+        "https://forums.swift.org/t/new-codable-prototype-available-for-feedback/85186"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-json--parse-performance-bench",
+      "category": "measurement-and-verification",
+      "purpose": "Standing parse-performance + tree-equivalence harness for swift-json. Two complementary modes: (1) wall-clock benches comparing `JSON.parse(String)` / `JSON.parse([UInt8])` against `Foundation.JSONSerialization` and against pure byte-iteration floors; (2) `sanity` / `equiv` modes that prove both parsers produce structurally-equivalent trees (top-level keys, symbols.count, relationships.count, module.name, symbols[0].kind.identifier, relationships[0].kind, deep pathComponents — all match). Used as the measurement gate for Tiers 0/1/3/4 of the parse-performance arc.",
+      "date": "2026-05-13",
+      "toolchain": "Apple Swift 6.3+",
+      "status": "STANDING",
+      "statusDetail": "Standing reference readings (release, macOS 26 arm64, sum-over-256-iters methodology except symbolgraph-3-iter): (1) 86 MB Swift.symbols.json, 3-iter average: Foundation.JSONSerialization 0.299s; swift-json JSON.parse([UInt8]) 0.304s (1.02× Foundation); swift-json JSON.parse(String) 0.316s (1.06× Foundation). (2) 2026-05-19 new readings on canonical Apple bench payloads, 256-iter sum: twitter.json (617KB) — Foundation.JSONSerialization 2.52ms/iter (250 MB/s), JSON.parse([UInt8]) 3.61ms/iter (175 MB/s; 1.4× slower); citm_catalog.json (1.65MB) — Foundation 4.21ms (410 MB/s), JSON.parse 19.6ms (88 MB/s; 4.7× slower); canada.json (2.15MB) — Foundation 14.4ms (156 MB/s), JSON.parse 253.3ms (9 MB/s; 17× slower — ANOMALY, suspect per-element allocation in nested [[Double]] coordinate arrays, investigation pending). Tree equivalence verified across 7 fields. Used as the empirical gate for `parse-performance.md` v1.2.0 DECISION and `parse-performance-architecture.md` v1.0.2 DECISION; canada anomaly motivates a follow-up perf-investigation research doc.",
+      "statusRaw": "STANDING",
+      "crossRefs": [
+        "swift-foundations/swift-json/Research/parse-performance.md",
+        "swift-foundations/swift-json/Research/parse-performance-architecture.md",
+        "swift-foundations/swift-json/Experiments/codec-throughput-vs-newcodable/RESULTS.md",
+        "swift-foundations/swift-json/Experiments/parse-performance-tier-4-feasibility/",
+        "swift-foundations/swift-json/Experiments/symbol-graph-conformance-oracle/"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-json--streaming-deserialize-a0-feasibility",
+      "category": "compiler-binding-verification",
+      "purpose": "Phase A0 feasibility spike for the Option B (event-emitting Span parser γ) architecture recommended in `swift-institute/Research/streaming-json-deserialize-comparative-analysis.md` v1.0.0 and `swift-institute/Research/streaming-json-deserialize-status-quo-and-prior-art.md` v1.0.0. Three independent language/toolchain premises checked before any A1 implementation was authorized: (1) Token.Kind storage in ~Copyable & ~Escapable struct including the `.unknown(UInt8)` payload-carrying case; (2) `@_lifetime` + `inout` + typed-throws through protocol dispatch including default-fallback timing; (3) `withContiguousStorageIfAvailable` engagement regression check.",
+      "date": "2026-05-14",
+      "toolchain": "Apple Swift 6.3.2 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)",
+      "status": "RED",
+      "statusDetail": "Premises 1 and 3 unconditional GREEN (22/22 token-kind storage tests; 8/8 contiguous-storage shapes). Premise 2 correctness GREEN (composition compiles + runs correctly) but §4.3 silent-regression signal Bar/Today = 4.48x and Bar/Foo = 32.94x — the default-fallback path is 4.48x the status-quo tree path on the mock. A1 is unblocked but constrained: one §4.3 mitigation is REQUIRED at implementation time. Subsequent T-1/T-2 implementation arc proceeded with the mitigation in scope; closed at audit doc `swift-institute/Audits/streaming-deserialize-placement-audit.md` (POST-INVESTIGATION CLOSURE 2026-05-14, regression + residual both resolved).",
+      "statusRaw": "RED",
+      "crossRefs": [
+        "swift-institute/Research/streaming-json-deserialize-comparative-analysis.md",
+        "swift-institute/Research/streaming-json-deserialize-status-quo-and-prior-art.md",
+        "swift-institute/Audits/streaming-deserialize-placement-audit.md"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-json--parse-performance-tier-4-feasibility",
+      "category": "compiler-binding-verification",
+      "purpose": "Phase A0 feasibility spike for `swift-foundations/swift-json/Research/parse-performance-architecture.md` v1.0.0 (Tier 4 Span-cursor design). Two independent compiler-binding checks: (1) `check-contiguous-storage` verifies `String.UTF8View.withContiguousStorageIfAvailable` engagement across String shapes; (2) `check-span-typed-throws` verifies `Span<UInt8>` + `throws(E)` + `@_lifetime(borrow bytes)` composition for the proposed `RFC_8259.Lexer.Span` cursor shape.",
+      "date": "2026-05-13",
+      "toolchain": "Apple Swift 6.3+",
+      "status": "CONFIRMED",
+      "statusDetail": "All three Phase A0 premises GREEN. (1) `~Escapable` on associated types: user-confirmed via `.enableExperimentalFeature(\"SuppressedAssociatedTypes\")` (originally CONFIRMED 2026-02-13 in `swift-parser-primitives/Experiments/suppressed-escapable-associated-types/`). (2) `String.UTF8View.withContiguousStorageIfAvailable` fired on all 7 probed shapes including bridged NSString (more favourable than the architecture doc's projection). (3) `Span<UInt8>` + typed throws + `@_lifetime(borrow bytes)` compiles and runs; typed errors propagate across `inout Cursor` boundaries; `~Escapable` enforcement holds. Phase A1 (Span lexer + parser implementation) is unblocked.",
+      "statusRaw": "CONFIRMED",
+      "crossRefs": [
+        "swift-foundations/swift-json/Research/parse-performance-architecture.md",
+        "swift-foundations/swift-json/Research/parse-performance.md",
+        "swift-primitives/swift-parser-primitives/Experiments/suppressed-escapable-associated-types/"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-json--double-json-binary-dual-conformance",
+      "category": "compiler-binding-verification",
+      "purpose": "Verify that a single Swift type (Double) can simultaneously conform to two sibling format-Codable protocols (JSON.Serializable from swift-json + Binary.Serializable from swift-binary-primitives, declared in different packages) with no diagnostic conflicts, usable round-trip behavior in both formats, and deterministic call-site disambiguation when both protocol surfaces are in scope. Empirical foundation for the family-pattern claim in JSON.Serializable.swift's J1d doc-pass (commit 0307edc).",
+      "date": "2026-05-14",
+      "toolchain": "Apple Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": "V1 (compile-clean dual conformance), V2 (JSON round-trip lossless for finites), V3 (Binary IEEE-754 bit-pattern preserved for all values including NaN / ±infinity), V4 Cases A/B/C (explicit type context disambiguates correctly). V4 Case D prediction REFUTED in a favorable direction: `let mystery = Double.serialize(3.14)` with NO explicit type context was predicted to be an ambiguity error; empirically Swift's overload resolution favors JSON.Serializable's non-generic `serialize(_:) -> JSON` over Binary.Serializable's generic protocol-extension `serialize<Bytes>(_:) -> Bytes`, resolving deterministically to JSON. Debug + release both green per [EXP-017]; cross-module verified (Double's JSON.Serializable conformance from swift-json package + Probe library declaring Binary.Serializable conformance in this experiment package).",
+      "statusRaw": "CONFIRMED",
+      "crossRefs": [
+        "swift-foundations/swift-json/Sources/JSON/JSON.Serializable.swift",
+        "swift-primitives/swift-binary-primitives/Sources/Binary Serializable Primitives/Binary.Serializable.swift"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-json--symbol-graph-conformance-oracle",
+      "category": "format-verification",
+      "purpose": "Verify that `swift-symbolgraph-extract` emits sufficient `conformsTo` relationships in its JSON output to reconstruct a protocol-refinement table — replacing the hardcoded `idiomKnownStdlibRefinements` in `Lint.Rule.Idiom.RedundantRefinement` with a precomputed oracle. The empirical foundation for Shape F in `swift-foundations/swift-linter/Research/lsp-sourcekit-integration.md` v1.1.0.",
+      "date": "2026-05-13",
+      "toolchain": "Apple Swift 6.3.1",
+      "status": "CONFIRMED",
+      "statusDetail": "All three hypothesis claims dispositioned: (1) protocol-protocol conformsTo IS in symbol-graph JSON; (2) ~120-line reducer suffices; (3) wall-clock under 30s CONFIRMED for per-institute-module graphs (Carrier 48ms), REFUTED for Swift stdlib graph (128s) — swift-json text-parser bottleneck on 86 MB pretty-printed input, not a format limitation; production oracle generation is offline. ALL 26 entries of the hardcoded `idiomKnownStdlibRefinements` table reproduced; 110 additional refinements extracted.",
+      "statusRaw": "CONFIRMED",
+      "crossRefs": [
+        "swift-foundations/swift-linter-rules/Sources/Linter Rule Idiom/Lint.Rule.Idiom.RedundantRefinement.swift",
+        "swift-foundations/swift-linter/Research/lsp-sourcekit-integration.md",
+        "swift-institute/Experiments/error-implies-sendable/"
+      ],
+      "source": "swift-foundations/swift-json"
+    },
+    {
+      "directory": "swift-rfc-8259--parser-printer-codec",
+      "purpose": "Evaluate ParserPrinter-based JSON codec vs current Lexer/Parser/Encoder pipeline",
+      "date": "2026-03-24",
+      "toolchain": "(pending execution)",
+      "status": "SUPERSEDED",
+      "statusDetail": "API/package drift; experiment premise no longer expressible against current toolchain or peer-package API",
+      "statusRaw": "SUPERSEDED (Phase 7a 2026-04-30)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-ietf/swift-rfc-8259"
+    },
+    {
+      "directory": "swift-rfc-8259--noncopyable-value-spike",
+      "purpose": "Structural feasibility validation for the ~Copyable RFC_8259.Value cascade (Path B of the canada-perf next-arc decision space). Confirms Q1 (~Copyable 6-case enum with 2 ~Copyable-payload cases compiles), Q2 (borrowing inspection + consuming switch compiles + runs), Q4 (Memory.Arena compose sanity); refutes Q3 (stdlib Array<Element> does NOT accept Element: ~Copyable — production storage must swap to Buffer<Value>.Linear from swift-buffer-primitives).",
+      "date": "2026-05-20",
+      "toolchain": "Swift 6.3+",
+      "status": "RESOLVED",
+      "statusDetail": "Backs noncopyable-value-feasibility.md v1.0.0 RECOMMENDATION",
+      "statusRaw": "RESOLVED",
+      "supersededBy": null,
+      "crossRefs": [
+        "Research/noncopyable-value-feasibility.md"
+      ],
+      "source": "swift-ietf/swift-rfc-8259"
+    },
+    {
+      "directory": "swift-array-primitives--array-totality-patterns",
+      "purpose": "Design subscript patterns that achieve totality for Array types",
+      "date": "2026-01-22",
+      "toolchain": "swift-6.2-RELEASE",
+      "status": "SUPERSEDED",
+      "statusDetail": "API/package drift; experiment premise no longer expressible against current toolchain or peer-package API",
+      "statusRaw": "SUPERSEDED (Phase 7a 2026-04-30)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--bit-array-unification",
+      "displayName": "bit-array-unification",
+      "purpose": "Test unifying Bit.Array with Array<Bit>.Packed",
+      "date": "2026-01-21",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": null,
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--conditional-copyable",
+      "displayName": "conditional-copyable",
+      "purpose": "Test conditional Copyable for Array.Bounded via ManagedBuffer",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.2",
+      "status": "CONFIRMED",
+      "statusDetail": "→ IMPLEMENTED",
+      "statusRaw": "CONFIRMED → IMPLEMENTED",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--equatable-crash",
+      "displayName": "equatable-crash",
+      "purpose": "(Phase 1b backfill) compiler-crash investigation; details in main.swift header",
+      "date": "2026-01-22",
+      "toolchain": "Apple Swift 6.2.x",
+      "status": "FIXED",
+      "statusDetail": "original compiler-crash hypothesis does NOT reproduce on Swift 6.3.1 (swift build debug + release: clean; swift run output: SUCCESS). (Phase 1b stale-triage revalidation 2026-04-30)",
+      "statusRaw": "DEFERRED (Phase 1b stale-triage 2026-04-30) -> FIXED (Phase 1b 2026-04-30)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--foreach-noncopyable-property-view",
+      "displayName": "foreach-noncopyable-property-view",
+      "purpose": "(Phase 1b backfill) ~Copyable/borrowing investigation; details in main.swift header",
+      "date": "2026-01-22",
+      "toolchain": "Apple Swift 6.2.x",
+      "status": "SUPERSEDED",
+      "statusDetail": "Property<Tag,Base>.View.Typed<Element> pattern shipped in swift-property-primitives (Phase 1b stale-triage 2026-04-30)",
+      "statusRaw": "CONFIRMED -> SUPERSEDED (Phase 1b stale-triage 2026-04-30)",
+      "supersededBy": "Property<Tag,Base>.View.Typed<Element> pattern shipped in swift-property-primitives",
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--indexed-storage-wrapper",
+      "purpose": "Phantom-typed array indexing without protocols",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.2",
+      "status": "SUPERSEDED",
+      "statusDetail": "API/package drift; experiment premise no longer expressible against current toolchain or peer-package API",
+      "statusRaw": "SUPERSEDED (Phase 7a 2026-04-30; previously CONFIRMED)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--pointer-subscript-modify",
+      "displayName": "pointer-subscript-modify",
+      "purpose": "(Phase 1b backfill) ~Copyable/borrowing investigation; details in main.swift header",
+      "date": "2026-01-22",
+      "toolchain": "Apple Swift 6.2.x",
+      "status": "SUPERSEDED",
+      "statusDetail": "compiler-limitation finding stable; production uses .position.rawValue workaround per [COPY-FIX-*] (Phase 1b stale-triage 2026-04-30)",
+      "statusRaw": "CONFIRMED -> SUPERSEDED (Phase 1b stale-triage 2026-04-30)",
+      "supersededBy": "compiler-limitation finding stable; production uses .position.rawValue workaround per [COPY-FIX-*]",
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--property-view-value-generics",
+      "displayName": "property-view-value-generics",
+      "purpose": "(Phase 1b backfill) ~Copyable/borrowing investigation; details in main.swift header",
+      "date": "2026-01-22",
+      "toolchain": "Apple Swift 6.2.x",
+      "status": "SUPERSEDED",
+      "statusDetail": "Property.View.Typed.Valued shipped in swift-property-primitives (Phase 1b stale-triage 2026-04-30)",
+      "statusRaw": "CONFIRMED -> SUPERSEDED (Phase 1b stale-triage 2026-04-30)",
+      "supersededBy": "Property.View.Typed.Valued shipped in swift-property-primitives",
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--shorthand-syntax-with-shadowing",
+      "displayName": "shorthand-syntax-with-shadowing",
+      "purpose": "Verify whether Swift shorthand `[T]` / `[K:V]` syntax can resolve to user-defined Array/Dictionary types that shadow stdlib, or whether the shorthand is hardcoded to Swift.Array / Swift.Dictionary",
+      "date": "2026-05-04",
+      "toolchain": "Apple Swift 6.3.1 (Xcode 26.4) + swift:6.3 docker",
+      "status": "CONFIRMED",
+      "statusDetail": "Shorthand `[T]` always means Swift.Array<T>; cannot resolve to a shadowing custom Array. Verified via 5 variants + Swift compiler source (KnownStdlibTypes.def line 51, TypeCheckType.cpp resolveArrayType:5584). Same hardcoding for Dictionary (`[K:V]`) and Optional (`T?`).",
+      "statusRaw": "CONFIRMED",
+      "supersededBy": null,
+      "crossRefs": [
+        "[EXP-001]",
+        "[EXP-009]",
+        "swiftlang/swift @ 6f265bdcad8ff5ff1e6e9e287a882c09de969a08"
+      ],
+      "source": "swift-primitives/swift-array-primitives"
+    },
+    {
+      "directory": "swift-array-primitives--span-based-iterator",
+      "displayName": "span-based-iterator",
+      "purpose": "Test span-based iterators for array types",
+      "date": "2026-01-22",
+      "toolchain": "Swift 6.2",
+      "status": "SUPERSEDED",
+      "statusDetail": "API/package drift; experiment premise no longer expressible against current toolchain or peer-package API",
+      "statusRaw": "SUPERSEDED (Phase 7a 2026-04-30; previously CONFIRMED)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-array-primitives"
     }
   ],
   "narrativeSections": [

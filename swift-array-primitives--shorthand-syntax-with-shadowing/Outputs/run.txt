@@ -1,0 +1,8 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'shorthand-syntax-with-shadowing' complete! (0.10s)
+V1: custom Array<Int> (~Copyable)
+V2: stdlib [Int] count=3 — type is Swift.Array<Int>
+V4: acceptsCustom(_: borrowing Array<Int>) would reject [Int] (stdlib)
+V5: custom Array<Int> (~Copyable)
+V5: Array<Int> is stdlib regardless

@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module shorthand_syntax_with_shadowing
+[4/7] Compiling shorthand_syntax_with_shadowing main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking shorthand-syntax-with-shadowing
+[6/7] Applying shorthand-syntax-with-shadowing
+Build complete! (0.34s)

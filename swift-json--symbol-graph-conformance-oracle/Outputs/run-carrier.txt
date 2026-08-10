@@ -1,0 +1,23 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'symbol-graph-conformance-oracle' complete! (0.31s)
+=== Symbol-Graph Conformance Oracle ===
+Input:                 /Users/coen/Developer/swift-primitives/swift-carrier-primitives/.symbol-graphs/Carrier_Primitives.symbols.json
+File size (chars):     22613
+Symbols total:         7
+Protocol-kind symbols: 1
+Relationships total:   6 (all kinds)
+conformsTo total:      0
+Protocol→protocol:     0 refinement pairs
+conformsTo (other):    0 (concrete-type or cross-module endpoint)
+
+=== Refinement pairs (refining → refined) ===
+(none — this module declares no protocol that refines another protocol in the same module)
+
+=== Timing ===
+Read:       0.000s
+Parse:      0.047s
+Reduce:     0.000s
+Total:      0.048s
+
+Output:     Outputs/conformance-oracle.json

@@ -1,0 +1,27 @@
+# SwiftPM build directory
+.build/
+
+# `swift symbolgraph-extract` regenerable artifacts (86 MB+; reproduced by
+# the recipe in main.swift's header).
+Outputs/swift-stdlib/
+
+# Per-run reducer output JSON; regenerated each time the binary runs.
+# The Outputs/run-*.txt reports contain the human-readable evidence.
+Outputs/conformance-oracle.json
+
+# Per-run Swift table outputs; the canonical consumed copy lives in
+# swift-linter-rules at Sources/Linter Rule Idiom/Lint.Rule.Idiom.RedundantRefinement.StdlibRefinementsTable.swift.
+Outputs/StdlibRefinementsTable.swift
+
+# User-domain Swift table; derivative artifact. The user-domain
+# rule consumption requires path-aware matching (see findings) and
+# is not yet productionized — the per-run table is informational
+# only.
+Outputs/UserDomainRefinementsTable.swift
+
+# Stray run-stdlib variants from interactive sessions (the canonical run
+# log is Outputs/run-stdlib.txt).
+Outputs/run-stdlib-phase2.txt
+
+# Compilation output; regenerable via `swift build 2>&1 | tee Outputs/build.txt`.
+Outputs/build.txt

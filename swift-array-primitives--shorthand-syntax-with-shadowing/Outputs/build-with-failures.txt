@@ -1,0 +1,20 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module shorthand_syntax_with_shadowing
+[4/6] Compiling shorthand_syntax_with_shadowing main.swift
+/Users/coen/Developer/swift-primitives/swift-array-primitives/Experiments/shorthand-syntax-with-shadowing/Sources/shorthand-syntax-with-shadowing/main.swift:74:25: error: cannot convert value of type 'Array<Int>' to specified type '[Int]'
+ 72 | func v3_crossAssignmentFailsToCompile() {
+ 73 |     let custom: Array<Int> = Array<Int>()
+ 74 |     let stdlib: [Int] = custom  // <-- THE ERROR
+    |                         `- error: cannot convert value of type 'Array<Int>' to specified type '[Int]'
+ 75 |     _ = stdlib
+ 76 | }
+
+/Users/coen/Developer/swift-primitives/swift-array-primitives/Experiments/shorthand-syntax-with-shadowing/Sources/shorthand-syntax-with-shadowing/main.swift:92:19: error: cannot convert value of type '[Int]' to expected argument type 'Array<Int>'
+ 90 |     // Uncomment the call to reproduce the cross-package error:
+ 91 |     //   error: cannot convert value of type '[Int]' to expected argument type 'Array<Int>'
+ 92 |     acceptsCustom(stdlib)
+    |                   `- error: cannot convert value of type '[Int]' to expected argument type 'Array<Int>'
+ 93 |     _ = stdlib
+ 94 |     print("V4: acceptsCustom(_: borrowing Array<Int>) would reject [Int] (stdlib)")
