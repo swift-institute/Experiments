@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling ipv6_address_alignment main.swift
+[4/7] Emitting module ipv6_address_alignment
+[4/7] Write Objects.LinkFileList
+[5/7] Linking ipv6-address-alignment
+[6/7] Applying ipv6-address-alignment
+Build complete! (11.07s)
