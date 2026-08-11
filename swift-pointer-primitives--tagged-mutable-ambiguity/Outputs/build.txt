@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write tagged-mutable-ambiguity-entitlement.plist
+[1/6] Write sources
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module tagged_mutable_ambiguity
+[5/8] Compiling tagged_mutable_ambiguity main.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking tagged-mutable-ambiguity
+[7/8] Applying tagged-mutable-ambiguity
+Build complete! (0.70s)

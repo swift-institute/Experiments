@@ -1,0 +1,5 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'storage-protocol-sil-gate' complete! (0.15s)
+inline probe = 50
+pool probe   = 107
