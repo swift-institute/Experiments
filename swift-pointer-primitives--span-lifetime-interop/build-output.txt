@@ -1,0 +1,16 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling span_lifetime_interop main.swift
+/Users/coen/Developer/swift-primitives/swift-pointer-primitives/Experiments/span-lifetime-interop/Sources/main.swift:47:20: warning: no unsafe operations occur within 'unsafe' expression
+45 |     unsafe array.withUnsafeBufferPointer { buffer in
+46 |         let wrapper = unsafe PointerWrapper(buffer.baseAddress!)
+47 |         let span = unsafe Span(wrapperStart: wrapper, wrapperCount: buffer.count)
+   |                    `- warning: no unsafe operations occur within 'unsafe' expression
+48 |         print("Variant 4: Created span with \(span.count) elements")
+49 |     }
+[4/7] Emitting module span_lifetime_interop
+[4/7] Write Objects.LinkFileList
+[5/7] Linking span-lifetime-interop
+[6/7] Applying span-lifetime-interop
+Build complete! (0.38s)

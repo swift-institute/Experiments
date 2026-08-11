@@ -1,0 +1,49 @@
+================================================================
+ SIL RECEIPT — storage-protocol-sil-gate
+ Toolchain: Apple Swift version 6.3.2
+ SIL: Outputs/exe.sil (module storage_protocol_sil_gate, swiftc -emit-sil -O,
+      cross-module: imports the separately-built StorageProtocolGeneric +
+      Storage_Inline_Primitives + Storage_Pool_Primitives release modules)
+ Emitted: 2026-05-25
+================================================================
+
+HYPOTHESIS: a some Storage.`Protocol` generic (probe<S>) specializes to
+ZERO witness-table dispatch on capacity / pointer(at:) through a real STRUCT
+conformer (Storage.Inline) AND a real CLASS conformer (Storage.Pool),
+in release + cross-module.
+
+Note: under -O the @inlinable probe<S> body is INLINED directly into the two
+concrete callers (callInline, callPool); there is no surviving probe symbol.
+The witnesses are therefore inspected at their inlined sites.
+
+GATE 1 — witness_method anywhere in the optimized executable module:
+  witness_method count = 0
+  class_method count   = 0
+  (REQUIRED: 0 witness_method on capacity/pointer(at:) in the specialized
+   bodies. OBSERVED: 0 witness_method AND 0 class_method in the whole module.)
+
+----------------------------------------------------------------
+STRUCT conformer — sil @...callInlineSiyF (Storage<Int>.Inline<8>), lines 128-239:
+  capacity witness -> constant-folded to a literal (no call):
+    L180:   %48 = integer_literal $Builtin.Int64, 8         // users: %87, %64
+  pointer(at:) witness -> inlined concrete address arithmetic (no witness):
+    L181:   %49 = address_to_pointer [stack_protection] %25 to $Builtin.RawPointer // user: %82
+    L214:   %82 = index_raw_pointer %49, %81                // user: %83
+    L215:   %83 = pointer_to_address %82 to [strict] $*Int  // user: %84
+
+CLASS conformer — sil @...callPoolSiyF (Storage<Int>.Pool), lines 243-356:
+  capacity witness -> direct struct_extract chain via Memory.Pool._capacity:
+    L284:   %29 = struct_extract %28, #Memory.Pool._capacity // user: %30
+  pointer(at:) witness -> direct function_ref to Memory.Pool.pointer(at:)
+  (concrete static dispatch, NOT witness_method):
+    L289:   %33 = function_ref @$s16Memory_Primitive0A0O0A16_Pool_PrimitivesE0C0V7pointer2atSv07Tagged_D00G0VyAF4SlotO08Ordinal_
+    L290:   %34 = apply %33(%25, %28) : $@convention(method) (Tagged<Memory.Pool.Slot, Ordinal>, @gu
+
+----------------------------------------------------------------
+Setup-only specialized concrete clones (Tg5) — NOT witness dispatch:
+  (Inline initialize/move + Pool init/allocate/deallocate Property accessors)
+  Tg5 specialized function_refs in module: 15
+
+VERDICT: CONFIRMED — 0 witness_method (and 0 class_method) on capacity /
+pointer(at:) for BOTH the struct (Inline) and class (Pool) conformers,
+release + cross-module. The Storage.Protocol generic fully specializes.

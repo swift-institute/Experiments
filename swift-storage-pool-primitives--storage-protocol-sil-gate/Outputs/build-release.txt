@@ -1,0 +1,8 @@
+Building for production...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling StorageProtocolGeneric StorageProtocolGeneric.swift
+[4/6] Compiling storage_protocol_sil_gate main.swift
+[4/6] Write Objects.LinkFileList
+[5/6] Linking storage-protocol-sil-gate
+Build complete! (0.74s)
