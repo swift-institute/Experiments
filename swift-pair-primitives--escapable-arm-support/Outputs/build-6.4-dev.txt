@@ -1,0 +1,27 @@
+Building for debugging...
+Computing dependencies
+Constructing description
+Pre-planning 1 / 713
+Planning deferred tasks
+[23/100] Ownership Namespace 79 / 334
+[44/100] Ownership Namespace 151 / 336
+[45/100] Carrier Primitives 162 / 349
+[47/100] Carrier Primitives 166 / 349
+[51/100] Carrier Primitives 181 / 352
+[52/100] Property Primitives Core 192 / 363
+[59/100] Property Primitives Core 229 / 383
+[68/100] Property Inout Primitives 262 / 383
+[70/100] Property Inout Primitives 276 / 391
+[70/100] Property Borrow Primitives 282 / 396
+[75/100] Property Borrow Primitives 300 / 399
+[77/100] Equation Primitives Core 315 / 404
+[80/100] Equation Primitives Standard Library Integration 333 / 414
+[82/100] Equation Primitives 345 / 418
+[83/100] Comparison Primitives Core 364 / 434
+[87/100] Hash Primitives Standard Library Integration 392 / 445
+[87/100] Hash Primitives Standard Library Integration 400 / 454
+[92/100] Hash Primitives 427 / 462
+[96/100] Pair Primitives 451 / 468
+[98/100] EscapableArmSupport 462 / 471
+[100/100] 
+Build complete! (4,24 sec)
