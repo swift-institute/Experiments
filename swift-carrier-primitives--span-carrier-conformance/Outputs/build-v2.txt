@@ -1,0 +1,14 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module SpanCarrier
+[4/7] Compiling SpanCarrier Span+Carrier.swift
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Span+Carrier.swift:20:19: error: 'self' is borrowed and cannot be consumed
+18 |     public var underlying: Span<Element> {
+19 |         @_lifetime(borrow self)
+20 |         borrowing get { self }
+   |                   |          `- note: consumed here
+   |                   `- error: 'self' is borrowed and cannot be consumed
+21 |     }
+22 | 

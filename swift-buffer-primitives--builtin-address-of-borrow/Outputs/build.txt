@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write builtin-address-of-borrow-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling builtin_address_of_borrow main.swift
+[5/8] Emitting module builtin_address_of_borrow
+[5/8] Write Objects.LinkFileList
+[6/8] Linking builtin-address-of-borrow
+[7/8] Applying builtin-address-of-borrow
+Build complete! (0.53s)

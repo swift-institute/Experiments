@@ -1,0 +1,9 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Compiling dynamic_member_lookup_quadrants main.swift
+[4/6] Emitting module dynamic_member_lookup_quadrants
+[4/7] Write Objects.LinkFileList
+[5/7] Linking dynamic-member-lookup-quadrants
+[6/7] Applying dynamic-member-lookup-quadrants
+Build complete! (0.32s)

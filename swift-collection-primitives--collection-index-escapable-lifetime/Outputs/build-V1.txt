@@ -1,0 +1,27 @@
+Building for debugging...
+[0/1] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[2/3] Emitting module V1BorrowSelf
+/Users/coen/Developer/swift-primitives/swift-collection-primitives/Experiments/collection-index-escapable-lifetime/Sources/V1BorrowSelf/V1.swift:33:33: error: lifetime-dependent variable 'i' escapes its scope
+31 | 
+32 |     @inlinable
+33 |     public func formIndex(after i: inout Index) {
+   |                 |               `- error: lifetime-dependent variable 'i' escapes its scope
+   |                 `- note: it depends on the lifetime of argument 'self'
+34 |         i = index(after: i)
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 | }
+37 | 
+[3/3] Compiling V1BorrowSelf V1.swift
+/Users/coen/Developer/swift-primitives/swift-collection-primitives/Experiments/collection-index-escapable-lifetime/Sources/V1BorrowSelf/V1.swift:33:33: error: lifetime-dependent variable 'i' escapes its scope
+31 | 
+32 |     @inlinable
+33 |     public func formIndex(after i: inout Index) {
+   |                 |               `- error: lifetime-dependent variable 'i' escapes its scope
+   |                 `- note: it depends on the lifetime of argument 'self'
+34 |         i = index(after: i)
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 | }
+37 | 

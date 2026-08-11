@@ -1,0 +1,81 @@
+Building for debugging...
+[0/7] Write sources
+[2/7] Write span-carrier-conformance-entitlement.plist
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[5/11] Emitting module SpanCarrier
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Span+Carrier.swift:16:1: error: type 'Span<Element>' does not conform to protocol 'Carrier'
+14 | // This experiment empirically settles concern #1.
+15 | 
+16 | extension Span: Carrier {
+   | |- error: type 'Span<Element>' does not conform to protocol 'Carrier'
+   | `- note: add stubs for conformance
+17 |     public typealias Underlying = Span<Element>
+18 | }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Carrier+Trivial.swift:6:16: note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+ 4 | 
+ 5 | extension Carrier where Underlying == Self {
+ 6 |     public var underlying: Self {
+   |                `- note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+ 7 |         _read { yield self }
+ 8 |     }
+ 9 | 
+10 |     public init(_ underlying: consuming Self) {
+   |            `- note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+11 |         self = underlying
+12 |     }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Carrier.swift:8:9: note: protocol requires property 'underlying' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+ 6 |     associatedtype Underlying: ~Copyable & ~Escapable
+ 7 | 
+ 8 |     var underlying: Underlying {
+   |         `- note: protocol requires property 'underlying' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+ 9 |         @_lifetime(borrow self)
+10 |         borrowing get
+   :
+12 | 
+13 |     @_lifetime(copy underlying)
+14 |     init(_ underlying: consuming Underlying)
+   |     `- note: protocol requires initializer 'init(_:)' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+15 | }
+16 | 
+[6/11] Compiling SpanCarrier Carrier+Trivial.swift
+[7/11] Compiling SpanCarrier Carrier.swift
+[8/11] Compiling SpanCarrier Span+Carrier.swift
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Span+Carrier.swift:16:1: error: type 'Span<Element>' does not conform to protocol 'Carrier'
+14 | // This experiment empirically settles concern #1.
+15 | 
+16 | extension Span: Carrier {
+   | |- error: type 'Span<Element>' does not conform to protocol 'Carrier'
+   | `- note: add stubs for conformance
+17 |     public typealias Underlying = Span<Element>
+18 | }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Carrier+Trivial.swift:6:16: note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+ 4 | 
+ 5 | extension Carrier where Underlying == Self {
+ 6 |     public var underlying: Self {
+   |                `- note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+ 7 |         _read { yield self }
+ 8 |     }
+ 9 | 
+10 |     public init(_ underlying: consuming Self) {
+   |            `- note: candidate would match if 'Span<Element>' conformed to 'Escapable'
+11 |         self = underlying
+12 |     }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/SpanCarrier/Carrier.swift:8:9: note: protocol requires property 'underlying' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+ 6 |     associatedtype Underlying: ~Copyable & ~Escapable
+ 7 | 
+ 8 |     var underlying: Underlying {
+   |         `- note: protocol requires property 'underlying' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+ 9 |         @_lifetime(borrow self)
+10 |         borrowing get
+   :
+12 | 
+13 |     @_lifetime(copy underlying)
+14 |     init(_ underlying: consuming Underlying)
+   |     `- note: protocol requires initializer 'init(_:)' with type 'Span<Element>.Underlying' (aka 'Span<Element>')
+15 | }
+16 | 

@@ -1,0 +1,25 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'peek-non-mutating' complete! (0.09s)
+=== Variant 1: Eager Copyable Struct (computed property) ===
+  inline.peek1.front = 10
+  inline.peek1.back  = 30
+  heap.peek1.front   = 10
+  heap.peek1.back    = 30
+
+=== Variant 2: Eager Copyable Struct (_read coroutine) ===
+  inline.peek2.front = 10
+  inline.peek2.back  = 30
+  heap.peek2.front   = 10
+  heap.peek2.back    = 30
+
+=== Variant 3: Named Tuple ===
+  inline.peek3.front = 10
+  inline.peek3.back  = 30
+
+=== Variant 4: Lazy via class reference (heap only) ===
+  heap.peek4.front   = 10
+  heap.peek4.back    = 30
+
+=== Verification: let binding + ~Copyable base ===
+  PASS: let binding works with ~Copyable base

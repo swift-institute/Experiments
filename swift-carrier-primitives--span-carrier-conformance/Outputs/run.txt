@@ -1,0 +1,7 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'span-carrier-conformance' complete! (0.10s)
+V3 extract: count=5
+V3 describeAsBytes: 5
+V3 init(_:): count=5
+V3 complete

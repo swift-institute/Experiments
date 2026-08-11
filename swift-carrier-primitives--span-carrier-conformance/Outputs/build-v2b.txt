@@ -1,0 +1,46 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module SpanCarrier
+[4/7] Compiling SpanCarrier Span+Carrier.swift
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[5/9] Emitting module span_carrier_conformance
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:34:37: error: cannot suppress '~Escapable' on generic parameter 'C.Underlying' defined in outer scope
+32 | func extractUnderlying<C: Carrier & ~Escapable>(
+33 |     _ c: borrowing C
+34 | ) -> C.Underlying where C.Underlying: ~Escapable {
+   |                                     `- error: cannot suppress '~Escapable' on generic parameter 'C.Underlying' defined in outer scope
+35 |     c.underlying
+36 | }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:39:2: error: invalid lifetime dependence on an Escapable result
+37 | 
+38 | // Constrained generic: API accepting any Carrier of Span<UInt8>.
+39 | @_lifetime(borrow c)
+   |  `- error: invalid lifetime dependence on an Escapable result
+40 | func describeAsBytes<C: Carrier & ~Escapable>(
+41 |     _ c: borrowing C
+[6/9] Compiling span_carrier_conformance main.swift
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:34:37: error: cannot suppress '~Escapable' on generic parameter 'C.Underlying' defined in outer scope
+32 | func extractUnderlying<C: Carrier & ~Escapable>(
+33 |     _ c: borrowing C
+34 | ) -> C.Underlying where C.Underlying: ~Escapable {
+   |                                     `- error: cannot suppress '~Escapable' on generic parameter 'C.Underlying' defined in outer scope
+35 |     c.underlying
+36 | }
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:39:2: error: invalid lifetime dependence on an Escapable result
+37 | 
+38 | // Constrained generic: API accepting any Carrier of Span<UInt8>.
+39 | @_lifetime(borrow c)
+   |  `- error: invalid lifetime dependence on an Escapable result
+40 | func describeAsBytes<C: Carrier & ~Escapable>(
+41 |     _ c: borrowing C
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:25:8: warning: public import of 'SpanCarrier' was not used in public declarations or inlinable code
+23 | //   V3 — release-mode validation (build receipt).
+24 | 
+25 | public import SpanCarrier
+   |        `- warning: public import of 'SpanCarrier' was not used in public declarations or inlinable code
+26 | 
+27 | // MARK: - V2: Cross-module generic dispatch

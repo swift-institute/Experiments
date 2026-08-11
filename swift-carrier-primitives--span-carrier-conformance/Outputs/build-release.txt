@@ -1,0 +1,8 @@
+Building for production...
+[0/5] Write sources
+[2/5] Write swift-version--58304C5D6DBC2206.txt
+[4/6] Compiling SpanCarrier Carrier+Trivial.swift
+[5/7] Compiling span_carrier_conformance main.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking span-carrier-conformance
+Build complete! (0.61s)
