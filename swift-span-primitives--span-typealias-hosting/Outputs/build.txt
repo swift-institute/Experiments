@@ -1,0 +1,14 @@
+Building for debugging...
+[0/8] Write sources
+[3/8] Write span-typealias-hosting-entitlement.plist
+[4/8] Write swift-version--58304C5D6DBC2206.txt
+[6/12] Emitting module UnboundAlias
+[7/12] Compiling UnboundAlias UnboundAlias.swift
+[8/12] Compiling BoundAlias BoundAlias.swift
+[9/12] Emitting module BoundAlias
+[10/14] Compiling span_typealias_hosting main.swift
+[11/14] Emitting module span_typealias_hosting
+[11/14] Write Objects.LinkFileList
+[12/14] Linking span-typealias-hosting
+[13/14] Applying span-typealias-hosting
+Build complete! (1.02s)

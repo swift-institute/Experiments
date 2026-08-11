@@ -1,0 +1,15 @@
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+Variant2_accessor.swift:15:53: error: cannot find type 'n' in scope
+   |                                                     `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:16:70: error: cannot find type 'n' in scope
+   |                                                                      `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:15:53: error: cannot find type 'n' in scope
+   |                                                     `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:16:70: error: cannot find type 'n' in scope
+   |                                                                      `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:20:77: error: cannot find type 'n' in scope
+   |                                                                             `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:21:48: error: cannot find type 'n' in scope
+   |                                               |`- error: cannot find type 'n' in scope
+Variant2_accessor.swift:22:20: error: cannot yield immutable value of type '_' as an inout yield
+   |                    `- error: cannot yield immutable value of type '_' as an inout yield

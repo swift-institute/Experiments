@@ -1,0 +1,9 @@
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+Variant3_storage_generic_op.swift:12:21: error: cannot find type 'S' in scope
+   |                     `- error: cannot find type 'S' in scope
+Variant3_storage_generic_op.swift:12:54: error: cannot find type 'S' in scope
+   |                                                      `- error: cannot find type 'S' in scope
+Variant3_storage_generic_op.swift:12:21: error: cannot find type 'S' in scope
+   |                     `- error: cannot find type 'S' in scope
+Variant3_storage_generic_op.swift:12:54: error: cannot find type 'S' in scope
+   |                                                      `- error: cannot find type 'S' in scope

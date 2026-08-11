@@ -1,0 +1,12 @@
+// swift-tools-version: 6.3
+import PackageDescription
+
+let package = Package(
+    name: "language-semantic-property-typed-replacement",
+    platforms: [.macOS(.v26)],
+    targets: [
+        .executableTarget(
+            name: "language-semantic-property-typed-replacement"
+        )
+    ]
+)

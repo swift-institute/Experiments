@@ -1,0 +1,1052 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+public struct HeapStorage : StorageProtocol, ~Copyable {
+  public typealias Element = Int
+  @_hasStorage public let capacity: Int { get }
+  @usableFromInline
+  @_hasStorage let base: UnsafeMutablePointer<Int> { get }
+  public init(capacity: Int)
+  public func pointer(at slot: Int) -> UnsafeMutablePointer<Int>
+  deinit
+}
+
+import Property_Primitives
+
+public struct LinearBuffer : ~Copyable {
+  @usableFromInline
+  @_hasStorage var storage: HeapStorage { get set }
+  public init(capacity: Int)
+  public borrowing func checksum(count: Int) -> Int
+}
+
+extension LinearBuffer {
+  public typealias Property<Tag> = Property<Tag, LinearBuffer>
+  public enum BumpTag {
+  }
+  public var bump: Property<LinearBuffer.BumpTag, LinearBuffer>.Inout {
+    mutating _read
+    _modify
+  }
+}
+
+extension Property.Inout where Tag == LinearBuffer.BumpTag, Base == LinearBuffer {
+  public mutating func all(by delta: Int, count: Int)
+}
+
+public enum Operations {
+  public static func fill<S>(_ storage: borrowing S, count: Int, value: Int) where S : StorageProtocol, S.Element == Int, S : ~Copyable
+  public static func sum<S>(_ storage: borrowing S, count: Int) -> Int where S : StorageProtocol, S.Element == Int, S : ~Copyable
+  public static func bump<S>(_ storage: borrowing S, count: Int, by delta: Int) where S : StorageProtocol, S.Element == Int, S : ~Copyable
+}
+
+public protocol StorageProtocol : ~Copyable {
+  associatedtype Element : ~Copyable
+  var capacity: Int { get }
+  func pointer(at slot: Int) -> UnsafeMutablePointer<Self.Element>
+}
+
+import Property_Primitives
+
+public protocol LinearBufferProtocol : ~Copyable {
+  associatedtype Store : StorageProtocol, ~Copyable where Self.Store.Element == Int
+  var store: Self.Store { get }
+  var elementCount: Int { get }
+}
+
+public enum SharedBumpTag {
+}
+
+extension LinearBufferProtocol where Self : ~Copyable {
+  public typealias SharedProperty = Property<SharedBumpTag, Self>
+  public var bumpShared: Property<SharedBumpTag, Self>.Inout {
+    mutating _read
+    _modify
+  }
+}
+
+extension Property.Inout where Tag == SharedBumpTag, Base : LinearBufferProtocol, Base : ~Copyable {
+  public mutating func all(by delta: Int, count: Int)
+}
+
+extension LinearBuffer : LinearBufferProtocol {
+  public var store: HeapStorage { _read }
+  public var elementCount: Int { get }
+  typealias Store = HeapStorage
+}
+
+// HeapStorage.capacity.getter
+// Isolation: unspecified
+sil [transparent] @$s8PropCore11HeapStorageV8capacitySivg : $@convention(method) (@guaranteed HeapStorage) -> Int {
+[%0: noescape **]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #HeapStorage.capacity   // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s8PropCore11HeapStorageV8capacitySivg'
+
+// HeapStorage.base.getter
+// Isolation: unspecified
+sil [transparent] @$s8PropCore11HeapStorageV4baseSpySiGvg : $@convention(method) (@guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%0: escape v** => %r.v**, escape v**.c*.v** => %r.v**.c*.v**]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #HeapStorage.base       // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s8PropCore11HeapStorageV4baseSpySiGvg'
+
+// HeapStorage.init(capacity:)
+// Isolation: unspecified
+sil @$s8PropCore11HeapStorageV8capacityACSi_tcfC : $@convention(method) (Int, @thin HeapStorage.Type) -> @owned HeapStorage {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "capacity"                                  // users: %5, %7, %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin HeapStorage.Type):
+  %2 = alloc_stack [lexical] [var_decl] $HeapStorage, var, name "self", type $HeapStorage // users: %21, %4, %19, %23
+  debug_value %0, let, name "capacity", argno 1   // id: %3
+  %4 = struct_element_addr %2, #HeapStorage.capacity // user: %5
+  store %0 to %4                                  // id: %5
+  %6 = integer_literal $Builtin.Int64, 8          // user: %9
+  %7 = struct_extract %0, #Int._value             // users: %16, %9
+  %8 = integer_literal $Builtin.Int1, -1          // user: %9
+  %9 = builtin "smul_with_overflow_Int64"(%6, %7, %8) : $(Builtin.Int64, Builtin.Int1) // users: %11, %10
+  %10 = tuple_extract %9, 0                       // user: %14
+  %11 = tuple_extract %9, 1                       // user: %12
+  cond_fail %11, "arithmetic overflow"            // id: %12
+  %13 = integer_literal $Builtin.Word, 0          // user: %15
+  %14 = builtin "truncOrBitCast_Int64_Word"(%10) : $Builtin.Word // user: %15
+  %15 = builtin "allocRaw"(%14, %13) : $Builtin.RawPointer // users: %18, %17
+  %16 = builtin "truncOrBitCast_Int64_Word"(%7) : $Builtin.Word // user: %17
+  %17 = bind_memory %15, %16 to $*Int
+  %18 = struct $UnsafeMutablePointer<Int> (%15)   // user: %20
+  %19 = struct_element_addr %2, #HeapStorage.base // user: %20
+  store %18 to %19                                // id: %20
+  %21 = load %2                                   // user: %24
+  debug_value undef : $*HeapStorage, var, name "self" // id: %22
+  dealloc_stack %2                                // id: %23
+  return %21                                      // id: %24
+} // end sil function '$s8PropCore11HeapStorageV8capacityACSi_tcfC'
+
+// HeapStorage.pointer(at:)
+// Isolation: unspecified
+sil @$s8PropCore11HeapStorageV7pointer2atSpySiGSi_tF : $@convention(method) (Int, @guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **]
+[global: ]
+// %0 "slot"                                      // users: %6, %2
+// %1 "self"                                      // users: %4, %3
+bb0(%0 : $Int, %1 : $HeapStorage):
+  debug_value %0, let, name "slot", argno 1       // id: %2
+  debug_value %1, let, name "self", argno 2       // id: %3
+  %4 = struct_extract %1, #HeapStorage.base       // user: %5
+  %5 = struct_extract %4, #UnsafeMutablePointer._rawValue // user: %8
+  %6 = struct_extract %0, #Int._value             // user: %7
+  %7 = builtin "truncOrBitCast_Int64_Word"(%6) : $Builtin.Word // user: %9
+  %8 = pointer_to_address %5 to [strict] $*Int    // user: %9
+  %9 = index_addr [stack_protection] %8, %7       // user: %10
+  %10 = address_to_pointer [stack_protection] %9 to $Builtin.RawPointer // user: %11
+  %11 = struct $UnsafeMutablePointer<Int> (%10)   // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s8PropCore11HeapStorageV7pointer2atSpySiGSi_tF'
+
+// HeapStorage.deinit
+// Isolation: nonisolated
+sil @$s8PropCore11HeapStorageVfD : $@convention(method) (@owned HeapStorage) -> () {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %5, %2, %1
+bb0(%0 : $HeapStorage):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  debug_value %0, let, name "self", argno 1       // id: %2
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %3
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %4
+  %5 = struct_extract %0, #HeapStorage.base       // user: %6
+  %6 = struct_extract %5, #UnsafeMutablePointer._rawValue // user: %10
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %7
+  %8 = integer_literal $Builtin.Word, -1          // user: %10
+  %9 = integer_literal $Builtin.Word, 0           // user: %10
+  %10 = builtin "deallocRaw"(%6, %8, %9) : $()
+  %11 = tuple ()                                  // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s8PropCore11HeapStorageVfD'
+
+// protocol witness for StorageProtocol.capacity.getter in conformance HeapStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP8capacitySivgTW : $@convention(witness_method: StorageProtocol) (@in_guaranteed HeapStorage) -> Int {
+[%0: noescape **, read s0.v**]
+[global: ]
+// %0                                             // user: %1
+bb0(%0 : $*HeapStorage):
+  %1 = struct_element_addr %0, #HeapStorage.capacity // user: %2
+  %2 = load %1                                    // user: %3
+  return %2                                       // id: %3
+} // end sil function '$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP8capacitySivgTW'
+
+// protocol witness for StorageProtocol.pointer(at:) in conformance HeapStorage
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW : $@convention(witness_method: StorageProtocol) (Int, @in_guaranteed HeapStorage) -> UnsafeMutablePointer<Int> {
+[%1: noescape **, read s1.s0.v**]
+[global: ]
+// %0                                             // users: %6, %5
+// %1                                             // user: %2
+bb0(%0 : $Int, %1 : $*HeapStorage):
+  %2 = struct_element_addr %1, #HeapStorage.base  // user: %3
+  %3 = struct_element_addr %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = load %3                                    // user: %8
+  debug_value %0, let, name "slot", argno 1       // id: %5
+  %6 = struct_extract %0, #Int._value             // user: %7
+  %7 = builtin "truncOrBitCast_Int64_Word"(%6) : $Builtin.Word // user: %9
+  %8 = pointer_to_address %4 to [strict] $*Int    // user: %9
+  %9 = index_addr [stack_protection] %8, %7       // user: %10
+  %10 = address_to_pointer [stack_protection] %9 to $Builtin.RawPointer // user: %11
+  %11 = struct $UnsafeMutablePointer<Int> (%10)   // user: %12
+  return %11                                      // id: %12
+} // end sil function '$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW'
+
+// LinearBuffer.storage.read
+// Isolation: unspecified
+sil [transparent] @$s8PropCore12LinearBufferV7storageAA11HeapStorageVvr : $@yield_once @convention(method) (@guaranteed LinearBuffer) -> @yields @guaranteed HeapStorage {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $LinearBuffer):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #LinearBuffer.storage   // user: %3
+  yield %2, resume bb1, unwind bb2                // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = tuple ()                                   // user: %5
+  return %4                                       // id: %5
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %6
+} // end sil function '$s8PropCore12LinearBufferV7storageAA11HeapStorageVvr'
+
+// LinearBuffer.storage.setter
+// Isolation: unspecified
+sil [transparent] @$s8PropCore12LinearBufferV7storageAA11HeapStorageVvs : $@convention(method) (@owned HeapStorage, @inout LinearBuffer) -> () {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[%1: read s0.s1.s0.v**, write s0.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "value"                                     // users: %16, %2
+// %1 "self"                                      // users: %5, %17, %3
+bb0(%0 : $HeapStorage, %1 : $*LinearBuffer):
+  debug_value %0, let, name "value", argno 1      // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  debug_value undef : $*HeapStorage, let, name "value", argno 1 // id: %4
+  %5 = struct_element_addr %1, #LinearBuffer.storage // users: %6, %16
+  %6 = struct_element_addr %5, #HeapStorage.base  // user: %7
+  %7 = struct_element_addr %6, #UnsafeMutablePointer._rawValue // user: %8
+  %8 = load %7                                    // user: %14
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %9
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %10
+  debug_value undef : $*HeapStorage, let, name "self", argno 1 // id: %11
+  %12 = integer_literal $Builtin.Word, -1         // user: %14
+  %13 = integer_literal $Builtin.Word, 0          // user: %14
+  %14 = builtin "deallocRaw"(%8, %12, %13) : $()
+  debug_value undef : $*LinearBuffer, var, name "self", argno 2, expr op_deref // id: %15
+  store %0 to %5                                  // id: %16
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %17
+  %18 = tuple ()                                  // user: %19
+  return %18                                      // id: %19
+} // end sil function '$s8PropCore12LinearBufferV7storageAA11HeapStorageVvs'
+
+// LinearBuffer.storage.modify
+// Isolation: unspecified
+sil [transparent] @$s8PropCore12LinearBufferV7storageAA11HeapStorageVvM : $@yield_once @convention(method) (@inout LinearBuffer) -> @yields @inout HeapStorage {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $*LinearBuffer):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = struct_element_addr %0, #LinearBuffer.storage // user: %3
+  yield %2, resume bb1, unwind bb2                // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = tuple ()                                   // user: %5
+  return %4                                       // id: %5
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %6
+} // end sil function '$s8PropCore12LinearBufferV7storageAA11HeapStorageVvM'
+
+// LinearBuffer.init(capacity:)
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV8capacityACSi_tcfC : $@convention(method) (Int, @thin LinearBuffer.Type) -> @owned LinearBuffer {
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "capacity"                                  // users: %6, %8, %4, %25, %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin LinearBuffer.Type):
+  %2 = alloc_stack [lexical] $HeapStorage, var, name "self", type $LinearBuffer, expr op_fragment:#LinearBuffer.storage // users: %47, %5, %20, %50
+  debug_value %0, let, name "capacity", argno 1   // id: %3
+  debug_value %0, let, name "capacity", argno 1   // id: %4
+  %5 = struct_element_addr %2, #HeapStorage.capacity // user: %6
+  store %0 to %5                                  // id: %6
+  %7 = integer_literal $Builtin.Int64, 8          // user: %10
+  %8 = struct_extract %0, #Int._value             // users: %29, %43, %17, %10
+  %9 = integer_literal $Builtin.Int1, -1          // user: %10
+  %10 = builtin "smul_with_overflow_Int64"(%7, %8, %9) : $(Builtin.Int64, Builtin.Int1) // users: %12, %11
+  %11 = tuple_extract %10, 0                      // user: %15
+  %12 = tuple_extract %10, 1                      // user: %13
+  cond_fail %12, "arithmetic overflow"            // id: %13
+  %14 = integer_literal $Builtin.Word, 0          // user: %16
+  %15 = builtin "truncOrBitCast_Int64_Word"(%11) : $Builtin.Word // user: %16
+  %16 = builtin "allocRaw"(%15, %14) : $Builtin.RawPointer // users: %32, %19, %18
+  %17 = builtin "truncOrBitCast_Int64_Word"(%8) : $Builtin.Word // user: %18
+  %18 = bind_memory %16, %17 to $*Int
+  %19 = struct $UnsafeMutablePointer<Int> (%16)   // user: %21
+  %20 = struct_element_addr %2, #HeapStorage.base // user: %21
+  store %19 to %20                                // id: %21
+  debug_value undef : $*HeapStorage, var, name "self" // id: %22
+  %23 = integer_literal $Builtin.Int64, 1         // users: %40, %24
+  %24 = struct $Int (%23)                         // users: %39, %26
+  debug_value %0, let, name "count", argno 2      // id: %25
+  debug_value %24, let, name "value", argno 3     // id: %26
+  %27 = integer_literal $Builtin.Int64, 0         // users: %33, %29, %28
+  debug_value %27, var, name "i", type $Int, expr op_fragment:#Int._value // id: %28
+  %29 = builtin "cmp_slt_Int64"(%27, %8) : $Builtin.Int1 // user: %30
+  cond_br %29, bb1, bb2                           // id: %30
+
+bb1:                                              // Preds: bb0
+  %31 = integer_literal $Builtin.Int1, 0          // user: %40
+  %32 = pointer_to_address %16 to [strict] $*Int  // user: %38
+  br bb3(%27)                                     // id: %33
+
+bb2:                                              // Preds: bb0
+  br bb6                                          // id: %34
+
+// %35                                            // users: %40, %37, %36
+bb3(%35 : $Builtin.Int64):                        // Preds: bb4 bb1
+  debug_value %35, let, name "slot", argno 1, type $Int, expr op_fragment:#Int._value // id: %36
+  %37 = builtin "truncOrBitCast_Int64_Word"(%35) : $Builtin.Word // user: %38
+  %38 = index_addr [stack_protection] %32, %37    // user: %39
+  store %24 to %38                                // id: %39
+  %40 = builtin "sadd_with_overflow_Int64"(%35, %23, %31) : $(Builtin.Int64, Builtin.Int1) // user: %41
+  %41 = tuple_extract %40, 0                      // users: %45, %43, %42
+  debug_value %41, var, name "i", type $Int, expr op_fragment:#Int._value // id: %42
+  %43 = builtin "cmp_slt_Int64"(%41, %8) : $Builtin.Int1 // user: %44
+  cond_br %43, bb4, bb5                           // id: %44
+
+bb4:                                              // Preds: bb3
+  br bb3(%41)                                     // id: %45
+
+bb5:                                              // Preds: bb3
+  br bb6                                          // id: %46
+
+bb6:                                              // Preds: bb2 bb5
+  %47 = load %2                                   // user: %48
+  %48 = struct $LinearBuffer (%47)                // user: %51
+  debug_value undef : $*LinearBuffer, var, name "self" // id: %49
+  dealloc_stack %2                                // id: %50
+  return %48                                      // id: %51
+} // end sil function '$s8PropCore12LinearBufferV8capacityACSi_tcfC'
+
+// static Operations.fill<A>(_:count:value:)
+// Isolation: unspecified
+sil @$s8PropCore10OperationsO4fill_5count5valueyx_S2itAA15StorageProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <S where S : StorageProtocol, S.Element == Int, S : ~Copyable> (@in_guaranteed S, Int, Int, @thin Operations.Type) -> () {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "storage"                                   // users: %20, %4
+// %1 "count"                                     // users: %10, %5
+// %2 "value"                                     // users: %23, %6
+// %3 "self"                                      // user: %7
+bb0(%0 : $*S, %1 : $Int, %2 : $Int, %3 : $@thin Operations.Type):
+  debug_value %0, let, name "storage", argno 1, expr op_deref // id: %4
+  debug_value %1, let, name "count", argno 2      // id: %5
+  debug_value %2, let, name "value", argno 3      // id: %6
+  debug_value %3, let, name "self", argno 4       // id: %7
+  %8 = integer_literal $Builtin.Int64, 0          // users: %17, %11, %9
+  debug_value %8, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %1, #Int._value            // users: %11, %27
+  %11 = builtin "cmp_slt_Int64"(%8, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb2, bb1                           // id: %12
+
+bb1:                                              // Preds: bb0
+  br bb6                                          // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = witness_method $S, #StorageProtocol.pointer : <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %20
+  %15 = integer_literal $Builtin.Int64, 1         // user: %24
+  %16 = integer_literal $Builtin.Int1, 0          // user: %24
+  br bb3(%8)                                      // id: %17
+
+// %18                                            // users: %19, %24
+bb3(%18 : $Builtin.Int64):                        // Preds: bb2 bb5
+  %19 = struct $Int (%18)                         // user: %20
+  %20 = apply %14<S>(%19, %0) : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %21
+  %21 = struct_extract %20, #UnsafeMutablePointer._rawValue // user: %22
+  %22 = pointer_to_address %21 to [strict] $*Int  // user: %23
+  store %2 to %22                                 // id: %23
+  %24 = builtin "sadd_with_overflow_Int64"(%18, %15, %16) : $(Builtin.Int64, Builtin.Int1) // user: %25
+  %25 = tuple_extract %24, 0                      // users: %30, %27, %26
+  debug_value %25, var, name "i", type $Int, expr op_fragment:#Int._value // id: %26
+  %27 = builtin "cmp_slt_Int64"(%25, %10) : $Builtin.Int1 // user: %28
+  cond_br %27, bb5, bb4                           // id: %28
+
+bb4:                                              // Preds: bb3
+  br bb6                                          // id: %29
+
+bb5:                                              // Preds: bb3
+  br bb3(%25)                                     // id: %30
+
+bb6:                                              // Preds: bb4 bb1
+  %31 = tuple ()                                  // user: %32
+  return %31                                      // id: %32
+} // end sil function '$s8PropCore10OperationsO4fill_5count5valueyx_S2itAA15StorageProtocolRzSi7ElementRtzRi_zlFZ'
+
+// LinearBuffer.checksum(count:)
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV8checksum5countS2i_tF : $@convention(method) (Int, @guaranteed LinearBuffer) -> Int {
+[%1: noescape **, read v**.c*.v**]
+[global: read,deinit_barrier]
+// %0 "count"                                     // users: %10, %6, %2
+// %1 "self"                                      // users: %4, %3
+bb0(%0 : $Int, %1 : $LinearBuffer):
+  debug_value %0, let, name "count", argno 1      // id: %2
+  debug_value %1, let, name "self", argno 2       // id: %3
+  %4 = struct_extract %1, #LinearBuffer.storage   // users: %5, %15, %16
+  debug_value %4, let, name "storage", argno 1    // id: %5
+  debug_value %0, let, name "count", argno 2      // id: %6
+  %7 = integer_literal $Builtin.Int64, 0          // users: %20, %19, %19, %11, %9, %8
+  debug_value %7, var, name "total", type $Int, expr op_fragment:#Int._value // id: %8
+  debug_value %7, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %0, #Int._value            // users: %34, %11
+  %11 = builtin "cmp_slt_Int64"(%7, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb1, bb2                           // id: %12
+
+bb1:                                              // Preds: bb0
+  %13 = integer_literal $Builtin.Int1, 0          // users: %31, %28
+  %14 = integer_literal $Builtin.Int64, 1         // user: %31
+  debug_value %4, let, name "self", argno 2       // id: %15
+  %16 = struct_extract %4, #HeapStorage.base      // user: %17
+  %17 = struct_extract %16, #UnsafeMutablePointer._rawValue // user: %18
+  %18 = pointer_to_address %17 to [strict] $*Int  // user: %25
+  br bb3(%7, %7)                                  // id: %19
+
+bb2:                                              // Preds: bb0
+  br bb6(%7)                                      // id: %20
+
+// %21                                            // user: %28
+// %22                                            // users: %31, %24, %23
+bb3(%21 : $Builtin.Int64, %22 : $Builtin.Int64):  // Preds: bb4 bb1
+  debug_value %22, let, name "slot", argno 1, type $Int, expr op_fragment:#Int._value // id: %23
+  %24 = builtin "truncOrBitCast_Int64_Word"(%22) : $Builtin.Word // user: %25
+  %25 = index_addr [stack_protection] %18, %24    // user: %26
+  %26 = struct_element_addr %25, #Int._value      // user: %27
+  %27 = load %26                                  // user: %28
+  %28 = builtin "sadd_with_overflow_Int64"(%21, %27, %13) : $(Builtin.Int64, Builtin.Int1) // user: %29
+  %29 = tuple_extract %28, 0                      // users: %37, %36, %30
+  debug_value %29, var, name "total", type $Int, expr op_fragment:#Int._value // id: %30
+  %31 = builtin "sadd_with_overflow_Int64"(%22, %14, %13) : $(Builtin.Int64, Builtin.Int1) // user: %32
+  %32 = tuple_extract %31, 0                      // users: %36, %34, %33
+  debug_value %32, var, name "i", type $Int, expr op_fragment:#Int._value // id: %33
+  %34 = builtin "cmp_slt_Int64"(%32, %10) : $Builtin.Int1 // user: %35
+  cond_br %34, bb4, bb5                           // id: %35
+
+bb4:                                              // Preds: bb3
+  br bb3(%29, %32)                                // id: %36
+
+bb5:                                              // Preds: bb3
+  br bb6(%29)                                     // id: %37
+
+// %38                                            // user: %39
+bb6(%38 : $Builtin.Int64):                        // Preds: bb2 bb5
+  %39 = struct $Int (%38)                         // user: %40
+  return %39                                      // id: %40
+} // end sil function '$s8PropCore12LinearBufferV8checksum5countS2i_tF'
+
+// static Operations.sum<A>(_:count:)
+// Isolation: unspecified
+sil @$s8PropCore10OperationsO3sum_5countSix_SitAA15StorageProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <S where S : StorageProtocol, S.Element == Int, S : ~Copyable> (@in_guaranteed S, Int, @thin Operations.Type) -> Int {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "storage"                                   // users: %21, %3
+// %1 "count"                                     // users: %10, %4
+// %2 "self"                                      // user: %5
+bb0(%0 : $*S, %1 : $Int, %2 : $@thin Operations.Type):
+  debug_value %0, let, name "storage", argno 1, expr op_deref // id: %3
+  debug_value %1, let, name "count", argno 2      // id: %4
+  debug_value %2, let, name "self", argno 3       // id: %5
+  %6 = integer_literal $Builtin.Int64, 0          // users: %17, %11, %17, %9, %8, %7
+  %7 = struct $Int (%6)                           // users: %13, %17
+  debug_value %6, var, name "total", type $Int, expr op_fragment:#Int._value // id: %8
+  debug_value %6, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %1, #Int._value            // users: %11, %33
+  %11 = builtin "cmp_slt_Int64"(%6, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb2, bb1                           // id: %12
+
+bb1:                                              // Preds: bb0
+  br bb6(%7)                                      // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = witness_method $S, #StorageProtocol.pointer : <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %21
+  %15 = integer_literal $Builtin.Int1, 0          // users: %30, %26
+  %16 = integer_literal $Builtin.Int64, 1         // user: %30
+  br bb3(%6, %7, %6)                              // id: %17
+
+// %18                                            // user: %26
+// %19                                            // user: %21
+// %20                                            // user: %30
+bb3(%18 : $Builtin.Int64, %19 : $Int, %20 : $Builtin.Int64): // Preds: bb5 bb2
+  %21 = apply %14<S>(%19, %0) : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %22
+  %22 = struct_extract %21, #UnsafeMutablePointer._rawValue // user: %23
+  %23 = pointer_to_address %22 to [strict] $*Int  // user: %24
+  %24 = struct_element_addr %23, #Int._value      // user: %25
+  %25 = load %24                                  // user: %26
+  %26 = builtin "sadd_with_overflow_Int64"(%18, %25, %15) : $(Builtin.Int64, Builtin.Int1) // user: %27
+  %27 = tuple_extract %26, 0                      // users: %37, %29, %28
+  %28 = struct $Int (%27)                         // user: %35
+  debug_value %27, var, name "total", type $Int, expr op_fragment:#Int._value // id: %29
+  %30 = builtin "sadd_with_overflow_Int64"(%20, %16, %15) : $(Builtin.Int64, Builtin.Int1) // user: %31
+  %31 = tuple_extract %30, 0                      // users: %33, %37, %32, %36
+  debug_value %31, var, name "i", type $Int, expr op_fragment:#Int._value // id: %32
+  %33 = builtin "cmp_slt_Int64"(%31, %10) : $Builtin.Int1 // user: %34
+  cond_br %33, bb5, bb4                           // id: %34
+
+bb4:                                              // Preds: bb3
+  br bb6(%28)                                     // id: %35
+
+bb5:                                              // Preds: bb3
+  %36 = struct $Int (%31)                         // user: %37
+  br bb3(%27, %36, %31)                           // id: %37
+
+// %38                                            // user: %39
+bb6(%38 : $Int):                                  // Preds: bb4 bb1
+  return %38                                      // id: %39
+} // end sil function '$s8PropCore10OperationsO3sum_5countSix_SitAA15StorageProtocolRzSi7ElementRtzRi_zlFZ'
+
+// LinearBuffer.bump.read
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_Gvr : $@yield_once @convention(method) (@inout LinearBuffer) -> @lifetime(borrow 0) @yields @guaranteed Property<LinearBuffer.BumpTag, LinearBuffer>.Inout {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %5, %2, %8, %1
+bb0(%0 : $*LinearBuffer):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = address_to_pointer [stack_protection] %0 to $Builtin.RawPointer // user: %3
+  %3 = struct $UnsafeMutableRawPointer (%2)       // user: %4
+  %4 = struct $Ownership.Inout<LinearBuffer> (%3) // user: %5
+  %5 = mark_dependence [nonescaping] %4 on %0     // user: %6
+  %6 = struct $Tagged<LinearBuffer.BumpTag, Ownership.Inout<LinearBuffer>> (%5) // user: %7
+  %7 = struct $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout (%6) // user: %8
+  %8 = mark_dependence [nonescaping] %7 on %0     // user: %9
+  yield %8, resume bb1, unwind bb2                // id: %9
+
+bb1:                                              // Preds: bb0
+  %10 = tuple ()                                  // user: %11
+  return %10                                      // id: %11
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %12
+} // end sil function '$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_Gvr'
+
+// Property<>.Inout.init(_:)
+// Isolation: unspecified
+sil public_external @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0VyAFyxq__Gq_zcfC : $@convention(method) <Tag, Base where Base : ~Copyable> (@inout Base, @thin Property<Tag, Base>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<Tag, Base>.Inout {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // users: %7, %6
+bb0(%0 : $*Base, %1 : $@thin Property<Tag, Base>.Inout.Type):
+  %2 = alloc_stack [lexical] $Tagged<Tag, Ownership.Inout<Base>> // users: %13, %15, %11
+  %3 = metatype $@thin Tagged<Tag, Ownership.Inout<Base>>.Type // user: %11
+  %4 = metatype $@thin Ownership.Inout<Base>.Type // user: %6
+  // function_ref Ownership.Inout<>.init(mutating:)
+  %5 = function_ref @$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfC : $@convention(method) <τ_0_0 where τ_0_0 : ~Copyable> (@inout τ_0_0, @thin Ownership.Inout<τ_0_0>.Type) -> @lifetime(borrow 0) @owned Ownership.Inout<τ_0_0> // user: %6
+  %6 = apply %5<Base>(%0, %4) : $@convention(method) <τ_0_0 where τ_0_0 : ~Copyable> (@inout τ_0_0, @thin Ownership.Inout<τ_0_0>.Type) -> @lifetime(borrow 0) @owned Ownership.Inout<τ_0_0> // user: %7
+  %7 = mark_dependence [nonescaping] %6 on %0     // user: %9
+  %8 = alloc_stack $Ownership.Inout<Base>         // users: %9, %12, %11
+  store %7 to %8                                  // id: %9
+  // function_ref Tagged<>.init(_unchecked:)
+  %10 = function_ref @$s17Tagged_Primitives0A0VAARi_zRi0_zRi__Ri0__rlE10_uncheckedACyxq_Gq__tcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ~Copyable, τ_0_0 : ~Escapable, τ_0_1 : ~Copyable, τ_0_1 : ~Escapable> (@in τ_0_1, @thin Tagged<τ_0_0, τ_0_1>.Type) -> @lifetime(copy 0) @out Tagged<τ_0_0, τ_0_1> // user: %11
+  %11 = apply %10<Tag, Ownership.Inout<Base>>(%2, %8, %3) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_0 : ~Copyable, τ_0_0 : ~Escapable, τ_0_1 : ~Copyable, τ_0_1 : ~Escapable> (@in τ_0_1, @thin Tagged<τ_0_0, τ_0_1>.Type) -> @lifetime(copy 0) @out Tagged<τ_0_0, τ_0_1>
+  dealloc_stack %8                                // id: %12
+  %13 = load %2                                   // user: %14
+  %14 = struct $Property<Tag, Base>.Inout (%13)   // user: %16
+  dealloc_stack %2                                // id: %15
+  return %14                                      // id: %16
+} // end sil function '$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0VyAFyxq__Gq_zcfC'
+
+// LinearBuffer.bump.modify
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_GvM : $@yield_once @convention(method) (@inout LinearBuffer) -> @lifetime(borrow 0) @yields @inout Property<LinearBuffer.BumpTag, LinearBuffer>.Inout {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %6, %3, %9, %1
+bb0(%0 : $*LinearBuffer):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = alloc_stack [lexical] [var_decl] $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, var, name "accessor", type $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout // users: %10, %11, %17, %13
+  %3 = address_to_pointer [stack_protection] %0 to $Builtin.RawPointer // user: %4
+  %4 = struct $UnsafeMutableRawPointer (%3)       // user: %5
+  %5 = struct $Ownership.Inout<LinearBuffer> (%4) // user: %6
+  %6 = mark_dependence [nonescaping] %5 on %0     // user: %7
+  %7 = struct $Tagged<LinearBuffer.BumpTag, Ownership.Inout<LinearBuffer>> (%6) // user: %8
+  %8 = struct $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout (%7) // user: %9
+  %9 = mark_dependence [nonescaping] %8 on %0     // user: %10
+  store %9 to %2                                  // id: %10
+  yield %2, resume bb1, unwind bb2                // id: %11
+
+bb1:                                              // Preds: bb0
+  debug_value undef : $*Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, var, name "accessor" // id: %12
+  dealloc_stack %2                                // id: %13
+  %14 = tuple ()                                  // user: %15
+  return %14                                      // id: %15
+
+bb2:                                              // Preds: bb0
+  debug_value undef : $*Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, var, name "accessor" // id: %16
+  dealloc_stack %2                                // id: %17
+  unwind                                          // id: %18
+} // end sil function '$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_GvM'
+
+// LinearBuffer.bump.setter
+// Isolation: unspecified
+sil [transparent] @$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_Gvs : $@convention(method) (@owned Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, @inout LinearBuffer) -> () {
+[%0: noescape **]
+[%1: read v**, write v**, copy v**]
+[global: read,write,copy]
+// %0 "value"                                     // users: %16, %2
+// %1 "self"                                      // users: %13, %10, %7, %5, %15, %3
+bb0(%0 : $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, %1 : $*LinearBuffer):
+  debug_value %0, let, name "value", argno 1      // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  debug_value undef : $*Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, let, name "value", argno 1 // id: %4
+  debug_value %1, var, name "self", argno 1, expr op_deref // id: %5
+  %6 = alloc_stack [lexical] [var_decl] $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, var, name "accessor" // users: %15, %18, %14
+  %7 = address_to_pointer [stack_protection] %1 to $Builtin.RawPointer // user: %8
+  %8 = struct $UnsafeMutableRawPointer (%7)       // user: %9
+  %9 = struct $Ownership.Inout<LinearBuffer> (%8) // user: %10
+  %10 = mark_dependence [nonescaping] %9 on %1    // user: %11
+  %11 = struct $Tagged<LinearBuffer.BumpTag, Ownership.Inout<LinearBuffer>> (%10) // user: %12
+  %12 = struct $Property<LinearBuffer.BumpTag, LinearBuffer>.Inout (%11) // user: %13
+  %13 = mark_dependence [nonescaping] %12 on %1   // user: %14
+  store %13 to %6                                 // id: %14
+  mark_dependence_addr [nonescaping] %6 on %1     // id: %15
+  debug_value %0, var, name "accessor"            // id: %16
+  debug_value undef : $*Property<LinearBuffer.BumpTag, LinearBuffer>.Inout, var, name "accessor" // id: %17
+  dealloc_stack %6                                // id: %18
+  %19 = tuple ()                                  // user: %20
+  return %19                                      // id: %20
+} // end sil function '$s8PropCore12LinearBufferV4bump020Property_Primitives_B00F0V0f7_Inout_G0Ri__rlE0H0VyAC7BumpTagOAC_Gvs'
+
+// Property<>.Inout<>.all(by:count:)
+// Isolation: unspecified
+sil @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0V04PropC0AG12LinearBufferV7BumpTagORszAIRs_rlE3all2by5countySi_SitF : $@convention(method) (Int, Int, @lifetime(copy 2) @inout Property<LinearBuffer.BumpTag, LinearBuffer>.Inout) -> () {
+[%2: noescape **, read s0.s0.v**]
+[global: read,write,deinit_barrier]
+// %0 "delta"                                     // users: %24, %18, %3
+// %1 "count"                                     // users: %21, %17, %4
+// %2 "self"                                      // users: %6, %9, %5
+bb0(%0 : $Int, %1 : $Int, %2 : $*Property<LinearBuffer.BumpTag, LinearBuffer>.Inout):
+  debug_value %0, let, name "delta", argno 1      // id: %3
+  debug_value %1, let, name "count", argno 2      // id: %4
+  debug_value %2, var, name "self", argno 3, expr op_deref // id: %5
+  %6 = struct_element_addr %2, #Property.Inout._storage // user: %7
+  %7 = struct_element_addr %6, #Tagged.underlying // user: %8
+  %8 = load %7                                    // user: %9
+  %9 = mark_dependence [nonescaping] %8 on %2     // user: %10
+  %10 = struct_extract %9, #Ownership.Inout._pointer // user: %11
+  %11 = struct_extract %10, #UnsafeMutableRawPointer._rawValue // user: %12
+  %12 = pointer_to_address %11 to [strict] $*LinearBuffer // user: %13
+  %13 = struct_element_addr %12, #LinearBuffer.storage // user: %14
+  %14 = struct_element_addr %13, #HeapStorage.base // user: %15
+  %15 = struct_element_addr %14, #UnsafeMutablePointer._rawValue // user: %16
+  %16 = load %15                                  // user: %27
+  debug_value %1, let, name "count", argno 2      // id: %17
+  debug_value %0, let, name "delta", argno 3      // id: %18
+  %19 = integer_literal $Builtin.Int64, 0         // users: %28, %22, %20
+  debug_value %19, var, name "i", type $Int, expr op_fragment:#Int._value // id: %20
+  %21 = struct_extract %1, #Int._value            // users: %43, %22
+  %22 = builtin "cmp_slt_Int64"(%19, %21) : $Builtin.Int1 // user: %23
+  cond_br %22, bb1, bb2                           // id: %23
+
+bb1:                                              // Preds: bb0
+  %24 = struct_extract %0, #Int._value            // user: %36
+  %25 = integer_literal $Builtin.Int1, 0          // users: %40, %36
+  %26 = integer_literal $Builtin.Int64, 1         // user: %40
+  %27 = pointer_to_address %16 to [strict] $*Int  // user: %33
+  br bb3(%19)                                     // id: %28
+
+bb2:                                              // Preds: bb0
+  br bb6                                          // id: %29
+
+// %30                                            // users: %40, %32, %31
+bb3(%30 : $Builtin.Int64):                        // Preds: bb4 bb1
+  debug_value %30, let, name "slot", argno 1, type $Int, expr op_fragment:#Int._value // id: %31
+  %32 = builtin "truncOrBitCast_Int64_Word"(%30) : $Builtin.Word // user: %33
+  %33 = index_addr [stack_protection] %27, %32    // users: %39, %34
+  %34 = struct_element_addr %33, #Int._value      // user: %35
+  %35 = load %34                                  // user: %36
+  %36 = builtin "sadd_with_overflow_Int64"(%35, %24, %25) : $(Builtin.Int64, Builtin.Int1) // user: %37
+  %37 = tuple_extract %36, 0                      // user: %38
+  %38 = struct $Int (%37)                         // user: %39
+  store %38 to %33                                // id: %39
+  %40 = builtin "sadd_with_overflow_Int64"(%30, %26, %25) : $(Builtin.Int64, Builtin.Int1) // user: %41
+  %41 = tuple_extract %40, 0                      // users: %45, %43, %42
+  debug_value %41, var, name "i", type $Int, expr op_fragment:#Int._value // id: %42
+  %43 = builtin "cmp_slt_Int64"(%41, %21) : $Builtin.Int1 // user: %44
+  cond_br %43, bb4, bb5                           // id: %44
+
+bb4:                                              // Preds: bb3
+  br bb3(%41)                                     // id: %45
+
+bb5:                                              // Preds: bb3
+  br bb6                                          // id: %46
+
+bb6:                                              // Preds: bb2 bb5
+  %47 = tuple ()                                  // user: %48
+  return %47                                      // id: %48
+} // end sil function '$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0V04PropC0AG12LinearBufferV7BumpTagORszAIRs_rlE3all2by5countySi_SitF'
+
+// static Operations.bump<A>(_:count:by:)
+// Isolation: unspecified
+sil @$s8PropCore10OperationsO4bump_5count2byyx_S2itAA15StorageProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <S where S : StorageProtocol, S.Element == Int, S : ~Copyable> (@in_guaranteed S, Int, Int, @thin Operations.Type) -> () {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "storage"                                   // users: %21, %4
+// %1 "count"                                     // users: %10, %5
+// %2 "delta"                                     // users: %15, %6
+// %3 "self"                                      // user: %7
+bb0(%0 : $*S, %1 : $Int, %2 : $Int, %3 : $@thin Operations.Type):
+  debug_value %0, let, name "storage", argno 1, expr op_deref // id: %4
+  debug_value %1, let, name "count", argno 2      // id: %5
+  debug_value %2, let, name "delta", argno 3      // id: %6
+  debug_value %3, let, name "self", argno 4       // id: %7
+  %8 = integer_literal $Builtin.Int64, 0          // users: %18, %11, %9
+  debug_value %8, var, name "i", type $Int, expr op_fragment:#Int._value // id: %9
+  %10 = struct_extract %1, #Int._value            // users: %11, %33
+  %11 = builtin "cmp_slt_Int64"(%8, %10) : $Builtin.Int1 // user: %12
+  cond_br %11, bb2, bb1                           // id: %12
+
+bb1:                                              // Preds: bb0
+  br bb6                                          // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = witness_method $S, #StorageProtocol.pointer : <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %21
+  %15 = struct_extract %2, #Int._value            // user: %26
+  %16 = integer_literal $Builtin.Int1, 0          // users: %30, %26
+  %17 = integer_literal $Builtin.Int64, 1         // user: %30
+  br bb3(%8)                                      // id: %18
+
+// %19                                            // users: %20, %30
+bb3(%19 : $Builtin.Int64):                        // Preds: bb2 bb5
+  %20 = struct $Int (%19)                         // user: %21
+  %21 = apply %14<S>(%20, %0) : $@convention(witness_method: StorageProtocol) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0 : ~Copyable> (Int, @in_guaranteed τ_0_0) -> UnsafeMutablePointer<τ_0_0.Element> // user: %22
+  %22 = struct_extract %21, #UnsafeMutablePointer._rawValue // user: %23
+  %23 = pointer_to_address %22 to [strict] $*Int  // users: %29, %24
+  %24 = struct_element_addr %23, #Int._value      // user: %25
+  %25 = load %24                                  // user: %26
+  %26 = builtin "sadd_with_overflow_Int64"(%25, %15, %16) : $(Builtin.Int64, Builtin.Int1) // user: %27
+  %27 = tuple_extract %26, 0                      // user: %28
+  %28 = struct $Int (%27)                         // user: %29
+  store %28 to %23                                // id: %29
+  %30 = builtin "sadd_with_overflow_Int64"(%19, %17, %16) : $(Builtin.Int64, Builtin.Int1) // user: %31
+  %31 = tuple_extract %30, 0                      // users: %36, %33, %32
+  debug_value %31, var, name "i", type $Int, expr op_fragment:#Int._value // id: %32
+  %33 = builtin "cmp_slt_Int64"(%31, %10) : $Builtin.Int1 // user: %34
+  cond_br %33, bb5, bb4                           // id: %34
+
+bb4:                                              // Preds: bb3
+  br bb6                                          // id: %35
+
+bb5:                                              // Preds: bb3
+  br bb3(%31)                                     // id: %36
+
+bb6:                                              // Preds: bb4 bb1
+  %37 = tuple ()                                  // user: %38
+  return %37                                      // id: %38
+} // end sil function '$s8PropCore10OperationsO4bump_5count2byyx_S2itAA15StorageProtocolRzSi7ElementRtzRi_zlFZ'
+
+// LinearBufferProtocol<>.bumpShared.read
+// Isolation: unspecified
+sil @$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_Gvr : $@yield_once @convention(method) <Self where Self : LinearBufferProtocol, Self : ~Copyable> (@inout Self) -> @lifetime(borrow address_for_deps 0) @yields @guaranteed Property<SharedBumpTag, Self>.Inout {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %4, %5, %1
+bb0(%0 : $*Self):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = metatype $@thin Property<SharedBumpTag, Self>.Inout.Type // user: %4
+  // function_ref Property<>.Inout.init(_:)
+  %3 = function_ref @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0VyAFyxq__Gq_zcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %4
+  %4 = apply %3<SharedBumpTag, Self>(%0, %2) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %5
+  %5 = mark_dependence [nonescaping] %4 on %0     // user: %6
+  yield %5, resume bb1, unwind bb2                // id: %6
+
+bb1:                                              // Preds: bb0
+  %7 = tuple ()                                   // user: %8
+  return %7                                       // id: %8
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %9
+} // end sil function '$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_Gvr'
+
+// LinearBufferProtocol<>.bumpShared.modify
+// Isolation: unspecified
+sil @$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_GvM : $@yield_once @convention(method) <Self where Self : LinearBufferProtocol, Self : ~Copyable> (@inout Self) -> @lifetime(borrow address_for_deps 0) @yields @inout Property<SharedBumpTag, Self>.Inout {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %5, %6, %1
+bb0(%0 : $*Self):
+  debug_value %0, var, name "self", argno 1, expr op_deref // id: %1
+  %2 = alloc_stack [lexical] [var_decl] $Property<SharedBumpTag, Self>.Inout, var, name "accessor", type $Property<SharedBumpTag, Self>.Inout // users: %7, %8, %14, %10
+  %3 = metatype $@thin Property<SharedBumpTag, Self>.Inout.Type // user: %5
+  // function_ref Property<>.Inout.init(_:)
+  %4 = function_ref @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0VyAFyxq__Gq_zcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %5
+  %5 = apply %4<SharedBumpTag, Self>(%0, %3) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %6
+  %6 = mark_dependence [nonescaping] %5 on %0     // user: %7
+  store %6 to %2                                  // id: %7
+  yield %2, resume bb1, unwind bb2                // id: %8
+
+bb1:                                              // Preds: bb0
+  debug_value undef : $*Property<SharedBumpTag, Self>.Inout, var, name "accessor" // id: %9
+  dealloc_stack %2                                // id: %10
+  %11 = tuple ()                                  // user: %12
+  return %11                                      // id: %12
+
+bb2:                                              // Preds: bb0
+  debug_value undef : $*Property<SharedBumpTag, Self>.Inout, var, name "accessor" // id: %13
+  dealloc_stack %2                                // id: %14
+  unwind                                          // id: %15
+} // end sil function '$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_GvM'
+
+// LinearBufferProtocol<>.bumpShared.setter
+// Isolation: unspecified
+sil [transparent] @$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_Gvs : $@convention(method) <Self where Self : LinearBufferProtocol, Self : ~Copyable> (@owned Property<SharedBumpTag, Self>.Inout, @inout Self) -> () {
+[%0: noescape **]
+[%1: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "value"                                     // users: %13, %2
+// %1 "self"                                      // users: %10, %9, %5, %12, %3
+bb0(%0 : $Property<SharedBumpTag, Self>.Inout, %1 : $*Self):
+  debug_value %0, let, name "value", argno 1      // id: %2
+  debug_value %1, var, name "self", argno 2, expr op_deref // id: %3
+  debug_value undef : $*Property<SharedBumpTag, Self>.Inout, let, name "value", argno 1 // id: %4
+  debug_value %1, var, name "self", argno 1, expr op_deref // id: %5
+  %6 = alloc_stack [lexical] [var_decl] $Property<SharedBumpTag, Self>.Inout, var, name "accessor" // users: %12, %15, %11
+  %7 = metatype $@thin Property<SharedBumpTag, Self>.Inout.Type // user: %9
+  // function_ref Property<>.Inout.init(_:)
+  %8 = function_ref @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0VyAFyxq__Gq_zcfC : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %9
+  %9 = apply %8<SharedBumpTag, Self>(%1, %7) : $@convention(method) <τ_0_0, τ_0_1 where τ_0_1 : ~Copyable> (@inout τ_0_1, @thin Property<τ_0_0, τ_0_1>.Inout.Type) -> @lifetime(borrow address_for_deps 0) @owned Property<τ_0_0, τ_0_1>.Inout // user: %10
+  %10 = mark_dependence [nonescaping] %9 on %1    // user: %11
+  store %10 to %6                                 // id: %11
+  mark_dependence_addr [nonescaping] %6 on %1     // id: %12
+  debug_value %0, var, name "accessor"            // id: %13
+  debug_value undef : $*Property<SharedBumpTag, Self>.Inout, var, name "accessor" // id: %14
+  dealloc_stack %6                                // id: %15
+  %16 = tuple ()                                  // user: %17
+  return %16                                      // id: %17
+} // end sil function '$s8PropCore20LinearBufferProtocolPAARi_zrlE10bumpShared020Property_Primitives_B00H0V0h7_Inout_I0Ri__rlE0J0VyAA0G7BumpTagOx_Gvs'
+
+// Property<>.Inout<>.all(by:count:)
+// Isolation: unspecified
+sil @$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0V04PropC0AG13SharedBumpTagORszAG20LinearBufferProtocolR_Ri__rlE3all2by5countySi_SitF : $@convention(method) <Tag, Base where Tag == SharedBumpTag, Base : LinearBufferProtocol, Base : ~Copyable> (Int, Int, @lifetime(copy 2) @inout Property<SharedBumpTag, Base>.Inout) -> () {
+[%2: read s0.s0.v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "delta"                                     // users: %18, %3
+// %1 "count"                                     // users: %18, %4
+// %2 "self"                                      // users: %7, %10, %5
+bb0(%0 : $Int, %1 : $Int, %2 : $*Property<SharedBumpTag, Base>.Inout):
+  debug_value %0, let, name "delta", argno 1      // id: %3
+  debug_value %1, let, name "count", argno 2      // id: %4
+  debug_value %2, var, name "self", argno 3, expr op_deref // id: %5
+  %6 = metatype $@thin Operations.Type            // user: %18
+  %7 = struct_element_addr %2, #Property.Inout._storage // user: %8
+  %8 = struct_element_addr %7, #Tagged.underlying // user: %9
+  %9 = load %8                                    // user: %10
+  %10 = mark_dependence [nonescaping] %9 on %2    // user: %11
+  %11 = struct_extract %10, #Ownership.Inout._pointer // user: %12
+  %12 = struct_extract %11, #UnsafeMutableRawPointer._rawValue // user: %13
+  %13 = pointer_to_address %12 to [strict] $*Base // user: %15
+  %14 = witness_method $Base, #LinearBufferProtocol.store!read : <Self where Self : LinearBufferProtocol, Self : ~Copyable> (Self) -> () -> () : $@yield_once @convention(witness_method: LinearBufferProtocol) <τ_0_0 where τ_0_0 : LinearBufferProtocol, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_0) -> @yields @in_guaranteed τ_0_0.Store // user: %15
+  (%15, %16) = begin_apply %14<Base>(%13) : $@yield_once @convention(witness_method: LinearBufferProtocol) <τ_0_0 where τ_0_0 : LinearBufferProtocol, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_0) -> @yields @in_guaranteed τ_0_0.Store // users: %18, %19
+  // function_ref static Operations.bump<A>(_:count:by:)
+  %17 = function_ref @$s8PropCore10OperationsO4bump_5count2byyx_S2itAA15StorageProtocolRzSi7ElementRtzRi_zlFZ : $@convention(method) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0.Element == Int, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_0, Int, Int, @thin Operations.Type) -> () // user: %18
+  %18 = apply %17<Base.Store>(%15, %1, %0, %6) : $@convention(method) <τ_0_0 where τ_0_0 : StorageProtocol, τ_0_0.Element == Int, τ_0_0 : ~Copyable> (@in_guaranteed τ_0_0, Int, Int, @thin Operations.Type) -> ()
+  %19 = end_apply %16 as $()
+  %20 = tuple ()                                  // user: %21
+  return %20                                      // id: %21
+} // end sil function '$s24Property_Primitives_Core0A0V0a7_Inout_B0Ri__rlE0D0V04PropC0AG13SharedBumpTagORszAG20LinearBufferProtocolR_Ri__rlE3all2by5countySi_SitF'
+
+// LinearBuffer.store.read
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV5storeAA11HeapStorageVvr : $@yield_once @convention(method) (@guaranteed LinearBuffer) -> @yields @guaranteed HeapStorage {
+[%0: read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $LinearBuffer):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #LinearBuffer.storage   // user: %3
+  yield %2, resume bb1, unwind bb2                // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = tuple ()                                   // user: %5
+  return %4                                       // id: %5
+
+bb2:                                              // Preds: bb0
+  unwind                                          // id: %6
+} // end sil function '$s8PropCore12LinearBufferV5storeAA11HeapStorageVvr'
+
+// LinearBuffer.elementCount.getter
+// Isolation: unspecified
+sil @$s8PropCore12LinearBufferV12elementCountSivg : $@convention(method) (@guaranteed LinearBuffer) -> Int {
+[%0: noescape **]
+[global: ]
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $LinearBuffer):
+  debug_value %0, let, name "self", argno 1       // id: %1
+  %2 = struct_extract %0, #LinearBuffer.storage   // user: %3
+  %3 = struct_extract %2, #HeapStorage.capacity   // user: %4
+  return %3                                       // id: %4
+} // end sil function '$s8PropCore12LinearBufferV12elementCountSivg'
+
+// protocol witness for LinearBufferProtocol.store.read in conformance LinearBuffer
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP5store5StoreQzvrTW : $@yield_once @convention(witness_method: LinearBufferProtocol) @substituted <τ_0_0, τ_0_1> (@in_guaranteed τ_0_0) -> @yields @in_guaranteed τ_0_1 for <LinearBuffer, HeapStorage> {
+[%0: read s0.v**, copy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %1
+bb0(%0 : $*LinearBuffer):
+  %1 = struct_element_addr %0, #LinearBuffer.storage // user: %2
+  %2 = load %1                                    // user: %4
+  %3 = alloc_stack $HeapStorage                   // users: %5, %4, %6, %9
+  store %2 to %3                                  // id: %4
+  yield %3, resume bb1, unwind bb2                // id: %5
+
+bb1:                                              // Preds: bb0
+  dealloc_stack %3                                // id: %6
+  %7 = tuple ()                                   // user: %8
+  return %7                                       // id: %8
+
+bb2:                                              // Preds: bb0
+  dealloc_stack %3                                // id: %9
+  unwind                                          // id: %10
+} // end sil function '$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP5store5StoreQzvrTW'
+
+// protocol witness for LinearBufferProtocol.elementCount.getter in conformance LinearBuffer
+// Isolation: unspecified
+sil shared [transparent] [thunk] @$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP12elementCountSivgTW : $@convention(witness_method: LinearBufferProtocol) (@in_guaranteed LinearBuffer) -> Int {
+[%0: noescape **, read s0.s0.v**]
+[global: ]
+// %0                                             // user: %1
+bb0(%0 : $*LinearBuffer):
+  %1 = struct_element_addr %0, #LinearBuffer.storage // user: %2
+  %2 = struct_element_addr %1, #HeapStorage.capacity // user: %3
+  %3 = load %2                                    // user: %4
+  return %3                                       // id: %4
+} // end sil function '$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP12elementCountSivgTW'
+
+// Ownership.Inout<>.init(mutating:)
+sil public_external @$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfC : $@convention(method) <Value where Value : ~Copyable> (@inout Value, @thin Ownership.Inout<Value>.Type) -> @lifetime(borrow 0) @owned Ownership.Inout<Value> {
+[%0: read v**, write v**, copy v**, destroy v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %8
+bb0(%0 : $*Value, %1 : $@thin Ownership.Inout<Value>.Type):
+  %2 = alloc_stack [lexical] $UnsafeMutableRawPointer // users: %11, %13, %8
+  // function_ref closure #1 in Ownership.Inout<>.init(mutating:)
+  %3 = function_ref @$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfcSvSpyxGXEfU_ : $@convention(thin) <τ_0_0 where τ_0_0 : ~Copyable> (UnsafeMutablePointer<τ_0_0>) -> (@out UnsafeMutableRawPointer, @error_indirect Never) // user: %4
+  %4 = partial_apply [callee_guaranteed] [on_stack] %3<Value>() : $@convention(thin) <τ_0_0 where τ_0_0 : ~Copyable> (UnsafeMutablePointer<τ_0_0>) -> (@out UnsafeMutableRawPointer, @error_indirect Never) // users: %10, %5
+  %5 = convert_function %4 to $@noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <Value, Never, UnsafeMutableRawPointer> // user: %8
+  // function_ref withUnsafeMutablePointer<A, B, C>(to:_:)
+  %6 = function_ref @$ss24withUnsafeMutablePointer2to_q0_xz_q0_SpyxGq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF : $@convention(thin) <τ_0_0, τ_0_1, τ_0_2 where τ_0_1 : Error, τ_0_0 : ~Copyable, τ_0_2 : ~Copyable> (@inout τ_0_0, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <τ_0_0, τ_0_1, τ_0_2>) -> (@out τ_0_2, @error_indirect τ_0_1) // user: %8
+  %7 = alloc_stack $Never                         // users: %9, %8
+  %8 = apply [nothrow] %6<Value, Never, UnsafeMutableRawPointer>(%2, %7, %0, %5) : $@convention(thin) <τ_0_0, τ_0_1, τ_0_2 where τ_0_1 : Error, τ_0_0 : ~Copyable, τ_0_2 : ~Copyable> (@inout τ_0_0, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <τ_0_0, τ_0_1, τ_0_2>) -> (@out τ_0_2, @error_indirect τ_0_1)
+  dealloc_stack %7                                // id: %9
+  dealloc_stack %4                                // id: %10
+  %11 = load %2                                   // user: %12
+  %12 = struct $Ownership.Inout<Value> (%11)      // user: %14
+  dealloc_stack %2                                // id: %13
+  return %12                                      // id: %14
+} // end sil function '$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfC'
+
+// Tagged<>.init(_unchecked:)
+sil public_external @$s17Tagged_Primitives0A0VAARi_zRi0_zRi__Ri0__rlE10_uncheckedACyxq_Gq__tcfC : $@convention(method) <Tag, Underlying where Tag : ~Copyable, Tag : ~Escapable, Underlying : ~Copyable, Underlying : ~Escapable> (@in Underlying, @thin Tagged<Tag, Underlying>.Type) -> @lifetime(copy 0) @out Tagged<Tag, Underlying> {
+[%0: noescape **, write s0.v**]
+[%1: escape v** -> %0.s0.v**, escape v**.c*.v** -> %0.s0.v**.c*.v**, read v**]
+[global: ]
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $*Tagged<Tag, Underlying>, %1 : $*Underlying, %2 : $@thin Tagged<Tag, Underlying>.Type):
+  %3 = struct_element_addr %0, #Tagged.underlying // user: %4
+  copy_addr [take] %1 to [init] %3                // id: %4
+  %5 = tuple ()                                   // user: %6
+  return %5                                       // id: %6
+} // end sil function '$s17Tagged_Primitives0A0VAARi_zRi0_zRi__Ri0__rlE10_uncheckedACyxq_Gq__tcfC'
+
+// closure #1 in Ownership.Inout<>.init(mutating:)
+sil shared @$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfcSvSpyxGXEfU_ : $@convention(thin) <Value where Value : ~Copyable> (UnsafeMutablePointer<Value>) -> (@out UnsafeMutableRawPointer, @error_indirect Never) {
+[%0: noescape **, write v**]
+[%2: escape v** -> %0.s0.v**, escape v**.c*.v** -> %0.s0.v**.c*.v**]
+[global: ]
+// %0                                             // user: %5
+// %2                                             // user: %3
+bb0(%0 : $*UnsafeMutableRawPointer, %1 : $*Never, %2 : $UnsafeMutablePointer<Value>):
+  %3 = struct_extract %2, #UnsafeMutablePointer._rawValue // user: %4
+  %4 = struct $UnsafeMutableRawPointer (%3)       // user: %5
+  store %4 to %0                                  // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6                                       // id: %7
+} // end sil function '$s19Ownership_Primitive0A0O0A17_Inout_PrimitivesE0C0VADRi_zrlE8mutatingAFy_xGxz_tcfcSvSpyxGXEfU_'
+
+// withUnsafeMutablePointer<A, B, C>(to:_:)
+sil shared @$ss24withUnsafeMutablePointer2to_q0_xz_q0_SpyxGq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF : $@convention(thin) <T, E, Result where E : Error, T : ~Copyable, Result : ~Copyable> (@inout T, @guaranteed @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <T, E, Result>) -> (@out Result, @error_indirect E) {
+[%0: read v**, write v**, copy v**, destroy v**]
+[%1: noescape **, write v**]
+[%2: read v**, write v**, copy v**, destroy v**]
+[%3: noescape **, read v**.c*.v**, write v**.c*.v**, copy v**.c*.v**, destroy v**.c*.v**]
+[global: read,write,copy,destroy,allocate,deinit_barrier]
+// %0                                             // user: %7
+// %1                                             // user: %8
+// %2                                             // user: %4
+// %3                                             // user: %7
+bb0(%0 : $*Result, %1 : $*E, %2 : $*T, %3 : $@noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <T, E, Result>):
+  %4 = address_to_pointer [stack_protection] %2 to $Builtin.RawPointer // user: %5
+  %5 = struct $UnsafeMutablePointer<T> (%4)       // user: %7
+  %6 = alloc_stack $E                             // users: %12, %9, %8, %7
+  try_apply %3(%0, %6, %5) : $@noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1, τ_0_2> (UnsafeMutablePointer<τ_0_0>) -> (@out τ_0_2, @error_indirect τ_0_1) for <T, E, Result>, normal bb2, error bb1 // id: %7
+
+bb1:                                              // Preds: bb0
+  copy_addr [take] %6 to [init] %1                // id: %8
+  dealloc_stack %6                                // id: %9
+  throw_addr                                      // id: %10
+
+bb2(%11 : $()):                                   // Preds: bb0
+  dealloc_stack %6                                // id: %12
+  %13 = tuple ()                                  // user: %14
+  return %13                                      // id: %14
+} // end sil function '$ss24withUnsafeMutablePointer2to_q0_xz_q0_SpyxGq_YKXEtq_YKs5ErrorR_Ri_zRi_0_r1_lF'
+
+sil_witness_table HeapStorage: StorageProtocol module PropCore {
+  associated_type Element: Int
+  method #StorageProtocol.capacity!getter: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> () -> Int : @$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP8capacitySivgTW	// protocol witness for StorageProtocol.capacity.getter in conformance HeapStorage
+  method #StorageProtocol.pointer: <Self where Self : StorageProtocol, Self : ~Copyable> (Self) -> (Int) -> UnsafeMutablePointer<Self.Element> : @$s8PropCore11HeapStorageVAA0D8ProtocolA2aDP7pointer2atSpy7ElementQzGSi_tFTW	// protocol witness for StorageProtocol.pointer(at:) in conformance HeapStorage
+}
+
+sil_witness_table LinearBuffer: LinearBufferProtocol module PropCore {
+  associated_conformance (Store: StorageProtocol): HeapStorage: StorageProtocol module PropCore
+  associated_type Store: HeapStorage
+  method #LinearBufferProtocol.store!read: <Self where Self : LinearBufferProtocol, Self : ~Copyable> (Self) -> () -> () : @$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP5store5StoreQzvrTW	// protocol witness for LinearBufferProtocol.store.read in conformance LinearBuffer
+  method #LinearBufferProtocol.elementCount!getter: <Self where Self : LinearBufferProtocol, Self : ~Copyable> (Self) -> () -> Int : @$s8PropCore12LinearBufferVAA0cD8ProtocolA2aDP12elementCountSivgTW	// protocol witness for LinearBufferProtocol.elementCount.getter in conformance LinearBuffer
+}
+
+sil_moveonlydeinit HeapStorage {
+  @$s8PropCore11HeapStorageVfD	// HeapStorage.deinit
+}
+
+/* externally visible decls: 
+StorageProtocol.pointer
+LinearBufferProtocol.anonname=0xbc5de40d8
+*/
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'PropCore/VariantB.swift' => 'Sources/PropCore/VariantB.swift'
+//   'PropCore/HeapStorage.swift' => 'Sources/PropCore/HeapStorage.swift'
+//   'PropCore/StorageProtocol.swift' => 'Sources/PropCore/StorageProtocol.swift'
+//   'PropCore/LinearBuffer.swift' => 'Sources/PropCore/LinearBuffer.swift'
+//   'PropCore/Operations.swift' => 'Sources/PropCore/Operations.swift'
+
+

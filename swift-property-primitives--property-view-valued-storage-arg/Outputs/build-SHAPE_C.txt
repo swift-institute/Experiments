@@ -1,0 +1,9 @@
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+Variant2_accessor.swift:50:53: error: cannot find type 'n' in scope
+   |                                                     `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:52:79: error: cannot find type 'n' in scope
+   |                                                                               `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:50:53: error: cannot find type 'n' in scope
+   |                                                     `- error: cannot find type 'n' in scope
+Variant2_accessor.swift:52:79: error: cannot find type 'n' in scope
+   |                                                                               `- error: cannot find type 'n' in scope
