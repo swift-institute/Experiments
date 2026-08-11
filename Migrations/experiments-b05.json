@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "batch": "Experiments-B05",
+  "destinationImportCommit": "b6e3c23039a3ecf5cd98d258897ff5ca382b0a53",
+  "manifestSHA256": "4ee326eb712972d1e915273a6ef4e31995d064a2578f6c0e756f7661d4f8942a",
+  "programme": "https://github.com/swift-institute/.github/issues/527",
+  "task": "https://github.com/swift-institute/.github/issues/527",
+  "historyImport": false,
+  "sourceHistoryRetained": true,
+  "imports": [
+    {
+      "sourceRepository": "swift-primitives/swift-dictionary-primitives",
+      "sourceCommit": "9704fb261ebf771a0df86cbb13f55b5f09256b74",
+      "sourcePath": "Experiments/iterator-slab-cross-module",
+      "sourceTree": "ad4cbb32f7214fb9573f1e0507eec4a538ce7f7b",
+      "sourceUnitTree": "04ed14bf2feba56657925bc60af433b0e84ff54a",
+      "destinationPath": "swift-dictionary-primitives--iterator-slab-cross-module",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-either-primitives",
+      "sourceCommit": "a90f8702f3d8ffb9232934c275a0584aaac78b0a",
+      "sourcePath": "Experiments/consuming-method-patterns",
+      "sourceTree": "8c8c732a8f50766ebf5e9e9461365361ec1d4bb7",
+      "sourceUnitTree": "87be7d65977ef39c6c06fb7cf7776e9dc75a6e61",
+      "destinationPath": "swift-either-primitives--consuming-method-patterns",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-either-primitives",
+      "sourceCommit": "a90f8702f3d8ffb9232934c275a0584aaac78b0a",
+      "sourcePath": "Experiments/escapable-arm-support",
+      "sourceTree": "8c8c732a8f50766ebf5e9e9461365361ec1d4bb7",
+      "sourceUnitTree": "64357e18d873f2611a46d7138e667dce610b7a93",
+      "destinationPath": "swift-either-primitives--escapable-arm-support",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-equation-primitives",
+      "sourceCommit": "0ff39057826e11e76637943ce121ef48a903d10f",
+      "sourcePath": "Experiments/borrowing-enum-patterns",
+      "sourceTree": "29763745d0018937045d50e64f5fd1980e111b43",
+      "sourceUnitTree": "6f9157095a118d084ca8c328166195c4d3b15513",
+      "destinationPath": "swift-equation-primitives--borrowing-enum-patterns",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-equation-primitives",
+      "sourceCommit": "0ff39057826e11e76637943ce121ef48a903d10f",
+      "sourcePath": "Experiments/pointer-conformances",
+      "sourceTree": "29763745d0018937045d50e64f5fd1980e111b43",
+      "sourceUnitTree": "ab1e47fa570d7831d6ede00e913670ed70f1253a",
+      "destinationPath": "swift-equation-primitives--pointer-conformances",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-finite-primitives",
+      "sourceCommit": "b6fb77d2ca7c45cf534d1cc47c8675042cc1ca87",
+      "sourcePath": "Experiments/double-tagged-bounded-index",
+      "sourceTree": "e10fbe5364135a300b7fa4a5a196d64e19523f4b",
+      "sourceUnitTree": "1c9b63f5e9615f8ca5c3f140b0d16a544493f4e0",
+      "destinationPath": "swift-finite-primitives--double-tagged-bounded-index",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-finite-primitives",
+      "sourceCommit": "b6fb77d2ca7c45cf534d1cc47c8675042cc1ca87",
+      "sourcePath": "Experiments/ordinal-finite-tagged",
+      "sourceTree": "e10fbe5364135a300b7fa4a5a196d64e19523f4b",
+      "sourceUnitTree": "3a31669ac3894bc3053c56c152cd3d8fe4f9a6db",
+      "destinationPath": "swift-finite-primitives--ordinal-finite-tagged",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-input-primitives",
+      "sourceCommit": "3cdfdfd7b8b68c7faa4bc8e10caecd8f2a47f4ca",
+      "sourcePath": "Experiments/constraint-poisoning-module-split",
+      "sourceTree": "1d49af2d950acb873d484a4e678f1d3b59bc5f5b",
+      "sourceUnitTree": "99cfa824b78c322caec76aa53c989b7dde14a41c",
+      "destinationPath": "swift-input-primitives--constraint-poisoning-module-split",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-input-primitives",
+      "sourceCommit": "3cdfdfd7b8b68c7faa4bc8e10caecd8f2a47f4ca",
+      "sourcePath": "Experiments/consuming-protocol-return",
+      "sourceTree": "1d49af2d950acb873d484a4e678f1d3b59bc5f5b",
+      "sourceUnitTree": "8d9efb0f0bdea2072989923e9d548c89407b00d4",
+      "destinationPath": "swift-input-primitives--consuming-protocol-return",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-input-primitives",
+      "sourceCommit": "3cdfdfd7b8b68c7faa4bc8e10caecd8f2a47f4ca",
+      "sourcePath": "Experiments/input-array-literal-syntax",
+      "sourceTree": "1d49af2d950acb873d484a4e678f1d3b59bc5f5b",
+      "sourceUnitTree": "0c89a0c72561ad8ae27cf51bc2dac35a518f9f1a",
+      "destinationPath": "swift-input-primitives--input-array-literal-syntax",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-input-primitives",
+      "sourceCommit": "3cdfdfd7b8b68c7faa4bc8e10caecd8f2a47f4ca",
+      "sourcePath": "Experiments/noncopyable-streaming",
+      "sourceTree": "1d49af2d950acb873d484a4e678f1d3b59bc5f5b",
+      "sourceUnitTree": "c9a1ff7c101309bf4770bbe4a6f72d52836365c7",
+      "destinationPath": "swift-input-primitives--noncopyable-streaming",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-input-primitives",
+      "sourceCommit": "3cdfdfd7b8b68c7faa4bc8e10caecd8f2a47f4ca",
+      "sourcePath": "Experiments/read-accessor-noncopyable-optional",
+      "sourceTree": "1d49af2d950acb873d484a4e678f1d3b59bc5f5b",
+      "sourceUnitTree": "38277c976c212f435c706036574788b7651c5ec2",
+      "destinationPath": "swift-input-primitives--read-accessor-noncopyable-optional",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-iterator-primitives",
+      "sourceCommit": "47f3ad9201de82ab5112a653029eb4d0556bfa7d",
+      "sourcePath": "Experiments/escapable-element-iterator-conformance",
+      "sourceTree": "fedd6c937e1781d16d4008fe0948bd51c701094f",
+      "sourceUnitTree": "7531747e89db75ca79bcdeaed65e37877e322e09",
+      "destinationPath": "swift-iterator-primitives--escapable-element-iterator-conformance",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    }
+  ]
+}
