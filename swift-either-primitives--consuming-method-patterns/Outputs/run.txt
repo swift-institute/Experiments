@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'consuming-method-patterns' complete! (0.26s)
+V1: right from-id-7
+V2: left left-id-11
+V3: right R42
+V4: left orig
+V5: 6
+V6: right positive-5
+V7: left err-404
