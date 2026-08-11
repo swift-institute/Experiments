@@ -1,0 +1,15 @@
+Run 1:
+
+Option A (class State)  : best 43.284 ms (check: 50000965000097)
+Option C (struct State) : best 51.593 ms (check: 50000965000097)
+
+Run 2:
+
+Option A (class State)  : best 47.655 ms (check: 50001075000108)
+Option C (struct State) : best 44.634 ms (check: 50001075000108)
+
+Run 3:
+
+Option A (class State)  : best 43.463 ms (check: 50001505000151)
+Option C (struct State) : best 39.109 ms (check: 50001505000151)
+

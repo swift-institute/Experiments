@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[0/6] Write property-consuming-value-state-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Emitting module property_consuming_value_state
+[5/8] Compiling property_consuming_value_state main.swift
+[5/8] Write Objects.LinkFileList
+[6/8] Linking property-consuming-value-state
+[7/8] Applying property-consuming-value-state
+Build complete! (0.75s)

@@ -1,0 +1,9 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'property-consuming-value-state' complete! (0.11s)
+Option C: value-type ~Copyable State validated.
+  - Sendable: YES, conditional on Base: Sendable
+  - @unchecked Sendable: NO — compiler verifies directly
+  - Shared state via init(state:): NO — deliberately removed
+  - Canonical accessor recipe: WORKS

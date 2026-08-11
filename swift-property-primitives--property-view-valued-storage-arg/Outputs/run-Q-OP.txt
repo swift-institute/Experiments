@@ -1,0 +1,1 @@
+Q-OP: manual Valued<4> .all() over Buffer<Small<Int,4>>.Linear — count after = 0

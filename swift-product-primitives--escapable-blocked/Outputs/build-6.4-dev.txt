@@ -1,0 +1,48 @@
+Building for debugging...
+Computing dependencies
+Constructing description
+Pre-planning 1 / 713
+Planning deferred tasks
+[31/100] Equation Primitives 108 / 334
+[44/100] Carrier Primitives 151 / 336
+[45/100] Carrier Primitives 162 / 349
+[48/100] Carrier Primitives 172 / 349
+[49/100] Carrier Primitives 176 / 349
+[51/100] Ownership Primitives Core 189 / 363
+[57/100] Tagged Primitives 212 / 364
+[59/100] Property Primitives Core 229 / 383
+[66/100] Ownership Borrow Primitives 258 / 383
+[69/100] Property Typed Primitives 272 / 391
+[70/100] Ownership Borrow Primitives 279 / 396
+[74/100] Property Borrow Primitives 298 / 397
+[77/100] Equation Primitives Core 311 / 400
+[79/100] Equation Primitives Standard Library Integration 324 / 405
+[81/100] Equation Primitives Standard Library Integration 338 / 414
+[83/100] Comparison Primitives Core 364 / 434
+[84/100] Hash Primitives Core 370 / 434
+[88/100] Hash Primitives Standard Library Integration 385 / 436
+[86/100] Comparison Primitives Standard Library Integration 396 / 454
+[89/100] Hash Primitives Standard Library Integration 410 / 454
+[92/100] Hash Primitives 421 / 456
+[94/100] Comparison Primitives 437 / 462
+[96/100] Product Primitives 455 / 472
+[98/100] EscapableBlocked 466 / 475
+/Users/coen/Developer/swift-primitives/swift-product-primitives/Experiments/escapable-blocked/Sources/EscapableBlocked/EscapableBlocked.swift:53:18: [1;33mwarning: [1;39mno calls to throwing functions occur within 'try' expression[0;0m
+[0;36m51 |[0;0m public func v4_constructAndOperate() -> Int {
+[0;36m52 |[0;0m     let triple = Product(1, "hi", true)
+[0;36m53 |[0;0m     let mapped = try? triple.map(
+   [0;36m|[0;0m                  `- [1;33mwarning: [1;39mno calls to throwing functions occur within 'try' expression[0;0m
+[0;36m54 |[0;0m         { $0 + 10 },
+[0;36m55 |[0;0m         { $0.uppercased() },
+
+/Users/coen/Developer/swift-primitives/swift-product-primitives/Experiments/escapable-blocked/Sources/EscapableBlocked/EscapableBlocked.swift:19:8: [1;33mwarning: [1;39mpublic import of 'Product_Primitives' was not used in public declarations or inlinable code[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/unused-import-access\UnusedImportAccess]8;;\]
+[0;36m17 |[0;0m // None of these have a public Swift Evolution proposal as of 2026-05-09.
+[0;36m18 |[0;0m 
+[0;36m19 |[0;0m public import Product_Primitives
+   [0;36m|[0;0m        `- [1;33mwarning: [1;39mpublic import of 'Product_Primitives' was not used in public declarations or inlinable code[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/unused-import-access\UnusedImportAccess]8;;\]
+[0;36m20 |[0;0m 
+[0;36m21 |[0;0m // MARK: - V1: Product type-level ~Copyable upgrade — BLOCKED
+
+[#UnusedImportAccess]: <https://docs.swift.org/compiler/documentation/diagnostics/unused-import-access>
+[100/100] 
+Build complete! (4,12 sec)

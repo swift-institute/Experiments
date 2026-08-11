@@ -1,0 +1,149 @@
+=== Test: Mutating drain (Property.View pattern) ===
+  Drained: 1
+  Drained: 2
+  Drained: 3
+  Container after drain: 0 elements
+
+=== Test: Consuming drain (wrapper pattern) ===
+  Consumed: 1
+  Consumed: 2
+  Consumed: 3
+  Container consumed (variable no longer accessible)
+
+=== Test: Consuming get accessor ===
+  Got value: 42
+  Container marked as consumed (but Int is trivially copyable)
+
+=== Test: Consuming func (only working pattern) ===
+  Drained: 1
+  Drained: 2
+  Drained: 3
+  Container consumed via consuming func
+
+=== Test: Protocol with consuming func (Copyable iterator) ===
+  Iterated: 1
+  Iterated: 2
+  Iterated: 3
+  Protocol-based consuming func WORKS (with Copyable iterator)
+
+=== Test: Protocol with consuming forEach ===
+  Consumed: 1
+  Consumed: 2
+  Consumed: 3
+  Protocol-based consumingForEach WORKS
+
+=== Test: Property.View drain (element ownership) ===
+  Moved out: 1
+  Moved out: 2
+  Moved out: 3
+  Container after drain: 0 elements
+  Container still usable: []
+  After append: [99]
+
+=== Test: .consumingDrain().forEach { } pattern ===
+  Consumed: 1
+  Consumed: 2
+  Consumed: 3
+  Container is consumed (variable gone)
+
+=== Test: .consuming().forEach { } pattern (recommended) ===
+  Consumed: 1
+  Consumed: 2
+  Consumed: 3
+  Container consumed via .consuming().forEach pattern
+  This follows Nest.Name: consuming() returns view, forEach operates on it
+
+=== Property.View Analysis ===
+Property.View CAN support:
+- .drain { } with element ownership transfer (mutating, container survives)
+- .forEach.consuming { } with borrow-then-clear (mutating, container survives empty)
+
+Property.View CANNOT support:
+- True container consumption where variable becomes unusable
+
+BUT: The `.consuming().forEach { }` pattern DOES work and follows naming!
+
+| Pattern | Naming | Works for ~Copyable? |
+|---------|--------|---------------------|
+| consumingForEach { }         | Compound ❌    | Yes |
+| .consuming().forEach { }     | Path-like ✅   | Yes |
+| .forEach.consuming { }       | Path-like ✅   | No (Property.Consuming requires Copyable) |
+
+RECOMMENDATION: Use `.consuming().forEach { }` pattern for ~Copyable containers.
+This follows [API-NAME-002] Nest.Name and works with consuming semantics.
+
+=== Test: ConsumingView - complete iteration ===
+  Consumed: 1
+  Consumed: 2
+  Consumed: 3
+  State deinit called (cleanup with 0 remaining)
+
+=== Test: ConsumingView - partial iteration (early exit) ===
+  Got first: 10
+  Got second: 20
+  Letting view go out of scope with 3 remaining...
+  Cleanup: deinitializing 3 elements from index 2
+  After scope exit - cleanup was called
+
+=== Sequence.Consuming.View Analysis ===
+VERIFIED:
+
+1. View<Element, State: ~Copyable> structure compiles
+   - Generic State parameter allows any ~Copyable state
+   - Closure operates on `inout State` for next()
+
+2. Cleanup via State's deinit (NOT closure in View's deinit)
+   - State type provides deinit that cleans up remaining elements
+   - When View is destroyed, State is destroyed, cleanup runs
+   - This is the correct pattern for ~Copyable cleanup
+
+3. Protocol limitation confirmed (SE-0427)
+   - Associated types cannot be `~Copyable`
+   - WORKAROUND: Don't use protocol for ConsumingView
+   - Types return concrete `Sequence.Consuming.View<Element, TheirState>`
+
+CONCLUSION: The design works with State's deinit handling cleanup.
+sequence-primitives provides View type with forEach/next logic.
+set-primitives provides State type with deinit cleanup.
+
+=== FINAL CONCLUSIONS ===
+EMPIRICAL FINDINGS:
+
+1. `consuming get` accessor:
+   - Syntactically valid in Swift 6.2
+   - CANNOT move stored properties ("self is borrowed and cannot be consumed")
+   - NOT useful for draining containers
+
+2. Protocols with `consuming func`:
+   - SUPPORTED - protocols CAN require `consuming func` methods
+   - Associated types CANNOT be ~Copyable (SE-0427 limitation)
+   - Viable patterns:
+     a. `consuming func consumingForEach(_ body: (Element) -> Void)`
+     b. `consuming func makeConsumingIterator() -> CopyableIterator`
+
+WHAT CAN BE UNIFIED IN swift-sequence-primitives:
+
+1. MUTATING DRAIN (container survives, empty):
+   - Sequence.Drainable protocol
+   - Sequence.Drain tag
+   - Property.View extension for `.drain { }`
+   - Set types conform -> get `.drain { }` for free
+
+2. CONSUMING DRAIN (container consumed):
+   - Sequence.ConsumingDrainable protocol with:
+     `consuming func consumingForEach(_ body: (Element) -> Void)`
+   - Set types conform -> consistent API across packages
+   - Internal iterator types remain in each package (need ~Copyable)
+
+RECOMMENDATION FOR swift-set-primitives:
+
+Current API:
+- drain(_ body:)           -> mutating, container survives
+- consumingForEach(_ body:) -> consuming, container consumed
+
+Unified API via sequence-primitives:
+- Conform to Sequence.Drainable    -> .drain { }
+- Conform to Sequence.ConsumingDrainable -> .consumingForEach { }
+
+The consuming iterator implementations stay in set-primitives as internal
+details. The PUBLIC API becomes protocol conformance.

@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'span-typealias-hosting' complete! (0.10s)
+Span<Int> is the stdlib read span; count = 3
+bare Span.Protocol on linchpin Swift.Span; isEmpty = false
+bare Span.Protocol on cross-module conformer; isEmpty = false
+bare Span.Raw cross-module; count = 99
+Span.Mutable<Int> is the stdlib mutable span; mutated first = 101
+BEST OF ALL WORLDS: Span<E>, Span.Mutable<E>, Span.Protocol, Span.Mutable.Protocol, Span.Raw — all bare, cross-module
