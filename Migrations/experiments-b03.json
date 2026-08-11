@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "batch": "Experiments-B03",
+  "destinationImportCommit": "158729e6eaf77b86c2ad4736c9ea6c18156112c0",
+  "manifestSHA256": "4ee326eb712972d1e915273a6ef4e31995d064a2578f6c0e756f7661d4f8942a",
+  "programme": "https://github.com/swift-institute/.github/issues/527",
+  "task": "https://github.com/swift-institute/Experiments/issues/10",
+  "historyImport": false,
+  "sourceHistoryRetained": true,
+  "imports": [
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/borrow-consume-extract",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "082c9880f5fece14e0967dd5f6232964421adda6",
+      "destinationPath": "swift-witnesses--borrow-consume-extract",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/borrowing-observe-pattern",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "0348cf196be2fc3c53c33a65abee8a8a9458226b",
+      "destinationPath": "swift-witnesses--borrowing-observe-pattern",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/calls-result-sibling",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "5981b6ca683284db3d4530c44681424ca394ef9c",
+      "destinationPath": "swift-witnesses--calls-result-sibling",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/io-witness-macro-generic-compat",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "0b4e44da26a580596ceeef4f7d1a54c4636d3cb0",
+      "destinationPath": "swift-witnesses--io-witness-macro-generic-compat",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/witness-mock-borrowing",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "3e102ac2234b1c7e039a8e1297e88f5c88c251cd",
+      "destinationPath": "swift-witnesses--witness-mock-borrowing",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/witness-property-method-collision",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "7a88222e6ee85a8858e27dd287b41faccd8eb6fb",
+      "destinationPath": "swift-witnesses--witness-property-method-collision",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-foundations/swift-witnesses",
+      "sourceCommit": "4e6cd696d09af160ddedf2d8d942839d45c22b6e",
+      "sourcePath": "Experiments/witness-recording-against-properties",
+      "sourceTree": "cc1ad5b65b8840c36278e4c97dd9fcf47d23bbc7",
+      "sourceUnitTree": "e630599d07454f8e12d5fad202edceb13f8bd51f",
+      "destinationPath": "swift-witnesses--witness-recording-against-properties",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-affine-algebra-primitives",
+      "sourceCommit": "ddbe57801e0d2fc19a5f5ac2f2346e047040d22a",
+      "sourcePath": "Experiments/protocol-extension-layer-visibility",
+      "sourceTree": "83e638eb19a87510687c2f7a8fac96e3135e41a7",
+      "sourceUnitTree": "aafa40bf91037833078643e73d27393d4dad0f10",
+      "destinationPath": "swift-affine-algebra-primitives--protocol-extension-layer-visibility",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-algebra-modular-primitives",
+      "sourceCommit": "2b32622e7c546c569b19dff5428e2cdcb33845d1",
+      "sourcePath": "Experiments/ordinal-modulo-throwing",
+      "sourceTree": "7fb822b5eafb8c16cc97ce9f9b381007542e2c04",
+      "sourceUnitTree": "5ffa8cb7190d5f55a9ef7356b84e6d33403c1f96",
+      "destinationPath": "swift-algebra-modular-primitives--ordinal-modulo-throwing",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-algebra-primitives",
+      "sourceCommit": "f9acf157949e7ce343ce6acff62f31376db49f4e",
+      "sourcePath": "Experiments/tagged-typealias-invariant-soundness",
+      "sourceTree": "3b4713ecf0047a84d5edbdb3434b1ef230aea860",
+      "sourceUnitTree": "6d64a902eab075ed876c62728940d654ed89f4d2",
+      "destinationPath": "swift-algebra-primitives--tagged-typealias-invariant-soundness",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    }
+  ]
+}
