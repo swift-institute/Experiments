@@ -1,0 +1,66 @@
+================================================================
+ SIL RECEIPT — storage-protocol-heap-sil-gate
+ Toolchain: Apple Swift version 6.3.2
+ SIL: Outputs/exe.sil (module main, swiftc -emit-sil -O,
+      cross-module: imports the separately-built StorageHeapProtocolGeneric +
+      Storage_Heap_Primitives release modules from .build/.../release/Modules)
+ Emitted: 2026-05-25 (re-run for WAVE 4)
+================================================================
+
+WAVE 4 RE-VALIDATION (conditional Copyable + internal CoW)
+----------------------------------------------------------------
+Re-run after Storage.Heap became CONDITIONALLY Copyable (`extension
+Storage.Heap: Copyable where Element: Copyable {}`) with internal copy-on-write
+(the stdlib Array model). Hypothesis: the conditional-Copyable change does NOT
+regress the wave-3 zero-witness specialization of `some Storage.`Protocol`` over
+the concrete value-type-façade conformer Storage<Int>.Heap.
+
+GATE — witness_method / class_method anywhere in the optimized executable module:
+  witness_method count = 0   (grep -c witness_method Outputs/exe.sil)
+  class_method   count = 0   (grep -c class_method   Outputs/exe.sil)
+  (REQUIRED: 0 witness_method on capacity/pointer(at:) in the specialized body.
+   OBSERVED: 0 witness_method AND 0 class_method in the WHOLE module.)
+
+VALUE-TYPE-FAÇADE conformer — sil [noinline] @$s4main8callHeapSiyF
+(Storage<Int>.Heap), Outputs/exe.sil lines 85-199:
+
+  Single allocation — the façade is a value; the buffer is the one heap alloc
+  (UNCHANGED by the conditional-Copyable conformance, which only adds a shallow
+   memberwise copy of the class reference; no second allocation on the non-CoW path):
+    L92:  %2 = alloc_ref [tail_elems $Int * %1] $Storage<Int>.Heap.Buffer
+          (one combined header+tail allocation; the façade struct wraps this
+           single class reference)
+
+  pointer(at:) witness -> inlined concrete tail-element address arithmetic
+  (ManagedBuffer tail storage; NO witness, NO class_method):
+    L106: %16 = ref_tail_addr %3, $Int                   // slot address base
+
+  capacity witness -> inlined concrete capacity computation via the backing
+  ManagedBuffer (malloc_size -> pointer delta -> / stride(Int)); NO witness:
+    L126: %35 = function_ref @...._swift_stdlib_malloc_size
+
+  probe<S> body -> fully inlined into the caller (pointee &+ capacity), as in
+  wave 3.
+
+VERDICT: PASS (wave 4) — 0 witness_method (and 0 class_method) on capacity /
+pointer(at:) for the value-type-façade conformer Storage.Heap, release +
+cross-module. The Storage.Protocol generic still fully specializes through the
+~Copyable-or-Copyable struct façade after the conditional-Copyable + internal-CoW
+change. Single allocation preserved on the non-CoW path: one
+Storage.Heap.Buffer (ManagedBuffer subclass) alloc per Heap; the conditional
+Copyable conformance adds only a shallow class-reference copy. The CoW path (a
+second Buffer allocation) is reached ONLY on shared-mutation, which this gate's
+single-owner call site does not exercise — confirming no extra allocation on the
+hot, uniquely-owned path.
+
+Runtime (Outputs/run.txt): heap probe = 51 (unchanged from wave 3).
+
+----------------------------------------------------------------
+WAVE 3 RECEIPT (retained for history)
+----------------------------------------------------------------
+Wave 3 established the value-type-façade conformer specializes to 0
+witness_method / 0 class_method on capacity / pointer(at:) in release +
+cross-module, closing [EXP-020] for Heap. The wave-4 re-run above confirms the
+property survives the conditional-Copyable + internal-CoW change. See the
+Storage.Heap declaration (Storage.Heap.swift) and the CoW implementation
+(Storage.Heap Copyable.swift, Storage.Heap+{Initialize,Move,Deinitialize}.swift).

@@ -1,0 +1,49 @@
+// REJECT TEST — empirical compile-failure capture for Tagged: RawRepresentable.
+//
+// Copy the body below into a `.swift` file inside the experiment's Sources/
+// (next to main.swift). `swift build` should fail with the diagnostics
+// reproduced at the bottom of this file. After observing, restore to .txt.
+//
+// Verified: Apple Swift 6.3.1 — 2026-04-30.
+
+import Tagged_Primitives
+
+enum User {}
+
+// EXPECTED COMPILE FAILURE: Tagged is ~Escapable structurally; the
+// synthesized `rawValue` getter witness for `RawRepresentable` violates
+// the protocol's non-~-aware accessor requirements regardless of constraint
+// shape.
+
+extension Tagged: @retroactive RawRepresentable
+where Tag: ~Copyable & ~Escapable, RawValue: Copyable & Equatable & Escapable {
+    public init?(rawValue: RawValue) {
+        self.init(__unchecked: (), rawValue)
+    }
+}
+
+// Observed diagnostics (Swift 6.3.1, repeated for emit-module + compile passes):
+//
+//   <unknown>:0: error: the 'get' accessor cannot return a ~Escapable result
+//   <unknown>:0: error: 'self' is borrowed and cannot be consumed
+//   <unknown>:0: error: lifetime-dependent variable 'self' escapes its scope
+//   <unknown>:0: error: the 'get' accessor cannot return a ~Escapable result
+//   <unknown>:0: error: 'self' is borrowed and cannot be consumed
+//   <unknown>:0: error: lifetime-dependent variable 'self' escapes its scope
+//
+// Variants tried (all produce the same diagnostic family):
+//
+//   - Tag: ~Copyable & ~Escapable, RawValue: Copyable & Equatable
+//   - Tag: ~Copyable & ~Escapable, RawValue: Copyable & Equatable & Escapable
+//   - Tag: Copyable & Escapable, RawValue: Copyable & Equatable & Escapable
+//
+// Conclusion: the structural absence cannot be opted into by constraint-shape
+// alone. RawRepresentable is not ~Escapable-aware; Tagged's structural
+// `~Escapable` declaration on the base struct propagates through the
+// synthesized `rawValue` getter witness regardless of how the conformance
+// extension is constrained. This makes RawRepresentable a HARD absence:
+// even SLI-style opt-in is not authorable.
+//
+// The consumer's correct path is a domain-specific wrapper struct that
+// owns its own RawRepresentable conformance — see main.swift for the
+// canonical pattern.

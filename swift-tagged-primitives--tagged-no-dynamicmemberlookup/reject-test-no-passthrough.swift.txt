@@ -1,0 +1,38 @@
+// REJECT TEST — copy into a `.swift` file in the experiment's Sources/.
+// `swift build` should fail with: 'value of type ... has no member 'name''
+// (or equivalent — diagnostic text varies slightly by toolchain).
+//
+// Verified: Apple Swift 6.3.1 — 2026-04-30.
+
+import Tagged_Primitives
+
+struct Profile {
+    let name: String
+    let age: Int
+}
+
+enum User {}
+
+let user = Profile(name: "Alice", age: 30)
+let taggedUser = Tagged<User, Profile>(__unchecked: (), user)
+
+// EXPECTED COMPILE FAILURE: Tagged does not have @dynamicMemberLookup,
+// so `taggedUser.name` does not compile — Tagged has no `name` member.
+
+let name = taggedUser.name           // error: value of type 'Tagged<User, Profile>' has no member 'name'
+let age  = taggedUser.age            // error: value of type 'Tagged<User, Profile>' has no member 'age'
+
+// Also EXPECTED COMPILE FAILURE: attempting to add @dynamicMemberLookup
+// via extension. The attribute must be on the type declaration:
+
+@dynamicMemberLookup                 // error: '@dynamicMemberLookup' attribute cannot be applied to extensions of types defined in other modules
+extension Tagged {
+    subscript<U>(dynamicMember keyPath: KeyPath<RawValue, U>) -> U {
+        rawValue[keyPath: keyPath]
+    }
+}
+
+// (Diagnostic text varies; the structural fact is that @dynamicMemberLookup
+// must be on the original type declaration, not retroactively added via
+// extension. This is what makes the absence HARD — even an SLI target
+// cannot opt in.)
