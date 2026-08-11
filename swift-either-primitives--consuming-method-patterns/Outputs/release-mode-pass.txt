@@ -1,0 +1,30 @@
+Building for production...
+[0/27] Write sources
+[24/27] Write swift-version--58304C5D6DBC2206.txt
+[26/29] Compiling Ownership_Namespace Ownership.swift
+[27/29] Compiling Carrier_Primitives Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[28/32] Compiling Ownership_Primitives_Core Ownership.Transfer.swift
+[29/32] Compiling Property_Primitives_Core Property+Carrier.swift
+[30/33] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[31/35] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[32/36] Compiling Property_Typed_Primitives Property.Typed.swift
+[33/36] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[34/37] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[35/37] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[36/38] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[37/39] Compiling Property_Primitives exports.swift
+[38/40] Compiling Equation_Primitives_Core Equation.Protocol.swift
+[39/41] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[40/42] Compiling Equation_Primitives Equation.Protocol+Tagged.swift
+[41/44] Compiling Hash_Primitives_Core Hash.Protocol.swift
+[42/45] Compiling Comparison_Primitives_Core Comparison+BooleanProperties.swift
+[43/46] Compiling Hash_Primitives_Standard_Library_Integration Hash.Protocol+Swift.Array.swift
+[44/47] Compiling Hash_Primitives Hash.Protocol+Identity.Tagged.swift
+[45/47] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[46/48] Compiling Comparison_Primitives Comparison.Protocol+Identity.Tagged.swift
+[47/49] Compiling Either_Primitives Comparison.Protocol+Either.swift
+[48/50] Compiling ConsumingMethodPatterns Either+Consuming.swift
+[49/51] Compiling consuming_method_patterns main.swift
+[49/51] Write Objects.LinkFileList
+[50/51] Linking consuming-method-patterns
+Build complete! (5.09s)
