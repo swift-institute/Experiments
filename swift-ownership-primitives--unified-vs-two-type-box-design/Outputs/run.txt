@@ -1,0 +1,68 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'unified-vs-two-type-box-design' complete! (0.09s)
+========================================
+unified-vs-two-type-box-design experiment
+========================================
+
+--- H1 ---
+H1: created Box<Int>(42)
+H1: copied Box<Int> to box2
+H1: created Box<H1_Handle>(7)
+
+--- H2 ---
+H2: class<V: ~Copyable> with var value: V — compiles, instantiates.
+
+--- H3 ---
+H3: raw-pointer UniqueBox<Int>.size    = 8 bytes
+H3: class-backed Box<Int>.size         = 8 bytes
+H3: raw-pointer UniqueBox<Handle>.size = 8 bytes
+H3: class-backed Box<Handle>.size      = 8 bytes
+H3: note: struct-level size equal (both 1 word = class ref or raw ptr);
+H3: real delta is the HEAP footprint: class object header = 16 bytes + value,
+H3: vs raw allocation = just value. Measured below via heap-allocation counter.
+
+--- H4 ---
+H4: box1._storage.value set to 200 (after struct-copy to box2)
+H4: box2._storage.value observed as 200
+H4: same underlying storage? YES — reference-shared
+
+--- H5 ---
+H5: Copyable Box<Int>.consumeCopyable() returned 42 — this was a COPY.
+H5: For ~Copyable Value, a consume() that moves value out of class-backed storage
+H5: IS FORBIDDEN by Swift — diagnostic: 'storage.value is borrowed and cannot be consumed'.
+H5: SE-0517's consume() requires raw-pointer storage to do the move legally.
+
+--- H6 ---
+H6: single Box: isKnownUniquelyReferenced = true
+H6: after struct-copy: isKnownUniquelyReferenced = false
+H6: ~Copyable Box: isKnownUniquelyReferenced = true
+
+--- H7 ---
+H7: initial copyableValue = 10
+H7: after set, copyableValue = 20
+H7: ~Copyable Box: borrowedValue.id = 99
+
+--- H7b (same-name in two conditional extensions) ---
+H7b: Copyable path read — value = 1
+H7b: Copyable path write OK; new value = 2
+H7b: ~Copyable path transitive-borrow read — id = 42
+H7b: Cannot do `let v = hbox.value` directly for ~Copyable Value —
+H7b: Swift diagnostic: 'value cannot be consumed when captured by escaping closure'
+H7b: This is another difference in ergonomics between Copyable and ~Copyable paths.
+H7b: SUMMARY — same-named accessors in two conditional extensions DO compile and
+H7b: resolve by specificity, but the ~Copyable side has borrow-only usage semantics.
+
+--- H8 ---
+H8: single ~Copyable Box in a scope
+  H8.Storage.init — refcount now 1
+  H8.Storage.deinit — refcount hit 0
+H8: scope exited — Storage.deinit should have fired above.
+H8: Copyable Box with two struct-copies
+  H8.Storage.init — refcount now 1
+  H8.Storage.deinit — refcount hit 0
+H8: scope exited — Storage.deinit should have fired exactly ONCE at refcount=0
+
+========================================
+See main.swift header for per-variant results.
+========================================

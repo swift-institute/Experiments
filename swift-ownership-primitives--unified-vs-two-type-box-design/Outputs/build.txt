@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Compiling unified_vs_two_type_box_design main.swift
+[4/7] Emitting module unified_vs_two_type_box_design
+[4/7] Write Objects.LinkFileList
+[5/7] Linking unified-vs-two-type-box-design
+[6/7] Applying unified-vs-two-type-box-design
+Build complete! (0.49s)
