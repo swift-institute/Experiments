@@ -1,0 +1,24 @@
+// MARK: - Rejection Test: Multi-consumer conformance conflict
+//
+// This file demonstrates the REFUTED scenario in the parent experiment.
+// It is NOT compiled as part of the default build — compiling it would fail.
+//
+// To reproduce: add ConsumerB as a dependency in Package.swift and restore
+// the full import set below. Expected compile error:
+//
+//   error: type alias 'X' requires the types 'CoordTag' and 'UserTag' be equivalent
+//   error: type alias 'X' requires the types 'Double' and 'UInt32' be equivalent
+//
+// Swift's single-conformance rule applies cross-module. ConsumerA and ConsumerB
+// each declare `extension Tagged: ExpressibleByIntegerLiteral where <disjoint
+// constraints>`; Swift cannot accept both in the same program.
+
+import TaggedLib
+import ConsumerA
+import ConsumerB
+
+let user: UserID = 42
+let x: X = 3
+
+print("UserID literal: \(user.rawValue)")
+print("X literal: \(x.rawValue)")
