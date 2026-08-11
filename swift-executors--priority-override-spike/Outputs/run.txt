@@ -1,0 +1,7 @@
+V1: Nesting semantics
+V1: PASS — 3 overrides started and ended in non-LIFO order, all returned 0
+V2: Rapid-cycle timing (100k cycles)
+V2: PASS — 100000 cycles in 85385875 ns (853 ns/cycle)
+V3: Cross-thread override + parked-worker non-wake
+V3: PASS — override applied to parked worker; worker did NOT wake until condvar signal
+All variants: PASS

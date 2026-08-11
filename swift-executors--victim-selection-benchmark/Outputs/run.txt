@@ -1,0 +1,27 @@
+Victim-Selection Benchmark (macOS arm64)
+
+V1: Skewed load — 100k jobs on worker 0, 0 elsewhere
+─────────────────────────────────────────────────────────────────────
+    variant      time        steal-attempts  success-rate
+─────────────────────────────────────────────────────────────────────
+  4w sequential  12.6 ms     144268       48.61%
+  4w random      12.6 ms     209621       30.87%
+    sequential per-worker: [29870, 24375, 24176, 21579]
+    random     per-worker: [35274, 19538, 20304, 24884]
+  8w sequential  19.1 ms     232491       30.82%
+  8w random      16.9 ms     295738       14.00%
+    sequential per-worker: [28339, 6202, 7764, 6995, 7666, 8918, 10328, 23788]
+    random     per-worker: [58577, 5681, 5154, 5477, 5352, 5488, 4542, 9729]
+
+V2: Even load — 25k jobs per worker initially
+─────────────────────────────────────────────────────────────────────
+  4w sequential  4.5 ms
+  4w random      2.5 ms
+    sequential steals: 5799 / successes: 4074
+    random     steals: 1569 / successes: 110
+  8w sequential  9.5 ms
+  8w random      9.8 ms
+    sequential steals: 31000 / successes: 14441
+    random     steals: 32709 / successes: 11439
+
+All variants completed.

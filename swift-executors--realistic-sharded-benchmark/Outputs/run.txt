@@ -1,0 +1,29 @@
+Realistic Sharded Benchmark (macOS arm64, 128-byte cache line)
+
+V1: Compute sweep (4 threads, 100k iterations each)
+─────────────────────────────────────────────────────────────────────
+target compute  variant   time          speedup
+─────────────────────────────────────────────────────────────────────
+~10 ns (L=3)    unpadded  18.6 ms       —
+~10 ns (L=3)    padded    14.0 ms       1.33x
+~100 ns (L=33)  unpadded  36.6 ms       —
+~100 ns (L=33)  padded    40.8 ms       0.89x
+~1000 ns (L=332)unpadded  126.0 ms      —
+~1000 ns (L=332)padded    121.8 ms      1.03x
+~10000 ns (L=3300)unpadded  1.35 s        —
+~10000 ns (L=3300)padded    1.10 s        1.02x
+
+V2: Thread scaling at ~1 µs compute/iteration (100k iter/thread)
+─────────────────────────────────────────────────────────────────────
+threads variant   time          speedup
+─────────────────────────────────────────────────────────────────────
+1       unpadded  100.5 ms      —
+1       padded    100.0 ms      1.00x
+2       unpadded  101.6 ms      —
+2       padded    101.6 ms      0.99x
+4       unpadded  106.5 ms      —
+4       padded    105.2 ms      1.01x
+8       unpadded  141.8 ms      —
+8       padded    147.6 ms      0.96x
+
+All variants completed.

@@ -1,0 +1,9 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module chase_lev_deque_spike
+[4/6] Compiling chase_lev_deque_spike main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking chase-lev-deque-spike
+[6/7] Applying chase-lev-deque-spike
+Build complete! (1.06s)

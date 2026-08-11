@@ -1,0 +1,32 @@
+Cursor-Padding Benchmark  (macOS arm64, 128-byte cache line)
+
+V1: Contention scaling (4 shards, 1M next() per thread)
+─────────────────────────────────────────────────────────────────────
+threads variant   time          ops/s           speedup
+─────────────────────────────────────────────────────────────────────
+1       unpadded  2.8 ms        356.04 M/s      —
+1       padded    3.1 ms        320.87 M/s      0.90x
+2       unpadded  9.5 ms        208.63 M/s      —
+2       padded    10.2 ms       195.30 M/s      0.93x
+4       unpadded  41.6 ms       95.97 M/s       —
+4       padded    33.2 ms       120.27 M/s      1.25x
+8       unpadded  306.1 ms      26.12 M/s       —
+8       padded    382.5 ms      20.91 M/s       0.80x
+
+V2: Per-call latency (4 threads, 100k samples/thread)
+─────────────────────────────────────────────────────────────────────
+  unpadded    P50 83 ns       P99 1041 ns     P999 25291 ns      max 1237833 ns
+  padded      P50 83 ns       P99 625 ns      P999 22958 ns      max 636750 ns
+
+V3: Classic false-sharing (each thread writes own counter)
+─────────────────────────────────────────────────────────────────────
+threads variant   time          ops/s           speedup
+─────────────────────────────────────────────────────────────────────
+2       unpadded  71.6 ms       279.16 M/s      —
+2       padded    18.2 ms       1095.02 M/s     3.92x
+4       unpadded  241.5 ms      165.56 M/s      —
+4       padded    19.6 ms       2036.16 M/s     12.29x
+8       unpadded  1.61 s        75.35 M/s       —
+8       padded    31.2 ms       2562.69 M/s     34.00x
+
+All variants completed.

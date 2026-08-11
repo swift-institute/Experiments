@@ -1,0 +1,12 @@
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'chase-lev-deque-spike' complete! (0.12s)
+V1: single-threaded smoke test
+V1: PASS
+V2: contended push/take/steal
+V2: PASS — pushed=100000, taken=12008, stolen=87992
+V3: Memory.Inline-backed contended push/take/steal
+V3: PASS — pushed=100000, taken=10006, stolen=89994
+V4: ManagedBuffer-backed contended push/take/steal
+V4: PASS — pushed=100000, taken=9999, stolen=90001
+All variants: PASS
