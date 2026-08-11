@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "batch": "Experiments-Residual44-Refresh10",
+  "destinationImportCommit": "c65de9e7ceb976623a57fb04a47745fabdbc66b6",
+  "manifestSHA256": "2d29a3b15f25b8c09dc0cc601eda85da9c674c4a654498abd85818450db3563d",
+  "programme": "https://github.com/swift-institute/.github/issues/527",
+  "historyImport": false,
+  "sourceHistoryRetained": true,
+  "task": "https://github.com/swift-institute/Experiments/issues/21",
+  "imports": [
+    {
+      "sourceRepository": "swift-foundations/swift-kernel",
+      "sourceCommit": "e3a9c580016be328b531d720b4627e6a57c32ce3",
+      "sourceTree": "b9108ef0a0d8b7eb49ec3ed193ece3e0b2eeedcf",
+      "sourcePath": "Experiments/executor-preference-noncopyable",
+      "sourceUnitTree": "55d3ef6caf380fd8c52f1df879f4946dd9402ceb",
+      "destinationPath": "swift-kernel--executor-preference-noncopyable",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-iso/swift-iso-9945",
+      "sourceCommit": "7a773d953743647b90f9b27b356cb7a1e0a100f6",
+      "sourceTree": "17300438bd7cc0ad108db837731aa813c0a77bb8",
+      "sourcePath": "Experiments/noncopyable-close-ownership",
+      "sourceUnitTree": "31c631b5374d88a12412801a650e145982a5d88e",
+      "destinationPath": "swift-iso-9945--noncopyable-close-ownership",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    }
+  ]
+}
