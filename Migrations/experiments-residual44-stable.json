@@ -1,0 +1,528 @@
+{
+  "schemaVersion": "1.0.0",
+  "batch": "Experiments-Residual44-Stable",
+  "destinationImportCommit": "6fbce4b01a50ea41094d0c05976947bb700f2053",
+  "manifestSHA256": "5c483dc7962deca59537eb9d137081c8f73df0cb713c2f5439840bbe3f8fdad0",
+  "programme": "https://github.com/swift-institute/.github/issues/527",
+  "task": "https://github.com/swift-institute/Experiments/issues/21",
+  "historyImport": false,
+  "sourceHistoryRetained": true,
+  "imports": [
+    {
+      "sourceRepository": "swift-foundations/swift-kernel",
+      "sourceCommit": "1cbcc9b9fdbe977d2c219ffcaca7a872751fefc5",
+      "sourceTree": "b9108ef0a0d8b7eb49ec3ed193ece3e0b2eeedcf",
+      "sourcePath": "Experiments/executor-preference-noncopyable",
+      "sourceUnitTree": "55d3ef6caf380fd8c52f1df879f4946dd9402ceb",
+      "destinationPath": "swift-kernel--executor-preference-noncopyable",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-iso/swift-iso-9945",
+      "sourceCommit": "1e199fdb71e0ce17efd03b0179181cd227133645",
+      "sourceTree": "17300438bd7cc0ad108db837731aa813c0a77bb8",
+      "sourcePath": "Experiments/noncopyable-close-ownership",
+      "sourceUnitTree": "31c631b5374d88a12412801a650e145982a5d88e",
+      "destinationPath": "swift-iso-9945--noncopyable-close-ownership",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-async-primitives",
+      "sourceCommit": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourceTree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourcePath": "Experiments/barrier-handle-ownership",
+      "sourceUnitTree": "43c0c58f79e02dc639f93ea6c91ce8147f6563f6",
+      "destinationPath": "swift-async-primitives--barrier-handle-ownership",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-async-primitives",
+      "sourceCommit": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourceTree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourcePath": "Experiments/bridge-push-ownership-conventions",
+      "sourceUnitTree": "d9d0019268ada2ef0ae8aad697f8d91e077376aa",
+      "destinationPath": "swift-async-primitives--bridge-push-ownership-conventions",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-async-primitives",
+      "sourceCommit": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourceTree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourcePath": "Experiments/inout-noncopyable-optional-closure-capture",
+      "sourceUnitTree": "92c80977ded11d3e9a8d87f1daa7c581751b2ee9",
+      "destinationPath": "swift-async-primitives--inout-noncopyable-optional-closure-capture",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-buffer-linear-primitives",
+      "sourceCommit": "605bf5f9da0f7218c90a43ea8f4d5bae60198638",
+      "sourceTree": "3660a18515c77dc6cac3094b4da9bd5406211a20",
+      "sourcePath": "Experiments/small-span-diagnose-static-exclusivity-crash",
+      "sourceUnitTree": "5ef7bc7a475093400fd15361fb7b94dc20eb67a3",
+      "destinationPath": "swift-buffer-linear-primitives--small-span-diagnose-static-exclusivity-crash",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-cache-primitives",
+      "sourceCommit": "ad1b4b78a4718dd6f55e31ec505b8da1ac036949",
+      "sourceTree": "bf4f1fb377cc0db120a71d271cc76eab312f23d9",
+      "sourcePath": "Experiments/cache-effect-type-nesting",
+      "sourceUnitTree": "f1d183f6ef0c5c5fac83d99077411707193c68bf",
+      "destinationPath": "swift-cache-primitives--cache-effect-type-nesting",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-comparison-primitives",
+      "sourceCommit": "9f5f84624d218586c3ab2b385d63bd08039db9bd",
+      "sourceTree": "8c19e91598ad32c95776a67917a0ea2785c46e97",
+      "sourcePath": "Experiments/Package.swift",
+      "sourceUnitTree": "bb1b5e4dfe4b47a3eb8183c72e95191e41287fde",
+      "destinationPath": "swift-comparison-primitives--root/Package.swift",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-comparison-primitives",
+      "sourceCommit": "9f5f84624d218586c3ab2b385d63bd08039db9bd",
+      "sourceTree": "8c19e91598ad32c95776a67917a0ea2785c46e97",
+      "sourcePath": "Experiments/Sources",
+      "sourceUnitTree": "d516c263069818d75f30f6afcae87113a1043edf",
+      "destinationPath": "swift-comparison-primitives--root/Sources",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-comparison-primitives",
+      "sourceCommit": "9f5f84624d218586c3ab2b385d63bd08039db9bd",
+      "sourceTree": "8c19e91598ad32c95776a67917a0ea2785c46e97",
+      "sourcePath": "Experiments/comparable-shadowing-test",
+      "sourceUnitTree": "1cf9e080ee1ff9e16776a3e4ad7df68285a84ecc",
+      "destinationPath": "swift-comparison-primitives--comparable-shadowing-test",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-comparison-primitives",
+      "sourceCommit": "9f5f84624d218586c3ab2b385d63bd08039db9bd",
+      "sourceTree": "8c19e91598ad32c95776a67917a0ea2785c46e97",
+      "sourcePath": "Experiments/noncopyable-protocol-test",
+      "sourceUnitTree": "e0b507db1d13c603a7db5acd7d7371272e248117",
+      "destinationPath": "swift-comparison-primitives--noncopyable-protocol-test",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-heap-primitives",
+      "sourceCommit": "63b911259040f11a25258a1831d278f5ec711745",
+      "sourceTree": "d8945f62fe479a60bb2ab5f4ac13d84ea3c1042f",
+      "sourcePath": "Experiments/Heap MinMax (parked)",
+      "sourceUnitTree": "d01ee7fb341fcd844a7c80ff3712659542e37e0c",
+      "destinationPath": "swift-heap-primitives--Heap MinMax (parked)",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-heap-primitives",
+      "sourceCommit": "63b911259040f11a25258a1831d278f5ec711745",
+      "sourceTree": "d8945f62fe479a60bb2ab5f4ac13d84ea3c1042f",
+      "sourcePath": "Experiments/peek-property-test",
+      "sourceUnitTree": "49494b2a80a97f940b6d14184f718a2a0e86325a",
+      "destinationPath": "swift-heap-primitives--peek-property-test",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-heap-primitives",
+      "sourceCommit": "63b911259040f11a25258a1831d278f5ec711745",
+      "sourceTree": "d8945f62fe479a60bb2ab5f4ac13d84ea3c1042f",
+      "sourcePath": "Experiments/typed-throws-error-alias",
+      "sourceUnitTree": "81fd7efb54b2245d7830db502133cba4d380abcb",
+      "destinationPath": "swift-heap-primitives--typed-throws-error-alias",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/bounded-index-preconditions",
+      "sourceUnitTree": "26bf5f627b16d38544b00b292963664ea9d96096",
+      "destinationPath": "swift-index-primitives--bounded-index-preconditions",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/hash-index-typed-positions",
+      "sourceUnitTree": "4cfa5e82ef523c609b47c95c44e488ce41ae8f48",
+      "destinationPath": "swift-index-primitives--hash-index-typed-positions",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/index-offset-arithmetic",
+      "sourceUnitTree": "38539c60b7a486fd07e41ba023a5663d434fd510",
+      "destinationPath": "swift-index-primitives--index-offset-arithmetic",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/index-primitives-totality-audit",
+      "sourceUnitTree": "a81d9caba1e618d292269b3c448ad2d9ecaf239c",
+      "destinationPath": "swift-index-primitives--index-primitives-totality-audit",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/index-totality",
+      "sourceUnitTree": "0e87eec8c3cae69ab9abb7c41bdbc15c449208a5",
+      "destinationPath": "swift-index-primitives--index-totality",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/index-totality-property-view-protocol",
+      "sourceUnitTree": "15d0c4885b3980eead4fb51e4bc2bb6fafb49ea6",
+      "destinationPath": "swift-index-primitives--index-totality-property-view-protocol",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/operator-forwarding",
+      "sourceUnitTree": "be964e4e94577c50b8d97138aeecf8c3cb3d0f54",
+      "destinationPath": "swift-index-primitives--operator-forwarding",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-index-primitives",
+      "sourceCommit": "2de54fc3ee8584e11ff1a96e6f2a4ba9a7d6665d",
+      "sourceTree": "e41392b5c5b8b9559c4264ac6faf1cb562664c2e",
+      "sourcePath": "Experiments/typed-index-boundary",
+      "sourceUnitTree": "b1052432f98219c075c96f94704ba11c39a1e1d5",
+      "destinationPath": "swift-index-primitives--typed-index-boundary",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-algebra",
+      "sourceUnitTree": "4f446c769e1604634396763ee52c50b0a181e346",
+      "destinationPath": "swift-io-primitives--io-algebra",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-free-encoding",
+      "sourceUnitTree": "ce0ad74881ad99f73e8e1620048b8eac0eca1031",
+      "destinationPath": "swift-io-primitives--io-free-encoding",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-domain-generic-substrate",
+      "sourceUnitTree": "a7162c9615d8645e0b8de20cd064e7b90a8bace6",
+      "destinationPath": "swift-io-primitives--io-witness-domain-generic-substrate",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-domain-via-map",
+      "sourceUnitTree": "5ed4e561e1c7d313d51638d397cedcf511c8be93",
+      "destinationPath": "swift-io-primitives--io-witness-domain-via-map",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-eio-style",
+      "sourceUnitTree": "3c7ff371412bf492b788b83f5c29122d5d511eae",
+      "destinationPath": "swift-io-primitives--io-witness-eio-style",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-generic-error",
+      "sourceUnitTree": "1e741404932e43bd3d7b289f56e4c2b6c64c54ee",
+      "destinationPath": "swift-io-primitives--io-witness-generic-error",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-generic-ops",
+      "sourceUnitTree": "a946c13c67d3711c02fe3c8bfbdc5b5b5a243d35",
+      "destinationPath": "swift-io-primitives--io-witness-generic-ops",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-monoio-style",
+      "sourceUnitTree": "f0d545efc27781b0b96764d7d9d199a2195f6323",
+      "destinationPath": "swift-io-primitives--io-witness-monoio-style",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-shape-f",
+      "sourceUnitTree": "253c5fe254330e49a33986562762cf6b562655c7",
+      "destinationPath": "swift-io-primitives--io-witness-shape-f",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-tokio-style",
+      "sourceUnitTree": "6ff4f71a37d496d72e520dc335e8f9b87254cd5d",
+      "destinationPath": "swift-io-primitives--io-witness-tokio-style",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/io-witness-zio-style",
+      "sourceUnitTree": "079489c3e3b0d4b32e08cb620d59980f4d5718f5",
+      "destinationPath": "swift-io-primitives--io-witness-zio-style",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/witness-maperror-sending-return",
+      "sourceUnitTree": "5aa2f106738ad6badd185a2bd6839d4f6f71e8a8",
+      "destinationPath": "swift-io-primitives--witness-maperror-sending-return",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-io-primitives",
+      "sourceCommit": "e93c180555a73cd85a23557c55bc95fc3bb23b23",
+      "sourceTree": "5b38e97afa4243e75654c3e6f04a2eb1350e6383",
+      "sourcePath": "Experiments/witness-noncopyable-parameter",
+      "sourceUnitTree": "54cb6fe111aa7344a30fd4e10b17bcf320809868",
+      "destinationPath": "swift-io-primitives--witness-noncopyable-parameter",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-numeric-primitives",
+      "sourceCommit": "7540a2aec03fd75cdf14b7a0bdef16d7e236a5c3",
+      "sourceTree": "547e94f29352ab78f5feddbf0c61f8cba5656f81",
+      "sourcePath": "Experiments/pure-swift-transcendentals-perf",
+      "sourceUnitTree": "6568968987ce23be8a139f179dd61d341d91df28",
+      "destinationPath": "swift-numeric-primitives--pure-swift-transcendentals-perf",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-ownership-primitives",
+      "sourceCommit": "e5a8d3550125e1205b90cad51ead64e34b8e40db",
+      "sourceTree": "05823fa5c28f67351eb3aae8a5a47520fbc8ea38",
+      "sourcePath": "Experiments/borrow-inout-stdlib-parity",
+      "sourceUnitTree": "ddd1cf8825c3e56f6890271fdacb2abea38d80df",
+      "destinationPath": "swift-ownership-primitives--borrow-inout-stdlib-parity",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-ownership-primitives",
+      "sourceCommit": "e5a8d3550125e1205b90cad51ead64e34b8e40db",
+      "sourceTree": "05823fa5c28f67351eb3aae8a5a47520fbc8ea38",
+      "sourcePath": "Experiments/inout-value-accessor-copyability-split",
+      "sourceUnitTree": "606612d402f31af7629ef4eb53bbfbcfea85b483",
+      "destinationPath": "swift-ownership-primitives--inout-value-accessor-copyability-split",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-ownership-primitives",
+      "sourceCommit": "e5a8d3550125e1205b90cad51ead64e34b8e40db",
+      "sourceTree": "05823fa5c28f67351eb3aae8a5a47520fbc8ea38",
+      "sourcePath": "Experiments/nested-in-generic-extension-target-boundary",
+      "sourceUnitTree": "2a52d395dc7935cff84f0d83093c2dbe4bcd91c0",
+      "destinationPath": "swift-ownership-primitives--nested-in-generic-extension-target-boundary",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-ownership-primitives",
+      "sourceCommit": "e5a8d3550125e1205b90cad51ead64e34b8e40db",
+      "sourceTree": "05823fa5c28f67351eb3aae8a5a47520fbc8ea38",
+      "sourcePath": "Experiments/nested-type-generic-escape",
+      "sourceUnitTree": "e7ecce87ca827136f0bcb8354f3aae6de6a8009e",
+      "destinationPath": "swift-ownership-primitives--nested-type-generic-escape",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-ownership-primitives",
+      "sourceCommit": "e5a8d3550125e1205b90cad51ead64e34b8e40db",
+      "sourceTree": "05823fa5c28f67351eb3aae8a5a47520fbc8ea38",
+      "sourcePath": "Experiments/unified-vs-two-type-box-design",
+      "sourceUnitTree": "8c5afcabc329d693d8069ab2cf3f4fd76f552807",
+      "destinationPath": "swift-ownership-primitives--unified-vs-two-type-box-design",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-standard-library-extensions",
+      "sourceCommit": "12360520e7e432f97aca37111106c4b88913022b",
+      "sourceTree": "e7009779a81f8aebbefa6ec05196952a83adc0fb",
+      "sourcePath": "Experiments/modularization-compile-time",
+      "sourceUnitTree": "4e3dd85521c751573d01385bf6471c613bfbe54c",
+      "destinationPath": "swift-standard-library-extensions--modularization-compile-time",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    },
+    {
+      "sourceRepository": "swift-primitives/swift-standard-library-extensions",
+      "sourceCommit": "12360520e7e432f97aca37111106c4b88913022b",
+      "sourceTree": "e7009779a81f8aebbefa6ec05196952a83adc0fb",
+      "sourcePath": "Experiments/typed-throws-overload-resolution",
+      "sourceUnitTree": "64a8a9d01eeeaa4b297b24d787ed2699eb143d74",
+      "destinationPath": "swift-standard-library-extensions--typed-throws-overload-resolution",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    }
+  ]
+}

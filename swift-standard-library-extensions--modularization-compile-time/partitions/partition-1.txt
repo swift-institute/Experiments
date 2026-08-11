@@ -1,0 +1,4 @@
+# partition-1.txt — baseline, one target for the whole package.
+# Format: one rule per line; * is a wildcard matching all source files.
+# Rule syntax: <file-glob> -> <target-name>
+* -> Standard Library Extensions

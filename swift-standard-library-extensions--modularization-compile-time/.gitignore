@@ -1,0 +1,7 @@
+variants/
+Outputs/*
+!Outputs/report.md
+!Outputs/machine.txt
+!Outputs/samples.csv
+.build/
+*.swiftmodule
