@@ -3000,6 +3000,58 @@
       "source": "swift-primitives/swift-array-primitives"
     },
     {
+      "directory": "swift-async-primitives--barrier-handle-ownership",
+      "displayName": "barrier-handle-ownership",
+      "purpose": "Validate Shape B (~Copyable Party-handle) for Async.Barrier — does deinit-deregistration fire reliably across direct scope, Task, throw, cancellation, and withTaskGroup paths?",
+      "date": "2026-04-25",
+      "toolchain": "Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": "(6/6 variants; deinit fires on drop and is suppressed by consuming arrive() across all tested paths)",
+      "statusRaw": "CONFIRMED (6/6 variants)",
+      "supersededBy": null,
+      "crossRefs": [
+        "swift-async-primitives/Research/barrier-api-investigation-2026-04-25.md"
+      ],
+      "source": "swift-primitives/swift-async-primitives",
+      "sourceHead": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourcePath": "Experiments/barrier-handle-ownership",
+      "sourceSubtree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourceUnitTree": "43c0c58f79e02dc639f93ea6c91ce8147f6563f6"
+    },
+    {
+      "directory": "swift-async-primitives--bridge-push-ownership-conventions",
+      "purpose": "Determine which ownership conventions for ~Copyable parameters",
+      "date": "2026-03-31",
+      "toolchain": "Apple Swift version 6.3 (swiftlang-6.3.0.123.5 clang-2100.0.",
+      "status": "SUPERSEDED",
+      "statusDetail": "API/package drift; experiment premise no longer expressible against current toolchain or peer-package API",
+      "statusRaw": "SUPERSEDED (Phase 7a 2026-04-30)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-async-primitives",
+      "sourceHead": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourcePath": "Experiments/bridge-push-ownership-conventions",
+      "sourceSubtree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourceUnitTree": "d9d0019268ada2ef0ae8aad697f8d91e077376aa"
+    },
+    {
+      "directory": "swift-async-primitives--inout-noncopyable-optional-closure-capture",
+      "displayName": "inout-noncopyable-optional-closure-capture",
+      "purpose": "Verify inout Optional<~Copyable> through Mutex.withLock for Slot-free channel send fast path",
+      "date": "2026-03-27",
+      "toolchain": "Swift 6.3",
+      "status": "CONFIRMED",
+      "statusDetail": "(9/9 variants; compiler bug found: `o!` crashes IRGen, `.take()!` workaround)",
+      "statusRaw": "CONFIRMED (9/9 variants; compiler bug found: `o!` crashes IRGen, `.take()!` workaround)",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-primitives/swift-async-primitives",
+      "sourceHead": "644c63728168114cc6cd4f94647a2f631f57d2ab",
+      "sourcePath": "Experiments/inout-noncopyable-optional-closure-capture",
+      "sourceSubtree": "dabfd939e334641d94ee8a6bf827148f1b558ca0",
+      "sourceUnitTree": "92c80977ded11d3e9a8d87f1daa7c581751b2ee9"
+    },
+    {
       "category": "Swift Language Issues",
       "crossRefs": [
         "copytoborrow-actor-state-mutex-miscompile"
