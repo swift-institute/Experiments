@@ -1,0 +1,3 @@
+User: Bob
+Email: b@example.com
+Role: member

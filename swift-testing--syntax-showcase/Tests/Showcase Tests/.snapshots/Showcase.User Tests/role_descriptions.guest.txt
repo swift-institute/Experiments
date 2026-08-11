@@ -1,0 +1,3 @@
+User: Carol
+Email: c@example.com
+Role: guest
