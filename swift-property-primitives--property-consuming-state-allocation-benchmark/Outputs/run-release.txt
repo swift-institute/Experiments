@@ -1,0 +1,7 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'property-consuming-state-allocation-benchmark' complete! (0.09s)
+Iterations per trial: 10000000, best-of-10 trials reported. Seed: 125
+
+Option A (class State)  : best 38.034 ms (check: 50001245000125)
+Option C (struct State) : best 36.028 ms (check: 50001245000125)

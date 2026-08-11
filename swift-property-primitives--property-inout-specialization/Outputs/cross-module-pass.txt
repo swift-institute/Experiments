@@ -1,0 +1,5 @@
+Property.Inout specialization — receipts (Apple Swift 6.3.2, arm64-macosx26)
+release run: checksum: 10241024 checksumB: 10240512 
+consumer.sil witness_method total: 0
+Variant A all() in PropCore: witness_method=0 index_addr=1 (specialized)
+Variant B all() in PropCore: witness_method=2 index_addr=0 (generic; needs @inlinable cross-package)

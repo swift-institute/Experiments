@@ -1,0 +1,5 @@
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'consumer' complete! (0.10s)
+checksum: 10241024
+checksumB: 10240512

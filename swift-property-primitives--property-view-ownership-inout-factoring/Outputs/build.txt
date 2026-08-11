@@ -1,0 +1,16 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module property_view_ownership_inout_factoring
+[4/6] Compiling property_view_ownership_inout_factoring main.swift
+/Users/coen/Developer/swift-primitives/Experiments/property-view-ownership-inout-factoring/Sources/main.swift:268:9: warning: variable 'nonEscapableTagged' was never mutated; consider changing to 'let' constant
+266 |     var inventory = Inventory()
+267 |     let inoutRef = Ownership.Inout(mutating: &inventory)
+268 |     var nonEscapableTagged = ExTaggedV6<Push, Ownership.Inout<Inventory>>(
+    |         `- warning: variable 'nonEscapableTagged' was never mutated; consider changing to 'let' constant
+269 |         __unchecked: (), inoutRef
+270 |     )
+[4/7] Write Objects.LinkFileList
+[5/7] Linking property-view-ownership-inout-factoring
+[6/7] Applying property-view-ownership-inout-factoring
+Build complete! (0.69s)

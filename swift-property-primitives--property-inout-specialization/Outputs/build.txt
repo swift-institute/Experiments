@@ -1,0 +1,81 @@
+Fetching /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-ownership-primitives from cache (1.40s)
+Fetching /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-tagged-primitives from cache (0.55s)
+Fetching /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache
+Fetched /Users/coen/Developer/swift-primitives/swift-carrier-primitives from cache (0.55s)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-carrier-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-carrier-primitives resolved at main (4f9fc57)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-tagged-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-tagged-primitives resolved at main (3a16455)
+Creating working copy for /Users/coen/Developer/swift-primitives/swift-ownership-primitives
+Working copy of /Users/coen/Developer/swift-primitives/swift-ownership-primitives resolved at main (04604c4)
+Building for debugging...
+[0/20] Write sources
+[7/20] Write consumer-entitlement.plist
+[7/20] Write sources
+[16/20] Write swift-version--58304C5D6DBC2206.txt
+[18/24] Compiling Carrier_Primitive Carrier.swift
+[19/24] Emitting module Ownership_Primitive
+[20/24] Emitting module Carrier_Primitive
+[21/24] Compiling Ownership_Primitive Ownership.swift
+[22/36] Compiling Carrier_Protocol _CarrierProtocol.swift
+[23/37] Emitting module Carrier_Protocol
+[24/37] Compiling Carrier_Protocol Carrying.swift
+[25/37] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self.swift
+[26/37] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Copyable.swift
+[27/37] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Escapable.swift
+[28/37] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[29/37] Compiling Carrier_Protocol Carrier.Protocol where Underlying == Self, Self ~Copyable & ~Escapable.swift
+[30/37] Compiling Carrier_Protocol Carrier.Protocol.swift
+[31/37] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[32/37] Compiling Ownership_Inout_Primitives exports.swift
+[33/37] Emitting module Ownership_Inout_Primitives
+[34/37] Compiling Carrier_Protocol exports.swift
+[35/39] Emitting module Carrier_Primitives
+[36/39] Compiling Carrier_Primitives exports.swift
+[37/47] Compiling Property_Primitives_Core Property+Carrier.swift
+[38/47] Compiling Property_Primitives_Core exports.swift
+[39/47] Emitting module Property_Primitives_Core
+[40/47] Compiling Property_Primitives_Core Property.swift
+[41/47] Emitting module Tagged_Primitives
+[42/47] Compiling Tagged_Primitives Tagged.swift
+[43/47] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[44/47] Compiling Tagged_Primitives Tagged+CustomStringConvertible.swift
+[45/54] Compiling Property_Consume_Primitives exports.swift
+[46/66] Emitting module Property_Consume_Primitives
+[47/66] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[48/66] Compiling Property_Consume_Primitives Property.Consume.swift
+[49/66] Compiling Property_Typed_Primitives exports.swift
+[50/66] Emitting module Property_Typed_Primitives
+[51/66] Compiling Property_Typed_Primitives Property.Typed.swift
+[52/66] Compiling Ownership_Borrow_Primitives exports.swift
+[53/66] Compiling Ownership_Borrow_Primitives __Ownership_Borrow_Protocol.swift
+[54/66] Compiling Ownership_Borrow_Primitives _Ownership_Borrow_OwnedBuffer.swift
+[55/66] Compiling Ownership_Borrow_Primitives Tagged+Ownership.Borrow.Protocol.swift
+[56/66] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[57/66] Emitting module Ownership_Borrow_Primitives
+[58/66] Compiling Property_Inout_Primitives exports.swift
+[59/66] Compiling Property_Inout_Primitives Property.Inout.Typed.swift
+[60/66] Compiling Property_Inout_Primitives Property.Inout.swift
+[61/66] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.swift
+[62/66] Emitting module Property_Inout_Primitives
+[63/66] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[64/71] Compiling Property_Borrow_Primitives exports.swift
+[65/71] Compiling Property_Borrow_Primitives Property.Borrow.Typed.swift
+[66/71] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[67/71] Compiling Property_Borrow_Primitives Property.Borrow.swift
+[68/71] Emitting module Property_Borrow_Primitives
+[69/73] Compiling Property_Primitives exports.swift
+[70/73] Emitting module Property_Primitives
+[71/78] Compiling PropCore StorageProtocol.swift
+[72/78] Emitting module PropCore
+[73/78] Compiling PropCore LinearBuffer.swift
+[74/78] Compiling PropCore Operations.swift
+[75/78] Compiling PropCore HeapStorage.swift
+[76/80] Compiling consumer main.swift
+[77/80] Emitting module consumer
+[77/80] Write Objects.LinkFileList
+[78/80] Linking consumer
+[79/80] Applying consumer
+Build complete! (7.39s)

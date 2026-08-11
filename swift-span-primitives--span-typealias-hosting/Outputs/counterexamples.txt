@@ -1,0 +1,29 @@
+==================== 01-baseline-collision.swift (expected: REFUTED) ====================
+01-baseline-collision.swift:14:17: error: cannot specialize non-generic type 'Span'
+12 | public enum Span {}                        // the package's namespace enum (today)
+13 | 
+14 | func wants(_ s: Span<Int>) -> Int { 0 }    // intended: stdlib span — but `Span` is the enum
+   |                 `- error: cannot specialize non-generic type 'Span'
+15 | 
+>>> exit=1 (non-zero = correctly REFUTED)
+
+==================== 02-host-alias-redeclaration.swift (expected: REFUTED) ====================
+02-host-alias-redeclaration.swift:15:11: error: invalid redeclaration of 'Span'
+12 | //   swiftc -swift-version 6 -parse-as-library -typecheck 02-host-alias-redeclaration.swift
+13 | 
+14 | enum Span {}                                            // host
+   |      `- note: 'Span' previously declared here
+15 | typealias Span<Element: ~Copyable> = Swift.Span<Element>   // alias — collides
+   |           `- error: invalid redeclaration of 'Span'
+16 | 
+>>> exit=1 (non-zero = correctly REFUTED)
+
+==================== 03-bound-alias-bare-protocol.swift (expected: REFUTED) ====================
+03-bound-alias-bare-protocol.swift:24:22: error: 'Protocol' is not a member type of type 'main.Span'
+22 | 
+23 | // Bare, unspecialized member access on the BOUND generic typealias — fails:
+24 | func viaBare<T: Span.`Protocol`>(_ t: T) {}
+   |                      `- error: 'Protocol' is not a member type of type 'main.Span'
+25 | 
+>>> exit=1 (non-zero = correctly REFUTED)
+
