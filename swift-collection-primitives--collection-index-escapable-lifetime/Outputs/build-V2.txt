@@ -1,0 +1,6 @@
+[0/1] Planning build
+Building for debugging...
+[0/1] Write swift-version--58304C5D6DBC2206.txt
+[2/3] Compiling ProtocolV2 CollectionLike.swift
+[3/3] Emitting module ProtocolV2
+Build of target: 'ProtocolV2' complete! (0.55s)

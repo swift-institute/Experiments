@@ -1,0 +1,20 @@
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version--58304C5D6DBC2206.txt
+error: emit-module command failed with exit code 1 (use -v to see invocation)
+[3/4] Emitting module V4CopyableIndex
+/Users/coen/Developer/swift-primitives/swift-collection-primitives/Experiments/collection-index-escapable-lifetime/Sources/V4CopyableIndex/V4.swift:19:31: error: subscripts cannot have noncopyable parameters yet
+17 | 
+18 |         // The blocker: a noncopyable index as a subscript parameter.
+19 |         subscript(_ position: Index) -> Element { get }
+   |                               `- error: subscripts cannot have noncopyable parameters yet
+20 |     }
+21 | }
+[4/4] Compiling V4CopyableIndex V4.swift
+/Users/coen/Developer/swift-primitives/swift-collection-primitives/Experiments/collection-index-escapable-lifetime/Sources/V4CopyableIndex/V4.swift:19:31: error: subscripts cannot have noncopyable parameters yet
+17 | 
+18 |         // The blocker: a noncopyable index as a subscript parameter.
+19 |         subscript(_ position: Index) -> Element { get }
+   |                               `- error: subscripts cannot have noncopyable parameters yet
+20 |     }
+21 | }

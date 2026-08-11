@@ -1,0 +1,20 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module span_carrier_conformance
+[4/7] Compiling span_carrier_conformance main.swift
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:60:5: error: 'copy' cannot be applied to noncopyable types
+58 |     _ c: borrowing C
+59 | ) -> C.Underlying {
+60 |     copy c.underlying
+   |     `- error: 'copy' cannot be applied to noncopyable types
+61 | }
+62 | 
+
+/Users/coen/Developer/swift-primitives/swift-carrier-primitives/Experiments/span-carrier-conformance/Sources/span-carrier-conformance/main.swift:60:5: error: 'copy' can only be applied to a local binding ('let', 'var', or parameter)
+58 |     _ c: borrowing C
+59 | ) -> C.Underlying {
+60 |     copy c.underlying
+   |     `- error: 'copy' can only be applied to a local binding ('let', 'var', or parameter)
+61 | }
+62 | 

@@ -1,0 +1,11 @@
+Building for debugging...
+[0/5] Write sources
+[1/6] Write collection-index-escapable-lifetime-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling collection_index_escapable_lifetime main.swift
+[5/8] Emitting module collection_index_escapable_lifetime
+[5/8] Write Objects.LinkFileList
+[6/8] Linking collection-index-escapable-lifetime
+[7/8] Applying collection-index-escapable-lifetime
+Build of product 'collection-index-escapable-lifetime' complete! (0.50s)
+traversed sum = 60, isEmpty = false

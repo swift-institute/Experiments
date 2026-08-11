@@ -1,0 +1,10 @@
+Building for debugging...
+[0/6] Write sources
+[1/6] Write relax-trivial-self-default-entitlement.plist
+[2/6] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling relax_trivial_self_default main.swift
+[5/8] Emitting module relax_trivial_self_default
+[5/8] Write Objects.LinkFileList
+[6/8] Linking relax-trivial-self-default
+[7/8] Applying relax-trivial-self-default
+Build complete! (0.75s)

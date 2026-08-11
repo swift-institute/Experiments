@@ -1,0 +1,31 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'builtin-address-of-borrow' complete! (0.08s)
+=== Variant 1: withUnsafePointer(to: self) computed property ===
+  buffer.peekFront1 = 10
+  buffer.peekBack1  = 30
+
+=== Variant 2: withUnsafePointer(to: self) borrowing func ===
+  buffer.peekFront2() = 10
+
+=== Variant 3: withUnsafePointer(to: self) inside _read ===
+  buffer.peekFront3 = 10
+
+=== Variant 4: Copyable snapshot via withUnsafePointer(to: self) ===
+  buffer.peek4.front = 10
+  buffer.peek4.back  = 30
+
+=== Variant 5: Direct property access (baseline) ===
+  buffer.peekFront5 = 10
+  buffer.peekBack5  = 30
+
+=== Variant 6: Copyable snapshot via direct access ===
+  buffer.peek6.front = 10
+  buffer.peek6.back  = 30
+
+=== Variant 7: withUnsafePointer on stored property ===
+  buffer.peekFront7 = 10
+
+=== Verification: let binding + ~Copyable base + assertions ===
+  ALL ASSERTIONS PASSED

@@ -1,0 +1,9 @@
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module span_carrier_conformance
+[4/7] Compiling span_carrier_conformance main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking span-carrier-conformance
+[6/7] Applying span-carrier-conformance
+Build complete! (0.73s)

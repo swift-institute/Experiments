@@ -1,0 +1,10 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module peek_non_mutating
+[4/7] Compiling peek_non_mutating main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking peek-non-mutating
+[6/7] Applying peek-non-mutating
+Build complete! (0.44s)

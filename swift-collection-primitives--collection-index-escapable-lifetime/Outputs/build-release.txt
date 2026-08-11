@@ -1,0 +1,30 @@
+Building for production...
+[0/27] Write sources
+[26/27] Write swift-version--58304C5D6DBC2206.txt
+[28/31] Compiling Ownership_Primitive Ownership.swift
+[29/31] Compiling Carrier_Primitive Carrier.swift
+[30/31] Compiling Equation_Primitive Equation.swift
+[31/34] Compiling Equation_Protocol_Primitives Equation.Protocol.swift
+[32/34] Compiling Carrier_Protocol Carrier.Protocol where Self ~Copyable & ~Escapable.swift
+[33/34] Compiling Ownership_Inout_Primitives Ownership.Inout.swift
+[34/34] Compiling Comparison_Primitive Comparison+BooleanProperties.swift
+[35/36] Compiling Carrier_Primitives exports.swift
+[36/38] Compiling Property_Primitives_Core Property+Carrier.swift
+[37/38] Compiling Equation_Primitives_Standard_Library_Integration Equation.Protocol+Swift.Array.swift
+[38/38] Compiling Tagged_Primitives Tagged+Carrier.Protocol.swift
+[39/43] Compiling Property_Typed_Primitives Property.Typed.swift
+[40/43] Compiling Property_Consume_Primitives Property.Consume.State.swift
+[41/43] Compiling Equation_Tagged_Primitives Equation.Protocol+Tagged.swift
+[42/43] Compiling Ownership_Borrow_Primitives Ownership.Borrow.swift
+[43/43] Compiling Property_Inout_Primitives Property.Inout.Typed.Valued.Valued.swift
+[44/44] Compiling Property_Borrow_Primitives Property.Borrow.Typed.Valued.swift
+[45/45] Compiling Property_Primitives exports.swift
+[46/46] Compiling Equation_Primitives exports.swift
+[47/47] Compiling Comparison_Protocol_Primitives Comparison+Comparable.swift
+[48/49] Compiling Comparison_Tagged_Primitives Comparison.Protocol+Identity.Tagged.swift
+[49/49] Compiling Comparison_Property_Primitives Comparison.Clamp+Property.Inout.swift
+[50/50] Compiling Comparison_Primitives_Standard_Library_Integration Comparison+Swift.Comparable.swift
+[51/51] Compiling Comparison_Primitives exports.swift
+[52/52] Compiling ProtocolV2 CollectionLike.swift
+[53/53] Compiling collection_index_escapable_lifetime main.swift
+Build of target: 'collection-index-escapable-lifetime' complete! (2.56s)
