@@ -1,0 +1,11 @@
+timestamp,variant,mode,scenario,regime,wall_seconds,user_cpu_seconds,max_rss_bytes,swift_version
+2026-04-22T09:29:48Z,1,debug,clean,as-is,2.07,2.07,165625856,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:29:50Z,1,debug,clean,as-is,1.36,1.36,165478400,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:29:52Z,1,debug,clean,as-is,1.65,1.65,166625280,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:29:53Z,1,debug,clean,as-is,1.40,1.40,165036032,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:29:55Z,1,debug,clean,as-is,1.54,1.54,168706048,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:29:57Z,max,debug,clean,as-is,4.64,4.64,148897792,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:30:02Z,max,debug,clean,as-is,4.84,4.84,151158784,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:30:07Z,max,debug,clean,as-is,4.73,4.73,144539648,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:30:12Z,max,debug,clean,as-is,5.21,5.21,145653760,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+2026-04-22T09:30:17Z,max,debug,clean,as-is,4.67,4.67,142262272,swift-driver version: 1.148.6 Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)

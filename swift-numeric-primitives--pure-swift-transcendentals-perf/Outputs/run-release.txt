@@ -1,0 +1,19 @@
+=== Pure-Swift vs libm Transcendentals ===
+Toolchain: Swift 6.3+
+Iterations per measurement: 100000 × inputs (10 inputs ⇒ 1000000 calls)
+Median of 5 timing samples reported.
+
+Function     | PureSwift ns   | libm ns        | Ratio     | Max ULP
+------------------------------------------------------------------------------
+sqrt[D]      | 1.224          | 1.660          | 0.73      | 0.0000
+exp[D]       | 6.421          | 0.916          | 7.00      | 580813.0000
+log[D]       | 5.220          | 0.743          | 7.02      | 25207181.0000
+sin[D]       | 0.747          | 0.729          | 1.02      | >1e10
+atan[D]      | 0.707          | 3.598          | 0.19      | >1e10
+sqrt[F]      | 0.833          | 0.835          | 0.99      | 0.0000
+exp[F]       | 3.442          | 1.698          | 2.02      | 8.0000
+log[F]       | 5.108          | 1.931          | 2.64      | 8.0000
+sin[F]       | 5.344          | 2.590          | 2.06      | 27360517.0000
+atan[F]      | 2.212          | 2.430          | 0.91      | 596202.0000
+
+=== Sink (prevents DCE): 294419.70937460626 294121.7 ===

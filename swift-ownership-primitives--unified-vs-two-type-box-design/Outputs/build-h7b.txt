@@ -1,0 +1,13 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/7] Emitting module unified_vs_two_type_box_design
+[4/7] Compiling unified_vs_two_type_box_design H7b_same_name.swift
+/Users/coen/Developer/swift-primitives/swift-ownership-primitives/Experiments/unified-vs-two-type-box-design/Sources/unified-vs-two-type-box-design/H7b_same_name.swift:66:18: error: noncopyable 'hbox.value' cannot be consumed when captured by an escaping closure or borrowed by a non-Escapable type
+64 |     // ~Copyable path: should use the ~Copyable-extension accessor (borrowing _read)
+65 |     let hbox = H7b.Box<H1_Handle>(H1_Handle(42))
+66 |     let _ = hbox.value  // calls _read { yield _storage.value }
+   |                  `- error: noncopyable 'hbox.value' cannot be consumed when captured by an escaping closure or borrowed by a non-Escapable type
+67 |     _ = hbox            // keep alive
+68 |     print("H7b: both same-named accessors coexist — Swift resolves by constraint specificity.")
