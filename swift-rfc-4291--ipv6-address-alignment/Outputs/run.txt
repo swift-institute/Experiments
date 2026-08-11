@@ -1,0 +1,30 @@
+Building for debugging...
+[0/4] Write sources
+[1/4] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module ipv6_address_alignment
+[4/6] Compiling ipv6_address_alignment main.swift
+[4/7] Write Objects.LinkFileList
+[5/7] Linking ipv6-address-alignment
+[6/7] Applying ipv6-address-alignment
+Build of product 'ipv6-address-alignment' complete! (1.13s)
+=== Memory layout comparison ===
+
+RFC_4291.IPv6.Address:
+  size      = 16
+  stride    = 16
+  alignment = 2
+
+POSIX in6_addr:
+  size      = 16
+  stride    = 16
+  alignment = 4
+
+=== Byte equivalence ===
+RFC   bytes: 01 20 b8 0d a3 85 00 00 00 00 2e 8a 70 03 34 73
+POSIX bytes: 20 01 0d b8 85 a3 00 00 00 00 8a 2e 03 70 73 34
+equal = false
+
+=== Reinterpret-cast safety ===
+in6_addr → RFC_4291.IPv6.Address: SAFE (4 >= 2)
+RFC_4291.IPv6.Address → in6_addr: UNSAFE (2 >= 4)
+
