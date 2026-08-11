@@ -1,0 +1,9 @@
+V1: Single-clock baseline
+V1: PASS — job fired after 56 ms, shutdown clean
+V2: Two-clock parallel drain
+V2: PASS — heaps drain independently; continuous=[10, 11] suspending=[20, 21]
+V3: Shutdown race with both threads parked on future deadlines
+V3: PASS — shutdown completed in 0 ms without firing parked jobs
+V4: Shutdown with many pending entries on both clocks
+V4: PASS — shutdown with 100 pending completed in 0 ms
+All variants: PASS
