@@ -4010,6 +4010,24 @@
       "sourceSubtree": "3b4713ecf0047a84d5edbdb3434b1ef230aea860",
       "sourceUnitTree": "6d64a902eab075ed876c62728940d654ed89f4d2",
       "destinationImportCommit": "158729e6eaf77b86c2ad4736c9ea6c18156112c0"
+    },
+    {
+      "directory": "swift-rfc-4291--ipv6-address-alignment",
+      "category": null,
+      "purpose": "IPv6 address alignment experiment",
+      "date": "",
+      "toolchain": "",
+      "status": "MIGRATED",
+      "statusDetail": null,
+      "statusRaw": "MIGRATED",
+      "supersededBy": null,
+      "crossRefs": [],
+      "source": "swift-ietf/swift-rfc-4291",
+      "sourceHead": "b98f432e25a45f94f5dfc05603c465844bbf5539",
+      "sourcePath": "Experiments/ipv6-address-alignment",
+      "sourceSubtree": "20f56956442c04ec4b5044a6249b81fd077f6f3d",
+      "sourceUnitTree": "aa46d299042405a48ff0682e485be2eb5c389e18",
+      "destinationImportCommit": "37570e0be0594a36c83662f7694b5df01b748a7c"
     }
   ],
   "narrativeSections": [

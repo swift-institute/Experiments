@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "batch": "Experiments-B03-IETF",
+  "destinationImportCommit": "37570e0be0594a36c83662f7694b5df01b748a7c",
+  "manifestSHA256": "4ee326eb712972d1e915273a6ef4e31995d064a2578f6c0e756f7661d4f8942a",
+  "programme": "https://github.com/swift-institute/.github/issues/527",
+  "task": "https://github.com/swift-institute/Experiments/issues/12",
+  "historyImport": false,
+  "sourceHistoryRetained": true,
+  "imports": [
+    {
+      "sourceRepository": "swift-ietf/swift-rfc-4291",
+      "sourceCommit": "b98f432e25a45f94f5dfc05603c465844bbf5539",
+      "sourcePath": "Experiments/ipv6-address-alignment",
+      "sourceTree": "20f56956442c04ec4b5044a6249b81fd077f6f3d",
+      "sourceUnitTree": "aa46d299042405a48ff0682e485be2eb5c389e18",
+      "destinationPath": "swift-rfc-4291--ipv6-address-alignment",
+      "equality": {
+        "fileList": "verified",
+        "blobs": "verified"
+      }
+    }
+  ]
+}
